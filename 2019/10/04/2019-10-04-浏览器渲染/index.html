@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="HTML5,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="浏览器渲染 谷歌开发者工具 浏览器加载、解析与渲染 关键渲染路径 javascript异步加载 defer属性 async        浏览器渲染谷歌开发者工具 Timeline  控制条:开始记录，停止记录配置记录期间捕获的信息。  总览:页面性能高级汇总  火焰图:CPU 堆叠追踪的可视化  详情:每个CPU任务的详细报告   浏览器加载、解析与渲染 HTML代码转化为DOM,DOM是">
+<meta name="keywords" content="HTML5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浏览器渲染">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-浏览器渲染/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="浏览器渲染 谷歌开发者工具 浏览器加载、解析与渲染 关键渲染路径 javascript异步加载 defer属性 async        浏览器渲染谷歌开发者工具 Timeline  控制条:开始记录，停止记录配置记录期间捕获的信息。  总览:页面性能高级汇总  火焰图:CPU 堆叠追踪的可视化  详情:每个CPU任务的详细报告   浏览器加载、解析与渲染 HTML代码转化为DOM,DOM是">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/HTML5/img/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/HTML5/img/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93_2.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/HTML5/img/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93_3.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/HTML5/img/asyncAndDefer.jpg">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.683Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浏览器渲染">
+<meta name="twitter:description" content="浏览器渲染 谷歌开发者工具 浏览器加载、解析与渲染 关键渲染路径 javascript异步加载 defer属性 async        浏览器渲染谷歌开发者工具 Timeline  控制条:开始记录，停止记录配置记录期间捕获的信息。  总览:页面性能高级汇总  火焰图:CPU 堆叠追踪的可视化  详情:每个CPU任务的详细报告   浏览器加载、解析与渲染 HTML代码转化为DOM,DOM是">
+<meta name="twitter:image" content="c:/Users/Administrator/Desktop/My-study-records-master/HTML5/img/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-浏览器渲染/">
+
+
+
+
+
+  <title>浏览器渲染 | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-浏览器渲染/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">浏览器渲染</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T10:00:00+08:00">
+                2019-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <!-- toc orderedList:0 depthFrom:1 depthTo:6 -->
+
+<ul>
+<li><a href="#浏览器渲染">浏览器渲染</a><ul>
+<li><a href="#谷歌开发者工具">谷歌开发者工具</a></li>
+<li><a href="#浏览器加载-解析与渲染">浏览器加载、解析与渲染</a></li>
+<li><a href="#关键渲染路径">关键渲染路径</a></li>
+<li><a href="#javascript异步加载">javascript异步加载</a><ul>
+<li><a href="#defer属性">defer属性</a></li>
+<li><a href="#async">async</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1 id="浏览器渲染"><a href="#浏览器渲染" class="headerlink" title="浏览器渲染"></a>浏览器渲染</h1><h2 id="谷歌开发者工具"><a href="#谷歌开发者工具" class="headerlink" title="谷歌开发者工具"></a>谷歌开发者工具</h2><p><img src="C:/Users/Administrator/Desktop/My-study-records-master/HTML5/img/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93.jpg" alt></p>
+<p>Timeline</p>
+<ol>
+<li><p>控制条:<br>开始记录，停止记录<br>配置记录期间捕获的信息。</p>
+</li>
+<li><p>总览:<br>页面性能高级汇总</p>
+</li>
+<li><p>火焰图:<br>CPU 堆叠追踪的可视化</p>
+</li>
+<li><p>详情:<br>每个CPU任务的详细报告</p>
+</li>
+</ol>
+<h2 id="浏览器加载、解析与渲染"><a href="#浏览器加载、解析与渲染" class="headerlink" title="浏览器加载、解析与渲染"></a>浏览器加载、解析与渲染</h2><ol>
+<li>HTML代码转化为DOM,DOM是增量构建的，不需要等整个文档下载完才可以构建DOM树。</li>
+<li>CSS代码转化成CSSOM（CSS Object Model）。</li>
+<li>DOM 和 CSSOM 合并后生成 <code>Render Tree</code>(Render Tree 和DOM一样，以多叉树的形式保存了每个节点的css属性、节点本身属性、以及节点的孩子节点）</li>
+<li>Render Tree（渲染树）构建完毕之后，进入“布局（layout）”处理阶段，也就是为每个节点分配一个应出现在屏幕上的确切坐标。这就被称为<code>reflow</code>或者是<code>layout</code>又或者是<code>layouting</code>。</li>
+<li>最后，浏览器会在屏幕上绘制（paint）节点。</li>
+</ol>
+<p>衍生的问题解析：</p>
+<ol>
+<li>HTML是解析一部分，显示一部分的。</li>
+<li><code>&lt;script&gt;</code>标签会阻塞文档的解析，直到脚本执行完毕。如果脚本是外部的，需等到脚本下载并执行完成才继续往下解析。</li>
+<li>css不会阻止HTML解析，但CSS还没有加载完时会阻碍HTML渲染与JavaScript脚本运行。</li>
+<li>图片资源是异步请求的，图片既不阻塞解析，也不阻塞渲染。</li>
+<li>屏幕的变化称为<code>repaint</code>或者<code>redraw</code>。</li>
+</ol>
+<blockquote>
+<p>参考：</p>
+<ol>
+<li><a href="https://segmentfault.com/a/1190000007766425#articleHeader4" target="_blank" rel="noopener">https://segmentfault.com/a/1190000007766425#articleHeader4</a></li>
+<li><a href="https://segmentfault.com/a/1190000006917754" target="_blank" rel="noopener">https://segmentfault.com/a/1190000006917754</a></li>
+</ol>
+</blockquote>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/HTML5/img/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93_2.jpg" alt></p>
+<p>文档的渲染还是要等待顶层css加载完毕。</p>
+<h2 id="关键渲染路径"><a href="#关键渲染路径" class="headerlink" title="关键渲染路径"></a>关键渲染路径</h2><pre><code class="html">&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Understanding the Critical Rendering Path&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+      &lt;h1&gt;Understanding the Critical Rendering Path&lt;/h1&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+      &lt;h2&gt;Introduction&lt;/h2&gt;
+      &lt;p&gt;Lorem ipsum dolor sit amet&lt;/p&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;
+      &lt;small&gt;Copyright 2017&lt;/small&gt;
+  &lt;/footer&gt;
+  &lt;script src=&quot;main.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/HTML5/img/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93_3.jpg" alt></p>
+<ol>
+<li>发送请求：发送GET请求index.html</li>
+<li>解析HTML然后发送请求：开始解析HTML并构建DOM，然后发送GET请求style.css和main.js。</li>
+<li>解析样式表：根据style.css生成CSSOM</li>
+<li>执行计算脚本：执行main.js</li>
+<li>布局：基于HTML的元视窗标签，生成布局</li>
+<li>绘制页面：绘制网页</li>
+</ol>
+<blockquote>
+<p>参考：<br><a href="https://github.com/lx7575000/Translation/blob/master/%EF%BC%88%E8%AF%91%EF%BC%89%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%85%B3%E9%94%AE%E6%B8%B2%E6%9F%93%E8%B7%AF%E5%BE%84/%EF%BC%88%E8%AF%91%EF%BC%89%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%85%B3%E9%94%AE%E6%B8%B2%E6%9F%93%E8%B7%AF%E5%BE%84.md" target="_blank" rel="noopener">理解浏览器的关键渲染路径</a></p>
+</blockquote>
+<h2 id="javascript异步加载"><a href="#javascript异步加载" class="headerlink" title="javascript异步加载"></a>javascript异步加载</h2><h3 id="defer属性"><a href="#defer属性" class="headerlink" title="defer属性"></a>defer属性</h3><ul>
+<li>当script标签拥有defer属性时，该脚本会被推迟到整个HTML文档解析完后，再开始执行</li>
+<li>被defer的脚本，在执行时会严格按照在HTML文档中出现的顺序执行</li>
+</ul>
+<h3 id="async"><a href="#async" class="headerlink" title="async"></a>async</h3><ul>
+<li>当script标签拥有async属性时，该脚本不会再阻塞HTML parser。且不会被CSS阻塞。</li>
+<li>脚本<strong>只要加载完成</strong>，便可开始执行。</li>
+<li>被async的脚本，在执行时<strong>不会</strong>严格按照在HTML文档中出现的顺序执行</li>
+<li>async适用于无依赖的独立资源</li>
+</ul>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/HTML5/img/asyncAndDefer.jpg" alt="asyncAndDefer"></p>
+<blockquote>
+<p><a href="https://ppt.baomitu.com/d/258e0812#/57" target="_blank" rel="noopener">https://ppt.baomitu.com/d/258e0812#/57</a></p>
+</blockquote>
+<h2 id="浏览器重绘与回流"><a href="#浏览器重绘与回流" class="headerlink" title="浏览器重绘与回流"></a>浏览器重绘与回流</h2><p>当<code>render tree</code>中的一部分（或全部）因为元素的规模尺寸、布局、隐藏等改变而需要重新构建，称为<strong>回流(reflow)</strong> 。<br>当页面布局和集合属性改变，会出发回流。</p>
+<p>当<code>render tree</code>中的一些元素需要重新更新属性，而这些属性只是影响元素外观、风格，不会影响布局的修改(如background-color)，称为<strong>重绘(repaint)</strong>。</p>
+<h2 id="渲染的名词"><a href="#渲染的名词" class="headerlink" title="渲染的名词"></a>渲染的名词</h2><h3 id="Parse-Html"><a href="#Parse-Html" class="headerlink" title="Parse Html"></a>Parse Html</h3><p>发送一个http请求，获取请求的内容，然后解析HTML的过程。</p>
+<h3 id="Recalculate-Style"><a href="#Recalculate-Style" class="headerlink" title="Recalculate Style"></a>Recalculate Style</h3><p>此过程是根据匹配选择器（例如 .headline 或 .nav &gt; .nav__item）计算出哪些元素应用哪些 CSS 规则的过程。从中知道规则之后，将应用规则并计算每个元素的最终样式。</p>
+<h3 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a>Layout</h3><p>在知道对一个元素应用哪些规则之后，浏览器即可开始计算它要占据的空间大小及其在屏幕的位置。网页的布局模式意味着一个元素可能影响其他元素，例如 <code>&lt;body&gt;</code> 元素的宽度一般会影响其子元素的宽度以及树中各处的节点，因此对于浏览器来说，布局过程是经常发生的。</p>
+<blockquote>
+<p>Layout后一般存在一个<code>Update Layer Tree</code>的过程。</p>
+</blockquote>
+<h3 id="Paint"><a href="#Paint" class="headerlink" title="Paint"></a>Paint</h3><p>页面上显示东西有任何变动都会触发Paint。本质上就是填充像素的过程。包括绘制文字、颜色、图像、边框和阴影等，也就是一个 DOM 元素所有的可视效果。<code>Paint</code>一般是在多个层上完成的。</p>
+<h3 id="Composite-Layers"><a href="#Composite-Layers" class="headerlink" title="Composite Layers"></a>Composite Layers</h3><p>最后合并图层，输出页面到屏幕。由于页面的各部分可能被绘制到多层，由此它们需要按正确顺序绘制到屏幕上，以便正确渲染页面。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTML5/" rel="tag"># HTML5</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-算法排序/" rel="next" title="算法排序">
+                <i class="fa fa-chevron-left"></i> 算法排序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-符号表介绍和API/" rel="prev" title="符号表介绍和API">
+                符号表介绍和API <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#浏览器渲染"><span class="nav-number">1.</span> <span class="nav-text">浏览器渲染</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#谷歌开发者工具"><span class="nav-number">1.1.</span> <span class="nav-text">谷歌开发者工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器加载、解析与渲染"><span class="nav-number">1.2.</span> <span class="nav-text">浏览器加载、解析与渲染</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关键渲染路径"><span class="nav-number">1.3.</span> <span class="nav-text">关键渲染路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript异步加载"><span class="nav-number">1.4.</span> <span class="nav-text">javascript异步加载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#defer属性"><span class="nav-number">1.4.1.</span> <span class="nav-text">defer属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#async"><span class="nav-number">1.4.2.</span> <span class="nav-text">async</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器重绘与回流"><span class="nav-number">1.5.</span> <span class="nav-text">浏览器重绘与回流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#渲染的名词"><span class="nav-number">1.6.</span> <span class="nav-text">渲染的名词</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Parse-Html"><span class="nav-number">1.6.1.</span> <span class="nav-text">Parse Html</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Recalculate-Style"><span class="nav-number">1.6.2.</span> <span class="nav-text">Recalculate Style</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Layout"><span class="nav-number">1.6.3.</span> <span class="nav-text">Layout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Paint"><span class="nav-number">1.6.4.</span> <span class="nav-text">Paint</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Composite-Layers"><span class="nav-number">1.6.5.</span> <span class="nav-text">Composite Layers</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

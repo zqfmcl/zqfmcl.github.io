@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="题解,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="第三章控制执行 public class Count { ​       public static void main(String[] args) { ​              for(int i = 1; i &amp;lt; 101; i++) ​                     System.out.println(i); ​       } } public class Compa">
+<meta name="keywords" content="题解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java题解控制">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解控制/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="第三章控制执行 public class Count { ​       public static void main(String[] args) { ​              for(int i = 1; i &amp;lt; 101; i++) ​                     System.out.println(i); ​       } } public class Compa">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.800Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java题解控制">
+<meta name="twitter:description" content="第三章控制执行 public class Count { ​       public static void main(String[] args) { ​              for(int i = 1; i &amp;lt; 101; i++) ​                     System.out.println(i); ​       } } public class Compa">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解控制/">
+
+
+
+
+
+  <title>Java题解控制 | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解控制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java题解控制</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-06T10:00:00+08:00">
+                2019-10-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第三章控制执行"><a href="#第三章控制执行" class="headerlink" title="第三章控制执行"></a>第三章控制执行</h2><p> public class Count {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              for(int i = 1; i &lt; 101; i++)</p>
+<p>​                     System.out.println(i);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class CompareInts {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Random rand1 = new Random();</p>
+<p>​              Random rand2 = new Random();</p>
+<p>​              for(int i = 0; i &lt; 25; i++) {</p>
+<p>​                     int x = rand1.nextInt();</p>
+<p>​                     int y = rand2.nextInt();</p>
+<p>​                     if(x &lt; y) print(x + “ &lt; “ + y);</p>
+<p>​                     else if(x &gt; y) print(x + “ &gt; “ + y);</p>
+<p>​                     else print(x + “ = “ + y);</p>
+<p>​              }</p>
+<p>​              Random rand3 = new Random();</p>
+<p>​              Random rand4 = new Random();</p>
+<p>​              for(int i = 0; i &lt; 25; i++) {</p>
+<p>​                     int x = rand3.nextInt(10);</p>
+<p>​                     int y = rand4.nextInt(10);</p>
+<p>​                     if(x &lt; y) print(x + “ &lt; “ + y);</p>
+<p>​                     else if(x &gt; y) print(x + “ &gt; “ + y);</p>
+<p>​                     else print(x + “ = “ + y);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class CompareIntsForever {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Random rand1 = new Random();</p>
+<p>​              Random rand2 = new Random();</p>
+<p>​              for(int i = 0; i &lt; 25; i++) {</p>
+<p>​                     int x = rand1.nextInt();</p>
+<p>​                     int y = rand2.nextInt();</p>
+<p>​                     if(x &lt; y) print(x + “ &lt; “ + y);</p>
+<p>​                     else if(x &gt; y) print(x + “ &gt; “ + y);</p>
+<p>​                     else print(x + “ = “ + y);</p>
+<p>​              }</p>
+<p>​              Random rand3 = new Random();</p>
+<p>​              Random rand4 = new Random();</p>
+<p>​              while(true) {</p>
+<p>​                                  int x = rand3.nextInt(10);</p>
+<p>​                     int y = rand4.nextInt(10);</p>
+<p>​                     if(x &lt; y) print(x + “ &lt; “ + y);</p>
+<p>​                     else if(x &gt; y) print(x + “ &gt; “ + y);</p>
+<p>​                     else print(x + “ = “ + y);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>  public class Primes {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              for(int i = 1; i &lt; 1000; i++ ) {</p>
+<p>​                     int factors = 0;</p>
+<p>​                     for(int j = 1; j &lt; (i + 2)                       if((i % j) == 0) factors++;                   </p>
+<p>​                     }</p>
+<p>​                     if(factors &lt; 2) System.out.println(i + “ is prime”);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class BitTest {</p>
+<p>​       static void binaryPrint (int q) {</p>
+<p>​              if(q == 0) System.out.print(0);</p>
+<p>​              else {</p>
+<p>​                     int nlz = Integer.numberOfLeadingZeros(q); </p>
+<p>​                     q &lt;&lt;= nlz;</p>
+<p>​                     for(int p = 0; p &lt; 32 - nlz; p++) {</p>
+<p>​                            int n = (Integer.numberOfLeadingZeros(q) == 0) ? 1 : 0;</p>
+<p>​                            System.out.print(n);             </p>
+<p>​                            q &lt;&lt;= 1;</p>
+<p>​                     }             </p>
+<p>​              }</p>
+<p>​              System.out.println(“”);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              int i = 1 + 4 + 16 + 64;</p>
+<p>​              int j = 2 + 8 + 32 + 128;</p>
+<p>​              int k = 0x100;</p>
+<p>​              int m = 0;</p>
+<p>​              P.rintln(“Using Integer.toBinaryString():”);</p>
+<p>​              P.rintln(“i = “ + Integer.toBinaryString(i));</p>
+<p>​              P.rintln(“j = “ + Integer.toBinaryString(j));</p>
+<p>​              P.rintln(“k = “ + Integer.toBinaryString(k));</p>
+<p>​              P.rintln(“m = “ + Integer.toBinaryString(m));            </p>
+<p>​              P.rintln(“i &amp; j = “ + (i &amp; j) + “ = “ + Integer.toBinaryString(i &amp; j));</p>
+<p>​              P.rintln(“i | j = “ + (i | j) + “ = “ + Integer.toBinaryString(i | j));</p>
+<p>​              P.rintln(“i ^ j = “ + (i ^ j) + “ = “ + Integer.toBinaryString(i ^ j));</p>
+<p>​              P.rintln(“<del>i = “ + Integer.toBinaryString(</del>i));</p>
+<p>​              P.rintln(“<del>j = “ + Integer.toBinaryString(</del>j));</p>
+<p>​              P.rintln(“Using binaryPrint():”);</p>
+<p>​              P.rint(“i = “ + i + “ = “);</p>
+<p>​              binaryPrint(i);        </p>
+<p>​              P.rint(“j = “ + j + “ = “);</p>
+<p>​              binaryPrint(j);</p>
+<p>​              P.rint(“k = “ + k + “ = “);</p>
+<p>​              binaryPrint(k);       </p>
+<p>​              P.rint(“m = “ + m + “ = “);</p>
+<p>​              binaryPrint(m);</p>
+<p>​              P.rint(“i &amp; j = “ + (i &amp; j) + “ = “);</p>
+<p>​              binaryPrint(i &amp; j);</p>
+<p>​              P.rint(“i | j = “ + (i | j) + “ = “);</p>
+<p>​              binaryPrint(i | j);</p>
+<p>​              P.rint(“i ^ j = “ + (i ^ j) + “ = “);</p>
+<p>​              binaryPrint(i ^ j);</p>
+<p>​              P.rint(“~i = “ + ~i + “ = “);</p>
+<p>​              binaryPrint(~i);             </p>
+<p>​              P.rint(“~j = “ + ~j + “ = “);</p>
+<p>​              binaryPrint(~j);</p>
+<p>​       }      </p>
+<p>}</p>
+<p>public class IfElseTest {</p>
+<p>​       static int test(int testval, int begin, int end) {</p>
+<p>​              if(end &lt; begin) {</p>
+<p>​                     print(“end cannot be &lt; begin”);</p>
+<p>​                     return 0;</p>
+<p>​              } </p>
+<p>​              if((testval &gt; (begin - 1)) &amp;&amp; (testval &lt; (end + 1))) </p>
+<p>​                     return +1;</p>
+<p>​              if((testval &lt; begin) || (testval &gt; end))</p>
+<p>​                     return -1;</p>
+<p>​              print(“exceptional case”);</p>
+<p>​              return 13;</p>
+<p>​       }      </p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              print(test(10, 5, 4));</p>
+<p>​              print(test(5, 4, 10));</p>
+<p>​              print(test(5, 5, 6));</p>
+<p>​              print(test(10, 5, 7));       </p>
+<p>​              print(test(5, 5, 5));  </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class IntCount {</p>
+<p>​       static void Count1(int n) {</p>
+<p>​              for(int i = 0; i &lt; n; i++)</p>
+<p>​                     print(i + 1);</p>
+<p>​              </p>
+<p>​       }</p>
+<p>​       static void Count2(int n) {</p>
+<p>​              for(int i = 0; i &lt; n; i++) {</p>
+<p>​                     print(i + 1);</p>
+<p>​                     if(i == 99)</p>
+<p>​                            break;</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       static void Count3(int n) {</p>
+<p>​              for(int i = 0; i &lt; n; i++) {</p>
+<p>​                     print(i + 1);</p>
+<p>​                     if(i == 99)</p>
+<p>​                            return;</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Count1(100);  </p>
+<p>​              Count2(100);</p>
+<p>​              Count3(100);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class SwitchTest {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              for(int i = 0; i &lt; 11; i++) {     </p>
+<p>​                     switch(i) {</p>
+<p>​                            case 0: print(“zero”); break;</p>
+<p>​                            case 1: print(“isa”); break;</p>
+<p>​                            case 2: print(“dalawa”); break;</p>
+<p>​                            case 3: print(“tatlo”); break;</p>
+<p>​                            case 4: print(“apat”); break;</p>
+<p>​                            case 5: print(“lima”); break;</p>
+<p>​                            case 6: print(“anim”); break;</p>
+<p>​                            case 7: print(“pito”); break;</p>
+<p>​                            case 8: print(“walo”); break;</p>
+<p>​                            case 9: print(“siyam”); break;</p>
+<p>​                            default: print(“default”);</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​       }      </p>
+<p>} </p>
+<p>public class Fibonacci {</p>
+<p>​       int fib(int n) {</p>
+<p>​              if(n &lt; 2) return 1;</p>
+<p>​              return (fib(n - 2) + fib(n - 1));</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Fibonacci f = new Fibonacci();</p>
+<p>​              int k = Integer.parseInt(args[0]);</p>
+<p>​              System.out.println(“First “ + k + “ Fibonacci number(s): “);</p>
+<p>​              for(int i = 0; i &lt; k; i++)</p>
+<p>​                     System.out.println(f.fib(i));</p>
+<p>​       }      </p>
+<p>}</p>
+<p>public class VampireNumbers {   </p>
+<p>​              static int a(int i) {</p>
+<p>​                     return i         }</p>
+<p>​              static int b(int i) {</p>
+<p>​                     return (i%1000)            }</p>
+<p>​              static int c(int i) {</p>
+<p>​                     return ((i%1000)%100)          }</p>
+<p>​              static int d(int i) {</p>
+<p>​                     return ((i%1000)%100)%10;</p>
+<p>​              }</p>
+<p>​              static int com(int i, int j) {</p>
+<p>​                     return (i * 10) + j;</p>
+<p>​              }</p>
+<p>​              static void productTest (int i, int m, int n) {</p>
+<p>​                     if(m * n == i) System.out.println(i + “ = “ + m + “ * “ + n);</p>
+<p>​              }      </p>
+<p>​       public static void main(String[] args) {        </p>
+<p>​              for(int i = 1001; i &lt; 9999; i++) {                </p>
+<p>​                     productTest(i, com(a(i), b(i)), com(c(i), d(i)));</p>
+<p>​                     productTest(i, com(a(i), b(i)), com(d(i), c(i)));</p>
+<p>​                     productTest(i, com(a(i), c(i)), com(b(i), d(i)));</p>
+<p>​                     productTest(i, com(a(i), c(i)), com(d(i), b(i)));</p>
+<p>​                     productTest(i, com(a(i), d(i)), com(b(i), c(i)));</p>
+<p>​                     productTest(i, com(a(i), d(i)), com(c(i), b(i)));</p>
+<p>​                     productTest(i, com(b(i), a(i)), com(c(i), d(i)));</p>
+<p>​                     productTest(i, com(b(i), a(i)), com(d(i), c(i)));</p>
+<p>​                     productTest(i, com(b(i), c(i)), com(d(i), a(i)));</p>
+<p>​                     productTest(i, com(b(i), d(i)), com(c(i), a(i)));</p>
+<p>​                     productTest(i, com(c(i), a(i)), com(d(i), b(i)));</p>
+<p>​                     productTest(i, com(c(i), b(i)), com(d(i), a(i)));</p>
+<p>​              }                    </p>
+<p>​       } </p>
+<p>}</p>
+<p> class Tester {</p>
+<p>​       String s;</p>
+<p>}</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/题解/" rel="tag"># 题解</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/06/2019-10-06-Java题解数组/" rel="next" title="Java题解数组">
+                <i class="fa fa-chevron-left"></i> Java题解数组
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/06/2019-10-06-Java题解接口/" rel="prev" title="Java题解接口">
+                Java题解接口 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章控制执行"><span class="nav-number">1.</span> <span class="nav-text">第三章控制执行</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,2779 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Javascript,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="2015年12月3日javascript面向对象：不了解原理的情况下，会使用功能。 对象：不了解内部结构，知道表面的各种操作。 Date、getFullYear、Array、sort（） 变量：自由的，不属于任何对象 属性：属于一个对象 var arr-[1,2,3,4]; arr.a=12; arr.show=function(){//添加事件     //方法     alert(arr.a)">
+<meta name="keywords" content="Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS4">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-JS4/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="2015年12月3日javascript面向对象：不了解原理的情况下，会使用功能。 对象：不了解内部结构，知道表面的各种操作。 Date、getFullYear、Array、sort（） 变量：自由的，不属于任何对象 属性：属于一个对象 var arr-[1,2,3,4]; arr.a=12; arr.show=function(){//添加事件     //方法     alert(arr.a)">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/transition-timing-function.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/transition-suji.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/scale-x-y.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/scale-x.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/scale-y.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img.skew-x-y.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/skew-x.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/skew-y.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/animation-pro.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/repeating-linear-gradient.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/20100513052116804.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/20100513052913196.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/20100513071353897.gif">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/20100513071354656.gif">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/20100513071356825.gif">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/20100513071356624.gif">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/20100515092156201.gif">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/bs-title.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/bs-text.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/bs-hor.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/bs-code.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/bs-tr.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/bs-form.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/bs-form-1.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/bs-form-2.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/bs-form-3.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/bs-form-4.jpg">
+<meta property="og:image" content="c:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1571647954241.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/btn.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/btn-2.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/icon.jpg">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.235Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS4">
+<meta name="twitter:description" content="2015年12月3日javascript面向对象：不了解原理的情况下，会使用功能。 对象：不了解内部结构，知道表面的各种操作。 Date、getFullYear、Array、sort（） 变量：自由的，不属于任何对象 属性：属于一个对象 var arr-[1,2,3,4]; arr.a=12; arr.show=function(){//添加事件     //方法     alert(arr.a)">
+<meta name="twitter:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/transition-timing-function.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-JS4/">
+
+
+
+
+
+  <title>JS4 | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-JS4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JS4</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T10:00:00+08:00">
+                2019-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="2015年12月3日"><a href="#2015年12月3日" class="headerlink" title="2015年12月3日"></a>2015年12月3日</h1><h2 id="javascript"><a href="#javascript" class="headerlink" title="javascript"></a>javascript</h2><p>面向对象：不了解原理的情况下，会使用功能。</p>
+<p>对象：不了解内部结构，知道表面的各种操作。</p>
+<p>Date、getFullYear、Array、sort（）</p>
+<p>变量：自由的，不属于任何对象</p>
+<p>属性：属于一个对象</p>
+<pre><code class="javascript">var arr-[1,2,3,4];
+arr.a=12;
+arr.show=function(){//添加事件
+    //方法
+    alert(arr.a);//12
+}
+
+arr.show();</code></pre>
+<p>不能在系统对象中随意添加方法、属性，否则会覆盖已有的方法、属性。</p>
+<p>this:当前发生事件的对象，当前的方法属于谁。</p>
+<p>window.show=function(){};&gt;&gt;&gt;&gt;function show(){};</p>
+<pre><code class="javascript">var obj=new Object();
+
+obj.name=&#39;blue&#39;;
+obj.qq=&#39;12345&#39;
+
+obj.showName=function(){
+    alert(this.name);
+}
+
+obj.showName();
+</code></pre>
+<p><strong>添加<code>new</code></strong></p>
+<pre><code class="javascript">function createPerson(name, qq)     //构造函数
+{
+    //系统偷偷替咱们做：
+    //var this=new Object();
+
+    //加工
+    this.name=name;
+    this.qq=qq;
+
+    this.showName=function ()
+    {
+        alert(&#39;我的名字叫：&#39;+this.name);
+    };
+    this.showQQ=function ()
+    {
+        alert(&#39;我的QQ号：&#39;+this.qq);
+    };
+
+    //也会偷偷做一些：
+    //return this;
+}
+
+var obj=new createPerson(&#39;blue&#39;, &#39;258248832&#39;);
+var obj2=new createPerson(&#39;张三&#39;, &#39;45648979879&#39;);
+
+obj.showName();
+obj.showQQ();</code></pre>
+<p>任何函数前面都可以加一个<code>new</code> ，系统会在里面自动创建一个新的空白对象<code>this</code>，最后会返回出去。</p>
+<p><strong>原型</strong></p>
+<pre><code class="javascript">var arr1=new Array(12,55,34,78,676);
+var arr2=new Array(12,33, 1);
+
+Array.prototype.sum=function () //原型》》》类似CSS中的class
+//arr1.sum=function ()              //行间样式
+{
+    var result=0;
+
+    for(var i=0;i&lt;this.length;i++)
+    {
+        result+=this[i];
+    }
+
+    return result;
+};
+
+alert(arr1.sum());
+alert(arr2.sum());  </code></pre>
+<table>
+<thead>
+<tr>
+<th>css</th>
+<th>&nbsp;</th>
+<th>javascript</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>行间样式</td>
+<td>一次给一组元素添加样式</td>
+<td>原型</td>
+</tr>
+<tr>
+<td>行间样式</td>
+<td>一次给一个元素添加样式</td>
+<td>给对象加东西（方法）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>类似于<code>css</code>中的<code>class</code>方法。</p>
+</blockquote>
+<p>类、对象</p>
+<p>类：模子<br>对象：产品（成品）</p>
+<pre><code>var arr=new Array(1,2,3,4);</code></pre><p>Array   类<br>arr     对象</p>
+<p>用构造函数加属性<br>用原型加方法</p>
+<h1 id="2015年12月7日"><a href="#2015年12月7日" class="headerlink" title="2015年12月7日"></a>2015年12月7日</h1><h2 id="javascript-1"><a href="#javascript-1" class="headerlink" title="javascript"></a>javascript</h2><p><strong>把面向过程的程序，改写成面向对象的形式</strong></p>
+<ul>
+<li>原则<ul>
+<li>不能有函数套函数，但可以有全局 变量</li>
+</ul>
+</li>
+<li>过程<ul>
+<li>onload  &gt;&gt;&gt;&gt;     构造函数</li>
+<li>全局变量&gt;&gt;&gt;&gt;     属性</li>
+<li>函数    &gt;&gt;&gt;&gt;     方法</li>
+</ul>
+</li>
+</ul>
+<h2 id="json与面向对象"><a href="#json与面向对象" class="headerlink" title="json与面向对象"></a>json与面向对象</h2><pre><code class="js">var json={
+    name:&#39;blue&#39;,
+    qq:&#39;23214323&#39;,
+    showName:function(){
+        alert(&#39;我的名字叫：&#39;+this.name);
+    },
+    showQQ:function(){
+        alert(&quot;我的QQ号是：&quot;+this.qq);
+    }
+};
+json.showName();
+josn.showQQ();</code></pre>
+<p><strong>call</strong><br><code>call</code>可以改变改变<code>this</code>的指向对象；</p>
+<pre><code class="js">function a(){alert(this)};
+a();//object Window
+a.call(12);//12</code></pre>
+<p><strong>原形的继承</strong></p>
+<pre><code class="js">for(var i in A.prototype){
+    B.prototype[i]=A.prototype[i];
+}
+B.prototype.fn=function(){
+    alert(&quot;abc&quot;);
+}//函数B特有的方法。</code></pre>
+<p><strong>本地对象</strong>（非静态对象）<br>常用对象：<code>Object</code>,<code>Function</code>,<code>Array</code>,<code>String</code>,<code>Boolean</code>,<code>Number</code>,<code>Date</code>,<code>RegExp</code>,<code>Error</code>。</p>
+<p><strong>内置对象</strong>（静态对象）</p>
+<p><code>Math()</code>，直接使用它的方法就可以了（例如<code>Math.ceil()</code>)。</p>
+<h2 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h2><pre><code>window.open(&quot;http://www.163.com&quot;);//打开一个窗口</code></pre><p><code>write()</code>：可以识别<strong>标签</strong>。</p>
+<p><code>window.navigator.userAgent</code>:可以显示浏览器信息。</p>
+<p><code>window.lacation</code>:可以显示当前页面的地址，或者可以赋值转到某地址。</p>
+<p><code>document.documentElement.clientWidth</code>:可视区的宽；<br><code>document.documentElement.clientHeight</code>:可视区的高</p>
+<p>IE:<code>document.documentElement.scrollTop</code>:滚动距离（上面隐藏的距离）；</p>
+<p>Chrome:<code>document.body.scrollTop</code>:滚动距离（上面隐藏的距离）；</p>
+<p><strong>系统对话框</strong></p>
+<ul>
+<li>警告框：alert（”内容”),没有返回值。</li>
+<li>选择框：confirm(“提问的内容”)，返回<code>boolean</code>;</li>
+<li>输入框：prompt(),返回字符串或null。</li>
+</ul>
+<p><strong>widow对象常用事件</strong></p>
+<ul>
+<li>onload</li>
+<li>onscroll（滚动事件）</li>
+<li>onresize（调节窗口大小事件）</li>
+<li></li>
+</ul>
+<h1 id="2015年12月9日"><a href="#2015年12月9日" class="headerlink" title="2015年12月9日"></a>2015年12月9日</h1><h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><p>cookie特点：</p>
+<ul>
+<li>同一个网站的所有页面共享一套cookie</li>
+<li>数量、大小有限</li>
+<li>过期时间</li>
+</ul>
+<p><strong>Date()对像</strong></p>
+<pre>
+Date()          返回当日的日期和时间。
+getDate()       从 Date 对象返回一个月中的某一天 (1 ~ 31)。
+getDay()        从 Date 对象返回一周中的某一天 (0 ~ 6)。
+getMonth()      从 Date 对象返回月份 (0 ~ 11)。
+getFullYear()   从 Date 对象以四位数字返回年份。
+
+setDate()       设置 Date 对象中月的某一天 (1 ~ 31)。
+setMonth()      设置 Date 对象中月份 (0 ~ 11)。
+setFullYear()   设置 Date 对象中的年份（四位数字）。
+</pre>
+
+<p>javascript使用cookie</p>
+<ul>
+<li>document.cookie</li>
+</ul>
+<p>设置cookie函数</p>
+<pre><code class="js">function setCookie(name,value,iDay){
+    var oDate=new Date();
+    oDate.setDate(oDate.getDate()+iDay);
+    document.cookie=name+&#39;=&#39;+value+&#39;;expires=&#39;+oDate;
+}
+
+function getCookie(name){
+    var arr=document.cookie.split(&quot;; &quot;);
+    for(var i=0;i&lt;arr.length;i++){
+        var arr2=arr[i].split(&quot;=&quot;);
+        if(arr2[0]==name){
+            return arr2[1];
+        }
+        return &#39;&#39;;
+    }
+}
+
+function removeCookie(name){
+    setCookie(name,1,-1);
+}</code></pre>
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><blockquote>
+<p>强大的字符串匹配工具</p>
+</blockquote>
+<p><code>search()</code>:返回寻找的字符串的位置，没有就会返回-1；<br><code>charAt()</code>:返回某个指定位置下的字符；<br><code>substring()</code>:获取子字符串； //不包括结束位置<br><code>split()</code>:分割字符串，获得数组。</p>
+<pre><code class="js">var str=&#39;abcdef&#39;;
+
+alert(str.search(&#39;u&#39;));     //位置, -1
+alert(str.charAt(0));       //&#39;a&#39;
+alert(str.substring(2, 5));   //cde,不包括结束位置</code></pre>
+<p><strong>null与undefined</strong></p>
+<pre><code class="js">5+null
+//5
+6+undefined
+//NaN</code></pre>
+<blockquote>
+<p>null是一个表示”无”的对象，转为数值时为0；undefined是一个表示”无”的原始值，转为数值时为NaN。</p>
+</blockquote>
+<p>目前的用法</p>
+<p><strong>null表示”没有对象”，即该处不应该有值。典型用法是：</strong></p>
+<ul>
+<li><p>作为函数的参数，表示该函数的参数不是对象。</p>
+</li>
+<li><p>作为对象原型链的终点。</p>
+<p>Object.getPrototypeOf(Object.prototype)// null</p>
+</li>
+</ul>
+<p><strong>undefined表示”缺少值”，就是此处应该有一个值，但是还没有定义</strong>。典型用法是：</p>
+<ol>
+<li>变量被声明了，但没有赋值时，就等于undefined。</li>
+<li>调用函数时，应该提供的参数没有提供，该参数等于undefined。</li>
+<li>对象没有赋值的属性，该属性的值为undefined。</li>
+<li>函数没有返回值时，默认返回undefined。</li>
+</ol>
+<pre><code class="js">var i;
+i // undefined
+
+function f(x){console.log(x)}
+f() // undefined
+
+var  o = new Object();
+o.p // undefined
+
+var x = f();
+x // undefined</code></pre>
+<p><strong>正则表达式写法</strong></p>
+<pre><code class="js">var re=new RegExp(&#39;b&#39;, &#39;i&#39;);//js风格，&#39;b&#39;就代表字母&#39;b&#39;,&#39;i&#39;代表忽略大小写。
+//或者
+var re=/a/i;//perl风格
+
+alert(str.search(re));//1  </code></pre>
+<p><strong>转义字符</strong></p>
+<p><code>i</code>:代表忽略大小写;</p>
+<p><code>g</code>:全局匹配；</p>
+<p><code>+</code>:若干个；</p>
+<p><code>|</code>:或</p>
+<p><code>[]</code>:里面的其中一个跟外面的组合匹配；例如’var re=/[apx]pc/g;’。</p>
+<p><code>[^a-z]</code>:排除英文字母，[0-9]等于<code>\d</code>。</p>
+<p><code>^</code>:在<code>[]</code>里表示排除，在其他位置是行首的意思。</p>
+<p><code>$</code>:行尾；</p>
+<blockquote>
+<p><code>re=/^\w+@[a-z0-9]+\.[a-z]+$/i</code>,邮箱校验，有<code>^</code>与<code>$</code>可以限制整个字符串都要符合正则表达式，而不是部分。</p>
+</blockquote>
+<p><code>.</code>(点):任意字符；</p>
+<p><code>\d</code>:匹配数字；[0-9]</p>
+<p><code>\w</code>:英文、数字、下划线;[a-z0-9]</p>
+<p><code>\s</code>:空白字符;</p>
+<p><code>\D</code>:[^0-9];</p>
+<p><code>\W</code>:[^a-z0-9];</p>
+<p><strong>量词</strong></p>
+<p><code>{n}</code>:正好出现n次；</p>
+<p><code>\d{8}</code>:至少八次;<br><code>[1-9]\d{7}</code>:匹配电话号码要求；</p>
+<p><code>{n,m}</code>:最少n次，最多m次；</p>
+<p><code>{n,}</code>:最少n次，最多不限；</p>
+<p><code>+</code>:{1，};</p>
+<p><code>?</code>:{0,1}，可以有，或者没有。</p>
+<p><code>(0\d{2,3}-)?[1-9]\d{7}(-\d{1,5})?</code>,固定电话规则；</p>
+<p><code>*</code>:{0,}任意次，不建议使用。</p>
+<p><strong>常用函数</strong></p>
+<p><code>match()</code>:把所有匹配的都提取出去。</p>
+<p><code>test()</code>:检验是否符合正则要求，返回boolean；只要字符串一部分要求，就会返回true，</p>
+<pre><code class="js">var str=&#39;abcdef 8223 234 24 346 35dfsh8 h9 h98 h98898h 89h&#39;;
+var re=/\d+/g;
+
+alert(str.match(re));//8223 234 24 346 35 8 9 98 98898 89
+</code></pre>
+<h1 id="2015年12月10日"><a href="#2015年12月10日" class="headerlink" title="2015年12月10日"></a>2015年12月10日</h1><h2 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h2><p>javascript对大小写敏感（关键字、函数名、变量名等），标识符的首字符必须是<strong>字母</strong>、<strong>下划线 <code>_</code></strong>或者<strong><code>$</code>符</strong>，其后的字符可以含<strong>数字</strong></p>
+<p><strong>匿名函数自执行</strong></p>
+<pre><code class="js">(function(){
+        var a=10;
+        alert(a);
+    })();
+</code></pre>
+<h2 id="关于冒泡和捕获"><a href="#关于冒泡和捕获" class="headerlink" title="关于冒泡和捕获"></a>关于冒泡和捕获</h2><h3 id="捕获"><a href="#捕获" class="headerlink" title="捕获"></a>捕获</h3><p>捕获过程即事件从最外层的元素开始触发，然后逐渐触发到当前元素。</p>
+<p>例如对于如下的 DOM 结构：</p>
+<pre><code class="html">&lt;body&gt;
+    &lt;div class=&quot;father&quot;&gt;
+        &lt;div class=&quot;child&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;</code></pre>
+<p>如果 child 元素触发事件，那么捕获的过程为：body -&gt; div.father -&gt; div.child 。</p>
+<h3 id="冒泡"><a href="#冒泡" class="headerlink" title="冒泡"></a>冒泡</h3><p>冒泡与捕获相反，从当前元素开始触发，逐渐向外扩展直到最外层元素或者被终止。</p>
+<p>例如对于上面的 DOM 结构，如果 child 元素触发事件，那么冒泡的过程为：div.child -&gt; div.father -&gt; body 。</p>
+<p>如何使用</p>
+<p>在支持的浏览器中，可以通过参数来控制发生的过程究竟是在捕获还是在冒泡，如下：</p>
+<p><code>element.addEventListener(&#39;click&#39;, function () {}, false);</code><br>其中第三个参数为 false 表示发生在冒泡阶段（默认），为 true 表示发生在捕获阶段。</p>
+<h3 id="事件代理"><a href="#事件代理" class="headerlink" title="事件代理"></a>事件代理</h3><blockquote>
+<p>设想一下这种场景，有一个列表，其中点击列表项需要触发一个事件，假如说这个列表有 1000 项，那是不是需要绑定 1000 次事件？ 如果这还不够麻烦的话，那如果列表内容也是可变的，每次添加新的还需要再绑定事件，删除已有的也需要删除相应的事件，那么我添加 1000 项再删除 1000 次呢？</p>
+</blockquote>
+<p>我们现在已经知道了事件存在冒泡的机制，那么对于类似的场景，我们可以通过事件代理来处理。 直接在外层的父节点上绑定事件监听，再通过 target 属性获取到事件触发的元素即可。</p>
+<pre><code class="html">    &lt;ul id=&quot;list&quot;&gt;
+        &lt;li&gt;test1&lt;/li&gt;
+        &lt;li&gt;test2&lt;/li&gt;
+        &lt;li&gt;test3&lt;/li&gt;
+        &lt;li&gt;test4&lt;/li&gt;
+        &lt;li&gt;test5&lt;/li&gt;
+        &lt;li&gt;test6&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;script&gt;
+        var ul = document.getElementById(&#39;list&#39;);
+        ul.addEventListener(&#39;click&#39;, function (e) {
+            console.log(&#39;事件代理成功，触发事件的元素为：&#39;);
+            console.log(e.target);
+        }, false);
+    &lt;/script&gt;
+</code></pre>
+<p>target 事件属性可返回事件的目标节点（触发该事件的节点），如生成事件的元素、文档或窗口。</p>
+<h3 id="阻止行为"><a href="#阻止行为" class="headerlink" title="阻止行为"></a>阻止行为</h3><p>在事件处理函数中，可以通过<code>e.stopPropagation()</code> 来阻止事件冒泡，通过<code>e.preventDefault()</code>来阻止默认行为的触发。</p>
+<h1 id="2015年12月11日"><a href="#2015年12月11日" class="headerlink" title="2015年12月11日"></a>2015年12月11日</h1><h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><h3 id="vi-amp-vim-打开-关闭-保存-文件"><a href="#vi-amp-vim-打开-关闭-保存-文件" class="headerlink" title="vi &amp; vim 打开 关闭 保存 文件"></a>vi &amp; vim 打开 关闭 保存 文件</h3><ul>
+<li><p>创建、打开文件：<br>输入<code>$ vi [filename]</code>,此时 vi 处于默认的命令模式，键盘输入字母 ‘ i ’ 进入最常用的插入编辑模式.</p>
+</li>
+<li><p>保存文件<br>按下 “ ESC ” 键，退出编辑模式，切换到命令模式.<br>在命令模式下键入：<br>“ ZZ “<br>或者：<br>“ :wq “<br>保存修改并且退出 vi </p>
+<p>如果只想保存文件，则键入：<br>“ :w “</p>
+<p>放弃所有文件修改：<br>按下 “ ESC “ 键进入命令模式，键入 “ :q! “ </p>
+<p>放弃所有文件修改，但不退出 vi ,即回退到文件打开后最后一次保存操作的状态，继续进行文件操作：<br>按下 “ ESC “ 键进入命令模式，键入 “ :e! “ ：</p>
+</li>
+</ul>
+<blockquote>
+<p>参考资料<a href="http://blog.chinaunix.net/uid-20671208-id-3721795.html" target="_blank" rel="noopener">连接</a></p>
+</blockquote>
+<p><code>cd</code>:根目录；</p>
+<p><code>ls</code>:显示目录列表</p>
+<p><code>touch Readme</code>:生成一个叫<code>Readme</code>的文件。</p>
+<p><code>git mv hellogit.rb helloworld.rb</code>:重命名；</p>
+<p><code>git commit -m &quot;rename hellogit.rb&quot;</code>:再次 提交。</p>
+<h1 id="2015年12月13日"><a href="#2015年12月13日" class="headerlink" title="2015年12月13日"></a>2015年12月13日</h1><h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><ul>
+<li>Transition</li>
+</ul>
+<blockquote>
+<p>css的transition允许css的属性值在一定的时间区间内平滑地过渡。这种效果可以在鼠标单击、获得焦点、被点击或对元素任何改变中触发，并圆滑地以动画效果改变CSS的属性值。</p>
+</blockquote>
+<p><strong>语法</strong></p>
+<pre><code>transition ： [&lt;&#39;transition-property&#39;&gt; || &lt;&#39;transition-duration&#39;&gt; || &lt;&#39;transition-timing-function&#39;&gt; || &lt;&#39;transition-delay&#39;&gt; [, [&lt;&#39;transition-property&#39;&gt; || &lt;&#39;transition-duration&#39;&gt; || &lt;&#39;transition-timing-function&#39;&gt; || &lt;&#39;transition-delay&#39;&gt;]]* </code></pre><ul>
+<li>transition-property:</li>
+</ul>
+<pre><code class="html">    transition-property ： none | all | [ &lt;IDENT&gt; ] [ &#39;,&#39; &lt;IDENT&gt; ]*</code></pre>
+<blockquote>
+<p>transition-property是用来指定当元素其中一个属性改变时执行transition效果，其主要有以下几个值：none(没有属性改变)；all（所有属性改变）这个也是其默认值；indent（元素属性名）。当其值为none时，transition马上停止执行，当指定为all时，则元素产生任何属性值变化时都将执行transition效果，ident是可以指定元素的某一个属性值。</p>
+</blockquote>
+<ul>
+<li>transition-duration:</li>
+</ul>
+<pre><code class="html">transition-duration ： &lt;time&gt; [, &lt;time&gt;]* </code></pre>
+<blockquote>
+<p>transition-duration是用来指定元素 转换过程的持续时间，取值：<time>为数值，单位为s（秒）或者ms(毫秒),可以作用于所有元素，包括:before和:after伪元素。其默认值是0，也就是变换时是即时的。</time></p>
+</blockquote>
+<ul>
+<li>transition-timing-function:</li>
+</ul>
+<blockquote>
+<p>transition-timing-function的值允许你根据时间的推进去改变属性值的变换速率，transition-timing-function有5个可能值：</p>
+</blockquote>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/transition-timing-function.png" alt="text"></p>
+<blockquote>
+<p>或者可以自定义贝塞尔速度曲线，例如<code>cubic-bezier(0.42, 0, 0, 1.02)</code>;</p>
+</blockquote>
+<ul>
+<li>transition-delay:</li>
+</ul>
+<pre><code class="html">  transition-delay ： &lt;time&gt; [, &lt;time&gt;]* </code></pre>
+<blockquote>
+<p>transition-delay是用来指定一个动画开始执行的时间，也就是说当改变元素属性值后多长时间开始执行transition效果，其取值：<time>为数值，单位为s（秒）或者ms(毫秒)，其使用和transition-duration极其相似，也可以作用于所有元素，包括:before和:after伪元素。 默认大小是”0”，也就是变换立即执行，没有延迟。</time></p>
+</blockquote>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/transition-suji.png" alt></p>
+<h1 id="2015年12月14日"><a href="#2015年12月14日" class="headerlink" title="2015年12月14日"></a>2015年12月14日</h1><h2 id="css"><a href="#css" class="headerlink" title="css"></a>css</h2><h3 id="transform"><a href="#transform" class="headerlink" title="transform"></a>transform</h3><pre><code class="html">transform ： none | &lt;transform-function&gt; [ &lt;transform-function&gt; ]* 
+   也就是：
+transform: rotate | scale | skew | translate |matrix;</code></pre>
+<ul>
+<li><p>旋转rotato</p>
+<p>语法：<code>rotato(&lt;angle&gt;)</code>,通过指定的角度参数对原元素指定一个2D rotation（2D 旋转），需先有transform-origin属性的定义。transform-origin定义的是旋转的基点，其中angle是指旋转角度，如果设置的值为正数表示顺时针旋转，如果设置的值为负数。</p>
+</li>
+<li><p>移动translate</p>
+<p>语法：<code>translate(&lt;translation-value&gt;[, &lt;translation-value&gt;])</code>。</p>
+<p>移动translate我们分为三种情况：<code>translate(x,y)</code>水平方向和垂直方向同时移动（也就是X轴和Y轴同时移动）；<code>translateX(x)</code>仅水平方向移动（X轴移动）；<code>translateY(Y)</code>仅垂直方向移动（Y轴移动。</p>
+</li>
+<li><p>缩放scale</p>
+<p>语法：<code>scale(&lt;number&gt;[, &lt;number&gt;])</code>,如果第二个参数未提供，则取与第一个参数一样的值。<code>scale(X,Y)</code>是用于对元素进行缩放，可以通过<code>transform-origin</code>对元素的基点进行设置,默认是中心位置。</p>
+<p>如：transform:scale(2,1.5):<br><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/scale-x-y.png" alt></p>
+<p>如transform:scaleX(2):<br><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/scale-x.png" alt></p>
+<p>如transform:scaleY(2):<br><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/scale-y.png" alt></p>
+</li>
+<li><p>扭曲skew</p>
+<p>语法：<code>skew(&lt;angle&gt; [, &lt;angle&gt;])</code>,第一个参数对应X轴，第二个参数对应Y轴。如果第二个参数未提供，则值为0，也就是Y轴方向上无斜切。同样是以元素中心为基点，我们也可以通过<code>transform-origin</code>来改变元素的基点位置。</p>
+<p>如：transform:skew(30deg,10deg):</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img.skew-x-y.png" alt></p>
+<p> 如 transform:skewX(30deg):</p>
+<p> <img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/skew-x.png" alt></p>
+<p> 如：transform:skewY（10deg):</p>
+<p> <img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/skew-y.png" alt></p>
+</li>
+<li><p>元素基点transform-origin</p>
+</li>
+</ul>
+<p><code>transform-origin(X,Y)</code>:用来设置元素的运动的基点（参照点）。默认点是元素的中心点。其中X和Y的值可以是百分值,em,px，其中X也可以是字符参数值left,center,right；</p>
+<div>
+1、top left | left top 等价于 0 0 | 0% 0%
+
+<p>2、top | top center | center top 等价于 50% 0</p>
+<p>3、right top | top right 等价于 100% 0</p>
+<p>4、left | left center | center left 等价于 0 50% | 0% 50%</p>
+<p>5、center | center center 等价于 50% 50%（默认值）</p>
+<p>6、right | right center | center right 等价于 100% 50%</p>
+<p>7、bottom left | left bottom 等价于 0 100% | 0% 100%</p>
+<p>8、bottom | bottom center | center bottom 等价于 50% 100%</p>
+<p>9、bottom right | right bottom 等价于 100% 100%</p>
+</div>
+
+<h1 id="2015年12月16日"><a href="#2015年12月16日" class="headerlink" title="2015年12月16日"></a>2015年12月16日</h1><h2 id="css3"><a href="#css3" class="headerlink" title="css3"></a>css3</h2><h3 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h3><p>综合语法：</p>
+<pre><code class="html5">  @keyframes IDENT {
+     from {
+       Properties:Properties value;
+     }
+     Percentage {
+       Properties:Properties value;
+     }
+     to {
+       Properties:Properties value;
+     }
+   }
+   或者全部写成百分比的形式：
+   @keyframes IDENT {
+      0% {
+         Properties:Properties value;
+      }
+      Percentage {
+         Properties:Properties value;
+      }
+      100% {
+         Properties:Properties value;
+      }
+    }</code></pre>
+<p><code>INENT</code>:是动画名称；<br><code>Percentage</code>:过程的百分比，可以添加多个。<br><code>value</code>：属性的属性值。</p>
+<p><strong>1.animation-name</strong></p>
+<pre><code class="css3">animation-name: none | IDENT[,none | IDENT]*;</code></pre>
+<p><code>animation-name</code>:是用来定义一个动画的名称，其主要有两个值：IDENT是由Keyframes创建的动画名，换句话说此处的IDENT要和Keyframes中的IDENT一致。</p>
+<p><strong>2.animation-duration</strong></p>
+<pre><code class="css3">animation-duration: &lt;time&gt;[,&lt;time&gt;]*</code></pre>
+<p>animation-duration是用来指定元素播放动画所持续的时间长，取值:<time>为数值，单位为s （秒.）其默认值为“0”。这个属性跟transition中的transition-duration使用方法是一样的。</time></p>
+<p><strong>3.animation-timing-function</strong></p>
+<pre><code class="css3">animation-timing-function:ease | linear | ease-in | ease-out | ease-in-out |step-start | step-end | steps(&lt;integer&gt;[, [ start | end ] ]?)| cubic-bezier(&lt;number&gt;, &lt;number&gt;, &lt;number&gt;, &lt;number&gt;) [, ease | linear | ease-in | ease-out | ease-in-out |step-start | step-end | steps(&lt;integer&gt;[, [ start | end ] ]?)| cubic-bezier(&lt;number&gt;, &lt;number&gt;, &lt;number&gt;, &lt;number&gt;)]* 
+</code></pre>
+<p><strong>step-start</strong>：等同于 steps(1, start);<br><strong>step-end</strong>：等同于 steps(1, end);<br><strong>steps(&lt;integer&gt;[, [ start | end ] ]?)</strong>：接受两个参数的步进函数。第一个参数必须为正整数，指定函数的步数。第二个参数取值可以是start或end，指定每一步的值发生变化的时间点。第二个参数是可选的，默认值为end。;</p>
+<p>animation-timing-function:是指元素根据时间的推进来改变属性值的变换速率，说得简单点就是动画的播放方式。</p>
+<p><strong>4.animation-delay</strong></p>
+<pre><code class="css3">animation-delay: &lt;time&gt;[,&lt;time&gt;]*</code></pre>
+<p>animation-delay:是用来指定元素动画开始时间。取值为<time>为数值，单位为s(秒)，其默认值也是0。</time></p>
+<p><strong>5.animation-iteration-count</strong></p>
+<pre><code class="css3">animation-iteration-count:infinite | &lt;number&gt; [, infinite | &lt;number&gt;]*</code></pre>
+<p>animation-iteration-count是用来指定元素播放动画的循环次数，其可以取值<number>为数字，其默认值为“1”；infinite为无限次数循环。</number></p>
+<p><strong>6.animation-diretion</strong></p>
+<pre><code class="css3">animation-direction: normal | reverse | alternate | alternate-reverse [,normal | reverse | alternate | alternate-reverse]* </code></pre>
+<p>animation-direction是用来指定元素动画播放的方向，取值:<br>normal：正常方向;<br>reverse：反方向运行;<br>alternate：动画先正常运行再反方向运行，并持续交替运行;<br>alternate-reverse:动画先反运行再正方向运行，并持续交替运行;</p>
+<p><strong>7.animation-play-state</strong></p>
+<pre><code class="css3">animation-play-state:running | paused [, running | paused]* </code></pre>
+<p>animation-play-state主要是用来控制元素动画的播放状态。其主要有两个值，running和paused其中running为默认值。可以通过paused将正在播放的动画停下了，也可以通过running将暂停的动画重新播放，我们这里的重新播放不一定是从元素动画的开始播放，而是从你暂停的那个位置开始播放。</p>
+<p><strong>总结</strong></p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/animation-pro.png" alt></p>
+<p>综合语法：</p>
+<pre><code class="css3"> animation:[&lt;animation-name&gt; || &lt;animation-duration&gt; || &lt;animation-timing-function&gt; || &lt;animation-delay&gt; || &lt;animation-iteration-count&gt; || &lt;animation-direction&gt;] [, [&lt;animation-name&gt; || &lt;animation-duration&gt; || &lt;animation-timing-function&gt; || &lt;animation-delay&gt; || &lt;animation-iteration-count&gt; || &lt;animation-direction&gt;] ]* </code></pre>
+<p><strong>补充：animation-fill-mode</strong></p>
+<pre><code class="css3">animation-fill-mode：&lt;single-animation-fill-mode&gt;[,&lt;single-animation-fill-mode&gt;]*
+&lt;single-animation-fill-mode&gt; = none | forwards | backwards | both</code></pre>
+<p><strong>none</strong>：默认值。不设置对象动画之外的状态;<br><strong>forwards</strong>：设置对象状态为动画结束时的状态;<br><strong>backwards</strong>：设置对象状态为动画开始时的状态;<br><strong>both</strong>：设置对象状态为动画结束或开始的状态;</p>
+<h3 id="box-shadow"><a href="#box-shadow" class="headerlink" title="box-shadow"></a>box-shadow</h3><p>语法：</p>
+<pre><code class="html5">E {box-shadow: &lt;length&gt; &lt;length&gt; &lt;length&gt;?&lt;length&gt;?||&lt;color&gt;}
+也就是：
+E {box-shadow:inset x-offset y-offset blur-radius spread-radius color}
+换句说：
+对象选择器 {box-shadow:投影方式 X轴偏移量 Y轴偏移量 阴影模糊半径 阴影扩展半径 阴影颜色}</code></pre>
+<blockquote>
+<p>box-shadow和text-shadow一样可以使用一个或多个投影，如果使用多个投影时必须需要用逗号“，”分开。</p>
+</blockquote>
+<p><strong>阴影类型</strong>：此参数是一个可选值，如果不设值，其默认的投影方式是外阴影；如果取其唯一值“inset”,就是将外阴影变成内阴影，也就是说设置阴影类型为“inset”时，其投影就是内阴影；</p>
+<p><strong>X-offset</strong>:是指阴影水平偏移量其值可以是正负值可以取正负值，如果值为正值，则阴影在对象的右边，反之其值为负值时，阴影在对象的左边；</p>
+<p><strong>Y-offset</strong>:是指阴影的垂直偏移量，其值也可以是正负值，如果为正值，阴影在对象的底部，反之其值为负值时，阴影在对象的顶部；</p>
+<p><strong>阴影模糊半径</strong>：此参数是可选，，但其值只能是为正值，如果其值为0时，表示阴影不具有模糊效果，其值越大阴影的边缘就越模糊；</p>
+<p><strong>阴影扩展半径</strong>：此参数可选，其值可以是正负值，如果值为正，则整个阴影都延展扩大，反之值为负值是，则缩小</p>
+<p><strong>阴影颜色</strong>：此参数可选，如果不设定任何颜色时，浏览器会取默认色，但各浏览器默认色不一样，特别是在webkit内核下的safari和chrome浏览器将无色，也就是透明，建议不要省略此参数。</p>
+<p>盒子模型可添加颜色的属性的层次：</p>
+<p><strong>边框&gt;内阴影&gt;背景图片&gt;背景颜色&gt;外阴影</strong></p>
+<p>因为大家都知道，我们的背景图片是在背景颜色之上的。</p>
+<h3 id="linear-gradient"><a href="#linear-gradient" class="headerlink" title="linear-gradient"></a>linear-gradient</h3><p>语法：</p>
+<p>** &lt; linear-gradient&gt;** = linear-gradient([ [ &lt; angle&gt; | to &lt; side-or-corner&gt; ] ,]? &lt; color-stop&gt;[, &lt; color-stop&gt;]+)<br>** &lt; side-or-corner&gt; <strong>= [left | right] || [top | bottom]<br>** &lt; color-stop&gt;</strong> = &lt; color&gt; [ &lt; length&gt; | &lt; percentage&gt; ]?</p>
+<p>** &lt; angle&gt;<strong>：用角度值指定渐变的方向（或角度）。<br>**to left</strong>：设置渐变为从右到左。相当于: 270deg<br><strong>to right</strong>：设置渐变从左到右。相当于: 90deg<br><strong>to top</strong>:设置渐变从下到上。相当于: 0deg<br><strong>to bottom</strong>:设置渐变从上到下。相当于: 180deg。这是默认值，等同于留空不写。<br>** &lt; color-stop&gt;<strong>: 用于指定渐变的起止颜色：<br>** &lt; color&gt;</strong>指定颜色。<br>** &lt; length&gt;<strong>：用长度值指定起止色位置。不允许负值<br>** &lt; percentage&gt;</strong>：用百分比指定起止色位置。</p>
+<p>例子：</p>
+<pre><code class="html5">linear-gradient(#fff, #333);
+linear-gradient(to bottom, #fff 20px, #333);
+linear-gradient(to top, #333, #fff);
+linear-gradient(180deg, #fff, #333);
+linear-gradient(to bottom, #fff 0%, #333 100%);</code></pre>
+<h3 id="repeating-linear-gradient"><a href="#repeating-linear-gradient" class="headerlink" title="repeating-linear-gradient()"></a>repeating-linear-gradient()</h3><p><strong>用重复的线性渐变创建图像。</strong></p>
+<ul>
+<li>repeating-linear-gradient()的语法与linear-gradient()相同。</li>
+<li>示例：</li>
+</ul>
+<pre><code class="css3">background:repeating-linear-gradient(#f00, #ff0 10%, #f00 15%);
+background:repeating-linear-gradient(to bottom, #f00, #ff0 10%, #f00 15%);
+background:repeating-linear-gradient(180deg, #f00, #ff0 10%, #f00 15%);
+background:repeating-linear-gradient(to top, #f00, #ff0 10%, #f00 15%);</code></pre>
+<p>效果：<br><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/repeating-linear-gradient.png" alt></p>
+<h1 id="2015年12月17日"><a href="#2015年12月17日" class="headerlink" title="2015年12月17日"></a>2015年12月17日</h1><h2 id="配色"><a href="#配色" class="headerlink" title="配色"></a>配色</h2><p>描述一个色彩有三种途径，按色彩的<strong>色相</strong>，<strong>饱和度</strong>，<strong>亮度</strong>。</p>
+<ul>
+<li>彩度</li>
+</ul>
+<p>下图显示的是彩度（Chroma）或者称为饱和度（saturation）：反应的是色彩相对于灰度的纯度</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/20100513052116804.jpg" alt></p>
+<ul>
+<li>亮度</li>
+</ul>
+<p>下图显示的是彩度（Chroma）或者称为饱和度（saturation）：反应的是色彩相对于灰度的纯度。</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/20100513052913196.jpg" alt></p>
+<ul>
+<li>减色</li>
+</ul>
+<p>当使用颜料或者使用涂料等方式时候，我们使用减色法。减色法意味着由白色开始，随色色彩的叠加，直到黑色。</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/20100513071353897.gif" alt></p>
+<blockquote>
+<p>CMYK 色彩模型用于减色法</p>
+</blockquote>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/20100513071354656.gif" alt></p>
+<blockquote>
+<p>这个色轮用于颜料色彩搭配–减色法</p>
+</blockquote>
+<ul>
+<li>加色</li>
+</ul>
+<p>如果你使用电脑来处理色彩，那么电脑上的色彩是由加色法呈现的。加色法意味着色彩是从黑色开始，随着色彩的叠加，逐渐变亮，最后成为白色。</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/20100513071356825.gif" alt> </p>
+<blockquote>
+<p>这是RGB色彩模型表示加色法，白色由R红色，G绿色,蓝色叠加而成。</p>
+</blockquote>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/20100513071356624.gif" alt></p>
+<blockquote>
+<p>这个色轮用于加色。</p>
+</blockquote>
+<ul>
+<li>色环</li>
+</ul>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/20100515092156201.gif" alt></p>
+<blockquote>
+<p>色环中根据亮度又分为积极色（ Active colors，也可以称为暖色）和消极色（ Passive colors也可以叫做冷色），积极色表现出活跃，积极的一面，消极色则相反。<br>此外还有<strong>原色</strong>、<strong>间色（次色）</strong>、<strong>三级色</strong>、<strong>互补色</strong>、<strong>类似色</strong>。<br>参考：<a href="http://www.peise.net/info/2010/0514/28.html" target="_blank">链接；</a></p>
+</blockquote>
+<h1 id="2015年12月18日"><a href="#2015年12月18日" class="headerlink" title="2015年12月18日"></a>2015年12月18日</h1><h2 id="javascript-2"><a href="#javascript-2" class="headerlink" title="javascript"></a>javascript</h2><h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3><pre><code class="js">oDiv.onclick=function(){
+    alert(this);
+}</code></pre>
+<blockquote>
+<p>给一对象添加<strong>事件</strong>（click事件），等于给一个对象添加<strong>方法</strong>（function）；</p>
+</blockquote>
+<p><strong>this</strong></p>
+<ul>
+<li>当前发生事件的对象</li>
+<li>当前的方法属于谁，this就是谁。</li>
+</ul>
+<p><strong>对象的组成</strong></p>
+<ul>
+<li><p>方法——函数：过程、动态的</p>
+</li>
+<li><p>属性——变量：状态、静态的</p>
+<p><strong>类与对象</strong></p>
+<p>类：模子<br>对象：产品</p>
+</li>
+</ul>
+<pre><code>var arr=new Array(1,2,3,4,5)</code></pre><p>Array—– 类<br>arr  —– 对象</p>
+<p>用构造函数加属性<br>用原型加方法</p>
+<p><strong>继承</strong></p>
+<pre><code class="javascript">A.prototype.show=function ()
+{
+    alert(this.abc);
+};
+for(var i in A.prototype)
+{
+    B.prototype[i]=A.prototype[i];
+
+}
+B.prototype.fn=function(){
+    alert(&#39;abc&#39;);
+}
+var objA=new A();
+var objB=new B();
+
+objA.fn();//error.
+</code></pre>
+<p><code>call()</code>:可以改变函数<code>this</code>的指向。</p>
+<pre><code class="javascript">function A(){
+    this.abc=12;
+}
+
+function B(){
+    //这里的this指--&gt;new B(),把A的this指向了B的this，本来给A加的属性，变成给B加的属性。
+    A.call(this);
+}</code></pre>
+<h1 id="2015年12月20日"><a href="#2015年12月20日" class="headerlink" title="2015年12月20日"></a>2015年12月20日</h1><h2 id="jQuery-1"><a href="#jQuery-1" class="headerlink" title="jQuery"></a>jQuery</h2><ul>
+<li>对比</li>
+</ul>
+<pre><code class="js">function getByClass(oParent, sClass)
+{
+ var aEle=oParent.getElementsByTagName(&#39;*&#39;);
+ var aResult=[];
+ var i=0;
+
+ for(i=0;i&lt;aEle.length;i++)
+ {
+  if(aEle[i].className==sClass)
+  {
+   aResult.push(aEle[i]);
+  }
+ }
+
+ return aResult;
+}</code></pre>
+<p>使用jQuery可以简写成：<code>$(&#39;sClass&#39;)</code>。</p>
+<ul>
+<li>跳转</li>
+</ul>
+<pre><code class="html">&lt;meta http-equiv=&quot;refresh&quot; content=&quot;3;url=http://www.taobao.com&quot;&gt;</code></pre>
+<p>网页会在3秒后跳转到淘宝网。</p>
+<ul>
+<li>jQuery选择器</li>
+</ul>
+<div>
+<table class="dataintable">
+<tbody><tr>
+<th>选择器</th>
+<th>实例</th>
+<th>选取</th>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_all.asp" title="jQuery * 选择器">*</a></td>
+<td>$("*")</td>
+<td>所有元素</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_id.asp" title="jQuery # 选择器">#<i>id</i></a></td>
+<td>$("#lastname")</td>
+<td>id="lastname" 的元素</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_class.asp" title="jQuery . 选择器">.<i>class</i></a></td>
+<td>$(".intro")</td>
+<td>所有 class="intro" 的元素</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_element.asp" title="jQuery element 选择器"><i>element</i></a></td>
+<td>$("p")</td>
+<td>所有 &lt;p&gt; 元素</td>
+</tr>
+
+<tr>
+<td>.<i>class</i>.<i>class</i></td>
+<td>$(".intro.demo")</td>
+<td>所有 class="intro" 且 class="demo" 的元素</td>
+</tr>
+
+<tr>
+<td style="background-color:#fff;">&nbsp;</td>
+<td style="background-color:#fff;">&nbsp;</td>
+<td style="background-color:#fff;">&nbsp;</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_first.asp" title="jQuery :first 选择器">:first</a></td>
+<td>$("p:first")</td>
+<td>第一个 &lt;p&gt; 元素</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_last.asp" title="jQuery :last 选择器">:last</a></td>
+<td>$("p:last")</td>
+<td>最后一个 &lt;p&gt; 元素</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_even.asp" title="jQuery :even 选择器">:even</a></td>
+<td>$("tr:even")</td>
+<td>所有偶数 &lt;tr&gt; 元素</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_odd.asp" title="jQuery :odd 选择器">:odd</a></td>
+<td>$("tr:odd")</td>
+<td>所有奇数 &lt;tr&gt; 元素</td>
+</tr>
+
+<tr>
+<td style="background-color:#fff;">&nbsp;</td>
+<td style="background-color:#fff;">&nbsp;</td>
+<td style="background-color:#fff;">&nbsp;</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_eq.asp" title="jQuery :eq() 选择器">:eq(<i>index</i>)</a></td>
+<td>$("ul li:eq(3)")</td>
+<td>列表中的第四个元素（index 从 0 开始）</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_gt.asp" title="jQuery :gt 选择器">:gt(<i>no</i>)</a></td>
+<td>$("ul li:gt(3)")</td>
+<td>列出 index 大于 3 的元素</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_lt.asp" title="jQuery :lt 选择器">:lt(<i>no</i>)</a></td>
+<td>$("ul li:lt(3)")</td>
+<td>列出 index 小于 3 的元素</td>
+</tr>
+
+<tr>
+<td>:not(<i>selector</i>)</td>
+<td>$("input:not(:empty)")</td>
+<td>所有不为空的 input 元素</td>
+</tr>
+
+<tr>
+<td style="background-color:#fff;">&nbsp;</td>
+<td style="background-color:#fff;">&nbsp;</td>
+<td style="background-color:#fff;">&nbsp;</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_header.asp" title="jQuery :header 选择器">:header</a></td>
+<td>$(":header")</td>
+<td>所有标题元素 &lt;h1&gt; - &lt;h6&gt;</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_animated.asp" title="jQuery :animated 选择器">:animated</a></td>
+<td>&nbsp;</td>
+<td>所有动画元素</td>
+</tr>
+
+<tr>
+<td style="background-color:#fff;">&nbsp;</td>
+<td style="background-color:#fff;">&nbsp;</td>
+<td style="background-color:#fff;">&nbsp;</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_contains.asp" title="jQuery :contains 选择器">:contains(<i>text</i>)</a></td>
+<td>$(":contains('W3School')")</td>
+<td>包含指定字符串的所有元素</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_empty.asp" title="jQuery :empty 选择器">:empty</a></td>
+<td>$(":empty")</td>
+<td>无子（元素）节点的所有元素</td>
+</tr>
+
+<tr>
+<td>:hidden</td>
+<td>$("p:hidden")</td>
+<td>所有隐藏的 &lt;p&gt; 元素</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_visible.asp" title="jQuery :visible 选择器">:visible</a></td>
+<td>$("table:visible")</td>
+<td>所有可见的表格</td>
+</tr>
+
+<tr>
+<td style="background-color:#fff;">&nbsp;</td>
+<td style="background-color:#fff;">&nbsp;</td>
+<td style="background-color:#fff;">&nbsp;</td>
+</tr>
+
+<tr>
+<td>s1,s2,s3</td>
+<td>$("th,td,.intro")</td>
+<td>所有带有匹配选择的元素</td>
+</tr>
+
+<tr>
+<td style="background-color:#fff;">&nbsp;</td>
+<td style="background-color:#fff;">&nbsp;</td>
+<td style="background-color:#fff;">&nbsp;</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_attribute.asp" title="jQuery [attribute] 选择器">[<i>attribute</i>]</a></td>
+<td>$("[href]")</td>
+<td>所有带有 href 属性的元素</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_attribute_equal_value.asp" title="jQuery [attribute=value] 选择器">[<i>attribute</i>=<i>value</i>]</a></td>
+<td>$("[href='#']")</td>
+<td>所有 href 属性的值等于 "#" 的元素</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_attribute_notequal_value.asp" title="jQuery [attribute!=value] 选择器">[<i>attribute</i>!=<i>value</i>]</a></td>
+<td>$("[href!='#']")</td>
+<td>所有 href 属性的值不等于 "#" 的元素</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_attribute_end_value.asp" title="jQuery [attribute$=value] 选择器">[<i>attribute</i>$=<i>value</i>]</a></td>
+<td>$("[href$='.jpg']")</td>
+<td>所有 href 属性的值包含以 ".jpg" 结尾的元素</td>
+</tr>
+
+<tr>
+<td style="background-color:#fff;">&nbsp;</td>
+<td style="background-color:#fff;">&nbsp;</td>
+<td style="background-color:#fff;">&nbsp;</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_input.asp" title="jQuery :input 选择器">:input</a></td>
+<td>$(":input")</td>
+<td>所有 &lt;input&gt; 元素</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_input_text.asp" title="jQuery :text 选择器">:text</a></td>
+<td>$(":text")</td>
+<td>所有 type="text" 的 &lt;input&gt; 元素</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_input_password.asp" title="jQuery :password 选择器">:password</a></td>
+<td>$(":password")</td>
+<td>所有 type="password" 的 &lt;input&gt; 元素</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_input_radio.asp" title="jQuery :radio 选择器">:radio</a></td>
+<td>$(":radio")</td>
+<td>所有 type="radio" 的 &lt;input&gt; 元素</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_input_checkbox.asp" title="jQuery :checkbox 选择器">:checkbox</a></td>
+<td>$(":checkbox")</td>
+<td>所有 type="checkbox" 的 &lt;input&gt; 元素</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_input_submit.asp" title="jQuery :submit 选择器">:submit</a></td>
+<td>$(":submit")</td>
+<td>所有 type="submit" 的 &lt;input&gt; 元素</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_input_reset.asp" title="jQuery :reset 选择器">:reset</a></td>
+<td>$(":reset")</td>
+<td>所有 type="reset" 的 &lt;input&gt; 元素</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_input_button.asp" title="jQuery :button 选择器">:button</a></td>
+<td>$(":button")</td>
+<td>所有 type="button" 的 &lt;input&gt; 元素</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_input_image.asp" title="jQuery :image 选择器">:image</a></td>
+<td>$(":image")</td>
+<td>所有 type="image" 的 &lt;input&gt; 元素</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_input_file.asp" title="jQuery :file 选择器">:file</a></td>
+<td>$(":file")</td>
+<td>所有 type="file" 的 &lt;input&gt; 元素</td>
+</tr>
+
+<tr>
+<td style="background-color:#fff;">&nbsp;</td>
+<td style="background-color:#fff;">&nbsp;</td>
+<td style="background-color:#fff;">&nbsp;</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_input_enabled.asp" title="jQuery :enabled 选择器">:enabled</a></td>
+<td>$(":enabled")</td>
+<td>所有激活的 input 元素</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_input_disabled.asp" title="jQuery :disabled 选择器">:disabled</a></td>
+<td>$(":disabled")</td>
+<td>所有禁用的 input 元素</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_input_selected.asp" title="jQuery :selected 选择器">:selected</a></td>
+<td>$(":selected")</td>
+<td>所有被选取的 input 元素</td>
+</tr>
+
+<tr>
+<td><a href="/jquery/selector_input_checked.asp" title="jQuery :checked 选择器">:checked</a></td>
+<td>$(":checked")</td>
+<td>所有被选中的 input 元素</td>
+</tr>
+</tbody></table>
+</div>
+
+<p><code>filter()</code>可以为元素进一步缩减为指定的选择器元素。</p>
+<pre><code class="js">    $(&#39;li&#39;).filter(&#39;:even&#39;).css(&#39;background&#39;,&#39;red&#39;);
+    //也可以写成下面的方式。
+    $(&#39;li:even&#39;).css(&#39;background&#39;,&#39;red&#39;);
+
+    $(&#39;a&#39;).filter(&#39;.external&#39;)  
+    //也可以写成下面的方式。
+    $(&#39;a&#39;).filter(function(index) {  
+        return $(this).hasClass(&#39;external&#39;);  
+    })  
+</code></pre>
+<ul>
+<li>属性选择器<ul>
+<li><strong>E[attr]</strong>：只使用属性名，但没有确定任何属性值；</li>
+<li><strong>E[attr=”value”]</strong>：指定属性名，并指定了该属性的属性值；</li>
+<li><strong>E[attr~=”value”]</strong>：指定属性名，并且具有属性值，此属性值是一个词列表，并且以空格隔开，其中词列表中包含了一个value词，而且等号前面的“〜”不能不写；</li>
+<li><strong>E[attr^=”value”]</strong>：指定了属性名，并且有属性值，属性值是以value开头的；</li>
+<li><strong>E[attr$=”value”]</strong>：指定了属性名，并且有属性值，而且属性值是以value结束的；</li>
+<li><strong>E[attr*=”value”]</strong>：指定了属性名，并且有属性值，而且属值中包含了value；</li>
+<li><strong>E[attr|=”value”]</strong>：指定了属性名，并且属性值是value或者以“value-”开头的值（比如说zh-cn）; </li>
+</ul>
+</li>
+<li>jQuery设计思想写法</li>
+</ul>
+<p><strong>方法函数化</strong></p>
+<pre><code class="js">window.onload=function(){};//原生写法
+$(function(){});//jQuery写法
+
+$();//相当于有一个函数function $(){};
+
+innerHTML = 123;
+html(123);
+function html(){};
+
+onclick = function(){};
+click(function(){});
+function click(){};</code></pre>
+<ul>
+<li>javascript与jQuery不能混用</li>
+</ul>
+<pre><code class="js">$(function(){
+
+    $(&#39;#div1&#39;).click(function(){
+
+        //alert( $(this).html() );  //jq的写法
+
+        //alert( this.innerHTML );  //js的写法
+
+        alert( $(this).innerHTML );  //错误的
+        alert( this.html() );  //错误的 
+    });    
+});
+</code></pre>
+<h1 id="2015年12月21日"><a href="#2015年12月21日" class="headerlink" title="2015年12月21日"></a>2015年12月21日</h1><h2 id="jQuery-2"><a href="#jQuery-2" class="headerlink" title="jQuery"></a>jQuery</h2><h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><pre><code class="js">css(&#39;width&#39;,&#39;200px&#39;)
+css(&#39;width&#39;)
+//当只有一个参数的时候，是取值；当有两个参数的时候，是赋值。
+
+alert( $(&#39;li&#39;).html() );  
+//当一组元素的时候，取值是一组中的第一个
+
+$(&#39;li&#39;).html(&#39;hello&#39;); 
+//当一组元素的时候,赋值是一组中的所有元素</code></pre>
+<p><strong>$()下常用方法</strong></p>
+<ul>
+<li><p>filter()与not()</p>
+<p><code>filter()</code>是过滤，<code>not()</code>是其反义词。</p>
+</li>
+</ul>
+<pre><code class="js">$(function(){
+
+    //$(&#39;div&#39;).filter(&#39;.box&#39;).css(&#39;background&#39;,&#39;red&#39;);
+
+    $(&#39;div&#39;).not(&#39;.box&#39;).css(&#39;background&#39;,&#39;red&#39;);
+
+});</code></pre>
+<ul>
+<li><p>has()</p>
+<p><code>has()</code>是包含的意思，是操作元素的子节点。保留包含特定后代的元素，去掉那些不含有指定后代的元素。</p>
+</li>
+</ul>
+<pre><code class="js">$(function(){
+    //$(&#39;div&#39;).has(&#39;.box&#39;).css(&#39;background&#39;,&#39;red&#39;);
+    $(&#39;div&#39;).filter(&#39;.box&#39;).css(&#39;background&#39;,&#39;red&#39;);
+
+});
+
+
+&lt;div&gt;div1&lt;span class=&quot;box&quot;&gt;span&lt;/span&gt;&lt;/div&gt;//has()使这个div变红。
+&lt;div class=&quot;box&quot;&gt;div2&lt;/div&gt;//filter()使这个div变红。</code></pre>
+<ul>
+<li><p>next()与prev()</p>
+<p><code>next()</code>选择下一个兄弟节点，<code>prev()</code>选择上一个兄弟节点。</p>
+</li>
+<li><p>find()</p>
+<p><code>find()</code>这个函数是找出正在处理的元素的后代元素的结合。</p>
+</li>
+<li><p>eq()</p>
+<p><code>eq()</code>找出元素结合中的某个元素。</p>
+<pre><code class="js">$(&#39;div&#39;).find(&#39;h2&#39;).eq(1).css(&#39;background&#39;,&#39;red&#39;);</code></pre>
+</li>
+</ul>
+<blockquote>
+<p>第二个<code>h2</code>变红。</p>
+</blockquote>
+<ul>
+<li>index()<ul>
+<li><code>index()</code>索引就是当前元素在所有兄弟节点中的位置。</li>
+</ul>
+</li>
+</ul>
+<pre><code>​```js
+    alert( $(&#39;#h&#39;).index() );//并返回相应元素的索引值，从0开始计数。
+​```
+
+ - 元素的index，相对于选择器
+
+​```js
+
+    $(&quot;button&quot;).click(function(){
+        alert($(&quot;.hot&quot;).index($(&quot;#favorite&quot;)));
+        alert($(&quot;.hot&quot;).index($(&quot;#hate&quot;)));
+      });
+
+    &lt;li class=&quot;hot&quot;&gt;Tea&lt;/li&gt;
+    &lt;li class=&quot;hot&quot; id=&quot;favorite&quot;&gt;Coffee&lt;/li&gt;//1
+    &lt;li class=&quot;hot&quot; id=&quot;hate&quot;&gt;Coffee&lt;/li&gt;//2
+​```</code></pre><ul>
+<li><p>addClass()与removeClass()</p>
+<p><code>addCladd()</code>可以为元素添加多个类名，<code>removeClass()</code>可以移除多个类名。</p>
+</li>
+<li><p>width()、innerWidth()、outerWidth</p>
+</li>
+</ul>
+<pre><code class="js">    alert( $(&#39;div&#39;).width() );  //width
+   // $(&#39;div&#39;).width(200);  //width=200
+
+    alert( $(&#39;div&#39;).innerWidth() );  //width + padding
+
+    alert( $(&#39;div&#39;).outerWidth() );  //width + padding + border
+
+    alert( $(&#39;div&#39;).outerWidth(true) );  //width + padding + border + margin</code></pre>
+<blockquote>
+<p>设置或者获取相关容器的宽度，同理<code>height()</code>、<code>innerHeight()</code>、<code>outerHeight()</code>。</p>
+</blockquote>
+<ul>
+<li><p>insertBefore() insertAfter()  appendTo()  prependTo()</p>
+<pre><code class="js">&lt;div class=&quot;d1&quot;&gt;div&lt;/div&gt;
+&lt;div class=&quot;d2&quot;&gt;div&lt;/div&gt;
+&lt;span class=&quot;s1&quot;&gt;span&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;span&lt;/span&gt;
+
+</code></pre>
+</li>
+</ul>
+<p>   $(‘span’).insertBefore( $(‘div’) );<br>   //把所有span元素重复插到每一个div元素前面。<br>   //结果：<br>  <span class="s1">span</span><br>  <span class="s2">span</span><br>  <span class="s3">span</span><br>  <div class="d1">div</div><br>  <span class="s1">span</span><br>  <span class="s2">span</span><br>  <span class="s3">span</span><br>  <div class="d2">div</div></p>
+<p>  //$(‘div’).insertAfter( $(‘span’) );<br>  //把所有div元素重复插到每一个span元素后面。</p>
+<p>  //$(‘div’).appendTo( $(‘span’) );<br>  //把所有div元素重复插到每一个span元素里面的最后面去。</p>
+<p>  //$(‘div’).prependTo( $(‘span’) );<br>  //把所有span元素重复插到每一个div元素里面的最前面去。    </p>
+<pre><code>
+- before()  after() append()  prepend()
+
+  与上面一样，不同就是后续的操作不一样，样式操作的都是前面的节点。
+
+  ```js
+  $(&#39;span&#39;).insertBefore( $(&#39;div&#39;) ).css(&#39;background&#39;,&#39;red&#39;);
+  //span元素插入div元素前面，样式操作的是span元素。
+
+  //$(&#39;div&#39;).before( $(&#39;span&#39;) ).css(&#39;background&#39;,&#39;red&#39;);
+  //div元素的前面是span，样式操作的是div元素。
+
+  //$(&#39;div&#39;).append( $(&#39;span&#39;) );
+  //每一个div元素的里面的最后都插入所有的span元素。
+  //
+  //$(&#39;div&#39;).prepend( $(&#39;span&#39;) );
+  //每一个div元素里面的前面都插入所有的span元素。</code></pre><ul>
+<li><p>remove()</p>
+<p><code>remove()</code>是删除节点，<code>$(&#39;div).remove()</code>就是删除div这个节点。</p>
+</li>
+<li><p>on()</p>
+<p><code>on()</code>在选择元素上绑定一个或多个事件的事件处理函数。</p>
+<pre><code class="js">$(&#39;div&#39;).on({
+    &#39;click&#39; : function(){
+        alert(123);
+    },
+    &#39;mouseover&#39; : function(){
+        alert(456);
+    }
+});</code></pre>
+</li>
+<li><p>off()</p>
+<p><code>off()</code>在选择元素上移除一个或多个事件的事件处理函数。<code>off()</code>方法通常用于移除通过 <code>on()</code>方法添加的事件处理程序。</p>
+<pre><code class="js">$(&#39;div&#39;).on(&#39;click mouseover&#39;,function(){
+    alert(123);
+    $(&#39;div&#39;).off(&#39;mouseover&#39;);
+});</code></pre>
+</li>
+<li><p>scrollTop()</p>
+<p><code>scrollTop()</code>获取匹配元素相对滚动条顶部的偏移。</p>
+<pre><code class="js">$(document).click(function(){        
+    alert( $(window).scrollTop() );  //滚动距离
+});
+</code></pre>
+</li>
+</ul>
+<h3 id="BOM-window对象"><a href="#BOM-window对象" class="headerlink" title="BOM window对象"></a>BOM window对象</h3><p><strong>Window 对象</strong><br>所有浏览器都支持 window 对象。它表示浏览器窗口。</p>
+<p>所有 JavaScript 全局对象、函数以及变量均自动成为 window 对象的成员。</p>
+<p>全局变量是 window 对象的属性。</p>
+<p>全局函数是 window 对象的方法。</p>
+<p>甚至 HTML DOM 的 document 也是 window 对象的属性之一：</p>
+<pre><code>window.document.getElementById(&quot;header&quot;);</code></pre><p>与此相同</p>
+<pre><code>document.getElementById(&quot;header&quot;);</code></pre><ul>
+<li><p>resize()  scroll()</p>
+<p><code>resize()</code>事件是当调整浏览器窗口的大小时，发生 resize 事件。<br><code>scroll()</code>事件是当用户滚动指定的元素时，会发生 scroll 事件。scroll 事件适用于所有可滚动的元素和 window 对象（浏览器窗口）。</p>
+</li>
+<li><p>ev  pageX  which  </p>
+<pre><code class="js">//ev : event对象,相当于&#39;ev||window.event&#39;;
+
+//ev.pageX(相对于文档的鼠标位置,包括滚动条) : clientX(相对于可视区)。
+//ev.pageY同理。
+
+//ev.which : 相当于keyCode。
+</code></pre>
+</li>
+<li><p>preventDefault  stopPropagation</p>
+<p><code>ev.preventDefault()</code>:阻止默认事件</p>
+<p><code>ev.stopPropagation()</code>:阻止冒泡的操作</p>
+<p><code>return false</code>:阻止默认事件 + 阻止冒泡的操作</p>
+</li>
+<li><p>one()</p>
+<p><code>one()</code>表示事件只能执行一次。</p>
+</li>
+</ul>
+<h1 id="2015年12月22日"><a href="#2015年12月22日" class="headerlink" title="2015年12月22日"></a>2015年12月22日</h1><h2 id="javascript-3"><a href="#javascript-3" class="headerlink" title="javascript"></a>javascript</h2><h3 id="常用方法-1"><a href="#常用方法-1" class="headerlink" title="常用方法"></a>常用方法</h3><ul>
+<li><p>offset()  position()</p>
+<pre><code class="javascript"> $(&#39;#div2&#39;).offset().left;  //获取到屏幕的左距离
+
+ $(&#39;#div2&#39;).position().left;  //到有定位的父级的left值,把当前元素转化成类似定位的形式</code></pre>
+<p><code>offsetLeft()</code>是指元素的<code>margin</code>外边沿相对于已定位的父级元素的<code>padding</code>的内边沿的距离。</p>
+<p><code>offsetParent()</code>是offsetParent属性返回一个对象的引用，这个对象是距离调用 offsetParent的元素最近的。</p>
+</li>
+</ul>
+<ol>
+<li>如果当前元素的父级元素没有进行CSS定位（position为absolute或relative），offsetParent为body。</li>
+<li>如果当前元素的父级元素中有CSS定位（position为absolute或relative），offsetParent取最近的那个父级元素。</li>
+</ol>
+<ul>
+<li><p>offsetParent()</p>
+<p><code>offsetParent()</code>: 获取有定位的父级;<br><code>parent()</code> : 获取父级;</p>
+</li>
+<li><p>val()</p>
+<p><code>val()</code>方法返回或设置被选元素的<code>value</code>值。</p>
+</li>
+<li><p>size()</p>
+<p><code>size()</code>方法返回被 jQuery 选择器匹配的元素的数量。</p>
+</li>
+<li><p>each()</p>
+<p><code>each()</code>的一般语法为<code>$(selector).each(function(index,element))</code>,</p>
+<p><code>function()</code>:为每个匹配元素规定运行的函数。<br><code>index</code>:选择器的 index 位置<br><code>element</code>: 当前的元素（也可使用 “this” 选择器）</p>
+</li>
+<li><p>hover()</p>
+<p><code>hover(inFunction,outFunction)</code> 方法规定当鼠标指针悬停在被选元素上时要运行的两个函数。</p>
+<p><code>inFunction</code>:必需。规定 mouseenter 事件发生时运行的函数。</p>
+<p><code>outFunction</code>:可选。规定 mouseleave 事件发生时运行的函数。</p>
+<pre><code class="js">$(&quot;td&quot;).hover(
+    function () {
+    $(this).addClass(&quot;hover&quot;);
+    },
+function () {
+    $(this).removeClass(&quot;hover&quot;);
+    }
+);</code></pre>
+</li>
+<li><p>show()  hide()   </p>
+<p><code>show([speed,[easing],[fn]])</code>:显示隐藏的匹配元素。</p>
+<p><code>hide([speed,[easing],[fn]])</code>:隐藏匹配元素。</p>
+<p><strong>speed</strong>:三种预定速度之一的字符串(“slow”,”normal”, or “fast”)或表示动画时长的毫秒数值(如：1000)；</p>
+<p><strong>easing</strong>:(Optional) 用来指定切换效果，默认是”swing（两边慢，中间快）”，可用参数”linear（匀速）”<br><strong>fn</strong>:在动画完成时执行的函数，每个元素执行一次。</p>
+</li>
+<li><p>fadeOut()     fadeIn()    fadeTo()</p>
+<p><code>fadeOut([speed],[easing],[fn])</code>:通过不透明度的变化来实现所有匹配元素的<strong>淡出</strong>效果，并在动画完成后可选地触发一个回调函数。</p>
+<p><code>fadeIn([speed],[easing],[fn])</code>:通过不透明度的变化来实现所有匹配元素的<strong>淡入</strong>效果，并在动画完成后可选地触发一个回调函数。</p>
+<p><code>fadeTo([speed],[easing],[fn])</code>:把所有匹配元素的不透明度以渐进方式调整到指定的不透明度，并在动画完成后可选地触发一个回调函数。</p>
+</li>
+<li><p>slideUp()    slideDown()</p>
+<p><code>slideUp([speed,[easing],[fn]])</code>:通过高度变化（向上减小）来动态地<strong>隐藏</strong>所有匹配的元素，在隐藏完成后可选地触发一个回调函数。</p>
+<p><code>slideDown([speed],[easing],[fn])</code>:概述通过高度变化（向下增大）来动态地<strong>显示</strong>所有匹配的元素，在显示完成后可选地触发一个回调函数。</p>
+</li>
+</ul>
+<h1 id="2015年12月23日"><a href="#2015年12月23日" class="headerlink" title="2015年12月23日"></a>2015年12月23日</h1><h2 id="jQuery-3"><a href="#jQuery-3" class="headerlink" title="jQuery"></a>jQuery</h2><ul>
+<li><p>get()</p>
+<p><code>get()</code>方法就是把JQ转成原生JS。</p>
+<pre><code class="js">$(&#39;#div1&#39;).get(0).innerHTML
+//document.getElementById(&#39;div1&#39;).innerHTML
+
+for(var i=0;i&lt;$(&#39;li&#39;).length;i++){
+    $(&#39;li&#39;).get(i).style.background = &#39;red&#39;;
+}</code></pre>
+<p><code>get([index])</code>取得第 index 个位置上的元素。</p>
+<p><code>get()</code>取得所有匹配的 DOM 元素集合。</p>
+<p>取得其中一个匹配的元素。num表示取得第几个匹配的元素。从0开始，返回的是DOM对象，类似的有eq(index),不过eq(index)返回的是jQuery对象。</p>
+</li>
+<li><p>outerWidth()</p>
+<pre><code class="js">$(&#39;div&#39;).width() //width
+
+// $(&#39;div&#39;).width(200);  //width=200
+
+$(&#39;div&#39;).innerWidth();  //width + padding
+
+$(&#39;div&#39;).outerWidth();  //width + padding + border
+
+$(&#39;div&#39;).outerWidth(true);  //width + padding + border + margin</code></pre>
+</li>
+</ul>
+<blockquote>
+<p><code>offsetWidth()</code>:是获取不到隐藏元素的值。</p>
+</blockquote>
+<ul>
+<li><p>text()</p>
+<p><code>text()</code>取得所有匹配元素的内容。结果是由所有匹配元素包含的文本内容组合起来的文本。</p>
+</li>
+</ul>
+<ul>
+<li><p>remove()     detach()</p>
+<p><code>remove()</code>从DOM中删除所有匹配的元素。<br>这个方法不会把匹配的元素从jQuery对象中删除，因而可以在将来再使用这些匹配的元素。但除了这个元素本身得以保留之外，其他的比如绑定的事件，附加的数据等都会被移除。</p>
+<p><code>detach()</code>与<code>remove()</code>不同的是，所有绑定的事件、附加的数据等都会保留下来。</p>
+<pre><code class="js">$(function(){
+
+    $(&#39;div&#39;).click(function(){
+        alert(123);
+    });
+
+    var oDiv = $(&#39;div&#39;).remove();
+
+    $(&#39;body&#39;).append( oDiv );
+
+</code></pre>
+</li>
+</ul>
+<p>  });</p>
+<pre><code>
+- $:$(document).ready(function(){})
+
+  完整版：
+
+  ```js
+  $(document).ready(function(){});</code></pre><p>  简略版：</p>
+<pre><code class="js">  $(function(){});
+  //DOMContentLoaded，DOM加载完就触发的事件。</code></pre>
+<blockquote>
+<p>等DOM加载完就可以执行了，性能要好。</p>
+</blockquote>
+<p><code>window.onload=function(){}</code>:整个页面文档加载完才触发。</p>
+<ul>
+<li>parents()</li>
+</ul>
+<p><code>parents()</code>方法返回被选元素的<strong>所有</strong>祖先元素,参数就是筛选功能。</p>
+<p><code>parent()</code>方法返回被选元素的直接父元素。</p>
+<p><code>closest()</code>方法返回被选元素的<strong>第一个</strong>祖先元素(包括当前元素自身),必须要写筛选的参数,只能找到<strong>一个</strong>元素。</p>
+<ul>
+<li>siblings()</li>
+</ul>
+<p><code>siblings()</code>:找所有的兄弟节点，参数也是筛选功能。</p>
+<p><code>nextAll()</code> :下面所有的兄弟节点，参数也是筛选功能。</p>
+<p><code>prevAll()</code> : 上面所有的兄弟节点。</p>
+<ul>
+<li>parentsUntil()   nextUntil()     prevUntil()</li>
+</ul>
+<p><code>parentsUntil([expr|element][,filter])</code>查找当前元素的所有的<strong>父辈元素</strong>，直到遇到匹配的那个元素为止。</p>
+<p><code>nextUntil([exp|ele][,fil])</code>查找当前元素<strong>之后</strong>所有的同辈元素，直到遇到匹配的那个元素为止。</p>
+<p><code>prevUntil([exp|ele][,fil])</code>查找当前元素<strong>之前</strong>所有的同辈元素，直到遇到匹配的那个元素为止。</p>
+<pre><code class="js">$(&#39;span&#39;).nextUntil(&#39;h2&#39;).css(&#39;background&#39;,&#39;red&#39;);
+//查找当前元素之后所有的同辈元素，直到h2标签为止。
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>[ expr][,filter]</th>
+<th>String,String</th>
+</tr>
+</thead>
+</table>
+<p><strong>expr</strong>: 用于筛选祖先元素的表达式<br><strong>filter</strong>: 一个字符串，其中包含一个选择表达式匹配元素。</p>
+<table>
+<thead>
+<tr>
+<th>[element][,filter]</th>
+<th>DOMElement,String</th>
+</tr>
+</thead>
+</table>
+<p><strong>element</strong>:用于筛选祖先元素的DOM元素<br><strong>filter</strong>: 一个字符串，其中包含一个选择表达式匹配元素。</p>
+<ul>
+<li>clone()</li>
+</ul>
+<p><code>clone()</code> 克隆匹配的DOM元素并且选中这些克隆的副本,在想把DOM文档中元素的副本添加到其他位置时这个函数非常有用。</p>
+<blockquote>
+<p>可以加一个参数（true 或者 false，默认值是：false），指示事件处理函数是否会被复制。</p>
+</blockquote>
+<ul>
+<li>wrap()</li>
+</ul>
+<p><code>wrap()</code> : 包装,把所有匹配的元素用其他元素的结构化标记包裹起来。</p>
+<p><code>wrapAll()</code>: 整体包装，将所有匹配的元素用单个元素包裹起来</p>
+<p><code>wrapInner()</code> : 内部包装,将每一个匹配的元素的子内容(包括文本节点)用一个HTML结构包裹起来</p>
+<p><code>unwrap()</code> : 删除包装 ( 删除父级 : 不包括body ),这个方法将移出元素的父元素</p>
+<ul>
+<li>add()</li>
+</ul>
+<p><code>add()</code> 方法把元素添加到已存在的元素组合中。</p>
+<pre><code class="js">var elem = $(&#39;div&#39;);
+
+var elem2 = elem.add(&#39;span&#39;);
+
+elem.css(&#39;color&#39;,&#39;red&#39;);
+
+elem2.css(&#39;background&#39;,&#39;yellow&#39;);
+//elem2包括div、span元素。</code></pre>
+<ul>
+<li>slice()</li>
+</ul>
+<p><code>slice()</code> 选取一个匹配的子集;</p>
+<pre><code class="js">$(&#39;li&#39;).slice(1,4).css(&#39;background&#39;,&#39;red&#39;);</code></pre>
+<ul>
+<li>serialize()  serializeArray()</li>
+</ul>
+<p><code>serialize()</code>序列化表格内容为字符串。</p>
+<p><code>serializeArray()</code>序列化表格元素 (类似 ‘.serialize()’ 方法) 返回 JSON 数据结构数据。</p>
+<pre><code class="js">    console.log($(&#39;form&#39;).serialize());  
+    //string : a=1&amp;b=2&amp;c=3
+
+
+    console.log( $(&#39;form&#39;).serializeArray() );
+
+    //[{ name : &#39;a&#39; , value : &#39;1&#39; },{ name : &#39;b&#39; , value : &#39;2&#39; },{ name : &#39;c&#39; , value : &#39;3&#39; ]
+</code></pre>
+<blockquote>
+<p>注意，此方法返回的是JSON对象而非JSON字符串。需要使用插件或者第三方库进行字符串化操作。</p>
+</blockquote>
+<h1 id="2015年12月24日"><a href="#2015年12月24日" class="headerlink" title="2015年12月24日"></a>2015年12月24日</h1><h2 id="jQuery-4"><a href="#jQuery-4" class="headerlink" title="jQuery"></a>jQuery</h2><h3 id="常用方法-2"><a href="#常用方法-2" class="headerlink" title="常用方法"></a>常用方法</h3><ul>
+<li>animate()</li>
+</ul>
+<p><code>annimateanimate(params,[speed],[easing],[fn])</code>用于创建自定义动画的函数。</p>
+<p><strong>params</strong>:一组包含作为动画属性和终值的样式属性和及其值的集合<br><strong>speed</strong>:三种预定速度之一的字符串(“slow”,”normal”, or “fast”)或表示动画时长的毫秒数值(如：1000)<br><strong>easing</strong>:要使用的擦除效果的名称(需要插件支持).默认jQuery提供”linear” 和 “swing”.<br><strong>fn</strong>:在动画完成时执行的函数，每个元素执行一次。</p>
+<ul>
+<li>stop()</li>
+</ul>
+<p><code>stop([clearQueue],[jumpToEnd])</code> 停止所有在指定元素上正在运行的动画。<br><strong>clearQueue(Boolean)</strong>:如果设置成true，则清空队列，立即结束当前的动画。<br><strong>gotoEnd(Boolean)</strong>:让当前正在执行的动画立即完成，并且重设show和hide的原始样式，调用回调函数等</p>
+<ul>
+<li>finish()</li>
+</ul>
+<p><code>finish()</code>停止当前正在运行的动画，删除所有排队的动画，属性值跳转到最终值。</p>
+<ul>
+<li>delay()</li>
+</ul>
+<p><code>delay()</code> 延迟一定的毫秒数后运行函数。</p>
+<pre><code class="js">$(&#39;#div1&#39;).click(function(){
+
+        /*$(this).animate({width : 300} , 2000 , &#39;linear&#39;,function(){
+            $(this).animate({height : 300});
+        });*/
+        //链式操作。
+        $(this).animate({width : 300} , 2000).delay(1000).animate({height : 300} , 2000);
+        //延迟1秒后触发。
+});
+
+
+$(&#39;#div2&#39;).click(function(){
+
+        //$(&#39;#div1&#39;).stop();   //默认 : 只会阻止当前运动
+
+        //$(&#39;#div1&#39;).stop(true); //阻止后续的运动
+
+        //$(&#39;#div1&#39;).stop(true,true); //可以立即停止到指定的目标点
+
+        $(&#39;#div1&#39;).finish();  //立即停止到所有指定的目标点
+
+});</code></pre>
+<ul>
+<li>delegate()</li>
+</ul>
+<p><code>delegate()</code>方法为指定的元素（属于被选元素的子元素）添加一个或多个事件处理程序，并规定当这些事件发生时运行的函数。</p>
+<p><strong>语法</strong></p>
+<pre><code>$(selector).delegate(childSelector,event,data,function)</code></pre><table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">childSelector</td>
+<td>必需。规定要添加事件处理程序的一个或多个子元素。</td>
+</tr>
+<tr>
+<td align="center">event</td>
+<td>必需。规定添加到元素的一个或多个事件。由空格分隔多个事件值。必须是有效的事件。</td>
+</tr>
+<tr>
+<td align="center">data</td>
+<td>可选。规定传递到函数的额外数据。</td>
+</tr>
+<tr>
+<td align="center">function</td>
+<td>必需。规定当事件发生时运行的函数。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>此方法属于事件委托。</p>
+</blockquote>
+<ul>
+<li>undelegate()</li>
+</ul>
+<p><code>undelegate([selector,[type],fn])</code>删除由 delegate() 方法添加的一个或多个事件处理程序。</p>
+<p><strong>selector</strong>:需要删除事件处理程序的选择器。<br><strong>type</strong>:需要删除处理函数的一个或多个事件类型。 由空格分隔多个事件值。必须是有效的事件。<br><strong>fn</strong>:要删除的具体事件处理函数。</p>
+<pre><code class="js">$(&#39;ul&#39;).delegate(&#39;li&#39;,&#39;click&#39;,function(){
+
+        this.style.background = &#39;red&#39;;
+
+        $(&#39;ul&#39;).undelegate();
+
+    });//点击一次后，这方法就会被删除。</code></pre>
+<ul>
+<li>trigger()</li>
+</ul>
+<p><code>trigger(type,[data])</code>:在每一个匹配的元素上触发某类事件。</p>
+<p><strong>type</strong>:一个事件对象或者要触发的事件类型。<br><strong>data</strong>:传递给事件处理函数的附加参数。</p>
+<pre><code class="js">$(&#39;#div1&#39;).on(&#39;show&#39;,function(){
+        alert(123);
+    });
+
+$(&#39;#div1&#39;).on(&#39;show&#39;,function(){
+        alert(456);
+    });
+
+$(&#39;#div1&#39;).trigger(&#39;show&#39;);//会弹出两次</code></pre>
+<ul>
+<li>ev.data 、 ev.target、    ev.type</li>
+</ul>
+<pre><code class="js">$(function(){
+
+    $(&#39;#div1&#39;).on(&#39;click&#39;,{name:&#39;hello&#39;},function(ev){
+        alert(ev.data.name);//hello
+
+        alert( ev.target );//[object HTMLDivElement]
+        //ev.target.nodeName;//DIV
+
+        alert( ev.type );//click
+
+    }); 
+});
+</code></pre>
+<p>以下属于事件对象：</p>
+<p><code>ev.data</code>: 属性包含当前执行的处理程序被绑定时传递到事件方法的可选数据。</p>
+<p><code>ev.target</code>:最初触发事件的DOM元素。</p>
+<p><code>ev.type</code>:返回哪种事件类型被触发：</p>
+<hr>
+<h3 id="下的常用方法"><a href="#下的常用方法" class="headerlink" title="$下的常用方法"></a>$下的常用方法</h3><p>$().css()  $().html()  $().val()  : 只能给JQ对象用</p>
+<p>$.xxx()  $.yyy()  $.zzz()  : 不仅可以给JQ用，也可以给原生JS用 : 叫做工具方法</p>
+<ul>
+<li>type() 、trim()</li>
+</ul>
+<p><code>type()</code>:检测obj的数据类型。<br><code>trim()</code>:去除空格。</p>
+<pre><code class="js">$(function(){
+
+    var a = 4234;
+
+    //$.type() : 也是判断类型,比原生的javascript更强大。
+
+    //alert( typeof a );//number
+
+    alert( $.type(a) );//number
+
+    // var str = &#39;   hello  &#39;;
+
+    // alert(&#39;(&#39;+$.trim(str)+&#39;)&#39;);//(hello)
+
+});</code></pre>
+<ul>
+<li>inArray()</li>
+</ul>
+<p><code>jQuery.inArray(value,array,[fromIndex])</code> :确定第一个参数在数组中的位置，从0开始计数(如果没有找到则返回 -1 )。</p>
+<p><strong>value</strong>:用于在数组中查找是否存在<br><strong>array</strong>:待处理数组。<br><strong>fromIndex</strong>:用来搜索数组队列的开始位置，默认值为0</p>
+<pre><code class="js">var arr = [2,&#39;sdf&#39;, &quot;Pete&quot;, 4, 8, &quot;John&quot; ];
+
+alert($.inArray(&quot;John&quot;, arr)) //5
+
+alert($.inArray(4, arr))//3
+
+alert($.inArray(&quot;David&quot;, arr))//-1
+
+alert($.inArray(&quot;Pete&quot;, arr,3)) //-1</code></pre>
+<ul>
+<li>proxy()</li>
+</ul>
+<p><code>proxy(function,context)</code>当有事件处理函数要附加到元素上，但他们的作用域实际是指向另一个对象时，此方法可以改变 <em>this</em> 的指向。</p>
+<pre><code class="js">//proxy()  : 改变this指向的
+
+function show(n1,n2){
+        alert(n1);
+        alert(n2);
+        alert(this);
+}
+
+show(12,45);//12,45,window
+
+//$.proxy(show , document,3)(4);//12,45,document
+//改变函数show()的this的指向，有window变成document。
+//$.proxy(show , document)(3,4);//12,45,document
+//$.proxy(show , document,3,4)();//12,45,document
+
+
+// $(document).click( $.proxy(show,window,3,4));//12,45,document</code></pre>
+<ul>
+<li>noConflict()</li>
+</ul>
+<p><code>noConflict()</code>:防止冲突。</p>
+<pre><code class="js">//$ 等价于 jQuery
+
+var miaov = $.noConflict();
+
+var $ = 10;
+
+miaov(function(){
+
+    miaov(&#39;body&#39;).css(&#39;background&#39;,&#39;red&#39;);
+
+});</code></pre>
+<ul>
+<li>parseJson()</li>
+</ul>
+<pre><code class="js">var str = &#39;{&quot;name&quot;:&quot;hello&quot;}&#39;;
+
+$.parseJSON( str )//解释成Json对象。
+
+alert($.parseJSON( str ).name);//hello</code></pre>
+<ul>
+<li>makeArray()</li>
+</ul>
+<p><code>makeArray()</code>:将类数组对象转换为数组对象。</p>
+<pre><code class="js">window.onload = function(){
+
+var aDiv = document.getElementsByTagName(&#39;div&#39;);  //类数组
+
+$.makeArray(aDiv).push();
+
+};</code></pre>
+<ul>
+<li>ajax()</li>
+</ul>
+<pre><code class="js">$.ajax({
+    url : &#39;xxx.php&#39;,
+    data : &#39;name=hello&amp;age=20&#39;,
+    type : &#39;POST&#39;,
+    success : function(data){
+        alert(1);
+    },
+    error : function(){
+        alert(2);
+    }
+});
+
+$.get(&#39;xxx.php&#39;,{},function(){
+
+});
+
+$.post(&#39;xxx.php&#39;,function(){
+
+});
+
+$.getJSON(&#39;xxx.php?callback=?&#39;,function(data){
+    data
+});</code></pre>
+<ul>
+<li>$.extend、$.fn.extend、</li>
+</ul>
+<p><strong>$.extend</strong> : 扩展工具方法下的插件形式  $.xxx() $.yyy()</p>
+<p><strong>$.fn.extend</strong>  :  扩展到JQ对象下的插件形式  $().xxx()  $().yyy()</p>
+<pre><code class="js">var str=&#39;        hello            &#39;;
+$.extend({
+    leftTrim : function(str){
+        return str.replace(/^\s+/,&#39;&#39;);
+    },
+});
+alert(&#39;(&#39;+$.ldftTrim(str)+&#39;)&#39;);//(hello            )
+aaa : function(){
+        alert(1);
+    }
+//-----------------------------------------------------------
+//包装一个拖拽的方法。
+$.fn.extend({
+
+    drag : function(){
+
+        //this : $(&#39;#div1&#39;)
+
+        var disX = 0;
+        var disY = 0;
+
+        var This = this;
+
+        this.mousedown(function(ev){
+
+            disX = ev.pageX - $(this).offset().left;
+            disY = ev.pageY - $(this).offset().top;
+
+            $(document).mousemove(function(ev){
+
+                This.css(&#39;left&#39; , ev.pageX - disX);
+                This.css(&#39;top&#39; , ev.pageY - disY);
+
+            });
+
+            $(document).mouseup(function(){
+                $(this).off();
+            });
+
+            return false;
+
+        });
+
+    },
+    aaa : function(){
+        alert(2);
+    }
+
+});
+
+//----------------------------------------------------
+
+$.aaa();  // 1
+$().aaa();  //2</code></pre>
+<!-- Test -->
+
+<h1 id="2015年12月26日"><a href="#2015年12月26日" class="headerlink" title="2015年12月26日"></a>2015年12月26日</h1><h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><ul>
+<li>base</li>
+</ul>
+<p><code>&lt;base&gt;</code>标签为页面上的所有链接规定默认地址或默认目标。<br>使浏览器随后将不再使用当前文档的 URL，而使用指定的基本 URL 来解析所有的相对 URL。</p>
+<pre><code class="html5">&lt;html&gt;
+&lt;head&gt;
+&lt;base href=&quot;http://www.w3school.com.cn/i/&quot; /&gt;
+&lt;base target=&quot;_blank&quot; /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;img src=&quot;eg_smile.gif&quot; /&gt;&lt;br /&gt;
+&lt;p&gt;请注意，我们已经为图像规定了一个相对地址。由于我们已经在 head 部分规定了一个基准 URL，浏览器将在如下地址寻找图片：&lt;/p&gt;
+&lt;p&gt;&quot;http://www.w3school.com.cn/i/eg_smile.gif&quot;&lt;/p&gt;
+
+&lt;br /&gt;&lt;br /&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.w3school.com.cn&quot;&gt;W3School&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;请注意，链接会在新窗口中打开，即使链接中没有 target=&quot;_blank&quot; 属性。这是因为 base 元素的 target 属性已经被设置为 &quot;_blank&quot; 了。&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li>文本格式化标签</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">标签</th>
+<th>描述</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">&lt; b&gt;</td>
+<td>定义粗体文本。</td>
+<td><b>This text is bold</b></td>
+</tr>
+<tr>
+<td align="center">&lt; big&gt;</td>
+<td>定义大号字。</td>
+<td><big>This text is big</big></td>
+</tr>
+<tr>
+<td align="center">&lt; em&gt;</td>
+<td>定义着重文字。</td>
+<td><em>This text is emphasized</em></td>
+</tr>
+<tr>
+<td align="center">&lt; i&gt;</td>
+<td>定义斜体字。</td>
+<td><i>This text is italic</i></td>
+</tr>
+<tr>
+<td align="center">&lt; small&gt;</td>
+<td>定义小号字。</td>
+<td><small>This text is small</small></td>
+</tr>
+<tr>
+<td align="center">&lt; strong&gt;</td>
+<td>定义加重语气。</td>
+<td><strong>This text is strong</strong></td>
+</tr>
+<tr>
+<td align="center">&lt; sub&gt;</td>
+<td>定义下标字。</td>
+<td><sub>subscript</sub>This text contains</td>
+</tr>
+<tr>
+<td align="center">&lt; sup&gt;</td>
+<td>定义上标字。</td>
+<td>This text contains<sup>superscript</sup></td>
+</tr>
+<tr>
+<td align="center">&lt; ins&gt;</td>
+<td>定义插入字。</td>
+<td><ins>ins</ins></td>
+</tr>
+<tr>
+<td align="center">&lt; del&gt;</td>
+<td>定义删除字。</td>
+<td><del>del</del></td>
+</tr>
+</tbody></table>
+<ul>
+<li>计算机输出标签</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt; code&gt;</td>
+<td>定义计算机代码。</td>
+<td><code>Computer code</code></td>
+</tr>
+<tr>
+<td>&lt; kbd&gt;</td>
+<td>定义键盘码。</td>
+<td><kbd>Keyboard input</kbd></td>
+</tr>
+<tr>
+<td>&lt; samp&gt;</td>
+<td>定义计算机代码样本。</td>
+<td><samp>Sample text</samp></td>
+</tr>
+<tr>
+<td>&lt; tt&gt;</td>
+<td>定义打字机代码。</td>
+<td><tt>Teletype text</tt></td>
+</tr>
+<tr>
+<td>&lt; var&gt;</td>
+<td>定义变量。</td>
+<td><var>Computer variable</var></td>
+</tr>
+<tr>
+<td>&lt; pre&gt;</td>
+<td>定义预格式文本。</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>** &lt; pre&gt;**</p>
+<pre><code class="html5"> &lt;pre&gt;
+Text in a pre element
+is displayed in a fixed-width
+font, and it preserves
+both      spaces and
+line breaks
+&lt;/pre&gt;</code></pre>
+<p><strong>效果</strong></p>
+<pre>
+Text in a pre element
+is displayed in a fixed-width
+font, and it preserves
+both      spaces and
+line breaks
+</pre>
+
+<blockquote>
+<p>pre 元素可定义预格式化的文本。被包围在 pre 元素中的文本通常会保留空格和换行符。而文本也会呈现为等宽字体。<br>可以导致段落断开的标签（例如标题、&lt; p&gt; 和 &lt; address&gt; 标签）<strong>绝不能</strong>包含在 &lt; pre&gt; 所定义的块里。尽管有些浏览器会把段落结束标签解释为简单地换行，但是这种行为在所有浏览器上并不都是一样的。</p>
+</blockquote>
+<ul>
+<li>面向对象的编程:关于对象的 属性、方法和事件 的理解</li>
+</ul>
+<p>把 <strong>属性</strong> 看作是对象的 性质 。<br>把 <strong>方法</strong> 看作是对象的 动作 。<br>把 <strong>事件</strong> 看作是对象的 响应 。</p>
+<h1 id="2015年12月27日"><a href="#2015年12月27日" class="headerlink" title="2015年12月27日"></a>2015年12月27日</h1><h2 id="bootstrap"><a href="#bootstrap" class="headerlink" title="bootstrap"></a>bootstrap</h2><pre><code class="html5">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;!-- 在IE运行最新的渲染模式   --&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+    &lt;!-- 初始化移动浏览显示。
+    &#39;width=device-widt&#39;表示宽度等于设备的宽度，&#39;initial-scale=1&#39;表示初始的缩放比例为1，就是不缩放。 --&gt;
+
+    &lt;!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ --&gt;
+    &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
+
+    &lt;!-- Bootstrap --&gt;
+    &lt;link href=&quot;css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+
+    &lt;!-- 以下两个插件用于在IE8以及以下版本浏览器支持HTML5元素和媒体查询，如果不需要用可以移除 --&gt;
+    &lt;!-- WARNING: Respond.js doesn&#39;t work if you view the page via file:// --&gt;
+    &lt;!--[if lt IE 9]&gt;
+      &lt;script src=&quot;//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js&quot;&gt;&lt;/script&gt;
+      &lt;script src=&quot;//cdn.bootcss.com/respond.js/1.4.2/respond.min.js&quot;&gt;&lt;/script&gt;
+    &lt;![endif]--&gt;
+    &lt;!-- 很多 CSS3 属性和 HTML5 元素 - - 例如，圆角矩形和投影  - - 是肯定不被支持的，所以要引入js文件解决。 Internet Explorer 8 需要 Respond.js 配合才能实现对媒体查询（media query）的支持。 --&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;你好，世界！&lt;/h1&gt;
+
+    &lt;!-- 如果要使用Bootstrap的js插件，必须先调入jQuery --&gt;
+    &lt;script src=&quot;//cdn.bootcss.com/jquery/1.11.3/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;!-- 包括所有bootstrap的js插件或者可以根据需要使用的js插件调用　--&gt;
+    &lt;script src=&quot;js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h1 id="2015年12月28日"><a href="#2015年12月28日" class="headerlink" title="2015年12月28日"></a>2015年12月28日</h1><h2 id="bootstrap-1"><a href="#bootstrap-1" class="headerlink" title="bootstrap"></a>bootstrap</h2><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><pre><code class="html">&lt;!--Bootstrap中的标题--&gt;
+&lt;h1&gt;Bootstrap标题一&lt;/h1&gt;
+&lt;!-- 也可以写成下面的效果  --&gt;
+&lt;!--Bootstrap中让非标题元素和标题使用相同的样式--&gt;
+&lt;div class=&quot;h1&quot;&gt;Bootstrap标题一&lt;/div&gt;</code></pre>
+<pre><code class="html">&lt;h1&gt;Bootstrap标题一&lt;small&gt;我是副标题&lt;/small&gt;&lt;/h1&gt;</code></pre>
+<p><em>效果如下</em></p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/bs-title.jpg" alt></p>
+<h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h3><ul>
+<li>强调内容</li>
+</ul>
+<p><code>b</code>和<code>&lt;strong&gt;</code>标签加粗;<br><code>&lt;em&gt;</code>和<code>&lt;i&gt;</code>斜体显示;</p>
+<blockquote>
+<p><code>&lt;b&gt;</code>和<code>&lt;i</code>&gt; 仅用来使文本呈现粗体和斜体，区别其它文本，不会产生任何语义的变化。<br><code>&lt;em&gt;</code>是句意强调，加与不加会引起语义变化。<code>&lt;strong&gt;</code>是重要性强调，和局部还是全局无关，局部强调用<code>&lt;strong&gt;</code>也可以，<code>&lt;strong&gt;</code>强调的是重要性，不会改变句意。</p>
+</blockquote>
+<ul>
+<li>强调内容的类</li>
+</ul>
+<p>Bootstrap还定义了一套类名，这里称其为强调类名（类似前面说的“.lead”）,这些强调类都是通过颜色来表示强调，具本说明如下：</p>
+<ul>
+<li>.text-muted：提示，使用浅灰色（#999）</li>
+<li>.text-primary：主要，使用蓝色（#428bca）</li>
+<li>.text-success：成功，使用浅绿色(#3c763d)</li>
+<li>.text-info：通知信息，使用浅蓝色（#31708f）</li>
+<li>.text-warning：警告，使用黄色（#8a6d3b）</li>
+<li>.text-danger：危险，使用褐色（#a94442）</li>
+</ul>
+<p><em>效果如下</em></p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/bs-text.jpg" alt></p>
+<ul>
+<li>文本对齐风格<ul>
+<li>.text-left：左对齐</li>
+<li>.text-center：居中对齐</li>
+<li>.text-right：右对齐</li>
+<li>.text-justify：两端对齐</li>
+</ul>
+</li>
+<li>列表</li>
+</ul>
+<p>通过给无序列表添加一个类名<code>.list-unstyled</code>,这样就可以去除默认的列表样式的风格。</p>
+<pre><code class="html"> /*源码请查看bootstrap.css文件*/
+.list-unstyled {
+padding-left: 0;
+list-style: none;
+}</code></pre>
+<p>通过添加类名<code>.list-inline</code>来实现内联列表，简单点说就是把垂直列表换成水平列表，而且去掉项目符号（编号），保持水平显示。</p>
+<pre><code class="html">/*源码查看bootstrap.css*/
+.list-inline {
+padding-left: 0;
+margin-left: -5px;
+list-style: none;
+}
+.list-inline &gt; li {
+display: inline-block;
+padding-right: 5px;
+padding-left: 5px;
+}</code></pre>
+<p>水平定义列表就像内联列表一样，Bootstrap可以给<code>&lt;dl&gt;</code>添加类名<code>.dl-horizontal</code>给定义列表实现水平显示效果。</p>
+<pre><code class="html">/*源码请查看bootstrap.css*/
+
+@media (min-width: 768px) {
+.dl-horizontal dt {
+float: left;
+width: 160px;
+overflow: hidden;
+clear: left;
+text-align: right;
+text-overflow: ellipsis;
+white-space: nowrap;
+  }
+.dl-horizontal dd {
+margin-left: 180px;
+  }
+}</code></pre>
+<p>宽屏下的效果（屏幕大于768px）：</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/bs-hor.jpg" alt></p>
+<br>
+当你缩小你的浏览器屏幕时，水平定义列表将回复到原始的状态:
+![](C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/bs-hor-2.jpg)
+
+<ul>
+<li>代码风格</li>
+</ul>
+<pre><code> + `&lt;code&gt;`：一般是针对于单个单词或单个句子的代码
+
+ + `&lt;pre&gt;`：一般是针对于多行代码（也就是成块的代码）
+
+ + `&lt;kbd&gt;`:一般是表示用户要通过键盘输入的内容 </code></pre><p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/bs-code.jpg" alt></p>
+<p>类名<code>.pre-scrollable</code>，就可以控制代码块区域最大高度为340px，一旦超出这个高度，就会在<strong>Y</strong>轴出现滚动条。</p>
+<pre><code class="html">/*源码请查看bootstrap.css*/
+
+.pre-scrollable {
+max-height: 340px;
+overflow-y: scroll;
+}</code></pre>
+<ul>
+<li>表格<br>Bootstrap为表格不同的样式风格提供了不同的类名，主要包括：<ul>
+<li><code>.table</code>：基础表格 </li>
+<li><code>.table-striped</code>：斑马线表格</li>
+<li><code>.table-bordered</code>：带边框的表格</li>
+<li><code>.table-hover</code>：鼠标悬停高亮的表格</li>
+<li><code>.table-condensed</code>：紧凑型表格</li>
+<li><code>.table-responsive</code>：响应式表格,当你的浏览器可视区域小于768px时，表格底部会出现水平滚动条。</li>
+</ul>
+</li>
+</ul>
+<p>Bootstrap还为表格的行元素<code>&lt;tr&gt;</code>提供了五种不同的类名，每种类名控制了行的不同背景颜色，具体说明如下表所示：</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/bs-tr.jpg" alt></p>
+<ul>
+<li>表单</li>
+</ul>
+<p>在<code>&lt;form&gt;</code>元素是使用类名“form-horizontal”。</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/bs-form.jpg" alt></p>
+<p>在Bootstrap框架中实现这样的表单效果是轻而易举的，你只需要在<code>&lt;form&gt;</code>元素中添加类名<code>form-inline</code>。</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/bs-form-1.jpg" alt></p>
+<p>为了让控件在各种表单风格中样式不出错，需要添加类名<code>form-control</code>。</p>
+<pre><code class="html">&lt;form role=&quot;form&quot;&gt;
+&lt;div class=&quot;form-group&quot;&gt;
+&lt;input type=&quot;email&quot; class=&quot;form-control&quot; placeholder=&quot;Enter email&quot;&gt;
+&lt;/div&gt;
+&lt;/form&gt;</code></pre>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/bs-form-2.jpg" alt></p>
+<p>多行选择设置<code>multiple</code>属性的值为<code>multiple</code>。</p>
+<pre><code class="html5">&lt;select multiple class=&quot;form-control&quot;&gt;
+    &lt;option&gt;1&lt;/option&gt;
+    &lt;option&gt;2&lt;/option&gt;
+    &lt;option&gt;3&lt;/option&gt;
+    &lt;option&gt;4&lt;/option&gt;
+    &lt;option&gt;5&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/bs-form-3.jpg" alt></p>
+<p>文本域和原始使用方法一样，设置<code>rows</code>可定义其高度，设置<code>cols</code>可以设置其宽度。但如果<code>textarea</code>元素中添加了类名<code>form-control</code>类名，则无需设置<code>cols</code>属性。</p>
+<pre><code class="html">&lt;form role=&quot;form&quot;&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;textarea class=&quot;form-control&quot; rows=&quot;3&quot;&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/bs-form-4.jpg" alt></p>
+<p><strong>复选框与单选框</strong></p>
+<p>1、不管是<code>checkbox</code>还是<code>radio</code>都使用<code>label</code>包起来了<br>2、<code>checkbox</code>连同<code>label</code>标签放置在一个名为<code>.checkbox</code>的容器内<br>3、<code>radio</code>连同<code>label</code>标签放置在一个名为<code>.radio</code>的容器内</p>
+<pre><code class="html">&lt;div class=&quot;checkbox&quot;&gt;
+    &lt;label&gt;
+      &lt;input type=&quot;checkbox&quot; value=&quot;&quot;&gt;
+      记住密码
+    &lt;/label&gt;
+&lt;/div&gt;</code></pre>
+<p>1、如果checkbox需要水平排列，只需要在<code>labe</code>l标签上添加类名<code>checkbox-inline</code></p>
+<p>2、如果radio需要水平排列，只需要在<code>label</code>标签上添加类名<code>radio-inline</code></p>
+<ul>
+<li>按钮</li>
+</ul>
+<p>按钮也是表单重要控件之一,制作按钮通常使用下面代码来实现：</p>
+<pre><code> + input[type=“submit”]
+
+ + input[type=“button”]
+
+ + input[type=“reset”]
+
+ + &lt; button&gt;</code></pre><p><img src alt></p>
+<p><img src="C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1571647954241.png" alt="1571647954241"></p>
+<h1 id="2015年12月29日"><a href="#2015年12月29日" class="headerlink" title="2015年12月29日"></a>2015年12月29日</h1><h2 id="bootstrap-2"><a href="#bootstrap-2" class="headerlink" title="bootstrap"></a>bootstrap</h2><h3 id="表单控件"><a href="#表单控件" class="headerlink" title="表单控件"></a>表单控件</h3><p>这两个类名是：</p>
+<p><code>input-sm</code>:让控件比正常大小更小</p>
+<p><code>input-lg</code>:让控件比正常大小更大</p>
+<p>在Bootstrap框架中同样提供这几种效果。</p>
+<ul>
+<li><p><code>.has-warning</code>:警告状态（黄色）</p>
+</li>
+<li><p><code>.has-error</code>：错误状态（红色）</p>
+</li>
+<li><p><code>.has-success</code>：成功状态（绿色）</p>
+</li>
+<li><p><code>.has-feedback</code>：添加状态符号的类名，对应不同的状态会自动出现不同的符号。</p>
+</li>
+<li><p><code>.help-block</code>:提示信息以块状显示，并且显示在控件底部。</p>
+</li>
+</ul>
+<h3 id="按钮"><a href="#按钮" class="headerlink" title="按钮"></a>按钮</h3><pre><code class="html5">&lt;button class=&quot;btn btn-default&quot; type=&quot;button&quot;&gt;button标签按钮&lt;/button&gt; 
+&lt;input type=&quot;submit&quot; class=&quot;btn btn-default&quot; value=&quot;input标签按钮&quot;/&gt;
+
+&lt;span class=&quot;btn btn-default&quot;&gt;span标签按钮&lt;/span&gt;  
+&lt;div class=&quot;btn btn-default&quot;&gt;div标签按钮&lt;/div&gt;  </code></pre>
+<p>效果如下：<br><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/btn.jpg" alt></p>
+<blockquote>
+<p>建议使用button或a标签来制作按钮。</p>
+</blockquote>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/btn-2.jpg" alt></p>
+<ul>
+<li><code>btn-block</code>:这个类名可以让按钮充满整个容器。</li>
+</ul>
+<p><strong>在Bootstrap框架中，要禁用按钮有两种实现方式：</strong></p>
+<p>方法1：在标签中添加disabled属性</p>
+<p>方法2：在元素标签中添加类名“disabled”</p>
+<p><strong>区别：</strong></p>
+<p><code>.disabled</code>样式不会禁止按钮的默认行为,而在元素标签中添加<code>disabled</code>属性的方法是可以禁止元素的默认行为的。</p>
+<h3 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h3><ul>
+<li><strong>img-responsive</strong>：响应式图片，主要针对于响应式设计</li>
+<li><strong>img-rounded</strong>：圆角图片</li>
+<li><strong>img-circle</strong>：圆形图片</li>
+<li><strong>img-thumbnail</strong>：缩略图片</li>
+</ul>
+<h3 id="图标"><a href="#图标" class="headerlink" title="图标"></a>图标</h3><p>图标都是使用CSS3的<code>@font-face</code>属性配合字体来实现的icon效果。</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/12/img/icon.jpg" alt></p>
+<p>需要对icon设置一个默认样式，在Bootstrap框架中是通过给元素添加<code>glyphicon</code>类名来实现，然后通过伪元素<code>:before</code>的<code>content</code>属性调取对应的icon编码：</p>
+<pre><code class="html">.glyphicon {
+position: relative;
+top: 1px;
+display: inline-block;
+font-family: &#39;Glyphicons Halflings&#39;;
+font-style: normal;
+font-weight: normal;
+line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+//伪类
+.glyphicon-asterisk:before {
+content: &quot;\2a&quot;;
+}
+
+
+//代码写法
+&lt;span class=&quot;glyphicon glyphicon-asterisk&quot;&gt;&lt;/span&gt;</code></pre>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-JS/" rel="next" title="JS">
+                <i class="fa fa-chevron-left"></i> JS
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-Container-With-Most-Water/" rel="prev" title="Container With Most Water">
+                Container With Most Water <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年12月3日"><span class="nav-number">1.</span> <span class="nav-text">2015年12月3日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript"><span class="nav-number">1.1.</span> <span class="nav-text">javascript</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年12月7日"><span class="nav-number">2.</span> <span class="nav-text">2015年12月7日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript-1"><span class="nav-number">2.1.</span> <span class="nav-text">javascript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#json与面向对象"><span class="nav-number">2.2.</span> <span class="nav-text">json与面向对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BOM"><span class="nav-number">2.3.</span> <span class="nav-text">BOM</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年12月9日"><span class="nav-number">3.</span> <span class="nav-text">2015年12月9日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cookie"><span class="nav-number">3.1.</span> <span class="nav-text">cookie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式"><span class="nav-number">3.2.</span> <span class="nav-text">正则表达式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年12月10日"><span class="nav-number">4.</span> <span class="nav-text">2015年12月10日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery"><span class="nav-number">4.1.</span> <span class="nav-text">jQuery</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于冒泡和捕获"><span class="nav-number">4.2.</span> <span class="nav-text">关于冒泡和捕获</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#捕获"><span class="nav-number">4.2.1.</span> <span class="nav-text">捕获</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡"><span class="nav-number">4.2.2.</span> <span class="nav-text">冒泡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件代理"><span class="nav-number">4.2.3.</span> <span class="nav-text">事件代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#阻止行为"><span class="nav-number">4.2.4.</span> <span class="nav-text">阻止行为</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年12月11日"><span class="nav-number">5.</span> <span class="nav-text">2015年12月11日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git"><span class="nav-number">5.1.</span> <span class="nav-text">Git</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vi-amp-vim-打开-关闭-保存-文件"><span class="nav-number">5.1.1.</span> <span class="nav-text">vi &amp; vim 打开 关闭 保存 文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年12月13日"><span class="nav-number">6.</span> <span class="nav-text">2015年12月13日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS"><span class="nav-number">6.1.</span> <span class="nav-text">CSS</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年12月14日"><span class="nav-number">7.</span> <span class="nav-text">2015年12月14日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#css"><span class="nav-number">7.1.</span> <span class="nav-text">css</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#transform"><span class="nav-number">7.1.1.</span> <span class="nav-text">transform</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年12月16日"><span class="nav-number">8.</span> <span class="nav-text">2015年12月16日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#css3"><span class="nav-number">8.1.</span> <span class="nav-text">css3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Animation"><span class="nav-number">8.1.1.</span> <span class="nav-text">Animation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#box-shadow"><span class="nav-number">8.1.2.</span> <span class="nav-text">box-shadow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linear-gradient"><span class="nav-number">8.1.3.</span> <span class="nav-text">linear-gradient</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#repeating-linear-gradient"><span class="nav-number">8.1.4.</span> <span class="nav-text">repeating-linear-gradient()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年12月17日"><span class="nav-number">9.</span> <span class="nav-text">2015年12月17日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#配色"><span class="nav-number">9.1.</span> <span class="nav-text">配色</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年12月18日"><span class="nav-number">10.</span> <span class="nav-text">2015年12月18日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript-2"><span class="nav-number">10.1.</span> <span class="nav-text">javascript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#面向对象"><span class="nav-number">10.1.1.</span> <span class="nav-text">面向对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年12月20日"><span class="nav-number">11.</span> <span class="nav-text">2015年12月20日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery-1"><span class="nav-number">11.1.</span> <span class="nav-text">jQuery</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年12月21日"><span class="nav-number">12.</span> <span class="nav-text">2015年12月21日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery-2"><span class="nav-number">12.1.</span> <span class="nav-text">jQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用方法"><span class="nav-number">12.1.1.</span> <span class="nav-text">常用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BOM-window对象"><span class="nav-number">12.1.2.</span> <span class="nav-text">BOM window对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年12月22日"><span class="nav-number">13.</span> <span class="nav-text">2015年12月22日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript-3"><span class="nav-number">13.1.</span> <span class="nav-text">javascript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用方法-1"><span class="nav-number">13.1.1.</span> <span class="nav-text">常用方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年12月23日"><span class="nav-number">14.</span> <span class="nav-text">2015年12月23日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery-3"><span class="nav-number">14.1.</span> <span class="nav-text">jQuery</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年12月24日"><span class="nav-number">15.</span> <span class="nav-text">2015年12月24日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery-4"><span class="nav-number">15.1.</span> <span class="nav-text">jQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用方法-2"><span class="nav-number">15.1.1.</span> <span class="nav-text">常用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下的常用方法"><span class="nav-number">15.1.2.</span> <span class="nav-text">$下的常用方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年12月26日"><span class="nav-number">16.</span> <span class="nav-text">2015年12月26日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML"><span class="nav-number">16.1.</span> <span class="nav-text">HTML</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年12月27日"><span class="nav-number">17.</span> <span class="nav-text">2015年12月27日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bootstrap"><span class="nav-number">17.1.</span> <span class="nav-text">bootstrap</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年12月28日"><span class="nav-number">18.</span> <span class="nav-text">2015年12月28日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bootstrap-1"><span class="nav-number">18.1.</span> <span class="nav-text">bootstrap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标题"><span class="nav-number">18.1.1.</span> <span class="nav-text">标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文本"><span class="nav-number">18.1.2.</span> <span class="nav-text">文本</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年12月29日"><span class="nav-number">19.</span> <span class="nav-text">2015年12月29日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bootstrap-2"><span class="nav-number">19.1.</span> <span class="nav-text">bootstrap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表单控件"><span class="nav-number">19.1.1.</span> <span class="nav-text">表单控件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按钮"><span class="nav-number">19.1.2.</span> <span class="nav-text">按钮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图像"><span class="nav-number">19.1.3.</span> <span class="nav-text">图像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图标"><span class="nav-number">19.1.4.</span> <span class="nav-text">图标</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

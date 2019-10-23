@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="网络,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="计算机网络 网络协议 网络三要素 层次划分      计算机网络网络协议网络协议(network protocol)，简称为协议，是为进行网络中的数据交换而建立的规则、标准或约定。 协议规定了通信实体之间所交换的消息的格式、意义、顺序以及针对收到信息或发生的事件所采取的“动作”（actions）。 网络三要素 语法（Syntax） 数据与控制信息的结构或格式 信号电平   语义（Semant">
+<meta name="keywords" content="网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-网络/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="计算机网络 网络协议 网络三要素 层次划分      计算机网络网络协议网络协议(network protocol)，简称为协议，是为进行网络中的数据交换而建立的规则、标准或约定。 协议规定了通信实体之间所交换的消息的格式、意义、顺序以及针对收到信息或发生的事件所采取的“动作”（actions）。 网络三要素 语法（Syntax） 数据与控制信息的结构或格式 信号电平   语义（Semant">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/MOOC/img/OSI%E4%B8%8ETCP-IP.png">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.723Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络">
+<meta name="twitter:description" content="计算机网络 网络协议 网络三要素 层次划分      计算机网络网络协议网络协议(network protocol)，简称为协议，是为进行网络中的数据交换而建立的规则、标准或约定。 协议规定了通信实体之间所交换的消息的格式、意义、顺序以及针对收到信息或发生的事件所采取的“动作”（actions）。 网络三要素 语法（Syntax） 数据与控制信息的结构或格式 信号电平   语义（Semant">
+<meta name="twitter:image" content="c:/Users/Administrator/Desktop/My-study-records-master/MOOC/img/OSI%E4%B8%8ETCP-IP.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-网络/">
+
+
+
+
+
+  <title>网络 | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-网络/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">网络</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T10:00:00+08:00">
+                2019-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <!-- toc orderedList:0 depthFrom:1 depthTo:6 -->
+
+<ul>
+<li><a href="#计算机网络">计算机网络</a><ul>
+<li><a href="#网络协议">网络协议</a></li>
+<li><a href="#网络三要素">网络三要素</a></li>
+<li><a href="#层次划分">层次划分</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="网络协议"><a href="#网络协议" class="headerlink" title="网络协议"></a>网络协议</h2><p><code>网络协议(network protocol)</code>，简称为协议，是为进行网络中的数据交换而建立的规则、标准或约定。</p>
+<p>协议规定了通信实体之间所交换的消息的<code>格式</code>、<code>意义</code>、<code>顺序</code>以及针对收到信息或发生的事件所采取的“<code>动作</code>”（<code>actions</code>）。</p>
+<h2 id="网络三要素"><a href="#网络三要素" class="headerlink" title="网络三要素"></a>网络三要素</h2><ul>
+<li>语法（Syntax）<ul>
+<li>数据与控制信息的结构或格式</li>
+<li>信号电平</li>
+</ul>
+</li>
+<li>语义（Semantics）<ul>
+<li>需要发出何种控制信息</li>
+<li>完成何种动作以及做出何种响应</li>
+<li>差错控制</li>
+</ul>
+</li>
+<li>时序（Timing）<ul>
+<li>事件顺序</li>
+<li>速度匹配</li>
+</ul>
+</li>
+</ul>
+<p>协议规范了网络中所有信息发送和接收过程。</p>
+<blockquote>
+<p>e.g., TCP, IP, HTTP, Skype,  802.11</p>
+</blockquote>
+<h2 id="层次划分"><a href="#层次划分" class="headerlink" title="层次划分"></a>层次划分</h2><p>OSI将计算机网络体系结构划分为以下七层</p>
+<table class="wikitable" style="margin: 1em auto 1em auto;">
+<tbody><tr>
+<th colspan="5"><span id="pos_placeholder" style="width: 0px; height: 0px; visibility: hidden; margin: 0px; padding: 0px;"></span>OSI 模型</th>
+</tr>
+<tr>
+<th></th>
+<th>数据单元</th>
+<th>层</th>
+<th style="width:30em;">功能</th>
+</tr>
+<tr>
+<th rowspan="4">主机层</th>
+<td style="background:#d8ec9c;" rowspan="3"><a href="/wiki/Data" title="Data">Data</a>（<a href="/wiki/%E6%95%B0%E6%8D%AE" title="数据">数据</a>）</td>
+<td style="background:#d8ec9b;">7. <a href="/wiki/%E5%BA%94%E7%94%A8%E5%B1%82" title="应用层">应用层</a></td>
+<td style="background:#d8ec9c;"><small>网络进程到应用程序。</small>针对特定应用规定各层协议、时序、表示等，进行封装 。在端系统中用软件来实现，如HTTP等</td>
+</tr>
+<tr>
+<td style="background:#d8ec9b;">6. <a href="/wiki/%E8%A1%A8%E7%A4%BA%E5%B1%82" title="表示层">表示层</a></td>
+<td style="background:#d8ec9b;"><small>数据表示形式，加密和解密，把机器相关的数据转换成独立于机器的数据。</small>规定数据的格式化表示 ，数据格式的转换等</td>
+</tr>
+<tr>
+<td style="background:#d8ec9b;">5. <a href="/wiki/%E4%BC%9A%E8%AF%9D%E5%B1%82" title="会话层">会话层</a></td>
+<td style="background:#d8ec9b;"><small>主机间通讯，管理应用程序之间的会话。</small>规定通信时序 ；数据交换的定界、同步，创建检查点等</td>
+</tr>
+<tr>
+<td style="background:#e7ed9c;"><a href="/w/index.php?title=Packet_segmentation&amp;action=edit&amp;redlink=1" class="new" title="Packet segmentation（页面不存在）">Segments</a>（<a href="/wiki/%E6%95%B0%E6%8D%AE%E6%AE%B5" title="数据段">数据段</a>）</td>
+<td style="background:#e7ed9c;">4. <a href="/wiki/%E4%BC%A0%E8%BE%93%E5%B1%82" title="传输层">传输层</a></td>
+<td style="background:#e7ed9c;"><small>在网络的各个节点之间可靠地分发数据包。</small>所有传输遗留问题；复用；流量；可靠</td>
+</tr>
+<tr>
+<th rowspan="3">媒介层</th>
+<td style="background:#eddc9c;"><a href="/wiki/%E7%B6%B2%E8%B7%AF%E5%B0%81%E5%8C%85" title="网络分组">网络分组</a>/<a href="/wiki/%E8%B3%87%E6%96%99%E5%8C%85" title="数据报文">数据报文</a></td>
+<td style="background:#eddc9c;">3. <a href="/wiki/%E7%BD%91%E7%BB%9C%E5%B1%82" title="网络层">网络层</a></td>
+<td style="background:#eddc9c;"><small>在网络的各个节点之间进行地址分配、路由和（不一定可靠的）分发报文。</small>路由（ IP寻址）；拥塞控制。</td>
+</tr>
+<tr>
+<td style="background:#e9c189;"><a href="/wiki/Bit" class="mw-disambig" title="Bit">Bit</a>/<a href="/w/index.php?title=Frame_(networking)&amp;action=edit&amp;redlink=1" class="new" title="Frame (networking)（页面不存在）">Frame</a>（<a href="/wiki/%E5%B8%A7" title="帧">数据帧</a>）</td>
+<td style="background:#e9c189;">2. <a href="/wiki/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82" title="数据链路层">数据链路层</a></td>
+<td style="background:#e9c189;"><small>一个可靠的点对点数据直链。</small>检错与纠错（CRC码）；多路访问；寻址</td>
+</tr>
+<tr>
+<td style="background:#e9988a;"><a href="/wiki/Bit" class="mw-disambig" title="Bit">Bit</a>（<a href="/wiki/%E6%AF%94%E7%89%B9" class="mw-disambig" title="比特">比特</a>）</td>
+<td style="background:#e9988a;">1. <a href="/wiki/%E7%89%A9%E7%90%86%E5%B1%82" title="物理层">物理层</a></td>
+<td style="background:#e9988a;"><small>一个（不一定可靠的）点对点数据直链。</small>定义机械特性；电气特性；功能特性；规程特性</td>
+</tr>
+</tbody></table>
+
+<p> TCP/IP分层模型</p>
+<table>
+<thead>
+<tr>
+<th>分层模型</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>应用层(application layer)</td>
+<td>该层包括所有和应用程序协同工作，利用基础网络交换应用程序专用的数据的协议。</td>
+</tr>
+<tr>
+<td>传输层(transport layer)</td>
+<td>传输层的协议，能够解决诸如端到端可靠性（“数据是否已经到达目的地？”）和保证数据按照正确的顺序到达这样的问题。</td>
+</tr>
+<tr>
+<td>网络层(internet layer)</td>
+<td>处理分组在网络中的活动，例如分组的选路。</td>
+</tr>
+<tr>
+<td>链路层(link layer)</td>
+<td>网络接口层实际上并不是因特网协议组中的一部分，但是它是数据包从一个设备的网络层传输到另外一个设备的网络层的方法。</td>
+</tr>
+</tbody></table>
+<p>两者区别<br><img src="C:/Users/Administrator/Desktop/My-study-records-master/MOOC/img/OSI%E4%B8%8ETCP-IP.png" alt="OSI与TCP/IP.png"></p>
+<blockquote>
+<p>参考:<a href="http://www.cnblogs.com/ludashi/p/6232060.html" target="_blank" rel="noopener">http://www.cnblogs.com/ludashi/p/6232060.html</a> <a href="http://www.cnblogs.com/davidwang456/p/3510782.html" target="_blank" rel="noopener">http://www.cnblogs.com/davidwang456/p/3510782.html</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/网络/" rel="tag"># 网络</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-跨域/" rel="next" title="跨域">
+                <i class="fa fa-chevron-left"></i> 跨域
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-面向对象编程/" rel="prev" title="面向对象编程">
+                面向对象编程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机网络"><span class="nav-number">1.</span> <span class="nav-text">计算机网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#网络协议"><span class="nav-number">1.1.</span> <span class="nav-text">网络协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络三要素"><span class="nav-number">1.2.</span> <span class="nav-text">网络三要素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#层次划分"><span class="nav-number">1.3.</span> <span class="nav-text">层次划分</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

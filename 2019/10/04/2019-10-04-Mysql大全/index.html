@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Mysql,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="深入浅出MySQL数据库 1、什么是数据库？ 数据库(Database)是按照数据结构来组织、存储和管理数据的仓库 常见数据库 相关术语   2、MySQL相关操作 配置文件 登陆/退出MySQL SQL语句语法规范 常用SQL语句   3、数据库相关操作 创建数据库 查看当前服务器下全部数据库 查看指定数据库的详细信息 修改指定数据库的编码方式 打开指定数据库 得到当前打开的数据库 删">
+<meta name="keywords" content="Mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mysql大全">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-Mysql大全/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="深入浅出MySQL数据库 1、什么是数据库？ 数据库(Database)是按照数据结构来组织、存储和管理数据的仓库 常见数据库 相关术语   2、MySQL相关操作 配置文件 登陆/退出MySQL SQL语句语法规范 常用SQL语句   3、数据库相关操作 创建数据库 查看当前服务器下全部数据库 查看指定数据库的详细信息 修改指定数据库的编码方式 打开指定数据库 得到当前打开的数据库 删">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/img/mysql_int.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/img/mysql_float.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/img/mysql_str.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/img/mysql_time.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/img/mysql_sq.jpg">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.351Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mysql大全">
+<meta name="twitter:description" content="深入浅出MySQL数据库 1、什么是数据库？ 数据库(Database)是按照数据结构来组织、存储和管理数据的仓库 常见数据库 相关术语   2、MySQL相关操作 配置文件 登陆/退出MySQL SQL语句语法规范 常用SQL语句   3、数据库相关操作 创建数据库 查看当前服务器下全部数据库 查看指定数据库的详细信息 修改指定数据库的编码方式 打开指定数据库 得到当前打开的数据库 删">
+<meta name="twitter:image" content="c:/Users/Administrator/Desktop/My-study-records-master/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/img/mysql_int.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-Mysql大全/">
+
+
+
+
+
+  <title>Mysql大全 | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-Mysql大全/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Mysql大全</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T10:00:00+08:00">
+                2019-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+<ul>
+<li><a href="#深入浅出mysql数据库">深入浅出MySQL数据库</a><ul>
+<li><a href="#1-什么是数据库">1、什么是数据库？</a><ul>
+<li><a href="#数据库database是按照数据结构来组织-存储和管理数据的仓库">数据库(Database)是按照数据结构来组织、存储和管理数据的仓库</a></li>
+<li><a href="#常见数据库">常见数据库</a></li>
+<li><a href="#相关术语">相关术语</a></li>
+</ul>
+</li>
+<li><a href="#2-mysql相关操作">2、MySQL相关操作</a><ul>
+<li><a href="#配置文件">配置文件</a></li>
+<li><a href="#登陆退出mysql">登陆/退出MySQL</a></li>
+<li><a href="#sql语句语法规范">SQL语句语法规范</a></li>
+<li><a href="#常用sql语句">常用SQL语句</a></li>
+</ul>
+</li>
+<li><a href="#3-数据库相关操作">3、数据库相关操作</a><ul>
+<li><a href="#创建数据库">创建数据库</a></li>
+<li><a href="#查看当前服务器下全部数据库">查看当前服务器下全部数据库</a></li>
+<li><a href="#查看指定数据库的详细信息">查看指定数据库的详细信息</a></li>
+<li><a href="#修改指定数据库的编码方式">修改指定数据库的编码方式</a></li>
+<li><a href="#打开指定数据库">打开指定数据库</a></li>
+<li><a href="#得到当前打开的数据库">得到当前打开的数据库</a></li>
+<li><a href="#删除指定的数据库">删除指定的数据库</a></li>
+</ul>
+</li>
+<li><a href="#4-数据表相关操作">4、数据表相关操作</a><ul>
+<li><a href="#数据表">数据表</a></li>
+<li><a href="#创建表">创建表</a></li>
+<li><a href="#查看当前数据库下已有数据表">查看当前数据库下已有数据表</a></li>
+<li><a href="#查看指定数据表的详细信息">查看指定数据表的详细信息</a></li>
+<li><a href="#查看表结构">查看表结构</a></li>
+<li><a href="#删除指定的数据表">删除指定的数据表</a></li>
+<li><a href="#表结构相关操作">表结构相关操作</a></li>
+</ul>
+</li>
+<li><a href="#5-mysql中的数据类型">5、MySQL中的数据类型</a><ul>
+<li><a href="#数值型">数值型</a></li>
+<li><a href="#字符串类型">字符串类型</a></li>
+<li><a href="#日期时间类型">日期时间类型</a></li>
+<li><a href="#二进制类型">二进制类型</a></li>
+</ul>
+</li>
+<li><a href="#6-mysql存储引擎">6、MySQL存储引擎</a><ul>
+<li><a href="#mysql架构图">MySQL架构图</a></li>
+<li><a href="#mysql存储引擎">MySQL存储引擎</a></li>
+</ul>
+</li>
+<li><a href="#7-mysql数据操作">7、MySQL数据操作</a><ul>
+<li><a href="#添加记录">添加记录</a></li>
+<li><a href="#修改记录">修改记录</a></li>
+<li><a href="#删除记录">删除记录</a></li>
+<li><a href="#查询记录">查询记录</a></li>
+<li><a href="#多表查询">多表查询</a></li>
+<li><a href="#外键约束">外键约束</a></li>
+<li><a href="#特殊形式的查询">特殊形式的查询</a></li>
+</ul>
+</li>
+<li><a href="#8-mysql常用函数">8、MYSQL常用函数</a><ul>
+<li><a href="#数学函数">数学函数</a></li>
+<li><a href="#字符串函数">字符串函数</a></li>
+<li><a href="#日期时间函数">日期时间函数</a></li>
+<li><a href="#其它常用函数">其它常用函数</a></li>
+</ul>
+</li>
+<li><a href="#9-图形化工具管理数据库">9、图形化工具管理数据库</a><ul>
+<li><a href="#bs">BS</a></li>
+<li><a href="#cs">CS</a></li>
+</ul>
+</li>
+<li><a href="#常用sql语句-1">常用SQL语句</a><ul>
+<li><a href="#查看上一步操作产生的警告信息">查看上一步操作产生的警告信息</a></li>
+<li><a href="#mysql中的注释">mysql中的注释</a></li>
+<li><a href="#检测表">检测表</a></li>
+<li><a href="#修复表">修复表</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /code_chunk_output -->
+
+<h1 id="深入浅出MySQL数据库"><a href="#深入浅出MySQL数据库" class="headerlink" title="深入浅出MySQL数据库"></a>深入浅出MySQL数据库</h1><h2 id="1、什么是数据库？"><a href="#1、什么是数据库？" class="headerlink" title="1、什么是数据库？"></a>1、什么是数据库？</h2><h3 id="数据库-Database-是按照数据结构来组织、存储和管理数据的仓库"><a href="#数据库-Database-是按照数据结构来组织、存储和管理数据的仓库" class="headerlink" title="数据库(Database)是按照数据结构来组织、存储和管理数据的仓库"></a>数据库(Database)是按照数据结构来组织、存储和管理数据的仓库</h3><h3 id="常见数据库"><a href="#常见数据库" class="headerlink" title="常见数据库"></a>常见数据库</h3><ul>
+<li>Oracle</li>
+<li>DB2</li>
+<li>SQL Server</li>
+<li>Postgre SQL</li>
+<li>MySQL</li>
+</ul>
+<h3 id="相关术语"><a href="#相关术语" class="headerlink" title="相关术语"></a>相关术语</h3><ul>
+<li>数据库系统(Database System):DBS<ul>
+<li>数据库(Database)</li>
+<li>数据库管理系统(Database Management System):DBMS</li>
+<li>应用开发工具</li>
+<li>管理员及用户</li>
+</ul>
+</li>
+<li>SQL语言<ul>
+<li>Structured Query Language：结构化查询与颜<ul>
+<li>DDL<ul>
+<li>数据定义语言</li>
+</ul>
+</li>
+<li>DML<ul>
+<li>数据操作语言</li>
+</ul>
+</li>
+<li>DQL<ul>
+<li>数据查询语言</li>
+</ul>
+</li>
+<li>DCL<ul>
+<li>数据控制语言</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2、MySQL相关操作"><a href="#2、MySQL相关操作" class="headerlink" title="2、MySQL相关操作"></a>2、MySQL相关操作</h2><h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><ul>
+<li>my.cnf是MySQL的配置文件</li>
+</ul>
+<h3 id="登陆-退出MySQL"><a href="#登陆-退出MySQL" class="headerlink" title="登陆/退出MySQL"></a>登陆/退出MySQL</h3><ul>
+<li>登陆<ul>
+<li>mysql -uroot -p</li>
+<li>mysql -uroot -proot</li>
+<li>mysql -hlocalhost -uroot -p -P3306</li>
+<li>登陆的同时修改密令提示符<ul>
+<li>mysql -uroot -p –prompt=命令提示符<ul>
+<li>\h<ul>
+<li>主机</li>
+</ul>
+</li>
+<li>\u<ul>
+<li>当前登陆的用户</li>
+</ul>
+</li>
+<li>\d<ul>
+<li>当前打开的数据库</li>
+</ul>
+</li>
+<li>\D<ul>
+<li>当前服务器的日期时间</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>得到版本号<ul>
+<li>mysql -V</li>
+<li>mysql –version</li>
+</ul>
+</li>
+<li>登陆的同时打开指定数据库<ul>
+<li>mysql -uroot -p -D db_name</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>退出<ul>
+<li>exit</li>
+<li>quit</li>
+<li>\q</li>
+<li>ctrl+c</li>
+</ul>
+</li>
+<li>登陆信息中需要掌握的<ul>
+<li>命令行结束符默认使用;或者\g来结束</li>
+<li>可以通过help或者\h或者?加上相关关键字来查看手册</li>
+<li>\c可以取消当前命令的执行</li>
+</ul>
+</li>
+</ul>
+<h3 id="SQL语句语法规范"><a href="#SQL语句语法规范" class="headerlink" title="SQL语句语法规范"></a>SQL语句语法规范</h3><ul>
+<li>常用MySQL的关键字我们需要大写，库名、表名、字段名称等使用小写</li>
+<li>SQL语句支持折行操作，拆分的时候不能把完整单词拆开</li>
+<li>数据库名称、表名称、字段名称不要使用MySQL的保留字，如果必须要使用，需要用反引号``将其括起来</li>
+</ul>
+<h3 id="常用SQL语句"><a href="#常用SQL语句" class="headerlink" title="常用SQL语句"></a>常用SQL语句</h3><ul>
+<li>SELECT USER()<ul>
+<li>得到登陆的用户</li>
+</ul>
+</li>
+<li>SELECT VERSION()<ul>
+<li>得到MySQL的版本信息</li>
+</ul>
+</li>
+<li>SELECT NOW()<ul>
+<li>得到当前的日期时间</li>
+</ul>
+</li>
+<li>SELECT DATABASE()<ul>
+<li>得到当前打开的数据库</li>
+</ul>
+</li>
+</ul>
+<h2 id="3、数据库相关操作"><a href="#3、数据库相关操作" class="headerlink" title="3、数据库相关操作"></a>3、数据库相关操作</h2><h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><ul>
+<li>CREATE {DATABASE|SCHEMA} db_name;</li>
+<li>检测数据库名称是否存在，不存在则创建<ul>
+<li>CREATE DATABASE [IF NOT EXISTS] db_name;</li>
+</ul>
+</li>
+<li>在创建数据库的同时指定编码方式<ul>
+<li>CREATE DATABASE [IF NOT EXISTS] db_name [DEFAULT] CHARACTER SET [=] charset;</li>
+</ul>
+</li>
+<li>注意<ul>
+<li>数据库名称最好有意义</li>
+<li>名称不要包含特殊字符或者是MySQL关键字</li>
+</ul>
+</li>
+</ul>
+<h3 id="查看当前服务器下全部数据库"><a href="#查看当前服务器下全部数据库" class="headerlink" title="查看当前服务器下全部数据库"></a>查看当前服务器下全部数据库</h3><ul>
+<li>SHOW DATABASES|SCHEMAS;</li>
+</ul>
+<h3 id="查看指定数据库的详细信息"><a href="#查看指定数据库的详细信息" class="headerlink" title="查看指定数据库的详细信息"></a>查看指定数据库的详细信息</h3><ul>
+<li>SHOW CREATE DATABASE db_name;</li>
+</ul>
+<h3 id="修改指定数据库的编码方式"><a href="#修改指定数据库的编码方式" class="headerlink" title="修改指定数据库的编码方式"></a>修改指定数据库的编码方式</h3><ul>
+<li>ALTER DATABASE db_name [DEFAULT] CHARACTER SET [=] charset;</li>
+</ul>
+<h3 id="打开指定数据库"><a href="#打开指定数据库" class="headerlink" title="打开指定数据库"></a>打开指定数据库</h3><ul>
+<li>USE db_name;</li>
+</ul>
+<h3 id="得到当前打开的数据库"><a href="#得到当前打开的数据库" class="headerlink" title="得到当前打开的数据库"></a>得到当前打开的数据库</h3><ul>
+<li>SELECT DATABASE()|SCHEMA();</li>
+</ul>
+<h3 id="删除指定的数据库"><a href="#删除指定的数据库" class="headerlink" title="删除指定的数据库"></a>删除指定的数据库</h3><ul>
+<li>DROP DATABASE db_name;</li>
+<li>如果数据库存在则删除<ul>
+<li>DROP DATABASE [IF EXISTS] db_name;</li>
+</ul>
+</li>
+</ul>
+<h2 id="4、数据表相关操作"><a href="#4、数据表相关操作" class="headerlink" title="4、数据表相关操作"></a>4、数据表相关操作</h2><h3 id="数据表"><a href="#数据表" class="headerlink" title="数据表"></a>数据表</h3><ul>
+<li>是数据库最重要的组成部分之一，数据是保存在数据表中</li>
+<li>数据表由行(row)和列(column)来组成</li>
+<li>每个数据表中至少有一列，行可以有零行一行或者多行组成</li>
+<li>表名要求唯一，不要包含特殊字符，最好含义明确</li>
+</ul>
+<h3 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h3><ul>
+<li>CREATE TABLE [IF NOT EXISTS] tbl_name(<br>字段名称 字段类型 [完整性约束条件],<br>字段名称 字段类型 [完整性约束条件],<br>…<br>)ENGINE=存储引擎 CHARSET=编码方式;<ul>
+<li>UNSIGNED<ul>
+<li>无符号，没有负数，从0开始</li>
+</ul>
+</li>
+<li>ZEROFILL<ul>
+<li>零填充，当数据的显示长度不够的时候可以使用前补0的效果填充至指定长度,字段会自动添加UNSIGNED</li>
+</ul>
+</li>
+<li>NOT NULL<ul>
+<li>非空约束，也就是插入值的时候这个字段必须要给值,值不能为空</li>
+</ul>
+</li>
+<li>DEFAULT<ul>
+<li>默认值，如果插入记录的时候没有给字段赋值，则使用默认值</li>
+</ul>
+</li>
+<li>PRIMARY KEY<ul>
+<li>主键，标识记录的唯一性，值不能重复，一个表只能有一个主键，自动禁止为空</li>
+</ul>
+</li>
+<li>AUTO_INCREMENT<ul>
+<li>自动增长，只能用于数值列，而且配合索引使用,默认起始值从1开始，每次增长1</li>
+</ul>
+</li>
+<li>UNIQUE KEY<ul>
+<li>唯一性，一个表中可以有多个字段是唯一索引，同样的值不能重复，但是NULL值除外</li>
+</ul>
+</li>
+<li>FOREIGN KEY<ul>
+<li>外键约束</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="查看当前数据库下已有数据表"><a href="#查看当前数据库下已有数据表" class="headerlink" title="查看当前数据库下已有数据表"></a>查看当前数据库下已有数据表</h3><ul>
+<li>SHOW TABLES;</li>
+<li>SHOW [FULL] TABLES [{FROM | IN} db_name]<br>[LIKE ‘pattern’ | WHERE expr]</li>
+</ul>
+<h3 id="查看指定数据表的详细信息"><a href="#查看指定数据表的详细信息" class="headerlink" title="查看指定数据表的详细信息"></a>查看指定数据表的详细信息</h3><ul>
+<li>SHOW CREATE TABLE tbl_name;</li>
+</ul>
+<h3 id="查看表结构"><a href="#查看表结构" class="headerlink" title="查看表结构"></a>查看表结构</h3><ul>
+<li>DESC tbl_name;</li>
+<li>DESCRIBE tbl_name;</li>
+<li>SHOW COLUMNS FROM tbl_name;</li>
+</ul>
+<h3 id="删除指定的数据表"><a href="#删除指定的数据表" class="headerlink" title="删除指定的数据表"></a>删除指定的数据表</h3><ul>
+<li>DROP TABLE [IF EXISTS] tbl_name;</li>
+</ul>
+<h3 id="表结构相关操作"><a href="#表结构相关操作" class="headerlink" title="表结构相关操作"></a>表结构相关操作</h3><ul>
+<li>添加字段<ul>
+<li>ALTER TABLE tbl_name<br>ADD 字段名称 字段属性 [完整性约束条件][FIRST|AFTER 字段名称]</li>
+</ul>
+</li>
+<li>删除字段<ul>
+<li>ALTER TABLE tbl_name<br>DROP 字段名称</li>
+</ul>
+</li>
+<li>添加默认值<ul>
+<li>ALTER TABLE tbl_name<br>ALTER 字段名称 SET DEFAULT 默认值;</li>
+</ul>
+</li>
+<li>删除默认值<ul>
+<li>ALTER TABLE tbl_name<br>ALTER 字段名称 DROP DEFAULT</li>
+</ul>
+</li>
+<li>修改字段类型、字段属性<ul>
+<li>ALTER TABLE tbl_name<br>MODIFY 字段名称 字段类型 [字段属性][FIRST | AFTER 字段名称]</li>
+</ul>
+</li>
+<li>修改字段名称、字段类型、字段属性<ul>
+<li>ALTER TABLE tbl_name<br>CHANGE 原字段名称 新字段名称 字段类型 字段属性 [FIRST | AFTER 字段名称]</li>
+</ul>
+</li>
+<li>添加主键<ul>
+<li>ALTER TABLE tbl_name<br>ADD PRIMARY KEY(字段名称)</li>
+</ul>
+</li>
+<li>删除主键<ul>
+<li>ALTER TABLE tbl_name<br>DROP PRIMARY KEY;</li>
+</ul>
+</li>
+<li>添加唯一<ul>
+<li>ALTER TABLE tbl_name<br>ADD UNIQUE KEY|INDEX [index_name] (字段名称)</li>
+</ul>
+</li>
+<li>删除唯一<ul>
+<li>ALTER TABLE tbl_name<br>DROP index_name;</li>
+</ul>
+</li>
+<li>修改数据表名称<ul>
+<li>ALTER TABLE tbl_name<br>RENAME [TO|AS] new_tbl_name</li>
+<li>RENAME TABLE tbl_name TO new_tbl_name;</li>
+</ul>
+</li>
+<li>修改AUTO_INCREMENT的值<ul>
+<li>ALTER TABLE tbl_name AUTO_INCREMENT=值</li>
+</ul>
+</li>
+</ul>
+<h2 id="5、MySQL中的数据类型"><a href="#5、MySQL中的数据类型" class="headerlink" title="5、MySQL中的数据类型"></a>5、MySQL中的数据类型</h2><h3 id="数值型"><a href="#数值型" class="headerlink" title="数值型"></a>数值型</h3><ul>
+<li>整数型<br><img src="C:/Users/Administrator/Desktop/My-study-records-master/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/img/mysql_int.jpg" alt></li>
+<li>浮点型<br><img src="C:/Users/Administrator/Desktop/My-study-records-master/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/img/mysql_float.jpg" alt></li>
+</ul>
+<h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3><p><img src="C:/Users/Administrator/Desktop/My-study-records-master/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/img/mysql_str.jpg" alt></p>
+<ul>
+<li>CHAR效率高于VARCHAR,CHAR相当于拿空间换时间，VARCHAR拿时间换空间</li>
+<li>CHAR默认存储数据的时候，后面会用空格填充到指定长度；而在检索的时候会去掉后面空格；VARCHAR在保存的时候不进行填充，尾部的空格会留下</li>
+<li>TEXT列不能有默认值,检索的时候不存在大小写转换</li>
+</ul>
+<h3 id="日期时间类型"><a href="#日期时间类型" class="headerlink" title="日期时间类型"></a>日期时间类型</h3><p><img src="C:/Users/Administrator/Desktop/My-study-records-master/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/img/mysql_time.jpg" alt></p>
+<h3 id="二进制类型"><a href="#二进制类型" class="headerlink" title="二进制类型"></a>二进制类型</h3><h2 id="6、MySQL存储引擎"><a href="#6、MySQL存储引擎" class="headerlink" title="6、MySQL存储引擎"></a>6、MySQL存储引擎</h2><h3 id="MySQL架构图"><a href="#MySQL架构图" class="headerlink" title="MySQL架构图"></a>MySQL架构图</h3><ul>
+<li>MySQL是由SQL接口、解析器、优化器、缓存和存储引擎组成。<ul>
+<li>Connectors<ul>
+<li>指的是不同语言与SQL的交互接口</li>
+</ul>
+</li>
+<li>Management Serivices &amp; Utillities<ul>
+<li>系统管理和工具</li>
+</ul>
+</li>
+<li>Connection Pool<ul>
+<li>连接池，管理缓冲用户连接，线程处理等需要缓存的需求</li>
+</ul>
+</li>
+<li>SQL Interface<ul>
+<li>接收用户的SQL指令，并且返回需要查询的结果。</li>
+</ul>
+</li>
+<li>Parser<ul>
+<li>解析器。</li>
+</ul>
+</li>
+<li>Optimizer<ul>
+<li>查询优化器<ul>
+<li>选取-投影-联接<ul>
+<li>SELECT  id,username FROM  user WHERE age&gt;10;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Caches &amp; Buffers<ul>
+<li>查询缓存</li>
+</ul>
+</li>
+<li>Engine<ul>
+<li>存储引擎</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="MySQL存储引擎"><a href="#MySQL存储引擎" class="headerlink" title="MySQL存储引擎"></a>MySQL存储引擎</h3><ul>
+<li>存储引擎就是指表的类型，存取和处理数据的方式。</li>
+<li>查看当前支持的存储引擎<ul>
+<li>SHOW ENGINES;<ul>
+<li>ENGINE<ul>
+<li>存储引擎名称</li>
+</ul>
+</li>
+<li>SUPPORT<ul>
+<li>是否支持此存储引擎</li>
+</ul>
+</li>
+<li>COMMENT<ul>
+<li>存储引擎的注释</li>
+</ul>
+</li>
+<li>TRANSACTIONS<ul>
+<li>是否支持事务</li>
+</ul>
+</li>
+<li>XA<ul>
+<li>是否支持分布式交易处理的XA规范</li>
+</ul>
+</li>
+<li>SAVEPOINTS<ul>
+<li>是否支持保存点，以便事务回滚刀保存点</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>查看默认的存储引擎<ul>
+<li>SHOW VARIABLES LIKES ‘storage_engine’;</li>
+</ul>
+</li>
+<li>存储引擎分类<ul>
+<li>MEMORY存储引擎<ul>
+<li>数据保存在内存中，读写效率高</li>
+<li>磁盘中产生一个以表明为名称.frm文件，只保存表结构</li>
+<li>如果关闭MySQL服务，此时数据会产生丢失</li>
+<li>max_heap_table_size默认16MB</li>
+</ul>
+</li>
+<li>CSV存储引擎<ul>
+<li>CSV存储引擎字段不支持NULL，所有的的列必须设置成NOT NULL</li>
+<li>CSV存储引擎不支持索引，也不支持分区</li>
+<li>.csv结尾的文件是保存数据的文件</li>
+<li>.csm结尾的文件是元信息文件，保存表的状态及存储的数据量</li>
+</ul>
+</li>
+<li>ARCHIVE存储引擎<ul>
+<li>适合对于不经常访问又删除不了的数据做归档存储</li>
+<li>.frm文件结构文件，.arz数据文件</li>
+<li>插入效率很高，而且占用空间小</li>
+<li>ARCHIVE存储引擎只支持INSERT和SELECT 操作，不支持UPDATE/DELETE/REPLACE操作</li>
+</ul>
+</li>
+<li>MyISAM存储引擎<ul>
+<li>默认MyISAM的表会在磁盘中产生3个文件<ul>
+<li>.frm<ul>
+<li>表结构文件</li>
+</ul>
+</li>
+<li>.MYD<ul>
+<li>数据文件</li>
+</ul>
+</li>
+<li>.MYI<ul>
+<li>索引文件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>可以在创建表的时候指定数据文件和索引文件存储位置，只有MyISAM表支持<ul>
+<li>DATA DIRECORY [=] 数据保存的绝对路径</li>
+<li>INDEX DIRECTORY [=] 索引文件保存的绝对路径</li>
+</ul>
+</li>
+<li>MyISAM单表最大支持的数据量2的64次方条记录</li>
+<li>每个表最多可以建立64个索引</li>
+<li>如果是复合索引，每个复合索引最多包含16个列，索引值最大长度是1000B</li>
+<li>MyISAM引擎的存储格式<ul>
+<li>定长(FIXED 静态) <ul>
+<li>是指字段中不包含VARCHAR/TEXT/BLOB</li>
+</ul>
+</li>
+<li>动态(DYNAMIC)<ul>
+<li>只要字段中包含了VARCHAR/TEXT/BLOB</li>
+</ul>
+</li>
+<li>压缩(COMPRESSED)<ul>
+<li>myisampack创建</li>
+</ul>
+</li>
+</ul>
+</li>
+<li></li>
+</ul>
+</li>
+<li>InnoDB存储引擎<ul>
+<li>设计遵循ACID模型，支持事务，具有从服务崩溃中恢复的能力，能够最大限度保护用户的数据<ul>
+<li>原子性(Atomiocity)</li>
+<li>一致性(Consistency)</li>
+<li>隔离性(Isolation)</li>
+<li>持久性(Durability)</li>
+</ul>
+</li>
+<li>支持行级锁，可以提升多用户并发时的读写性能</li>
+<li>支持外键，保证数据的一致性和完整性</li>
+<li>InnoDB拥有自己独立的缓冲池，常用的数据和索引都在缓存中</li>
+<li>对于INSERT、UPDATE、DELETE操作，InnoDB会使用一种change buffering的机制来自动优化，还可以提供一致性的读，并且还能够缓存变更的数据，减少磁盘I/O，提高性能</li>
+<li><ul>
+<li>Storage Limits<ul>
+<li>存储能力，64TB</li>
+</ul>
+</li>
+<li>MVCC<ul>
+<li>MVCC是一种多版本并发控制机制</li>
+</ul>
+</li>
+<li>B-Tree indexes<ul>
+<li>支持B-Tree索引</li>
+</ul>
+</li>
+<li>Full-text search indexes<ul>
+<li>支持</li>
+</ul>
+</li>
+<li>backup/point-in-time recovery<ul>
+<li>备份/时间点恢复，支持</li>
+</ul>
+</li>
+<li>Geospatial data type support<ul>
+<li>支持地理数据</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>创建InnoDB表之后会产生两个文件<ul>
+<li>.frm表结构文件</li>
+<li>.ibd，数据和索引存储表空间中</li>
+</ul>
+</li>
+<li>所有的表都需要创建主键，最好是配合上AUTO_INCREMENT,也可以放到经常查询的列作为主键</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="7、MySQL数据操作"><a href="#7、MySQL数据操作" class="headerlink" title="7、MySQL数据操作"></a>7、MySQL数据操作</h2><h3 id="添加记录"><a href="#添加记录" class="headerlink" title="添加记录"></a>添加记录</h3><ul>
+<li>INSERT [INTO] tbl_name[(col_name,…)] {VALUE|VALUES}(VALUES…);</li>
+<li>不指定字段名称<ul>
+<li>INSERT tbl_name VALUE(value…)</li>
+<li>需要按照建表时的字段顺序给每一个字段赋值</li>
+</ul>
+</li>
+<li>列出指定字段<ul>
+<li>INSERT tbl_name(字段名称,…) VALUES(值,…)</li>
+</ul>
+</li>
+<li>INSERT … SET的形式<ul>
+<li>INSERT tbl_name SET 字段名称=值,…;</li>
+</ul>
+</li>
+<li>INSERT … SELECT<ul>
+<li>INSERT tbl_name[(字段名称…)] SELECT 字段名称,… FROM  tbl_name [WHERE 条件]</li>
+</ul>
+</li>
+<li>一次添加多条记录<ul>
+<li>INSERT tbl_name[(字段名称,…)] VALUES(值,…),<br>(值,….),<br>(值,…)</li>
+</ul>
+</li>
+</ul>
+<h3 id="修改记录"><a href="#修改记录" class="headerlink" title="修改记录"></a>修改记录</h3><ul>
+<li>UPDATE tbl_name SET 字段名称=值,字段名称=值 [WHERE 条件]</li>
+<li>如果不添加条件，整个表中的记录都会被更新</li>
+</ul>
+<h3 id="删除记录"><a href="#删除记录" class="headerlink" title="删除记录"></a>删除记录</h3><ul>
+<li>DELETE FROM tbl_name [WHERE 条件]</li>
+<li>如果不添加条件，表中所有记录都会被删除</li>
+<li>DELETE 清空数据表的时候不会重置AUTO_INCREMENT的值，可以通过ALTER 语句将其重置为1</li>
+<li>彻底清空数据表<ul>
+<li>TRUNCATE [TABLE] tbl_name;<ul>
+<li>清除表中所有记录</li>
+<li>会重置AUTO_INCREMENT的值</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="查询记录"><a href="#查询记录" class="headerlink" title="查询记录"></a>查询记录</h3><ul>
+<li><p>SELECT select_expr,… FROM tbl_name<br>[WHERE 条件]<br>[GROUP BY {col_name|position} HAVING 二次筛选]<br>[ORDER BY {col_name|position|expr} [ASC|DESC]]<br>[LIMIT 限制结果集的显示条数] </p>
+</li>
+<li><p>查询表中所有记录</p>
+<ul>
+<li>SELECT * FROM tbl_name;<ul>
+<li>*所有字段</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>指定字段的信息</p>
+<ul>
+<li>SELECT 字段名称,… FROM tbl_name</li>
+</ul>
+</li>
+<li><p>库名.表名</p>
+<ul>
+<li>SELECT 字段名称,… FROM db_name.tbl_name;</li>
+</ul>
+</li>
+<li><p>给字段起别名</p>
+<ul>
+<li>SELECT 字段名称 [AS] 别名名称,… FROM db_name.tbl_name; </li>
+</ul>
+</li>
+<li><p>给数据表起别名</p>
+<ul>
+<li>SELECT 字段名称 ,… FROM tbl_name [AS] 别名;</li>
+</ul>
+</li>
+<li><p>表名.字段名的</p>
+<ul>
+<li>SELECT tbl_name.col_name,… FROM tbl_name;</li>
+</ul>
+</li>
+<li><p>WHERE 条件</p>
+<ul>
+<li><p>会筛选出符合条件的记录</p>
+<ul>
+<li><p>比较运算符</p>
+<ul>
+<li><blockquote>
+<p>、&gt;= 、&lt;、 &lt;=、 !=、 &lt;&gt;、 &lt;=&gt;</p>
+</blockquote>
+</li>
+<li><p><code>=</code> 与 <code>&lt;=&gt;</code>相似，&lt;=&gt;可以检测NULL值</p>
+</li>
+<li><p>不等于运算符 &lt;&gt; 或者 !=</p>
+</li>
+</ul>
+</li>
+<li><p>IS [NOT] NULL</p>
+<ul>
+<li>检测值是否为NULL或者NOT NULL</li>
+</ul>
+</li>
+<li><p>指定范围</p>
+<ul>
+<li>[NOT] BETWEEN … AND</li>
+</ul>
+</li>
+<li><p>指定集合</p>
+<ul>
+<li>[NOT] IN(值,…)</li>
+</ul>
+</li>
+<li><p>逻辑运算符</p>
+<ul>
+<li>AND<ul>
+<li>逻辑与</li>
+</ul>
+</li>
+<li>OR<ul>
+<li>逻辑或</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>匹配字符</p>
+<ul>
+<li>[NOT] LIKE</li>
+<li>%<ul>
+<li>任意长度的字符串</li>
+</ul>
+</li>
+<li>_<ul>
+<li>任意一个字符</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>GROUP BY 分组</p>
+<ul>
+<li>把值相同放到一个组中，最终查询出的结果只会显示组中一条记录</li>
+<li>分组配合GROUP_CONCAT()查看组中某个字段的详细信息</li>
+<li>配合聚合函数使用<ul>
+<li>COUNT()<ul>
+<li>统计记录总数</li>
+<li>如果写的是COUNT(字段名称)，字段中的值为NULL，不统计进来</li>
+<li>写COUNT(*)会统计NULL值</li>
+</ul>
+</li>
+<li>SUM()<ul>
+<li>求和</li>
+</ul>
+</li>
+<li>MAX()<ul>
+<li>求最大值</li>
+</ul>
+</li>
+<li>MIN()<ul>
+<li>求最小值</li>
+</ul>
+</li>
+<li>AVG()<ul>
+<li>求平均值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>配合WITH ROLLUP关键使用<ul>
+<li>会在记录末尾添加一条记录，是上面所有记录的总和</li>
+</ul>
+</li>
+<li>HAVING子句对分组结果进行二次筛选</li>
+</ul>
+</li>
+<li><p>ORDER BY 排序</p>
+<ul>
+<li>ORDER BY 字段名称 ASC|DESC</li>
+</ul>
+</li>
+<li><p>LIMIT 限制结果集显示条数</p>
+<ul>
+<li>LIMIT 值<ul>
+<li>显示结果集的前几条记录</li>
+</ul>
+</li>
+<li>LIMIT offset,row_count<ul>
+<li>从offset开始，显示几条记录,offset从0开始</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h3><ul>
+<li>笛卡尔积的形式</li>
+<li>内连接的形式<ul>
+<li>查询两个表中符合连接条件的记录</li>
+<li>SELECT 字段名称,… FROM tbl_name1<br>INNER JOIN tbl_name2<br>ON 连接条件</li>
+</ul>
+</li>
+<li>外连接的形式<ul>
+<li>左外连接<ul>
+<li>SELECT 字段名称,… FROM tbl_name1<br>LEFT [OUTER] JOIN tbl_name2<br>ON 条件;</li>
+<li>先显示左表中的全部记录，再去右表中查询复合条件的记录，不符合的以NULL代替</li>
+</ul>
+</li>
+<li>右外连接<ul>
+<li>SELECT 字段名称,… FROM tbl_name1<br>RIGHT [OUTER] JOIN tbl_name2<br>ON 条件;</li>
+<li>先显示右表中的全部记录，再去左表中查询复合条件的记录，不符合的以NULL代替</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="外键约束"><a href="#外键约束" class="headerlink" title="外键约束"></a>外键约束</h3><ul>
+<li>只有InnoDB存储引擎支持外键</li>
+<li>创建外键<ul>
+<li>建表时指定外键<ul>
+<li>[CONSTRAINT 外键名称 ]FOREIGN KEY(字段名称) REFERENCES 主表(字段名称)</li>
+<li>子表的外键字段和主表的主键字段类型要相似；如果是数值型要求一致，并且无符号也要一致；如果是字符型，要求类型一致，长度可以不同</li>
+<li>如果外键字段没有创建索引，MySQL会自动帮我们添加索引</li>
+<li>子表的外键关联的必须是父表的主键</li>
+<li>外键约束的参照操作<ul>
+<li>CASCADE<ul>
+<li>从父表删除或更新，子表也跟着删除或者更新，级联的操作</li>
+</ul>
+</li>
+<li>SET NULL<ul>
+<li>从父表删除或者更新记录，并设置子表的外键列为NULL。</li>
+</ul>
+</li>
+<li>NO ACTION | RESTRICT<ul>
+<li>拒绝对父表做更新或者删除操作</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>动态添加外键<ul>
+<li>动态添加外键<ul>
+<li>ALTER TABLE tbl_name<br>[CONSTRAINT 外键名称] ADD FOREIGN KEY(外键字段) REFERENCES 主表(主键字段);</li>
+<li>动态添加外键之前表中的记录一定合法的记录，没有脏值，否则外键添加不成功</li>
+</ul>
+</li>
+<li>动态删除外键<ul>
+<li>ALTER TABLE tbl_name<br>DROP FOREIGN KEY fk_name;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="特殊形式的查询"><a href="#特殊形式的查询" class="headerlink" title="特殊形式的查询"></a>特殊形式的查询</h3><ul>
+<li>子查询<ul>
+<li>SELECT 字段名称 FROM tbl_name WHERE col_name=(SELECT col_name FROM tbl_name)</li>
+<li>内层语句查询的结果可以做为外层语句查询的条件</li>
+<li>由IN引发的子查询</li>
+<li>由比较运算符引出子查询</li>
+<li>由EXISTS引发的子查询<br><img src="C:/Users/Administrator/Desktop/My-study-records-master/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/img/mysql_sq.jpg" alt></li>
+<li>ANY SOME ALL</li>
+<li>INSERT … SELECT</li>
+<li>CREATE … SELECT</li>
+<li>CREATE TABLE tbl_name LIKE tbl_name;</li>
+</ul>
+</li>
+<li>联合查询<ul>
+<li>UNION<ul>
+<li>SELECT 字段名称,… FROM tbl_name1<br>UNION<br>SELECT 字段名称… FROM tbl_name2;</li>
+</ul>
+</li>
+<li>UNION ALL<ul>
+<li>SELECT 字段名称,… FROM tbl_name1<br>UNION ALL<br>SELECT 字段名称… FROM tbl_name2;</li>
+</ul>
+</li>
+<li>UNION ALL 是简单的合并，UNION会去掉表中重复记录</li>
+</ul>
+</li>
+<li>自身连接查询<ul>
+<li>无限级分类的实现形式</li>
+</ul>
+</li>
+<li>正则表达式查询<ul>
+<li>正则表达式的模式字符<ul>
+<li>^<ul>
+<li>匹配字符串开始的部分</li>
+</ul>
+</li>
+<li>$<ul>
+<li>匹配字符串结束部分</li>
+</ul>
+</li>
+<li>.<ul>
+<li>代表一个任意字符</li>
+</ul>
+</li>
+<li>[字符集合]<ul>
+<li>[abc][a-z] [0-9]</li>
+</ul>
+</li>
+<li>[^字符集合]<ul>
+<li>除了集合中的内容</li>
+</ul>
+</li>
+<li>s1|s2|s3<ul>
+<li>匹配s1或者s2或者s3</li>
+</ul>
+</li>
+<li>*<ul>
+<li>代表匹配前面的字符0次1次或者多次</li>
+</ul>
+</li>
+<li>+<ul>
+<li>代表匹配前面的字符至少出现1次</li>
+</ul>
+</li>
+<li>字符{n}<ul>
+<li>前面的字符正好出现n次</li>
+</ul>
+</li>
+<li>字符{m,n}<ul>
+<li>前面的字符至少出现m次，最多出现n次</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>REGEXP ‘匹配方式’<ul>
+<li>SELECT 字段名称,… FROM tbl_name WHERE 字段名称 REGEXP ‘匹配模式’</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="8、MYSQL常用函数"><a href="#8、MYSQL常用函数" class="headerlink" title="8、MYSQL常用函数"></a>8、MYSQL常用函数</h2><h3 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h3><ul>
+<li>CEIL()<ul>
+<li>进一取整</li>
+</ul>
+</li>
+<li>FLOOR()<ul>
+<li>舍掉小数部分</li>
+</ul>
+</li>
+<li>ROUND()<ul>
+<li>四舍五入</li>
+</ul>
+</li>
+<li>TRUNCATE()<ul>
+<li>截取小数点后几位</li>
+</ul>
+</li>
+<li>MOD()<ul>
+<li>取余数</li>
+</ul>
+</li>
+<li>ABS()<ul>
+<li>取绝对值</li>
+</ul>
+</li>
+<li>POWER()<ul>
+<li>幂运算</li>
+</ul>
+</li>
+<li>PI()<ul>
+<li>圆周率</li>
+</ul>
+</li>
+<li>RAND()或者RAND(X)<ul>
+<li>0~1之间的随机数</li>
+</ul>
+</li>
+<li>SIGN(X)<ul>
+<li>得到数字符号</li>
+</ul>
+</li>
+<li>EXP(X)<ul>
+<li>计算e的x次方</li>
+</ul>
+</li>
+</ul>
+<h3 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h3><ul>
+<li>CHAR_LENGTH():得到字符串的字符数</li>
+<li>LENGTH():返回字符串的字节长度</li>
+</ul>
+<pre><code class="sql">select char_length(&#39;你好啊&#39;);
++--------------------------+
+| char_length(&#39;你好啊&#39;)    |
++--------------------------+
+|                        3 |
++--------------------------+
+
+
+mysql&gt; select length(&quot;你好啊&quot;);
++---------------------+
+| length(&quot;你好啊&quot;)    |
++---------------------+
+|                   9 |
++---------------------+</code></pre>
+<ul>
+<li><p>CONCAT(s1,s2,….):将字符串合并成一个字符串，含有<code>null</code>结果返回<code>null</code>。</p>
+</li>
+<li><p>CONCAT_WS(x,s1,s2,s2….)：以指定分隔符拼接字符串(<code>x</code>)，含有<code>null</code>就转换成空字符。</p>
+</li>
+<li><p>UPPER()| UCASE() LOWER()|LCASE(): 将字符串转换成大写或者小写 </p>
+</li>
+<li><p>REVERSE(): 字符串的反转</p>
+</li>
+<li><p>LEFT()|RIGHT(): 返回字符串的前几个字符或者后几个字符</p>
+</li>
+</ul>
+<pre><code class="sql">SELECT LEFT(&#39;hello&#39;,2),RIGHT(&#39;hello&#39;,2);</code></pre>
+<ul>
+<li>LPAD()|RPAD(): 用字符串填充到指定长度</li>
+</ul>
+<pre><code class="sql">SELECT LPAD(&#39;abc&#39;,10,&#39;?&#39;);</code></pre>
+<ul>
+<li>去掉字符串两端/左边/右边的空格TRIM()|LTRIM()|RTRIM():</li>
+<li>REPEAT(): 重复指定的次数</li>
+<li>REPLACE(): 替代字符串</li>
+</ul>
+<pre><code class="sql">select replace(&#39;hello world&#39;, &#39;hello&#39;, &#39;hei&#39;);
++----------------------------------------+
+| replace(&#39;hello world&#39;, &#39;hello&#39;, &#39;hei&#39;) |
++----------------------------------------+
+| hei world                              |
++----------------------------------------+</code></pre>
+<ul>
+<li>SUBSTRING(str, start, to): 截取字符串</li>
+</ul>
+<pre><code class="sql">SELECT SUBSTRING(&#39;abcdefg&#39;,1,5);
+
+-- 从1开始
++--------------------------+
+| SUBSTRING(&#39;abcdefg&#39;,1,5) |
++--------------------------+
+| abcde                    |
++--------------------------+</code></pre>
+<ul>
+<li>STRCMP(str, str): 比较字符串的ASCII顺序。<br>第一个大于第二个返回<code>1</code>;<br>第一个小于第二个返回<code>-1</code>;<br>第一个等于第二个返回<code>0</code>;</li>
+</ul>
+<h3 id="日期时间函数"><a href="#日期时间函数" class="headerlink" title="日期时间函数"></a>日期时间函数</h3><pre><code class="sql">-- 返回当前日期
+SELECT CURDATE(),CURRENT_DATE();
+
+-- 返回当前时间
+SELECT CURTIME(),CURRENT_TIME();
+
+-- 返回当前的日期时间
+SELECT NOW(),CURRENT_TIMESTAMP(),SYSDATE();
+
+-- 返回日期中的月份和月份的名称
+SELECT MONTH(&#39;2017-02-19&#39;);
+SELECT MONTH(CURDATE()),MONTHNAME(CURDATE());
+
+-- 返回星期几
+SELECT DAYNAME(NOW());
+
+-- 返回一周内的第几天,0代表星期一
+SELECT DAYOFWEEK(NOW());
+SELECT WEEK(NOW());
+SELECT YEAR(NOW()),MONTH(NOW()),DAY(NOW()),HOUR(NOW()),MINUTE(NOW()),SECOND(NOW());
+
+-- DATEDIFF()计算两个日期相差的天数
+SELECT DATEDIFF(&#39;2017-03-06&#39;,&#39;2017-03-02&#39;);</code></pre>
+<blockquote>
+<p><a href="http://wiki.jikexueyuan.com/project/mysql/useful-functions/time-functions.html" target="_blank" rel="noopener">http://wiki.jikexueyuan.com/project/mysql/useful-functions/time-functions.html</a></p>
+</blockquote>
+<h3 id="其它常用函数"><a href="#其它常用函数" class="headerlink" title="其它常用函数"></a>其它常用函数</h3><pre><code class="sql">-- 测试其它常用函数，版本、连接数
+SELECT VERSION(),CONNECTION_ID();
+
+SELECT USER(),CURRENT_USER(),SYSTEM_USER(),SESSION_USER();
+
+-- 得到上一步插入操作产生AUTO_INCREMENT的值
+SELECT LAST_INSERT_ID();
+
+SELECT MD5(&#39;king&#39;);
+SELECT SHA(&#39;king&#39;);
+-- PASSWORD():密码加密算法
+SELECT PASSWORD(&#39;root&#39;);</code></pre>
+<h2 id="9、图形化工具管理数据库"><a href="#9、图形化工具管理数据库" class="headerlink" title="9、图形化工具管理数据库"></a>9、图形化工具管理数据库</h2><h3 id="BS"><a href="#BS" class="headerlink" title="BS"></a>BS</h3><ul>
+<li>phpmyadmin</li>
+</ul>
+<h3 id="CS"><a href="#CS" class="headerlink" title="CS"></a>CS</h3><ul>
+<li>Sequel Pro</li>
+<li>windows<ul>
+<li>SQLyog</li>
+<li>navit for mysql</li>
+<li>mysql front</li>
+<li>mysql workbench</li>
+</ul>
+</li>
+</ul>
+<h2 id="常用SQL语句-1"><a href="#常用SQL语句-1" class="headerlink" title="常用SQL语句"></a>常用SQL语句</h2><h3 id="查看上一步操作产生的警告信息"><a href="#查看上一步操作产生的警告信息" class="headerlink" title="查看上一步操作产生的警告信息"></a>查看上一步操作产生的警告信息</h3><ul>
+<li>SHOW WARNINGS;</li>
+</ul>
+<h3 id="mysql中的注释"><a href="#mysql中的注释" class="headerlink" title="mysql中的注释"></a>mysql中的注释</h3><pre><code class="sql"># 注释内容
+-- 注释内容</code></pre>
+<h3 id="检测表"><a href="#检测表" class="headerlink" title="检测表"></a>检测表</h3><ul>
+<li>CHECK TABLE tbl_name</li>
+</ul>
+<h3 id="修复表"><a href="#修复表" class="headerlink" title="修复表"></a>修复表</h3><ul>
+<li>REPAIR TABLE tbl_name</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Mysql/" rel="tag"># Mysql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-Object对象/" rel="next" title="Object对象">
+                <i class="fa fa-chevron-left"></i> Object对象
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-Nim-Game[E]/" rel="prev" title="Nim Game[E]">
+                Nim Game[E] <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#深入浅出MySQL数据库"><span class="nav-number">1.</span> <span class="nav-text">深入浅出MySQL数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、什么是数据库？"><span class="nav-number">1.1.</span> <span class="nav-text">1、什么是数据库？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库-Database-是按照数据结构来组织、存储和管理数据的仓库"><span class="nav-number">1.1.1.</span> <span class="nav-text">数据库(Database)是按照数据结构来组织、存储和管理数据的仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见数据库"><span class="nav-number">1.1.2.</span> <span class="nav-text">常见数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关术语"><span class="nav-number">1.1.3.</span> <span class="nav-text">相关术语</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、MySQL相关操作"><span class="nav-number">1.2.</span> <span class="nav-text">2、MySQL相关操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置文件"><span class="nav-number">1.2.1.</span> <span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#登陆-退出MySQL"><span class="nav-number">1.2.2.</span> <span class="nav-text">登陆/退出MySQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL语句语法规范"><span class="nav-number">1.2.3.</span> <span class="nav-text">SQL语句语法规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用SQL语句"><span class="nav-number">1.2.4.</span> <span class="nav-text">常用SQL语句</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、数据库相关操作"><span class="nav-number">1.3.</span> <span class="nav-text">3、数据库相关操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建数据库"><span class="nav-number">1.3.1.</span> <span class="nav-text">创建数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看当前服务器下全部数据库"><span class="nav-number">1.3.2.</span> <span class="nav-text">查看当前服务器下全部数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看指定数据库的详细信息"><span class="nav-number">1.3.3.</span> <span class="nav-text">查看指定数据库的详细信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改指定数据库的编码方式"><span class="nav-number">1.3.4.</span> <span class="nav-text">修改指定数据库的编码方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打开指定数据库"><span class="nav-number">1.3.5.</span> <span class="nav-text">打开指定数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#得到当前打开的数据库"><span class="nav-number">1.3.6.</span> <span class="nav-text">得到当前打开的数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除指定的数据库"><span class="nav-number">1.3.7.</span> <span class="nav-text">删除指定的数据库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、数据表相关操作"><span class="nav-number">1.4.</span> <span class="nav-text">4、数据表相关操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据表"><span class="nav-number">1.4.1.</span> <span class="nav-text">数据表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建表"><span class="nav-number">1.4.2.</span> <span class="nav-text">创建表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看当前数据库下已有数据表"><span class="nav-number">1.4.3.</span> <span class="nav-text">查看当前数据库下已有数据表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看指定数据表的详细信息"><span class="nav-number">1.4.4.</span> <span class="nav-text">查看指定数据表的详细信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看表结构"><span class="nav-number">1.4.5.</span> <span class="nav-text">查看表结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除指定的数据表"><span class="nav-number">1.4.6.</span> <span class="nav-text">删除指定的数据表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表结构相关操作"><span class="nav-number">1.4.7.</span> <span class="nav-text">表结构相关操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、MySQL中的数据类型"><span class="nav-number">1.5.</span> <span class="nav-text">5、MySQL中的数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数值型"><span class="nav-number">1.5.1.</span> <span class="nav-text">数值型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串类型"><span class="nav-number">1.5.2.</span> <span class="nav-text">字符串类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日期时间类型"><span class="nav-number">1.5.3.</span> <span class="nav-text">日期时间类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二进制类型"><span class="nav-number">1.5.4.</span> <span class="nav-text">二进制类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、MySQL存储引擎"><span class="nav-number">1.6.</span> <span class="nav-text">6、MySQL存储引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL架构图"><span class="nav-number">1.6.1.</span> <span class="nav-text">MySQL架构图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL存储引擎"><span class="nav-number">1.6.2.</span> <span class="nav-text">MySQL存储引擎</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、MySQL数据操作"><span class="nav-number">1.7.</span> <span class="nav-text">7、MySQL数据操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加记录"><span class="nav-number">1.7.1.</span> <span class="nav-text">添加记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改记录"><span class="nav-number">1.7.2.</span> <span class="nav-text">修改记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除记录"><span class="nav-number">1.7.3.</span> <span class="nav-text">删除记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询记录"><span class="nav-number">1.7.4.</span> <span class="nav-text">查询记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多表查询"><span class="nav-number">1.7.5.</span> <span class="nav-text">多表查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#外键约束"><span class="nav-number">1.7.6.</span> <span class="nav-text">外键约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊形式的查询"><span class="nav-number">1.7.7.</span> <span class="nav-text">特殊形式的查询</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8、MYSQL常用函数"><span class="nav-number">1.8.</span> <span class="nav-text">8、MYSQL常用函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数学函数"><span class="nav-number">1.8.1.</span> <span class="nav-text">数学函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串函数"><span class="nav-number">1.8.2.</span> <span class="nav-text">字符串函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日期时间函数"><span class="nav-number">1.8.3.</span> <span class="nav-text">日期时间函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其它常用函数"><span class="nav-number">1.8.4.</span> <span class="nav-text">其它常用函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9、图形化工具管理数据库"><span class="nav-number">1.9.</span> <span class="nav-text">9、图形化工具管理数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BS"><span class="nav-number">1.9.1.</span> <span class="nav-text">BS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CS"><span class="nav-number">1.9.2.</span> <span class="nav-text">CS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用SQL语句-1"><span class="nav-number">1.10.</span> <span class="nav-text">常用SQL语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看上一步操作产生的警告信息"><span class="nav-number">1.10.1.</span> <span class="nav-text">查看上一步操作产生的警告信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql中的注释"><span class="nav-number">1.10.2.</span> <span class="nav-text">mysql中的注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检测表"><span class="nav-number">1.10.3.</span> <span class="nav-text">检测表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修复表"><span class="nav-number">1.10.4.</span> <span class="nav-text">修复表</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

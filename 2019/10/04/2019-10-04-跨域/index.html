@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="HTML5,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="WebSocket TCP的三次握手与四次分手 三次握手 四次分手：   WebSocket简介 实例 WebSocket原生事件 WebSocket原生方法 readyState      WebSocketTCP的三次握手与四次分手三次握手TCP是主机对主机层的传输控制协议，提供可靠的连接服务，采用三次握手确认建立一个连接: 位码即tcp标志位,有6种标示:  SYN(synchrono">
+<meta name="keywords" content="HTML5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跨域">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-跨域/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="WebSocket TCP的三次握手与四次分手 三次握手 四次分手：   WebSocket简介 实例 WebSocket原生事件 WebSocket原生方法 readyState      WebSocketTCP的三次握手与四次分手三次握手TCP是主机对主机层的传输控制协议，提供可靠的连接服务，采用三次握手确认建立一个连接: 位码即tcp标志位,有6种标示:  SYN(synchrono">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/HTML5/img/TCP4.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/HTML5/img/TCP5.png">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.735Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="跨域">
+<meta name="twitter:description" content="WebSocket TCP的三次握手与四次分手 三次握手 四次分手：   WebSocket简介 实例 WebSocket原生事件 WebSocket原生方法 readyState      WebSocketTCP的三次握手与四次分手三次握手TCP是主机对主机层的传输控制协议，提供可靠的连接服务，采用三次握手确认建立一个连接: 位码即tcp标志位,有6种标示:  SYN(synchrono">
+<meta name="twitter:image" content="c:/Users/Administrator/Desktop/My-study-records-master/HTML5/img/TCP4.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-跨域/">
+
+
+
+
+
+  <title>跨域 | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-跨域/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">跨域</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T10:00:00+08:00">
+                2019-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <!-- toc orderedList:0 depthFrom:1 depthTo:6 -->
+
+<ul>
+<li><a href="#websocket">WebSocket</a><ul>
+<li><a href="#tcp的三次握手与四次分手">TCP的三次握手与四次分手</a><ul>
+<li><a href="#三次握手">三次握手</a></li>
+<li><a href="#四次分手">四次分手：</a></li>
+</ul>
+</li>
+<li><a href="#websocket简介">WebSocket简介</a></li>
+<li><a href="#实例">实例</a></li>
+<li><a href="#websocket原生事件">WebSocket原生事件</a></li>
+<li><a href="#websocket原生方法">WebSocket原生方法</a></li>
+<li><a href="#readystate">readyState</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h1><h2 id="TCP的三次握手与四次分手"><a href="#TCP的三次握手与四次分手" class="headerlink" title="TCP的三次握手与四次分手"></a>TCP的三次握手与四次分手</h2><h3 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h3><p>TCP是主机对主机层的传输控制协议，提供可靠的连接服务，采用三次握手确认建立一个连接:</p>
+<p>位码即tcp标志位,有6种标示:</p>
+<ol>
+<li>SYN(synchronous建立联机)</li>
+<li>ACK(acknowledgement 确认)</li>
+<li>PSH(push传送)</li>
+<li>FIN(finish结束)</li>
+<li>RST(reset重置)</li>
+<li>URG(urgent紧急)</li>
+<li>Sequence number(顺序号码)</li>
+<li>Acknowledge number(确认号码)</li>
+</ol>
+<p>握手过程：</p>
+<p>第一次握手：建立连接。客户端发送连接请求报文段，将<code>SYN</code>位置为1，<code>Sequence Number</code>为x；然后，客户端进入<code>SYN_SEND</code>状态，等待服务器的确认；<br>第二次握手：服务器收到<code>SYN</code>报文段。服务器收到客户端的<code>SYN</code>报文段，需要对这个<code>SYN</code>报文段进行确认，设置<code>Acknowledgment Number</code>为<code>x+1(Sequence Number+1)</code>；同时，自己还要发送<code>SYN</code>请求信息，将<code>SYN</code>位置为1，<code>Sequence Number</code>为y；服务器端将上述所有信息放到一个报文段（即<code>SYN+ACK</code>报文段）中，一并发送给客户端，此时服务器进入<code>SYN_RECV</code>状态；<br>第三次握手：客户端收到服务器的<code>SYN+ACK</code>报文段。然后将<code>Acknowledgment Number</code>设置为y+1，向服务器发送<code>ACK</code>报文段，这个报文段发送完毕以后，客户端和服务器端都进入<code>ESTABLISHED</code>状态，完成<code>TCP</code>三次握手；</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/HTML5/img/TCP4.jpg" alt="TCP/IP"></p>
+<h3 id="四次分手："><a href="#四次分手：" class="headerlink" title="四次分手："></a>四次分手：</h3><p>由于TCP连接是全双工的，因此每个方向都必须单独进行关闭。这个原则是当一方完成它的数据发送任务后就能发送一个<code>FIN</code>来终止这个方向的连接。收到一个 <code>FIN</code>只意味着这一方向上没有数据流动，一个<code>TCP</code>连接在收到一个<code>FIN</code>后仍能发送数据。首先进行关闭的一方将执行主动关闭，而另一方执行被动关闭。</p>
+<p>操作：</p>
+<ol>
+<li>客户端A发送一个<code>FIN</code>，用来关闭客户A到服务器B的数据传送。</li>
+<li>服务器B收到这个<code>FIN</code>，它发回一个<code>ACK</code>，确认序号为收到的序号加1。和<code>SYN</code>一样，一个<code>FIN</code>将占用一个序号。</li>
+<li>服务器B关闭与客户端A的连接，发送一个<code>FIN</code>给客户端A。</li>
+<li>客户端A发回<code>ACK</code>报文确认，并将确认序号设置为收到序号加1。</li>
+</ol>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/HTML5/img/TCP5.png" alt="TCP/IP"></p>
+<blockquote>
+<p>参考：</p>
+</blockquote>
+<ol>
+<li><a href="http://www.cnblogs.com/Jessy/p/3535612.html" target="_blank" rel="noopener">http://www.cnblogs.com/Jessy/p/3535612.html</a></li>
+<li><a href="https://www.zhihu.com/question/24853633" target="_blank" rel="noopener">https://www.zhihu.com/question/24853633</a></li>
+</ol>
+<h2 id="WebSocket简介"><a href="#WebSocket简介" class="headerlink" title="WebSocket简介"></a>WebSocket简介</h2><p>WebSocket协议是基于<code>TCP</code>的一种新的网络协议。它实现了浏览器与服务器全双工(<code>full-duplex</code>)通信——可以通俗的解释为服务器主动发送信息给客户端。<br>只需要经过一次<code>HTTP</code>请求，就可以做到源源不断的信息传送了（在程序设计中，这种设计叫做回调，即：你有信息了再来通知我）。</p>
+<p>客户端请求：</p>
+<pre><code>GET /chat HTTP/1.1
+Host: server.example.com
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==
+Sec-WebSocket-Protocol: chat, superchat
+Sec-WebSocket-Version: 13
+Origin: http://example.com</code></pre><p><code>Upgrade: websocket</code>、<code>Connection: Upgrade</code>表示希望将http协议升级到Websocket协议。<br><code>Sec-WebSocket-Key</code>是一个经过base64编码的随机字节。<br><code>Sec-WebSocket-Protocol</code>表示客户端支持的协议列表。<br><code>Sec-WebSocket-Version</code>:是告诉服务器所使用的Websocket Draft（协议版本）。<br><code>Origin</code>字段是可选的，表示在浏览器中发起此Websocket连接所在的页面。</p>
+<p>服务端响应：</p>
+<pre><code>HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: HSmrc0sMlYUkAGmm5OPpG2HaGWk=
+Sec-WebSocket-Protocol: chat</code></pre><p><code>Sec-WebSocket-Accept</code>:是把<code>Sec-WebSocket-Key</code>加上一个特殊字符串“<code>258EAFA5-E914-47DA-95CA-C5AB0DC85B11</code>”，然后计算<strong>SHA-1</strong>摘要，之后进行<strong>BASE-64</strong>编码，将结果做为<code>Sec-WebSocket-Accept</code>头的值，返回给客户端。</p>
+<blockquote>
+<p>参考：<br>1.<a href="https://www.zhihu.com/question/20215561" title="zhihu" target="_blank" rel="noopener">知乎</a><br>2.<a href="https://zh.wikipedia.org/wiki/WebSocket" title="中文" target="_blank" rel="noopener">维基百科</a></p>
+</blockquote>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>服务器端：</p>
+<pre><code class="js">const WebSocket = require(&#39;ws&#39;);
+
+const WebSocketServer = WebSocket.Server;
+
+const wss = new WebSocketServer({
+    port: 3000
+});
+
+//启动服务链接
+wss.on(&#39;connection&#39;, function (ws) {
+    console.log(`[SERVER] connection()`);
+    //监听有否有请求信息
+    ws.on(&#39;message&#39;, function (message) {
+        console.log(`[SERVER] Received: ${message}`);
+        setTimeout(() =&gt; {
+            //定时给客户端发送信息
+            ws.send(`What&#39;s your name?`, (err) =&gt; {
+                if (err) {
+                    console.log(`[SERVER] error: ${err}`);
+                }
+            });
+        }, 1000);
+    })
+});
+
+console.log(&#39;ws server started at port 3000...&#39;);</code></pre>
+<p>客户端：</p>
+<pre><code class="js">const WebSocket = require(&#39;ws&#39;);
+let count = 0;
+let ws = new WebSocket(&#39;ws://localhost:3000/ws/chat&#39;);
+//打开链接，给服务器发送一条信息
+ws.on(&#39;open&#39;, function () {
+    console.log(`[CLIENT] open()`);
+    ws.send(&#39;Hello!&#39;);
+});
+//监听服务器是否有信息发送过来
+ws.on(&#39;message&#39;, function (message) {
+    console.log(`[CLIENT] Received: ${message}`);
+    count++;
+    if (count &gt; 3) {
+        ws.send(&#39;Goodbye!&#39;);
+        ws.close();
+    } else {
+        setTimeout(() =&gt; {
+            ws.send(`Hello, I&#39;m Mr No.${count}!`);
+        }, 1000);
+    }
+});</code></pre>
+<p>运行后：</p>
+<pre><code class="shell">ws server started at port 3000...
+[SERVER] connection()
+[CLIENT] open()
+[SERVER] Received: Hello!
+[CLIENT] Received: What&#39;s your name?
+[SERVER] Received: Hello, I&#39;m Mr No.1!
+[CLIENT] Received: What&#39;s your name?
+[SERVER] Received: Hello, I&#39;m Mr No.2!
+[CLIENT] Received: What&#39;s your name?
+[SERVER] Received: Hello, I&#39;m Mr No.3!
+[CLIENT] Received: What&#39;s your name?
+[SERVER] Received: Goodbye!
+[SERVER] error: Error: not opened
+
+end&#39;</code></pre>
+<blockquote>
+<p>参考：<a href="http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014727922914053479c966220f47da91991fa9c27ac3ea000" title="廖雪峰JavaScript教程" target="_blank" rel="noopener">websocket</a></p>
+</blockquote>
+<h2 id="WebSocket原生事件"><a href="#WebSocket原生事件" class="headerlink" title="WebSocket原生事件"></a>WebSocket原生事件</h2><table>
+<thead>
+<tr>
+<th>事件</th>
+<th>事件处理程序</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>open</td>
+<td>Socket.onopen</td>
+<td>连接建立时触发</td>
+</tr>
+<tr>
+<td>message</td>
+<td>Socket.onmessage</td>
+<td>客户端接收服务端数据时触发</td>
+</tr>
+<tr>
+<td>error</td>
+<td>Socket.onerror</td>
+<td>通信发生错误时触发</td>
+</tr>
+<tr>
+<td>close</td>
+<td>Socket.onclose</td>
+<td>连接关闭时触发</td>
+</tr>
+</tbody></table>
+<pre><code class="js">var ws = new WebSocket(&#39;ws://localhost:3000/ws/chat&#39;);
+ws.onopen=function () {
+    ws.send(&#39;Hello!&#39;);
+};</code></pre>
+<h2 id="WebSocket原生方法"><a href="#WebSocket原生方法" class="headerlink" title="WebSocket原生方法"></a>WebSocket原生方法</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Socket.send()</td>
+<td>使用连接发送数据</td>
+</tr>
+<tr>
+<td>Socket.close()</td>
+<td>关闭连接</td>
+</tr>
+</tbody></table>
+<h2 id="readyState"><a href="#readyState" class="headerlink" title="readyState"></a>readyState</h2><table>
+<thead>
+<tr>
+<th>特性常量</th>
+<th>取值</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>WebSocket.CONNECTING</td>
+<td>0</td>
+<td>连接正在进行中，但还未建立</td>
+</tr>
+<tr>
+<td>WebSocket.OPEN</td>
+<td>1</td>
+<td>连接已建立，消息可以开始传递</td>
+</tr>
+<tr>
+<td>WebSocket.CLOSING</td>
+<td>2</td>
+<td>连接正在进行关闭</td>
+</tr>
+<tr>
+<td>WebSocket.CLOSED</td>
+<td>3</td>
+<td>连接已关闭</td>
+</tr>
+</tbody></table>
+<h3 id="连接池"><a href="#连接池" class="headerlink" title="连接池"></a>连接池</h3><p>每一个连接都放到一个数组中，组成连接池。</p>
+<pre><code class="js">// 连接池
+var clients = [];
+
+wss.on(&#39;connection&#39;, function(ws) {
+    // 将该连接加入连接池
+    clients.push(ws);
+    ws.on(&#39;message&#39;, function(message) {
+        // 广播消息
+        clients.forEach(function(ws1){
+            if(ws1 !== ws) {
+                ws1.send(message);
+            }
+       })
+    });
+});</code></pre>
+<p>为了区分每个连接，可以添加<code>UUID</code> ，通用唯一识别码（Universally Unique Identifier）</p>
+<blockquote>
+<p><a href="http://www.jianshu.com/p/ea0a9a6311cf" target="_blank" rel="noopener">http://www.jianshu.com/p/ea0a9a6311cf</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTML5/" rel="tag"># HTML5</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-3Sum-Closest-[M]/" rel="next" title="3Sum Closest [M]">
+                <i class="fa fa-chevron-left"></i> 3Sum Closest [M]
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-网络/" rel="prev" title="网络">
+                网络 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WebSocket"><span class="nav-number">1.</span> <span class="nav-text">WebSocket</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP的三次握手与四次分手"><span class="nav-number">1.1.</span> <span class="nav-text">TCP的三次握手与四次分手</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三次握手"><span class="nav-number">1.1.1.</span> <span class="nav-text">三次握手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四次分手："><span class="nav-number">1.1.2.</span> <span class="nav-text">四次分手：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebSocket简介"><span class="nav-number">1.2.</span> <span class="nav-text">WebSocket简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">1.3.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebSocket原生事件"><span class="nav-number">1.4.</span> <span class="nav-text">WebSocket原生事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebSocket原生方法"><span class="nav-number">1.5.</span> <span class="nav-text">WebSocket原生方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#readyState"><span class="nav-number">1.6.</span> <span class="nav-text">readyState</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#连接池"><span class="nav-number">1.6.1.</span> <span class="nav-text">连接池</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

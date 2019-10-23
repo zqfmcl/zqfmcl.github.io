@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Javascript,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="2016年1月3日bootstrap网格系统网格系统的实现原理非常简单，仅仅是通过定义容器大小，平分12份(也有平分成24份或32份，但12份是最常见的)，再调整内外边距，最后结合媒体查询，就制作出了强大的响应式网格系统。 &amp;lt;div class=&amp;quot;col-md-8&amp;quot;&amp;gt;//占据十二分之八的宽度， &amp;lt;div class=&amp;quot;col-md-4&amp;quot;&amp;g">
+<meta name="keywords" content="Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bootstrap">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-Bootstrap/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="2016年1月3日bootstrap网格系统网格系统的实现原理非常简单，仅仅是通过定义容器大小，平分12份(也有平分成24份或32份，但12份是最常见的)，再调整内外边距，最后结合媒体查询，就制作出了强大的响应式网格系统。 &amp;lt;div class=&amp;quot;col-md-8&amp;quot;&amp;gt;//占据十二分之八的宽度， &amp;lt;div class=&amp;quot;col-md-4&amp;quot;&amp;g">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2016/1/img/dropdown.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2016/1/img/btn-1.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2016/1/img/btn-2.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2016/1/img/form.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2016/1/img/json.jpg">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.053Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bootstrap">
+<meta name="twitter:description" content="2016年1月3日bootstrap网格系统网格系统的实现原理非常简单，仅仅是通过定义容器大小，平分12份(也有平分成24份或32份，但12份是最常见的)，再调整内外边距，最后结合媒体查询，就制作出了强大的响应式网格系统。 &amp;lt;div class=&amp;quot;col-md-8&amp;quot;&amp;gt;//占据十二分之八的宽度， &amp;lt;div class=&amp;quot;col-md-4&amp;quot;&amp;g">
+<meta name="twitter:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2016/1/img/dropdown.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-Bootstrap/">
+
+
+
+
+
+  <title>Bootstrap | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-Bootstrap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Bootstrap</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T10:00:00+08:00">
+                2019-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="2016年1月3日"><a href="#2016年1月3日" class="headerlink" title="2016年1月3日"></a>2016年1月3日</h1><h2 id="bootstrap"><a href="#bootstrap" class="headerlink" title="bootstrap"></a>bootstrap</h2><h3 id="网格系统"><a href="#网格系统" class="headerlink" title="网格系统"></a>网格系统</h3><p>网格系统的实现原理非常简单，仅仅是通过定义容器大小，平分12份(也有平分成24份或32份，但12份是最常见的)，再调整内外边距，最后结合媒体查询，就制作出了强大的响应式网格系统。</p>
+<pre><code class="html">&lt;div class=&quot;col-md-8&quot;&gt;//占据十二分之八的宽度，
+&lt;div class=&quot;col-md-4&quot;&gt;
+
+//媒体查询，当宽度大于等于992px的时候，该元素位置变化。向右移动8个网格。
+//类名col-nd-pull是向左移动。
+@media (min-width: 992px)
+.col-md-push-8 {
+    left: 66.66666667%;
+}</code></pre>
+<p><strong>媒体查询</strong></p>
+<pre><code class="html">/* 超小屏幕（手机，小于 768px） */
+@media (max-width: @screen-xs-min) { ... }
+/* 没有任何媒体查询相关的代码，因为这在 Bootstrap 中是默认的（还记得 Bootstrap 是移动设备优先的吗？） */
+@media (max-width: 767px) {
+    /*在小于768像素的屏幕里,这里的样式才生效*/
+}
+
+
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: @screen-sm-min) { ... }
+@media (min-width: 768px) and (max-width: 991px) {
+    /*在768和991像素之间的屏幕里,这里的样式才生效*/
+}
+
+
+/* 中等屏幕（桌面显示器，大于等于 992px） */
+@media (min-width: @screen-md-min) { ... }
+@media (min-width: 992px) and (max-width: 1199px) {
+    /*在992和1199像素之间的屏幕里,这里的样式才生效*/
+}
+
+
+/* 大屏幕（大桌面显示器，大于等于 1200px） */
+@media (min-width: @screen-lg-min) { ... }
+@media (min-width: 1200px) {
+    /*在大于1200像素的屏幕里,这里的样式才生效*/
+}
+</code></pre>
+<p><strong>清除浮动</strong></p>
+<p><code>.clearfix</code>类名可以清除浮动。</p>
+<p><strong>偏移空间</strong><br><code>col-md-off-6</code>可以在一定尺寸（md–中等尺寸）上偏移一定距离。</p>
+<p><strong>隐藏与显示</strong></p>
+<p><code>.visible-xs</code>在特定尺寸（xs–特小尺寸）下显示该元素。</p>
+<h3 id="下拉菜单"><a href="#下拉菜单" class="headerlink" title="下拉菜单"></a>下拉菜单</h3><p>1、使用一个名为“dropdown”的容器包裹了整个下拉菜单元素，示例中为:</p>
+<p><code>&lt;div class=&quot;dropdown&quot;&gt;&lt;/div&gt;</code></p>
+<p>2、使用了一个<code>&lt;button</code>&gt;按钮做为父菜单，并且定义类名** dropdown-toggle** 和自定义<strong>data-toggle</strong> 属性，且值必须和最外容器类名一致，此示例为:</p>
+<p><code>data-toggle=&quot;dropdown&quot;</code></p>
+<p>3、下拉菜单项使用一个ul列表，并且定义一个类名为“dropdown-menu”，此示例为:</p>
+<p><code>&lt;ul class=&quot;dropdown-menu&quot;&gt;</code></p>
+<p><strong>效果如下</strong></p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2016/1/img/dropdown.jpg" alt></p>
+<h1 id="2016年1月4日"><a href="#2016年1月4日" class="headerlink" title="2016年1月4日"></a>2016年1月4日</h1><h2 id="bootstrap-1"><a href="#bootstrap-1" class="headerlink" title="bootstrap"></a>bootstrap</h2><h3 id="导航栏"><a href="#导航栏" class="headerlink" title="导航栏"></a>导航栏</h3><p><strong>基本框架</strong></p>
+<pre><code class="html">&lt;nav class=&quot;navbar navbar-inverse navbar-fixed-top&quot;&gt;
+            &lt;div class=&quot;container&quot;&gt;
+                &lt;a href=&quot;#&quot;  class=&quot;navbar-brand&quot;&gt;&lt;strong&gt;ninghao&lt;/strong&gt;.net&lt;/a&gt;
+                &lt;ul class=&quot;nav navbar-nav&quot;&gt;
+                    &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;&quot;&gt;课程&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;&quot;&gt;博客&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;&quot;&gt;手册&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;form action=&quot;&quot; class=&quot;navbar-form navbar-left&quot;&gt;
+                    &lt;input type=&quot;text&quot; placeholder=&quot;search&quot; class=&quot;form-control&quot;&gt;
+                    &lt;button type=&quot;submit&quot;&gt;
+                        &lt;span class=&quot;glyphicon glyphicon-search&quot;&gt;&lt;/span&gt;
+                    &lt;/button&gt;
+                &lt;/form&gt;
+                &lt;a href=&quot;&quot; class=&quot;btn btn-primary btn-sm navbar-btn navbar-right&quot;&gt;订阅课程&lt;/a&gt;
+            &lt;div class=&quot;profile navbar-right&quot;&gt;
+                &lt;ul class=&quot;nav navbar-nav&quot;&gt;
+                    &lt;li&gt;&lt;a href=&quot;&quot;&gt;登陆&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;&quot;&gt;注册&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;p class=&quot;navbar-text&quot;&gt;hello,你好&lt;a href=&quot;#&quot; class=&quot;navbar-link&quot;&gt;niefee&lt;/a&gt;&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;          
+        &lt;/nav&gt;
+
+&lt;!-- 响应式收缩栏  --&gt;
+&lt;button class=&quot;navbar-toggle&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#responsive-navbar&quot;&gt;
+    &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+    &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+    &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+&lt;/button&gt;
+
+    &lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;responsive-navbar&quot;&gt;&lt;/div&gt;</code></pre>
+<p><strong>.navbar-default</strong>:默认的白色样式。<br><strong>.navbar-inverse</strong>:黑色样式。<br><strong>.navbar-fixed-top</strong>:固定在顶部。<br><strong>.navbar-static-top</strong>:跟随页面滚动。<br><strong>.glyphicon .glyphicon-search</strong>:两个一起使用，定义一个icon图标。<br><strong>.navbar-form .navbar-left</strong>:添加一个类，浮动在左边。<br><strong>.navbar-text</strong>:给导航栏中的文字添加样式。<br><strong>.navbar-link</strong>:给导航栏中的链接添加样式。</p>
+<p>为了确保适当的绘制和触屏缩放，需要在 <code>&lt;head&gt;</code> 之中<strong>添加 viewport 元数据标签</strong></p>
+<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;。</code></pre><h3 id="按钮组件"><a href="#按钮组件" class="headerlink" title="按钮组件"></a>按钮组件</h3><p><strong>html</strong> 里面的** role <strong>本质上是增强语义性，增强组件的可访问性、可用性和可交互性。设置div 的 **role=“button”</strong>，辅助工具就可以认出这实际上是个<strong>button</strong>。</p>
+<blockquote>
+<p><a href="http://www.zhangxinxu.com/wordpress/2012/03/wai-aria-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%98%85%E8%AF%BB/" target="_blank" rel="noopener">http://www.zhangxinxu.com/wordpress/2012/03/wai-aria-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%98%85%E8%AF%BB/</a></p>
+</blockquote>
+<pre><code class="html">&lt;!-- Standard button --&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;（默认样式）Default&lt;/button&gt;
+
+&lt;!-- Provides extra visual weight and identifies the primary action in a set of buttons --&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;（首选项）Primary&lt;/button&gt;
+
+&lt;!-- Indicates a successful or positive action --&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-success&quot;&gt;（成功）Success&lt;/button&gt;
+
+&lt;!-- Contextual button for informational alert messages --&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-info&quot;&gt;（一般信息）Info&lt;/button&gt;
+
+&lt;!-- Indicates caution should be taken with this action --&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-warning&quot;&gt;（警告）Warning&lt;/button&gt;
+
+&lt;!-- Indicates a dangerous or potentially negative action --&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-danger&quot;&gt;（危险）Danger&lt;/button&gt;
+
+&lt;!-- Deemphasize a button by making it look like a link while maintaining button behavior --&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-link&quot;&gt;（链接）Link&lt;/button&gt;</code></pre>
+<p><strong>效果如下：：</strong></p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2016/1/img/btn-1.jpg" alt></p>
+<h3 id="下拉菜单-1"><a href="#下拉菜单-1" class="headerlink" title="下拉菜单"></a>下拉菜单</h3><p><strong>一般框架代码</strong></p>
+<pre><code class="html">&lt;div class=&quot;dropdown&quot;&gt;
+  &lt;button class=&quot;btn btn-default dropdown-toggle&quot; type=&quot;button&quot; id=&quot;dropdownMenu1&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;true&quot;&gt;
+    Dropdown
+    &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;ul class=&quot;dropdown-menu&quot; aria-labelledby=&quot;dropdownMenu1&quot;&gt;
+   &lt;!-- 通过类名添加一个标题 --&gt;
+    &lt;li class=&quot;dropdown-header&quot;&gt;Dropdown header&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+   &lt;!--  通过类名&#39;.disabled&#39;禁用菜单项 --&gt;
+    &lt;li class=&quot;disabled&quot;&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;!-- 添加分割线 --&gt;
+    &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+<blockquote>
+<p>通过为下拉菜单的父元素设置** .dropup *<em>类，可以让菜单向上弹出（默认是向下弹出的。<br>如需将菜单右对齐，请使用 *</em>.dropdown-menu-right **类。</p>
+</blockquote>
+<p><strong>aria-expanded</strong>表示展开状态。默认为undefined, 表示当前展开状态未知。其它可选值：true表示元素是展开的；false表示元素不是展开的。</p>
+<p><strong>aria-hidden</strong>字符串。可选值为true和false,true表示元素隐藏(不可见)，false表示元素可见。</p>
+<p><strong>aria-haspopup</strong> :true表示点击的时候会出现菜单或是浮动元素； false表示没有pop-up效果。 </p>
+<h1 id="2016年1月5日"><a href="#2016年1月5日" class="headerlink" title="2016年1月5日"></a>2016年1月5日</h1><h2 id="bootstrap-2"><a href="#bootstrap-2" class="headerlink" title="bootstrap"></a>bootstrap</h2><h3 id="按钮组"><a href="#按钮组" class="headerlink" title="按钮组"></a>按钮组</h3><p><strong>基本框架</strong></p>
+<pre><code class="html">&lt;div class=&quot;btn-group&quot; role=&quot;group&quot; aria-label=&quot;...&quot;&gt;
+  &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;Left&lt;/button&gt;
+  &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;Middle&lt;/button&gt;
+  &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;Right&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+<p><strong>按钮工具栏</strong></p>
+<p>把一组** &lt; div class=”btn-group”&gt;** 组合进一个** &lt; div class=”btn-toolbar”&gt; **中就可以做成更复杂的组件。</p>
+<pre><code class="html">&lt;div class=&quot;btn-toolbar&quot; role=&quot;toolbar&quot; aria-label=&quot;...&quot;&gt;
+  &lt;div class=&quot;btn-group&quot; role=&quot;group&quot; aria-label=&quot;...&quot;&gt;...&lt;/div&gt;
+  &lt;div class=&quot;btn-group&quot; role=&quot;group&quot; aria-label=&quot;...&quot;&gt;...&lt;/div&gt;
+  &lt;div class=&quot;btn-group&quot; role=&quot;group&quot; aria-label=&quot;...&quot;&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<p><strong>效果如下：</strong></p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2016/1/img/btn-2.jpg" alt></p>
+<p><strong>尺寸</strong></p>
+<p>只要给** .btn-group *<em>加上 *</em> .btn-group- **类，就省去为按钮组中的每个按钮都赋予尺寸类了，如果包含了多个按钮组时也适用。</p>
+<pre><code class="html">&lt;div class=&quot;btn-group btn-group-lg&quot; role=&quot;group&quot; aria-label=&quot;...&quot;&gt;...&lt;/div&gt;
+&lt;div class=&quot;btn-group&quot; role=&quot;group&quot; aria-label=&quot;...&quot;&gt;...&lt;/div&gt;
+&lt;div class=&quot;btn-group btn-group-sm&quot; role=&quot;group&quot; aria-label=&quot;...&quot;&gt;...&lt;/div&gt;
+&lt;div class=&quot;btn-group btn-group-xs&quot; role=&quot;group&quot; aria-label=&quot;...&quot;&gt;...&lt;/div&gt;
+</code></pre>
+<p><strong>嵌套</strong></p>
+<p>想要把下拉菜单混合到一系列按钮中，只须把** .btn-group** 放入另一个** .btn-group **中。</p>
+<pre><code class="html">&lt;div class=&quot;btn-group&quot; role=&quot;group&quot; aria-label=&quot;...&quot;&gt;
+  &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;1&lt;/button&gt;
+  &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;2&lt;/button&gt;
+
+  &lt;div class=&quot;btn-group&quot; role=&quot;group&quot;&gt;
+    &lt;button type=&quot;button&quot; class=&quot;btn btn-default dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;
+      Dropdown
+      &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;ul class=&quot;dropdown-menu&quot;&gt;
+      &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Dropdown link&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Dropdown link&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<p><strong>垂直排列</strong></p>
+<pre><code class="html">&lt;div class=&quot;btn-group-vertical&quot; role=&quot;group&quot; aria-label=&quot;...&quot;&gt;
+  ...
+&lt;/div&gt;
+</code></pre>
+<p><strong>两端对齐排列的按钮组</strong></p>
+<p>只须将一系列** .btn ** 元素包裹到** .btn-group.btn-group-justified** 中即可。</p>
+<pre><code>&lt;div class=&quot;btn-group btn-group-justified&quot; role=&quot;group&quot; aria-label=&quot;...&quot;&gt;
+...
+&lt;/div&gt;</code></pre><h3 id="下拉菜单-2"><a href="#下拉菜单-2" class="headerlink" title="下拉菜单"></a>下拉菜单</h3><p><strong>单按钮下拉菜单</strong></p>
+<p>只要改变一些基本的标记，就能把按钮变成下拉菜单的开关。</p>
+<pre><code class="html">&lt;div class=&quot;btn-group&quot;&gt;
+  &lt;button type=&quot;button&quot; class=&quot;btn btn-default dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;
+    Action &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;ul class=&quot;dropdown-menu&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+<p><strong>分裂式按钮下拉菜单</strong></p>
+<p>相似地，分裂式按钮下拉菜单也需要同样的改变一些标记，但只是多一个分开的按钮。</p>
+<pre><code class="html">&lt;!-- Split button --&gt;
+&lt;div class=&quot;btn-group&quot;&gt;
+  &lt;button type=&quot;button&quot; class=&quot;btn btn-danger&quot;&gt;Action&lt;/button&gt;
+  &lt;button type=&quot;button&quot; class=&quot;btn btn-danger dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;
+    &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;
+    &lt;span class=&quot;sr-only&quot;&gt;Toggle Dropdown&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;ul class=&quot;dropdown-menu&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+<p><strong>向上弹出式菜单</strong></p>
+<p>给父元素添加** .dropup** 类就能使触发的下拉菜单朝上方打开。</p>
+<h3 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h3><p>单独的表单控件会被自动赋予一些全局样式。所有设置了 .form-control 类的 ** &lt; input&gt;<strong>、</strong> &lt; textarea&gt;** 和**   &lt; select&gt;** 元素都将被默认设置宽度属性为 <code>width: 100%;</code>。 将 label 元素和前面提到的控件包裹在** .form-group **中可以获得最好的排列</p>
+<pre><code class="html">&lt;form&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;exampleInputEmail1&quot;&gt;Email address&lt;/label&gt;
+    &lt;input type=&quot;email&quot; class=&quot;form-control&quot; id=&quot;exampleInputEmail1&quot; placeholder=&quot;Email&quot;&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+<p><strong>内联表单</strong></p>
+<p>为** &lt; form&gt; <strong>元素添加</strong> .form-inline** 类可使其内容左对齐并且表现为** inline-block** 级别的控件。只适用于视口（viewport）至少在 768px 宽度时（视口宽度再小的话就会使表单折叠）。</p>
+<pre><code class="html">&lt;form class=&quot;form-inline&quot;&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;exampleInputName2&quot;&gt;Name&lt;/label&gt;
+    &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;exampleInputName2&quot; placeholder=&quot;Jane Doe&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;exampleInputEmail2&quot;&gt;Email&lt;/label&gt;
+    &lt;input type=&quot;email&quot; class=&quot;form-control&quot; id=&quot;exampleInputEmail2&quot; placeholder=&quot;jane.doe@example.com&quot;&gt;
+  &lt;/div&gt;
+  &lt;button type=&quot;submit&quot; class=&quot;btn btn-default&quot;&gt;Send invitation&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+<p><strong>效果如下：</strong></p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2016/1/img/form.jpg" alt></p>
+<p><strong>水平排列的表单</strong></p>
+<p>通过为表单添加** .form-horizontal** 类，并联合使用 Bootstrap 预置的栅格类，可以将 label 标签和控件组水平并排布局。这样做将改变 .<strong>form-group **的行为，使其表现为栅格系统中的行</strong>（row）*<em>，因此就无需再额外添加 *</em>.row **了。</p>
+<pre><code class="html">&lt;form class=&quot;form-horizontal&quot;&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;inputEmail3&quot; class=&quot;col-sm-2 control-label&quot;&gt;Email&lt;/label&gt;
+    &lt;div class=&quot;col-sm-10&quot;&gt;
+      &lt;input type=&quot;email&quot; class=&quot;form-control&quot; id=&quot;inputEmail3&quot; placeholder=&quot;Email&quot;&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+    &lt;/form&gt;
+</code></pre>
+<h1 id="2016年1月7日"><a href="#2016年1月7日" class="headerlink" title="2016年1月7日"></a>2016年1月7日</h1><h2 id="bootstrap-3"><a href="#bootstrap-3" class="headerlink" title="bootstrap"></a>bootstrap</h2><h3 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h3><pre><code class="html">&lt;!-- 外脸样式 --&gt;
+&lt;link href=&quot;&quot; rel=&quot;stylesheet&quot; media=&quot;only screen and (max-width:480px)&quot;&gt;
+&lt;!-- 内联样式  --&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+    @media screen and (min-width: 480px){
+        body{
+            background: blue;
+        }
+    }
+    &lt;/style&gt;
+</code></pre>
+<h1 id="2016年1月18日"><a href="#2016年1月18日" class="headerlink" title="2016年1月18日"></a>2016年1月18日</h1><h2 id="javascript"><a href="#javascript" class="headerlink" title="javascript"></a>javascript</h2><h3 id="fullPage-js配置"><a href="#fullPage-js配置" class="headerlink" title="fullPage.js配置"></a>fullPage.js配置</h3><p><strong>官网：</strong></p>
+<ol>
+<li><a href="http://alvarotrigo.com/fullPage/" target="_blank" rel="noopener">http://alvarotrigo.com/fullPage/</a></li>
+<li><a href="https://github.com/alvarotrigo/fullPage.js" target="_blank" rel="noopener">https://github.com/alvarotrigo/fullPage.js</a></li>
+</ol>
+<blockquote>
+<p>参考：<a href="http://www.dowebok.com/77.html" target="_blank" rel="noopener">http://www.dowebok.com/77.html</a></p>
+</blockquote>
+<ul>
+<li>sectionsColor :</li>
+</ul>
+<p>可以为每一个<strong>section</strong>设置<strong>background-color</strong>属性。</p>
+<ul>
+<li>controlArrows</li>
+</ul>
+<p>定义是否通过箭头来控制slide幻灯片，默认为<strong>true</strong>。当我们设置为 <strong>false</strong> ，幻灯片左右两侧的箭头就会消失， 在移动设备上我们可以通过滑动来操作幻灯片。</p>
+<ul>
+<li>verticalCentered</li>
+</ul>
+<p>每一页的内容是否垂直居中，默认为<strong>true</strong>。一般我们保持默认值。</p>
+<ul>
+<li>resize</li>
+</ul>
+<p>字体是否随着窗口缩放而缩放，默认为<strong>false</strong>。</p>
+<ul>
+<li>scrollingSpeed:</li>
+</ul>
+<p>滚动时间，默认<strong>700ms</strong>。</p>
+<ul>
+<li>anchors</li>
+</ul>
+<p>定义锚链接，默认值为[]。有了锚链接，用户就可以快速打开定位到某一页面。<br>注意定义锚链接的时候，值不要和页面中任意的<strong>id</strong>或者<strong>name</strong>相同，尤其是在IE浏览器下。而且定义时不需要加<strong>#</strong>。</p>
+<blockquote>
+<p>在section中添加<strong>active</strong>可以默认打开此页。</p>
+</blockquote>
+<ul>
+<li>lockAnchors:</li>
+</ul>
+<p>是否锁定锚链接，默认为<strong>false</strong>。如果设置为<strong>true</strong>，那么定义的锚链接，也就是<strong>anchors</strong>属性则没有效果。这个配置项<strong>使用得比较少</strong>。</p>
+<ul>
+<li>easing:</li>
+</ul>
+<p>定义页面section滚动的动画方式，默认是<strong>easeInOutCubic</strong>，如果修改此项，需要引入<strong>jQuery.easings</strong>插件，或者<strong>jquery ui</strong>。</p>
+<ul>
+<li>css3：</li>
+</ul>
+<p>是否使用<strong>CSS3 transforms</strong>来实现滚动效果，默认为<strong>true</strong>。这个配置项可以提高支持css3的浏览器，比如移动设备等的速度，如果浏览器不支持测css3，,则会使用jquery来代替css3实现滚动效果。</p>
+<ul>
+<li>loopTop:</li>
+</ul>
+<p>滚动到最顶部后是否连续滚动到底部， 默认为<strong>false</strong>。</p>
+<ul>
+<li>loopBottom:</li>
+</ul>
+<p>滚动到最底部后是否连续滚动回顶部，默认为<strong>false</strong>。</p>
+<ul>
+<li>loopHorizontal:</li>
+</ul>
+<p>横向slider幻灯片是否循环滚动，默认为<strong>true</strong>。 </p>
+<ul>
+<li>autoScrolling:</li>
+</ul>
+<p>是否使用插件的滚动方式，默认为<strong>true</strong>，如果使用<strong>false</strong>，则会出现浏览器自带的滚动条，将不会按页滚动，而是按照滚动条的默认行为来滚动。</p>
+<ul>
+<li>scrollBar:</li>
+</ul>
+<p>是否包含 滚动条，默认为<strong>false</strong>，如果设置为<strong>true</strong>，则浏览器自带的滚动条出现，页面滚动时还是按页滚动，但滚动条是默认行为也有效。</p>
+<ul>
+<li>paddingTop/paddingBottom:</li>
+</ul>
+<p>设置每一个<strong>section</strong>顶部和底部的<strong>padding</strong>，默认都为0。一般如果我们需要设置一个固定在顶部或者底部的菜单、导航、元素等，可以使用这两个配置项。</p>
+<ul>
+<li>fixedElements:</li>
+</ul>
+<p>固定的元素，默认为<strong>null</strong>，需要配置一个jquery选择器。在页面滚动的时候，<strong>fixedElements</strong>设置的元素固定不动。 </p>
+<ul>
+<li>keyboardScrolling:</li>
+</ul>
+<p>是否可以使用键盘方向键导航，默认为<strong>true</strong>。 </p>
+<ul>
+<li>touchSensitivity</li>
+</ul>
+<p>在移动设备中滑动页面的敏感度，默认为5，是按百分比来衡量，最高为100，越大则越难滑动。 </p>
+<ul>
+<li>continuousVertical:</li>
+</ul>
+<p>是否循环滚动，默认为<strong>false</strong>。如果设置为<strong>true</strong>，则页面会循环滚动，而不像loopTop或者loopBottom那样出项跳动，注意这个属性和loopTop、loopBottom不兼容，不能同时设置。</p>
+<ul>
+<li>animateAnchor：</li>
+</ul>
+<p>锚链接是否可以控制滚动动画，默认为<strong>true</strong>。如果设置为<strong>false</strong>，则通过 锚链接定位到某页面显示不再有动画效果。</p>
+<ul>
+<li>recordHistory：</li>
+</ul>
+<p>是否记录历史，默认为<strong>true</strong>，可以记录页面滚动的历史，通过浏览器的前进后退来导航。如果设置了<strong>autoScrolling：false</strong>，那么这个配置也将被关闭，即设置为*<em>false *</em>。</p>
+<ul>
+<li>menu：</li>
+</ul>
+<p>绑定菜单，设定的相关属性与<strong>anchors</strong>的值对应后，菜单可以控制滚动，默认为<strong>false</strong>。可以设置为菜单的jquery选择器。</p>
+<pre><code class="js">&lt;ul id=&quot;myMenu&quot;&gt;
+    &lt;li data-menuanchor=&quot;firstPage&quot; class=&quot;active&quot;&gt;&lt;a href=&quot;#firstPage&quot;&gt;First section&lt;/a&gt;&lt;/li&gt;
+    &lt;li data-menuanchor=&quot;secondPage&quot;&gt;&lt;a href=&quot;#secondPage&quot;&gt;Second section&lt;/a&gt;&lt;/li&gt;
+    &lt;li data-menuanchor=&quot;thirdPage&quot;&gt;&lt;a href=&quot;#thirdPage&quot;&gt;Third section&lt;/a&gt;&lt;/li&gt;
+    &lt;li data-menuanchor=&quot;fourthPage&quot;&gt;&lt;a href=&quot;#fourthPage&quot;&gt;Fourth section&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+$(&#39;#fullpage&#39;).fullpage({
+    anchors: [&#39;firstPage&#39;, &#39;secondPage&#39;, &#39;thirdPage&#39;, &#39;fourthPage&#39;, &#39;lastPage&#39;],
+    menu: &#39;#myMenu&#39;
+});</code></pre>
+<ul>
+<li>navigation:</li>
+</ul>
+<p>是否显示导航，默认为<strong>false</strong>。如果设置为<strong>true</strong>，会显示小圆点，作为导航。</p>
+<ul>
+<li>navigationPosition：</li>
+</ul>
+<p>导航小圆点的位置，可以设置为<strong>left</strong>或者<strong>right</strong>。 </p>
+<ul>
+<li>navigationTooltips：</li>
+</ul>
+<p>导航小圆点的tooltips设置，默认为[],注意按照顺序设置。 </p>
+<ul>
+<li>showActiveTooltip:</li>
+</ul>
+<p>是否显示当前页面的导航的tooltip的信息，默认为<strong>false</strong>。 </p>
+<ul>
+<li>slidesNavigation：</li>
+</ul>
+<p>是否显示横向幻灯片的导航，默认为<strong>false</strong>。 </p>
+<ul>
+<li>slidesNavPosition</li>
+</ul>
+<p>横向幻灯片导航的位置，默认为<strong>bottom</strong>，可以设置为<strong>top</strong>或<strong>bottom</strong>。  </p>
+<ul>
+<li>scrollOverflow:</li>
+</ul>
+<p>内容超过满屏后是否显示滚动条，默认为<strong>false</strong>。如果设置为<strong>true</strong>，则会显示滚动条，如果要滚动查看内容，还需要<strong>jquery.slimscroll</strong>插件的配合。slimscroll插件主要用于模拟传统浏览器滚动条。</p>
+<ul>
+<li>sectionSelector：</li>
+</ul>
+<p>section的选择器，默认为<strong>.section</strong>。 </p>
+<ul>
+<li>slideSelector:</li>
+</ul>
+<p>slide的选择器，默认为<strong>.slide</strong>。</p>
+<hr>
+<h3 id="fullpage-js方法"><a href="#fullpage-js方法" class="headerlink" title="fullpage.js方法"></a>fullpage.js方法</h3><p>使用方式：</p>
+<pre><code>$.fn.fullpage.xxx()</code></pre><ul>
+<li>moveSectionUp():</li>
+</ul>
+<p>向上滚动一页。</p>
+<ul>
+<li>moveSectionDown():</li>
+</ul>
+<p>向下滚动一页</p>
+<ul>
+<li>moveTo(section,slide):</li>
+</ul>
+<p>滚动到第几页，第几个幻灯片，注意，页面是从<strong>1</strong>开始，而幻灯片从<strong>0</strong>开始。 </p>
+<ul>
+<li>silentMoveTo(section,slide):</li>
+</ul>
+<p>滚动到第几页，和moveTo一样，但是没有动画效果。</p>
+<ul>
+<li>moveSlideRight()</li>
+</ul>
+<p>幻灯片向右滚动。</p>
+<ul>
+<li>moveSlideLeft():</li>
+</ul>
+<p>幻灯片向左滚动。</p>
+<ul>
+<li><p>setAutoScrolling(boolean):动态设置<strong>autoScrolling</strong></p>
+</li>
+<li><p>setLockAnchors(boolean):动态设置<strong>lockAnchors</strong></p>
+</li>
+<li><p>setRecordHistory(boolean):动态设置<strong>recordHistory</strong></p>
+</li>
+<li><p>setScrollingSpeed(milliseconds):动态设置<strong>scrollingSpeed</strong></p>
+</li>
+<li><p>setAllowScrolling(boolean,[directions]):</p>
+</li>
+</ul>
+<p>添加或删除鼠标滚轮/滑动控制，第一个参数<strong>true</strong>为启用，<strong>false</strong>为禁用，后面的参数为方向，取值包含<strong>all</strong>、<strong>up</strong>、<strong>down</strong>、<strong>left</strong>、<strong>right</strong>,可以使用多个，逗号分隔。</p>
+<ul>
+<li>destroy(type)</li>
+</ul>
+<p>销毁<strong>fullpage</strong>特效，<strong>type</strong>可以不写，或者使用<strong>all</strong>，不写<strong>type</strong>，<br><strong>fullpage</strong>给页面添加的样式和<strong>HTML</strong>元素还在，如果使用<strong>all</strong>，则样式、<strong>HTML</strong>等全部销毁，页面恢复和不使用<strong>fullpage</strong>相同的效果。</p>
+<ul>
+<li>reBuild()</li>
+</ul>
+<p>重新更新页面和尺寸，用于通过<strong>Ajax</strong>请求后改变页面结构之后，重建效果。</p>
+<hr>
+<p><strong>延迟加载</strong></p>
+<p>如图片标签，<strong>src</strong>地址变成<strong>data-src</strong>，可以达到延迟效果。<strong>video</strong>也可以。</p>
+<hr>
+<h3 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h3><ul>
+<li>afterLoad（anchorLink，index）</li>
+</ul>
+<p>滚动到某一section处，且滚动结束后，会触发一次此回调函数，函数接收anchorLink和index 两个参数，anchorLink是锚链接，index是序号（从1开始）。<br>作用：我们可以根据anchorLink和index的参数值的判断，触发相应的事件。</p>
+<pre><code class="js">afterLode：function（anchorLink，index）{
+console.log（&quot;afterLode:anchorLink&quot;+anchorLink+&quot;;index:&quot;+index）;//将两个参数打印出来，在控制台可以看到
+}</code></pre>
+<ul>
+<li>onLeave（index，nextIndex，direction）</li>
+</ul>
+<p>在离开一个页面时，会触发一次此回调函数，接收<strong>index</strong>（离开时页面的序号，from 1）、<strong>nextIndex</strong>（滚动到的目标页面的序号, from 1）和<strong>direction</strong>（滚动的方向，有<strong>up</strong>和<strong>down</strong>）3个参数</p>
+<p>通过<strong>return false</strong>；可以取消滚动</p>
+<ul>
+<li>afterRender（）</li>
+</ul>
+<p>页面初始化完成后的回调函数。</p>
+<ul>
+<li>afterResize（）</li>
+</ul>
+<p>浏览器窗口尺寸改变后的回调函数。</p>
+<ul>
+<li>afterSlideLode（anchorLink，index，slideAnchor，slideIndex）</li>
+</ul>
+<p>滚动到某一<strong>slide</strong>后的回调函数，与<strong>afterLode</strong>类似，接收 <strong>anchorLink</strong>、<strong>index</strong> 、<strong>slideIndex</strong> 、 <strong>direction</strong>4个参数</p>
+<ul>
+<li>onSlideLeave（anchorLink，index，slideIndex，direction，nextSlideIndex）</li>
+</ul>
+<p>在离开一个<strong>slide</strong>时会触发此函数，与<strong>onLeave</strong>相似，接收 <strong>anchorLink</strong> 、<strong>index</strong> 、<strong>slideIndex</strong> 、<strong>direction</strong> 4个参数</p>
+<hr>
+<h3 id="move-js方法"><a href="#move-js方法" class="headerlink" title="move.js方法"></a>move.js方法</h3><p><strong>move.js</strong>是一个js库，支持css3。</p>
+<ul>
+<li>set(css属性，属性值)</li>
+<li>scale（缩放的倍数）</li>
+<li>rotate（旋转的角度数）；可正可负</li>
+<li>end（）；用于结束move.</li>
+</ul>
+<p>js代码片段的结束，标识动画的结束。此方法可接受一个回调函数</p>
+<p>给页面添加动画效果可利用回调函数（另外：要实现某一东西从某一方向飞入，则首先给其设置一个较大的<strong>margin</strong>，并设置<strong>overflow：hidden</strong>，使此东西在页面中显示不出来，然后通过回调函数应用<strong>move.js</strong>的 <strong>set（‘margin-方向’，‘使此东西在正确位置的margin值’））</strong></p>
+<p><img src alt></p>
+<h1 id="2016年1月25日"><a href="#2016年1月25日" class="headerlink" title="2016年1月25日"></a>2016年1月25日</h1><h2 id="css"><a href="#css" class="headerlink" title="css"></a>css</h2><p><strong>系统自带中文字体编码：</strong></p>
+<ul>
+<li>宋体 <strong>SimSun</strong></li>
+<li>黑体 <strong>SimHei</strong></li>
+<li>微软雅黑 <strong>Microsoft YaHei</strong></li>
+<li>微软正黑 <strong>体Microsoft JhengHei</strong></li>
+<li>新宋体 <strong>NSimSun</strong></li>
+<li>新细明体 <strong>PMingLiU</strong></li>
+<li>细明体 <strong>MingLiU</strong></li>
+<li>标楷体 <strong>DFKai-SB</strong></li>
+<li>仿宋 <strong>FangSong</strong></li>
+<li>楷体 <strong>KaiTi</strong></li>
+<li>仿宋 <strong>_GB2312FangSong_GB2312</strong></li>
+<li>楷体 <strong>_GB2312KaiTi_GB2312</strong></li>
+</ul>
+<h1 id="2016年1月28日"><a href="#2016年1月28日" class="headerlink" title="2016年1月28日"></a>2016年1月28日</h1><h2 id="javascript-1"><a href="#javascript-1" class="headerlink" title="javascript"></a>javascript</h2><p><strong>[object Object]</strong></p>
+<p>表示这个对象是一个对象集合。</p>
+<pre><code class="javascript">var a = new Object();
+
+a.abc = new Object();
+
+a.abc.a123 = new Object();
+
+这就是[object Object] 
+
+补充：简单的写法：
+var a = {
+    abc : {
+        a123 : {}
+    }
+};
+表示对象的类型是object，这个对象的constructor是Object</code></pre>
+<p><strong>toString 方法</strong>返回 <strong>[object objectname]</strong>，其中 <strong>objectname</strong> 是对象类型的名称。</p>
+<p><strong>@font-face</strong></p>
+<pre><code class="javascript">    &lt;!-- 定义字体 --&gt;
+   @font-face {
+    font-family: &#39;YourWebFontName&#39;;
+    src: url(&#39;YourWebFontName.eot&#39;); /* IE9 Compat Modes */
+    src: url(&#39;YourWebFontName.eot?#iefix&#39;) format(&#39;embedded-opentype&#39;), /* IE6-IE8 */
+             url(&#39;YourWebFontName.woff&#39;) format(&#39;woff&#39;), /* Modern Browsers */
+             url(&#39;YourWebFontName.ttf&#39;)  format(&#39;truetype&#39;), /* Safari, Android, iOS */
+             url(&#39;YourWebFontName.svg#YourWebFontName&#39;) format(&#39;svg&#39;); /* Legacy iOS */
+   }
+    &lt;!-- 对内容使用定义的字体。  --&gt;
+    h2.neuesDemo {
+      font-family: &#39;NeuesBauenDemo&#39;
+   }</code></pre>
+<p><strong>HTTP</strong></p>
+<p>HTTP(Hyper Text Transfer Protocol，超文本传输协议)是一种通信协议 ，它允许将超文本标记语言(HTML)文档从Web服务器传送到客户端的浏览器。</p>
+<p><strong>URI(Uniform Resource Identifier)</strong>，翻译为统一资源标识符，是一个用于标识某<br>一互联网资源名称的字符串。</p>
+<p><strong>URL(Uniform Resource Location)</strong>，翻译为统一资源定位符，它描述一台特定服<br>务器上某特定资源的特定位置。</p>
+<p>格式：</p>
+<p><code>http://user:pass@www.example.com:80/home/index.html?age=11#mask</code><br><strong>http</strong>：协议方案名<br><strong>user:pass</strong>：登录信息（认证）<br><strong><a href="http://www.example.com" target="_blank" rel="noopener">www.example.com</a></strong>：服务器地址<br><strong>80</strong>：端口号<br><strong>/hone/index.html</strong>：文件路径<br><strong>age=11</strong>：查询字符串<br><strong>mask</strong>：片段标识符</p>
+<h1 id="2016年1月29日"><a href="#2016年1月29日" class="headerlink" title="2016年1月29日"></a>2016年1月29日</h1><h2 id="json"><a href="#json" class="headerlink" title="json"></a>json</h2><p>json的四个基本原则</p>
+<ol>
+<li>并列数据之间用逗号（“ , ”半角）分隔</li>
+<li>映射用冒号（“ : ”）表示</li>
+<li>并列数据的集合（数组，列表）用方括号（“ [] ”）表示</li>
+<li>映射的集合（对象）用大括号(“ {} ”)表示</li>
+</ol>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2016/1/img/json.jpg" alt></p>
+<blockquote>
+<p>json字符集必须是<strong>Unicode</strong>。</p>
+</blockquote>
+<p>JavaScript 程序能够使用内建的 <strong>eval()</strong> 函数，用 JSON 数据来生成原生的 JavaScript 对象。</p>
+<p><strong>eval()</strong>函数接收一个参数s，如果s不是字符串，则直接返回s。否则执行s语句。如果s语句执行结果是一个值，则返回此值，否则返回<strong>undefined</strong>。</p>
+<p>如果参数中没有合法的表达式和语句，则抛出** SyntaxError** 异常。<br>如果非法调用** val()<strong>，则抛出 **EvalError</strong>异常。<br>如果传递给<strong>eval()</strong> 的** Javascript** 代码生成了一个异常，*<em>eval() *</em>将把该异常传递给调用者。</p>
+<p><strong>JSON.parse()</strong></p>
+<pre><code class="js">语法：
+JSON.parse(text [, reviver])
+
+例子：
+var jsontext = &#39;{&quot;firstname&quot;:&quot;Jesper&quot;,&quot;surname&quot;:&quot;Aaberg&quot;,&quot;phone&quot;:[&quot;555-0100&quot;,&quot;555-0120&quot;]}&#39;;
+var contact = JSON.parse(jsontext);
+document.write(contact.surname + &quot;, &quot; + contact.firstname);</code></pre>
+<p>*<em>JSON.stringify() *</em></p>
+<p>JSON.stringify()方法可以将任意的 JavaScript 值序列化成 JSON 字符串。</p>
+<pre><code class="json">var foo = {};
+foo.bar = &quot;new property&quot;;
+foo.baz = 3;
+
+var jsonString = JSON.stringify(foo);</code></pre>
+<p><strong>Ajax</strong></p>
+<p>创建XMLHttpRequest对象</p>
+<pre><code class="js">var xmlhttp;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+  }</code></pre>
+<p><strong>Try{}catch(e){}</strong></p>
+<pre><code class="js">基本语法：
+
+　try {
+　　// 此处是可能产生例外的语句
+　　} catch(error) {
+　　// 此处是负责例外处理的语句
+　　} finally {
+　　// 此处是出口语句
+　　}</code></pre>
+<pre><code class="js">　　try {
+　　　　document.writeln(&quot;开始执行try块语句 ---&gt; &quot;)
+　　　　document.writeln(&quot;还没有发生例外 ---&gt; &quot;)
+　　 　　alert((prompt(&quot;输入一个值：&quot;,&quot;&quot;)))
+　　 } catch(err) {
+　　 　　document.writeln(&quot;捕捉到例外，开始执行catch块语句 ---&gt;&quot;);
+　　 　　document.writeln(&quot;错误名称: &quot; + err.name+&quot; ---&gt; &quot;);
+　　 　　document.writeln(&quot;错误信息: &quot; + err.message+&quot; ---&gt; &quot;);
+　　} finally {
+　　 　　document.writeln(&quot;开始执行finally块语句&quot;)
+　　}</code></pre>
+<p>“开始执行try块语句 —&gt; 还没有发生例外 —&gt; 捕捉到例外，开始执行catch块语句 —&gt; 错误名称: TypeError —&gt; 错误信息: ‘abc’ 未定义 —&gt; 开始执行finally块语句”</p>
+<p><strong>Error.name</strong>的取值一共有六种:</p>
+<ol>
+<li>Error：()的使用与定义不一致</li>
+<li>RangeError：数值越界</li>
+<li>ReferenceError：非法或不能识别的引用数值</li>
+<li>SyntaxError：发生语法解析错误</li>
+<li>TypeError：操作数类型错误</li>
+<li>URIError：URI处理函数使用不当</li>
+</ol>
+<p><strong>Throw 语句</strong></p>
+<p><code>throw 语句</code>允许我们创建自定义错误。<br>正确的技术术语是：创建或抛出异常（exception）。</p>
+<pre><code class="js">function myFunction()
+{
+try
+  {
+  var x=document.getElementById(&quot;demo&quot;).value;
+  if(x==&quot;&quot;)    throw &quot;empty&quot;;
+  if(isNaN(x)) throw &quot;not a number&quot;;
+  if(x&gt;10)     throw &quot;too high&quot;;
+  if(x&lt;5)      throw &quot;too low&quot;;
+  }
+catch(err)
+  {
+  var y=document.getElementById(&quot;mess&quot;);
+  y.innerHTML=&quot;Error: &quot; + err + &quot;.&quot;;
+  }
+}
+&lt;/script&gt;
+
+&lt;h1&gt;My First JavaScript&lt;/h1&gt;
+&lt;p&gt;Please input a number between 5 and 10:&lt;/p&gt;
+&lt;input id=&quot;demo&quot; type=&quot;text&quot;&gt;
+&lt;button type=&quot;button&quot; onclick=&quot;myFunction()&quot;&gt;Test Input&lt;/button&gt;
+&lt;p id=&quot;mess&quot;&gt;&lt;/p&gt;</code></pre>
+<h1 id="2016年1月30日"><a href="#2016年1月30日" class="headerlink" title="2016年1月30日"></a>2016年1月30日</h1><h2 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h2><p>创建** XMLHttpRequest** 对象:</p>
+<pre><code class="js">var xmlhttp;
+if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+    }
+else
+    {// code for IE6, IE5
+    xmlhttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+    }
+
+或者：
+
+xmlhttp=new XMLHttpRequest()||ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);</code></pre>
+<p><strong>GET</strong>请求：</p>
+<pre><code class="js">function ajax(){
+        var xml=new XMLHttpRequest()||ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+        xml.onreadystatechange=function(){
+            if  (xml.readyState==4&amp;&amp;xml.status==200){
+            document.getElementById(&quot;myDiv&quot;).innerHTML=xml.responseText;
+        }
+    }
+        xml.open(&quot;get&quot;,&quot;/ajax_info.txt?t=&quot;+ Math.random(),true);
+        xml.send();
+}</code></pre>
+<p><strong>post请求</strong><br>如果需要像 HTML 表单那样 POST 数据，请使用 <strong>setRequestHeader()</strong> 来添加 HTTP 头。然后在 <strong>send()</strong> 方法中规定您希望发送的数据：</p>
+<pre><code class="js">xmlhttp.open(&quot;POST&quot;,&quot;ajax_test.html&quot;,true);
+
+xmlhttp.setRequestHeader(&quot;Content-type&quot;,&quot;application/x-www-form-urlencoded&quot;);
+
+xmlhttp.send(&quot;fname=Henry&amp;lname=Ford&quot;);</code></pre>
+<p><strong>GET</strong>与<strong>POST</strong>的区别</p>
+<ul>
+<li>无法使用缓存文件（更新服务器上的文件或数据库）</li>
+<li>向服务器发送大量数据（POST 没有数据量限制）</li>
+<li>发送包含未知字符的用户输入时，POST 比 GET 更稳定也更可靠</li>
+</ul>
+<p><strong>Async = false</strong></p>
+<p>不推荐使用<strong>async=false</strong>，但是对于一些小型的请求，也是可以的。JavaScript 会等到服务器响应就绪才继续执行。如果服务器繁忙或缓慢，应用程序会挂起或停止。</p>
+<p>使用<strong>async=false</strong> 时，请不要编写 <strong>onreadystatechange</strong> 函数 - 把代码放到 <strong>send()</strong> 语句后面即可。</p>
+<p><strong>responseXML 属性</strong></p>
+<pre><code class="js">xmlDoc=xmlhttp.responseXML;
+txt=&quot;&quot;;
+x=xmlDoc.getElementsByTagName(&quot;ARTIST&quot;);
+for (i=0;i&lt;x.length;i++)
+  {
+  txt=txt + x[i].childNodes[0].nodeValue + &quot;&lt;br&gt;&quot;;
+  }
+document.getElementById(&quot;myDiv&quot;).innerHTML=txt;</code></pre>
+<p><strong>回调函数</strong></p>
+<p>回调函数是一种以参数形式传递给另一个函数的函数。<br>如果您的网站上存在多个 AJAX 任务，那么您应该为创建** XMLHttpRequest <strong>对象编写一个标准的函数，并为每个 AJAX 任务调用该函数。<br>该函数调用应该包含 **URL</strong> 以及发生 <strong>onreadystatechange</strong> 事件时执行的任务（每次调用可能不尽相同）：</p>
+<pre><code class="js">var xmlhttp;
+function loadXMLDoc(url,cfunc)
+{
+if (window.XMLHttpRequest)
+  {// IE7+, Firefox, Chrome, Opera, Safari 代码
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// IE6, IE5 代码
+  xmlhttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+  }
+xmlhttp.onreadystatechange=myFunction();
+xmlhttp.open(&quot;GET&quot;,url,true);
+xmlhttp.send();
+}
+function myFunction()
+{
+loadXMLDoc(&quot;ajax_info.txt&quot;,function()
+  {
+  if (xmlhttp.readyState==4 &amp;&amp; xmlhttp.status==200)
+    {
+    document.getElementById(&quot;myDiv&quot;).innerHTML=xmlhttp.responseText;
+    }
+  });
+}</code></pre>
+<p><strong>readyState</strong>表示<strong>XMLHttpRequest</strong>对象的处理状态：</p>
+<ul>
+<li>0:XMLHttpRequest对象还没有完成初始化。(准备司机、车、货物)</li>
+<li>1:XMLHttpRequest对象开始发送请求。(需要送十车货物，当前正在送第几车)</li>
+<li>2:XMLHttpRequest对象的请求发送完成。(十车货送完毕)</li>
+<li>3:XMLHttpRequest对象开始读取服务器的响应。(准备把这十车加工的货拉回来，当前第几车)</li>
+<li>4:XMLHttpRequest对象读取服务器响应结束。(十车货全部拉回完毕)</li>
+</ul>
+<p><strong>status状态：</strong></p>
+<ul>
+<li>1xx:信息响应类，表示接收到请求并且继续处理。(所有拉去的货，工厂还没有加工完毕)  </li>
+<li>2xx:处理成功响应类，表示动作被成功接收、理解和接受。。(所有拉去的货工厂全部加工完毕)  </li>
+<li>3xx:重定向响应类，为了完成指定的动作，必须接受进一步处理 。(所有拉去的货，工厂设备不够，让其他工厂帮忙加工)  </li>
+<li>4xx:客户端错误，客户请求包含语法错误或者是不能正确执行 。(这十车货有质量问题，工厂不能正常加工)</li>
+<li>5xx:服务端错误，服务器不能正确执行一个正确的请求。(工厂在加工到一半过程中断电，不能继续加工)</li>
+</ul>
+<p><strong>json</strong></p>
+<pre><code class="js">var jsondata=&#39;{staff:[{&quot;name&quot;:&quot;洪七&quot;,&quot;age&quot;:&quot;70&quot;},{&quot;name&quot;:&quot;郭靖&quot;,&quot;age&quot;:&quot;35&quot;},{&quot;name&quot;:&quot;黄蓉&quot;,&quot;age&quot;:&quot;30&quot;}]}&#39;;
+
+//容易解释执行语句，不考虑字符串是否合法。
+var jsonobj=eval(&#39;(&#39;+jsondata+&#39;)&#39;);
+alert(jsonobj.staff[0].name);
+
+//推荐使用
+var jsonobj_2=JSON.parse(jsondata);
+</code></pre>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-Ajax3/" rel="next" title="Ajax3">
+                <i class="fa fa-chevron-left"></i> Ajax3
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-正则表达式/" rel="prev" title="正则表达式">
+                正则表达式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年1月3日"><span class="nav-number">1.</span> <span class="nav-text">2016年1月3日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bootstrap"><span class="nav-number">1.1.</span> <span class="nav-text">bootstrap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网格系统"><span class="nav-number">1.1.1.</span> <span class="nav-text">网格系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下拉菜单"><span class="nav-number">1.1.2.</span> <span class="nav-text">下拉菜单</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年1月4日"><span class="nav-number">2.</span> <span class="nav-text">2016年1月4日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bootstrap-1"><span class="nav-number">2.1.</span> <span class="nav-text">bootstrap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#导航栏"><span class="nav-number">2.1.1.</span> <span class="nav-text">导航栏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按钮组件"><span class="nav-number">2.1.2.</span> <span class="nav-text">按钮组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下拉菜单-1"><span class="nav-number">2.1.3.</span> <span class="nav-text">下拉菜单</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年1月5日"><span class="nav-number">3.</span> <span class="nav-text">2016年1月5日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bootstrap-2"><span class="nav-number">3.1.</span> <span class="nav-text">bootstrap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#按钮组"><span class="nav-number">3.1.1.</span> <span class="nav-text">按钮组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下拉菜单-2"><span class="nav-number">3.1.2.</span> <span class="nav-text">下拉菜单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表单"><span class="nav-number">3.1.3.</span> <span class="nav-text">表单</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年1月7日"><span class="nav-number">4.</span> <span class="nav-text">2016年1月7日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bootstrap-3"><span class="nav-number">4.1.</span> <span class="nav-text">bootstrap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#媒体查询"><span class="nav-number">4.1.1.</span> <span class="nav-text">媒体查询</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年1月18日"><span class="nav-number">5.</span> <span class="nav-text">2016年1月18日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript"><span class="nav-number">5.1.</span> <span class="nav-text">javascript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fullPage-js配置"><span class="nav-number">5.1.1.</span> <span class="nav-text">fullPage.js配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fullpage-js方法"><span class="nav-number">5.1.2.</span> <span class="nav-text">fullpage.js方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回调函数"><span class="nav-number">5.1.3.</span> <span class="nav-text">回调函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#move-js方法"><span class="nav-number">5.1.4.</span> <span class="nav-text">move.js方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年1月25日"><span class="nav-number">6.</span> <span class="nav-text">2016年1月25日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#css"><span class="nav-number">6.1.</span> <span class="nav-text">css</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年1月28日"><span class="nav-number">7.</span> <span class="nav-text">2016年1月28日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript-1"><span class="nav-number">7.1.</span> <span class="nav-text">javascript</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年1月29日"><span class="nav-number">8.</span> <span class="nav-text">2016年1月29日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#json"><span class="nav-number">8.1.</span> <span class="nav-text">json</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年1月30日"><span class="nav-number">9.</span> <span class="nav-text">2016年1月30日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Ajax"><span class="nav-number">9.1.</span> <span class="nav-text">Ajax</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

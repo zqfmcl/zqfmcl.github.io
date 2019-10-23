@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Javascript,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="DOM对象 this 与 e.target DOM对象 视口数值的获取 object.getBoundingClientRect() Element.clientWidth与Element.clientHeight window.outerWidth与window.outerHeight window.innerWidth与window.innerHeight document.body">
+<meta name="keywords" content="Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dom">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-Dom/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="DOM对象 this 与 e.target DOM对象 视口数值的获取 object.getBoundingClientRect() Element.clientWidth与Element.clientHeight window.outerWidth与window.outerHeight window.innerWidth与window.innerHeight document.body">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/javascript/img/rect.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/javascript/img/element.jpg">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.126Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dom">
+<meta name="twitter:description" content="DOM对象 this 与 e.target DOM对象 视口数值的获取 object.getBoundingClientRect() Element.clientWidth与Element.clientHeight window.outerWidth与window.outerHeight window.innerWidth与window.innerHeight document.body">
+<meta name="twitter:image" content="c:/Users/Administrator/Desktop/My-study-records-master/javascript/img/rect.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-Dom/">
+
+
+
+
+
+  <title>Dom | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-Dom/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Dom</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T10:00:00+08:00">
+                2019-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <!-- @import "[TOC]" {cmd:"toc", depthFrom:1, depthTo:6, orderedList:false} -->
+
+<!-- code_chunk_output -->
+
+<ul>
+<li><a href="#dom对象">DOM对象</a><ul>
+<li><a href="#this-与-etarget">this 与 e.target</a></li>
+<li><a href="#dom对象-1">DOM对象</a></li>
+<li><a href="#视口数值的获取">视口数值的获取</a><ul>
+<li><a href="#objectgetboundingclientrect">object.getBoundingClientRect()</a></li>
+<li><a href="#elementclientwidth与elementclientheight">Element.clientWidth与Element.clientHeight</a></li>
+<li><a href="#windowouterwidth与windowouterheight">window.outerWidth与window.outerHeight</a></li>
+<li><a href="#windowinnerwidth与windowinnerheight">window.innerWidth与window.innerHeight</a></li>
+<li><a href="#documentbodyclientwidth与documentbodyclientheight">document.body.clientWidth与document.body.clientHeight</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /code_chunk_output -->
+
+<h1 id="DOM对象"><a href="#DOM对象" class="headerlink" title="DOM对象"></a>DOM对象</h1><h2 id="this-与-e-target"><a href="#this-与-e-target" class="headerlink" title="this 与 e.target"></a>this 与 e.target</h2><p>js中事件是会冒泡的，所以this是可以变化的，但event.target不会变化，它永远是直接接受事件的目标DOM元素；</p>
+<pre><code class="html">例子1：
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;T&quot;&gt;&lt;/div&gt;
+&lt;body&gt;
+        &lt;script&gt;
+            var T = document.getElementById(&quot;T&quot;);
+            T.onclick = function () { //用id为&quot;T&quot;的元素注册监听器
+                alert(event.currentTarget === this); //true
+                alert(event.target === this); //true
+            }
+        &lt;/script&gt;
+&lt;/html&gt;</code></pre>
+<p>事件作用的元素（对象）   =   注册监听器的元素(对象)<br>event.currentTarget   =  this  =    event.target   =   事件作用的元素（对象）    –(例子中的T)</p>
+<p>用最简单的语言总结：</p>
+<table>
+<thead>
+<tr>
+<th>—–</th>
+<th>——</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>target:</td>
+<td>代表当前目标对象（事件作用的对象）</td>
+</tr>
+<tr>
+<td>currentTarget:</td>
+<td>代表注册监听器的对象</td>
+</tr>
+<tr>
+<td>this:</td>
+<td>和currentTarget一样，即它们的作用相等。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><a href="http://www.webhek.com/event-delegate/" target="_blank" rel="noopener">http://www.webhek.com/event-delegate/</a></p>
+</blockquote>
+<p>“事件绑定”是针对每个元素进行事件绑定处理，但是新的元素并没有进行事件绑定处理；而“事件委托”，是针对某个选择器下的某种元素，都进行事件处理。所以，只需要这些元素符合这个条件，都会进行事件处理。</p>
+<h2 id="DOM对象-1"><a href="#DOM对象-1" class="headerlink" title="DOM对象"></a>DOM对象</h2><blockquote>
+<p>DOM 全称是 Document Object Model，也就是文档对象模型。</p>
+</blockquote>
+<p>DOM 就是针对 HTML 和 XML 提供的一个API。什么意思？就是说<strong>为了能以编程的方法操作这个 HTML 的内容</strong>（比如添加某些元素、修改元素的内容、删除某些元素）。</p>
+<pre><code>document.title = &#39;how to make love&#39;;</code></pre><p>当浏览器下载到一个网页，通常是 HTML，这个 HTML 就叫 document。</p>
+<p>document 通常是整个 DOM 树的根节点，可以通过iframe加载更多页面。</p>
+<p>可以通过document访问其子节点。</p>
+<p>DOM 是为了操作文档出现的 API，document 是其的一个对象；</p>
+<p>BOM 是为了操作浏览器出现的 API，window 是其的一个对象。</p>
+<h2 id="视口数值的获取"><a href="#视口数值的获取" class="headerlink" title="视口数值的获取"></a>视口数值的获取</h2><h3 id="object-getBoundingClientRect"><a href="#object-getBoundingClientRect" class="headerlink" title="object.getBoundingClientRect()"></a>object.getBoundingClientRect()</h3><p><code>object.getBoundingClientRect()</code>方法返回元素的大小及其相对于视口的位置。</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/javascript/img/rect.png" alt="rect.png"></p>
+<pre><code class="html">&lt;div class=&quot;box&quot; id=&quot;box&quot; style=&quot;width:400px;margin:20px;border:1px solid #efefef;&quot;&gt;
+
+&lt;script&gt;
+var len=document.getElementById(&#39;box&#39;).getBoundingClientRect();
+console.dir(len);
+//ClientRect {top: 20, right: 422, bottom: 222, left: 20, width: 402…}
+&lt;/script&gt;</code></pre>
+<h3 id="Element-clientWidth与Element-clientHeight"><a href="#Element-clientWidth与Element-clientHeight" class="headerlink" title="Element.clientWidth与Element.clientHeight"></a>Element.clientWidth与Element.clientHeight</h3><p>表示元素的内部宽度与高度，以像素计。该属性包括内边距，但不包括垂直滚动条（如果有）、边框和外边距。</p>
+<h3 id="window-outerWidth与window-outerHeight"><a href="#window-outerWidth与window-outerHeight" class="headerlink" title="window.outerWidth与window.outerHeight"></a>window.outerWidth与window.outerHeight</h3><p>获得的是加上工具条与滚动条窗口的宽度与高度。</p>
+<h3 id="window-innerWidth与window-innerHeight"><a href="#window-innerWidth与window-innerHeight" class="headerlink" title="window.innerWidth与window.innerHeight"></a>window.innerWidth与window.innerHeight</h3><p>获得的是可视区域的宽高，但是宽度包含了纵向滚动条的宽度。</p>
+<h3 id="document-body-clientWidth与document-body-clientHeight"><a href="#document-body-clientWidth与document-body-clientHeight" class="headerlink" title="document.body.clientWidth与document.body.clientHeight"></a>document.body.clientWidth与document.body.clientHeight</h3><p><code>document.body.clientWidth</code>获得的也是可视区域的宽度，但是<code>document.body.clientHeight</code>获得的是body内容的高度</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/javascript/img/element.jpg" alt="element.jpg"></p>
+<blockquote>
+<p>上图的<code>body</code>设置了<code>width:100%</code>,所以与<code>document.documentElement.clientHeight</code>相等。</p>
+</blockquote>
+<blockquote>
+<p><a href="http://www.cnblogs.com/moqiutao/p/6639792.html" target="_blank" rel="noopener">http://www.cnblogs.com/moqiutao/p/6639792.html</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-ES6对象扩展/" rel="next" title="ES6对象扩展">
+                <i class="fa fa-chevron-left"></i> ES6对象扩展
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-ES6基础/" rel="prev" title="ES6基础">
+                ES6基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DOM对象"><span class="nav-number">1.</span> <span class="nav-text">DOM对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#this-与-e-target"><span class="nav-number">1.1.</span> <span class="nav-text">this 与 e.target</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM对象-1"><span class="nav-number">1.2.</span> <span class="nav-text">DOM对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视口数值的获取"><span class="nav-number">1.3.</span> <span class="nav-text">视口数值的获取</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#object-getBoundingClientRect"><span class="nav-number">1.3.1.</span> <span class="nav-text">object.getBoundingClientRect()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Element-clientWidth与Element-clientHeight"><span class="nav-number">1.3.2.</span> <span class="nav-text">Element.clientWidth与Element.clientHeight</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#window-outerWidth与window-outerHeight"><span class="nav-number">1.3.3.</span> <span class="nav-text">window.outerWidth与window.outerHeight</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#window-innerWidth与window-innerHeight"><span class="nav-number">1.3.4.</span> <span class="nav-text">window.innerWidth与window.innerHeight</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#document-body-clientWidth与document-body-clientHeight"><span class="nav-number">1.3.5.</span> <span class="nav-text">document.body.clientWidth与document.body.clientHeight</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

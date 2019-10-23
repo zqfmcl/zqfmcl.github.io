@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="题解,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="第十三章 字符串class WaterSource { ​       private String s; ​       WaterSource() { ​              System.out.println(“WaterSource()”); ​              s = “Constructed”; ​       } ​       public String toSt">
+<meta name="keywords" content="题解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java题解字符串">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解字符串/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="第十三章 字符串class WaterSource { ​       private String s; ​       WaterSource() { ​              System.out.println(“WaterSource()”); ​              s = “Constructed”; ​       } ​       public String toSt">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.770Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java题解字符串">
+<meta name="twitter:description" content="第十三章 字符串class WaterSource { ​       private String s; ​       WaterSource() { ​              System.out.println(“WaterSource()”); ​              s = “Constructed”; ​       } ​       public String toSt">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解字符串/">
+
+
+
+
+
+  <title>Java题解字符串 | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解字符串/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java题解字符串</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-06T10:00:00+08:00">
+                2019-10-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第十三章-字符串"><a href="#第十三章-字符串" class="headerlink" title="第十三章 字符串"></a>第十三章 字符串</h2><p>class WaterSource {</p>
+<p>​       private String s;</p>
+<p>​       WaterSource() {</p>
+<p>​              System.out.println(“WaterSource()”);</p>
+<p>​              s = “Constructed”;</p>
+<p>​       }</p>
+<p>​       public String toString() { return s; }</p>
+<p>}</p>
+<p>public class SprinklerSystem1 {</p>
+<p>​       private String valve1, valve2, valve3, valve4;     </p>
+<p>​       private WaterSource source = new WaterSource();</p>
+<p>​       private int i;</p>
+<p>​       private float f;</p>
+<p>​             public String toString() {</p>
+<p>​              return</p>
+<p>​                     “valve1 = “ + valve1 + “ “ + </p>
+<p>​                     “valve2 = “ + valve2 + “ “ +</p>
+<p>​                     “valve3 = “ + valve3 + “ “ +</p>
+<p>​                     “valve4 = “ + valve4 + “ “ +</p>
+<p>​                     “i = “ + i + “ “ + “f = “ + f + “ “ +</p>
+<p>​                     “source = “ + source;</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              SprinklerSystem1 sprinklers = new SprinklerSystem1();</p>
+<p>​              System.out.println(sprinklers);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class InfiniteRecursion2 {  </p>
+<p>​       public String toString() {</p>
+<p>​              return “ InfiniteRecursion address: “ + super.toString() + “\n”;</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              List<infiniterecursion2> v = new ArrayList<infiniterecursion2>();</infiniterecursion2></infiniterecursion2></p>
+<p>​              for(int i = 0; i &lt; 10; i++)</p>
+<p>​                     v.add(new InfiniteRecursion2());</p>
+<p>​              System.out.println(v);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Turtle3 {</p>
+<p>​       private String name;</p>
+<p>​       private Formatter f;</p>
+<p>​       public Turtle3(String name, Formatter f) {</p>
+<p>​              this.name = name;</p>
+<p>​              this.f = f;</p>
+<p>​       }</p>
+<p>​       public void move(int x, int y) {</p>
+<p>​              f.format(“%s The Turtle is at (%d,%d)\n”, name, x, y);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              PrintStream outAlias = System.err;</p>
+<p>​              Turtle3 tommy = new Turtle3(“Tommy”, new Formatter(System.err));</p>
+<p>​              Turtle3 terry = new Turtle3(“Terry”, new Formatter(outAlias));</p>
+<p>​              tommy.move(0,0);</p>
+<p>​              terry.move(4,8);</p>
+<p>​              tommy.move(3,4);</p>
+<p>​              terry.move(2,5);</p>
+<p>​              tommy.move(3,3);</p>
+<p>​              terry.move(3,3);     </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Receipt4 {</p>
+<p>​       private double total = 0;</p>
+<p>​       private Formatter f = new Formatter(System.out);</p>
+<p>​       private static final int W1 = 15;</p>
+<p>​       private static final int W2 = 5;</p>
+<p>​       private static final int W3 = 10;</p>
+<p>​       private String s1 = “%-“ + W1 + “s %” + W2 + “s %” + W3 + “s\n”;</p>
+<p>​       private String s2 = “%-“ + W1 + “.15s %” + W2 + “d %” + W3 + “.2f\n”;</p>
+<p>​       private String s3 = “%-“ + W1 + “s %” + W2 + “s %” + W3 + “.2f\n”;</p>
+<p>​       public void printTitle() {</p>
+<p>​              f.format(s1, “Item”, “Qty”, “Price”);</p>
+<p>​              f.format(s1, “—-“, “—“, “—–”);</p>
+<p>​       }</p>
+<p>​       public void print(String name, int qty, double price) {</p>
+<p>​              f.format(s2, name, qty, price);</p>
+<p>​              total += price;</p>
+<p>​       }</p>
+<p>​       public void printTotal() {</p>
+<p>​              f.format(s3, “Tax”, “”, total * 0.06);</p>
+<p>​              f.format(s1, “”, “”, “—–”);</p>
+<p>​              f.format(s3, “Total”, “”, total * 1.06);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Receipt4 receipt = new Receipt4();</p>
+<p>​              receipt.printTitle();</p>
+<p>​              receipt.print(“Jack’s Magic Beans”, 4, 4.25);</p>
+<p>​              receipt.print(“Princess Peas”, 3, 5.1);</p>
+<p>​              receipt.print(“Three Bears Porridge”, 1, 14.29);</p>
+<p>​              receipt.printTotal();              </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex5 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Formatter f = new Formatter(System.out);</p>
+<p>​              char u = ‘a’;</p>
+<p>​              System.out.println(“char u = &#39;a&#39;“);</p>
+<p>​              f.format(“%-2s%-2S%-2c%-2C%-5b%-5B%-3h%-3H%%\n”, u,u,u,u,u,u,u,u);</p>
+<p>​              </p>
+<p>​              int v = 121;</p>
+<p>​              System.out.println(“int v = 121”);</p>
+<p>​              f.format(“%-4s%-4S%-4d%-4c%-4C%-5b%-5B%-4x%-4X%-4h%-4H%%\n”, v,v,v,v,v,v,v,v,v,v,v);</p>
+<p>​              </p>
+<p>​              BigInteger w = new BigInteger(“50000000000000”);</p>
+<p>​              System.out.println(“BigInteger w = 50000000000000”);</p>
+<p>​              f.format(“%-15s%-15S%-5b%-5B%-15x%-15X%-5h%-5H%%\n”, w,w,w,w,w,w,w,w); </p>
+<p>​              double x = 179.543;</p>
+<p>​              System.out.println(“double x = 179.543”);</p>
+<p>​              f.format(“%-8s%-8S%-5b%-5B%-15f%-15e%-15E%-12h%-12H%%\n”, x,x,x,x,x,x,x,x,x);</p>
+<p>​              </p>
+<p>​              Conversion y = new Conversion();</p>
+<p>​              System.out.println(“Conversion y = new Conversion()”);</p>
+<p>​              f.format(“%-20s%-20S%-5b%-5B%-10h%-10H%%\n”, y,y,y,y,y,y);</p>
+<p>​              boolean z = false;</p>
+<p>​              System.out.println(“boolean z = false”);</p>
+<p>​              f.format(“%-7s%-7S%-7b%-7B%-7h%-7H%%\n”, z,z,z,z,z,z);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex6 {</p>
+<p>​       int i = 0;</p>
+<p>​       long l = 0;</p>
+<p>​       float f = 0.0f;</p>
+<p>​       double d = 0.0;</p>
+<p>​       Ex6(int i, long l, float f, double d) {</p>
+<p>​              this.i = i;</p>
+<p>​              this.l = l;</p>
+<p>​              this.f = f;</p>
+<p>​              this.d = d;</p>
+<p>​       }      </p>
+<p>​       public String toString() {</p>
+<p>​              return String.format(“i = %d\nl = %d\nf = %.16g\nd = %.16g\n”, i, l, f, d);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Ex6 x = new Ex6(2, 45l, 1.2f, 2.7182818289);</p>
+<p>​              Ex6 ex = new Ex6(-2147483648, -9223372036854775808L, 1.1754943508222875E-38f, 2.2250738585072014E-308);</p>
+<p>​              Ex6 exMax = new Ex6(2147483647, 9223372036854775807L, 3.4028234663852886E38f, 1.7976931348623157E308);</p>
+<p>​              System.out.println(x);</p>
+<p>​              System.out.println(ex);</p>
+<p>​              System.out.println(exMax);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Sentence7 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                                                     String sen = “^[A-Z].*[\.]$”;</p>
+<p>​              String s1 = “Once upon a time.”;</p>
+<p>​              String s2 = “abcd.”;</p>
+<p>​              String s3 = “Abcd?”;</p>
+<p>​              String s4 = “An easy way out.”;</p>
+<p>​              String s5 = “Zorro.”;</p>
+<p>​              String s6 = “X.”;</p>
+<p>​              println(s1.matches(sen));</p>
+<p>​              println(s2.matches(sen));</p>
+<p>​              println(s3.matches(sen));</p>
+<p>​              println(s4.matches(sen));</p>
+<p>​              println(s5.matches(sen));</p>
+<p>​              println(s6.matches(sen));</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Splitting8 {</p>
+<p>​       public static String knights =</p>
+<p>​              “Then, when you have found the shrubbery, you must “ +</p>
+<p>​              “cut down the mightiest tree in the forest… “ +</p>
+<p>​              “with… a herring!”;</p>
+<p>​       public static void split(String regex) {</p>
+<p>​              System.out.println(Arrays.toString(knights.split(regex)));</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              split(“the|you”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Replacing9 {</p>
+<p>​       public static String knights =</p>
+<p>​              “Then, when you have found the shrubbery, you must “ +</p>
+<p>​              “cut down the mightiest tree in the forest… “ +</p>
+<p>​              “with… a herring!”;</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              System.out.println(knights.replaceAll(“[aeiouAEIOU]”, “_”));</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class TestRegularExpression10 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              if(args.length &lt; 2) {</p>
+<p>​                     print(“Usage:\njava TestRegularExpression “ + </p>
+<p>​                            “characterSequence regularExpression+”);</p>
+<p>​                     System.exit(0);  </p>
+<p>​              }</p>
+<p>​              print(“Input: &quot;“ + args[0] + “&quot;“);</p>
+<p>​              for(String arg : args) {</p>
+<p>​                     print(“Regular expression: &quot;“ + arg + “&quot;“);</p>
+<p>​                     Pattern p = Pattern.compile(arg);</p>
+<p>​                     Matcher m = p.matcher(args[0]);</p>
+<p>​                     if(!m.find()) </p>
+<p>​                           print(“No match found for “ + “&quot;“ + arg + “&quot;“);</p>
+<p>​                     m.reset();</p>
+<p>​                     while(m.find()) {</p>
+<p>​                            print(“Match &quot;“ + m.group() + “&quot; at position “ +</p>
+<p>​                                   m.start() + ((m.end() - m.start() &lt; 2) ? “” :  (“-“ + (m.end() - 1))));</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class TestRegularExpression11 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              if(args.length &lt; 2) {</p>
+<p>​                     print(“Usage:\njava TestRegularExpression “ + </p>
+<p>​                            “characterSequence regularExpression+”);</p>
+<p>​                     System.exit(0);  </p>
+<p>​              }</p>
+<p>​              print(“Input: &quot;“ + args[0] + “&quot;“);</p>
+<p>​              for(String arg : args) {</p>
+<p>​                     print(“Regular expression: &quot;“ + arg + “&quot;“);</p>
+<p>​                     Pattern p = Pattern.compile(arg);</p>
+<p>​                     Matcher m = p.matcher(args[0]);</p>
+<p>​                     if(!m.find()) </p>
+<p>​                           print(“No match found for “ + “&quot;“ + arg + “&quot;“);</p>
+<p>​                     m.reset();</p>
+<p>​                     while(m.find()) {</p>
+<p>​                            print(“Match &quot;“ + m.group() + “&quot; at position “ +</p>
+<p>​                                   m.start() + ((m.end() - m.start() &lt; 2) ? “” :  (“-“ + (m.end() - 1))));</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class RegEx11 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Pattern p = </p>
+<p>​       Pattern.compile(“(?i)((^[aeiou])|(\s+[aeiou]))\w+[aeiou]\b”);</p>
+<p>​              Matcher m = p.matcher(“Arline ate eight apples and one orange while Anita hadn’t any”);</p>
+<p>​              while(m.find())</p>
+<p>​                     System.out.println(“Match &quot;“ + m.group() + “&quot; at “ + m.start());</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Groups12 {</p>
+<p>​       static public final String POEM =</p>
+<p>​       “Twas brillig, and the slithy toves\n” +</p>
+<p>​       “Did gyre and gimble in the wabe.\n” +</p>
+<p>​       “All mimsy were the borogoves,\n” +</p>
+<p>​       “And the mome raths outgrabe.\n\n” +</p>
+<p>​       “Beware the Jabberwock, my son,\n” +</p>
+<p>​       “The jaws that bite, the claws that catch,\n” +</p>
+<p>​       “Beware the Jubjub bird, and shun\n” +</p>
+<p>​       “The frumious Bandersnatch.”;</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Matcher m = Pattern.compile(“(^[a-z]|\s+[a-z])\w+”).matcher(POEM);</p>
+<p>​              Set<string> words = new TreeSet<string>();</string></string></p>
+<p>​              while(m.find()) {</p>
+<p>​                     words.add(m.group());</p>
+<p>​              }</p>
+<p>​              print(“Number of unique non-cap words = “ + words.size());</p>
+<p>​              print(words);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class StartEnd13 {</p>
+<p>​       public static String input =</p>
+<p>​              “Twas brillig, and the slithy toves\n” +</p>
+<p>​              “Did gyre and gimble in the wabe.\n” +</p>
+<p>​              “All mimsy were the borogoves,\n” +</p>
+<p>​              “And the mome raths outgrabe.\n\n” +</p>
+<p>​              “Beware the Jabberwock, my son,\n” +</p>
+<p>​              “The jaws that bite, the claws that catch,\n” +</p>
+<p>​              “Beware the Jubjub bird, and shun\n” +</p>
+<p>​              “The frumious Bandersnatch.”;</p>
+<p>​       private static class Display {</p>
+<p>​              private boolean regexPrinted = false;</p>
+<p>​              private String regex;</p>
+<p>​              Display(String regex) { this.regex = regex; }</p>
+<p>​              void display(String message) {</p>
+<p>​                     if(!regexPrinted) {</p>
+<p>​                            print(regex);</p>
+<p>​                            regexPrinted = true;</p>
+<p>​                     }</p>
+<p>​                     print(message);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       static void examine(String s, String regex) {</p>
+<p>​              Display d = new Display(regex);</p>
+<p>​              Pattern p = Pattern.compile(regex);</p>
+<p>​              Matcher m = p.matcher(s);</p>
+<p>​              while(m.find())</p>
+<p>​                     d.display(“find() ‘“ + m.group() + “‘ start = “ + m.start() + “ end  = “ + m.end());</p>
+<p>​              if(m.lookingAt())                 d.display(“lookingAt() start = “ + m.start() + “ end = “ + m.end());</p>
+<p>​              if(m.matches())                  d.display(“matches() start = “ + m.start() + “ end = “ + m.end());   </p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              for(String in : input.split(“\n”)) {</p>
+<p>​                     print(“input : “ + in);</p>
+<p>​                     for(String regex : new String[]{“\w<em>are\w</em>“, “A\w*”, “T\w+”, “Did.*”})</p>
+<p>​                            examine(in, regex);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class SplitDemo14 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              String input = “This!!unusual use!!of exclamation!!points”;</p>
+<p>​              print(Arrays.toString(input.split(“!!”)));</p>
+<p>​                           print(Arrays.toString(input.split(“!!”, 3)));</p>
+<p>​       }</p>
+<p>}</p>
+<p>​     import java.util.regex.*;</p>
+<p>import net.mindview.util.*;</p>
+<p>public class JGrep15  {</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              if(args.length &lt; 3) {</p>
+<p>​                     System.out.println(“Usage: java JGrep file regex flag”);</p>
+<p>​                     System.exit(0);</p>
+<p>​              }</p>
+<p>​              int flag = 0;</p>
+<p>​              if(args[2].equals(“Pattern.CASE_INSENSITIVE”)) </p>
+<p>​                     flag = Pattern.CASE_INSENSITIVE;</p>
+<p>​              else if(args[2].equals(“Pattern.CANON_EQ”))</p>
+<p>​                     flag = Pattern.CANON_EQ;</p>
+<p>​              else if(args[2].equals(“Pattern.COMMENTS”))</p>
+<p>​                     flag = Pattern.COMMENTS;</p>
+<p>​              else if(args[2].equals(“Pattern.DOTALL”))</p>
+<p>​                     flag = Pattern.DOTALL;</p>
+<p>​              else if(args[2].equals(“Pattern.LITERAL”))</p>
+<p>​                     flag = Pattern.LITERAL;</p>
+<p>​              else if(args[2].equals(“Pattern.MULTILINE”))</p>
+<p>​                     flag = Pattern.MULTILINE;</p>
+<p>​              else if(args[2].equals(“Pattern.UNICODE_CASE”))</p>
+<p>​                     flag = Pattern.UNICODE_CASE;</p>
+<p>​              else if(args[2].equals(“Pattern.UNIX_LINES”))</p>
+<p>​                     flag = Pattern.UNIX_LINES;</p>
+<p>​              Pattern p = Pattern.compile(args[1], flag);</p>
+<p>​                           int index = 0;</p>
+<p>​              Matcher m = p.matcher(“”);              for(String line : new TextFile(args[0])) {</p>
+<p>​                     m.reset(line);</p>
+<p>​                     while(m.find())</p>
+<p>​                            System.out.println(index++ + “: “ + </p>
+<p>​                                   m.group() + “: “ + m.start());</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class JGrep16  {</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              if(args.length &lt; 2) {</p>
+<p>​                     System.out.println(“Usage: java JGrep (file or directory) regex”);</p>
+<p>​                     System.exit(0);</p>
+<p>​              }</p>
+<p>​              Pattern p = Pattern.compile(args[1]);</p>
+<p>​              Matcher d = Pattern.compile(“\w+\.{1}\w+”).matcher(args[0]);</p>
+<p>​              if(d.find()) {</p>
+<p>​                     System.out.println(“File: “ + args[0]);</p>
+<p>​                                         int index = 0;</p>
+<p>​                     Matcher m = p.matcher(“”);                     for(String line : new TextFile(args[0])) {</p>
+<p>​                            m.reset(line);</p>
+<p>​                            while(m.find())</p>
+<p>​                                   System.out.println(index++ + “: “ + </p>
+<p>​                                          m.group() + “: “ + m.start());</p>
+<p>​                     }</p>
+<p>​              }             </p>
+<p>​              Matcher e = Pattern.compile(“^\.{1}$”).matcher(args[0]);</p>
+<p>​              if(e.find()) {</p>
+<p>​                     File[] files = new File(args[0]).listFiles();</p>
+<p>​                     System.out.println(“root dir of files: “ + Arrays.asList(files));</p>
+<p>​                                         for(File f : files) {</p>
+<p>​                            if(f.getName().matches(“\w+\.{1}\w+”)) {</p>
+<p>​                                   System.out.println(f.getName() + “:”);</p>
+<p>​                                   int index = 0;</p>
+<p>​                                   Matcher m = p.matcher(“”);                                   for(String line : new TextFile(f.getName())) {</p>
+<p>​                                          m.reset(line);</p>
+<p>​                                          while(m.find())</p>
+<p>​                                                 System.out.println(index++ + “: “ + </p>
+<p>​                                                        m.group() + “: “ + m.start());</p>
+<p>​                                   }</p>
+<p>​                            }</p>
+<p>​                            System.out.println();</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​              d.reset();</p>
+<p>​              e.reset();</p>
+<p>​              if(!(d.find() || e.find())) {</p>
+<p>​                     if(new File(args[0]).listFiles() == null) { </p>
+<p>​                            System.out.println(“no such directory: “ + args[0]);</p>
+<p>​                            System.exit(0); </p>
+<p>​                     }</p>
+<p>​                     File[] files = new File(args[0]).listFiles();</p>
+<p>​                     System.out.println(args[0] + “: subdir of files: “ + Arrays.asList(files));</p>
+<p>​                                         for(File f : files) {</p>
+<p>​                            int index = 0;</p>
+<p>​                            Matcher m = p.matcher(“”);                            for(String line : new TextFile(args[0] + “\“ + f.getName())) {</p>
+<p>​                                   m.reset(line);</p>
+<p>​                                   while(m.find())</p>
+<p>​                                          System.out.println(index++ + “: “ + </p>
+<p>​                                                 m.group() + “: “ + m.start());</p>
+<p>​                            }</p>
+<p>​                            System.out.println();</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex17  {</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              if(args.length &lt; 1) {</p>
+<p>​                     System.out.println(“Usage: fileName”);</p>
+<p>​                     System.exit(0);</p>
+<p>​              }</p>
+<p>​              Pattern p = Pattern.compile(“(                       int index = 0;</p>
+<p>​              Matcher m = p.matcher(“”);              System.out.println(args[0] + “ comments: “);</p>
+<p>​              for(String line : new TextFile(args[0])) {</p>
+<p>​                     m.reset(line);</p>
+<p>​                     while(m.find())</p>
+<p>​                            System.out.println(index++ + “: “ + m.group());</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex18  {</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              if(args.length &lt; 1) {</p>
+<p>​                     System.out.println(“Usage: fileName”);</p>
+<p>​                     System.exit(0);</p>
+<p>​              }</p>
+<p>​              Pattern p = Pattern.compile(“&quot;.*&quot;“);</p>
+<p>​              System.out.println(args[0] + “ string literals:”);</p>
+<p>​                           int index = 0;</p>
+<p>​              Matcher m = p.matcher(“”);              for(String line : new TextFile(args[0])) {</p>
+<p>​                     m.reset(line);</p>
+<p>​                     while(m.find())</p>
+<p>​                            System.out.println(index++ + “: “ + m.group());</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex19  {</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              if(args.length &lt; 1) {</p>
+<p>​                     System.out.println(“Usage: fileName”);</p>
+<p>​                     System.exit(0);</p>
+<p>​              }             </p>
+<p>​                           Pattern p = Pattern.compile(“class \w+\s+”);</p>
+<p>​                           Pattern q = Pattern.compile(“^(        System.out.println(“classes in “ + args[0] + “:”);</p>
+<p>​                           int index = 0;</p>
+<p>​              Matcher m = p.matcher(“”);              Matcher n = q.matcher(“”);</p>
+<p>​              for(String line : new TextFile(args[0])) {</p>
+<p>​                     m.reset(line);</p>
+<p>​                     n.reset(line);</p>
+<p>​                     while(m.find() &amp;&amp; !n.find())</p>
+<p>​                            System.out.println(index++ + “: “ + m.group());</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Scanner20 {</p>
+<p>​       int i;</p>
+<p>​       long L;</p>
+<p>​       float f;</p>
+<p>​       double d;</p>
+<p>​       String s;</p>
+<p>​       Scanner20(String s) {</p>
+<p>​              Scanner sc = new Scanner(s);</p>
+<p>​              i = sc.nextInt();</p>
+<p>​              L = sc.nextLong();</p>
+<p>​              f = sc.nextFloat();</p>
+<p>​              d = sc.nextDouble();</p>
+<p>​              this.s = sc.next();          </p>
+<p>​       }</p>
+<p>​       public String toString() {</p>
+<p>​              return i + “ “ + L + “ “ + f + “ “ + d + “ “ + s;</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Scanner20 s20 = new Scanner20(“17 56789 2.7 3.61412 hello”);</p>
+<p>​              System.out.println(s20);</p>
+<p>​       }</p>
+<p>}</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/题解/" rel="tag"># 题解</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/06/2019-10-06-Java题解多态/" rel="next" title="Java题解多态">
+                <i class="fa fa-chevron-left"></i> Java题解多态
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/06/2019-10-06-Java题解对象/" rel="prev" title="Java题解对象">
+                Java题解对象 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第十三章-字符串"><span class="nav-number">1.</span> <span class="nav-text">第十三章 字符串</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Leetcode,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="Regular Expression Matching    @(leetcode解题思路)[DP] 问题Implement regular expression matching with support for ‘.’ and ‘*’.  ‘.’ Matches any single character.‘*’ Matches zero or more of the preceding el">
+<meta name="keywords" content="Leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Regular Expression Matching">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-Regular-Expression-Matching/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="Regular Expression Matching    @(leetcode解题思路)[DP] 问题Implement regular expression matching with support for ‘.’ and ‘*’.  ‘.’ Matches any single character.‘*’ Matches zero or more of the preceding el">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/leetbook-master/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/010.%20Regular%20Expression%20Matching/1461923981629.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/leetbook-master/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/010.%20Regular%20Expression%20Matching/1461922697867.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/leetbook-master/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/010.%20Regular%20Expression%20Matching/1461923916690.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/leetbook-master/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/010.%20Regular%20Expression%20Matching/1461923856937.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/leetbook-master/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/010.%20Regular%20Expression%20Matching/1461923613623.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/leetbook-master/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/010.%20Regular%20Expression%20Matching/1461923701320.png">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.406Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Regular Expression Matching">
+<meta name="twitter:description" content="Regular Expression Matching    @(leetcode解题思路)[DP] 问题Implement regular expression matching with support for ‘.’ and ‘*’.  ‘.’ Matches any single character.‘*’ Matches zero or more of the preceding el">
+<meta name="twitter:image" content="c:/Users/Administrator/Desktop/leetbook-master/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/010.%20Regular%20Expression%20Matching/1461923981629.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-Regular-Expression-Matching/">
+
+
+
+
+
+  <title>Regular Expression Matching | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-Regular-Expression-Matching/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Regular Expression Matching</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T10:00:00+08:00">
+                2019-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ol>
+<li>Regular Expression Matching</li>
+</ol>
+<hr>
+<p> @(leetcode解题思路)[DP]</p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a><strong>问题</strong></h1><p>Implement regular expression matching with support for ‘.’ and ‘*’.</p>
+<blockquote>
+<p>‘.’ Matches any single character.<br>‘*’ Matches zero or more of the preceding element.</p>
+</blockquote>
+<blockquote>
+<p>The matching should cover the entire input string (not partial).</p>
+</blockquote>
+<blockquote>
+<p>The function prototype should be:<br>bool isMatch(const char *s, const char *p)</p>
+</blockquote>
+<blockquote>
+<p>Some examples:<br>isMatch(“aa”,”a”) → false<br>isMatch(“aa”,”aa”) → true<br>isMatch(“aaa”,”aa”) → false<br>isMatch(“aa”, “a*”) → true<br>isMatch(“aa”, “.*”) → true<br>isMatch(“ab”, “.*”) → true<br>isMatch(“aab”, “c<em>a</em>b”) → true</p>
+</blockquote>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>这里面最复杂的操作是”*“，这是个很可恶的操作，因为你永远不知道它多长。但是有一点，”*“不会单独出现，它一定是和前面一个字母或”.”配成一对。看成一对后”X*”，它的性质就是：要不匹配0个，要不匹配连续的“X”</p>
+<p>题目的关键就是如何把这一对放到适合的位置。</p>
+<p>考虑一个特殊的问题：<br>情况1：<br>“aaaaaaaaaaaaaaaa”<br>“a<em>aa</em>“</p>
+<p>情况2：<br>“aaaaaaaaaaaaaaaa”<br>“a<em>ab</em>“</p>
+<p>在不知道后面的情况的时候，我如何匹配a*？</p>
+<ul>
+<li>最长匹配<br>显然不合适，这样后面的a就无法匹配上了</li>
+<li>匹配到和后面长度一样的位置，比如情况1，就是留3个a不匹配，让后面3个字母尝试去匹配。<br>这样看似合适，但是遇到情况2就不行了。</li>
+<li>回溯，每种”*”的情况我都匹配一次，看哪种情况能成功，如果其中出现了问题，马上回溯，换下一种情况</li>
+</ul>
+<h2 id="思路1——回溯"><a href="#思路1——回溯" class="headerlink" title="思路1——回溯"></a>思路1——回溯</h2><p>如果“*”不好判断，那我大不了就来个暴力的算法，把“<em>”的所有可能性都测试一遍看是否有满足的，用两个指针i,j来表明当前s和p的字符。<br>我们采用<font color="red">从后往前匹配</font>，为什么这么匹配，<font color="blue">因为如果我们从前往后匹配，每个字符我们都得判断是否后面跟着“</font></em>”，而且还要考虑越界的问题。但是从后往前没这个问题，一旦遇到“*”，前面必然有个字符。</p>
+<ul>
+<li>如果j遇到”*“，我们判断s[i] 和 p[j-1]是否相同，<ul>
+<li>如果相同我们可以先尝试匹配掉s的这个字符，i–，然后看之后能不能满足条件，满足条件，太棒了！我们就结束了，如果中间出现了一个不满足的情况，马上回溯到不匹配这个字符的状态。</li>
+<li>不管相同不相同，都不匹配s的这个字符，j-=2 (跳过“*”前面的字符)</li>
+</ul>
+</li>
+</ul>
+<pre><code class="c++">if(p[j-1] == &#39;.&#39; || p[j-1] == s[i])
+    if(myMatch(s,i-1,p,j))
+        return true;
+    return myMatch(s,i,p,j-2);</code></pre>
+<ul>
+<li>如果j遇到的不是“*”，那么我们就直接看s[i]和p[j]是否相等，不相等就说明错了，返回。</li>
+</ul>
+<pre><code class="c++">    if(p[j] == &#39;.&#39; || p[j] == s[i])
+         return myMatch(s,i-1,p,j-1);
+    else return false;</code></pre>
+<ul>
+<li>再考虑退出的情况<ul>
+<li>如果j已经&lt;0了说明p已经匹配完了，这时候，如果s匹配完了，说明正确，如果s没匹配完，说明错误。</li>
+<li>如果i已经&lt;0了说明s已经匹配完，这时候，s可以没匹配完，只要它还有”*“存在，我们继续执行代码。</li>
+</ul>
+</li>
+</ul>
+<p>所以代码应该是这样的：</p>
+<pre><code class="c++">class Solution {
+public:
+    static const int FRONT=-1;
+    bool isMatch(string s, string p) {
+        return myMatch(s,s.length()-1,p,p.length()-1);
+    }
+    bool myMatch(string s, int i, string p,int j)
+    {
+        if(j == FRONT)
+            if(i == FRONT)    return true;
+        else return false;
+        if(p[j] == &#39;*&#39;)
+        {
+            if(i &gt; FRONT &amp;&amp; (p[j-1] == &#39;.&#39; || p[j-1] == s[i]))
+                if(myMatch(s,i-1,p,j))
+                    return true;
+            return myMatch(s,i,p,j-2);
+        }
+        if(p[j] == &#39;.&#39; || p[j] == s[i])
+            return myMatch(s,i-1,p,j-1);
+        return false;
+    }
+};
+</code></pre>
+<h2 id="思路2——DP"><a href="#思路2——DP" class="headerlink" title="思路2——DP"></a>思路2——DP</h2><p>DP的话，肯定要用空间换时间了，这里用 monkeyGoCrazy 的思路：用2维布尔数组，dp[i][j]的含义是s[0-i] 与 s[0-j]是否匹配。</p>
+<blockquote>
+<ol>
+<li>p.charAt(j) == s.charAt(i) :  dp[i][j] = dp[i-1][j-1]</li>
+<li>If p.charAt(j) == ‘.’ : dp[i][j] = dp[i-1][j-1];</li>
+<li>If p.charAt(j) == ‘*’: here are two sub conditions:<ul>
+<li>if p.charAt(j-1) != s.charAt(i) : dp[i][j] = dp[i][j-2]  //in this case, a* only counts as empty</li>
+<li>if p.charAt(j-1) == s.charAt(i) or p.charAt(i-1) == ‘.’:<pre><code>dp[i][j] = dp[i-1][j]    //in this case, a* counts as multiple a 
+        dp[i][j] = dp[i][j-1]   // in this case, a* counts as single a
+dp[i][j] = dp[i][j-2]   // in this case, a* counts as empty</code></pre></li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<p>这里用的bool数组比较巧妙，初始化为true。前两种情况好理解，如果匹配成功就维持之前的真假值。程序的目的是看真值能不能传递下去。如果遇到三种情况，我们就看哪种情况有真值可以传递，就继续传递下去。</p>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><pre><code class="c++"> dp[0][0] = true;
+//初始化第0行,除了[0][0]全为false，毋庸置疑，因为空串p只能匹配空串，其他都无能匹配
+for (int i = 1; i &lt;= m; i++) 
+    dp[i][0] = false; 
+//初始化第0列，只有X*能匹配空串，如果有*，它的真值一定和p[0][j-2]的相同（略过它之前的符号）
+for (int j = 1; j &lt;= n; j++) 
+    dp[0][j] = j &gt; 1 &amp;&amp; &#39;*&#39; == p[j - 1] &amp;&amp; dp[0][j - 2];</code></pre>
+<h2 id="图示"><a href="#图示" class="headerlink" title="图示"></a>图示</h2><p>我用excel自己跑了下代码，画了一下示意图，下面橘黄色表示正常匹配了，蓝色表示“*”匹配空串。可以看出真值是如何传递下去的。</p>
+<p> <font color="blue">例1：”aaa” 和 正则式”aa”</font></p>
+<p><img src="C:/Users/Administrator/Desktop/leetbook-master/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/010.%20Regular%20Expression%20Matching/1461923981629.png" alt="Alt text"></p>
+<p><img src="C:/Users/Administrator/Desktop/leetbook-master/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/010.%20Regular%20Expression%20Matching/1461922697867.png" alt="Alt text"></p>
+<p> <font color="blue">例2：”aabc” 和 正则式”a*bc”</font></p>
+<p><img src="C:/Users/Administrator/Desktop/leetbook-master/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/010.%20Regular%20Expression%20Matching/1461923916690.png" alt="Alt text"></p>
+<p><img src="C:/Users/Administrator/Desktop/leetbook-master/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/010.%20Regular%20Expression%20Matching/1461923856937.png" alt="Alt text"></p>
+<p> <font color="blue">例3：”aaaa” 和 正则式”a*b*“</font></p>
+<p><img src="C:/Users/Administrator/Desktop/leetbook-master/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/010.%20Regular%20Expression%20Matching/1461923613623.png" alt="Alt text"></p>
+<p><img src="C:/Users/Administrator/Desktop/leetbook-master/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/010.%20Regular%20Expression%20Matching/1461923701320.png" alt="Alt text"></p>
+<h1 id="代码执行"><a href="#代码执行" class="headerlink" title="代码执行"></a>代码执行</h1><pre><code class="c++">for(int i = 1;i &lt;= n;i++)
+{
+    for(int j = 1;j &lt;= m;j++)
+    {
+        //这里j-1才是正常字符串中的字符位置
+        //要不*当空，要不就只有当前字符匹配了*之前的字符，才有资格传递dp[i-1][j]真值
+        if(p[j-1] == &#39;*&#39;)
+            dp[i][j] = dp[i][j-2] || (s[i-1] == p[j-2] || p[j-2] == &#39;.&#39;) &amp;&amp; dp[i-1][j];
+        else 
+        //只有当前字符完全匹配，才有资格传递dp[i-1][j-1] 真值
+            dp[i][j] = (p[j-1] == &#39;.&#39; || s[i-1] == p[j-1]) &amp;&amp; dp[i-1][j-1];
+    }
+}
+</code></pre>
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><pre><code class="c++">return dp[n][m]</code></pre>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><pre><code class="c++">class Solution
+{
+public:
+    static const int FRONT=-1;
+    bool isMatch(string s, string p)
+    {
+        int m = s.length(),n = p.length();
+        bool dp[m+1][n+1];
+        dp[0][0] = true;
+//初始化第0行,除了[0][0]全为false，毋庸置疑，因为空串p只能匹配空串，其他都无能匹配
+        for (int i = 1; i &lt;= m; i++)
+            dp[i][0] = false;
+//初始化第0列，只有X*能匹配空串，如果有*，它的真值一定和p[0][j-2]的相同（略过它之前的符号）
+        for (int j = 1; j &lt;= n; j++)
+            dp[0][j] = j &gt; 1 &amp;&amp; &#39;*&#39; == p[j - 1] &amp;&amp; dp[0][j - 2];
+
+        for (int i = 1; i &lt;= m; i++)
+        {
+            for (int j = 1; j &lt;= n; j++)
+            {
+            //由于表格中是从1开始的，而字符串中是以0开始的，所以i-1和j-1才对应字符串中的字符。
+                if (p[j - 1] == &#39;*&#39;)
+                {
+                    dp[i][j] = dp[i][j - 2] || (s[i - 1] == p[j - 2] || p[j - 2] == &#39;.&#39;) &amp;&amp; dp[i - 1][j];
+
+                }
+                else   //只有当前字符完全匹配，才有资格传递dp[i-1][j-1] 真值
+                {
+                    dp[i][j] = (p[j - 1] == &#39;.&#39; || s[i - 1] == p[j - 1]) &amp;&amp; dp[i - 1][j - 1];
+
+                }
+            }
+        }
+        return dp[m][n];
+    }
+};</code></pre>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-Remove-Duplicates-from-Sorted-Array[E]/" rel="next" title="Remove Duplicates from Sorted Array[E]">
+                <i class="fa fa-chevron-left"></i> Remove Duplicates from Sorted Array[E]
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-Roman-to-Integer/" rel="prev" title="Roman to Integer">
+                Roman to Integer <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#思路1——回溯"><span class="nav-number">2.1.</span> <span class="nav-text">思路1——回溯</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路2——DP"><span class="nav-number">2.2.</span> <span class="nav-text">思路2——DP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化"><span class="nav-number">2.3.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图示"><span class="nav-number">2.4.</span> <span class="nav-text">图示</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码执行"><span class="nav-number">3.</span> <span class="nav-text">代码执行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#返回值"><span class="nav-number">3.1.</span> <span class="nav-text">返回值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整代码"><span class="nav-number">3.2.</span> <span class="nav-text">完整代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

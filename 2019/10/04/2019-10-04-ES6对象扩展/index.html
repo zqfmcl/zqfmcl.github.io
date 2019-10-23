@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ECMAScript,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="ES6对象扩展 属性表示 属性名表达式 Object.is() Object.assign() 属性描述符 数据描述符 configurable enumerable writable value   存取器描述   属性的遍历 __proto__属性 Object.defineProperty() Object.setPrototypeOf() Object.getPrototypeOf(">
+<meta name="keywords" content="ECMAScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6对象扩展">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-ES6对象扩展/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="ES6对象扩展 属性表示 属性名表达式 Object.is() Object.assign() 属性描述符 数据描述符 configurable enumerable writable value   存取器描述   属性的遍历 __proto__属性 Object.defineProperty() Object.setPrototypeOf() Object.getPrototypeOf(">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.150Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6对象扩展">
+<meta name="twitter:description" content="ES6对象扩展 属性表示 属性名表达式 Object.is() Object.assign() 属性描述符 数据描述符 configurable enumerable writable value   存取器描述   属性的遍历 __proto__属性 Object.defineProperty() Object.setPrototypeOf() Object.getPrototypeOf(">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-ES6对象扩展/">
+
+
+
+
+
+  <title>ES6对象扩展 | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-ES6对象扩展/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ES6对象扩展</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T10:00:00+08:00">
+                2019-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <!-- toc orderedList:0 depthFrom:1 depthTo:6 -->
+
+<ul>
+<li><a href="#es6对象扩展">ES6对象扩展</a><ul>
+<li><a href="#属性表示">属性表示</a></li>
+<li><a href="#属性名表达式">属性名表达式</a></li>
+<li><a href="#objectis">Object.is()</a></li>
+<li><a href="#objectassign">Object.assign()</a></li>
+<li><a href="#属性描述符">属性描述符</a><ul>
+<li><a href="#数据描述符">数据描述符</a><ul>
+<li><a href="#configurable">configurable</a></li>
+<li><a href="#enumerable">enumerable</a></li>
+<li><a href="#writable">writable</a></li>
+<li><a href="#value">value</a></li>
+</ul>
+</li>
+<li><a href="#存取器描述">存取器描述</a></li>
+</ul>
+</li>
+<li><a href="#属性的遍历">属性的遍历</a></li>
+<li><a href="#__proto__属性">__proto__属性</a></li>
+<li><a href="#objectdefineproperty">Object.defineProperty()</a></li>
+<li><a href="#objectsetprototypeof">Object.setPrototypeOf()</a></li>
+<li><a href="#objectgetprototypeof">Object.getPrototypeOf()</a></li>
+<li><a href="#objectkeysobjectvaluesobjectentries">Object.keys()，Object.values()，Object.entries()</a><ul>
+<li><a href="#objectkeys">Object.keys</a></li>
+<li><a href="#objectvalues">Object.values</a></li>
+<li><a href="#objectentries">Object.entries</a></li>
+</ul>
+</li>
+<li><a href="#对象的扩展运算符">对象的扩展运算符</a><ul>
+<li><a href="#解构赋值">解构赋值</a></li>
+<li><a href="#扩展运算符">扩展运算符</a></li>
+</ul>
+</li>
+<li><a href="#objectgetownpropertydescriptor">Object.getOwnPropertyDescriptor()</a></li>
+<li><a href="#objectcreateprototype-descriptors">Object.create(prototype, descriptors)</a></li>
+<li><a href="#js原型和原型链">JS原型和原型链</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1 id="ES6对象扩展"><a href="#ES6对象扩展" class="headerlink" title="ES6对象扩展"></a>ES6对象扩展</h1><h2 id="属性表示"><a href="#属性表示" class="headerlink" title="属性表示"></a>属性表示</h2><p>ES6 允许在对象之中，直接写变量。这时，属性名为变量名, 属性值为变量的值。</p>
+<pre><code class="js">function f(x, y) {
+  return {x, y};
+}
+
+// 等同于
+
+function f(x, y) {
+  return {x: x, y: y};
+}
+
+f(1, 2) // Object {x: 1, y: 2}</code></pre>
+<h2 id="属性名表达式"><a href="#属性名表达式" class="headerlink" title="属性名表达式"></a>属性名表达式</h2><pre><code class="js">// 方法一
+obj.foo = true;
+
+// 方法二
+obj[&#39;a&#39; + &#39;bc&#39;] = 123;</code></pre>
+<blockquote>
+<p>表达式作为属性名要写在方括号中。</p>
+</blockquote>
+<p>如果属性名表达式是一个对象，会转为字符串<code>[object Object]</code>。</p>
+<pre><code class="js">const keyA = {a: 1};
+const keyB = {b: 2};
+
+const myObject = {
+  [keyA]: &#39;valueA&#39;,
+  [keyB]: &#39;valueB&#39;
+};
+
+myObject // Object {[object Object]: &quot;valueB&quot;}</code></pre>
+<p><code>[keyA]</code>和<code>[keyB]</code>得到的都是<code>[object Object]</code>，所以<code>[keyB]</code>会把<code>[keyA]</code>覆盖掉，而<code>myObject</code>最后只有一个<code>[object Object]</code>属性。</p>
+<h2 id="Object-is"><a href="#Object-is" class="headerlink" title="Object.is()"></a>Object.is()</h2><p>它用来比较两个值是否严格相等，与严格比较运算符（<code>===</code>）的行为基本一致。</p>
+<p>不同之处：</p>
+<pre><code class="js">+0 === -0 //true
+NaN === NaN // false
+
+Object.is(+0, -0) // false
+Object.is(NaN, NaN) // true</code></pre>
+<h2 id="Object-assign"><a href="#Object-assign" class="headerlink" title="Object.assign()"></a>Object.assign()</h2><p><code>Object.assign</code>方法用于对象的合并，将源对象（<code>source</code>）的所有可枚举属性，复制到目标对象（<code>target</code>）。</p>
+<pre><code class="js">var target = { a: 1 };
+
+var source1 = { b: 2 };
+var source2 = { c: 3 };
+
+Object.assign(target, source1, source2);
+target // {a:1, b:2, c:3}</code></pre>
+<p>同名的情况下，后者覆盖前者。</p>
+<pre><code class="js">Object.assign(undefined) // 报错
+Object.assign(null) // 报错
+
+let obj = {a: 1};
+Object.assign(obj, undefined) === obj // true
+Object.assign(obj, null) === obj // true</code></pre>
+<p>首参不能为<code>undefined</code>或<code>null</code>，两者不能转换成对象。在其他位置，会给自动忽略掉。<br>数值和布尔值都会被忽略，字符串会以数组形式传入。</p>
+<p><strong>注意：</strong></p>
+<p><code>Object.assign()</code>是浅拷贝，原对象改变，它也会改变。</p>
+<pre><code class="js">var obj1 = {a: {b: 1}};
+var obj2 = Object.assign({}, obj1);
+
+obj1.a.b = 2;
+obj2.a.b // 2</code></pre>
+<h2 id="属性描述符"><a href="#属性描述符" class="headerlink" title="属性描述符"></a>属性描述符</h2><p>属性描述符有两种主要形式：<code>数据描述符</code>和<code>存取描述符</code>。</p>
+<ul>
+<li><code>数据描述符</code>是一个拥有可写或不可写值的属性。</li>
+<li><code>存取描述符</code>是由一对 <code>getter-setter</code> 函数功能来描述的属性。</li>
+</ul>
+<p>描述符必须是<code>两种形式之一</code>，不能同时是两者。</p>
+<h3 id="数据描述符"><a href="#数据描述符" class="headerlink" title="数据描述符"></a>数据描述符</h3><p>下列的属性在<code>Object.defineProperty</code>中默认为<code>false</code>，但在基本的对象数据结构中，下列属性默认为<code>true</code>。</p>
+<ul>
+<li><h4 id="configurable"><a href="#configurable" class="headerlink" title="configurable"></a>configurable</h4></li>
+</ul>
+<p>是否可以删除目标属性或是否可以再次修改属性的特性（<code>writable</code>, <code>configurable</code>, <code>enumerable</code>）。<strong>默认为 false</strong>。</p>
+<ul>
+<li><h4 id="enumerable"><a href="#enumerable" class="headerlink" title="enumerable"></a>enumerable</h4></li>
+</ul>
+<p>此属性是否可以被枚举（使用<code>for...in</code>或<code>Object.keys()</code>）。设置为<code>true</code>可以被枚举；设置为<code>false</code>，不能被枚举。<strong>默认为false</strong>。</p>
+<ul>
+<li><h4 id="writable"><a href="#writable" class="headerlink" title="writable"></a>writable</h4></li>
+</ul>
+<p>属性的值是否可以被重写。设置为<code>true</code>可以被重写；设置为<code>false</code>，不能被重写。<strong>默认为false</strong>。</p>
+<ul>
+<li><h4 id="value"><a href="#value" class="headerlink" title="value"></a>value</h4></li>
+</ul>
+<p>属性对应的值,可以使任意类型的值，<strong>默认为undefined</strong>。</p>
+<pre><code class="js">var obj = {
+    test:&quot;hello&quot;
+}
+//对象已有的属性添加特性描述
+Object.defineProperty(obj,&quot;test&quot;,{
+    configurable:true | false,
+    enumerable:true | false,
+    value:任意类型的值,
+    writable:true | false
+});
+//对象新添加的属性的特性描述
+Object.defineProperty(obj,&quot;newKey&quot;,{
+    configurable:true | false,
+    enumerable:true | false,
+    value:任意类型的值,
+    writable:true | false
+});</code></pre>
+<p>查看设置：</p>
+<pre><code class="js">let obj = { foo: 123 };
+Object.getOwnPropertyDescriptor(obj, &#39;foo&#39;)
+//  {
+//    value: 123,
+//    writable: true,
+//    enumerable: true,
+//    configurable: true
+//  }</code></pre>
+<p>ES5有三个操作会忽略<code>enumerable</code>为<code>false</code>的属性。</p>
+<ol>
+<li>for…in循环：只遍历对象自身的和继承的可枚举的属性</li>
+<li>Object.keys()：返回对象自身的所有可枚举的属性的键名</li>
+<li>JSON.stringify()：只串行化对象自身的可枚举的属性</li>
+</ol>
+<p>ES6新增了一个操作<code>Object.assign()</code>，会忽略<code>enumerable</code>为<code>false</code>的属性，只拷贝对象自身的可枚举的属性。</p>
+<pre><code class="js">Object.getOwnPropertyDescriptor(Object.prototype, &#39;toString&#39;).enumerable
+// false
+
+Object.getOwnPropertyDescriptor([], &#39;length&#39;).enumerable
+// false</code></pre>
+<p><code>toString</code>和<code>length</code>属性的<code>enumerable</code>都是<code>false</code>，因此<code>for...in</code>不会遍历到这两个继承自原型的属性。</p>
+<h3 id="存取器描述"><a href="#存取器描述" class="headerlink" title="存取器描述"></a>存取器描述</h3><p>当使用存取器描述属性的特性的时候，允许设置以下特性属性：</p>
+<pre><code class="js">var obj = {};
+Object.defineProperty(obj,&quot;newKey&quot;,{
+    get:function (){} | undefined,
+    set:function (value){} | undefined
+    configurable: true | false
+    enumerable: true | false
+});</code></pre>
+<blockquote>
+<p><strong>当使用了getter或setter方法，不允许使用writable和value这两个属性</strong>。</p>
+</blockquote>
+<ul>
+<li>getter 是一种获得属性值的方法</li>
+<li>setter是一种设置属性值的方法。</li>
+</ul>
+<pre><code class="js">var obj = {};
+var initValue = &#39;hello&#39;;
+Object.defineProperty(obj,&quot;newKey&quot;,{
+    get:function (){
+        //当获取值的时候触发的函数
+        return initValue;
+    },
+    set:function (value){
+        //当设置值的时候触发的函数,设置的新值通过参数value拿到
+        initValue = value;
+    }
+});
+//获取值
+console.log( obj.newKey );  //hello
+
+//设置值
+obj.newKey = &#39;change value&#39;;
+
+console.log( obj.newKey ); //change value</code></pre>
+<blockquote>
+<p>参考：</p>
+<blockquote>
+<blockquote>
+<p><a href="https://segmentfault.com/a/1190000007434923" target="_blank" rel="noopener">https://segmentfault.com/a/1190000007434923</a><br> <a href="https://developer.mozilla.org/cn/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank" rel="noopener">https://developer.mozilla.org/cn/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty</a></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="属性的遍历"><a href="#属性的遍历" class="headerlink" title="属性的遍历"></a>属性的遍历</h2><ol>
+<li>for…in<ul>
+<li><code>for...in</code>循环遍历对象自身的和继承的可枚举属性（不含Symbol属性）。</li>
+</ul>
+</li>
+<li>Object.keys(obj)<ul>
+<li><code>Object.keys</code>返回一个数组，包括对象自身的（不含继承的）所有可枚举属性（不含Symbol属性）。</li>
+</ul>
+</li>
+<li>Object.getOwnPropertyNames(obj)<ul>
+<li><code>Object.getOwnPropertyNames</code>返回一个数组，包含对象自身的所有属性（不含Symbol属性，但是包括不可枚举属性）。</li>
+</ul>
+</li>
+<li>Object.getOwnPropertySymbols(obj)<ul>
+<li><code>Object.getOwnPropertySymbols</code>返回一个数组，包含对象自身的所有Symbol属性。</li>
+</ul>
+</li>
+<li>Reflect.ownKeys(obj)<ul>
+<li><code>Reflect.ownKeys</code>返回一个数组，包含对象自身的所有属性，不管是属性名是Symbol或字符串，也不管是否可枚举。</li>
+</ul>
+</li>
+</ol>
+<h2 id="proto-属性"><a href="#proto-属性" class="headerlink" title="__proto__属性"></a>__proto__属性</h2><p><code>__proto__</code> 属性（前后各两个下划线），用来读取或设置当前对象的<code>prototype</code>对象。</p>
+<pre><code class="js">// es6的写法
+var obj = {
+  method: function() { ... }
+};
+obj.__proto__ = someOtherObj;
+
+// es5的写法
+var obj = Object.create(someOtherObj);
+obj.method = function() { ... };</code></pre>
+<h2 id="Object-defineProperty"><a href="#Object-defineProperty" class="headerlink" title="Object.defineProperty()"></a>Object.defineProperty()</h2><p><code>Object.defineProperty()</code>方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。</p>
+<h2 id="Object-setPrototypeOf"><a href="#Object-setPrototypeOf" class="headerlink" title="Object.setPrototypeOf()"></a>Object.setPrototypeOf()</h2><p><code>Object.setPrototypeOf</code>方法的作用与<code>__proto__</code>相同，用来设置一个对象的<code>prototype</code>对象。</p>
+<pre><code class="js">// 格式
+Object.setPrototypeOf(object, prototype)
+
+// 用法
+var o = Object.setPrototypeOf({}, null);
+
+//该方法等同于下面的函数。
+
+function (obj, proto) {
+  obj.__proto__ = proto;
+  return obj;
+}</code></pre>
+<h2 id="Object-getPrototypeOf"><a href="#Object-getPrototypeOf" class="headerlink" title="Object.getPrototypeOf()"></a>Object.getPrototypeOf()</h2><p>该方法与<code>setPrototypeOf</code>方法配套，用于读取一个对象的<code>prototype</code>对象。</p>
+<pre><code class="js">Object.getPrototypeOf(obj);
+//下面是一个例子。
+
+function Rectangle() {
+}
+
+var rec = new Rectangle();
+
+Object.getPrototypeOf(rec) === Rectangle.prototype
+// true
+
+Object.setPrototypeOf(rec, Object.prototype);
+Object.getPrototypeOf(rec) === Rectangle.prototype
+// false</code></pre>
+<h2 id="Object-keys-，Object-values-，Object-entries"><a href="#Object-keys-，Object-values-，Object-entries" class="headerlink" title="Object.keys()，Object.values()，Object.entries()"></a>Object.keys()，Object.values()，Object.entries()</h2><h3 id="Object-keys"><a href="#Object-keys" class="headerlink" title="Object.keys"></a>Object.keys</h3><p>返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键名。</p>
+<pre><code class="js">var obj = { foo: &#39;bar&#39;, baz: 42 };
+Object.keys(obj)
+// [&quot;foo&quot;, &quot;baz&quot;]</code></pre>
+<h3 id="Object-values"><a href="#Object-values" class="headerlink" title="Object.values"></a>Object.values</h3><p>该方法返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（<code>enumerable</code>）属性的键值。</p>
+<h3 id="Object-entries"><a href="#Object-entries" class="headerlink" title="Object.entries"></a>Object.entries</h3><p>该方法返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（<code>enumerable</code>）属性的键值对数组。</p>
+<pre><code class="js">let {keys, values, entries} = Object;
+let obj = { a: 1, b: 2, c: 3 };
+
+for (let key of keys(obj)) {
+  console.log(key); // &#39;a&#39;, &#39;b&#39;, &#39;c&#39;
+}
+
+for (let value of values(obj)) {
+  console.log(value); // 1, 2, 3
+}
+
+for (let [key, value] of entries(obj)) {
+  console.log([key, value]); // [&#39;a&#39;, 1], [&#39;b&#39;, 2], [&#39;c&#39;, 3]
+}</code></pre>
+<h2 id="对象的扩展运算符"><a href="#对象的扩展运算符" class="headerlink" title="对象的扩展运算符"></a>对象的扩展运算符</h2><h3 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h3><p>对象的解构赋值用于从一个对象取值，相当于将所有可遍历的、但尚未被读取的属性，分配到指定的对象上面。所有的键和它们的值，都会拷贝到新对象上面。</p>
+<pre><code class="js">let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };
+x // 1
+y // 2
+z // { a: 3, b: 4 }</code></pre>
+<p>上面代码中，变量<code>z</code>是解构赋值所在的对象。它获取等号右边的所有尚未读取的键（<code>a</code>和<code>b</code>），将它们连同值一起拷贝过来。</p>
+<h3 id="扩展运算符"><a href="#扩展运算符" class="headerlink" title="扩展运算符"></a>扩展运算符</h3><p>扩展运算符（<code>...</code>）用于取出参数对象的所有可遍历属性，拷贝到当前对象之中。</p>
+<pre><code class="js">let z = { a: 3, b: 4 };
+let n = { ...z };
+n // { a: 3, b: 4 }</code></pre>
+<p>这等同于使用<code>Object.assign</code>方法。</p>
+<pre><code class="js">let aWithOverrides = { ...a, x: 1, y: 2 };
+// 等同于
+let aWithOverrides = { ...a, ...{ x: 1, y: 2 } };
+// 等同于
+let x = 1, y = 2, aWithOverrides = { ...a, x, y };
+// 等同于
+let aWithOverrides = Object.assign({}, a, { x: 1, y: 2 });</code></pre>
+<h2 id="Object-getOwnPropertyDescriptor"><a href="#Object-getOwnPropertyDescriptor" class="headerlink" title="Object.getOwnPropertyDescriptor()"></a>Object.getOwnPropertyDescriptor()</h2><p>返回某个对象属性的描述对象（<code>descriptor</code>）。</p>
+<pre><code class="js">var obj = { p: &#39;a&#39; };
+
+Object.getOwnPropertyDescriptor(obj, &#39;p&#39;)
+// Object { value: &quot;a&quot;,
+//   writable: true,
+//   enumerable: true,
+//   configurable: true
+// }</code></pre>
+<blockquote>
+<p>参考：<a href="http://es6.ruanyifeng.com/?search=import&amp;x=15&amp;y=8#docs/object" target="_blank" rel="noopener">http://es6.ruanyifeng.com/?search=import&amp;x=15&amp;y=8#docs/object</a></p>
+</blockquote>
+<h2 id="Object-create-prototype-descriptors"><a href="#Object-create-prototype-descriptors" class="headerlink" title="Object.create(prototype, descriptors)"></a>Object.create(prototype, descriptors)</h2><p>创建一个具有指定原型且可选择性地包含指定属性的对象。</p>
+<ul>
+<li>prototype<ul>
+<li>必需。  要用作原型的对象。  可以为 null。</li>
+</ul>
+</li>
+<li>descriptors<ul>
+<li>可选。  包含一个或多个属性描述符的 JavaScript 对象。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">var newObj = Object.create(null, {
+            size: {
+                value: &quot;large&quot;,
+                enumerable: true
+            },
+            shape: {
+                value: &quot;round&quot;,
+                enumerable: true
+            }
+        });
+
+document.write(newObj.size + &quot;&lt;br/&gt;&quot;);
+document.write(newObj.shape + &quot;&lt;br/&gt;&quot;);
+document.write(Object.getPrototypeOf(newObj));
+
+// Output:
+// large
+// round
+// null</code></pre>
+<h2 id="JS原型和原型链"><a href="#JS原型和原型链" class="headerlink" title="JS原型和原型链"></a>JS原型和原型链</h2><p><strong>每个构造函数生成实例的时候 会自带一个constructor属性 指向该构造函数</strong></p>
+<pre><code class="js">//所以:
+实例.constructor == 构造函数
+
+var arr = new Array();
+
+arr.constructor === Array; //true
+
+arr instanceof Array; //true</code></pre>
+<p>每个构造函数都有一个<code>prototype</code>属性，指向另一个对象。这个对象的所有属性和方法，都会被构造函数的实例继承。</p>
+<pre><code class="js">function Cat(name){
+    //构造函数自身的属性name
+    this.name = name;
+}
+Cat.sex = &#39;女&#39;;
+Cat.prototype.age = &#39;12&#39;;
+var cat = new Cat(&#39;大黄&#39;);
+cat.age;//12
+cat.sex;//undefine 也就是说明实例只能继承构造函数原型上的属性和方法
+cat.hasOwnProperty(&quot;name&quot;);//true  hasOwnProperty判断是自己本身的属性还是继承的
+cat.hasOwnProperty(&quot;age&quot;);//false</code></pre>
+<p>JS在创建对象（不论是普通对象还是函数对象）的时候，都有一个叫做<code>__proto__</code>的内置属性，用于指向创建它的函数对象的原型对象<code>prototype</code>。</p>
+<pre><code class="js">cat.__proto__===Cat.prototype;//true</code></pre>
+<p><strong>同样，Cat.prototype对象也有__proto__属性，它指向创建它的函数对象（Object）的prototype</strong></p>
+<pre><code class="js">Cat.prototype.__proto__=== Object.prototype;//true</code></pre>
+<p><strong>继续，Object.prototype对象也有__proto__属性，但它比较特殊，为null</strong></p>
+<pre><code class="js">Object.prototype.__proto__;//null</code></pre>
+<p>我们把这个有<code>__proto__</code>串起来的直到<code>Object.prototype.__proto__</code>为<code>null</code>的链叫做<strong>原型链</strong>。</p>
+<blockquote>
+<p><a href="http://blog.csdn.net/qietingfengdeyanse/article/details/52488252" target="_blank" rel="noopener">参考</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ECMAScript/" rel="tag"># ECMAScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-ES6正则/" rel="next" title="ES6正则">
+                <i class="fa fa-chevron-left"></i> ES6正则
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-Dom/" rel="prev" title="Dom">
+                Dom <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6对象扩展"><span class="nav-number">1.</span> <span class="nav-text">ES6对象扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#属性表示"><span class="nav-number">1.1.</span> <span class="nav-text">属性表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性名表达式"><span class="nav-number">1.2.</span> <span class="nav-text">属性名表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-is"><span class="nav-number">1.3.</span> <span class="nav-text">Object.is()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-assign"><span class="nav-number">1.4.</span> <span class="nav-text">Object.assign()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性描述符"><span class="nav-number">1.5.</span> <span class="nav-text">属性描述符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据描述符"><span class="nav-number">1.5.1.</span> <span class="nav-text">数据描述符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#configurable"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">configurable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#enumerable"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">enumerable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#writable"><span class="nav-number">1.5.1.3.</span> <span class="nav-text">writable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#value"><span class="nav-number">1.5.1.4.</span> <span class="nav-text">value</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存取器描述"><span class="nav-number">1.5.2.</span> <span class="nav-text">存取器描述</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性的遍历"><span class="nav-number">1.6.</span> <span class="nav-text">属性的遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#proto-属性"><span class="nav-number">1.7.</span> <span class="nav-text">__proto__属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-defineProperty"><span class="nav-number">1.8.</span> <span class="nav-text">Object.defineProperty()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-setPrototypeOf"><span class="nav-number">1.9.</span> <span class="nav-text">Object.setPrototypeOf()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-getPrototypeOf"><span class="nav-number">1.10.</span> <span class="nav-text">Object.getPrototypeOf()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-keys-，Object-values-，Object-entries"><span class="nav-number">1.11.</span> <span class="nav-text">Object.keys()，Object.values()，Object.entries()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-keys"><span class="nav-number">1.11.1.</span> <span class="nav-text">Object.keys</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-values"><span class="nav-number">1.11.2.</span> <span class="nav-text">Object.values</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-entries"><span class="nav-number">1.11.3.</span> <span class="nav-text">Object.entries</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的扩展运算符"><span class="nav-number">1.12.</span> <span class="nav-text">对象的扩展运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解构赋值"><span class="nav-number">1.12.1.</span> <span class="nav-text">解构赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展运算符"><span class="nav-number">1.12.2.</span> <span class="nav-text">扩展运算符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-getOwnPropertyDescriptor"><span class="nav-number">1.13.</span> <span class="nav-text">Object.getOwnPropertyDescriptor()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-create-prototype-descriptors"><span class="nav-number">1.14.</span> <span class="nav-text">Object.create(prototype, descriptors)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS原型和原型链"><span class="nav-number">1.15.</span> <span class="nav-text">JS原型和原型链</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,2909 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="题解,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="第二十一章 并发class Ex1RunnerA implements Runnable { ​       public Ex1RunnerA() { ​              System.out.println(“Constructing Ex1RunnerA”); ​       } ​       public void run() { ​              for(int">
+<meta name="keywords" content="题解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java题解并发">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解并发/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="第二十一章 并发class Ex1RunnerA implements Runnable { ​       public Ex1RunnerA() { ​              System.out.println(“Constructing Ex1RunnerA”); ​       } ​       public void run() { ​              for(int">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.786Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java题解并发">
+<meta name="twitter:description" content="第二十一章 并发class Ex1RunnerA implements Runnable { ​       public Ex1RunnerA() { ​              System.out.println(“Constructing Ex1RunnerA”); ​       } ​       public void run() { ​              for(int">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解并发/">
+
+
+
+
+
+  <title>Java题解并发 | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解并发/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java题解并发</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-06T10:00:00+08:00">
+                2019-10-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第二十一章-并发"><a href="#第二十一章-并发" class="headerlink" title="第二十一章 并发"></a>第二十一章 并发</h2><p>class Ex1RunnerA implements Runnable {</p>
+<p>​       public Ex1RunnerA() {</p>
+<p>​              System.out.println(“Constructing Ex1RunnerA”);</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              for(int i = 0; i &lt; 3; i++) {</p>
+<p>​                     System.out.println(“Hi from Ex1RunnerA”);       </p>
+<p>​                     Thread.yield();</p>
+<p>​              }</p>
+<p>​              System.out.println(“Ex1RunnerA task complete.”);</p>
+<p>​              return;                         </p>
+<p>​       }</p>
+<p>}</p>
+<p>class Ex1RunnerB implements Runnable {</p>
+<p>​       public Ex1RunnerB() {</p>
+<p>​              System.out.println(“Constructing Ex1RunnerB”);</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              for(int i = 0; i &lt; 3; i++) {</p>
+<p>​                     System.out.println(“Hi from Ex1RunnerB”);       </p>
+<p>​                     Thread.yield();</p>
+<p>​              }</p>
+<p>​              System.out.println(“Ex1RunnerB task complete.”);</p>
+<p>​              return;</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Ex1RunnerC implements Runnable {</p>
+<p>​       public Ex1RunnerC() {</p>
+<p>​              System.out.println(“Constructing Ex1RunnerC”);</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              for(int i = 0; i &lt; 3; i++) {</p>
+<p>​                     System.out.println(“Hi from Ex1RunnerC”);       </p>
+<p>​                     Thread.yield();</p>
+<p>​              }</p>
+<p>​              System.out.println(“Ex1RunnerC task complete.”);</p>
+<p>​              return;    </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex1 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Thread ta = new Thread(new Ex1RunnerA());           </p>
+<p>​              Thread tb = new Thread(new Ex1RunnerB());           </p>
+<p>​              Thread tc = new Thread(new Ex1RunnerC());</p>
+<p>​              ta.start();</p>
+<p>​              tb.start();</p>
+<p>​              tc.start();</p>
+<p>​       }</p>
+<p>}      </p>
+<p>class Ex1RunnerA implements Runnable {</p>
+<p>​       public Ex1RunnerA() {</p>
+<p>​              System.out.println(“Constructing Ex1RunnerA”);</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              for(int i = 0; i &lt; 3; i++) {</p>
+<p>​                     System.out.println(“Hi from Ex1RunnerA”);       </p>
+<p>​                     Thread.yield();</p>
+<p>​              }</p>
+<p>​              System.out.println(“Ex1RunnerA task complete.”);</p>
+<p>​              return;                         </p>
+<p>​       }</p>
+<p>}</p>
+<p>class Ex1RunnerB implements Runnable {</p>
+<p>​       public Ex1RunnerB() {</p>
+<p>​              System.out.println(“Constructing Ex1RunnerB”);</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              for(int i = 0; i &lt; 3; i++) {</p>
+<p>​                     System.out.println(“Hi from Ex1RunnerB”);       </p>
+<p>​                     Thread.yield();</p>
+<p>​              }</p>
+<p>​              System.out.println(“Ex1RunnerB task complete.”);</p>
+<p>​              return;</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Ex1RunnerC implements Runnable {</p>
+<p>​       public Ex1RunnerC() {</p>
+<p>​              System.out.println(“Constructing Ex1RunnerC”);</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              for(int i = 0; i &lt; 3; i++) {</p>
+<p>​                     System.out.println(“Hi from Ex1RunnerC”);       </p>
+<p>​                     Thread.yield();</p>
+<p>​              }</p>
+<p>​              System.out.println(“Ex1RunnerC task complete.”);</p>
+<p>​              return;    </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex1 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Thread ta = new Thread(new Ex1RunnerA());           </p>
+<p>​              Thread tb = new Thread(new Ex1RunnerB());           </p>
+<p>​              Thread tc = new Thread(new Ex1RunnerC());</p>
+<p>​              ta.start();</p>
+<p>​              tb.start();</p>
+<p>​              tc.start();</p>
+<p>​       }</p>
+<p>}      </p>
+<p>class Ex3RunnerA implements Runnable {</p>
+<p>​       public Ex3RunnerA() {</p>
+<p>​              System.out.println(“Constructing Ex3RunnerA”);</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              for(int i = 0; i &lt; 3; i++) {</p>
+<p>​                     System.out.println(“Hi from Ex3RunnerA”);       </p>
+<p>​                     Thread.yield();</p>
+<p>​              }</p>
+<p>​              System.out.println(“Ex3RunnerA task complete.”);</p>
+<p>​              return;                         </p>
+<p>​       }</p>
+<p>}</p>
+<p>class Ex3RunnerB implements Runnable {</p>
+<p>​       public Ex3RunnerB() {</p>
+<p>​              System.out.println(“Constructing Ex3RunnerB”);</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              for(int i = 0; i &lt; 3; i++) {</p>
+<p>​                     System.out.println(“Hi from Ex3RunnerB”);       </p>
+<p>​                     Thread.yield();</p>
+<p>​              }</p>
+<p>​              System.out.println(“Ex3RunnerB task complete.”);</p>
+<p>​              return;</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Ex3RunnerC implements Runnable {</p>
+<p>​       public Ex3RunnerC() {</p>
+<p>​              System.out.println(“Constructing Ex3RunnerC”);</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              for(int i = 0; i &lt; 3; i++) {</p>
+<p>​                     System.out.println(“Hi from Ex3RunnerC”);       </p>
+<p>​                     Thread.yield();</p>
+<p>​              }</p>
+<p>​              System.out.println(“Ex3RunnerC task complete.”);</p>
+<p>​              return;    </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex3 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              ExecutorService exec1 = Executors.newCachedThreadPool();</p>
+<p>​              exec1.execute(new Ex3RunnerA());</p>
+<p>​              exec1.execute(new Ex3RunnerB());</p>
+<p>​              exec1.execute(new Ex3RunnerC());</p>
+<p>​              exec1.shutdown();</p>
+<p>​              ExecutorService exec2 = Executors.newFixedThreadPool(3);</p>
+<p>​              exec2.execute(new Ex3RunnerA());</p>
+<p>​              exec2.execute(new Ex3RunnerB());</p>
+<p>​              exec2.execute(new Ex3RunnerC());</p>
+<p>​              exec2.shutdown();</p>
+<p>​              ExecutorService exec3 = Executors.newSingleThreadExecutor();</p>
+<p>​              exec3.execute(new Ex3RunnerA());</p>
+<p>​              exec3.execute(new Ex3RunnerB());</p>
+<p>​              exec3.execute(new Ex3RunnerC());</p>
+<p>​              exec3.shutdown();</p>
+<p>​       }</p>
+<p>}      </p>
+<p>class Ex4FibonacciA implements Runnable {</p>
+<p>​       private int n = 0;</p>
+<p>​       public Ex4FibonacciA(int n) {</p>
+<p>​              this.n = n;</p>
+<p>​       }</p>
+<p>​       private int fib(int x) {</p>
+<p>​              if(x &lt; 2) return 1;</p>
+<p>​              return fib(x - 2) + fib(x - 1);</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              for(int i = 0; i &lt; n; i++)</p>
+<p>​                     print(fib(i) + “ “);</p>
+<p>​                     println();         </p>
+<p>​       }</p>
+<p>}</p>
+<p>class Ex4FibonacciB implements Runnable {</p>
+<p>​       private int n = 0;</p>
+<p>​       public Ex4FibonacciB(int n) {</p>
+<p>​              this.n = n;</p>
+<p>​       }</p>
+<p>​       private int fib(int x) {</p>
+<p>​              if(x &lt; 2) return 1;</p>
+<p>​              return fib(x - 2) + fib(x - 1);</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              for(int i = 0; i &lt; n; i++)</p>
+<p>​                     print(fib(i) + “ “);</p>
+<p>​                     println();         </p>
+<p>​       }</p>
+<p>}</p>
+<p>class Ex4FibonacciC implements Runnable {</p>
+<p>​       private int n = 0;</p>
+<p>​       public Ex4FibonacciC(int n) {</p>
+<p>​              this.n = n;</p>
+<p>​       }</p>
+<p>​       private int fib(int x) {</p>
+<p>​              if(x &lt; 2) return 1;</p>
+<p>​              return fib(x - 2) + fib(x - 1);</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              for(int i = 0; i &lt; n; i++)</p>
+<p>​                     print(fib(i) + “ “);    </p>
+<p>​                     println();  </p>
+<p>​       }</p>
+<p>}</p>
+<p>class Ex4FibonacciD implements Runnable {</p>
+<p>​       private int n = 0;</p>
+<p>​       public Ex4FibonacciD(int n) {</p>
+<p>​              this.n = n;</p>
+<p>​       }</p>
+<p>​       private int fib(int x) {</p>
+<p>​              if(x &lt; 2) return 1;</p>
+<p>​              return fib(x - 2) + fib(x - 1);</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              for(int i = 0; i &lt; n; i++)</p>
+<p>​                     print(fib(i) + “ “);    </p>
+<p>​                     println();  </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex4 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              ExecutorService exec1 = Executors.newCachedThreadPool();</p>
+<p>​              exec1.execute(new Ex4FibonacciA(15));             </p>
+<p>​              exec1.execute(new Ex4FibonacciB(15));             </p>
+<p>​              exec1.execute(new Ex4FibonacciC(15));</p>
+<p>​              exec1.execute(new Ex4FibonacciD(15));</p>
+<p>​              exec1.shutdown();        </p>
+<p>​              ExecutorService exec2 = Executors.newFixedThreadPool(4);</p>
+<p>​              exec2.execute(new Ex4FibonacciA(15));             </p>
+<p>​              exec2.execute(new Ex4FibonacciB(15));             </p>
+<p>​              exec2.execute(new Ex4FibonacciC(15));</p>
+<p>​              exec2.execute(new Ex4FibonacciD(15));</p>
+<p>​              exec2.shutdown();</p>
+<p>​              ExecutorService exec3 = Executors.newSingleThreadExecutor();</p>
+<p>​              exec3.execute(new Ex4FibonacciA(15));             </p>
+<p>​              exec3.execute(new Ex4FibonacciB(15));             </p>
+<p>​              exec3.execute(new Ex4FibonacciC(15));</p>
+<p>​              exec3.execute(new Ex4FibonacciD(15));</p>
+<p>​              exec3.shutdown(); </p>
+<p>​       }</p>
+<p>}       </p>
+<p>class Ex5Fibonacci implements Callable<integer> {</integer></p>
+<p>​       private int n = 0;</p>
+<p>​       public Ex5Fibonacci(int n) {</p>
+<p>​              this.n = n;</p>
+<p>​       }</p>
+<p>​       private int fib(int x) {</p>
+<p>​              if(x &lt; 2) return 1;</p>
+<p>​              return fib(x - 2) + fib(x - 1);</p>
+<p>​       }</p>
+<p>​       public Integer call() {</p>
+<p>​              int result = 0;</p>
+<p>​              for(int i = 0; i &lt; n; i++) </p>
+<p>​                     result += fib(i);             </p>
+<p>​              return (Integer)result;</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex5 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              ExecutorService exec = Executors.newCachedThreadPool();</p>
+<p>​              ArrayList&lt;Future<integer>&gt; results = new ArrayList&lt;Future<integer>&gt;();</integer></integer></p>
+<p>​              for(int i = 0; i &lt; 20; i++)</p>
+<p>​                     results.add(exec.submit(new Ex5Fibonacci(i)));</p>
+<p>​              for(Future<integer> fs : results)</integer></p>
+<p>​                     try {</p>
+<p>​                                                       System.out.println(fs.get());</p>
+<p>​                     } catch(InterruptedException e) {</p>
+<p>​                            System.out.println(e);</p>
+<p>​                            return;</p>
+<p>​                     } catch(ExecutionException e) {</p>
+<p>​                            System.out.println(e);    </p>
+<p>​                     } finally {</p>
+<p>​                            exec.shutdown();</p>
+<p>​                     }                           </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex6 implements Runnable {</p>
+<p>​       Random rand = new Random();</p>
+<p>​       public void run() {</p>
+<p>​              try {</p>
+<p>​                     int t = 1000 * rand.nextInt(10);</p>
+<p>​                     TimeUnit.MILLISECONDS.sleep(t);       </p>
+<p>​                     System.out.println(“Slept “ + t                  return;                  </p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                     System.err.println(“Interrupted”);</p>
+<p>​              }</p>
+<p>​              </p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              if(args.length &lt; 1) {</p>
+<p>​                     System.out.println(“Usage: enter a number”);</p>
+<p>​              }             </p>
+<p>​              if(args.length == 1) {</p>
+<p>​                     int n = Integer.parseInt(args[0]);</p>
+<p>​                     ExecutorService exec = Executors.newCachedThreadPool();</p>
+<p>​                     for(int i = 0; i &lt; n; i++)</p>
+<p>​                            exec.execute(new Ex6());</p>
+<p>​                     exec.shutdown();</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Daemon implements Runnable {</p>
+<p>​       private Thread[] t = new Thread[30];</p>
+<p>​       public void run() {</p>
+<p>​              for(int i = 0; i &lt; t.length; i++) {</p>
+<p>​                     t[i] = new Thread(new DaemonSpawn());</p>
+<p>​                     t[i].start();</p>
+<p>​                     printnb(“DaemonSpawn “ + i + “ started, “);</p>
+<p>​              }</p>
+<p>​              for(int i = 0; i &lt; t.length; i++)</p>
+<p>​                     printnb(“t[“ + i + “].isDaemon() = “ + </p>
+<p>​                            t[i].isDaemon() + “, “);</p>
+<p>​              while(true)</p>
+<p>​                     Thread.yield();</p>
+<p>​       }</p>
+<p>}</p>
+<p>class DaemonSpawn implements Runnable {</p>
+<p>​       public void run() {</p>
+<p>​              while(true)</p>
+<p>​                     Thread.yield();</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Daemons7 {</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              Thread d = new Thread(new Daemon());</p>
+<p>​              d.setDaemon(true);</p>
+<p>​              d.start();</p>
+<p>​              printnb(“d.isDaemon() = “ + d.isDaemon() + “, “);</p>
+<p>​                                 }</p>
+<p>}</p>
+<p>public class MoreBasicThreads8 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              try {                     for(int i = 0; i &lt; 25; i++) { </p>
+<p>​                            Thread t = new Thread(new LiftOff());</p>
+<p>​                            t.setDaemon(true);</p>
+<p>​                            t.start();                        </p>
+<p>​                     }</p>
+<p>​                     System.out.println(“Waiting for LiftOff”);    </p>
+<p>​              </p>
+<p>​              } finally {</p>
+<p>​                     System.out.println(“Finally out of main”);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class SimplePriorities9ThreadFactory implements ThreadFactory {</p>
+<p>​       Random rand = new Random();</p>
+<p>​       public Thread newThread(Runnable r) {</p>
+<p>​              Thread t = new Thread(r);</p>
+<p>​              int i = rand.nextInt(3);</p>
+<p>​              switch(i) {</p>
+<p>​                     case 0 : t.setPriority(MIN_PRIORITY); break;</p>
+<p>​                     case 1 : t.setPriority(NORM_PRIORITY); break;</p>
+<p>​                     case 2 : t.setPriority(MAX_PRIORITY); break;</p>
+<p>​                     default:   </p>
+<p>​              }</p>
+<p>​              return t;  </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class SimplePriorities9 implements Runnable {</p>
+<p>​       private int countDown = 5;</p>
+<p>​       private volatile double d;   public String toString() {</p>
+<p>​              return Thread.currentThread() + “: “ + countDown;</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              while(true) {</p>
+<p>​                                         for(int i = 0; i &lt; 100000; i++) {</p>
+<p>​                            d += (Math.PI + Math.E)                         if(i % 1000 == 0)</p>
+<p>​                                   Thread.yield();</p>
+<p>​                     } </p>
+<p>​              System.out.println(this);</p>
+<p>​              if(–countDown == 0) return;</p>
+<p>​              }             </p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              ExecutorService exec = </p>
+<p>​                     Executors.newCachedThreadPool(new SimplePriorities9ThreadFactory());</p>
+<p>​              for(int i = 0; i &lt; 5; i++)</p>
+<p>​                     exec.execute(new SimplePriorities9());</p>
+<p>​              exec.execute(new SimplePriorities9());</p>
+<p>​              exec.shutdown();</p>
+<p>​                     </p>
+<p>​       }</p>
+<p>}</p>
+<p>class Ex10Fibonacci implements Callable<integer> {</integer></p>
+<p>​       private Integer n = 0;</p>
+<p>​       ExecutorService exec = Executors.newSingleThreadExecutor();</p>
+<p>​       private int fib(int x) {</p>
+<p>​              if(x &lt; 2) return 1;</p>
+<p>​              return fib(x - 2) + fib(x - 1);</p>
+<p>​       }      </p>
+<p>​       public Integer call() {</p>
+<p>​              int result = 0;</p>
+<p>​              for(int i = 0; i &lt; n; i++) </p>
+<p>​                     result += fib(i);             </p>
+<p>​              return (Integer)result;</p>
+<p>​       }</p>
+<p>​       public Future<integer> runTask(Integer n) {</integer></p>
+<p>​              this.n = n;      </p>
+<p>​              return exec.submit(this);              </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex10 {</p>
+<p>​       public static void main(String[] args) {       </p>
+<p>​              Ex10Fibonacci fib = new Ex10Fibonacci();</p>
+<p>​              try {</p>
+<p>​                     for(int i = 0; i &lt; 15; i++) {</p>
+<p>​                            print(“Sum of first “ + i + </p>
+<p>​                                   “ Fibonacci numbers = “);</p>
+<p>​                            println(fib.runTask(i).get());</p>
+<p>​                     }                    </p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                     System.out.println(e);</p>
+<p>​                     return;</p>
+<p>​              } catch(ExecutionException e) {</p>
+<p>​                     System.out.println(e);    </p>
+<p>​              } finally {</p>
+<p>​                     fib.exec.shutdown();</p>
+<p>​              }                    </p>
+<p>​       }</p>
+<p>}</p>
+<p>abstract class NumRangeGenerator {       private volatile boolean canceled = false;</p>
+<p>​       public abstract int[] next(); </p>
+<p>​       public void cancel() { canceled = true; }</p>
+<p>​       public boolean isCanceled() { return canceled; }</p>
+<p>}</p>
+<p>class NumRangeChecker11 implements Runnable {      private NumRangeGenerator generator;</p>
+<p>​       private final int id;</p>
+<p>​       public NumRangeChecker11(NumRangeGenerator g, int ident) {</p>
+<p>​              generator = g;</p>
+<p>​              id = ident;</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              System.out.println(“Testing..”);</p>
+<p>​              while(!generator.isCanceled()) {</p>
+<p>​                     int[] range = generator.next();</p>
+<p>​                    if( range[0] &gt; range[1]) {</p>
+<p>​                            System.out.println(“Error in test #” + id + “: min “ + range[0] </p>
+<p>​                                   + “ &gt; “ + “max “ + range[1] );</p>
+<p>​                            generator.cancel();</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       public static void test(NumRangeGenerator gen, int count) {</p>
+<p>​              System.out.println(“Press Ctrl-C to exit”);</p>
+<p>​              ExecutorService exec = Executors.newCachedThreadPool();</p>
+<p>​              for(int i = 0; i &lt; count; i++) </p>
+<p>​                     exec.execute(new NumRangeChecker11(gen, i));            </p>
+<p>​              exec.shutdown();</p>
+<p>​       }</p>
+<p>​       public static void test(NumRangeGenerator gen) {</p>
+<p>​              test(gen, 10);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class NumRangeGenerator11 extends NumRangeGenerator {</p>
+<p>​       private int min = 0;</p>
+<p>​       private int max = 0;</p>
+<p>​       private int[] range = { min, max };</p>
+<p>​       private Random rand = new Random();</p>
+<p>​       public int[] next() {             min = rand.nextInt(100);</p>
+<p>​              max = rand.nextInt(100);</p>
+<p>​              Thread.yield();</p>
+<p>​              if(min &gt; max) max = min;</p>
+<p>​              int[] ia = { min, max };</p>
+<p>​              return ia;</p>
+<p>​       }      </p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              NumRangeChecker11.test(new NumRangeGenerator11());</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class AtomicityTest12 implements Runnable {</p>
+<p>​       private int i = 0;</p>
+<p>​       public synchronized int getValue() { return i; }</p>
+<p>​       private synchronized void evenIncrement() { i++; i++; } </p>
+<p>​       public void run() {</p>
+<p>​              while(true) {</p>
+<p>​                     evenIncrement();</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              ExecutorService exec = Executors.newCachedThreadPool();</p>
+<p>​              AtomicityTest12 at = new AtomicityTest12();</p>
+<p>​              exec.execute(at);</p>
+<p>​              while(true) {</p>
+<p>​                     int val = at.getValue();</p>
+<p>​                     if(val % 2 != 0) {</p>
+<p>​                            System.out.println(val);</p>
+<p>​                            System.exit(0);</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p> class CircularSet {</p>
+<p>​       private int[] array;</p>
+<p>​       private int len;</p>
+<p>​       private int index = 0;</p>
+<p>​       public CircularSet(int size) {</p>
+<p>​              array = new int[size];</p>
+<p>​              len = size;</p>
+<p>​                                        for(int i = 0; i &lt; size; i++)</p>
+<p>​                     array[i] = -1;</p>
+<p>​       }</p>
+<p>​       public synchronized void add(int i) {</p>
+<p>​              array[index] = i;</p>
+<p>​                           index = ++index % len;</p>
+<p>​       }</p>
+<p>​       public synchronized boolean contains(int val) {</p>
+<p>​              for(int i = 0; i &lt; len; i++)</p>
+<p>​                     if(array[i] == val) return true;</p>
+<p>​              return false;</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class SerialNumberChecker13 {       </p>
+<p>​       private static final int SIZE = 10;</p>
+<p>​       private static CircularSet serials = new CircularSet(1000);</p>
+<p>​       private static ExecutorService exec = Executors.newCachedThreadPool();</p>
+<p>​       static class SerialChecker13 implements Runnable {</p>
+<p>​              public void run() {</p>
+<p>​                     while(true) {</p>
+<p>​                            int serial = SerialNumberGenerator13.nextSerialNumber();</p>
+<p>​                            if(serials.contains(serial)) {</p>
+<p>​                                   System.out.println(“Duplicate: “ + serial);</p>
+<p>​                                   System.exit(0);</p>
+<p>​                            }</p>
+<p>​                            serials.add(serial);</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              for(int i = 0; i &lt; SIZE; i++)</p>
+<p>​                     exec.execute(new SerialChecker13());</p>
+<p>​                           if(args.length &gt; 0) {</p>
+<p>​                     TimeUnit.SECONDS.sleep(new Integer(args[0]));</p>
+<p>​                     System.out.println(“No duplicates detected”);</p>
+<p>​                     System.exit(0);</p>
+<p>​              }</p>
+<p>​       }      </p>
+<p>}</p>
+<p>public class Ex14 implements Runnable {</p>
+<p>​       private static int timers = 0;</p>
+<p>​       private static int tasks = 0;</p>
+<p>​       public void run() {</p>
+<p>​              try {</p>
+<p>​                     while(timers &lt; 4000) {                             ++timers;</p>
+<p>​                            Timer t = new Timer();         </p>
+<p>​                            t.schedule(new TimerTask() {</p>
+<p>​                                   public void run() {</p>
+<p>​                                          ++tasks; </p>
+<p>​                                          if(timers % 100 == 0)           </p>
+<p>​                                                 System.out.println(timers + “ timers did “ </p>
+<p>​                                                        + tasks + “ tasks”);</p>
+<p>​                                   }</p>
+<p>​                            }, 0);</p>
+<p>​                            try {</p>
+<p>​                                   TimeUnit.MILLISECONDS.sleep(30);                              } catch(InterruptedException e) {</p>
+<p>​                                   System.out.println(“Sleep interrupted”);</p>
+<p>​                            }</p>
+<p>​                            t.cancel();</p>
+<p>​                     }</p>
+<p>​              } finally {</p>
+<p>​                     System.out.println(“Done. “ + timers + “ timers completed “ </p>
+<p>​                            + tasks + “ tasks”);</p>
+<p>​              } </p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              ExecutorService exec = Executors.newCachedThreadPool();</p>
+<p>​              exec.execute(new Ex14());</p>
+<p>​              exec.shutdown();</p>
+<p>​       }</p>
+<p>}</p>
+<p>class SyncTest1 {         public void f1() {</p>
+<p>​              synchronized(this) {</p>
+<p>​                     for(int i = 0; i &lt; 5; i++) {</p>
+<p>​                            print(“f1()”);</p>
+<p>​                            Thread.yield();</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       public void g1() {</p>
+<p>​              synchronized(this) {</p>
+<p>​                     for(int i = 0; i &lt; 5; i++) {</p>
+<p>​                            print(“g1()”);</p>
+<p>​                            Thread.yield();</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       public void h1() {</p>
+<p>​              synchronized(this) {</p>
+<p>​                     for(int i = 0; i &lt; 5; i++) {</p>
+<p>​                            print(“h1()”);</p>
+<p>​                            Thread.yield();</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class SyncTest2 {         private Object syncObject1 = new Object();</p>
+<p>​       private Object syncObject2 = new Object();</p>
+<p>​       private Object syncObject3 = new Object();</p>
+<p>​       public void f2() {</p>
+<p>​              synchronized(syncObject1) {</p>
+<p>​                     for(int i = 0; i &lt; 5; i++) {</p>
+<p>​                            print(“f2()”);</p>
+<p>​                            Thread.yield();</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       public void g2() {</p>
+<p>​              synchronized(syncObject2) {</p>
+<p>​                     for(int i = 0; i &lt; 5; i++) {</p>
+<p>​                            print(“g2()”);</p>
+<p>​                            Thread.yield();</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       public void h2() {</p>
+<p>​              synchronized(syncObject3) {</p>
+<p>​                     for(int i = 0; i &lt; 5; i++) {</p>
+<p>​                            print(“h2()”);</p>
+<p>​                            Thread.yield();</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex15 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              final SyncTest1 st1 = new SyncTest1();</p>
+<p>​              final SyncTest2 st2 = new SyncTest2();</p>
+<p>​              new Thread() {</p>
+<p>​                     public void run() {</p>
+<p>​                            st1.f1();</p>
+<p>​                     }</p>
+<p>​              }.start();</p>
+<p>​              new Thread() {</p>
+<p>​                     public void run() {</p>
+<p>​                            st1.g1();</p>
+<p>​                     }</p>
+<p>​              }.start();</p>
+<p>​              new Thread() {</p>
+<p>​                     public void run() {</p>
+<p>​                            st1.h1();</p>
+<p>​                     }</p>
+<p>​              }.start();          </p>
+<p>​              new Thread() {</p>
+<p>​                     public void run() {</p>
+<p>​                            st2.f2();</p>
+<p>​                     }</p>
+<p>​              }.start();</p>
+<p>​              new Thread() {</p>
+<p>​                     public void run() {</p>
+<p>​                            st2.g2();</p>
+<p>​                     }</p>
+<p>​              }.start();</p>
+<p>​              new Thread() {</p>
+<p>​                     public void run() {</p>
+<p>​                            st2.h2();</p>
+<p>​                     }</p>
+<p>​              }.start();                 </p>
+<p>​       }</p>
+<p>}</p>
+<p>class SyncTest1 {         private Lock lock = new ReentrantLock();</p>
+<p>​       public void f1() {</p>
+<p>​              lock.lock();</p>
+<p>​              try {</p>
+<p>​                     for(int i = 0; i &lt; 5; i++) {</p>
+<p>​                            print(“f1()”);</p>
+<p>​                            Thread.yield();</p>
+<p>​                     }</p>
+<p>​              } finally {</p>
+<p>​                     lock.unlock();</p>
+<p>​              }             </p>
+<p>​       }</p>
+<p>​       public void g1() {</p>
+<p>​              lock.lock();</p>
+<p>​              try {</p>
+<p>​                     for(int i = 0; i &lt; 5; i++) {</p>
+<p>​                            print(“g1()”);</p>
+<p>​                            Thread.yield();</p>
+<p>​                     }</p>
+<p>​              } finally {</p>
+<p>​                     lock.unlock();</p>
+<p>​              }      </p>
+<p>​       }</p>
+<p>​       public void h1() {</p>
+<p>​              lock.lock();</p>
+<p>​              try {</p>
+<p>​                     for(int i = 0; i &lt; 5; i++) {</p>
+<p>​                            print(“h1()”);</p>
+<p>​                            Thread.yield();</p>
+<p>​                     }</p>
+<p>​              } finally {</p>
+<p>​                     lock.unlock();</p>
+<p>​              }      </p>
+<p>​       }</p>
+<p>}</p>
+<p>class SyncTest2 {         private Lock lock1 = new ReentrantLock();</p>
+<p>​       private Lock lock2 = new ReentrantLock();</p>
+<p>​       private Lock lock3 = new ReentrantLock();</p>
+<p>​       </p>
+<p>​       public void f2() {</p>
+<p>​              lock1.lock();</p>
+<p>​              try {</p>
+<p>​                     for(int i = 0; i &lt; 5; i++) {</p>
+<p>​                            print(“f2()”);</p>
+<p>​                            Thread.yield();</p>
+<p>​                     }</p>
+<p>​              } finally {</p>
+<p>​                     lock1.unlock();</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       public void g2() {</p>
+<p>​              lock2.lock();</p>
+<p>​              try {</p>
+<p>​                     for(int i = 0; i &lt; 5; i++) {</p>
+<p>​                            print(“g2()”);</p>
+<p>​                            Thread.yield();</p>
+<p>​                     }</p>
+<p>​              } finally {</p>
+<p>​                     lock2.unlock();</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       public void h2() {</p>
+<p>​              lock3.lock();</p>
+<p>​              try {</p>
+<p>​                     for(int i = 0; i &lt; 5; i++) {</p>
+<p>​                            print(“h2()”);</p>
+<p>​                            Thread.yield();</p>
+<p>​                     }</p>
+<p>​              } finally {</p>
+<p>​                     lock3.unlock();</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex16 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              final SyncTest1 st1 = new SyncTest1();</p>
+<p>​              final SyncTest2 st2 = new SyncTest2();</p>
+<p>​              new Thread() {</p>
+<p>​                     public void run() {</p>
+<p>​                            st1.f1();</p>
+<p>​                     }</p>
+<p>​              }.start();</p>
+<p>​              new Thread() {</p>
+<p>​                     public void run() {</p>
+<p>​                            st1.g1();</p>
+<p>​                     }</p>
+<p>​              }.start();</p>
+<p>​              new Thread() {</p>
+<p>​                     public void run() {</p>
+<p>​                            st1.h1();</p>
+<p>​                     }</p>
+<p>​              }.start();          </p>
+<p>​              new Thread() {</p>
+<p>​                     public void run() {</p>
+<p>​                            st2.f2();</p>
+<p>​                     }</p>
+<p>​              }.start();</p>
+<p>​              new Thread() {</p>
+<p>​                     public void run() {</p>
+<p>​                            st2.g2();</p>
+<p>​                     }</p>
+<p>​              }.start();</p>
+<p>​              new Thread() {</p>
+<p>​                     public void run() {</p>
+<p>​                            st2.h2();</p>
+<p>​                     }</p>
+<p>​              }.start();                 </p>
+<p>​       }</p>
+<p>}</p>
+<p>class RadCount {</p>
+<p>​       private int count = 0;</p>
+<p>​       private Random rand = new Random();</p>
+<p>​       public synchronized int increment() {</p>
+<p>​              return count++;</p>
+<p>​       }</p>
+<p>​       public synchronized int value() { return count; } </p>
+<p>}</p>
+<p>class Sensor implements Runnable {</p>
+<p>​       private static RadCount count = new RadCount();</p>
+<p>​       private static List<sensor> sensors = new ArrayList<sensor>();</sensor></sensor></p>
+<p>​       private int number = 0;</p>
+<p>​             private final int id;</p>
+<p>​       private static volatile boolean canceled = false;</p>
+<p>​             public static void cancel() { canceled = true; }</p>
+<p>​       public Sensor(int id) {</p>
+<p>​              this.id = id;</p>
+<p>​                                        sensors.add(this);</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              while(!canceled) {</p>
+<p>​                     synchronized(this) {</p>
+<p>​                            ++number;</p>
+<p>​                     }</p>
+<p>​                     print(this + “ Total: “ + count.increment());</p>
+<p>​                     try {</p>
+<p>​                            TimeUnit.MILLISECONDS.sleep(25);</p>
+<p>​                     } catch(InterruptedException e) {</p>
+<p>​                            print(“sleep interrupted”);</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​              print(“Stopping “ + this);</p>
+<p>​       }</p>
+<p>​       public synchronized int getValue() { return number; }</p>
+<p>​       public String toString() {</p>
+<p>​              return “Sensor “ + id + “: “ + getValue();</p>
+<p>​       } </p>
+<p>​       public static int getTotalCount() {</p>
+<p>​              return count.value();</p>
+<p>​       }</p>
+<p>​       public static int sumSensors() {</p>
+<p>​              int sum = 0;</p>
+<p>​              for(Sensor sensor : sensors)</p>
+<p>​                     sum += sensor.getValue();</p>
+<p>​              return sum;</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class RadiationCounter17 {</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              ExecutorService exec = Executors.newCachedThreadPool();</p>
+<p>​              for(int i = 0; i &lt; 10; i++)</p>
+<p>​                     exec.execute(new Sensor(i));</p>
+<p>​                           TimeUnit.SECONDS.sleep(4);</p>
+<p>​              Sensor.cancel();</p>
+<p>​              exec.shutdown();</p>
+<p>​              if(!exec.awaitTermination(250, TimeUnit.MILLISECONDS))</p>
+<p>​                     print(“Some tasks were not terminated”);</p>
+<p>​              print(“Total: “ + Sensor.getTotalCount());</p>
+<p>​              print(“Sum of Sensors: “ + Sensor.sumSensors());</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Nontask {</p>
+<p>​       public static void rest() {</p>
+<p>​              try {</p>
+<p>​                     TimeUnit.SECONDS.sleep(5);</p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                     System.out.println(“Sleep interrupted”);</p>
+<p>​              } finally {</p>
+<p>​                     System.out.println(“Good Bye”);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Worker implements Runnable {</p>
+<p>​       public void run() {</p>
+<p>​              Nontask.rest();              </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex18 {</p>
+<p>​       public static void main(String[] args) { </p>
+<p>​                                        Thread t = new Thread(new Worker());</p>
+<p>​              t.start();</p>
+<p>​              t.interrupt();</p>
+<p>​                           ExecutorService exec = Executors.newSingleThreadExecutor();</p>
+<p>​              exec.execute(new Worker());              </p>
+<p>​              exec.shutdownNow();</p>
+<p>​                           ExecutorService exec2 = Executors.newSingleThreadExecutor();</p>
+<p>​              Future&lt;?&gt; f = exec2.submit(new Worker());</p>
+<p>​              try {</p>
+<p>​                     TimeUnit.MILLISECONDS.sleep(100);              } catch(InterruptedException e) {</p>
+<p>​                     System.out.println(“Sleep interrupted in main()”);</p>
+<p>​              }</p>
+<p>​              f.cancel(true);</p>
+<p>​              exec2.shutdown();        </p>
+<p>​       }</p>
+<p>}</p>
+<p>class Count {</p>
+<p>​       private int count = 0;</p>
+<p>​       private Random rand = new Random(47);</p>
+<p>​             public synchronized int increment() {</p>
+<p>​              int temp = count;</p>
+<p>​              if(rand.nextBoolean())                      Thread.yield();</p>
+<p>​              return (count = ++temp);</p>
+<p>​       }</p>
+<p>​       public synchronized int value() { return count; } </p>
+<p>}</p>
+<p>class Entrance implements Runnable {</p>
+<p>​       private static Count count = new Count();</p>
+<p>​       private static List<entrance> entrances = new ArrayList<entrance>();</entrance></entrance></p>
+<p>​       private int number = 0;</p>
+<p>​             private final int id;</p>
+<p>​       private static volatile boolean canceled = false;</p>
+<p>​             public static void cancel() { canceled = true; }</p>
+<p>​       public Entrance(int id) {</p>
+<p>​              this.id = id;</p>
+<p>​                                        entrances.add(this);</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              while(!canceled) {</p>
+<p>​                     synchronized(this) {                          ++number;</p>
+<p>​                     }</p>
+<p>​                     print(this + “ Total: “ + count.increment());</p>
+<p>​                     try {</p>
+<p>​                            TimeUnit.MILLISECONDS.sleep(50);</p>
+<p>​                     } catch(InterruptedException e) {</p>
+<p>​                            print(“sleep interrupted”);</p>
+<p>​                            break;                 }</p>
+<p>​              }</p>
+<p>​              print(“Stopping “ + this);</p>
+<p>​       }</p>
+<p>​       public synchronized int getValue() { return number; }</p>
+<p>​       public String toString() {</p>
+<p>​              return “Entrance “ + id + “: “ + getValue();</p>
+<p>​       } </p>
+<p>​       public static int getTotalCount() {</p>
+<p>​              return count.value();</p>
+<p>​       }</p>
+<p>​       public static int sumEntrances() {</p>
+<p>​              int sum = 0;</p>
+<p>​              for(Entrance entrance : entrances)</p>
+<p>​                     sum += entrance.getValue();</p>
+<p>​              return sum;</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class OrnamentalGarden19 {</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              ExecutorService exec = Executors.newCachedThreadPool();</p>
+<p>​              for(int i = 0; i &lt; 5; i++)</p>
+<p>​                     exec.execute(new Entrance(i));</p>
+<p>​                           TimeUnit.SECONDS.sleep(4);</p>
+<p>​                           exec.shutdownNow();</p>
+<p>​              if(!exec.awaitTermination(250, TimeUnit.MILLISECONDS))</p>
+<p>​                     print(“Some tasks were not terminated”);</p>
+<p>​              print(“Total: “ + Entrance.getTotalCount());</p>
+<p>​              print(“Sum of Entrances: “ + Entrance.sumEntrances());</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class CachedThreadPool20 {</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              System.out.println(“Using LiftOff:”);</p>
+<p>​              ExecutorService exec = Executors.newCachedThreadPool();</p>
+<p>​              for(int i = 0; i &lt; 5; i++) {</p>
+<p>​                     Future&lt;?&gt; f = exec.submit(new LiftOff());</p>
+<p>​                     f.cancel(true);                                           </p>
+<p>​              }</p>
+<p>​              exec.shutdownNow();</p>
+<p>​              if(!exec.awaitTermination(250, TimeUnit.MILLISECONDS))</p>
+<p>​                     System.out.println(“Some tasks were not terminated”);</p>
+<p>​                           System.out.println(“\nUsing LiftOff20:”); </p>
+<p>​              ExecutorService exec20 = Executors.newCachedThreadPool();</p>
+<p>​              for(int i = 0; i &lt; 5; i++) {</p>
+<p>​                     Future&lt;?&gt; f = exec20.submit(new LiftOff20());</p>
+<p>​                     f.cancel(true);                             </p>
+<p>​              }</p>
+<p>​              exec20.shutdownNow();</p>
+<p>​              if(!exec.awaitTermination(250, TimeUnit.MILLISECONDS))</p>
+<p>​                     System.out.println(“Some tasks were not terminated”);          </p>
+<p>​       }</p>
+<p>}</p>
+<p>class A implements Runnable {</p>
+<p>​       private volatile boolean signal = false;</p>
+<p>​       public synchronized void run() {               try {</p>
+<p>​                     while(!signal) {                                                                          println(“A.run() wait()”);</p>
+<p>​                                                       wait();</p>
+<p>​                            signal = true;</p>
+<p>​                            println(“A is done waiting”);                            </p>
+<p>​                     }                    </p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                     println(“A run() interrupted”);      </p>
+<p>​              } finally {</p>
+<p>​                     println(“Leaving A.run()”);    </p>
+<p>​              }             </p>
+<p>​       }</p>
+<p>​       public synchronized void message() {</p>
+<p>​              println(“Hi from A”);</p>
+<p>​       }             </p>
+<p>}</p>
+<p>class B implements Runnable {    </p>
+<p>​       private A a;</p>
+<p>​       public A getA() { return a; }</p>
+<p>​       B(A a) { this.a = a; } </p>
+<p>​       public void run() {</p>
+<p>​              try { </p>
+<p>​                     TimeUnit.MILLISECONDS.sleep(2000);</p>
+<p>​                     synchronized(a) {                             println(“B.run() a.notifyAll()”);</p>
+<p>​                            a.notifyAll();</p>
+<p>​                     }</p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                    System.out.println(“B sleep interrupted”);</p>
+<p>​              }             </p>
+<p>​       }      </p>
+<p>}</p>
+<p>public class Ex21 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              ExecutorService exec = Executors.newCachedThreadPool();</p>
+<p>​              B b = new B(new A());</p>
+<p>​              exec.execute(b.getA());</p>
+<p>​              try { </p>
+<p>​                     TimeUnit.MILLISECONDS.sleep(100);                </p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                    System.out.println(“main() sleep interrupted”);</p>
+<p>​              }</p>
+<p>​              b.getA().message();</p>
+<p>​              exec.execute(b);</p>
+<p>​              try { </p>
+<p>​                     TimeUnit.MILLISECONDS.sleep(2500);                      </p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                    System.out.println(“main() sleep interrupted”);</p>
+<p>​              }             </p>
+<p>​              exec.shutdownNow();</p>
+<p>​       }</p>
+<p>}</p>
+<p>class A implements Runnable {</p>
+<p>​       boolean flag = false;</p>
+<p>​       public synchronized void run() {</p>
+<p>​              try {</p>
+<p>​                     TimeUnit.SECONDS.sleep(2);</p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                     println(“sleep interrupted in A”);</p>
+<p>​              }</p>
+<p>​              println(“A setting flag = true”); </p>
+<p>​              flag = true;            </p>
+<p>​       }      </p>
+<p>}</p>
+<p>class BusyWait implements Runnable {</p>
+<p>​       A a = new A();</p>
+<p>​       long start, end;</p>
+<p>​       public synchronized A getA() { return a; }</p>
+<p>​       private BusyWait(A a) {</p>
+<p>​              this.a = a;</p>
+<p>​       }</p>
+<p>​       public static BusyWait buildBusyWait(A a) {</p>
+<p>​              return new BusyWait(a);</p>
+<p>​       }</p>
+<p>​       public synchronized void run() {</p>
+<p>​              println(“Busy a.flag = “ + a.flag);         </p>
+<p>​              while(!Thread.interrupted()) {      </p>
+<p>​                     start = System.nanoTime();         </p>
+<p>​                     if(a.flag) {</p>
+<p>​                            a.flag = false;</p>
+<p>​                            println(“BusyWait reset a.flag = false”);</p>
+<p>​                            end = System.nanoTime();</p>
+<p>​                            println(“Busy waiting “ + (end - start) + “ nanoseconds”);</p>
+<p>​                     }</p>
+<p>​              }             </p>
+<p>​       }</p>
+<p>}</p>
+<p>class BetterWait implements Runnable {</p>
+<p>​       private A a = new A();</p>
+<p>​       public synchronized A getA() { return a; }</p>
+<p>​       private BetterWait(A a) {</p>
+<p>​              this.a = a;</p>
+<p>​       }</p>
+<p>​       public static BetterWait buildBetterWait(A a) {</p>
+<p>​              return new BetterWait(a);</p>
+<p>​       }</p>
+<p>​       public synchronized void run() {</p>
+<p>​              println(“Better a.flag = “ + a.flag);</p>
+<p>​              try {               </p>
+<p>​                     while(!a.flag) {</p>
+<p>​                            wait();     </p>
+<p>​                            a.flag = false;</p>
+<p>​                            println(“BetterWait reset a.flag = false”);</p>
+<p>​                     }                           </p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                     println(“BetterWait.run() interrupted”);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex22 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              ExecutorService exec = Executors.newCachedThreadPool();</p>
+<p>​              BusyWait busy = BusyWait.buildBusyWait(new A());</p>
+<p>​              exec.execute(busy.a);</p>
+<p>​              exec.execute(busy);</p>
+<p>​              try {</p>
+<p>​                     TimeUnit.SECONDS.sleep(3);</p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                     println(“sleep interrupted in main()”);</p>
+<p>​              }</p>
+<p>​              println();</p>
+<p>​              BetterWait better = BetterWait.buildBetterWait(new A());</p>
+<p>​              exec.execute(better.getA());</p>
+<p>​              exec.execute(better);</p>
+<p>​              try {</p>
+<p>​                     TimeUnit.SECONDS.sleep(3);</p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                     println(“sleep interrupted in main()”);</p>
+<p>​              }</p>
+<p>​              synchronized(better) {</p>
+<p>​                     println(“Sending better.notifyAll()”);</p>
+<p>​                     better.notifyAll();</p>
+<p>​              }</p>
+<p>​              exec.shutdownNow();</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Car {</p>
+<p>​       private boolean waxOn = false;</p>
+<p>​       public synchronized void waxed() {</p>
+<p>​              waxOn = true;                         notify();</p>
+<p>​       }</p>
+<p>​       public synchronized void buffed() {</p>
+<p>​              waxOn = false;                        notify();</p>
+<p>​       }</p>
+<p>​       public synchronized void waitForWaxing() throws InterruptedException {</p>
+<p>​              while(waxOn == false) wait();</p>
+<p>​       }</p>
+<p>​       public synchronized void waitForBuffing() throws InterruptedException {</p>
+<p>​              while(waxOn == true) wait();</p>
+<p>​       }</p>
+<p>}      </p>
+<p>class WaxOn implements Runnable {</p>
+<p>​       private Car car;</p>
+<p>​       public WaxOn(Car c) { car = c; }</p>
+<p>​       public void run() {</p>
+<p>​              try {</p>
+<p>​                     while(!Thread.interrupted()) {</p>
+<p>​                            printnb(“Wax On! “);</p>
+<p>​                            TimeUnit.MILLISECONDS.sleep(200);</p>
+<p>​                            car.waxed();</p>
+<p>​                            car.waitForBuffing();</p>
+<p>​                     }</p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                     print(“Exiting via interrupt”);</p>
+<p>​              }</p>
+<p>​              print(“Ending Wax On task”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class WaxOff implements Runnable {</p>
+<p>​       private Car car;</p>
+<p>​       public WaxOff(Car c) { car = c; }</p>
+<p>​       public void run() {</p>
+<p>​              try {</p>
+<p>​                     while(!Thread.interrupted()) {</p>
+<p>​                            car.waitForWaxing();</p>
+<p>​                            printnb(“Wax Off! “);</p>
+<p>​                            TimeUnit.MILLISECONDS.sleep(200);</p>
+<p>​                            car.buffed();</p>
+<p>​                     }</p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                     print(“Exiting via interrupt”);</p>
+<p>​              }</p>
+<p>​              print(“Ending Wax Off task”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class WaxOMatic23 {</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              Car car = new Car();</p>
+<p>​              ExecutorService exec = Executors.newCachedThreadPool();</p>
+<p>​              exec.execute(new WaxOff(car));</p>
+<p>​              exec.execute(new WaxOn(car));</p>
+<p>​              TimeUnit.SECONDS.sleep(5);            exec.shutdownNow();         }</p>
+<p>}      </p>
+<p>class Item {</p>
+<p>​       private final int itemNum;</p>
+<p>​       public Item(int itemNum) { this.itemNum = itemNum; }</p>
+<p>​       public String toString() { return “Item “ + itemNum; }</p>
+<p>}</p>
+<p>class Producer implements Runnable {</p>
+<p>​       private int count = 0;</p>
+<p>​       Market24 market;</p>
+<p>​       Producer(Market24 m) { market = m; }</p>
+<p>​       protected int getCount() { return count; }</p>
+<p>​       public void run() {</p>
+<p>​              while(!Thread.interrupted()) {</p>
+<p>​                     try {</p>
+<p>​                            while(count &lt; 100) {</p>
+<p>​                                   Item item = new Item(++count);</p>
+<p>​                                   if(market.storage.offer(item)) {</p>
+<p>​                                          println(“Produced “ + item);</p>
+<p>​                                                                                   synchronized(market.consumer) { </p>
+<p>​                                                 market.consumer.notifyAll();</p>
+<p>​                                          }      </p>
+<p>​                                   }</p>
+<p>​                                                                     synchronized(this) { </p>
+<p>​                                          while(!(market.storage.size() &lt; 10)) {</p>
+<p>​                                                 wait();</p>
+<p>​                                          }</p>
+<p>​                                   }</p>
+<p>​                     }</p>
+<p>​                                         println(“Produced “ + count + “ Items”</p>
+<p>​                           + “\nStopping production”);</p>
+<p>​                     market.exec.shutdownNow();      </p>
+<p>​                     } catch(InterruptedException e) {</p>
+<p>​                            println(“Producer interrupted”);</p>
+<p>​                            println(“Produced “ + count + “ Items”); </p>
+<p>​                     }                                  </p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Consumer implements Runnable {</p>
+<p>​       int consumed = 0;</p>
+<p>​       Market24 market;</p>
+<p>​       List<item> cart = new ArrayList<item>();</item></item></p>
+<p>​       Consumer(Market24 m) { market = m; }</p>
+<p>​       public void run() {</p>
+<p>​              try {</p>
+<p>​                     while(!Thread.interrupted()) {</p>
+<p>​                                                       synchronized(this) {</p>
+<p>​                                   while(!(cart.size() &lt; market.producer.getCount())) {</p>
+<p>​                                          wait();</p>
+<p>​                                   } </p>
+<p>​                            }</p>
+<p>​                                                       if(cart.add(market.storage.poll())) {</p>
+<p>​                                   println(“Consuming Item “ + ++consumed); </p>
+<p>​                                                                     synchronized(market.producer) {</p>
+<p>​                                          market.producer.notifyAll();</p>
+<p>​                                   }</p>
+<p>​                            }                    </p>
+<p>​                     }             </p>
+<p>​              }</p>
+<p>​              catch(InterruptedException e) {</p>
+<p>​                     println(“Consumer interrupted”);</p>
+<p>​                     println(“Consumed “ + consumed + “ Items”);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Market24 {</p>
+<p>​       ExecutorService exec = Executors.newCachedThreadPool();</p>
+<p>​       Queue<item> storage = new LinkedList<item>();</item></item></p>
+<p>​       Producer producer = new Producer(this);</p>
+<p>​       Consumer consumer = new Consumer(this);</p>
+<p>​       public Market24() {</p>
+<p>​              exec.execute(producer);</p>
+<p>​              exec.execute(consumer);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              new Market24();</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Meal {</p>
+<p>​       private final int orderNum;</p>
+<p>​       public Meal(int orderNum) { this.orderNum = orderNum; }</p>
+<p>​       public String toString() { return “Meal “ + orderNum; }</p>
+<p>}</p>
+<p>class WaitPerson25 implements Runnable {</p>
+<p>​       private Restaurant25 restaurant;</p>
+<p>​       public WaitPerson25(Restaurant25 r) { restaurant = r; }</p>
+<p>​       public void run() {</p>
+<p>​              try {</p>
+<p>​                     while(!Thread.interrupted()) {</p>
+<p>​                            synchronized(this) {</p>
+<p>​                                   while(restaurant.meal == null)</p>
+<p>​                                          wait();                         }</p>
+<p>​                            print(“WaitPerson25 got “ + restaurant.meal);</p>
+<p>​                            synchronized(restaurant.chef) {</p>
+<p>​                                   restaurant.meal = null;</p>
+<p>​                                   restaurant.chef.notifyAll();                       }</p>
+<p>​                     }      </p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                     print(“WaitPerson25 interrupted”);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Chef25 implements Runnable {</p>
+<p>​       private Restaurant25 restaurant;</p>
+<p>​       private int count = 0;</p>
+<p>​       public Chef25(Restaurant25 r) { restaurant = r; }</p>
+<p>​       public void run() {</p>
+<p>​              try {</p>
+<p>​                     while(!Thread.interrupted()) {</p>
+<p>​                            synchronized(this) {</p>
+<p>​                                   while(restaurant.meal != null) </p>
+<p>​                                          wait();                         }</p>
+<p>​                            if(++count == 10) {</p>
+<p>​                                   print(“Out of food, closing”);</p>
+<p>​                                   restaurant.exec.shutdownNow();</p>
+<p>​                                   return;                        }</p>
+<p>​                            printnb(“Order up! “);</p>
+<p>​                            synchronized(restaurant.waitPerson) {</p>
+<p>​                                   restaurant.meal = new Meal(count);</p>
+<p>​                                   restaurant.waitPerson.notifyAll();</p>
+<p>​                            }</p>
+<p>​                            TimeUnit.MILLISECONDS.sleep(100);</p>
+<p>​                     }</p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                     print(“Chef25 interrupted”);</p>
+<p>​              }</p>
+<p>​       }      </p>
+<p>}</p>
+<p>public class Restaurant25 {</p>
+<p>​       Meal meal;</p>
+<p>​       ExecutorService exec = Executors.newCachedThreadPool();</p>
+<p>​       WaitPerson25 waitPerson = new WaitPerson25(this);</p>
+<p>​       Chef25 chef = new Chef25(this);</p>
+<p>​       public Restaurant25() {</p>
+<p>​              exec.execute(chef);</p>
+<p>​              exec.execute(waitPerson);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              new Restaurant25();</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Meal {</p>
+<p>​       private final int orderNum;</p>
+<p>​       public Meal(int orderNum) { this.orderNum = orderNum; }</p>
+<p>​       public String toString() { return “Meal “ + orderNum; }</p>
+<p>}</p>
+<p>class WaitPerson26 implements Runnable {</p>
+<p>​       private Restaurant26 restaurant;</p>
+<p>​       protected boolean clean = true;</p>
+<p>​       protected Meal m;      public WaitPerson26(Restaurant26 r) { restaurant = r; }</p>
+<p>​       public void run() {</p>
+<p>​              try {</p>
+<p>​                     while(!Thread.interrupted()) {</p>
+<p>​                            synchronized(this) {</p>
+<p>​                                   while(restaurant.meal == null)</p>
+<p>​                                          wait();                         }</p>
+<p>​                            m = restaurant.meal;</p>
+<p>​                            print(“WaitPerson got “ + m);</p>
+<p>​                            synchronized(restaurant.chef) {</p>
+<p>​                                   restaurant.meal = null;</p>
+<p>​                                   restaurant.chef.notifyAll();                       }</p>
+<p>​                            print(“WaitPerson delivered “ + m);</p>
+<p>​                            synchronized(restaurant.busBoy) { </p>
+<p>​                                   clean = false;</p>
+<p>​                                   restaurant.busBoy.notifyAll();                          }</p>
+<p>​                     }      </p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                     print(“WaitPerson interrupted”);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Chef26 implements Runnable {</p>
+<p>​       private Restaurant26 restaurant;</p>
+<p>​       private int count = 0;</p>
+<p>​       public Chef26(Restaurant26 r) { restaurant = r; }</p>
+<p>​       public void run() {</p>
+<p>​              try {</p>
+<p>​                     while(!Thread.interrupted()) {</p>
+<p>​                            synchronized(this) {</p>
+<p>​                                   while(restaurant.meal != null) </p>
+<p>​                                          wait();                         }</p>
+<p>​                            if(++count == 10) {</p>
+<p>​                                   print(“Out of food, closing”);</p>
+<p>​                                   restaurant.exec.shutdownNow();</p>
+<p>​                                   return;</p>
+<p>​                            }</p>
+<p>​                            print(“Order up! “);</p>
+<p>​                            synchronized(restaurant.waitPerson) {</p>
+<p>​                                   restaurant.meal = new Meal(count);</p>
+<p>​                                   restaurant.waitPerson.notifyAll();</p>
+<p>​                            }</p>
+<p>​                            TimeUnit.MILLISECONDS.sleep(100);</p>
+<p>​                     }</p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                     print(“Chef interrupted”);</p>
+<p>​              }</p>
+<p>​       }      </p>
+<p>}</p>
+<p>class BusBoy26 implements Runnable {</p>
+<p>​       private Restaurant26 restaurant;</p>
+<p>​       public BusBoy26(Restaurant26 r) { restaurant = r; }</p>
+<p>​       public void run() {</p>
+<p>​              try {</p>
+<p>​                     while(!Thread.interrupted()) {</p>
+<p>​                            synchronized(this) {</p>
+<p>​                                   while(restaurant.waitPerson.clean)</p>
+<p>​                                          wait();</p>
+<p>​                            }</p>
+<p>​                            print(“BusBoy cleaning up “ + restaurant.waitPerson.m);</p>
+<p>​                            restaurant.waitPerson.clean = true;</p>
+<p>​                     }</p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                     print(“BusBoy interrupted”);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Restaurant26 {</p>
+<p>​       Meal meal;</p>
+<p>​       ExecutorService exec = Executors.newCachedThreadPool();</p>
+<p>​       WaitPerson26 waitPerson = new WaitPerson26(this);</p>
+<p>​       BusBoy26 busBoy = new BusBoy26(this);</p>
+<p>​       Chef26 chef = new Chef26(this);</p>
+<p>​       public Restaurant26() {</p>
+<p>​              exec.execute(chef);</p>
+<p>​              exec.execute(waitPerson);</p>
+<p>​              exec.execute(busBoy);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              new Restaurant26();</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Meal {</p>
+<p>​       private final int orderNum;</p>
+<p>​       public Meal(int orderNum) { this.orderNum = orderNum; }</p>
+<p>​       public String toString() { return “Meal “ + orderNum; }</p>
+<p>}</p>
+<p>class WaitPerson27 implements Runnable {</p>
+<p>​       private Restaurant27 restaurant;</p>
+<p>​       protected Lock lock = new ReentrantLock();</p>
+<p>​       protected Condition condition = lock.newCondition();</p>
+<p>​       public WaitPerson27(Restaurant27 r) { restaurant = r; }</p>
+<p>​       public void run() {</p>
+<p>​              try {</p>
+<p>​                     while(!Thread.interrupted()) {</p>
+<p>​                            lock.lock();</p>
+<p>​                            try {</p>
+<p>​                                   while(restaurant.meal == null)</p>
+<p>​                                          condition.await();</p>
+<p>​                            } finally {</p>
+<p>​                                   lock.unlock();</p>
+<p>​                            }</p>
+<p>​                            print(“waitPerson got “ + restaurant.meal);</p>
+<p>​                            restaurant.chef.lock.lock();</p>
+<p>​                            try {</p>
+<p>​                                   restaurant.meal = null;</p>
+<p>​                                   restaurant.chef.condition.signalAll();</p>
+<p>​                            } finally {</p>
+<p>​                                   restaurant.chef.lock.unlock();</p>
+<p>​                            }                           </p>
+<p>​                     }      </p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                     print(“WaitPerson27 interrupted”);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Chef27 implements Runnable {</p>
+<p>​       private Restaurant27 restaurant;</p>
+<p>​       private int count = 0;</p>
+<p>​       protected Lock lock = new ReentrantLock();</p>
+<p>​       protected Condition condition = lock.newCondition();</p>
+<p>​       public Chef27(Restaurant27 r) { restaurant = r; }</p>
+<p>​       public void run() {</p>
+<p>​              try {</p>
+<p>​                     while(!Thread.interrupted()) {</p>
+<p>​                            lock.lock(); </p>
+<p>​                            try {</p>
+<p>​                                   while(restaurant.meal != null)</p>
+<p>​                                          condition.await();</p>
+<p>​                            } finally {</p>
+<p>​                                   lock.unlock();</p>
+<p>​                            }</p>
+<p>​                            if(++count == 10) {</p>
+<p>​                                   print(“Out of food, closing”);</p>
+<p>​                                   restaurant.exec.shutdownNow();</p>
+<p>​                                   return;</p>
+<p>​                            }</p>
+<p>​                            printnb(“Order up! “);</p>
+<p>​                            restaurant.waitPerson.lock.lock();</p>
+<p>​                            try {</p>
+<p>​                                   restaurant.meal = new Meal(count);</p>
+<p>​                                   restaurant.waitPerson.condition.signalAll();</p>
+<p>​                            } finally {</p>
+<p>​                                   restaurant.waitPerson.lock.unlock();</p>
+<p>​                            }</p>
+<p>​                            TimeUnit.MILLISECONDS.sleep(100);</p>
+<p>​                     }</p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                     print(“chef interrupted”);</p>
+<p>​              }</p>
+<p>​       }      </p>
+<p>}</p>
+<p>public class Restaurant27 {</p>
+<p>​       Meal meal;</p>
+<p>​       ExecutorService exec = Executors.newCachedThreadPool();</p>
+<p>​       WaitPerson27 waitPerson = new WaitPerson27(this);</p>
+<p>​       Chef27 chef = new Chef27(this);</p>
+<p>​       public Restaurant27() {</p>
+<p>​              exec.execute(chef);</p>
+<p>​              exec.execute(waitPerson);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              new Restaurant27();</p>
+<p>​       }</p>
+<p>}</p>
+<p>class LiftOffRunner implements Runnable {</p>
+<p>​       private BlockingQueue<liftoff> rockets;</liftoff></p>
+<p>​       public LiftOffRunner(BlockingQueue<liftoff> queue) {</liftoff></p>
+<p>​              rockets = queue;</p>
+<p>​       } </p>
+<p>​       public void add(LiftOff lo) {</p>
+<p>​              try {</p>
+<p>​                     rockets.put(lo);</p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                     print(“Interrupted during put()”);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              try {</p>
+<p>​                     while(!Thread.interrupted()) {</p>
+<p>​                            LiftOff rocket = rockets.take();</p>
+<p>​                            rocket.run();                       }</p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                     print(“Waking from take()”);</p>
+<p>​              }</p>
+<p>​              print(“Exiting LiftOffRunner”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class LiftOffAdder implements Runnable {</p>
+<p>​       private LiftOffRunner runner;</p>
+<p>​       public LiftOffAdder(LiftOffRunner runner) {</p>
+<p>​              this.runner = runner;</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              for(int i = 0; i &lt; 5; i++)</p>
+<p>​                     runner.add(new LiftOff(5));   </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class TestBlockingQueues28 {</p>
+<p>​       static void getKey() {</p>
+<p>​              try {</p>
+<p>​                                                             new BufferedReader(new InputStreamReader(System.in)).readLine();</p>
+<p>​              } catch(java.io.IOException e) {</p>
+<p>​                     throw new RuntimeException(e);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       static void getKey(String message) {</p>
+<p>​              printnb(message);</p>
+<p>​              getKey();</p>
+<p>​       }</p>
+<p>​       static void test(String msg, BlockingQueue<liftoff> queue) {</liftoff></p>
+<p>​              print(msg);</p>
+<p>​              LiftOffRunner runner = new LiftOffRunner(queue);</p>
+<p>​              LiftOffAdder adder = new LiftOffAdder(runner);</p>
+<p>​              ExecutorService exec = Executors.newCachedThreadPool();</p>
+<p>​              exec.execute(runner);</p>
+<p>​              exec.execute(adder);</p>
+<p>​              getKey(“Press ‘Enter’ (“ + msg + “)”);</p>
+<p>​              print(“Finished “ + msg + “ test”);</p>
+<p>​              exec.shutdownNow();</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              test(“LinkedBlockingQueue”,                   new LinkedBlockingQueue<liftoff>());</liftoff></p>
+<p>​              test(“ArrayBlockingQueue”,                     new ArrayBlockingQueue<liftoff>(3));</liftoff></p>
+<p>​              test(“SynchronousQueue”,                      new SynchronousQueue<liftoff>());</liftoff></p>
+<p>​       }</p>
+<p>}</p>
+<p>class Toast {</p>
+<p>​       public enum Status { DRY, JELLIED, PEANUTBUTTERED }</p>
+<p>​       private Status status = Status.DRY;</p>
+<p>​       private final int id;</p>
+<p>​       public Toast(int idn) { id = idn; }</p>
+<p>​       public void jelly() { status = Status.JELLIED; }</p>
+<p>​       public void peanutButter() { status = Status.PEANUTBUTTERED; }</p>
+<p>​       public Status getStatus() { return status; }</p>
+<p>​       public int getId() { return id; }</p>
+<p>​       public String toString() {</p>
+<p>​              return “Toast “ + id + “: “ + status;</p>
+<p>​       }</p>
+<p>}</p>
+<p>class ToastQueue extends LinkedBlockingQueue<toast> {}</toast></p>
+<p>​       </p>
+<p>class Toaster implements Runnable {</p>
+<p>​       private ToastQueue toastQueue;</p>
+<p>​       private int count = 0;</p>
+<p>​       private Random rand = new Random();</p>
+<p>​       public Toaster(ToastQueue tq) { toastQueue = tq; }</p>
+<p>​       public void run() {</p>
+<p>​              try {</p>
+<p>​                     while(!Thread.interrupted()) {</p>
+<p>​                            TimeUnit.MILLISECONDS.sleep(</p>
+<p>​                                   100 + rand.nextInt(500));</p>
+<p>​                                                       Toast t = new Toast(count++);</p>
+<p>​                            print(t);</p>
+<p>​                                                       toastQueue.put(t);</p>
+<p>​                     }</p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                     print(“Toaster interrupted”);</p>
+<p>​              }</p>
+<p>​              print(“Toaster off”);</p>
+<p>​       }</p>
+<p>}</p>
+<p> class PeanutButterer implements Runnable {</p>
+<p>​       private ToastQueue dryQueue, peanutButteredQueue;</p>
+<p>​       public PeanutButterer(ToastQueue dry, ToastQueue peanutButtered) {</p>
+<p>​              dryQueue = dry;</p>
+<p>​              peanutButteredQueue = peanutButtered;</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              try {</p>
+<p>​                     while(!Thread.interrupted()) {</p>
+<p>​                                                       Toast t = dryQueue.take();</p>
+<p>​                            t.peanutButter();</p>
+<p>​                            print(t);</p>
+<p>​                            peanutButteredQueue.put(t);</p>
+<p>​                     }</p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                    print(“PeanutButterer interrupted”);</p>
+<p>​              }</p>
+<p>​              print(“PeanutButterer off”);</p>
+<p>​       }</p>
+<p>}</p>
+<p> class Jellyer implements Runnable {</p>
+<p>​       private ToastQueue dryQueue, jelliedQueue;</p>
+<p>​       public Jellyer(ToastQueue dry, ToastQueue jellied ) {</p>
+<p>​              dryQueue = dry;</p>
+<p>​              jelliedQueue = jellied;</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              try {</p>
+<p>​                     while(!Thread.interrupted()) {</p>
+<p>​                                                       Toast t = dryQueue.take();</p>
+<p>​                            t.jelly();</p>
+<p>​                            print(t);</p>
+<p>​                            jelliedQueue.put(t);</p>
+<p>​                     }</p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                     print(“Jellyer interrupted”);</p>
+<p>​              }</p>
+<p>​              print(“Jellyer off”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Sandwich {</p>
+<p>​       private Toast top, bottom;</p>
+<p>​       private final int id;</p>
+<p>​       public Sandwich(Toast top, Toast bottom, int id) {</p>
+<p>​              this.top = top;</p>
+<p>​              this.bottom = bottom;</p>
+<p>​              this.id = id;</p>
+<p>​       }</p>
+<p>​       public int getId() {</p>
+<p>​              return id;</p>
+<p>​       }</p>
+<p>​       public Toast getTop() { return top; }</p>
+<p>​       public Toast getBottom() { return bottom; }</p>
+<p>​       public String toString() {</p>
+<p>​              return “Sandwich “ + id + “: top: “ + top + “ and bottom: “ + bottom;</p>
+<p>​       }</p>
+<p>}</p>
+<p>class SandwichQueue extends LinkedBlockingQueue<sandwich> {}</sandwich></p>
+<p> class SandwichMaker implements Runnable {</p>
+<p>​       private int count = 0;</p>
+<p>​       private ToastQueue jelliedQueue, peanutButteredQueue;</p>
+<p>​       private SandwichQueue sandwichQueue;</p>
+<p>​       public SandwichMaker(ToastQueue jellied, ToastQueue peanutButtered, SandwichQueue sq) {</p>
+<p>​              jelliedQueue = jellied;</p>
+<p>​              peanutButteredQueue = peanutButtered;</p>
+<p>​              sandwichQueue = sq;</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              try {</p>
+<p>​                     while(!Thread.interrupted()) {</p>
+<p>​                            Sandwich s = new Sandwich(</p>
+<p>​                                   jelliedQueue.take(), peanutButteredQueue.take(), count++);</p>
+<p>​                            print(s);</p>
+<p>​                            sandwichQueue.put(s);</p>
+<p>​                     }</p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                     print(“SandwichMaker interrupted”);</p>
+<p>​              }</p>
+<p>​              print(“Sandwich maker off”);</p>
+<p>​       }</p>
+<p>}</p>
+<p> class SandwichEater implements Runnable {</p>
+<p>​       private SandwichQueue sandwichQueue;</p>
+<p>​       private int counter = 0;</p>
+<p>​       public SandwichEater(SandwichQueue sq) {</p>
+<p>​              sandwichQueue = sq;</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              try {</p>
+<p>​                     while(!Thread.interrupted()) {</p>
+<p>​                                                       Sandwich s = sandwichQueue.take();</p>
+<p>​                                                                                  if(s.getId() != counter++ || </p>
+<p>​                                   s.getTop().getStatus() != Toast.Status.JELLIED || </p>
+<p>​                                   s.getBottom().getStatus() != Toast.Status.PEANUTBUTTERED) {</p>
+<p>​                                          print(“&gt;&gt;&gt;&gt; Error: “ + s);</p>
+<p>​                                          System.exit(1);</p>
+<p>​                            } else</p>
+<p>​                                   print(“NumNum! “ + s);</p>
+<p>​                     } </p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                            print(“SandwichEater interruped”);</p>
+<p>​              }</p>
+<p>​              print(“SandwichEater off”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class ToastOMatic29 {</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              ToastQueue dryQueue = new ToastQueue(),</p>
+<p>​                     jelliedQueue = new ToastQueue(),</p>
+<p>​                     peanutButteredQueue = new ToastQueue();</p>
+<p>​              SandwichQueue sandwichQueue = new SandwichQueue();</p>
+<p>​              ExecutorService exec = Executors.newCachedThreadPool();</p>
+<p>​              exec.execute(new Toaster(dryQueue));</p>
+<p>​              exec.execute(new Jellyer(dryQueue, jelliedQueue));</p>
+<p>​              exec.execute(new PeanutButterer(dryQueue, peanutButteredQueue));</p>
+<p>​              exec.execute(new SandwichMaker(</p>
+<p>​                     jelliedQueue, peanutButteredQueue, sandwichQueue));</p>
+<p>​              exec.execute(new SandwichEater(sandwichQueue));</p>
+<p>​              TimeUnit.SECONDS.sleep(5);</p>
+<p>​              exec.shutdownNow();</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Sender implements Runnable {</p>
+<p>​       private Random rand = new Random(47);</p>
+<p>​       private LinkedBlockingQueue<character> queue;</character></p>
+<p>​       public Sender(LinkedBlockingQueue<character> lbq) {</character></p>
+<p>​              queue = lbq;</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              try {</p>
+<p>​                     while(true)</p>
+<p>​                            for(char c = ‘A’; c &lt;= ‘z’; c++) {</p>
+<p>​                                   queue.put(c);</p>
+<p>​                                   TimeUnit.MILLISECONDS.sleep(rand.nextInt(500));</p>
+<p>​                            }</p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                     print(e + “ Sender sleep interrupted”);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Receiver implements Runnable {</p>
+<p>​       private LinkedBlockingQueue<character> queue;</character></p>
+<p>​       public Receiver(LinkedBlockingQueue<character> lbq) {</character></p>
+<p>​              queue = lbq;</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​               try {</p>
+<p>​                     while(true) {</p>
+<p>​                                                       printnb(“Read: “ + (char)queue.take() + “, “);</p>
+<p>​                     }</p>
+<p>​               } catch(InterruptedException e) {</p>
+<p>​                     print(e + “ Receiver read exception”);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex30 {</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              LinkedBlockingQueue<character> lbq = new LinkedBlockingQueue<character>();</character></character></p>
+<p>​              Sender sender = new Sender(lbq);</p>
+<p>​              Receiver receiver = new Receiver(lbq);</p>
+<p>​              ExecutorService exec = Executors.newCachedThreadPool();</p>
+<p>​              exec.execute(sender);</p>
+<p>​              exec.execute(receiver);</p>
+<p>​              TimeUnit.SECONDS.sleep(4);</p>
+<p>​              exec.shutdownNow();</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Philosopher31 implements Runnable {</p>
+<p>​       private Chopstick left;</p>
+<p>​       private Chopstick right;</p>
+<p>​       private LinkedBlockingQueue<chopstick> bin;</chopstick></p>
+<p>​       private final int id;</p>
+<p>​       private final int ponderFactor;</p>
+<p>​       private Random rand = new Random(47);</p>
+<p>​       private void pause() throws InterruptedException {</p>
+<p>​              if(ponderFactor == 0) return;</p>
+<p>​              TimeUnit.MILLISECONDS.sleep(rand.nextInt(ponderFactor * 250));</p>
+<p>​       }</p>
+<p>​       public Philosopher31(Chopstick left, Chopstick right, </p>
+<p>​              LinkedBlockingQueue<chopstick> bin, int ident, int ponder) {</chopstick></p>
+<p>​              this.left = left;</p>
+<p>​              this.right = right;</p>
+<p>​              this.bin = bin;</p>
+<p>​              id = ident;</p>
+<p>​              ponderFactor = ponder;</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              try {</p>
+<p>​                     while(!Thread.interrupted()) {</p>
+<p>​                            print(this + “ “ + “thinking”);</p>
+<p>​                            pause();</p>
+<p>​                                                       print(this + “ taking first, right chopstick”);</p>
+<p>​                            right = bin.take();</p>
+<p>​                            print(this + “ taking second, left chopstick”);</p>
+<p>​                            left = bin.take();</p>
+<p>​                            print(this + “ eating”);</p>
+<p>​                            pause();</p>
+<p>​                            print(this + “ returning chopsticks”);</p>
+<p>​                            bin.put(right);</p>
+<p>​                            bin.put(left);</p>
+<p>​                     }</p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                     print(this + “ “ + “exiting via interrupt”);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       public String toString() { return “Philosopher “ + id; }</p>
+<p>}</p>
+<p>public class DeadlockingDiningPhilosophers31 {</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              int ponder = 5;</p>
+<p>​              if(args.length &gt; 0)</p>
+<p>​                     ponder = Integer.parseInt(args[0]);</p>
+<p>​              int size = 5;</p>
+<p>​              if(args.length &gt; 1)</p>
+<p>​                     size = Integer.parseInt(args[1]);</p>
+<p>​              ExecutorService exec = Executors.newCachedThreadPool();</p>
+<p>​                           LinkedBlockingQueue<chopstick> bin = new LinkedBlockingQueue<chopstick>();</chopstick></chopstick></p>
+<p>​              Chopstick[] sticks = new Chopstick[size];</p>
+<p>​              for(int i = 0; i &lt; size; i++) {</p>
+<p>​                     sticks[i] = new Chopstick();</p>
+<p>​                     bin.put(sticks[i]);</p>
+<p>​              }      </p>
+<p>​              for(int i = 0; i &lt; size; i++)     </p>
+<p>​                     exec.execute(new Philosopher31(sticks[i], sticks[(i + 1) % size], bin, i, ponder));</p>
+<p>​              if(args.length == 3 &amp;&amp; args[2].equals(“timeout”))</p>
+<p>​                     TimeUnit.SECONDS.sleep(5);</p>
+<p>​              else {</p>
+<p>​                     System.out.println(“Press ‘Enter’ to quit”);</p>
+<p>​                     System.in.read();</p>
+<p>​              }</p>
+<p>​              exec.shutdownNow();</p>
+<p>​       }</p>
+<p>}</p>
+<p>import java.util.concurrent.*;</p>
+<p>import java.util.*;</p>
+<p>import static net.mindview.util.Print.*;</p>
+<p>class Count {</p>
+<p>​       private int count = 0;</p>
+<p>​       private Random rand = new Random(47);</p>
+<p>​             public synchronized int increment() {</p>
+<p>​              int temp = count;</p>
+<p>​              if(rand.nextBoolean())                      Thread.yield();</p>
+<p>​              return (count = ++temp);</p>
+<p>​       }</p>
+<p>​       public synchronized int value() { return count; } </p>
+<p>}</p>
+<p>class Entrance implements Runnable {</p>
+<p>​       private static Count count = new Count();</p>
+<p>​       private static List<entrance> entrances = new ArrayList<entrance>();</entrance></entrance></p>
+<p>​       private int number = 0;</p>
+<p>​       private final int id;</p>
+<p>​       private final CountDownLatch doneSignal;</p>
+<p>​       private static CountDownLatch stopSignal;</p>
+<p>​       public Entrance(int id, CountDownLatch doneSignal, CountDownLatch stopSignal) {</p>
+<p>​              this.id = id;</p>
+<p>​              this.doneSignal = doneSignal;</p>
+<p>​              this.stopSignal = stopSignal;</p>
+<p>​                                        entrances.add(this);</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              while(!(stopSignal.getCount() == 0)) {</p>
+<p>​                     synchronized(this) {</p>
+<p>​                            ++number;</p>
+<p>​                     }</p>
+<p>​                     print(this + “ Total: “ + count.increment());</p>
+<p>​                     try { </p>
+<p>​                            TimeUnit.MILLISECONDS.sleep(100);</p>
+<p>​                     } catch(InterruptedException e) {</p>
+<p>​                            print(“sleep interrupted”);</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​              print(“Closing “ + this);</p>
+<p>​              doneSignal.countDown();</p>
+<p>​       }</p>
+<p>​       public synchronized int getValue() { return number; }</p>
+<p>​       public String toString() {</p>
+<p>​              return “Entrance “ + id + “: “ + getValue();</p>
+<p>​       } </p>
+<p>​       public static int getTotalCount() {</p>
+<p>​              return count.value();</p>
+<p>​       }</p>
+<p>​       public static int sumEntrances() {</p>
+<p>​              int sum = 0;</p>
+<p>​              for(Entrance entrance : entrances)</p>
+<p>​                     sum += entrance.getValue();</p>
+<p>​              return sum;</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class OrnamentalGarden32 {</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              int SIZE = 5;</p>
+<p>​              CountDownLatch stopSignal = new CountDownLatch(1);</p>
+<p>​              CountDownLatch doneSignal = new CountDownLatch(SIZE);</p>
+<p>​              ExecutorService exec = Executors.newCachedThreadPool();</p>
+<p>​              for(int i = 0; i &lt; SIZE; i++)</p>
+<p>​                     exec.execute(new Entrance(i, doneSignal, stopSignal));</p>
+<p>​                           TimeUnit.SECONDS.sleep(2);</p>
+<p>​                           stopSignal.countDown();</p>
+<p>​                           doneSignal.await();</p>
+<p>​              exec.shutdown();</p>
+<p>​              print(“Total: “ + Entrance.getTotalCount());</p>
+<p>​              print(“Sum of Entrances: “ + Entrance.sumEntrances());</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Count {</p>
+<p>​       private int count = 0;</p>
+<p>​       private Random rand = new Random(47);</p>
+<p>​             public synchronized int increment() {</p>
+<p>​              int temp = count;</p>
+<p>​              if(rand.nextBoolean())                      Thread.yield();</p>
+<p>​              return (count = ++temp);</p>
+<p>​       }</p>
+<p>​       public synchronized int value() { return count; } </p>
+<p>}</p>
+<p>class Entrance implements Runnable {</p>
+<p>​       private static Count count = new Count();</p>
+<p>​       private static List<entrance> entrances = new ArrayList<entrance>();</entrance></entrance></p>
+<p>​       private int number = 0;</p>
+<p>​       private final int id;</p>
+<p>​       private final CountDownLatch doneSignal;</p>
+<p>​       private static CountDownLatch stopSignal;</p>
+<p>​       public Entrance(int id, CountDownLatch doneSignal, CountDownLatch stopSignal) {</p>
+<p>​              this.id = id;</p>
+<p>​              this.doneSignal = doneSignal;</p>
+<p>​              this.stopSignal = stopSignal;</p>
+<p>​                                        entrances.add(this);</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              while(!(stopSignal.getCount() == 0)) {</p>
+<p>​                     synchronized(this) {</p>
+<p>​                            ++number;</p>
+<p>​                     }</p>
+<p>​                     print(this + “ Total: “ + count.increment());</p>
+<p>​                     try { </p>
+<p>​                            TimeUnit.MILLISECONDS.sleep(100);</p>
+<p>​                     } catch(InterruptedException e) {</p>
+<p>​                            print(“sleep interrupted”);</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​              print(“Closing “ + this);</p>
+<p>​              doneSignal.countDown();</p>
+<p>​       }</p>
+<p>​       public synchronized int getValue() { return number; }</p>
+<p>​       public String toString() {</p>
+<p>​              return “Entrance “ + id + “: “ + getValue();</p>
+<p>​       } </p>
+<p>​       public static int getTotalCount() {</p>
+<p>​              return count.value();</p>
+<p>​       }</p>
+<p>​       public static int sumEntrances() {</p>
+<p>​              int sum = 0;</p>
+<p>​              for(Entrance entrance : entrances)</p>
+<p>​                     sum += entrance.getValue();</p>
+<p>​              return sum;</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class OrnamentalGarden32 {</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              int SIZE = 5;</p>
+<p>​              CountDownLatch stopSignal = new CountDownLatch(1);</p>
+<p>​              CountDownLatch doneSignal = new CountDownLatch(SIZE);</p>
+<p>​              ExecutorService exec = Executors.newCachedThreadPool();</p>
+<p>​              for(int i = 0; i &lt; SIZE; i++)</p>
+<p>​                     exec.execute(new Entrance(i, doneSignal, stopSignal));</p>
+<p>​                           TimeUnit.SECONDS.sleep(2);</p>
+<p>​                           stopSignal.countDown();</p>
+<p>​                           doneSignal.await();</p>
+<p>​              exec.shutdown();</p>
+<p>​              print(“Total: “ + Entrance.getTotalCount());</p>
+<p>​              print(“Sum of Entrances: “ + Entrance.sumEntrances());</p>
+<p>​       }</p>
+<p>}</p>
+<p>abstract class DelayedGreenhouseTask implements Delayed, Runnable {</p>
+<p>​       protected long delayTime;        public long trigger;     public DelayedGreenhouseTask() {</p>
+<p>​              delayTime = 0;</p>
+<p>​              trigger = System.nanoTime();</p>
+<p>​       }</p>
+<p>​       public DelayedGreenhouseTask(long d) { </p>
+<p>​              delayTime = d; </p>
+<p>​              trigger = System.nanoTime() + </p>
+<p>​                     NANOSECONDS.convert(delayTime, MILLISECONDS);</p>
+<p>​       }</p>
+<p>​       public long getDelay(TimeUnit unit) {</p>
+<p>​              return unit.convert(</p>
+<p>​                     trigger - System.nanoTime(), NANOSECONDS);</p>
+<p>​       }</p>
+<p>​       public int compareTo(Delayed d) {</p>
+<p>​              DelayedGreenhouseTask that = (DelayedGreenhouseTask)d;</p>
+<p>​              if(trigger &lt; that.trigger) return -1;</p>
+<p>​              if(trigger &gt; that.trigger) return 1;</p>
+<p>​              return 0;</p>
+<p>​       }</p>
+<p>​             abstract public DelayedGreenhouseTask create(long d);</p>
+<p>​       abstract public void run(); </p>
+<p>}</p>
+<p>class GreenhouseController33 {</p>
+<p>​       private volatile boolean light = false;</p>
+<p>​       private volatile boolean water = false;</p>
+<p>​       private String thermostat = “Day”;</p>
+<p>​       DelayQueue<delayedgreenhousetask> tasks = new DelayQueue<delayedgreenhousetask>();</delayedgreenhousetask></delayedgreenhousetask></p>
+<p>​       public synchronized String getThermostat()  {</p>
+<p>​              return thermostat;</p>
+<p>​       }</p>
+<p>​       public synchronized void setThermostat(String value) {</p>
+<p>​              thermostat = value;</p>
+<p>​       }</p>
+<p>​       class LightOn33 extends DelayedGreenhouseTask {</p>
+<p>​              public LightOn33() {</p>
+<p>​                     super();</p>
+<p>​              }</p>
+<p>​              public LightOn33(long delayTime) {</p>
+<p>​                     super(delayTime);</p>
+<p>​              }</p>
+<p>​              public LightOn33 create(long d) {                   return new LightOn33(d);</p>
+<p>​              }</p>
+<p>​              public void run() { </p>
+<p>​                     if(!light) {</p>
+<p>​                            System.out.println(“Turning on lights”);</p>
+<p>​                            light = true;</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       class LightOff33 extends DelayedGreenhouseTask {</p>
+<p>​              public LightOff33() {</p>
+<p>​                     super();</p>
+<p>​              }</p>
+<p>​              public LightOff33(long delayTime) {</p>
+<p>​                     super(delayTime);</p>
+<p>​              }</p>
+<p>​              public LightOff33 create(long d) { </p>
+<p>​                     return new LightOff33(d);</p>
+<p>​              }</p>
+<p>​              public void run() { </p>
+<p>​                     if(light) {</p>
+<p>​                            System.out.println(“Turning off lights”);</p>
+<p>​                            light = false;</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       class WaterOn33 extends DelayedGreenhouseTask {</p>
+<p>​              public WaterOn33() {</p>
+<p>​                     super();</p>
+<p>​              }</p>
+<p>​              public WaterOn33(long delayTime) {</p>
+<p>​                     super(delayTime);</p>
+<p>​              }</p>
+<p>​              public WaterOn33 create(long d) {                 return new WaterOn33(d);</p>
+<p>​              }</p>
+<p>​              public void run() {</p>
+<p>​                                         System.out.println(“Turning greenhouse water on”);</p>
+<p>​                     water = true;</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       class WaterOff33 extends DelayedGreenhouseTask {</p>
+<p>​              public WaterOff33() {</p>
+<p>​                     super();</p>
+<p>​              }</p>
+<p>​              public WaterOff33(long delayTime) {</p>
+<p>​                     super(delayTime);</p>
+<p>​              }</p>
+<p>​              public WaterOff33 create(long d) { </p>
+<p>​                     return new WaterOff33(d);</p>
+<p>​              }</p>
+<p>​              public void run() {</p>
+<p>​                                         System.out.println(“Turning greenhouse water off”);</p>
+<p>​                     water = false;</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       class ThermostatNight33 extends DelayedGreenhouseTask {</p>
+<p>​              public ThermostatNight33() {</p>
+<p>​                     super();</p>
+<p>​              }</p>
+<p>​              public ThermostatNight33(long delayTime) {</p>
+<p>​                     super(delayTime);</p>
+<p>​              }</p>
+<p>​              public ThermostatNight33 create(long d) { </p>
+<p>​                     return new ThermostatNight33(d);</p>
+<p>​              }</p>
+<p>​              public void run() {</p>
+<p>​                                         System.out.println(“Thermostat to night setting”);</p>
+<p>​                     setThermostat(“Night”);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       class ThermostatDay33 extends DelayedGreenhouseTask {</p>
+<p>​              public ThermostatDay33() {</p>
+<p>​                     super();</p>
+<p>​              }</p>
+<p>​              public ThermostatDay33(long delayTime) {</p>
+<p>​                     super(delayTime);</p>
+<p>​              }</p>
+<p>​              public ThermostatDay33 create(long d) { </p>
+<p>​                     return new ThermostatDay33(d);</p>
+<p>​              }</p>
+<p>​              public void run() {</p>
+<p>​                                         System.out.println(“Thermostat to day setting”);</p>
+<p>​                     setThermostat(“Day”);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       class Bell33 extends DelayedGreenhouseTask {</p>
+<p>​              public Bell33() {</p>
+<p>​                     super();</p>
+<p>​              }</p>
+<p>​              public Bell33(long delayTime) {</p>
+<p>​                     super(delayTime);</p>
+<p>​              }</p>
+<p>​              public Bell33 create(long d) {</p>
+<p>​                     return new Bell33(d);</p>
+<p>​              }</p>
+<p>​              public void run() { System.out.println(“Bing!”); }</p>
+<p>​       }</p>
+<p>​             static class DataPoint33 {</p>
+<p>​              final Calendar time;</p>
+<p>​              final float temperature;</p>
+<p>​              final float humidity;</p>
+<p>​              public DataPoint33(Calendar d, float temp, float hum) {</p>
+<p>​                     time = d;</p>
+<p>​                     temperature = temp;</p>
+<p>​                     humidity = hum;</p>
+<p>​              }</p>
+<p>​              public String toString() {</p>
+<p>​                     return time.getTime() + </p>
+<p>​                            String.format(</p>
+<p>​                                   “ temperature: %1$.1f humidity: %2$.2f”,</p>
+<p>​                                   temperature, humidity);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       private Calendar lastTime = Calendar.getInstance();</p>
+<p>​       {            lastTime.set(Calendar.MINUTE, 30);</p>
+<p>​              lastTime.set(Calendar.SECOND, 00);</p>
+<p>​       }</p>
+<p>​       private float lastTemp = 65.0f;</p>
+<p>​       private int tempDirection = +1;</p>
+<p>​       private float lastHumidity = 50.0f;</p>
+<p>​       private int humidityDirection = +1;</p>
+<p>​       private Random rand = new Random(47);</p>
+<p>​       List<datapoint33> data = Collections.synchronizedList(</datapoint33></p>
+<p>​              new ArrayList<datapoint33>());</datapoint33></p>
+<p>​       class CollectData33 extends DelayedGreenhouseTask {</p>
+<p>​              public CollectData33() {</p>
+<p>​                     super();</p>
+<p>​              }</p>
+<p>​              public CollectData33(long delayTime) {</p>
+<p>​                     super(delayTime);</p>
+<p>​              }</p>
+<p>​              public CollectData33 create(long d) {</p>
+<p>​                     return new CollectData33(d);</p>
+<p>​              }</p>
+<p>​              public void run() {</p>
+<p>​                     System.out.println(“Collecting data”);</p>
+<p>​                     synchronized(GreenhouseController33.this) {</p>
+<p>​                                                       lastTime.set(Calendar.MINUTE, </p>
+<p>​                                   lastTime.get(Calendar.MINUTE) + 30);</p>
+<p>​                                                       if(rand.nextInt(5) == 4)</p>
+<p>​                                   tempDirection = -tempDirection;</p>
+<p>​                                                       lastTemp = lastTemp + </p>
+<p>​                                   tempDirection * (1.0f + rand.nextFloat());</p>
+<p>​                            if(rand.nextInt(5) == 4) </p>
+<p>​                                   humidityDirection = -humidityDirection;</p>
+<p>​                            lastHumidity = lastHumidity +</p>
+<p>​                                   humidityDirection * rand.nextFloat();</p>
+<p>​                                                                                                             data.add(new DataPoint33((Calendar)lastTime.clone(),</p>
+<p>​                                   lastTemp, lastHumidity));</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       public class StopController extends DelayedGreenhouseTask {</p>
+<p>​              private ExecutorService exec;</p>
+<p>​              public StopController(long delay, ExecutorService e) {</p>
+<p>​                     super(delay);</p>
+<p>​                     exec = e;</p>
+<p>​              }</p>
+<p>​              public StopController create(long delay) {</p>
+<p>​                     return new StopController(delay, Executors.newCachedThreadPool());</p>
+<p>​              }</p>
+<p>​              public void run() {</p>
+<p>​                     System.out.println(“Calling shutdownNow()”);</p>
+<p>​                     exec.shutdownNow();</p>
+<p>​                                         new Thread() {</p>
+<p>​                            public void run() {</p>
+<p>​                                   for(DataPoint33 d : data)</p>
+<p>​                                          System.out.println(d);</p>
+<p>​                            }</p>
+<p>​                     }.start();</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       public static class GreenhouseGo implements Runnable {</p>
+<p>​              private DelayQueue<delayedgreenhousetask> q;</delayedgreenhousetask></p>
+<p>​              public GreenhouseGo(DelayQueue<delayedgreenhousetask> q) {</delayedgreenhousetask></p>
+<p>​                     this.q = q;</p>
+<p>​              }</p>
+<p>​              public void run() {</p>
+<p>​                                         try {</p>
+<p>​                            while(!Thread.interrupted()) </p>
+<p>​                                   q.take().run();                     } catch(InterruptedException e) {</p>
+<p>​                                                }</p>
+<p>​                     System.out.println(“Finished GreenhouseGo”);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class GreenhouseScheduler33 {</p>
+<p>​       public static void repeat(</p>
+<p>​       GreenhouseController33 c, DelayedGreenhouseTask task, long interval, long duration) </p>
+<p>​              throws Exception {</p>
+<p>​              if(interval &lt;= duration) {</p>
+<p>​                     for(int i = 0; i &lt; duration                          DelayedGreenhouseTask t = task.create(interval * (i + 1));</p>
+<p>​                            c.tasks.put(t);</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              ExecutorService exec = Executors.newCachedThreadPool();</p>
+<p>​              GreenhouseController33 ghc = new GreenhouseController33();</p>
+<p>​              repeat(ghc, ghc.new Bell33(), 1000, 4000);</p>
+<p>​              repeat(ghc, ghc.new ThermostatNight33(), 2000, 4000);</p>
+<p>​              repeat(ghc, ghc.new LightOn33(), 200, 4000);</p>
+<p>​              repeat(ghc, ghc.new LightOff33(), 400, 4000);</p>
+<p>​              repeat(ghc, ghc.new WaterOn33(), 600, 4000);</p>
+<p>​              repeat(ghc, ghc.new WaterOff33(), 800, 4000);</p>
+<p>​              repeat(ghc, ghc.new ThermostatDay33(), 1400, 4000);</p>
+<p>​              repeat(ghc, ghc.new CollectData33(), 500, 4000);</p>
+<p>​              ghc.tasks.put(ghc.new StopController(5000, exec));</p>
+<p>​              exec.execute(new GreenhouseController33.GreenhouseGo(ghc.tasks));</p>
+<p>​       }</p>
+<p>}</p>
+<p>class ExchangerProducer34<t> implements Runnable {</t></p>
+<p>​       private Generator<t> generator;</t></p>
+<p>​       private Exchanger&lt;List<t>&gt; exchanger;</t></p>
+<p>​       private List<t> holder;</t></p>
+<p>​       ExchangerProducer34(Exchanger&lt;List<t>&gt; exchg, Generator<t> gen, List<t> holder) {</t></t></t></p>
+<p>​              exchanger = exchg;</p>
+<p>​              generator = gen;</p>
+<p>​              this.holder = holder;</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              try {</p>
+<p>​                     while(!Thread.interrupted()) {</p>
+<p>​                            for(int i = 0; i &lt; ExchangerDemo34.size; i++)</p>
+<p>​                                   holder.add(generator.next());</p>
+<p>​                                                       holder = exchanger.exchange(holder);</p>
+<p>​                     }</p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                                  }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class ExchangerConsumer34<t> implements Runnable {</t></p>
+<p>​       private Exchanger&lt;List<t>&gt; exchanger;</t></p>
+<p>​       private List<t> holder;</t></p>
+<p>​       private volatile T value;</p>
+<p>​       ExchangerConsumer34(Exchanger&lt;List<t>&gt; ex, List<t> holder) {</t></t></p>
+<p>​              exchanger = ex;</p>
+<p>​              this.holder = holder;</p>
+<p>​       }</p>
+<p>​       public void run() {</p>
+<p>​              try {</p>
+<p>​                     while(!Thread.interrupted()) {</p>
+<p>​                            holder = exchanger.exchange(holder);</p>
+<p>​                            for(T x : holder) {</p>
+<p>​                                   value = x;                                 holder.remove(x);                            }</p>
+<p>​                     }</p>
+<p>​              } catch(InterruptedException e) {</p>
+<p>​                                  }</p>
+<p>​              System.out.println(“Final value: “ + value);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class ExchangerDemo34 {</p>
+<p>​       static int size = 10;</p>
+<p>​       static int delay = 5;     public static void main(String[] args) throws Exception { </p>
+<p>​              if(args.length &gt; 0) size = new Integer(args[0]);</p>
+<p>​              if(args.length &gt; 1) delay = new Integer(args[1]);</p>
+<p>​              ExecutorService exec = Executors.newCachedThreadPool();</p>
+<p>​              Exchanger&lt;List<xctest34>&gt; xc = new Exchanger&lt;List<xctest34>&gt;();</xctest34></xctest34></p>
+<p>​              List<xctest34></xctest34></p>
+<p>​                     producerList = new CopyOnWriteArrayList<xctest34>(),</xctest34></p>
+<p>​                     consumerList = new CopyOnWriteArrayList<xctest34>();</xctest34></p>
+<p>​             exec.execute(new ExchangerProducer34<xctest34>(xc, BasicGenerator.create(XCTest34.class), producerList));</xctest34></p>
+<p>​              exec.execute(new ExchangerConsumer34<xctest34>(xc, consumerList));</xctest34></p>
+<p>​              TimeUnit.SECONDS.sleep(delay);</p>
+<p>​              exec.shutdownNow();</p>
+<p>​       }</p>
+<p>}</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/题解/" rel="tag"># 题解</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/06/2019-10-06-Java题解内部类/" rel="next" title="Java题解内部类">
+                <i class="fa fa-chevron-left"></i> Java题解内部类
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/06/2019-10-06-Java题解泛型/" rel="prev" title="Java题解泛型">
+                Java题解泛型 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第二十一章-并发"><span class="nav-number">1.</span> <span class="nav-text">第二十一章 并发</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

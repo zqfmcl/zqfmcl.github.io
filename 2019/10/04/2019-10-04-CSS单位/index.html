@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CSS,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="CSS单位 CSS长度单位 px em rem vh and vw vmin and vmax ex and ch   CSS像素定义 viewport 重置fontSize      CSS单位CSS长度单位pxpx是你屏幕设备物理上能显示出的最小的一个点。 px是被定义为小但仍可见，并且水平向的1px宽的线可以清晰地显示出来的单位(无抗锯齿)。  https://www.w3.org">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS单位">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-CSS单位/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="CSS单位 CSS长度单位 px em rem vh and vw vmin and vmax ex and ch   CSS像素定义 viewport 重置fontSize      CSS单位CSS长度单位pxpx是你屏幕设备物理上能显示出的最小的一个点。 px是被定义为小但仍可见，并且水平向的1px宽的线可以清晰地显示出来的单位(无抗锯齿)。  https://www.w3.org">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/CSS/img/vmaxANDvmin.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/CSS/img/exANDch.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/CSS/img/cssPx.jpg">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.067Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS单位">
+<meta name="twitter:description" content="CSS单位 CSS长度单位 px em rem vh and vw vmin and vmax ex and ch   CSS像素定义 viewport 重置fontSize      CSS单位CSS长度单位pxpx是你屏幕设备物理上能显示出的最小的一个点。 px是被定义为小但仍可见，并且水平向的1px宽的线可以清晰地显示出来的单位(无抗锯齿)。  https://www.w3.org">
+<meta name="twitter:image" content="c:/Users/Administrator/Desktop/My-study-records-master/CSS/img/vmaxANDvmin.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-CSS单位/">
+
+
+
+
+
+  <title>CSS单位 | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-CSS单位/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CSS单位</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T10:00:00+08:00">
+                2019-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <!-- @import "[TOC]" {cmd:"toc", depthFrom:1, depthTo:6, orderedList:false} -->
+
+<!-- code_chunk_output -->
+
+<ul>
+<li><a href="#css单位">CSS单位</a><ul>
+<li><a href="#css长度单位">CSS长度单位</a><ul>
+<li><a href="#px">px</a></li>
+<li><a href="#em">em</a></li>
+<li><a href="#rem">rem</a></li>
+<li><a href="#vh-and-vw">vh and vw</a></li>
+<li><a href="#vmin-and-vmax">vmin and vmax</a></li>
+<li><a href="#ex-and-ch">ex and ch</a></li>
+</ul>
+</li>
+<li><a href="#css像素定义">CSS像素定义</a></li>
+<li><a href="#viewport">viewport</a></li>
+<li><a href="#重置fontsize">重置fontSize</a></li>
+</ul>
+</li>
+</ul>
+<!-- /code_chunk_output -->
+
+<h1 id="CSS单位"><a href="#CSS单位" class="headerlink" title="CSS单位"></a>CSS单位</h1><h2 id="CSS长度单位"><a href="#CSS长度单位" class="headerlink" title="CSS长度单位"></a>CSS长度单位</h2><h3 id="px"><a href="#px" class="headerlink" title="px"></a>px</h3><p><code>px</code>是你屏幕设备物理上能显示出的最小的一个点。<br> <code>px</code>是被定义为小但仍可见，并且水平向的1px宽的线可以清晰地显示出来的单位(无抗锯齿)。</p>
+<p> <a href="https://www.w3.org/Style/Examples/007/units.zh_CN.html" target="_blank" rel="noopener">https://www.w3.org/Style/Examples/007/units.zh_CN.html</a></p>
+<h3 id="em"><a href="#em" class="headerlink" title="em"></a>em</h3><p><code>em</code> 被定义为相对于当前对象内文本的字体大小(<code>font-size</code>)。<code>font-size</code>默认会继承父级的大小。</p>
+<pre><code class="html">&lt;style media=&quot;screen&quot;&gt;
+body {
+    font-size: 14px;
+}
+div {
+    font-size: 1.2em; // calculated at 14px * 1.2, or 16.8px
+}
+&lt;/style&gt;
+&lt;body&gt;
+    &lt;div&gt;
+        Test &lt;!-- 14 * 1.2 = 16.8px --&gt;
+        &lt;div&gt;
+            Test &lt;!-- 16.8 * 1.2 = 20.16px --&gt;
+            &lt;div&gt;
+                Test &lt;!-- 20.16 * 1.2 = 24.192px --&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;</code></pre>
+<p>
+<iframe height="265" scrolling="no" title="Cascading em Values" src="//codepen.io/tutsplus/embed/xbZQRQ/?height=265&theme-id=0&default-tab=html,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/tutsplus/pen/xbZQRQ/" target="_blank" rel="noopener">Cascading em Values</a> by Envato Tuts+ (<a href="http://codepen.io/tutsplus" target="_blank" rel="noopener">@tutsplus</a>) on <a href="http://codepen.io" target="_blank" rel="noopener">CodePen</a>.
+</iframe>
+</p>
+
+<h3 id="rem"><a href="#rem" class="headerlink" title="rem"></a>rem</h3><p>基于一个根元素（大多数情况下是html元素）设置元素的大小。</p>
+<pre><code class="css">html {
+    font-size: 14px;
+}
+div {
+    font-size: 1.2rem;//14*1.2
+}</code></pre>
+<pre><code class="html">&lt;body&gt;
+    &lt;div&gt;
+        Test &lt;!-- 14 * 1.2 = 16.8px --&gt;
+        &lt;div&gt;
+            Test &lt;!-- 14 * 1.2 = 16.8px --&gt;
+            &lt;div&gt;
+                Test &lt;!-- 14 * 1.2 = 16.8px --&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;</code></pre>
+<h3 id="vh-and-vw"><a href="#vh-and-vw" class="headerlink" title="vh and vw"></a>vh and vw</h3><p><code>1vh</code> 等于1/100的视口高度。</p>
+<p>浏览器高度<code>900px</code>, <code>1 vh = 900px/100 = 9 px</code>。</p>
+<p>同理，<code>vw</code>就是视口（<code>viewport</code>）就宽度的1/100。</p>
+<h3 id="vmin-and-vmax"><a href="#vmin-and-vmax" class="headerlink" title="vmin and vmax"></a>vmin and vmax</h3><p><img src="C:/Users/Administrator/Desktop/My-study-records-master/CSS/img/vmaxANDvmin.jpg" alt="vmaxANDvmin"></p>
+<p><code>vmin</code> 和 <code>vmax</code>则关于视口高度和宽度两者的最小或者最大值。</p>
+<p>如果浏览器设置为<code>1100px</code>宽、<code>700px</code>高，<code>1vmin</code>会是<code>7px</code>,<code>1vmax</code>为<code>11px</code>。<br>然而，如果宽度设置为<code>800px</code>，高度设置为<code>1080px</code>，<code>1vmin</code>将会等于<code>8px</code>而<code>1vmax</code>将会是<code>10.8px</code>。</p>
+<h3 id="ex-and-ch"><a href="#ex-and-ch" class="headerlink" title="ex and ch"></a>ex and ch</h3><p><code>ex</code>和<code>ch</code>单位是基于字体（<code>font-family</code>）的度量单位，依赖于设定的字体</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/CSS/img/exANDch.jpg" alt="exANDch"></p>
+<p><code>ex</code>单位被定义为<code>0</code>字符的宽度。</p>
+<pre><code class="html">&lt;div class=&#39;x&#39; style=&#39;display:inline-block;&#39;&gt;xxxx&lt;/div&gt;
+&lt;div class=&quot;line&quot; style=&#39;display:inline-block;overflow:hidden;height:1ex;background:#aaa;width:50px;color:#fff;&#39;&gt;xx&lt;/div&gt;
+&lt;div class=&quot;line&quot; style=&#39;display:inline-block;overflow:hidden;height:2ex;background:#aaa;width:50px;color:#fff;&#39;&gt;xx&lt;/div&gt;
+&lt;div class=&#39;x&#39; style=&#39;display:inline-block;font-size:2em&#39;&gt;xxxx&lt;/div&gt;</code></pre>
+<h4>定义一条与字母x高度相同的线：</h4>
+<div class="x" style="display:inline-block;">xxxx</div>
+<div class="line" style="display:inline-block;overflow:hidden;height:1ex;background:#aaa;width:50px;color:#fff;">xx</div>
+<div class="line" style="display:inline-block;overflow:hidden;height:2ex;background:#aaa;width:50px;color:#fff;">xx</div>
+<div class="x" style="display:inline-block;font-size:2em">xxxx</div>
+
+<hr>
+<p><code>ch</code>单位被定义为那个字体的小写<code>x</code>的高度。</p>
+<pre><code class="html">&lt;style&gt;
+    h1{margin:10px 0;font-size:16px;}
+    div{overflow:hidden;width:10ch;background:#ccc;}
+&lt;/style&gt;
+
+&lt;h1&gt;定义一个宽度正好能装下10个0的容器：&lt;/h1&gt;
+&lt;div&gt;0000000000&lt;/div&gt;</code></pre>
+<h4>定义一个宽度正好能装下10个0的容器：</h4>
+<div style="overflow:hidden;width:10ch;background:#ccc;">0000000000</div>
+
+<hr>
+<blockquote>
+<p><a href="http://web.jobbole.com/82490/" target="_blank" rel="noopener">参考</a></p>
+</blockquote>
+<h2 id="CSS像素定义"><a href="#CSS像素定义" class="headerlink" title="CSS像素定义"></a>CSS像素定义</h2><p><strong>硬件像素</strong>：显示器的物理像素。例如，iPhone 5所配屏幕的水平硬件像素为640。</p>
+<p><strong>设备无关像素(dip)</strong>：：计算机坐标系统中的一个点，该点代表一个可由程序使用并控制的虚拟像素，然后由相关系统转换为物理像素。此像素在所有设备上大小几乎相同，iPhone 5的设备无关像素宽度为320。</p>
+<p><strong>CSS像素</strong> 用于页面布局的单位，由视口控制。样式的像素尺寸（例如width: 100px）是以CSS像素为单位指定的。<strong>CSS像素</strong>与<strong>设备无关像素</strong>的比例即为网页的比例系数或缩放级别。</p>
+<p>比如iPhone 5使用的是Retina视网膜屏幕，使用<code>2px x 2px</code>的 device pixel 代表 <code>1px x 1px</code>的 css pixel，所以设备像素数为<code>640 x 1136px</code>，而CSS逻辑像素数为<code>320 x 568px</code>。</p>
+<pre><code class="js">设备像素比 = 硬件像素/设备无关像素 // 在某一方向上，x方向或者y方向</code></pre>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/CSS/img/cssPx.jpg" alt></p>
+<p>添加属性<code>initial-scale=1</code>均可指示浏览器将CSS像素与设备无关像素的比例设为<code>1:1</code>（而不用考虑设备的屏幕方向），并且可让网页利用整个横向宽度。</p>
+<pre><code class="js">//打印台中输入
+
+console.log(screen.availHeight);
+//568
+console.log(screen.availWidth);
+//320
+console.log(window.devicePixelRatio);
+//2</code></pre>
+<p><a href="http://ued.ourfuture.cn/fed/4200.html" target="_blank" rel="noopener">参考</a></p>
+<h2 id="viewport"><a href="#viewport" class="headerlink" title="viewport"></a>viewport</h2><p>一个空的 <code>div</code> ，其宽度默认是100%。它是继承其父元素 <code>body</code>，而<code>body</code>的宽度又是继承其父元素 <code>html</code>。所以 <code>body</code> 元素和它的父元素 <code>html</code>一样宽。</p>
+<p><code>html</code> 元素的宽度是被<code>viewport</code>的宽度所限制的。 <code>html</code> 元素使用<code>viewport</code>宽度的<code>100%</code>。</p>
+<p>移动端可以添加以下设置修正屏幕大小与网页布局不一致的问题：</p>
+<pre><code class="html">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1.0,user-scalable=no&quot; /&gt;</code></pre>
+<p><code>width</code>决定了<code>layout viewport</code>的值。</p>
+<blockquote>
+<p><em>viewport 的最好宽度是<code>ideal viewport</code>，用<code>ideal viewport</code>设置<code>layout viewport</code>的大小。</em></p>
+</blockquote>
+<blockquote>
+<p><a href="https://github.com/ant-design/ant-design-mobile/wiki/viewport%E8%AF%A6%E8%A7%A3" target="_blank" rel="noopener">https://github.com/ant-design/ant-design-mobile/wiki/viewport%E8%AF%A6%E8%A7%A3</a><br><a href="http://blog.csdn.net/aiolos1111/article/details/51967744" target="_blank" rel="noopener">http://blog.csdn.net/aiolos1111/article/details/51967744</a><br><a href="http://www.cnblogs.com/HCJJ/p/6347242.html" target="_blank" rel="noopener">http://www.cnblogs.com/HCJJ/p/6347242.html</a><br><a href="http://www.cnblogs.com/Mrs-cc/p/5329545.html" target="_blank" rel="noopener">http://www.cnblogs.com/Mrs-cc/p/5329545.html</a></p>
+</blockquote>
+<h2 id="重置fontSize"><a href="#重置fontSize" class="headerlink" title="重置fontSize"></a>重置fontSize</h2><pre><code class="js">var dpr, rem, scale;
+var docEl = document.documentElement;
+var fontEl = document.createElement(&#39;style&#39;);
+var metaEl = document.querySelector(&#39;meta[name=&quot;viewport&quot;]&#39;);
+
+dpr = window.devicePixelRatio || 1;
+rem = docEl.clientWidth * dpr / 10;
+scale = 1 / dpr;
+
+
+// 设置viewport，进行缩放，达到高清效果
+metaEl.setAttribute(&#39;content&#39;, &#39;width=&#39; + dpr * docEl.clientWidth + &#39;,initial-scale=&#39; + scale + &#39;,maximum-scale=&#39; + scale + &#39;, minimum-scale=&#39; + scale + &#39;,user-scalable=no&#39;);
+
+// 设置data-dpr属性，留作的css hack之用
+docEl.setAttribute(&#39;data-dpr&#39;, dpr);
+
+// 动态写入样式
+docEl.firstElementChild.appendChild(fontEl);
+fontEl.innerHTML = &#39;html{font-size:&#39; + rem + &#39;px!important;}&#39;;
+
+// 给js调用的，某一dpr下rem和px之间的转换函数
+window.rem2px = function(v) {
+    v = parseFloat(v);
+    return v * rem;
+};
+window.px2rem = function(v) {
+    v = parseFloat(v);
+    return v / rem;
+};
+
+window.dpr = dpr;
+window.rem = rem;</code></pre>
+<blockquote>
+<p><a href="http://www.html-js.com/article/3041" target="_blank" rel="noopener">http://www.html-js.com/article/3041</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-Class/" rel="next" title="Class">
+                <i class="fa fa-chevron-left"></i> Class
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-Canvas/" rel="prev" title="Canvas">
+                Canvas <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS单位"><span class="nav-number">1.</span> <span class="nav-text">CSS单位</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS长度单位"><span class="nav-number">1.1.</span> <span class="nav-text">CSS长度单位</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#px"><span class="nav-number">1.1.1.</span> <span class="nav-text">px</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#em"><span class="nav-number">1.1.2.</span> <span class="nav-text">em</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rem"><span class="nav-number">1.1.3.</span> <span class="nav-text">rem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vh-and-vw"><span class="nav-number">1.1.4.</span> <span class="nav-text">vh and vw</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vmin-and-vmax"><span class="nav-number">1.1.5.</span> <span class="nav-text">vmin and vmax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ex-and-ch"><span class="nav-number">1.1.6.</span> <span class="nav-text">ex and ch</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.1.6.1.</span> <span class="nav-text">定义一条与字母x高度相同的线：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.1.6.2.</span> <span class="nav-text">定义一个宽度正好能装下10个0的容器：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS像素定义"><span class="nav-number">1.2.</span> <span class="nav-text">CSS像素定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#viewport"><span class="nav-number">1.3.</span> <span class="nav-text">viewport</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重置fontSize"><span class="nav-number">1.4.</span> <span class="nav-text">重置fontSize</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

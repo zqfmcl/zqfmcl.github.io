@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="题解,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="第二章 操作对象public class PrintTest { ​       public static void main(String[] args) { ​              print(“Hello, from short form.”); ​              P.rintln(“Hello from greggordon form.”); ​">
+<meta name="keywords" content="题解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java题解操作">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解操作/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="第二章 操作对象public class PrintTest { ​       public static void main(String[] args) { ​              print(“Hello, from short form.”); ​              P.rintln(“Hello from greggordon form.”); ​">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.804Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java题解操作">
+<meta name="twitter:description" content="第二章 操作对象public class PrintTest { ​       public static void main(String[] args) { ​              print(“Hello, from short form.”); ​              P.rintln(“Hello from greggordon form.”); ​">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解操作/">
+
+
+
+
+
+  <title>Java题解操作 | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java题解操作</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-06T10:00:00+08:00">
+                2019-10-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第二章-操作对象"><a href="#第二章-操作对象" class="headerlink" title="第二章 操作对象"></a>第二章 操作对象</h2><p>public class PrintTest {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              print(“Hello, from short form.”);</p>
+<p>​              P.rintln(“Hello from greggordon form.”);</p>
+<p>​              System.out.println(“Hello from long form.”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Tube {</p>
+<p>​       float level;</p>
+<p>}</p>
+<p>public class Assign {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Tube t1 = new Tube();</p>
+<p>​              Tube t2 = new Tube();</p>
+<p>​              t1.level = 0.9f;</p>
+<p>​              t2.level = 0.47f;</p>
+<p>​              P.rintln(“1: t1.level: “ + t1.level + “, t2.level: “ + t2.level);</p>
+<p>​              t1 = t2;</p>
+<p>​              P.rintln(“2: t1.level: “ + t1.level + “, t2.level: “ + t2.level);         </p>
+<p>​              t1.level = 0.27f; </p>
+<p>​              P.rintln(“3: t1.level: “ + t1.level + “, t2.level: “ + t2.level);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Box {</p>
+<p>​       float a;</p>
+<p>}</p>
+<p>public class PassObject2 {</p>
+<p>​       static void f(Box y) {</p>
+<p>​              y.a = 2.71828f;</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Box x = new Box();</p>
+<p>​              x.a = 3.1416f;</p>
+<p>​              print(“1: x.a = “ + x.a);</p>
+<p>​              f(x);  </p>
+<p>​              print(“2: x.a = “ + x.a);</p>
+<p>​       }</p>
+<p>}</p>
+<p>  class VelocityCalculator {</p>
+<p>​       static float velocity (float d, float t) {</p>
+<p>​              if(t == 0) return 0f;</p>
+<p>​              else return d  } </p>
+<p>}</p>
+<p>public class VelocityTester {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              float d = 565.3f;</p>
+<p>​              float t = 3.6f;</p>
+<p>​              System.out.println(“Distance: “ + d);</p>
+<p>​              System.out.println(“Time: “ + t);</p>
+<p>​              float v = VelocityCalculator.velocity(d, t);</p>
+<p>​              System.out.println(“Velocity: “ + v);           </p>
+<p>​       }</p>
+<p>}</p>
+<p>class Dog {</p>
+<p>​       String name;</p>
+<p>​       String says;</p>
+<p>​       void setName(String n) {</p>
+<p>​              name = n;</p>
+<p>​       }</p>
+<p>​       void setSays(String s) {</p>
+<p>​              says = s;</p>
+<p>​       }</p>
+<p>​       void showName() {</p>
+<p>​              P.rintln(name);</p>
+<p>​       }</p>
+<p>​       void speak() {</p>
+<p>​              P.rintln(says);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class DogTest {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Dog spot = new Dog();</p>
+<p>​              spot.setName(“Spot”);</p>
+<p>​              spot.setSays(“Ruff!”);</p>
+<p>​              Dog scruffy = new Dog();</p>
+<p>​              scruffy.setName(“Scruffy”);</p>
+<p>​              scruffy.setSays(“Wurf!”);</p>
+<p>​              spot.showName();</p>
+<p>​              spot.speak();</p>
+<p>​              scruffy.showName(); </p>
+<p>​              scruffy.speak();</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Dog {</p>
+<p>​       String name;</p>
+<p>​       String says;</p>
+<p>​       void setName(String n) {</p>
+<p>​              name = n;</p>
+<p>​       }</p>
+<p>​       void setSays(String s) {</p>
+<p>​              says = s;</p>
+<p>​       }</p>
+<p>​       void showName() {</p>
+<p>​              P.rintln(name);</p>
+<p>​       }</p>
+<p>​       void speak() {</p>
+<p>​              P.rintln(says);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class DogCompare {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Dog spot = new Dog();</p>
+<p>​              spot.setName(“Spot”);</p>
+<p>​              spot.setSays(“Ruff!”);</p>
+<p>​              Dog scruffy = new Dog();</p>
+<p>​              scruffy.setName(“Scruffy”);</p>
+<p>​              scruffy.setSays(“Wurf!”);</p>
+<p>​              spot.showName();</p>
+<p>​              spot.speak();</p>
+<p>​              scruffy.showName(); </p>
+<p>​              scruffy.speak();</p>
+<p>​              Dog butch = new Dog();</p>
+<p>​              butch.setName(“Butch”);</p>
+<p>​              butch.setSays(“Hello!”);</p>
+<p>​              butch.showName();</p>
+<p>​              butch.speak();</p>
+<p>​              P.rintln(“Comparison: “);</p>
+<p>​              P.rintln(“spot == butch: “ + (spot == butch));</p>
+<p>​              P.rintln(“spot.equals(butch): “ + spot.equals(butch));</p>
+<p>​              P.rintln(“butch.equals(spot): “ + butc</p>
+<p>class Dog {</p>
+<p>​       String name;</p>
+<p>​       String says;</p>
+<p>​       void setName(String n) {</p>
+<p>​              name = n;</p>
+<p>​       }</p>
+<p>​       void setSays(String s) {</p>
+<p>​              says = s;</p>
+<p>​       }</p>
+<p>​       void showName() {</p>
+<p>​              P.rintln(name);</p>
+<p>​       }</p>
+<p>​       void speak() {</p>
+<p>​              P.rintln(says);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class DogCompare {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Dog spot = new Dog();</p>
+<p>​              spot.setName(“Spot”);</p>
+<p>​              spot.setSays(“Ruff!”);</p>
+<p>​              Dog scruffy = new Dog();</p>
+<p>​              scruffy.setName(“Scruffy”);</p>
+<p>​              scruffy.setSays(“Wurf!”);</p>
+<p>​              spot.showName();</p>
+<p>​              spot.speak();</p>
+<p>​              scruffy.showName(); </p>
+<p>​              scruffy.speak();</p>
+<p>​              Dog butch = new Dog();</p>
+<p>​              butch.setName(“Butch”);</p>
+<p>​              butch.setSays(“Hello!”);</p>
+<p>​              butch.showName();</p>
+<p>​              butch.speak();</p>
+<p>​              P.rintln(“Comparison: “);</p>
+<p>​              P.rintln(“spot == butch: “ + (spot == butch));</p>
+<p>​              P.rintln(“spot.equals(butch): “ + spot.equals(butch));</p>
+<p>​              P.rintln(“butch.equals(spot): “ + butch.equals(spot));</p>
+<p>​              P.rintln(“Now assign: spot = butch”);</p>
+<p>​              spot = butch;</p>
+<p>​              P.rintln(“Compare again: “);</p>
+<p>​              P.rintln(“spot == butch: “ + (spot == butch));</p>
+<p>​              P.rintln(“spot.equals(butch): “ + spot.equals(butch));</p>
+<p>​              P.rintln(“butch.equals(spot): “ + butch.equals(spot));</p>
+<p>​              P.rintln(“Spot: “);</p>
+<p>​              spot.showName();</p>
+<p>​              spot.speak();</p>
+<p>​              P.rintln(“Butch: “);</p>
+<p>​              butch.showName();</p>
+<p>​              butch.speak();</p>
+<p>​                     </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class CoinToss {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Random rand = new Random();</p>
+<p>​              int coin = rand.nextInt();</p>
+<p>​              if(coin % 2 == 0) P.rintln(“heads”);</p>
+<p>​              else P.rintln(“tails”);              </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class LongValues {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              long n1 = 0xffff;          long n2 = 077777;             print(“long n1 in hex = “ + Long.toBinaryString(n1));</p>
+<p>​              print(“long n2 in oct = “ + Long.toBinaryString(n2));</p>
+<p>​       }</p>
+<p>}</p>
+<p>  public class MinMax {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              double max = java.lang.Double.MAX_VALUE;</p>
+<p>​              System.out.println(“Max double = “ + max);</p>
+<p>​              double min = java.lang.Double.MIN_VALUE; </p>
+<p>​              System.out.println(“Min double = “ + min);</p>
+<p>​              float maxf = java.lang.Float.MAX_VALUE;</p>
+<p>​              System.out.println(“Max float = “ + maxf);</p>
+<p>​              float minf = java.lang.Float.MIN_VALUE; </p>
+<p>​              System.out.println(“Min float = “ + minf);  </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class BinaryTest {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              int i = 1 + 4 + 16 + 64;</p>
+<p>​              int j = 2 + 8 + 32 + 128;</p>
+<p>​              P.rintln(“i = “ + Integer.toBinaryString(i));</p>
+<p>​              P.rintln(“j = “ + Integer.toBinaryString(j));</p>
+<p>​              P.rintln(“i &amp; j = “ + Integer.toBinaryString(i &amp; j));</p>
+<p>​              P.rintln(“i | j = “ + Integer.toBinaryString(i | j));</p>
+<p>​              P.rintln(“i ^ j = “ + Integer.toBinaryString(i ^ j));</p>
+<p>​              P.rintln(“<del>i = “ + Integer.toBinaryString(</del>i));</p>
+<p>​              P.rintln(“<del>j = “ + Integer.toBinaryString(</del>j));</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class BinaryTest {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              int i = 1 + 4 + 16 + 64;</p>
+<p>​              int j = 2 + 8 + 32 + 128;</p>
+<p>​              P.rintln(“i = “ + Integer.toBinaryString(i));</p>
+<p>​              P.rintln(“j = “ + Integer.toBinaryString(j));</p>
+<p>​              P.rintln(“i &amp; j = “ + Integer.toBinaryString(i &amp; j));</p>
+<p>​              P.rintln(“i | j = “ + Integer.toBinaryString(i | j));</p>
+<p>​              P.rintln(“i ^ j = “ + Integer.toBinaryString(i ^ j));</p>
+<p>​              P.rintln(“<del>i = “ + Integer.toBinaryString(</del>i));</p>
+<p>​              P.rintln(“<del>j = “ + Integer.toBinaryString(</del>j));</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class RightShiftTest {</p>
+<p>​       public static void main(String [] args) {</p>
+<p>​              int h = 0x10000000;</p>
+<p>​              P.rintln(Integer.toBinaryString(h));</p>
+<p>​              for(int i = 0; i &lt; 28; i++) {</p>
+<p>​                     h &gt;&gt;&gt;= 1;</p>
+<p>​                     P.rintln(Integer.toBinaryString(h));</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class RightShiftTest2 {</p>
+<p>​       public static void main(String [] args) {</p>
+<p>​              int h = -1;</p>
+<p>​              P.rintln(Integer.toBinaryString(h));</p>
+<p>​              h &lt;&lt;= 10;</p>
+<p>​              P.rintln(Integer.toBinaryString(h));</p>
+<p>​              for(int i = 0; i &lt; 32; i++) {</p>
+<p>​                     h &gt;&gt;&gt;= 1;</p>
+<p>​                     P.rintln(Integer.toBinaryString(h));</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class CharBinaryTest {</p>
+<p>​       public static void main(String [] args) {</p>
+<p>​              char c = ‘a’;</p>
+<p>​              P.rintln(Integer.toBinaryString(c));</p>
+<p>​              c = ‘b’;</p>
+<p>​              P.rintln(Integer.toBinaryString(c));</p>
+<p>​              c = ‘c’;</p>
+<p>​              P.rintln(Integer.toBinaryString(c));</p>
+<p>​              c = ‘d’;</p>
+<p>​              P.rintln(Integer.toBinaryString(c));</p>
+<p>​              c +=1;</p>
+<p>​              P.rintln(Integer.toBinaryString(c));</p>
+<p>​              c = ‘A’;</p>
+<p>​              P.rintln(Integer.toBinaryString(c));</p>
+<p>​              for(int i = 0; i &lt; 26; i++) {</p>
+<p>​                     c +=1;</p>
+<p>​                     P.rintln(Integer.toBinaryString(c));</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>public class StringCompare {      </p>
+<p>​       static void f(boolean b) {if(b == true) P.rintln(true);</p>
+<p>​              else P.rintln(false);}</p>
+<p>​       static void stringTest(String s, String t) {</p>
+<p>​              f(s == t);</p>
+<p>​              f(s.equals(t));</p>
+<p>​              f(t.equals(s));</p>
+<p>​              f(s != t);</p>
+<p>​                                                                                                                                                      }      </p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              String s = “one”, t = “two”;</p>
+<p>​              StringWork.stringTest(s, t);          </p>
+<p>​       }</p>
+<p>} </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/题解/" rel="tag"># 题解</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/06/2019-10-06-Java题解权限/" rel="next" title="Java题解权限">
+                <i class="fa fa-chevron-left"></i> Java题解权限
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/06/2019-10-06-Java题解数组/" rel="prev" title="Java题解数组">
+                Java题解数组 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章-操作对象"><span class="nav-number">1.</span> <span class="nav-text">第二章 操作对象</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

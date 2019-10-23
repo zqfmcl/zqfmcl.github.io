@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="题解,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="第十一章持有对象class Gerbil { ​       private int gerbilNumber; ​       public Gerbil(int i) { ​              gerbilNumber = i; ​       } ​       public void hop() { ​              System.out.println(“Gerbil">
+<meta name="keywords" content="题解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java题解持有对象">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解持有对象/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="第十一章持有对象class Gerbil { ​       private int gerbilNumber; ​       public Gerbil(int i) { ​              gerbilNumber = i; ​       } ​       public void hop() { ​              System.out.println(“Gerbil">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.791Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java题解持有对象">
+<meta name="twitter:description" content="第十一章持有对象class Gerbil { ​       private int gerbilNumber; ​       public Gerbil(int i) { ​              gerbilNumber = i; ​       } ​       public void hop() { ​              System.out.println(“Gerbil">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解持有对象/">
+
+
+
+
+
+  <title>Java题解持有对象 | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解持有对象/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java题解持有对象</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-06T10:00:00+08:00">
+                2019-10-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第十一章持有对象"><a href="#第十一章持有对象" class="headerlink" title="第十一章持有对象"></a>第十一章持有对象</h2><p>class Gerbil {</p>
+<p>​       private int gerbilNumber;</p>
+<p>​       public Gerbil(int i) {</p>
+<p>​              gerbilNumber = i;</p>
+<p>​       }</p>
+<p>​       public void hop() {</p>
+<p>​              System.out.println(“Gerbil “ + gerbilNumber + “ hops”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex1 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              ArrayList<gerbil> gerbils = new ArrayList<gerbil>();</gerbil></gerbil></p>
+<p>​              for(int i = 0; i &lt; 10; i++)</p>
+<p>​                     gerbils.add(new Gerbil(i));</p>
+<p>​              for(int i = 0; i &lt; 10; i++) </p>
+<p>​                     gerbils.get(i).hop();</p>
+<p>​                           for(Gerbil g : gerbils)</p>
+<p>​                     g.hop();</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex2 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Set<integer> c = new HashSet<integer>();</integer></integer></p>
+<p>​              for(int i = 0; i &lt; 10; i++)</p>
+<p>​                     c.add(i);               for(Integer i : c)</p>
+<p>​                     System.out.print(i + “, “);</p>
+<p>​       }      </p>
+<p>}</p>
+<p>interface Selector {</p>
+<p>​       boolean end();</p>
+<p>​       Object current();</p>
+<p>​       void next();</p>
+<p>}</p>
+<p>public class Sequence3 {</p>
+<p>​       private ArrayList<object> items = new ArrayList<object>();</object></object></p>
+<p>​       public void add(Object x) {</p>
+<p>​              items.add(x);</p>
+<p>​       }</p>
+<p>​       private class Sequence3Selector implements Selector {</p>
+<p>​              private int i = 0;</p>
+<p>​              public boolean end() {</p>
+<p>​                     return i == items.size();               </p>
+<p>​              }</p>
+<p>​              public Object current() {</p>
+<p>​                     return items.get(i);</p>
+<p>​              }</p>
+<p>​              public void next() {</p>
+<p>​                     i++;</p>
+<p>​              }      </p>
+<p>​       }</p>
+<p>​       public Selector selector() {</p>
+<p>​              return new Sequence3Selector();</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Sequence3 s3 = new Sequence3();</p>
+<p>​              for(int i = 0; i &lt; 10; i++)</p>
+<p>​                     s3.add(i);</p>
+<p>​              Selector selector = s3.selector();</p>
+<p>​              while(!selector.end()) {</p>
+<p>​                     System.out.print(selector.current() + “ “);</p>
+<p>​                     selector.next();</p>
+<p>​              }</p>
+<p>​              s3.add(10);</p>
+<p>​              s3.add(11);</p>
+<p>​              s3.add(12);</p>
+<p>​              s3.add(13);</p>
+<p>​              s3.add(13);</p>
+<p>​              s3.add(“good bye”);</p>
+<p>​              while(!selector.end()) {</p>
+<p>​                     System.out.print(selector.current() + “ “);</p>
+<p>​                     selector.next();</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Generator {</p>
+<p>​       int key = 0;</p>
+<p>​       public String next() {</p>
+<p>​              switch(key) {</p>
+<p>​                     default:</p>
+<p>​                     case 0 : key++; return “Snow White”;</p>
+<p>​                     case 1 : key++; return “Bashful”;</p>
+<p>​                     case 2 : key++; return “Doc”;</p>
+<p>​                     case 3 : key++; return “Dopey”;</p>
+<p>​                     case 4 : key++; return “Grumpy”;</p>
+<p>​                     case 5 : key++; return “Happy”;</p>
+<p>​                     case 6 : key++; return “Sleepy”;</p>
+<p>​                     case 7 : key = 0; return “Sneezy”;              </p>
+<p>​              }</p>
+<p>​       } </p>
+<p>​       public void fillA(String[] a) {</p>
+<p>​              for(int i = 0; i &lt; a.length; i++)</p>
+<p>​                     a[i] = next();</p>
+<p>​       }</p>
+<p>​       public Collection fill(Collection<string> c, int n) {</string></p>
+<p>​              for(int i = 0; i &lt; n; i++) c.add(next());</p>
+<p>​              return c;</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex4 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Generator gen = new Generator();            </p>
+<p>​              String[] a = new String[10];</p>
+<p>​              gen.fillA(a);</p>
+<p>​              for(String s : a) System.out.print(s + “, “);</p>
+<p>​              System.out.println();     </p>
+<p>​              System.out.println(gen.fill(new ArrayList<string>(), 10));</string></p>
+<p>​              System.out.println(gen.fill(new LinkedList<string>(), 10));</string></p>
+<p>​              System.out.println(gen.fill(new HashSet<string>(), 10));</string></p>
+<p>​              System.out.println(gen.fill(new LinkedHashSet<string>(), 10));</string></p>
+<p>​              System.out.println(gen.fill(new TreeSet<string>(), 10));                        </string></p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex5 {</p>
+<p>​             public static List<integer> listOfRandInteger(int length, int n) {</integer></p>
+<p>​              Random rand = new Random();</p>
+<p>​              List<integer> li = new ArrayList<integer>(); </integer></integer></p>
+<p>​              for(int i = 0; i &lt; length; i++)</p>
+<p>​                     li.add(rand.nextInt(n));         </p>
+<p>​              return li;  </p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Random rand = new Random();</p>
+<p>​              List<integer> li = listOfRandInteger(7, 10);</integer></p>
+<p>​              print(“1: “ + li);</p>
+<p>​              Integer h = new Integer(rand.nextInt(10));</p>
+<p>​              li.add(h);</p>
+<p>​              print(“2: “ + li);</p>
+<p>​              print(“3: “ + li.contains(h));</p>
+<p>​                           li.remove(h);</p>
+<p>​              print(“3.5: “ + li);</p>
+<p>​              Integer p = li.get(2);</p>
+<p>​              print(“4: “ + p + “ “ +  li.indexOf(p));</p>
+<p>​              Integer cy = new Integer(rand.nextInt(10));</p>
+<p>​              print(“5: “ + cy +” “ + li.indexOf(cy));</p>
+<p>​              print(“6: “ + li.remove(cy));</p>
+<p>​              print(“7: “ + li.remove(p));</p>
+<p>​              print(“8: “ + li);</p>
+<p>​              li.add(3, new Integer(rand.nextInt(10)));</p>
+<p>​              print(“9: “ + li);</p>
+<p>​              List<integer> sub = li.subList(1, 4);</integer></p>
+<p>​              print(“sublist: “ + sub);</p>
+<p>​              print(“10: “ + li.containsAll(sub));</p>
+<p>​                           Collections.sort(sub);</p>
+<p>​              print(“sorted sublist: “ + sub);</p>
+<p>​              print(“11: “ + li.containsAll(sub));</p>
+<p>​              print(“11.25: “ + li);</p>
+<p>​                           Collections.shuffle(sub, rand);</p>
+<p>​              print(“11.5: “ + li);</p>
+<p>​              print(“shuffled sublist: “ + sub);</p>
+<p>​              print(“12: “ + li.containsAll(sub));</p>
+<p>​              List<integer> copy = new ArrayList<integer>(li);</integer></integer></p>
+<p>​              print(“12.5: “ + li);</p>
+<p>​              sub = Arrays.asList(li.get(1), li.get(4));</p>
+<p>​              print(“sub: “ + sub);      </p>
+<p>​              copy.retainAll(sub);</p>
+<p>​              print(“13: “ + copy);</p>
+<p>​              copy = new ArrayList<integer>(li);</integer></p>
+<p>​              copy.remove(2);</p>
+<p>​              print(“14: “ + copy);</p>
+<p>​              copy.removeAll(sub); </p>
+<p>​              print(“15: “ + copy);</p>
+<p>​              if(copy.size() &gt; 1)                      copy.set(1, 8);             print(“16: “ + copy);</p>
+<p>​              if(copy.size() &gt; 2)</p>
+<p>​                     copy.addAll(2, sub);</p>
+<p>​              print(“17: “ + copy);</p>
+<p>​              print(“18: “ + li.isEmpty());</p>
+<p>​              li.clear();</p>
+<p>​              print(“19: “ + li);</p>
+<p>​              print(“20: “ + li.isEmpty());</p>
+<p>​              li.addAll(listOfRandInteger(4, 10));</p>
+<p>​              print(“21: “ + li);</p>
+<p>​              Object[] o = li.toArray();</p>
+<p>​              print(“22: “ + o[3]);</p>
+<p>​              Integer[] ia = li.toArray(new Integer[0]);</p>
+<p>​              print(“23: “ + ia[3]);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex6 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Random rand = new Random();</p>
+<p>​              List<string> ls = new ArrayList<string>();</string></string></p>
+<p>​              print(“0: “ + ls);</p>
+<p>​              Collections.addAll(ls, “oh”, “what”, “a”, “beautiful”, “Manila”, “Monday”, “morning”);</p>
+<p>​              print(“1: “ + ls);</p>
+<p>​              String h = new String(“hi”);</p>
+<p>​              ls.add(h);</p>
+<p>​              print(“2: “ + ls);</p>
+<p>​              print(“3: “ + ls.contains(h));</p>
+<p>​                           ls.remove(h);</p>
+<p>​              print(“3.5: “ + ls);</p>
+<p>​              String p = ls.size() &gt; 2 ? ls.get(2) : null;</p>
+<p>​              print(“4: “ + p + “ “ +  ls.indexOf(p));</p>
+<p>​              String cy = new String(“cy”);</p>
+<p>​              print(“5: “ + cy +” “ + ls.indexOf(cy));</p>
+<p>​              print(“6: “ + ls.remove(cy));</p>
+<p>​              print(“7: “ + ls.remove(p));</p>
+<p>​              print(“8: “ + ls);</p>
+<p>​              if(ls.size() &gt; 3)</p>
+<p>​                     ls.add(3, “wonderful”);</p>
+<p>​              print(“9: “ + ls);</p>
+<p>​              if(ls.size() &lt; 4) {</p>
+<p>​                     List<string> s = </string></p>
+<p>​                        Arrays.asList(“let’s”, “jump”, “in”, “here”);</p>
+<p>​                     ls.addAll(0, s);</p>
+<p>​              }</p>
+<p>​              List<string> sub = ls.subList(1, 4);</string></p>
+<p>​              print(“sublist: “ + sub);</p>
+<p>​              print(“10: “ + ls.containsAll(sub));</p>
+<p>​                           Collections.sort(sub);</p>
+<p>​              print(“sorted sublist: “ + sub);</p>
+<p>​              print(“11: “ + ls.containsAll(sub));</p>
+<p>​              print(“11.25: “ + ls);</p>
+<p>​                           Collections.shuffle(sub, rand);</p>
+<p>​              print(“11.5: “ + ls);</p>
+<p>​              print(“shuffled sublist: “ + sub);</p>
+<p>​              print(“12: “ + ls.containsAll(sub));</p>
+<p>​              List<string> copy = new ArrayList<string>(ls);</string></string></p>
+<p>​              print(“12.5: “ + ls);</p>
+<p>​              if(ls.size() &lt; 5) {</p>
+<p>​                     ls.add(“two”);</p>
+<p>​                     ls.add(“more”);</p>
+<p>​              }</p>
+<p>​              sub = Arrays.asList(ls.get(1), ls.get(4));</p>
+<p>​              print(“sub: “ + sub);      </p>
+<p>​              copy.retainAll(sub);</p>
+<p>​              print(“13: “ + copy);</p>
+<p>​              copy = new ArrayList<string>(ls);</string></p>
+<p>​              copy.remove(2);</p>
+<p>​              print(“14: “ + copy);</p>
+<p>​              copy.removeAll(sub); </p>
+<p>​              print(“15: “ + copy);</p>
+<p>​              if(copy.size() &gt; 1)                      copy.set(1, “excellent”); </p>
+<p>​              print(“16: “ + copy);</p>
+<p>​              if(copy.size() &gt; 2)</p>
+<p>​                     copy.addAll(2, sub);</p>
+<p>​              print(“17: “ + copy);</p>
+<p>​              print(“18: “ + ls.isEmpty());</p>
+<p>​              ls.clear();</p>
+<p>​              print(“19: “ + ls);</p>
+<p>​              print(“20: “ + ls.isEmpty());</p>
+<p>​              ls.addAll(0, sub);</p>
+<p>​              ls.addAll(2, sub);</p>
+<p>​              print(“21: “ + ls);</p>
+<p>​              Object[] o = ls.toArray();</p>
+<p>​              print(“22: “ + o[3]);</p>
+<p>​              String[] sa = ls.toArray(new String[0]);</p>
+<p>​              print(“23: “ + sa[3]);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Tester {</p>
+<p>​       public static int counter = 0;</p>
+<p>​       private int id = counter++;</p>
+<p>​       public String toString() { return String.valueOf(id); } </p>
+<p>}</p>
+<p>public class Ex7 {</p>
+<p>​       public static void main(String[] args) {       </p>
+<p>​              Tester[] t = new Tester[10];</p>
+<p>​              for(int i = 0; i &lt; t.length; i++)</p>
+<p>​                     t[i] = new Tester();</p>
+<p>​              List<tester> lt = new ArrayList<tester>();</tester></tester></p>
+<p>​              for(Tester x : t) lt.add(x);</p>
+<p>​              print(“list of Tester: “ + lt);</p>
+<p>​              List<tester> sub = lt.subList(2, 6);</tester></p>
+<p>​              print(“subList: “ + sub);</p>
+<p>​                                                     List<tester> copy = new ArrayList<tester>(lt);</tester></tester></p>
+<p>​              copy.removeAll(sub);</p>
+<p>​              print(“copy: “ + copy);</p>
+<p>​              lt = copy;</p>
+<p>​              print(“list of Tester: “ + lt);</p>
+<p>​       }</p>
+<p>}</p>
+<p>​    import java.util.*;</p>
+<p>class Gerbil {</p>
+<p>​       private int gerbilNumber;</p>
+<p>​       public Gerbil(int i) {</p>
+<p>​              gerbilNumber = i;</p>
+<p>​       }</p>
+<p>​       public void hop() {</p>
+<p>​              System.out.println(“Gerbil “ + gerbilNumber + “ hops”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex8 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              ArrayList<gerbil> gerbils = new ArrayList<gerbil>();</gerbil></gerbil></p>
+<p>​              for(int i = 0; i &lt; 10; i++)</p>
+<p>​                     gerbils.add(new Gerbil(i));</p>
+<p>​              Iterator<gerbil> it = gerbils.iterator();</gerbil></p>
+<p>​              while(it.hasNext()) </p>
+<p>​                     it.next().hop();</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Sequence9 {</p>
+<p>​       private ArrayList<object> items = new ArrayList<object>();</object></object></p>
+<p>​       public void add(Object x) {</p>
+<p>​              items.add(x);</p>
+<p>​       }</p>
+<p>​       public Iterator iterator() {</p>
+<p>​              return items.iterator();</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Sequence9 sequence = new Sequence9();</p>
+<p>​              for(int i = 0; i &lt; 10; i++)</p>
+<p>​                     sequence.add(Integer.toString(i));</p>
+<p>​              Iterator it = sequence.iterator();</p>
+<p>​              while(it.hasNext()) {                                                               System.out.print(it.next() + “ “);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class RandomRodentGenerator {</p>
+<p>​       private Random rand = new Random();</p>
+<p>​       public Rodent next() {</p>
+<p>​              switch(rand.nextInt(3)) {</p>
+<p>​                     default:</p>
+<p>​                     case 0: return new Mouse();</p>
+<p>​                     case 1: return new Rat();</p>
+<p>​                     case 2: return new Squirrel();                     </p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Rodent {</p>
+<p>​       private String name = “Rodent”;</p>
+<p>​       protected void eat() { println(“Rodent.eat()”); }</p>
+<p>​       protected void run() { println(“Rodent.run()”); }</p>
+<p>​       protected void sleep() { println(“Rodent.sleep()”); }</p>
+<p>​       public String toString() { return name; }</p>
+<p>}</p>
+<p>class Mouse extends Rodent {</p>
+<p>​       private String name = “Mouse”;</p>
+<p>​       protected void eat() { println(“Mouse.eat()”); }</p>
+<p>​       protected void run() { println(“Mouse.run()”); }</p>
+<p>​       protected void sleep() { println(“Mouse.sleep()”); }</p>
+<p>​       public String toString() { return name; }</p>
+<p>}</p>
+<p>class Rat extends Rodent {</p>
+<p>​       private String name = “Rat”;</p>
+<p>​       protected void eat() { println(“Rat.eat()”); }</p>
+<p>​       protected void run() { println(“Rat.run()”); }</p>
+<p>​       protected void sleep() { println(“Rat.sleep()”); }</p>
+<p>​       public String toString() { return name; }</p>
+<p>}</p>
+<p>class Squirrel extends Rodent {</p>
+<p>​       private String name = “Squirrel”;</p>
+<p>​       protected void eat() { println(“Squirrel.eat()”); }</p>
+<p>​       protected void run() { println(“Squirrel.run()”); }</p>
+<p>​       protected void sleep() { println(“Squirrel.sleep()”); }</p>
+<p>​       public String toString() { return name; }</p>
+<p>}</p>
+<p>public class Rodent10 {</p>
+<p>​       private static RandomRodentGenerator gen = </p>
+<p>​              new RandomRodentGenerator();</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              List<rodent> rodentList = new ArrayList<rodent>();</rodent></rodent></p>
+<p>​              for(int i = 0; i &lt; 10; i++)</p>
+<p>​                     rodentList.add(gen.next());</p>
+<p>​              Iterator<rodent> it = rodentList.iterator();</rodent></p>
+<p>​              while(it.hasNext()) {</p>
+<p>​                     Rodent r = it.next();</p>
+<p>​                     print(r + “: “);</p>
+<p>​                     r.eat();</p>
+<p>​                     r.run();</p>
+<p>​                     r.sleep();</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex11 {</p>
+<p>​       public static void printAny(Collection c) {</p>
+<p>​              Iterator it = c.iterator();</p>
+<p>​              while(it.hasNext())</p>
+<p>​                     print(it.next() + “ “);</p>
+<p>​              println();</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              ArrayList<integer> al = </integer></p>
+<p>​                     new ArrayList<integer>(Arrays.asList(1, 2, 3));</integer></p>
+<p>​              LinkedList<character> ll =</character></p>
+<p>​                     new LinkedList<character>(Arrays.asList(‘a’, ‘b’, ‘c’));       </character></p>
+<p>​              HashSet<float> hs = </float></p>
+<p>​                     new HashSet<float>(Arrays.asList(1.1f, 2.2f, 3.3f));</float></p>
+<p>​              TreeSet<double> ts =</double></p>
+<p>​                     new TreeSet<double>(Arrays.asList(1.11, 2.22, 3.33));</double></p>
+<p>​              LinkedHashSet<integer> lhs =</integer></p>
+<p>​                     new LinkedHashSet<integer>(Arrays.asList(11, 22, 33));</integer></p>
+<p>​              printAny(al);</p>
+<p>​              printAny(ll);</p>
+<p>​              printAny(hs);</p>
+<p>​              printAny(ts);</p>
+<p>​              printAny(lhs);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex12 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              List<integer> li1 = </integer></p>
+<p>​                     new ArrayList<integer>(Arrays.asList(0, 1, 2, 3, 4));</integer></p>
+<p>​              List<integer> li2 = </integer></p>
+<p>​                     new ArrayList<integer>(Arrays.asList(5, 6, 7, 8, 9));</integer></p>
+<p>​              ListIterator<integer> it1 = li1.listIterator();</integer></p>
+<p>​              ListIterator<integer> it2 = li2.listIterator();</integer></p>
+<p>​              println(“li1: “ + li1);</p>
+<p>​              println(“li2: “ + li2);</p>
+<p>​                           while(it1.hasNext())</p>
+<p>​                     it1.next();</p>
+<p>​                           while(it2.hasNext()) {     </p>
+<p>​                     it2.next();        </p>
+<p>​                     it2.set(it1.previous());</p>
+<p>​              }</p>
+<p>​              println(“li1: “ + li1);</p>
+<p>​              println(“li2: “ + li2);</p>
+<p>​              </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex12a {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              List<integer> li1 = </integer></p>
+<p>​                     new ArrayList<integer>(Arrays.asList(0, 1, 2, 3, 4));</integer></p>
+<p>​              List<integer> li2 = </integer></p>
+<p>​                     new ArrayList<integer>(Arrays.asList(5, 6, 7, 8, 9));</integer></p>
+<p>​                           ListIterator<integer> it1 = li1.listIterator(5);</integer></p>
+<p>​              ListIterator<integer> it2 = li2.listIterator();</integer></p>
+<p>​              println(“li1: “ + li1);</p>
+<p>​              println(“li2: “ + li2);</p>
+<p>​                           while(it2.hasNext()) {     </p>
+<p>​                     it2.next();        </p>
+<p>​                     it2.set(it1.previous());</p>
+<p>​              }</p>
+<p>​              println(“li1: “ + li1);</p>
+<p>​              println(“li2: “ + li2);</p>
+<p>​              </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Controller13 {</p>
+<p>​             private LinkedList<event> eventList = new LinkedList<event>();</event></event></p>
+<p>​       public void addEvent(Event c) { eventList.add(c); }           </p>
+<p>​       public void run() {         </p>
+<p>​              LinkedList<event> eventListCopy = </event></p>
+<p>​                     new LinkedList<event>(eventList);</event></p>
+<p>​              ListIterator<event> it </event></p>
+<p>​                     = eventListCopy.listIterator();</p>
+<p>​              while(it.hasNext()) {       </p>
+<p>​                     it.next().action();</p>
+<p>​                     it.previous();          </p>
+<p>​                     System.out.println(it.next());         </p>
+<p>​              }</p>
+<p>​       }      </p>
+<p>}</p>
+<p>public class Ex14 {</p>
+<p>​       static void addMiddle(LinkedList<integer> l, Integer[] ia) {</integer></p>
+<p>​              </p>
+<p>​              for(Integer i : ia) {</p>
+<p>​                     ListIterator<integer> it = </integer></p>
+<p>​                            l.listIterator((l.size())                   it.add(i);</p>
+<p>​                     System.out.println(l);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              LinkedList<integer> li = new LinkedList<integer>();</integer></integer></p>
+<p>​              Integer[] x = {0, 1, 2, 3, 4, 5, 6, 7};</p>
+<p>​              Ex14.addMiddle(li, x);</p>
+<p>​       }      </p>
+<p>}</p>
+<p>public class Ex15 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Stack<character> sc = new Stack<character>();</character></character></p>
+<p>​              sc.push(‘U’);</p>
+<p>​              sc.push(‘n’);</p>
+<p>​              sc.push(‘c’);</p>
+<p>​              System.out.print(sc.pop());</p>
+<p>​              System.out.print(sc.pop());</p>
+<p>​              System.out.print(sc.pop());</p>
+<p>​              sc.push(‘e’);</p>
+<p>​              sc.push(‘r’);</p>
+<p>​              sc.push(‘t’);</p>
+<p>​              System.out.print(sc.pop());</p>
+<p>​              System.out.print(sc.pop());</p>
+<p>​              System.out.print(sc.pop());</p>
+<p>​              sc.push(‘a’);</p>
+<p>​              sc.push(‘i’);</p>
+<p>​              sc.push(‘n’);</p>
+<p>​              sc.push(‘t’);</p>
+<p>​              System.out.print(sc.pop());</p>
+<p>​              System.out.print(sc.pop());</p>
+<p>​              System.out.print(sc.pop());</p>
+<p>​              sc.push(‘ ‘);</p>
+<p>​              System.out.print(sc.pop());</p>
+<p>​              sc.push(‘r’);</p>
+<p>​              sc.push(‘u’);</p>
+<p>​              System.out.print(sc.pop());</p>
+<p>​              System.out.print(sc.pop());</p>
+<p>​              sc.push(‘l’);</p>
+<p>​              sc.push(‘e’);</p>
+<p>​              sc.push(‘s’);</p>
+<p>​              System.out.print(sc.pop());</p>
+<p>​              System.out.print(sc.pop());</p>
+<p>​              System.out.print(sc.pop());          </p>
+<p>​       }             </p>
+<p>}</p>
+<p>public class Vowels16 {</p>
+<p>​       static void vowelCounter(Set<string> st) {</string></p>
+<p>​              Set<character> vowels = new TreeSet<character>();</character></character></p>
+<p>​              Collections.addAll(vowels, </p>
+<p>​                     ‘A’, ‘E’, ‘I’, ‘O’, ‘U’, ‘a’, ‘e’, ‘i’, ‘o’, ‘u’);</p>
+<p>​              int allVowels = 0;</p>
+<p>​              for(String s : st) {</p>
+<p>​                     int count = 0;</p>
+<p>​                     for(Character v : s.toCharArray()) {             </p>
+<p>​                            if(vowels.contains(v)) {</p>
+<p>​                                   count++;</p>
+<p>​                                   allVowels++; </p>
+<p>​                            }</p>
+<p>​                     }</p>
+<p>​                     System.out.print(s + “: “ + count + “, “);            </p>
+<p>​              }</p>
+<p>​              System.out.println();     </p>
+<p>​              System.out.print(“Total vowels: “ + allVowels);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Set<string> words = new TreeSet<string>(</string></string></p>
+<p>​                     new TextFile(“SetOperations.java”, “\W+”));</p>
+<p>​              System.out.println(words);</p>
+<p>​              System.out.println();</p>
+<p>​              vowelCounter(words);         </p>
+<p>​       }             </p>
+<p>}</p>
+<p>class Gerbil {</p>
+<p>​       private int gerbilNumber;</p>
+<p>​       public Gerbil(int i) {</p>
+<p>​              gerbilNumber = i;</p>
+<p>​       }</p>
+<p>​       public void hop() {</p>
+<p>​              System.out.println(“gerbil “ + gerbilNumber + “ hops”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Gerbils17 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Map&lt;String, Gerbil&gt; gerbils = new HashMap&lt;String, Gerbil&gt;();</p>
+<p>​              gerbils.put(“Fuzzy”, new Gerbil(0));</p>
+<p>​              gerbils.put(“Spot”, new Gerbil(1));</p>
+<p>​              gerbils.put(“Speedy”, new Gerbil(2));</p>
+<p>​              gerbils.put(“Dopey”, new Gerbil(3));</p>
+<p>​              gerbils.put(“Sleepy”, new Gerbil(4));</p>
+<p>​              gerbils.put(“Happy”, new Gerbil(5));</p>
+<p>​              Iterator<string> it = gerbils.keySet().iterator();</string></p>
+<p>​              while(it.hasNext()) {</p>
+<p>​                     String s = it.next();</p>
+<p>​                     System.out.print(s + “: “);</p>
+<p>​                     gerbils.get(s).hop();</p>
+<p>​              }      </p>
+<p>​       }</p>
+<p>class Gerbil {</p>
+<p>​       private int gerbilNumber;</p>
+<p>​       public Gerbil(int i) {</p>
+<p>​              gerbilNumber = i;</p>
+<p>​       }</p>
+<p>​       public void hop() {</p>
+<p>​              System.out.println(“gerbil “ + gerbilNumber + “ hops”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex18 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Map&lt;String, Gerbil&gt; gerbils = new HashMap&lt;String, Gerbil&gt;();</p>
+<p>​              gerbils.put(“Fuzzy”, new Gerbil(0));</p>
+<p>​              gerbils.put(“Spot”, new Gerbil(1));</p>
+<p>​              gerbils.put(“Speedy”, new Gerbil(2));</p>
+<p>​              gerbils.put(“Dopey”, new Gerbil(3));</p>
+<p>​              gerbils.put(“Sleepy”, new Gerbil(4));</p>
+<p>​              gerbils.put(“Happy”, new Gerbil(5));</p>
+<p>​              gerbils.put(“Funny”, new Gerbil(6));</p>
+<p>​              gerbils.put(“Silly”, new Gerbil(7));</p>
+<p>​              gerbils.put(“Goofy”, new Gerbil(8));</p>
+<p>​              gerbils.put(“Wowee”, new Gerbil(9));</p>
+<p>​              System.out.println(gerbils);</p>
+<p>​              System.out.println();</p>
+<p>​              Set<string> sortedKeys = </string></p>
+<p>​                     new TreeSet<string>(gerbils.keySet());</string></p>
+<p>​              System.out.println(sortedKeys);</p>
+<p>​              System.out.println();</p>
+<p>​              Map&lt;String, Gerbil&gt; sortedGerbils = </p>
+<p>​                     new LinkedHashMap&lt;String, Gerbil&gt;();</p>
+<p>​              for(String s : sortedKeys) {</p>
+<p>​                     System.out.print(“Adding “ + s + “, “);</p>
+<p>​                     sortedGerbils.put(s, gerbils.get(s));                   </p>
+<p>​              }</p>
+<p>​              System.out.println();</p>
+<p>​              System.out.println();</p>
+<p>​              System.out.println(sortedGerbils);</p>
+<p>​              System.out.println();</p>
+<p>​                           Map&lt;String, Gerbil&gt; sortedGerbils2 =</p>
+<p>​                     new TreeMap&lt;String, Gerbil&gt;(gerbils);</p>
+<p>​              System.out.println(sortedGerbils2);            </p>
+<p>​       }</p>
+<p>}</p>
+<p>class Gerbil {</p>
+<p>​       private int gerbilNumber;</p>
+<p>​       public Gerbil(int i) {</p>
+<p>​              gerbilNumber = i;</p>
+<p>​       }</p>
+<p>​       public void hop() {</p>
+<p>​              System.out.println(“gerbil “ + gerbilNumber + “ hops”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex19 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Map&lt;String, Gerbil&gt; gerbils = new HashMap&lt;String, Gerbil&gt;();</p>
+<p>​              gerbils.put(“Fuzzy”, new Gerbil(0));</p>
+<p>​              gerbils.put(“Spot”, new Gerbil(1));</p>
+<p>​              gerbils.put(“Speedy”, new Gerbil(2));</p>
+<p>​              gerbils.put(“Dopey”, new Gerbil(3));</p>
+<p>​              gerbils.put(“Sleepy”, new Gerbil(4));</p>
+<p>​              gerbils.put(“Happy”, new Gerbil(5));</p>
+<p>​              gerbils.put(“Funny”, new Gerbil(6));</p>
+<p>​              gerbils.put(“Silly”, new Gerbil(7));</p>
+<p>​              gerbils.put(“Goofy”, new Gerbil(8));</p>
+<p>​              gerbils.put(“Wowee”, new Gerbil(9));</p>
+<p>​              System.out.println(gerbils);</p>
+<p>​              System.out.println();</p>
+<p>​              Set<string> hashedKeys = </string></p>
+<p>​                     new HashSet<string>(gerbils.keySet());</string></p>
+<p>​              System.out.println(“HashSet: “ + hashedKeys);</p>
+<p>​              System.out.println();</p>
+<p>​              Map&lt;String, Gerbil&gt; hashedGerbils = </p>
+<p>​                     new LinkedHashMap&lt;String, Gerbil&gt;();</p>
+<p>​              for(String s : hashedKeys) {</p>
+<p>​                     System.out.print(“Adding “ + s + “, “);              </p>
+<p>​                     hashedGerbils.put(s, gerbils.get(s));</p>
+<p>​              }</p>
+<p>​              System.out.println();</p>
+<p>​              System.out.println();</p>
+<p>​              System.out.println(“From HashSet: “ + hashedGerbils);</p>
+<p>​              </p>
+<p>​              System.out.println();</p>
+<p>​              Set<string> linkedHashedKeys = </string></p>
+<p>​                     new LinkedHashSet<string>(gerbils.keySet());</string></p>
+<p>​              System.out.println(“LinkedHashSet: “ + linkedHashedKeys);</p>
+<p>​              System.out.println();</p>
+<p>​              Map&lt;String, Gerbil&gt; linkedHashedGerbils = </p>
+<p>​                     new LinkedHashMap&lt;String, Gerbil&gt;();</p>
+<p>​              for(String s : linkedHashedKeys) {</p>
+<p>​                     System.out.print(“Adding “ + s + “, “);              </p>
+<p>​                     linkedHashedGerbils.put(s, gerbils.get(s));</p>
+<p>​              }</p>
+<p>​              System.out.println();</p>
+<p>​              System.out.println();</p>
+<p>​              System.out.println(“From LinkedHashSet: “ </p>
+<p>​                     + linkedHashedGerbils);</p>
+<p>​              }</p>
+<p>}</p>
+<p>public class Vowels20 {</p>
+<p>​       static void vowelCounter20(Set<string> st) {           </string></p>
+<p>​              Set<character> vowels = new TreeSet<character>();</character></character></p>
+<p>​              Collections.addAll(vowels, </p>
+<p>​                     ‘A’, ‘E’, ‘I’, ‘O’, ‘U’, ‘a’, ‘e’, ‘i’, ‘o’, ‘u’);</p>
+<p>​              int allVowels = 0;</p>
+<p>​              Map&lt;Character,Integer&gt; vowelMap =</p>
+<p>​                     new TreeMap&lt;Character,Integer&gt;();</p>
+<p>​              for(String s : st) {</p>
+<p>​                     for(Character v : s.toCharArray()) {             </p>
+<p>​                            if(vowels.contains(v)) {</p>
+<p>​                                   Integer count = vowelMap.get(v);</p>
+<p>​                                   vowelMap.put(v, </p>
+<p>​                                          count == null ? 1 : count + 1);</p>
+<p>​                                   allVowels++; </p>
+<p>​                            }</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​              System.out.println(“Vowels: “ + vowelMap);      </p>
+<p>​              System.out.println(“Total vowels: “ + allVowels);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Set<string> words = new TreeSet<string>(</string></string></p>
+<p>​                     new TextFile(“SetOperations.java”, “\W+”));</p>
+<p>​              System.out.println(words);</p>
+<p>​              System.out.println();</p>
+<p>​              vowelCounter20(words);             </p>
+<p>​       }             </p>
+<p>}</p>
+<p>public class UniqueWords21 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              List<string> words = new ArrayList<string>(</string></string></p>
+<p>​                     new TextFile(“SetOperations.java”, “\W+”));</p>
+<p>​              System.out.println(“Words to count: “ + words);</p>
+<p>​              Collections.sort(words, String.CASE_INSENSITIVE_ORDER);</p>
+<p>​              Map&lt;String,Integer&gt; wordCount =</p>
+<p>​                     new LinkedHashMap&lt;String,Integer&gt;();</p>
+<p>​              Iterator it = words.iterator();</p>
+<p>​              int totalWords = 0;</p>
+<p>​              while(it.hasNext()) {</p>
+<p>​                     String s = (String)it.next();</p>
+<p>​                     if(words.contains(s)) {</p>
+<p>​                            Integer count = wordCount.get(s);</p>
+<p>​                            wordCount.put(s,</p>
+<p>​                                   count == null ? 1 : count + 1);</p>
+<p>​                            totalWords++;</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​              System.out.println();</p>
+<p>​              System.out.println(“Word count: “ + wordCount);</p>
+<p>​              System.out.println();</p>
+<p>​              System.out.println(“Total words: “ + totalWords);            </p>
+<p>​       }             </p>
+<p>}</p>
+<p>class Word {</p>
+<p>​       static int totalWords = 0;     </p>
+<p>​       String s;  </p>
+<p>​       int count;</p>
+<p>​       Word(String s, int count) { </p>
+<p>​              this.s = s; </p>
+<p>​              this.count = count;</p>
+<p>​              totalWords++;</p>
+<p>​       }</p>
+<p>​       public String toString() { return s + “: “ + count; }</p>
+<p>}</p>
+<p>public class UniqueWords22 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              List<string> words = new ArrayList<string>(</string></string></p>
+<p>​                     new TextFile(“SetOperations.java”, “\W+”));            </p>
+<p>​              Collections.sort(words, String.CASE_INSENSITIVE_ORDER);</p>
+<p>​              System.out.println(“Words to count, sorted: “ + words);</p>
+<p>​              Set<word> wordObjects = new HashSet<word>();</word></word></p>
+<p>​              Iterator it = words.iterator(); </p>
+<p>​              while(it.hasNext()) {</p>
+<p>​                     String s = (String)it.next();</p>
+<p>​                     int count = 0;               </p>
+<p>​                     for(int i = 0; i &lt; words.size(); i++) {</p>
+<p>​                            if(s.equals(words.get(i))) count++;</p>
+<p>​                     }</p>
+<p>​                     Word w = new Word(s, count);</p>
+<p>​                     wordObjects.add(w);</p>
+<p>​              }             </p>
+<p>​              System.out.println(“Word count: “ + wordObjects);</p>
+<p>​              System.out.println(“Total words: “ + Word.totalWords);          </p>
+<p>​       }             </p>
+<p>}</p>
+<p>public class Statistics23 {</p>
+<p>​       private static int getBestInt20(int n) {</p>
+<p>​              Random rand = new Random();</p>
+<p>​              Map&lt;Integer, Integer&gt; m =</p>
+<p>​                     new TreeMap&lt;Integer, Integer&gt;();</p>
+<p>​              for(int i = 0; i &lt; 10000; i++) {</p>
+<p>​                                         int r = rand.nextInt(20);</p>
+<p>​                     Integer freq = m.get(r);</p>
+<p>​                     m.put(r, freq == null ? 1 : freq + 1);</p>
+<p>​              }</p>
+<p>​              int max = 0;</p>
+<p>​              for(int i = 0; i &lt; m.keySet().size(); i++) {</p>
+<p>​                     max = max &lt; m.get(i) ? m.get(i) : max;</p>
+<p>​              }</p>
+<p>​              Set&lt;Map.Entry&lt;Integer,Integer&gt;&gt; me = new </p>
+<p>​                     LinkedHashSet&lt;Map.Entry&lt;Integer,Integer&gt;&gt;(m.entrySet());</p>
+<p>​              int maxKey = 0;</p>
+<p>​              Iterator&lt;Map.Entry&lt;Integer,Integer&gt;&gt; it = me.iterator();</p>
+<p>​              while(it.hasNext()) {</p>
+<p>​                     Map.Entry&lt;Integer,Integer&gt; findMax = it.next();</p>
+<p>​                     if(findMax.getValue() == max)</p>
+<p>​                     maxKey = findMax.getKey();</p>
+<p>​              }</p>
+<p>​              return maxKey;                    </p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Map&lt;Integer,Integer&gt; m20 =            </p>
+<p>​                     new TreeMap&lt;Integer,Integer&gt;();</p>
+<p>​              for(int i = 0; i &lt; 2000; i++) {</p>
+<p>​                     int x = getBestInt20(10000);</p>
+<p>​                     Integer freq = m20.get(x);</p>
+<p>​                     m20.put(x, freq == null ? 1 : freq + 1);</p>
+<p>​              }</p>
+<p>​              System.out.println(“Most often picked ints, 0 - 19, in 2000 tests of 10,000 random picks: “ + m20);</p>
+<p>​       }</p>
+<p>}      </p>
+<p>public class Ex24{  </p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Map&lt;String,Integer&gt; m = </p>
+<p>​                     new LinkedHashMap&lt;String,Integer&gt;();</p>
+<p>​              m.put(“ten”, 10);</p>
+<p>​              m.put(“nine”, 9);</p>
+<p>​              m.put(“eight”, 8);</p>
+<p>​              m.put(“seven”, 7);</p>
+<p>​              m.put(“six”, 6);</p>
+<p>​              m.put(“five”, 5);</p>
+<p>​              m.put(“four”, 4);</p>
+<p>​              m.put(“three”, 3);</p>
+<p>​              m.put(“two”, 2);</p>
+<p>​              m.put(“one”, 1);</p>
+<p>​              m.put(“zero”, 0);</p>
+<p>​              println(“Map to sort: “ + m);</p>
+<p>​                           Map&lt;String,Integer&gt; mTemp = </p>
+<p>​                     new LinkedHashMap&lt;String,Integer&gt;();</p>
+<p>​                           Set<string> ss = new TreeSet<string>(m.keySet());</string></string></p>
+<p>​                           Iterator<string> itss = ss.iterator();</string></p>
+<p>​              while(itss.hasNext()) {</p>
+<p>​                     String s = (String)itss.next();</p>
+<p>​                     Integer i = m.get(s);</p>
+<p>​                     m.remove(s);</p>
+<p>​                     mTemp.put(s, i);</p>
+<p>​              }</p>
+<p>​                           Set<string> ssTemp = </string></p>
+<p>​                     new TreeSet<string>(mTemp.keySet());</string></p>
+<p>​                           Iterator<string> itssTemp = ssTemp.iterator();</string></p>
+<p>​              while(itssTemp.hasNext()) {</p>
+<p>​                     String s = (String)itssTemp.next();</p>
+<p>​                     Integer i = mTemp.get(s);</p>
+<p>​                     mTemp.remove(s);</p>
+<p>​                     m.put(s, i);</p>
+<p>​              }</p>
+<p>​                           mTemp.clear();</p>
+<p>​              println(“Sorted map: “ + m);</p>
+<p>​       }</p>
+<p>}      </p>
+<p>public class Ex24b{       </p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Map&lt;String,Integer&gt; m = </p>
+<p>​                     new LinkedHashMap&lt;String,Integer&gt;();</p>
+<p>​              m.put(“ten”, 10);</p>
+<p>​              m.put(“nine”, 9);</p>
+<p>​              m.put(“eight”, 8);</p>
+<p>​              m.put(“seven”, 7);</p>
+<p>​              m.put(“six”, 6);</p>
+<p>​              m.put(“five”, 5);</p>
+<p>​              m.put(“four”, 4);</p>
+<p>​              m.put(“three”, 3);</p>
+<p>​              m.put(“two”, 2);</p>
+<p>​              m.put(“one”, 1);</p>
+<p>​              m.put(“zero”, 0);</p>
+<p>​              println(“Map to sort: “ + m);</p>
+<p>​                           Map&lt;String,Integer&gt; mTemp = </p>
+<p>​                     new LinkedHashMap&lt;String,Integer&gt;();</p>
+<p>​                                        List<string> ss2List = </string></p>
+<p>​                     new LinkedList<string>(m.keySet());</string></p>
+<p>​                           Collections.sort(ss2List);</p>
+<p>​                           Iterator<string> itss2List = ss2List.iterator();</string></p>
+<p>​              while(itss2List.hasNext()) {</p>
+<p>​                     String s = (String)itss2List.next();</p>
+<p>​                     Integer i = m.get(s);</p>
+<p>​                     m.remove(s);</p>
+<p>​                     mTemp.put(s, i);</p>
+<p>​              }</p>
+<p>​                           List<string> ssTemp = </string></p>
+<p>​                     new LinkedList<string>(mTemp.keySet());</string></p>
+<p>​                           Iterator<string> itssTemp = ssTemp.iterator();</string></p>
+<p>​              while(itssTemp.hasNext()) {</p>
+<p>​                     String s = (String)itssTemp.next();</p>
+<p>​                     Integer i = mTemp.get(s);</p>
+<p>​                     mTemp.remove(s);</p>
+<p>​                     m.put(s, i);</p>
+<p>​              }</p>
+<p>​                           mTemp.clear();</p>
+<p>​              println(“Sorted map: “ + m);       </p>
+<p>​       }</p>
+<p>}      </p>
+<p>public class Ex25 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Map&lt;String,ArrayList<integer>&gt; m = </integer></p>
+<p>​                     new LinkedHashMap&lt;String,ArrayList<integer>&gt;();</integer></p>
+<p>​              List<string> words = new LinkedList<string>();</string></string></p>
+<p>​              words.addAll(new TextFile(“SetOperations.java”, “\W+”));</p>
+<p>​              System.out.println(“Words in file: “ + words);</p>
+<p>​              Iterator itWords = words.iterator();</p>
+<p>​              int count = 0;</p>
+<p>​              while(itWords.hasNext()) {</p>
+<p>​                     String s = (String)itWords.next();</p>
+<p>​                     count++;                     </p>
+<p>​                     if(!m.keySet().contains(s)) {   </p>
+<p>​                            ArrayList<integer> ai = </integer></p>
+<p>​                                   new ArrayList<integer>();           </integer></p>
+<p>​                            ai.add(0, count);</p>
+<p>​                            m.put(s, ai);</p>
+<p>​                     }</p>
+<p>​                     else {</p>
+<p>​                            m.get(s).add(count);</p>
+<p>​                            m.put(s, m.get(s));       </p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​              System.out.println(“Map of word locations: “ + m);                </p>
+<p>​       }      </p>
+<p>}</p>
+<p>public class Ex26 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Map&lt;String,ArrayList<integer>&gt; m = </integer></p>
+<p>​                     new LinkedHashMap&lt;String,ArrayList<integer>&gt;();</integer></p>
+<p>​              List<string> words = new LinkedList<string>();</string></string></p>
+<p>​              words.addAll(new TextFile(“SetOperations.java”, “\W+”));</p>
+<p>​              System.out.println(“Words in file: “ + words);</p>
+<p>​              Iterator itWords = words.iterator();</p>
+<p>​              int count = 0;</p>
+<p>​              while(itWords.hasNext()) {</p>
+<p>​                     String s = (String)itWords.next();</p>
+<p>​                     count++;                     </p>
+<p>​                     if(!m.keySet().contains(s)) {   </p>
+<p>​                            ArrayList<integer> ai = </integer></p>
+<p>​                                   new ArrayList<integer>();           </integer></p>
+<p>​                            ai.add(0, count);</p>
+<p>​                            m.put(s, ai);</p>
+<p>​                     }</p>
+<p>​                     else {</p>
+<p>​                            m.get(s).add(count);</p>
+<p>​                            m.put(s, m.get(s));       </p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​              System.out.println();</p>
+<p>​              System.out.println(“Map of word locations: “ + m);</p>
+<p>​                           Map&lt;Integer,String&gt; replay = new TreeMap&lt;Integer,String&gt;();</p>
+<p>​              Iterator&lt;Map.Entry&lt;String,ArrayList<integer>&gt;&gt; it = </integer></p>
+<p>​                     m.entrySet().iterator();</p>
+<p>​              while(it.hasNext()) {</p>
+<p>​                     Map.Entry&lt;String,ArrayList<integer>&gt; me = it.next();</integer></p>
+<p>​                     for(int i = 0; i &lt; me.getValue().size(); i++)</p>
+<p>​                            replay.put(me.getValue().get(i),</p>
+<p>​                                   me.getKey());</p>
+<p>​              }</p>
+<p>​              System.out.println();</p>
+<p>​              System.out.println(“TreeMap of ordered locations, words: “ + replay);</p>
+<p>​              System.out.println();</p>
+<p>​                           System.out.println(“Words in original order: “ +</p>
+<p>​                     replay.values());</p>
+<p>​       }      </p>
+<p>}</p>
+<p>class Command {</p>
+<p>​       String s;</p>
+<p>​       Command(String s) { this.s = s; }</p>
+<p>​       void operation() { System.out.print(s); }</p>
+<p>}</p>
+<p>class Build {    </p>
+<p>​       Queue<command> makeQ() {</p>
+<p>​              Queue<command> q = new LinkedList<command>();</p>
+<p>​              for(int i = 0; i &lt; 10; i++)</p>
+<p>​                     q.offer(new Command(i + “ “));</p>
+<p>​              return q;</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Queue27 {</p>
+<p>​       public static void commandEater(Queue<command> qc) {</p>
+<p>​              while(qc.peek() != null)</p>
+<p>​                     qc.poll().operation();</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Build b = new Build();</p>
+<p>​              commandEater(b.makeQ()); </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex28 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Random rand = new Random();</p>
+<p>​              PriorityQueue<double> d = new PriorityQueue<double>();</double></double></p>
+<p>​              for(int i = 0; i &lt; 10; i++)</p>
+<p>​                     d.offer(rand.nextDouble() * i);</p>
+<p>​              while(d.peek() != null)</p>
+<p>​                     System.out.print(d.poll() + “ “);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Simple extends Object {}</p>
+<p>public class Ex29 {</p>
+<p>​       public static void main(String[] args) {       </p>
+<p>​              PriorityQueue<simple> s = new PriorityQueue<simple>();</simple></simple></p>
+<p>​                           s.offer(new Simple());</p>
+<p>​                                        s.offer(new Simple());</p>
+<p>​       }</p>
+<p>}</p>
+<p> import typeinfo.pets.*;</p>
+<p>import java.util.*;</p>
+<p>public class CollectionSequence30 implements Collection<pet> {</pet></p>
+<p>​       private Pet[] pets = Pets.createArray(8);</p>
+<p>​       public int size() { return pets.length; }</p>
+<p>​       public Iterator<pet> iterator() {</pet></p>
+<p>​              return new Iterator<pet>() {</pet></p>
+<p>​                     private int index = 0;</p>
+<p>​                     public boolean hasNext() {</p>
+<p>​                            return index &lt; pets.length; </p>
+<p>​                     }</p>
+<p>​                     public Pet next() { return pets[index++]; }</p>
+<p>​                     public void remove() {                             throw new UnsupportedOperationException();</p>
+<p>​                     }</p>
+<p>​              };</p>
+<p>​       }</p>
+<p>​       public void clear() { </p>
+<p>​              if(this.size() != 0)</p>
+<p>​              for(Pet p : pets)</p>
+<p>​                     p = null;</p>
+<p>​       }</p>
+<p>​       public boolean retainAll(Collection&lt;?&gt; c) { </p>
+<p>​              throw new UnsupportedOperationException();</p>
+<p>​       }</p>
+<p>​       public boolean removeAll(Collection&lt;?&gt; c) { </p>
+<p>​              throw new UnsupportedOperationException();</p>
+<p>​       }</p>
+<p>​       public boolean addAll(Collection&lt;? extends Pet&gt; c) { </p>
+<p>​              throw new UnsupportedOperationException();</p>
+<p>​       }</p>
+<p>​       public boolean contains(Object o) {   </p>
+<p>​              throw new UnsupportedOperationException();</p>
+<p>​       }</p>
+<p>​       public boolean isEmpty() {   </p>
+<p>​              return (this.size() == 0) ? true : false;</p>
+<p>​       }</p>
+<p>​       public boolean containsAll(Collection&lt;?&gt; c) { </p>
+<p>​              throw new UnsupportedOperationException();</p>
+<p>​       }</p>
+<p>​       public boolean remove(Object o) { </p>
+<p>​              throw new UnsupportedOperationException();</p>
+<p>​       }</p>
+<p>​       public boolean add(Pet p) { </p>
+<p>​              throw new UnsupportedOperationException();</p>
+<p>​       }</p>
+<p>​       public Object[] toArray() {</p>
+<p>​              return pets;</p>
+<p>​       }</p>
+<p>​       public <t> T[] toArray(T[] a) {</t></p>
+<p>​            throw new UnsupportedOperationException();</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              CollectionSequence30 c = new CollectionSequence30();</p>
+<p>​              InterfaceVsIterator.display(c);</p>
+<p>​              InterfaceVsIterator.display(c.iterator());</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class RandomShapeGenerator31 implements Iterable<shape> {</shape></p>
+<p>​       private Random rand = new Random();</p>
+<p>​       public Shape make() {          </p>
+<p>​              switch(rand.nextInt(3)) {</p>
+<p>​                     default:</p>
+<p>​                     case 0: return new Circle();</p>
+<p>​                     case 1: return new Square();</p>
+<p>​                     case 2: return new Triangle();</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       private Shape[] shapes;</p>
+<p>​       RandomShapeGenerator31(int n) {</p>
+<p>​              shapes = new Shape[n];</p>
+<p>​              for(int i = 0; i &lt; n; i++)</p>
+<p>​                     shapes[i] = make();</p>
+<p>​                             </p>
+<p>​       }</p>
+<p>​       public Iterator<shape> iterator() {</shape></p>
+<p>​              return new Iterator<shape>() {</shape></p>
+<p>​                     private int index = 0;</p>
+<p>​                     public boolean hasNext() {</p>
+<p>​                            return index &lt; shapes.length;</p>
+<p>​                     }</p>
+<p>​                     public Shape next() {</p>
+<p>​                            return shapes[index++];</p>
+<p>​                     }</p>
+<p>​                     public void remove() {</p>
+<p>​                            throw new UnsupportedOperationException();</p>
+<p>​                     }                    </p>
+<p>​              };</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              RandomShapeGenerator31 rsg = new RandomShapeGenerator31(20);</p>
+<p>​              for(Shape s : rsg)</p>
+<p>​                     System.out.println(s);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class PetSequence {</p>
+<p>​       protected Pet[] pets = Pets.createArray(8);</p>
+<p>}</p>
+<p>public class NonCollectionSequence32 </p>
+<p>​       extends PetSequence implements Iterable {</p>
+<p>​       public Iterator<pet> iterator() {</pet></p>
+<p>​              return new Iterator<pet>() {</pet></p>
+<p>​                     private int index = 0;</p>
+<p>​                     public boolean hasNext() {</p>
+<p>​                            return index &lt; pets.length;</p>
+<p>​                     }      </p>
+<p>​                     public Pet next() { return pets[index++]; }</p>
+<p>​                     public void remove() {</p>
+<p>​                            throw new UnsupportedOperationException();</p>
+<p>​                     }</p>
+<p>​              };</p>
+<p>​       }</p>
+<p>​       public Iterable<pet> reversed() {</pet></p>
+<p>​              return new Iterable<pet>() {</pet></p>
+<p>​                     public Iterator<pet> iterator() {</pet></p>
+<p>​                            return new Iterator<pet>() {</pet></p>
+<p>​                                   int current = pets.length - 1;</p>
+<p>​                                   public boolean hasNext() {</p>
+<p>​                                          return current &gt; -1;</p>
+<p>​                                   }</p>
+<p>​                                   public Pet next() {</p>
+<p>​                                          return pets[current–];</p>
+<p>​                                   }</p>
+<p>​                                   public void remove() {</p>
+<p>​                                          throw new</p>
+<p>​                                          UnsupportedOperationException();</p>
+<p>​                                   }</p>
+<p>​                            };</p>
+<p>​                     }</p>
+<p>​              };</p>
+<p>​       }</p>
+<p>​       public Iterable<pet> randomized() {</pet></p>
+<p>​              return new Iterable<pet>() {</pet></p>
+<p>​                     public Iterator<pet> iterator() {</pet></p>
+<p>​                            List<pet> shuffled = new</pet></p>
+<p>​                                  ArrayList<pet>(Arrays.asList(pets));</pet></p>
+<p>​                            Collections.shuffle(shuffled, new Random());</p>
+<p>​                            return shuffled.iterator();</p>
+<p>​                     }</p>
+<p>​              };</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              NonCollectionSequence32 nc = new NonCollectionSequence32();</p>
+<p>​              print(“pets: “);</p>
+<p>​              for(Pet p : nc.pets)</p>
+<p>​                     print(p + “ “);</p>
+<p>​              println();</p>
+<p>​              print(“reversed: “);</p>
+<p>​              for(Pet p : nc.reversed())</p>
+<p>​                     print(p + “ “);</p>
+<p>​              println();</p>
+<p>​              print(“randomized: “);</p>
+<p>​              for(Pet p : nc.randomized())</p>
+<p>​                     print(p + “ “);</p>
+<p>​       }</p>
+<p>}</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/题解/" rel="tag"># 题解</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/06/2019-10-06-Java题解泛型/" rel="next" title="Java题解泛型">
+                <i class="fa fa-chevron-left"></i> Java题解泛型
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/07/2019-10-07-ES6/" rel="prev" title="ES6">
+                ES6 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第十一章持有对象"><span class="nav-number">1.</span> <span class="nav-text">第十一章持有对象</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

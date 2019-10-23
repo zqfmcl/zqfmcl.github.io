@@ -1,0 +1,1814 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="题解,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="第十八章 IOpublic class DirList1a {          ​       public static void main(final String[] args) { ​              File path = new File(“.”); ​              final String[] list; ​              if(args.len">
+<meta name="keywords" content="题解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java题解IO">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解IO/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="第十八章 IOpublic class DirList1a {          ​       public static void main(final String[] args) { ​              File path = new File(“.”); ​              final String[] list; ​              if(args.len">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.748Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java题解IO">
+<meta name="twitter:description" content="第十八章 IOpublic class DirList1a {          ​       public static void main(final String[] args) { ​              File path = new File(“.”); ​              final String[] list; ​              if(args.len">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解IO/">
+
+
+
+
+
+  <title>Java题解IO | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解IO/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java题解IO</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-06T10:00:00+08:00">
+                2019-10-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第十八章-IO"><a href="#第十八章-IO" class="headerlink" title="第十八章 IO"></a>第十八章 IO</h2><p>public class DirList1a {         </p>
+<p>​       public static void main(final String[] args) {</p>
+<p>​              File path = new File(“.”);</p>
+<p>​              final String[] list;</p>
+<p>​              if(args.length &lt; 2) { </p>
+<p>​                     list = path.list();</p>
+<p>​                     System.out.println(“Usage: enter filtering regex”);</p>
+<p>​                     System.out.println(</p>
+<p>​                     “followed by words, one or more of which each file must contain.”);</p>
+<p>​              }</p>
+<p>​              else {</p>
+<p>​                     list = path.list(new FilenameFilter() {</p>
+<p>​                            private Pattern pattern = Pattern.compile(args[0]);</p>
+<p>​                            public boolean accept(File dir, String name) {</p>
+<p>​                                   return pattern.matcher(name).matches() &amp;&amp;</p>
+<p>​                                   !(Collections.disjoint(</p>
+<p>​                                          Arrays.asList(args).subList(1, args.length),</p>
+<p>​                                          new TextFile(name, “\W+”)</p>
+<p>​                                   ));</p>
+<p>​                            }</p>
+<p>​                     });</p>
+<p>​              }</p>
+<p>​              Arrays.sort(list, String.CASE_INSENSITIVE_ORDER);</p>
+<p>​              for(String dirItem : list)</p>
+<p>​                     System.out.println(dirItem);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class DirList1b {         </p>
+<p>​       public static void main(final String[] args) {</p>
+<p>​              File path = new File(“.”);</p>
+<p>​              final String[] list;</p>
+<p>​              if(args.length == 0) { </p>
+<p>​                     list = path.list();</p>
+<p>​                     System.out.println(</p>
+<p>​                            “Usage: enter words, one or more of which each file must contain”);</p>
+<p>​              }</p>
+<p>​              else {</p>
+<p>​                     list = path.list(new FilenameFilter() {</p>
+<p>​                            public boolean accept(File dir, String name) {</p>
+<p>​                                   return !(Collections.disjoint(</p>
+<p>​                                                 Arrays.asList(args),</p>
+<p>​                                                 new TextFile(name, “\W+”)</p>
+<p>​                                          )</p>
+<p>​                                   );</p>
+<p>​                            }</p>
+<p>​                     });</p>
+<p>​              }</p>
+<p>​              Arrays.sort(list, String.CASE_INSENSITIVE_ORDER);</p>
+<p>​              for(String dirItem : list)</p>
+<p>​                     System.out.println(dirItem);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class SortedDirList2 {</p>
+<p>​       private String[] dirList;</p>
+<p>​       public SortedDirList2(File dir) {</p>
+<p>​              dirList = dir.list();</p>
+<p>​              Arrays.sort(dirList, String.CASE_INSENSITIVE_ORDER);</p>
+<p>​       }</p>
+<p>​       public String[] list() { return dirList; }</p>
+<p>​       public String[] list(String regex) {</p>
+<p>​              Pattern pattern = Pattern.compile(regex);</p>
+<p>​              ArrayList<string> slist = new ArrayList<string>();</string></string></p>
+<p>​              int count = 0;</p>
+<p>​              for(String s : dirList) {</p>
+<p>​                     if(pattern.matcher(s).matches()) {</p>
+<p>​                            count++;</p>
+<p>​                            slist.add(s);</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​              return slist.toArray(new String[count]);</p>
+<p>​       }</p>
+<p>​       public String toString() {</p>
+<p>​              StringBuilder sb = new StringBuilder();</p>
+<p>​              for(String s : dirList) sb.append(s + ‘\n’);</p>
+<p>​              return sb.toString();</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              SortedDirList2 dirList = new SortedDirList2(new File(“.”));</p>
+<p>​              System.out.println(dirList);</p>
+<p>​              for(String s : dirList.list()) </p>
+<p>​                     System.out.println(s);</p>
+<p>​              System.out.println();</p>
+<p>​              for(String s : dirList.list(“.+\.java”))</p>
+<p>​                     System.out.println(s);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class DirListFileSizes { </p>
+<p>​       public static void main(final String[] args) {</p>
+<p>​              File path = new File(“.”);</p>
+<p>​              File[] files;</p>
+<p>​              if(args.length == 0)</p>
+<p>​                    files = path.listFiles(); </p>
+<p>​              else</p>
+<p>​                     files = path.listFiles(new FileFilter() {</p>
+<p>​                            private Pattern pattern = Pattern.compile(args[0]);</p>
+<p>​                            public boolean accept(File file) {</p>
+<p>​                                   return pattern.matcher(file.getPath()).matches();</p>
+<p>​                            }</p>
+<p>​                     });</p>
+<p>​              Arrays.sort(files);</p>
+<p>​              long sum = 0;</p>
+<p>​              for(File f : files) {</p>
+<p>​                     System.out.print(f + “: “);</p>
+<p>​                     System.out.println(f.length());</p>
+<p>​                     sum += f.length();</p>
+<p>​              }</p>
+<p>​              System.out.println(“Total size: “ + sum);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex4 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              long sum = 0;</p>
+<p>​              if(args.length == 0) {</p>
+<p>​                     for(File file : Directory.walk(“.”).files) {</p>
+<p>​                            System.out.print(file + “: “);</p>
+<p>​                            System.out.println(file.length());</p>
+<p>​                            sum += file.length();</p>
+<p>​                     }</p>
+<p>​                     </p>
+<p>​              }</p>
+<p>​              else </p>
+<p>​                     for(String arg : args) {</p>
+<p>​                            {</p>
+<p>​                            for(File file : Directory.walk(“.”, arg).files) {</p>
+<p>​                                   System.out.print(file + “: “);</p>
+<p>​                                   System.out.println(file.length());</p>
+<p>​                                   sum += file.length();</p>
+<p>​                            }</p>
+<p>​                            System.out.println();</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​              System.out.println(“Total size: “ + sum);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class ProcessFiles5 {</p>
+<p>​       public interface Strategy {</p>
+<p>​                  void process(File file);</p>
+<p>​      }</p>
+<p>​      private Strategy strategy;</p>
+<p>​      private String regex;</p>
+<p>​       public ProcessFiles5(Strategy strategy, String regex) {</p>
+<p>​                  this.strategy = strategy;</p>
+<p>​           this.regex = regex;</p>
+<p>​      }</p>
+<p>​      public void start(String[] args) {</p>
+<p>​                  try {</p>
+<p>​                        if(args.length == 0)</p>
+<p>​                      processDirectoryTree(new File(“.”));</p>
+<p>​                 else</p>
+<p>​                      for(String arg : args) {</p>
+<p>​                            File fileArg = new File(arg);</p>
+<p>​                            if(fileArg.isDirectory())</p>
+<p>​                                        processDirectoryTree(fileArg);</p>
+<p>​                            else {</p>
+<p>​                                   Pattern pattern = Pattern.compile(regex);</p>
+<p>​                                   if(pattern.matcher(arg).matches())                                                    strategy.process(</p>
+<p>​                                                     new File(arg).getCanonicalFile());</p>
+<p>​                            }</p>
+<p>​                      }</p>
+<p>​                  } catch(IOException e) {</p>
+<p>​                        throw new RuntimeException(e);</p>
+<p>​                  }</p>
+<p>​      }</p>
+<p>​      public void processDirectoryTree(File root) throws IOException {</p>
+<p>​                  for(File file : Directory.walk(</p>
+<p>​                      root.getAbsolutePath(), regex))</p>
+<p>​                 strategy.process(file.getCanonicalFile());</p>
+<p>​      }</p>
+<p>​           public static void main(String[] args) {</p>
+<p>​                  new ProcessFiles5(new ProcessFiles5.Strategy() {</p>
+<p>​                        public void process(File file) {</p>
+<p>​                             System.out.println(file);</p>
+<p>​                        }</p>
+<p>​                  }, “.<em>D.</em>“).start(args);</p>
+<p>​      }</p>
+<p>} </p>
+<p>public class ModifiedAfter6 {</p>
+<p>​       public static void main(final String[] args) {</p>
+<p>​              if(args.length != 2) {</p>
+<p>​                     System.out.println(“Usage: directory date(mm                      System.out.println(“(Outputs a listing of all java files in the given directory” +</p>
+<p>​                            “\nthat were last modified on or after the given date.)”);</p>
+<p>​                     return;</p>
+<p>​              }</p>
+<p>​              final SimpleDateFormat sdf = new SimpleDateFormat(“MM        new ProcessFiles(new ProcessFiles.Strategy() {</p>
+<p>​                     public void process(File file) {</p>
+<p>​                            Date modDate = new Date(file.lastModified());</p>
+<p>​                            try {</p>
+<p>​                                   if(modDate.after(sdf.parse(args[1])))</p>
+<p>​                                          System.out.println(file);</p>
+<p>​                            } catch(ParseException e) {</p>
+<p>​                                   System.out.println(e.getMessage());</p>
+<p>​                            }</p>
+<p>​                     }</p>
+<p>​              }, “java”).start(args);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class ReverseLines7 {</p>
+<p>​             public static String readAndReverse(String filename) throws IOException {</p>
+<p>​                           BufferedReader in = new BufferedReader(new FileReader(filename));</p>
+<p>​              String s;</p>
+<p>​              LinkedList<string> list = new LinkedList<string>(); </string></string></p>
+<p>​              StringBuilder sb = new StringBuilder();           while((s = in.readLine()) != null)</p>
+<p>​                     list.add(s);            while(list.peekLast() != null)                     sb.append(list.pollLast() + “\n”);               in.close();</p>
+<p>​              return sb.toString();             </p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) throws IOException {</p>
+<p>​              System.out.print(readAndReverse(“ReverseLines7.java”));</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class ReverseLines8 {</p>
+<p>​             public static String readAndReverse(String filename) throws IOException {</p>
+<p>​                           BufferedReader in = new BufferedReader(new FileReader(filename));</p>
+<p>​              String s;</p>
+<p>​              LinkedList<string> list = new LinkedList<string>(); </string></string></p>
+<p>​              StringBuilder sb = new StringBuilder();           while((s = in.readLine()) != null)</p>
+<p>​                     list.add(s);            while(list.peekLast() != null)                     sb.append(list.pollLast() + “\n”);               in.close();</p>
+<p>​              return sb.toString();             </p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) throws IOException {</p>
+<p>​              if(args.length != 1) {</p>
+<p>​                     System.out.println(“Usage: enter file name”);</p>
+<p>​                     System.exit(1);</p>
+<p>​              }</p>
+<p>​              System.out.print(readAndReverse(args[0]));</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class ReverseLines9 {</p>
+<p>​             public static String readAndReverse(String filename) throws IOException {</p>
+<p>​                           BufferedReader in = new BufferedReader(new FileReader(filename));</p>
+<p>​              String s;</p>
+<p>​              LinkedList<string> list = new LinkedList<string>(); </string></string></p>
+<p>​              StringBuilder sb = new StringBuilder();           while((s = in.readLine()) != null)</p>
+<p>​                     list.add(s.toUpperCase());          while(list.peekLast() != null)                     sb.append(list.pollLast() + “\n”);            in.close();</p>
+<p>​              return sb.toString();             </p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) throws IOException {</p>
+<p>​              if(args.length != 1) {</p>
+<p>​                     System.out.println(“Usage: enter file name”);</p>
+<p>​                     System.exit(1);</p>
+<p>​              }</p>
+<p>​              System.out.print(readAndReverse(args[0]));</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class ReverseLinesWordSearch10 {</p>
+<p>​             public static String readReverseFind(String[] sa) throws IOException {</p>
+<p>​                           BufferedReader in = new BufferedReader(new FileReader(sa[0]));</p>
+<p>​              String s;</p>
+<p>​              List<string> find = new ArrayList<string>();</string></string></p>
+<p>​              for(String t : sa) find.add(t);</p>
+<p>​              find.remove(0);           LinkedList<string> list = new LinkedList<string>(); </string></string></p>
+<p>​              StringBuilder sb = new StringBuilder();           while((s = in.readLine()) != null) {</p>
+<p>​                                         List<string> line = Arrays.asList(s.split(“\W+”));</string></p>
+<p>​                                         if(!(Collections.disjoint(line, find))) </p>
+<p>​                            list.add(s);            }</p>
+<p>​              while(list.peekLast() != null)                     sb.append(list.pollLast() + “\n”);               in.close();</p>
+<p>​              return sb.toString();             </p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) throws IOException {</p>
+<p>​              if(args.length &lt; 2) {</p>
+<p>​                     System.out.println(“Usage: enter file name\n” +</p>
+<p>​                            “followed by words to find in lines of that file”);</p>
+<p>​                     System.exit(1);</p>
+<p>​              }</p>
+<p>​              System.out.print(readReverseFind(args));</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class GreenhouseController11 {</p>
+<p>​             public static Map&lt;String,Long&gt; readEvents(String filename) </p>
+<p>​       throws IOException {</p>
+<p>​              BufferedReader in = new BufferedReader(new FileReader(filename));</p>
+<p>​              String s;</p>
+<p>​              Map&lt;String,Long&gt; map = new HashMap&lt;String,Long&gt;();</p>
+<p>​              while((s = in.readLine()) != null) {</p>
+<p>​                     String [] sa = s.split(“[()]”);</p>
+<p>​                     map.put(sa[0], new Long(sa[1]));</p>
+<p>​              }</p>
+<p>​              in.close();</p>
+<p>​              return map;</p>
+<p>​       }</p>
+<p>​             private static Event makeEvent(GreenhouseControls gc, Map.Entry&lt;String,Long&gt; me) {</p>
+<p>​              String key = me.getKey();</p>
+<p>​              Long value = me.getValue();</p>
+<p>​              if(key.equals(“Bell”)) return gc.new Bell(value);</p>
+<p>​              if(key.equals(“LightOn”)) return gc.new LightOn(value);</p>
+<p>​              if(key.equals(“LightOff”)) return gc.new LightOff(value);</p>
+<p>​              if(key.equals(“WaterOn”)) return gc.new WaterOn(value);</p>
+<p>​              if(key.equals(“WaterOff”)) return gc.new WaterOff(value);</p>
+<p>​              if(key.equals(“ThermostatDay”)) return gc.new ThermostatDay(value);</p>
+<p>​              if(key.equals(“ThermostatNight”)) return gc.new ThermostatNight(value);</p>
+<p>​              return null;</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              GreenhouseControls gc = new GreenhouseControls();</p>
+<p>​                                        try {</p>
+<p>​                                         Map&lt;String,Long&gt; map = readEvents(“Events.txt”);</p>
+<p>​                     Event[] eventList = new Event[map.size()];</p>
+<p>​                     int i = 0;</p>
+<p>​                                         for(Map.Entry&lt;String,Long&gt; me : map.entrySet()) {</p>
+<p>​                            eventList[i++] = makeEvent(gc, me);</p>
+<p>​                     }</p>
+<p>​                     gc.addEvent(gc.new Restart(2000, eventList));</p>
+<p>​                     if(args.length != 1) {</p>
+<p>​                            System.out.println(“Usage: enter integer terminate time”);</p>
+<p>​                            System.exit(0);</p>
+<p>​                     }</p>
+<p>​                     if(args.length == 1)</p>
+<p>​                            gc.addEvent(new GreenhouseControls.Terminate(</p>
+<p>​                                   new Integer(args[0])));</p>
+<p>​              gc.run();</p>
+<p>​              } catch(IOException e) {</p>
+<p>​                     System.out.println(e);</p>
+<p>​              }      </p>
+<p>​       }      </p>
+<p>}</p>
+<p>interface EventFactory {</p>
+<p>​       Event getEvent(GreenhouseControls gc, Long time);</p>
+<p>}</p>
+<p>class BellFactory implements EventFactory {</p>
+<p>​       public Event getEvent(GreenhouseControls gc, Long time) {</p>
+<p>​              return gc.new Bell(time);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class LightOnFactory implements EventFactory {</p>
+<p>​       public Event getEvent(GreenhouseControls gc, Long time) {</p>
+<p>​              return gc.new LightOn(time);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class LightOffFactory implements EventFactory {</p>
+<p>​       public Event getEvent(GreenhouseControls gc, Long time) {</p>
+<p>​              return gc.new LightOff(time);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class WaterOnFactory implements EventFactory {</p>
+<p>​       public Event getEvent(GreenhouseControls gc, Long time) {</p>
+<p>​              return gc.new WaterOn(time);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class WaterOffFactory implements EventFactory {</p>
+<p>​       public Event getEvent(GreenhouseControls gc, Long time) {</p>
+<p>​              return gc.new WaterOff(time);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class ThermostatDayFactory implements EventFactory {</p>
+<p>​       public Event getEvent(GreenhouseControls gc, Long time) {</p>
+<p>​              return gc.new ThermostatDay(time);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class ThermostatNightFactory implements EventFactory {</p>
+<p>​       public Event getEvent(GreenhouseControls gc, Long time) {</p>
+<p>​              return gc.new ThermostatNight(time);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class GreenhouseController11b {</p>
+<p>​             public static Map&lt;String,Long&gt; readEvents(String filename) </p>
+<p>​       throws IOException {</p>
+<p>​              BufferedReader in = new BufferedReader(new FileReader(filename));</p>
+<p>​              String s;</p>
+<p>​              Map&lt;String,Long&gt; map = new HashMap&lt;String,Long&gt;();</p>
+<p>​              while((s = in.readLine()) != null) {</p>
+<p>​                     String [] sa = s.split(“[()]”);</p>
+<p>​                     map.put(sa[0], new Long(sa[1]));</p>
+<p>​              }</p>
+<p>​              in.close();</p>
+<p>​              return map;</p>
+<p>​       }</p>
+<p>​             private static Event makeEvent(GreenhouseControls gc, Map.Entry&lt;String,Long&gt; me) {</p>
+<p>​              String key = me.getKey();</p>
+<p>​              Long value = me.getValue();</p>
+<p>​              if(key.equals(“Bell”)) return new BellFactory().getEvent(gc,value);</p>
+<p>​              if(key.equals(“LightOn”)) return new LightOnFactory().getEvent(gc, value);</p>
+<p>​              if(key.equals(“LightOff”)) return new LightOffFactory().getEvent(gc, value);</p>
+<p>​              if(key.equals(“WaterOn”)) return new WaterOnFactory().getEvent(gc, value);</p>
+<p>​              if(key.equals(“WaterOff”)) return new WaterOffFactory().getEvent(gc, value);</p>
+<p>​              if(key.equals(“ThermostatDay”)) </p>
+<p>​                     return new ThermostatDayFactory().getEvent(gc, value);</p>
+<p>​              if(key.equals(“ThermostatNight”)) </p>
+<p>​                     return new ThermostatNightFactory().getEvent(gc, value);</p>
+<p>​              return null;</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              GreenhouseControls gc = new GreenhouseControls();</p>
+<p>​                                        try {</p>
+<p>​                                         Map&lt;String,Long&gt; map = readEvents(“Events.txt”);</p>
+<p>​                     Event[] eventList = new Event[map.size()];</p>
+<p>​                     int i = 0;</p>
+<p>​                                         for(Map.Entry&lt;String,Long&gt; me : map.entrySet()) {</p>
+<p>​                            eventList[i++] = makeEvent(gc, me);</p>
+<p>​                     }</p>
+<p>​                     gc.addEvent(gc.new Restart(2000, eventList));</p>
+<p>​                     if(args.length != 1) {</p>
+<p>​                            System.out.println(“Usage: enter integer terminate time”);</p>
+<p>​                            System.exit(0);</p>
+<p>​                     }</p>
+<p>​                     if(args.length == 1)</p>
+<p>​                            gc.addEvent(new GreenhouseControls.Terminate(</p>
+<p>​                                   new Integer(args[0])));</p>
+<p>​              gc.run();</p>
+<p>​              } catch(IOException e) {</p>
+<p>​                     System.out.println(e);</p>
+<p>​              }      </p>
+<p>​       }      </p>
+<p>}</p>
+<p>public class ReverseLines12 {</p>
+<p>​             public static String readAndReverse(String filename) throws IOException {</p>
+<p>​                           BufferedReader in = new BufferedReader(new FileReader(filename));</p>
+<p>​              String s;</p>
+<p>​              LinkedList<string> list = new LinkedList<string>(); </string></string></p>
+<p>​              StringBuilder sb = new StringBuilder();           String[] temp = filename.split(“\.”);</p>
+<p>​              String file = temp[0] + “Reversed.” + temp[1]; </p>
+<p>​              PrintWriter out = new PrintWriter(file);            int lineCount = 1;</p>
+<p>​              while((s = in.readLine()) != null)</p>
+<p>​                                         list.add(lineCount++ + “ “ + s); </p>
+<p>​              while(list.peekLast() != null) {                   String t = list.pollLast();                    out.println(t);</p>
+<p>​                     sb.append(t + “\n”); </p>
+<p>​              }</p>
+<p>​              in.close();</p>
+<p>​              out.close();          return sb.toString();             </p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) throws IOException {</p>
+<p>​              if(args.length != 1) {</p>
+<p>​                     System.out.println(“Usage: enter file name”);</p>
+<p>​                     System.exit(1);</p>
+<p>​              }</p>
+<p>​              System.out.println(readAndReverse(args[0]));</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class BasicFileOutput13 {</p>
+<p>​       static String file = “BasicFileOutput13.out”;</p>
+<p>​       public static void main(String[] args) throws IOException {</p>
+<p>​              LineNumberReader in = new LineNumberReader(</p>
+<p>​                     new FileReader(“BasicFileOutput13.java”));</p>
+<p>​              PrintWriter out = new PrintWriter(file);</p>
+<p>​              String s;</p>
+<p>​              while((s = in.readLine()) != null )</p>
+<p>​                     out.println(in.getLineNumber() + “: “ + s);</p>
+<p>​              out.close();</p>
+<p>​                           System.out.println(BufferedInputFile.read(file));</p>
+<p>​       }             </p>
+<p>}</p>
+<p>public class BasicFileOutput14 {</p>
+<p>​       static String file = “BasicFileOutput14.out”;</p>
+<p>​       static String file2 = “BasicFileOutput142.out”;</p>
+<p>​       public static void main(String[] args) throws IOException {</p>
+<p>​              BufferedReader in = new BufferedReader(</p>
+<p>​                     new StringReader(</p>
+<p>​                            BufferedInputFile.read(“BasicFileOutput14.java”)));</p>
+<p>​                           PrintWriter out = new PrintWriter(</p>
+<p>​                     new BufferedWriter(new FileWriter(file)));</p>
+<p>​              int lineCount = 1;</p>
+<p>​              String s;</p>
+<p>​              long start = System.nanoTime();</p>
+<p>​              while((s = in.readLine()) != null )</p>
+<p>​                     out.println(lineCount++ + “: “ + s);</p>
+<p>​              long duration = System.nanoTime() - start;</p>
+<p>​              out.close();</p>
+<p>​              System.out.println(“Buffered write:   “ + duration + “ nanoseconds”);</p>
+<p>​              BufferedReader in2 = new BufferedReader(</p>
+<p>​                     new StringReader(</p>
+<p>​                            BufferedInputFile.read(“BasicFileOutput14.java”)));</p>
+<p>​                           PrintWriter out2 = new PrintWriter(new FileWriter(file2));</p>
+<p>​              int lineCount2 = 1;</p>
+<p>​              String s2;</p>
+<p>​              long start2 = System.nanoTime();</p>
+<p>​              while((s2 = in2.readLine()) != null )</p>
+<p>​                     out2.println(lineCount2++ + “: “ + s2);</p>
+<p>​              long duration2 = System.nanoTime() - start2;</p>
+<p>​              out2.close();</p>
+<p>​              System.out.println(“Unbuffered write: “ + duration2 + “ nanoseconds”);</p>
+<p>​                           System.out.println(“file: “ + BufferedInputFile.read(file));</p>
+<p>​              System.out.println(“file2: “ + BufferedInputFile.read(file2));</p>
+<p>​       }             </p>
+<p>}</p>
+<p>public class StoringAndRecoveringData15 {</p>
+<p>​       public static void main(String[] args) throws IOException {</p>
+<p>​              DataOutputStream out = new DataOutputStream(</p>
+<p>​                     new BufferedOutputStream(</p>
+<p>​                            new FileOutputStream(“Data.txt”)));</p>
+<p>​              println(“Initial out.size() = “ + out.size());</p>
+<p>​              byte[] ba = {0,1,2,3};</p>
+<p>​                           out.write(ba,0,3);</p>
+<p>​                           out.write(ba);</p>
+<p>​              out.write((int)255);             out.writeBoolean(true);</p>
+<p>​              out.writeByte((int)1000000);</p>
+<p>​              out.writeBytes((String)”hi”);</p>
+<p>​              out.writeChar(120);</p>
+<p>​              out.writeChars(“hi”);            </p>
+<p>​              out.writeDouble(3.14159);</p>
+<p>​              out.writeFloat(2.1f);</p>
+<p>​              out.writeInt(1057);</p>
+<p>​              out.writeLong(123456789L);</p>
+<p>​              out.writeShort(123);</p>
+<p>​              out.writeUTF(“Nice piece of work”);</p>
+<p>​              println(“After writing, out.size() = “ + out.size());              </p>
+<p>​              out.close();</p>
+<p>​              println(“Reading:”);</p>
+<p>​              DataInputStream in = new DataInputStream(</p>
+<p>​                     new BufferedInputStream(</p>
+<p>​                            new FileInputStream(“Data.txt”)));</p>
+<p>​              byte[] baIn = new byte[3];</p>
+<p>​              println(“bytes read by in.read(baIn, 0, 3) = “ + in.read(baIn, 0, 3));</p>
+<p>​              print(“baIn = “);</p>
+<p>​              for(int i = 0; i &lt; baIn.length; i++)</p>
+<p>​                     print(baIn[i] + “ “);</p>
+<p>​              println();</p>
+<p>​                           println(“in.readInt() = “ + in.readInt());</p>
+<p>​              println(“in.read() = “ + in.read());        </p>
+<p>​              println(“in.readBoolean() = “ + in.readBoolean());            </p>
+<p>​              println(“in.readByte() = “ + in.readByte());         </p>
+<p>​              println(“in.read() = “ + in.read());             println(“in.read() = “ + in.read());             println(“in.readChar() = “ + in.readChar());</p>
+<p>​              println(“in.readChar() = “ + in.readChar());</p>
+<p>​              println(“in.readChar() = “ + in.readChar());</p>
+<p>​              println(“in.readDouble() = “ + in.readDouble());</p>
+<p>​              println(“in.readFloat() = “ + in.readFloat());</p>
+<p>​              println(“in.readInt() = “ + in.readInt());</p>
+<p>​              println(“in.readLong() = “ + in.readLong());</p>
+<p>​              println(“in.readShort() = “ + in.readShort());</p>
+<p>​              println(“in.readUTF() = “ + in.readUTF());          </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class UsingRandomAccessFile16 {</p>
+<p>​       static String file = “r16test.dat”;</p>
+<p>​       static void display() throws IOException {</p>
+<p>​              RandomAccessFile rf = new RandomAccessFile(file, “r”);</p>
+<p>​              byte[] bIn = new byte[3];</p>
+<p>​              rf.read(bIn);</p>
+<p>​              for(int i = 0; i &lt; bIn.length; i++)</p>
+<p>​                     print(bIn[i] + “ “);</p>
+<p>​              println();</p>
+<p>​                           println(“rf.readInt() = “ + rf.readInt());</p>
+<p>​              println(“rf.read() = “ + rf.read());         </p>
+<p>​              println(“rf.readBoolean() = “ + rf.readBoolean());             </p>
+<p>​              println(“rf.readByte() = “ + rf.readByte());          </p>
+<p>​              println(“rf.read() = “ + rf.read());              println(“rf.read() = “ + rf.read());              println(“rf.readChar() = “ + rf.readChar());</p>
+<p>​              println(“rf.readChar() = “ + rf.readChar());</p>
+<p>​              println(“rf.readChar() = “ + rf.readChar());</p>
+<p>​              println(“rf.readDouble() = “ + rf.readDouble());</p>
+<p>​              println(“rf.readFloat() = “ + rf.readFloat());</p>
+<p>​              println(“rf.readInt() = “ + rf.readInt());</p>
+<p>​              println(“rf.readLong() = “ + rf.readLong());</p>
+<p>​              println(“rf.readShort() = “ + rf.readShort());</p>
+<p>​              println(“rf.readUTF() = “ + rf.readUTF());</p>
+<p>​              rf.close();</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) throws IOException {     </p>
+<p>​              RandomAccessFile rf = new RandomAccessFile(file, “rw”);</p>
+<p>​              byte[] ba = {0,1,2,3};</p>
+<p>​                           rf.write(ba,0,3);</p>
+<p>​                           rf.write(ba);</p>
+<p>​              rf.write((int)255);                rf.writeBoolean(true);</p>
+<p>​              rf.writeByte((int)1000000);</p>
+<p>​              rf.writeBytes((String)”hi”);</p>
+<p>​              rf.writeChar(120);</p>
+<p>​              rf.writeChars(“hi”);        </p>
+<p>​              rf.writeDouble(3.14159);</p>
+<p>​              rf.writeFloat(2.1f);</p>
+<p>​              rf.writeInt(1057);</p>
+<p>​              rf.writeLong(123456789L);</p>
+<p>​              rf.writeShort(123);</p>
+<p>​              rf.writeUTF(“Nice piece of work”);              </p>
+<p>​              display();        </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class CharCounter {</p>
+<p>​       </p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                           String fileName = “CharCounter.java”;</p>
+<p>​                           char[] ca = read(fileName).toCharArray();</p>
+<p>​                           Set<character> charSet = new TreeSet<character>();    </character></character></p>
+<p>​              for(char c : ca) charSet.add(c);                       List<character> charList = new ArrayList<character>();</character></character></p>
+<p>​              for(char c : ca) charList.add(c);</p>
+<p>​              Map&lt;Character,Integer&gt; charMap = new HashMap&lt;Character,Integer&gt;();</p>
+<p>​              for(Character c : charSet) {</p>
+<p>​                     int count = 0;</p>
+<p>​                     for(Character d : charList) {</p>
+<p>​                            if(d.equals(c)) count++;</p>
+<p>​                     }</p>
+<p>​                     charMap.put(c, count);</p>
+<p>​              }  </p>
+<p>​              print();</p>
+<p>​              print(charMap);            </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class TextFile18 extends ArrayList<string> {</string></p>
+<p>​            public static String read(String fileName) throws IOException {</p>
+<p>​                  StringBuilder sb = new StringBuilder();</p>
+<p>​                  BufferedReader in = new BufferedReader(new FileReader(</p>
+<p>​                      new File(fileName).getAbsoluteFile()));</p>
+<p>​                 try {</p>
+<p>​                      String s;</p>
+<p>​                      while((s = in.readLine()) != null) {</p>
+<p>​                            sb.append(s);</p>
+<p>​                            sb.append(“\n”);</p>
+<p>​                      }</p>
+<p>​                 } finally {</p>
+<p>​                      in.close();</p>
+<p>​                 }</p>
+<p>​                  return sb.toString();</p>
+<p>​      }</p>
+<p>​           public static void write(String fileName, String text) throws IOException {</p>
+<p>​                  PrintWriter out = new PrintWriter(</p>
+<p>​                      new File(fileName).getAbsoluteFile());</p>
+<p>​                 try {</p>
+<p>​                      out.print(text);</p>
+<p>​                 } finally {</p>
+<p>​                      out.close();</p>
+<p>​                 }</p>
+<p>​           }</p>
+<p>​           public TextFile18(String fileName, String splitter) throws IOException {</p>
+<p>​                  super(Arrays.asList(read(fileName).split(splitter)));</p>
+<p>​                                                    if(get(0).equals(“”)) remove(0);</p>
+<p>​      }</p>
+<p>​           public TextFile18(String fileName) throws IOException {</p>
+<p>​                  this(fileName, “\n”);</p>
+<p>​      }</p>
+<p>​      public void write(String fileName) throws IOException {</p>
+<p>​                  PrintWriter out = new PrintWriter(</p>
+<p>​                      new File(fileName).getAbsoluteFile());</p>
+<p>​                 try {</p>
+<p>​                      for(String item : this)</p>
+<p>​                     out.println(item);</p>
+<p>​                 } finally {</p>
+<p>​                      out.close();</p>
+<p>​                 }</p>
+<p>​           }</p>
+<p>​           public static void main(String[] args) {</p>
+<p>​              try {</p>
+<p>​                         String file = read(“TextFile18.java”);</p>
+<p>​                         write(“test.txt”, file);</p>
+<p>​                         TextFile18 text = new TextFile18(“test.txt”);</p>
+<p>​                         text.write(“test2.txt”);</p>
+<p>​                                                 TreeSet<string> words = new TreeSet<string>(</string></string></p>
+<p>​                               new TextFile18(“TextFile18.java”, “\W+”));               </p>
+<p>​                                                 System.out.println(words.headSet(“a”));</p>
+<p>​              } catch(IOException e) {</p>
+<p>​                     System.err.println(“Caught “ + e);</p>
+<p>​                     e.printStackTrace();</p>
+<p>​              }</p>
+<p>​      }</p>
+<p>} </p>
+<p>public class ByteCounter19 {       </p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                           String fileName = “ByteCounter19.java”;</p>
+<p>​              try {</p>
+<p>​                                         byte[] ba = read(fileName);         </p>
+<p>​                                         Set<byte> byteSet = new TreeSet<byte>();      </byte></byte></p>
+<p>​                     for(Byte b : ba) byteSet.add(b);                                           List<byte> byteList = new ArrayList<byte>();</byte></byte></p>
+<p>​                     for(byte b : ba) byteList.add(b);</p>
+<p>​                     Map&lt;Byte,Integer&gt; byteMap = new HashMap&lt;Byte,Integer&gt;();</p>
+<p>​                     for(Byte b : byteSet) {</p>
+<p>​                            int count = 0;</p>
+<p>​                            for(Byte d : byteList) {</p>
+<p>​                                   if(d.equals(b)) count++;</p>
+<p>​                            }</p>
+<p>​                     byteMap.put(b, count);</p>
+<p>​                     }  </p>
+<p>​                     print();</p>
+<p>​                     print(byteMap);     </p>
+<p>​              } catch(IOException e) {</p>
+<p>​                     System.err.print(“Caught “ + e);</p>
+<p>​              } </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex20 {</p>
+<p>​       public static void main(String[] args) throws IOException {</p>
+<p>​              for(File file : Directory.walk(“.”, “.*\.class”).files) {</p>
+<p>​                     byte[] ba = read(file);</p>
+<p>​                     for(int i = 0; i &lt; 4; i++)</p>
+<p>​                            print(Integer.toHexString(ba[i] &amp; 0xff).toUpperCase());</p>
+<p>​                     println();</p>
+<p>​              }             </p>
+<p>​       } </p>
+<p>}</p>
+<p>public class Ex21 {</p>
+<p>​       public static void main(String[] args) throws IOException {</p>
+<p>​              File file = new File(“Ex21.java”);</p>
+<p>​              BufferedInputStream inFile = </p>
+<p>​                     new BufferedInputStream(new</p>
+<p>​                            FileInputStream(file));</p>
+<p>​              System.setIn(inFile);             </p>
+<p>​              BufferedReader stdin = new BufferedReader(</p>
+<p>​                     new InputStreamReader(System.in));</p>
+<p>​              String s;</p>
+<p>​              while((s = stdin.readLine()) != null)</p>
+<p>​                     System.out.println(s.toUpperCase());          </p>
+<p>​       }</p>
+<p>}</p>
+<p>class OSExecute22Exception extends RuntimeException {</p>
+<p>​       public OSExecute22Exception(String s) { super(s); }</p>
+<p>}</p>
+<p>class OSExecute22 {</p>
+<p>​       public static List<string> command(String command) {</string></p>
+<p>​              boolean err = false;</p>
+<p>​              List<string> ls = new ArrayList<string>(); </string></string></p>
+<p>​              try {</p>
+<p>​                     Process process = new ProcessBuilder(</p>
+<p>​                            command.split(“ “)).start();</p>
+<p>​                     BufferedReader results = new BufferedReader(</p>
+<p>​                            new InputStreamReader(process.getInputStream()));</p>
+<p>​                     String s;                </p>
+<p>​                     while((s = results.readLine()) != null) {</p>
+<p>​                            ls.add(s);</p>
+<p>​                     }</p>
+<p>​                     BufferedReader errors = new BufferedReader(</p>
+<p>​                            new InputStreamReader(process.getErrorStream()));</p>
+<p>​                                                             while((s = errors.readLine()) != null) { </p>
+<p>​                            System.err.println(s);</p>
+<p>​                            err = true;</p>
+<p>​                     }</p>
+<p>​              } catch(Exception e) {</p>
+<p>​                                                             if(!command.startsWith(“CMD                        command(“CMD                       else</p>
+<p>​                            throw new RuntimeException(e);</p>
+<p>​              }</p>
+<p>​              if(err)</p>
+<p>​                     throw new OSExecute22Exception(“Errors executing “ + command);</p>
+<p>​              return ls;</p>
+<p>​       }</p>
+<p>} </p>
+<p>public class OSExecute22Test {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              for(String s : OSExecute22.command(“javap OSExecute22Test”))</p>
+<p>​                     println(s);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class CharBufferPrinter23 {</p>
+<p>​       public static boolean isPrintable(char c) {</p>
+<p>​                           return (((c &gt;= ‘!’) &amp;&amp; (c &lt;= ‘~’)) ? true : false);</p>
+<p>​       }</p>
+<p>​       public static void printCharBuffer(CharBuffer cb) {</p>
+<p>​              cb.clear();            while(cb.hasRemaining()) {</p>
+<p>​                     char c = cb.get();          </p>
+<p>​                     if(isPrintable(c)) System.out.print(c);</p>
+<p>​              }</p>
+<p>​       } </p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              char[] ca = {‘w’,’x’,’y’,’z’};</p>
+<p>​              CharBuffer cb = CharBuffer.wrap(ca);</p>
+<p>​              print(“CharBuffer by wrapping char[]: “);</p>
+<p>​              printCharBuffer(cb);</p>
+<p>​              println();</p>
+<p>​              CharBuffer cb2 = CharBuffer.allocate(6);</p>
+<p>​              char[] ca2 = {‘s’,’t’,’u’,’v’,’w’};</p>
+<p>​              cb2.put(ca2); </p>
+<p>​              print(“CharBuffer by allocation: “);</p>
+<p>​              printCharBuffer(cb2);</p>
+<p>​              println();</p>
+<p>​                           char[] ca3 = {(char)0x01, (char)0x07, (char)0x7F,’b’,’y’,’e’};</p>
+<p>​              CharBuffer cb3 = CharBuffer.wrap(ca3);</p>
+<p>​              print(“CharBuffer including some unprintables: “);</p>
+<p>​              printCharBuffer(cb3);           </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class DoubleBufferDemo24 {</p>
+<p>​       private static final int BSIZE = 1024;</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              ByteBuffer bb = ByteBuffer.allocate(BSIZE);</p>
+<p>​              DoubleBuffer db = bb.asDoubleBuffer();</p>
+<p>​                           db.put(new </p>
+<p>​                     double[]{11.11,42.42,27.37,99.99,143.143,811.811,1016.1026});</p>
+<p>​                           System.out.println(db.get(3));</p>
+<p>​              db.put(3, 1811.1811);</p>
+<p>​                           db.flip();</p>
+<p>​              while(db.hasRemaining()) {</p>
+<p>​                     double d = db.get();</p>
+<p>​                     System.out.println(d);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class AllocateDirectTest25 {     </p>
+<p>​                   public static File toDirect(File f) throws IOException {</p>
+<p>​              FileChannel fcIn = new FileInputStream(f).getChannel();  </p>
+<p>​              ByteBuffer b = ByteBuffer.allocateDirect((int)f.length());</p>
+<p>​              fcIn.read(b);</p>
+<p>​              b.flip();</p>
+<p>​              Charset cs = Charset.defaultCharset();       </p>
+<p>​              CharBuffer cb = cs.decode(b);</p>
+<p>​              String cbD1 = cb.toString().replace(</p>
+<p>​                     “.allocate(“, “.allocateDirect(“);</p>
+<p>​              String cbD = cbD1.replace(f.getName().split(“\.”)[0], </p>
+<p>​                     f.getName().split(“\.”)[0] + “Direct”);</p>
+<p>​              CharBuffer cbNew = CharBuffer.wrap(cbD);</p>
+<p>​              String ext = (f.getName().split(“\.”))[1];</p>
+<p>​              String outFile = (f.getName().split(“\.”))[0] + </p>
+<p>​                     “Direct.” + ext;</p>
+<p>​              FileChannel fcOut = </p>
+<p>​                     new FileOutputStream(</p>
+<p>​                            new File(outFile)).getChannel();</p>
+<p>​              fcOut.write(cs.encode(cbNew));          </p>
+<p>​                           fcIn.close();</p>
+<p>​              fcOut.close();</p>
+<p>​              return new File(outFile);</p>
+<p>​       }</p>
+<p>​             public static void Tester(String s) {</p>
+<p>​              try {                     Class c = Class.forName(s);</p>
+<p>​                     String name = c.getSimpleName();</p>
+<p>​                     print(“Testing: “ + name);</p>
+<p>​                     @SuppressWarnings(“unchecked”)</p>
+<p>​                     Method m = c.getMethod(“main”, String[].class);</p>
+<p>​                                                             String[] sa = new String[]{“ChannelCopy.java”, “Test.txt”};</p>
+<p>​                     long startRun = System.nanoTime(); </p>
+<p>​                     m.invoke(c.newInstance(), (Object)sa);</p>
+<p>​                     long duration = System.nanoTime() - startRun;</p>
+<p>​                     print(“\nTime to run “ + name + “ = “ </p>
+<p>​                            + duration + “ nanoseconds”);                         </p>
+<p>​              } catch(Exception e) {</p>
+<p>​                     e.printStackTrace(System.err);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       public static long allocationTime(int i) { </p>
+<p>​              long start = System.nanoTime();</p>
+<p>​              ByteBuffer bb = ByteBuffer.allocate(i);</p>
+<p>​              return System.nanoTime() - start;</p>
+<p>​       }      </p>
+<p>​       public static long directAllocationTime(int i) { </p>
+<p>​              long start = System.nanoTime();</p>
+<p>​              ByteBuffer bb = ByteBuffer.allocateDirect(i);</p>
+<p>​              return System.nanoTime() - start;</p>
+<p>​       }</p>
+<p>​       </p>
+<p>​       public static void main(final String[] args) throws IOException {</p>
+<p>​                           print(“Time to allocate 1024 bytes = “ </p>
+<p>​                     + allocationTime(1024) + “ nanoseconds”);</p>
+<p>​              print(“Time to allocateDirect 1024 bytes = “ </p>
+<p>​                     + directAllocationTime(1024) + “ nanoseconds”);</p>
+<p>​              print(“Time to allocate 48 bytes = “ </p>
+<p>​                     + allocationTime(48) + “ nanoseconds”);</p>
+<p>​              print(“Time to allocateDirect 48 bytes = “ </p>
+<p>​                     + directAllocationTime(48) + “ nanoseconds”);</p>
+<p>​              print(“Time to allocate 1 byte = “ </p>
+<p>​                     + allocationTime(1) + “ nanoseconds”);</p>
+<p>​              print(“Time to allocateDirect 1 byte = “ </p>
+<p>​                     + directAllocationTime(1) + “ nanoseconds”);</p>
+<p>​              Tester(“GetChannel”);</p>
+<p>​              toDirect(new File(“GetChannel.java”));</p>
+<p>​                           Tester(“GetChannelDirect”);</p>
+<p>​              Tester(“BufferToText”);</p>
+<p>​              toDirect(new File(“BufferToText.java”));</p>
+<p>​                           Tester(“BufferToTextDirect”);</p>
+<p>​              Tester(“ChannelCopy”);</p>
+<p>​              toDirect(new File(“ChannelCopy.java”));</p>
+<p>​                           Tester(“ChannelCopyDirect”);</p>
+<p>​              Tester(“GetData”);</p>
+<p>​              toDirect(new File(“GetData.java”));</p>
+<p>​                           Tester(“GetDataDirect”);</p>
+<p>​              Tester(“IntBufferDemo”);</p>
+<p>​              toDirect(new File(“IntBufferDemo.java”));</p>
+<p>​                           Tester(“IntBufferDemoDirect”);</p>
+<p>​              Tester(“UsingBuffers”);</p>
+<p>​              toDirect(new File(“UsingBuffers.java”));</p>
+<p>​                           Tester(“UsingBuffersDirect”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class JGrep26  {</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              if(args.length &lt; 2) {</p>
+<p>​                     System.out.println(“Usage: java JGrep26 file regex”);</p>
+<p>​                     System.exit(0);</p>
+<p>​              }</p>
+<p>​              FileChannel fc = new FileInputStream(args[0]).getChannel();          </p>
+<p>​              MappedByteBuffer in = </p>
+<p>​                     fc.map(FileChannel.MapMode.READ_ONLY, 0, </p>
+<p>​                            new File(args[0]).length());</p>
+<p>​                           String[] sa = Charset.forName(System.getProperty(“file.encoding”))</p>
+<p>​                     .decode(in).toString().split(“\n”);</p>
+<p>​              Pattern p = Pattern.compile(args[1]);         </p>
+<p>​              Matcher m = p.matcher(“”);              int index = 0;</p>
+<p>​              for(String line : sa) {</p>
+<p>​                     m.reset(line);</p>
+<p>​                     while(m.find())</p>
+<p>​                            System.out.println(index++ + “: “ + </p>
+<p>​                                   m.group() + “: “ + m.start());</p>
+<p>​              }</p>
+<p>​              fc.close();</p>
+<p>​       }</p>
+<p>}</p>
+<p>class A implements Serializable { </p>
+<p>​       private int i;    </p>
+<p>​       A(int i) { this.i = i; }</p>
+<p>​       public String toString() { return “A:” + i; }</p>
+<p>} </p>
+<p>class B implements Serializable {</p>
+<p>​       private char c;</p>
+<p>​       private A a;</p>
+<p>​       B(char c, A a) {</p>
+<p>​              this.c = c;</p>
+<p>​              this.a = a;</p>
+<p>​       }</p>
+<p>​       public String toString() {</p>
+<p>​              return “B:” + c + “ “ + a;</p>
+<p>​       }      </p>
+<p>}</p>
+<p>public class SerializationTest implements Serializable {</p>
+<p>​       private static Random rand = new Random();</p>
+<p>​       public static void main(String[] args) </p>
+<p>​       throws ClassNotFoundException, IOException {</p>
+<p>​              B b = new B(‘x’, new A(rand.nextInt(100)));</p>
+<p>​              System.out.println(“b: “ + b);</p>
+<p>​              ObjectOutputStream out = new ObjectOutputStream(</p>
+<p>​                     new FileOutputStream(“STest.out”));</p>
+<p>​              out.writeObject(b);</p>
+<p>​              out.close();</p>
+<p>​              ObjectInputStream in = new ObjectInputStream(</p>
+<p>​                     new FileInputStream(“STest.out”));</p>
+<p>​              B b2 = (B)in.readObject();</p>
+<p>​              System.out.println(“b2: “ + b2);          </p>
+<p>​       }</p>
+<p>}</p>
+<p>class Blip1 implements Externalizable {</p>
+<p>​       public Blip1() {</p>
+<p>​              print(“Blip1 Constructor”);</p>
+<p>​       }</p>
+<p>​       public void writeExternal(ObjectOutput out) </p>
+<p>​       throws  IOException {</p>
+<p>​              print(“Blip1.writeExternal”);</p>
+<p>​       }</p>
+<p>​       public void readExternal(ObjectInput in) </p>
+<p>​       throws IOException, ClassNotFoundException {</p>
+<p>​              print(“Blip1.readExternal”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class BlipCheck implements Externalizable {</p>
+<p>​                                     public void writeExternal(ObjectOutput out) </p>
+<p>​       throws IOException {</p>
+<p>​              print(“BlipCheck writeExternal”);</p>
+<p>​       }</p>
+<p>​       public void readExternal(ObjectInput in) </p>
+<p>​       throws IOException, ClassNotFoundException {</p>
+<p>​              print(“BlipCheck readExternal”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Blips {</p>
+<p>​       public static void main(String[] args) </p>
+<p>​       throws IOException, ClassNotFoundException {</p>
+<p>​              print(“Constructing objects:”);</p>
+<p>​              Blip1 b1 = new Blip1();</p>
+<p>​              Blip2 b2 = new Blip2();</p>
+<p>​              BlipCheck bc = new BlipCheck();</p>
+<p>​              ObjectOutputStream o = new ObjectOutputStream(</p>
+<p>​                     new FileOutputStream(“Blips.out”));</p>
+<p>​              print(“Saving objects:”);</p>
+<p>​              o.writeObject(b1);</p>
+<p>​              o.writeObject(b2);</p>
+<p>​              o.writeObject(bc);</p>
+<p>​              o.close();</p>
+<p>​                           ObjectInputStream in = new ObjectInputStream(</p>
+<p>​                     new FileInputStream(“Blips.out”));</p>
+<p>​              print(“Recovering b1:”);</p>
+<p>​              b1 = (Blip1)in.readObject();</p>
+<p>​              print(“Recovering b2:”);</p>
+<p>​              b2 = (Blip2)in.readObject();</p>
+<p>​              print(“Recovering bc:”);</p>
+<p>​              bc = (BlipCheck)in.readObject();</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Blip29 implements Externalizable {</p>
+<p>​       private int i;</p>
+<p>​       private String s;   public Blip29() {</p>
+<p>​              print(“Blip29 Contstructor”);</p>
+<p>​                    }</p>
+<p>​       public Blip29(String x, int a) {</p>
+<p>​              print(“Blip29(String x, int a)”);</p>
+<p>​              s = x;</p>
+<p>​              i = a;</p>
+<p>​                    }</p>
+<p>​       public String toString() { return s + i; }</p>
+<p>​       public void writeExternal(ObjectOutput out) </p>
+<p>​       throws IOException {</p>
+<p>​              print(“Blip29.writeExternal”);</p>
+<p>​                                                                                     }</p>
+<p>​       public void readExternal(ObjectInput in)</p>
+<p>​       throws IOException, ClassNotFoundException {</p>
+<p>​              print(“Blip29.readExternal”);</p>
+<p>​                                                                                     }</p>
+<p>​       public static void main(String[] args)</p>
+<p>​       throws IOException, ClassNotFoundException {</p>
+<p>​              print(“Constructing objects:”);</p>
+<p>​              Blip29 b29 = new Blip29(“A String “, 47);</p>
+<p>​              print(b29);</p>
+<p>​              ObjectOutputStream o = new ObjectOutputStream(</p>
+<p>​                     new FileOutputStream(“Blip29.out”));</p>
+<p>​              print(“Saving object:”);</p>
+<p>​              o.writeObject(b29);</p>
+<p>​              o.close();</p>
+<p>​                           ObjectInputStream in = new ObjectInputStream(</p>
+<p>​                     new FileInputStream(“Blip29.out”));</p>
+<p>​              print(“Recovering b29:”);</p>
+<p>​              b29 = (Blip29)in.readObject();</p>
+<p>​              print(b29);</p>
+<p>​       }</p>
+<p>}</p>
+<p>abstract class Shape implements Serializable {</p>
+<p>​       public static final int RED = 1, BLUE = 2, GREEN = 3;</p>
+<p>​       private int xPos, yPos, dimension;</p>
+<p>​       private static Random rand = new Random(47);</p>
+<p>​       private static int counter = 0;</p>
+<p>​       public abstract void setColor(int newColor);</p>
+<p>​       public abstract int getColor();</p>
+<p>​       public Shape(int xVal, int yVal, int dim) {</p>
+<p>​              xPos = xVal;</p>
+<p>​              yPos = yVal;</p>
+<p>​              dimension = dim;</p>
+<p>​       }</p>
+<p>​       public String toString() {</p>
+<p>​              return getClass() + </p>
+<p>​                     “ color[“ + getColor() + “] xPos[“ + xPos +</p>
+<p>​                     “] yPos[“ + yPos + “] dim[“ + dimension + “]\n”; </p>
+<p>​       }</p>
+<p>​       public static Shape randomFactory() {</p>
+<p>​              int xVal = rand.nextInt(100);</p>
+<p>​              int yVal = rand.nextInt(100);</p>
+<p>​              int dim = rand.nextInt(100);</p>
+<p>​              switch(counter++ % 3) {</p>
+<p>​                     default:</p>
+<p>​                     case 0: return new Circle(xVal, yVal, dim);</p>
+<p>​                     case 1: return new Square(xVal, yVal, dim);</p>
+<p>​                     case 2: return new Line(xVal, yVal, dim);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Circle extends Shape {</p>
+<p>​       private static int color = RED;</p>
+<p>​       public static void serializeStaticState(ObjectOutputStream os)</p>
+<p>​       throws IOException { os.writeInt(color); }</p>
+<p>​       public static void deserializeStaticState(ObjectInputStream os) </p>
+<p>​       throws IOException { color = os.readInt(); }</p>
+<p>​       public Circle(int xVal, int yVal, int dim) {</p>
+<p>​              super(xVal, yVal, dim);</p>
+<p>​       }</p>
+<p>​       public void setColor(int newColor) { color = newColor; }</p>
+<p>​       public int getColor() { return color; }</p>
+<p>} </p>
+<p>class Square extends Shape {</p>
+<p>​       private static int color;</p>
+<p>​       public static void serializeStaticState(ObjectOutputStream os)</p>
+<p>​       throws IOException { os.writeInt(color); }</p>
+<p>​       public static void deserializeStaticState(ObjectInputStream os) </p>
+<p>​       throws IOException { color = os.readInt(); }</p>
+<p>​       public Square(int xVal, int yVal, int dim) {</p>
+<p>​              super(xVal, yVal, dim);</p>
+<p>​              color = RED;</p>
+<p>​       }</p>
+<p>​       public void setColor(int newColor) { color = newColor; }</p>
+<p>​       public int getColor() { return color; }</p>
+<p>}</p>
+<p>class Line extends Shape {</p>
+<p>​       private static int color = RED;</p>
+<p>​       public static void serializeStaticState(ObjectOutputStream os)</p>
+<p>​       throws IOException { os.writeInt(color); }</p>
+<p>​       public static void deserializeStaticState(ObjectInputStream os) </p>
+<p>​       throws IOException { color = os.readInt(); }</p>
+<p>​       public Line(int xVal, int yVal, int dim) {</p>
+<p>​              super(xVal, yVal, dim);</p>
+<p>​       }</p>
+<p>​       public void setColor(int newColor) { color = newColor; }</p>
+<p>​       public int getColor() { return color; }</p>
+<p>}</p>
+<p>public class StoreCADState30 {</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​       List<shape> shapes = new ArrayList<shape>();</shape></shape></p>
+<p>​             for(int i = 0; i &lt; 10; i++)</p>
+<p>​              shapes.add(Shape.randomFactory());</p>
+<p>​             for(int i = 0; i &lt; 10; i++)</p>
+<p>​              ((Shape)shapes.get(i)).setColor(Shape.GREEN);</p>
+<p>​             ObjectOutputStream out = new ObjectOutputStream(</p>
+<p>​              new FileOutputStream(“CADState.out”));</p>
+<p>​       Circle.serializeStaticState(out);</p>
+<p>​       Square.serializeStaticState(out);</p>
+<p>​       Line.serializeStaticState(out);</p>
+<p>​       out.writeObject(shapes);</p>
+<p>​             System.out.println(shapes);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class WordCountXML {</p>
+<p>​       public static void format(OutputStream os, Document doc) </p>
+<p>​       throws Exception {</p>
+<p>​              Serializer serializer = new Serializer(os, “ISO-8859-1”);</p>
+<p>​              serializer.setIndent(4);</p>
+<p>​              serializer.setMaxLength(64);</p>
+<p>​              serializer.write(doc);</p>
+<p>​              serializer.flush();</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                           String fileName = “WordCountXML.java”;</p>
+<p>​                           Set<string> uniqueWords = </string></p>
+<p>​                     new TreeSet<string>(new TextFile(fileName, “\W+”));</string></p>
+<p>​                           ArrayList<string> allWords = new TextFile(fileName, “\W+”);</string></p>
+<p>​              Map&lt;String,Integer&gt; wordCount = new TreeMap&lt;String,Integer&gt;();    </p>
+<p>​                           for(String s : uniqueWords) {</p>
+<p>​                     int count = 0;</p>
+<p>​                     for(String t : allWords) {</p>
+<p>​                            if(t.equals(s)) count++;</p>
+<p>​                     }</p>
+<p>​                     wordCount.put(s, count);</p>
+<p>​              }</p>
+<p>​              Element root = new Element(“words”);                        Iterator it = wordCount.entrySet().iterator();</p>
+<p>​              while(it.hasNext()) {</p>
+<p>​                     @SuppressWarnings(“unchecked”)</p>
+<p>​                     Map.Entry&lt;String,Integer&gt; me = </p>
+<p>​                            (Map.Entry&lt;String,Integer&gt;)it.next();</p>
+<p>​                     Element word = new Element(“word”);</p>
+<p>​                     word.appendChild(me.getKey() + “: “);</p>
+<p>​                     word.appendChild(Integer.toString(me.getValue()));</p>
+<p>​                     root.appendChild(word);</p>
+<p>​              }             </p>
+<p>​              Document doc = new Document(root);</p>
+<p>​                           try {        </p>
+<p>​                     format(System.out, doc);</p>
+<p>​                     format(new BufferedOutputStream(</p>
+<p>​                            new FileOutputStream(“WordCount.xml”)), doc); </p>
+<p>​              } catch(Exception e) {</p>
+<p>​                     System.err.println(e);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class PreferencesDemo33 {</p>
+<p>​       public static void main(String[] args) throws Exception {         </p>
+<p>​              Preferences prefs = Preferences</p>
+<p>​                     .userNodeForPackage(PreferencesDemo33.class);</p>
+<p>​              int value = prefs.getInt(“base directory”, 0);</p>
+<p>​              System.out.print(“Base directory value = “ + value +</p>
+<p>​                     “\nEnter new base directory value (integer): “);</p>
+<p>​              BufferedReader br = new BufferedReader(</p>
+<p>​                     new InputStreamReader(System.in));</p>
+<p>​              try {</p>
+<p>​                     value = Integer.parseInt(br.readLine());</p>
+<p>​                 } catch (Exception e) {</p>
+<p>​                     System.err.println(e);</p>
+<p>​                     System.exit(1);</p>
+<p>​                 }</p>
+<p>​              prefs.putInt(“base directory”, value);          </p>
+<p>​       }</p>
+<p>}</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/题解/" rel="tag"># 题解</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/06/2019-10-06-Java题解初始化/" rel="next" title="Java题解初始化">
+                <i class="fa fa-chevron-left"></i> Java题解初始化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/06/2019-10-06-Java题解内部类/" rel="prev" title="Java题解内部类">
+                Java题解内部类 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第十八章-IO"><span class="nav-number">1.</span> <span class="nav-text">第十八章 IO</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

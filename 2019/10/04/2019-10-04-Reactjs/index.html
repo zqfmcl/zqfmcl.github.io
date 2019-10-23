@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Reactjs,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="Reactjs ReactDOM.render() JSX 语法 组件 this.props.children PropTypes 获取真实的DOM节点 this.state 表单 组件生命周期 生命周期与回调函数 Ajax      ReactjsReactDOM.render()ReactDOM.render()是React最基本的方法，用于将模板转为 HTML 语言，并插入。 Reac">
+<meta name="keywords" content="Reactjs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Reactjs">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-Reactjs/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="Reactjs ReactDOM.render() JSX 语法 组件 this.props.children PropTypes 获取真实的DOM节点 this.state 表单 组件生命周期 生命周期与回调函数 Ajax      ReactjsReactDOM.render()ReactDOM.render()是React最基本的方法，用于将模板转为 HTML 语言，并插入。 Reac">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.398Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Reactjs">
+<meta name="twitter:description" content="Reactjs ReactDOM.render() JSX 语法 组件 this.props.children PropTypes 获取真实的DOM节点 this.state 表单 组件生命周期 生命周期与回调函数 Ajax      ReactjsReactDOM.render()ReactDOM.render()是React最基本的方法，用于将模板转为 HTML 语言，并插入。 Reac">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-Reactjs/">
+
+
+
+
+
+  <title>Reactjs | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-Reactjs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Reactjs</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T10:00:00+08:00">
+                2019-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <!-- toc orderedList:0 -->
+
+<ul>
+<li><a href="#reactjs">Reactjs</a><ul>
+<li><a href="#reactdomrender">ReactDOM.render()</a></li>
+<li><a href="#jsx-语法">JSX 语法</a></li>
+<li><a href="#组件">组件</a></li>
+<li><a href="#thispropschildren">this.props.children</a></li>
+<li><a href="#proptypes">PropTypes</a></li>
+<li><a href="#获取真实的dom节点">获取真实的DOM节点</a></li>
+<li><a href="#thisstate">this.state</a></li>
+<li><a href="#表单">表单</a></li>
+<li><a href="#组件生命周期">组件生命周期</a></li>
+<li><a href="#生命周期与回调函数">生命周期与回调函数</a></li>
+<li><a href="#ajax">Ajax</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h2 id="Reactjs"><a href="#Reactjs" class="headerlink" title="Reactjs"></a>Reactjs</h2><h3 id="ReactDOM-render"><a href="#ReactDOM-render" class="headerlink" title="ReactDOM.render()"></a>ReactDOM.render()</h3><p><code>ReactDOM.render()</code>是React最基本的方法，用于将模板转为 HTML 语言，并插入。</p>
+<pre><code class="js">ReactDOM.render(
+  &lt;h1&gt;Hello, world!&lt;/h1&gt;,
+  document.getElementById(&#39;example&#39;)
+);</code></pre>
+<blockquote>
+<p>只能包括一个最顶层的标签。</p>
+</blockquote>
+<h3 id="JSX-语法"><a href="#JSX-语法" class="headerlink" title="JSX 语法"></a>JSX 语法</h3><p> <code>JSX</code> 的基本语法规则：遇到 <code>HTML</code> 标签（以 <code>&lt;</code> 开头），就用 <code>HTML</code> 规则解析；遇到代码块（以 <code>{</code>开头），就用 <code>JavaScript</code> 规则解析，而且允许混写。</p>
+<pre><code class="js">var names = [&#39;Alice&#39;, &#39;Emily&#39;, &#39;Kate&#39;];
+
+ReactDOM.render(
+  &lt;div&gt;
+  {
+    names.map(function (name) {
+      return &lt;div&gt;Hello, {name}!&lt;/div&gt;
+    })
+  }
+  &lt;/div&gt;,
+  document.getElementById(&#39;example&#39;)
+);</code></pre>
+<p><code>JSX</code>允许模板插件 JavaScript 变量。如果是数组，就会展开。</p>
+<h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><p>React 允许将代码封装成组件，然后像 HTML 插入。</p>
+<p><code>createClass</code>用于生成一个组件类。</p>
+<pre><code class="js">var HelloMessage = React.createClass({
+  render: function() {
+    return &lt;h1&gt;Hello {this.props.name}&lt;/h1&gt;;
+  }
+});
+
+ReactDOM.render(
+  &lt;HelloMessage name=&quot;John&quot; /&gt;,
+  document.getElementById(&#39;example&#39;)
+);</code></pre>
+<p>组件类第一个字母必须是大写，否则报错。</p>
+<p>组件的属性可以在组件类的<code>this.props</code>对象上获取。</p>
+<h3 id="this-props-children"><a href="#this-props-children" class="headerlink" title="this.props.children"></a>this.props.children</h3><p><code>this.props</code>对象的属性与组件一一对应。<br>但唯一的例外是<code>this.props.children</code>属性。</p>
+<h3 id="PropTypes"><a href="#PropTypes" class="headerlink" title="PropTypes"></a>PropTypes</h3><p>组件类的<code>PropTypes</code>属性，用来验证组件实例是够符合要求。</p>
+<pre><code class="js">var MyTitle = React.createClass({
+
+    getDefaultProps : function () {
+       return {
+         title : &#39;Hello World&#39;
+       };
+     },
+
+  propTypes: {
+    title: React.PropTypes.string.isRequired,
+  },
+
+  render: function() {
+     return &lt;h1&gt; {this.props.title} &lt;/h1&gt;;
+   }
+});</code></pre>
+<p>上面的<code>MyTitle</code>组件有一个<code>title</code>属性，<code>PropTypes</code>规定属性必须是字符串，而是必须填写的。</p>
+<p><code>getDefaultProps</code>设置默认值。</p>
+<p>通用写法：</p>
+<pre><code class="js">static defaultProps = {
+       value: false,
+   };
+
+static propTypes = {
+   value:React.PropTypes.func,
+}</code></pre>
+<h3 id="获取真实的DOM节点"><a href="#获取真实的DOM节点" class="headerlink" title="获取真实的DOM节点"></a>获取真实的DOM节点</h3><p>组件的都是虚拟的 DOM ，是内存当中的一种数据结构。数据的变动先发生在虚拟 DOM 中，然后再反映在真实的DOM上。</p>
+<p>要获得真实的DOM节点，就要用到<code>ref</code>属性。</p>
+<pre><code class="js">var MyComponent = React.createClass({
+  handleClick: function() {
+    this.refs.myTextInput.focus();
+    console.log(this.refs.myTextInput.value);
+  },
+  render: function() {
+    return (
+      &lt;div&gt;
+        &lt;input type=&quot;text&quot; ref=&quot;myTextInput&quot; /&gt;
+        &lt;input type=&quot;button&quot; value=&quot;Focus the text input&quot; onClick={this.handleClick} /&gt;
+      &lt;/div&gt;
+    );
+  }
+});
+
+ReactDOM.render(
+  &lt;MyComponent /&gt;,
+  document.getElementById(&#39;example&#39;)
+);</code></pre>
+<p><code>this.refs.[refName]</code>属性获取真实的DOM，所以等到虚拟 DOM 插入后才能使用这个属性，否则报错。</p>
+<h3 id="this-state"><a href="#this-state" class="headerlink" title="this.state"></a>this.state</h3><p>组件免不了要与用户互动，React 的一大创新就是将组件看成一个状态机。状态变化就会触发重新渲染UI。</p>
+<pre><code class="js">var LikeButton = React.createClass({
+  getInitialState: function() {
+    return {liked: false};
+  },
+  handleClick: function(event) {
+    this.setState({liked: !this.state.liked});
+  },
+  render: function() {
+    var text = this.state.liked ? &#39;like&#39; : &#39;haven\&#39;t liked&#39;;
+    return (
+      &lt;p onClick={this.handleClick}&gt;
+        You {text} this. Click to toggle.
+      &lt;/p&gt;
+    );
+  }
+});
+
+ReactDOM.render(
+  &lt;LikeButton /&gt;,
+  document.getElementById(&#39;example&#39;)
+);</code></pre>
+<ul>
+<li><code>getInitialState</code>:定义初始状态，也是一个对象，通过<code>this.state</code>可以获取。</li>
+<li><code>this,setState</code>:修改状态值，修改后会自动调用<code>this.render</code>方法，重新渲染。</li>
+</ul>
+<p><code>this.props</code>表示一旦确定就不太改变的属性，<code>this.state</code>会随用户互动而产生变化。</p>
+<h3 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h3><pre><code class="js">var Input = React.createClass({
+  getInitialState: function() {
+    return {value: &#39;Hello!&#39;};
+  },
+  handleChange: function(event) {
+    this.setState({value: event.target.value});
+  },
+  render: function () {
+    var value = this.state.value;
+    return (
+      &lt;div&gt;
+        &lt;input type=&quot;text&quot; value={value} onChange={this.handleChange} /&gt;
+        &lt;p&gt;{value}&lt;/p&gt;
+      &lt;/div&gt;
+    );
+  }
+});
+
+ReactDOM.render(&lt;Input/&gt;, document.body);</code></pre>
+<p><code>event.target.value</code>用于读取文本输入的内容。<br><code>onchange</code>事件对用于的输入做出反应。</p>
+<h3 id="组件生命周期"><a href="#组件生命周期" class="headerlink" title="组件生命周期"></a>组件生命周期</h3><p>组件的生命周期可分成三个状态：</p>
+<ul>
+<li><p><code>Mounting</code>：已插入真实 DOM</p>
+</li>
+<li><p><code>Updating</code>：正在被重新渲染</p>
+</li>
+<li><p><code>Unmounting</code>：已移出真实 DOM</p>
+<p>React 为每个状态都提供了两种处理函数，will 函数在进入状态之前调用，did 函数在进入状态之后调用，三种状态共计五种处理函数。</p>
+</li>
+<li><p>componentWillMount()</p>
+</li>
+<li><p>componentDidMount()</p>
+</li>
+<li><p>componentWillUpdate(object nextProps, object nextState)</p>
+</li>
+<li><p>componentDidUpdate(object prevProps, object prevState)</p>
+</li>
+<li><p>componentWillUnmount()</p>
+<p>此外，React 还提供两种特殊状态的处理函数。</p>
+</li>
+<li><p>componentWillReceiveProps(object nextProps)：已加载组件收到新的参数时调用</p>
+</li>
+<li><p>shouldComponentUpdate(object nextProps, object nextState)：组件判断是否重新渲染时调用</p>
+</li>
+</ul>
+<h3 id="生命周期与回调函数"><a href="#生命周期与回调函数" class="headerlink" title="生命周期与回调函数"></a>生命周期与回调函数</h3><table>
+<thead>
+<tr>
+<th>生命周期</th>
+<th>调用次数</th>
+<th>能否使用 setSate()</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>getDefaultProps</td>
+<td>1(全局调用一次)</td>
+<td>否</td>
+</tr>
+<tr>
+<td>getInitialState</td>
+<td>1</td>
+<td>否</td>
+</tr>
+<tr>
+<td>componentWillMount</td>
+<td>1</td>
+<td>是</td>
+</tr>
+<tr>
+<td>render</td>
+<td>&gt;=1</td>
+<td>否</td>
+</tr>
+<tr>
+<td>componentDidMount</td>
+<td>1</td>
+<td>是</td>
+</tr>
+<tr>
+<td>componentWillReceiveProps</td>
+<td>&gt;=0</td>
+<td>是</td>
+</tr>
+<tr>
+<td>shouldComponentUpdate</td>
+<td>&gt;=0</td>
+<td>否</td>
+</tr>
+<tr>
+<td>componentWillUpdate</td>
+<td>&gt;=0</td>
+<td>否</td>
+</tr>
+<tr>
+<td>componentDidUpdate</td>
+<td>&gt;=0</td>
+<td>否</td>
+</tr>
+<tr>
+<td>componentWillUnmount</td>
+<td>1</td>
+<td>否</td>
+</tr>
+</tbody></table>
+<h3 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h3><p>略。</p>
+<blockquote>
+<p>资料参考：<a href="http://www.ruanyifeng.com/blog/2015/03/react.html" target="_blank" rel="noopener">阮一峰</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Reactjs/" rel="tag"># Reactjs</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-Reverse-Integer[E]/" rel="next" title="Reverse Integer[E]">
+                <i class="fa fa-chevron-left"></i> Reverse Integer[E]
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-Remove-Element[E]/" rel="prev" title="Remove Element[E]">
+                Remove Element[E] <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reactjs"><span class="nav-number">1.</span> <span class="nav-text">Reactjs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ReactDOM-render"><span class="nav-number">1.1.</span> <span class="nav-text">ReactDOM.render()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSX-语法"><span class="nav-number">1.2.</span> <span class="nav-text">JSX 语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件"><span class="nav-number">1.3.</span> <span class="nav-text">组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this-props-children"><span class="nav-number">1.4.</span> <span class="nav-text">this.props.children</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PropTypes"><span class="nav-number">1.5.</span> <span class="nav-text">PropTypes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取真实的DOM节点"><span class="nav-number">1.6.</span> <span class="nav-text">获取真实的DOM节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this-state"><span class="nav-number">1.7.</span> <span class="nav-text">this.state</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表单"><span class="nav-number">1.8.</span> <span class="nav-text">表单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件生命周期"><span class="nav-number">1.9.</span> <span class="nav-text">组件生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期与回调函数"><span class="nav-number">1.10.</span> <span class="nav-text">生命周期与回调函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ajax"><span class="nav-number">1.11.</span> <span class="nav-text">Ajax</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

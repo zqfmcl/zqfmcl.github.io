@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="NodeJs,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="fs FileSystem简介 fs.open(path, flags, [mode], callback) fs.read(fd, buffer, offset, length, position, callback) fs.write(fd, buffer, offset, length[, position], callback)   文件直接操作 fs.writeFile(filen">
+<meta name="keywords" content="NodeJs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文件-NodeJs">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-文件-NodeJs/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="fs FileSystem简介 fs.open(path, flags, [mode], callback) fs.read(fd, buffer, offset, length, position, callback) fs.write(fd, buffer, offset, length[, position], callback)   文件直接操作 fs.writeFile(filen">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.656Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="文件-NodeJs">
+<meta name="twitter:description" content="fs FileSystem简介 fs.open(path, flags, [mode], callback) fs.read(fd, buffer, offset, length, position, callback) fs.write(fd, buffer, offset, length[, position], callback)   文件直接操作 fs.writeFile(filen">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-文件-NodeJs/">
+
+
+
+
+
+  <title>文件-NodeJs | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-文件-NodeJs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">文件-NodeJs</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T10:00:00+08:00">
+                2019-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <!-- toc orderedList:0 depthFrom:1 depthTo:6 -->
+
+<ul>
+<li><a href="#fs">fs</a><ul>
+<li><a href="#filesystem简介">FileSystem简介</a><ul>
+<li><a href="#fsopenpath-flags-mode-callback">fs.open(path, flags, [mode], callback)</a></li>
+<li><a href="#fsreadfd-buffer-offset-length-position-callback">fs.read(fd, buffer, offset, length, position, callback)</a></li>
+<li><a href="#fswritefd-buffer-offset-length-position-callback">fs.write(fd, buffer, offset, length[, position], callback)</a></li>
+</ul>
+</li>
+<li><a href="#文件直接操作">文件直接操作</a><ul>
+<li><a href="#fswritefilefilename-data-encodingutf8-callback">fs.writeFile(filename, data, encoding=’utf8’, [callback])</a></li>
+<li><a href="#fsreadfilefilename-options-callback">fs.readFile(filename, [options], callback)</a></li>
+<li><a href="#fsunlinkpath-callback">fs.unlink(path, callback)</a></li>
+<li><a href="#fsrenameoldpath-newpath-callback">fs.rename(oldPath, newPath, callback)</a></li>
+<li><a href="#fsstatpath-callback">fs.stat(path, callback)</a></li>
+<li><a href="#fswatchfilename-options-listener">fs.watch(filename, [options], [listener])</a></li>
+</ul>
+</li>
+<li><a href="#文件夹操作">文件夹操作</a><ul>
+<li><a href="#fsmkdirpath-mode-callback">fs.mkdir(path, [mode], callback)</a></li>
+<li><a href="#fsrmdirpath-callback">fs.rmdir(path, callback)</a></li>
+<li><a href="#fsreaddirpath-callback">fs.readdir(path, callback)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1 id="fs"><a href="#fs" class="headerlink" title="fs"></a>fs</h1><h2 id="FileSystem简介"><a href="#FileSystem简介" class="headerlink" title="FileSystem简介"></a>FileSystem简介</h2><p>文件系统模块是一个简单包装的标准 <strong>POSIX</strong> 文件 <strong>I/O</strong> 操作方法集。您可以通过调用<code>require(&#39;fs&#39;)</code>来获取该模块。文件系统模块中的所有方法均有异步和同步版本。</p>
+<h3 id="fs-open-path-flags-mode-callback"><a href="#fs-open-path-flags-mode-callback" class="headerlink" title="fs.open(path, flags, [mode], callback)"></a>fs.open(path, flags, [mode], callback)</h3><p>fs.open(path, flags, [mode], callback)</p>
+<ul>
+<li>path : 要打开的文件的路径</li>
+<li>flags : 打开文件的方式 读/写</li>
+<li>mode : 设置文件的模式 读/写/执行  4/2/1</li>
+<li>callback : 回调<ul>
+<li>err : 文件打开失败的错误保存在err里面，如果成功err为null</li>
+<li>fd : 被打开文件的标识，</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">fs.open(&#39;1.txt&#39;, &#39;r&#39;, function(err, fd) {
+
+    //console.log(err);
+    //console.log(fd);
+
+    if (err) {
+        console.log( &#39;文件打开失败&#39; );
+    } else {
+        console.log( &#39;文件打开成功&#39; );
+        console.log( fd );
+    }
+
+});</code></pre>
+<h3 id="fs-read-fd-buffer-offset-length-position-callback"><a href="#fs-read-fd-buffer-offset-length-position-callback" class="headerlink" title="fs.read(fd, buffer, offset, length, position, callback)"></a>fs.read(fd, buffer, offset, length, position, callback)</h3><ul>
+<li>fd : 通过open方法成功打开一个文件返回的编号</li>
+<li>buffer : buffer对象</li>
+<li>offset : 新的内容添加到buffer中的起始位置</li>
+<li>length ： 添加到buffer中内容的长度</li>
+<li>position ：读取的文件中的起始位置</li>
+<li>callback : 回调<ul>
+<li>err</li>
+<li>uffer的长度</li>
+<li>buffer对象</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">fs.open(&#39;1.txt&#39;, &#39;r&#39;, function(err, fd) {
+    if (err) {
+        console.log(&#39;文件打开失败&#39;);
+        console.log(err);
+    } else {
+        var bf1 = new Buffer(&#39;123456789&#39;);
+        fs.read( fd, bf1, 0, 4, null, function( err, len, newBf ) {
+            console.log( newBf );
+        } );
+    }
+});
+</code></pre>
+<h3 id="fs-write-fd-buffer-offset-length-position-callback"><a href="#fs-write-fd-buffer-offset-length-position-callback" class="headerlink" title="fs.write(fd, buffer, offset, length[, position], callback)"></a>fs.write(fd, buffer, offset, length[, position], callback)</h3><ul>
+<li>fs.write(fd, buffer, offset, length[, position], callback)</li>
+<li>fd : 打开的文件</li>
+<li>buffer : 要写入的数据</li>
+<li>offset : buffer对象中要写入的数据的起始位置</li>
+<li>length : 要写入的buffer数据的长度</li>
+<li>position : fd中的起始位置</li>
+<li>callback : 回调<ul>
+<li>err:错误信息，没有就显示<code>null</code></li>
+<li>written:表明传入的<code>string</code>需要写入的字符串的字节长度</li>
+<li>string:表明传入的字符串</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">fs.write( fd, bf, 0, 3, 5, function() {
+            console.log(arguments);
+        } )</code></pre>
+<p>另一种写法：</p>
+<p><strong>fs.write(fd, data[, position[, encoding]], callback)</strong></p>
+<pre><code class="js">fs.write(fd, &#39;1234aqws你好&#39;, 0, &#39;utf-8&#39;, function(err, written, string) {
+            console.log(&quot;ok&quot;);
+            console.log(err);
+            console.log(written);
+            console.log(string);
+});</code></pre>
+<p>操作结束后，要关闭打开的文件。</p>
+<pre><code class="js">fs.close(fd, function() {
+
+});</code></pre>
+<h2 id="文件直接操作"><a href="#文件直接操作" class="headerlink" title="文件直接操作"></a>文件直接操作</h2><h3 id="fs-writeFile-filename-data-encoding-’utf8’-callback"><a href="#fs-writeFile-filename-data-encoding-’utf8’-callback" class="headerlink" title="fs.writeFile(filename, data, encoding=’utf8’, [callback])"></a>fs.writeFile(filename, data, encoding=’utf8’, [callback])</h3><p>异步地写入数据到文件，如果文件已经存在，则替代文件。 <code>data</code> 可以是一个字符串或一个 <code>buffer</code>。</p>
+<ul>
+<li>file <string> | <buffer> | <integer> 文件名或文件描述符</integer></buffer></string></li>
+<li>data <string> | <buffer></buffer></string></li>
+<li>options <object> | <string><ul>
+<li>encoding <string> | <null> 默认 = ‘utf8’</null></string></li>
+<li>mode <integer> 默认 = 0o666</integer></li>
+<li>flag <string> 默认 = ‘w’</string></li>
+</ul>
+</string></object></li>
+<li>callback <function></function></li>
+</ul>
+<h3 id="fs-readFile-filename-options-callback"><a href="#fs-readFile-filename-options-callback" class="headerlink" title="fs.readFile(filename, [options], callback)"></a>fs.readFile(filename, [options], callback)</h3><ul>
+<li>filename {String}<ul>
+<li>options {Object}</li>
+<li>encoding {String | Null} default = null</li>
+</ul>
+</li>
+<li>flag {String} default = ‘r’</li>
+<li>callback {Function}</li>
+</ul>
+<p>异步读取一个文件的全部内容。举例：</p>
+<pre><code class="js">fs.readFile(&#39;test.txt&#39;, function (err, data) {
+  if (err) throw err;
+  console.log(data);
+});</code></pre>
+<h3 id="fs-unlink-path-callback"><a href="#fs-unlink-path-callback" class="headerlink" title="fs.unlink(path, callback)"></a>fs.unlink(path, callback)</h3><p>删除一个文件</p>
+<p>完成时的回调函数（callback）只接受一个参数：可能出现的异常信息.</p>
+<h3 id="fs-rename-oldPath-newPath-callback"><a href="#fs-rename-oldPath-newPath-callback" class="headerlink" title="fs.rename(oldPath, newPath, callback)"></a>fs.rename(oldPath, newPath, callback)</h3><p>重命名一个函数</p>
+<p>完成时的回调函数（callback）只接受一个参数：可能出现的异常信息.</p>
+<h3 id="fs-stat-path-callback"><a href="#fs-stat-path-callback" class="headerlink" title="fs.stat(path, callback)"></a>fs.stat(path, callback)</h3><p>返回文件的详细信息</p>
+<p>dev : 文件或目录所在的设备ID。该属性值在UNIX系统下有效；<br>mode : 文件或目录的权限标志，采用数值形式表示；<br>nlink : 文件或目录的的硬连接数量；<br>uid : 文件或目录的所有者的用户ID。该属性值在UNIX系统下有效；<br>gid : 文件或目录的所有者的用户组ID。该属性值在UNIX系统下有效；<br>rdev : 字符设备文件或块设备文件所在设备ID。该属性值在UNIX系统下有效；**<br>ino : 文件或目录的索引编号。该属性值仅在UNIX系统下有效；<br>size : 文件的字节数；<br>atime : 文件或目录的访问时间；<br>mtime : 文件或目录的最后修改时间；<br>ctime : 文件或目录状态的最后修改时间(包括权限、所有者等，比mtime范围大)；<br>birthtime : 文件创建时间，文件创建时生成。在一些不提供文件 birthtime 的文件系统中，这个字段会使用 ctime 或 1970-01-01T00:00Z 来填充；</p>
+<h3 id="fs-watch-filename-options-listener"><a href="#fs-watch-filename-options-listener" class="headerlink" title="fs.watch(filename, [options], [listener])"></a>fs.watch(filename, [options], [listener])</h3><p>监听文件或者文件夹的变化，监听器的回调函数得到两个参数<code>(event, filename)</code>。其中 <code>event</code> 是 ‘rename’（重命名）或者 ‘change’（改变），而 <code>filename</code> 则是触发事件的文件名。</p>
+<h2 id="文件夹操作"><a href="#文件夹操作" class="headerlink" title="文件夹操作"></a>文件夹操作</h2><h3 id="fs-mkdir-path-mode-callback"><a href="#fs-mkdir-path-mode-callback" class="headerlink" title="fs.mkdir(path, [mode], callback)"></a>fs.mkdir(path, [mode], callback)</h3><p>创建文件夹，完成时的回调函数（callback）只接受一个参数：可能出现的异常信息。文件 <code>mode</code> 默认为 0777。</p>
+<h3 id="fs-rmdir-path-callback"><a href="#fs-rmdir-path-callback" class="headerlink" title="fs.rmdir(path, callback)"></a>fs.rmdir(path, callback)</h3><p>删除一个文件夹</p>
+<h3 id="fs-readdir-path-callback"><a href="#fs-readdir-path-callback" class="headerlink" title="fs.readdir(path, callback)"></a>fs.readdir(path, callback)</h3><p>读取 path 路径所在目录的内容。 回调函数 <code>(callback)</code> 接受两个参数 <code>(err, files)</code>其中 <code>files</code> 是一个存储目录中所包含的文件名称的数组，数组中不包括 ‘.’ 和 ‘..’。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/NodeJs/" rel="tag"># NodeJs</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-本地存储/" rel="next" title="本地存储">
+                <i class="fa fa-chevron-left"></i> 本地存储
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-无序链表/" rel="prev" title="无序链表">
+                无序链表 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#fs"><span class="nav-number">1.</span> <span class="nav-text">fs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#FileSystem简介"><span class="nav-number">1.1.</span> <span class="nav-text">FileSystem简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fs-open-path-flags-mode-callback"><span class="nav-number">1.1.1.</span> <span class="nav-text">fs.open(path, flags, [mode], callback)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fs-read-fd-buffer-offset-length-position-callback"><span class="nav-number">1.1.2.</span> <span class="nav-text">fs.read(fd, buffer, offset, length, position, callback)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fs-write-fd-buffer-offset-length-position-callback"><span class="nav-number">1.1.3.</span> <span class="nav-text">fs.write(fd, buffer, offset, length[, position], callback)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件直接操作"><span class="nav-number">1.2.</span> <span class="nav-text">文件直接操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fs-writeFile-filename-data-encoding-’utf8’-callback"><span class="nav-number">1.2.1.</span> <span class="nav-text">fs.writeFile(filename, data, encoding=’utf8’, [callback])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fs-readFile-filename-options-callback"><span class="nav-number">1.2.2.</span> <span class="nav-text">fs.readFile(filename, [options], callback)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fs-unlink-path-callback"><span class="nav-number">1.2.3.</span> <span class="nav-text">fs.unlink(path, callback)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fs-rename-oldPath-newPath-callback"><span class="nav-number">1.2.4.</span> <span class="nav-text">fs.rename(oldPath, newPath, callback)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fs-stat-path-callback"><span class="nav-number">1.2.5.</span> <span class="nav-text">fs.stat(path, callback)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fs-watch-filename-options-listener"><span class="nav-number">1.2.6.</span> <span class="nav-text">fs.watch(filename, [options], [listener])</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件夹操作"><span class="nav-number">1.3.</span> <span class="nav-text">文件夹操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fs-mkdir-path-mode-callback"><span class="nav-number">1.3.1.</span> <span class="nav-text">fs.mkdir(path, [mode], callback)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fs-rmdir-path-callback"><span class="nav-number">1.3.2.</span> <span class="nav-text">fs.rmdir(path, callback)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fs-readdir-path-callback"><span class="nav-number">1.3.3.</span> <span class="nav-text">fs.readdir(path, callback)</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

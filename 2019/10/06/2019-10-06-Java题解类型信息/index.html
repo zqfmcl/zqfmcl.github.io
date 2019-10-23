@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="题解,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="第十四章 类型信息class Toy { ​                         Toy(int i) {} } class FancyToy extends Toy  ​       implements HasBatteries, Waterproof, Shoots { ​              FancyToy() { super(1); } } public class">
+<meta name="keywords" content="题解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java题解类型信息">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解类型信息/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="第十四章 类型信息class Toy { ​                         Toy(int i) {} } class FancyToy extends Toy  ​       implements HasBatteries, Waterproof, Shoots { ​              FancyToy() { super(1); } } public class">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.833Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java题解类型信息">
+<meta name="twitter:description" content="第十四章 类型信息class Toy { ​                         Toy(int i) {} } class FancyToy extends Toy  ​       implements HasBatteries, Waterproof, Shoots { ​              FancyToy() { super(1); } } public class">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解类型信息/">
+
+
+
+
+
+  <title>Java题解类型信息 | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解类型信息/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java题解类型信息</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-06T10:00:00+08:00">
+                2019-10-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第十四章-类型信息"><a href="#第十四章-类型信息" class="headerlink" title="第十四章 类型信息"></a>第十四章 类型信息</h2><p>class Toy {</p>
+<p>​                         Toy(int i) {}</p>
+<p>}</p>
+<p>class FancyToy extends Toy </p>
+<p>​       implements HasBatteries, Waterproof, Shoots {</p>
+<p>​              FancyToy() { super(1); }</p>
+<p>}</p>
+<p>public class ToyTest1 {</p>
+<p>​       static void printInfo(Class cc) {</p>
+<p>​              print(“Class name: “ + cc.getName() +</p>
+<p>​                     “ is interface? [“ + cc.isInterface() + “]”);</p>
+<p>​              print(“Simple name: “ + cc.getSimpleName());</p>
+<p>​              print(“Canonical name: “ + cc.getCanonicalName());</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Class c = null;</p>
+<p>​              try {</p>
+<p>​                     c = Class.forName(“typeinfo.toys.FancyToy”);</p>
+<p>​              } catch(ClassNotFoundException e) {</p>
+<p>​                     print(“Can’t find FancyToy”);</p>
+<p>​                     System.exit(1);</p>
+<p>​              }</p>
+<p>​              printInfo(c);</p>
+<p>​              for(Class face : c.getInterfaces())</p>
+<p>​                     printInfo(face);</p>
+<p>​              Class up = c.getSuperclass();</p>
+<p>​              Object obj = null;</p>
+<p>​              try {</p>
+<p>​                                                             obj = up.newInstance();</p>
+<p>​              } catch(InstantiationException e) {</p>
+<p>​                     print(“Cannot instantiate”);</p>
+<p>​                     System.exit(1);</p>
+<p>​              } catch(IllegalAccessException i) {</p>
+<p>​                     print(“Cannot access”);</p>
+<p>​                     System.exit(1);</p>
+<p>​              }</p>
+<p>​              printInfo(obj.getClass());</p>
+<p>​       }</p>
+<p>}</p>
+<p>interface HasBatteries {}</p>
+<p>interface Waterproof {}</p>
+<p>interface Shoots {}</p>
+<p>interface Flies {}</p>
+<p>class Toy {</p>
+<p>​                   Toy() {}</p>
+<p>​       Toy(int i) {}</p>
+<p>}</p>
+<p>class FancyToy extends Toy </p>
+<p>​       implements HasBatteries, Waterproof, Shoots, Flies {</p>
+<p>​              FancyToy() { super(1); }</p>
+<p>}</p>
+<p>public class ToyTest2 {</p>
+<p>​       static void printInfo(Class cc) {</p>
+<p>​              print(“Class name: “ + cc.getName() +</p>
+<p>​                     “ is interface? [“ + cc.isInterface() + “]”);</p>
+<p>​              print(“Simple name: “ + cc.getSimpleName());</p>
+<p>​              print(“Canonical name: “ + cc.getCanonicalName());</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Class c = null;</p>
+<p>​              try {</p>
+<p>​                     c = Class.forName(“typeinfo.toys.FancyToy”);</p>
+<p>​              } catch(ClassNotFoundException e) {</p>
+<p>​                     print(“Can’t find FancyToy”);</p>
+<p>​                     System.exit(1);</p>
+<p>​              }</p>
+<p>​              printInfo(c);</p>
+<p>​              for(Class face : c.getInterfaces())</p>
+<p>​                     printInfo(face);</p>
+<p>​              Class up = c.getSuperclass();</p>
+<p>​              Object obj = null;</p>
+<p>​              try {</p>
+<p>​                                         obj = up.newInstance();</p>
+<p>​              } catch(InstantiationException e) {</p>
+<p>​                     print(“Cannot instantiate”);</p>
+<p>​                     System.exit(1);</p>
+<p>​              } catch(IllegalAccessException i) {</p>
+<p>​                     print(“Cannot access”);</p>
+<p>​                     System.exit(1);</p>
+<p>​              }      </p>
+<p>​              printInfo(obj.getClass());</p>
+<p>​       }</p>
+<p>}</p>
+<p>abstract class Shape {</p>
+<p>​       void draw() { System.out.println(this + “.draw()”); }</p>
+<p>​       abstract public String toString();</p>
+<p>}</p>
+<p>class Circle extends Shape {</p>
+<p>​       public String toString() { return “Circle”; }</p>
+<p>}</p>
+<p>class Square extends Shape {</p>
+<p>​       public String toString() { return “Square”; }</p>
+<p>}</p>
+<p>class Triangle extends Shape {</p>
+<p>​       public String toString() { return “Triangle”; }</p>
+<p>}</p>
+<p>class Rhomboid extends Shape {</p>
+<p>​       public String toString() { return “Rhomboid”; }</p>
+<p>}</p>
+<p>public class Shapes3 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                           List<shape> shapeList = Arrays.asList(</shape></p>
+<p>​                     new Circle(), new Square(), new Triangle(), new Rhomboid()</p>
+<p>​              );</p>
+<p>​                           for(Shape shape : shapeList)</p>
+<p>​                     shape.draw();</p>
+<p>​              Rhomboid r = new Rhomboid();</p>
+<p>​              ((Shape)r).draw();</p>
+<p>​                                 }</p>
+<p>}</p>
+<p>abstract class Shape {</p>
+<p>​       void draw() { System.out.println(this + “.draw()”); }</p>
+<p>​       abstract public String toString();</p>
+<p>}</p>
+<p>class Circle extends Shape {</p>
+<p>​       public String toString() { return “Circle”; }</p>
+<p>}</p>
+<p>class Square extends Shape {</p>
+<p>​       public String toString() { return “Square”; }</p>
+<p>}</p>
+<p>class Triangle extends Shape {</p>
+<p>​       public String toString() { return “Triangle”; }</p>
+<p>}</p>
+<p>class Rhomboid extends Shape {</p>
+<p>​       public String toString() { return “Rhomboid”; }</p>
+<p>}</p>
+<p>public class Shapes4 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                           List<shape> shapeList = Arrays.asList(</shape></p>
+<p>​                     new Circle(), new Square(), new Triangle(), new Rhomboid()</p>
+<p>​              );</p>
+<p>​                           for(Shape shape : shapeList)</p>
+<p>​                     shape.draw();</p>
+<p>​              Rhomboid r = new Rhomboid();</p>
+<p>​                           Shape s = (Shape)r;</p>
+<p>​              s.draw();</p>
+<p>​                           if(s instanceof Circle) </p>
+<p>​                     ((Circle)s).draw();</p>
+<p>​              else if(!(s instanceof Circle))</p>
+<p>​                     System.out.println(“(Shape)r is not a Circle”);           </p>
+<p>​       }</p>
+<p>}</p>
+<p>abstract class Shape {</p>
+<p>​       void draw() { System.out.println(this + “.draw()”); }</p>
+<p>​       abstract public String toString();</p>
+<p>}</p>
+<p>class Circle extends Shape {</p>
+<p>​       public String toString() { return “Circle”; }</p>
+<p>}</p>
+<p>class Square extends Shape {</p>
+<p>​       public String toString() { return “Square”; }</p>
+<p>}</p>
+<p>class Triangle extends Shape {</p>
+<p>​       public String toString() { return “Triangle”; }</p>
+<p>}</p>
+<p>public class Shapes5 {</p>
+<p>​       public static void rotate(Shape s) {</p>
+<p>​                     if(!(s instanceof Circle))</p>
+<p>​                            System.out.println(s + “ rotate”);</p>
+<p>​              }                    </p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                           List<shape> shapeList = Arrays.asList(</shape></p>
+<p>​                     new Circle(), new Square(), new Triangle(), new Rhomboid()</p>
+<p>​              );</p>
+<p>​                           for(Shape shape : shapeList)</p>
+<p>​                     shape.draw(); </p>
+<p>​              System.out.println();     </p>
+<p>​              for(Shape shape : shapeList)</p>
+<p>​                     rotate(shape);</p>
+<p>​       }</p>
+<p>}</p>
+<p>abstract class Shape {</p>
+<p>​       void draw() { System.out.println(this + “.draw()”); }</p>
+<p>​       abstract public String toString();</p>
+<p>}</p>
+<p>class Circle extends Shape {</p>
+<p>​       boolean flag = false;</p>
+<p>​       public String toString() { </p>
+<p>​              return (flag ? “H” : “Unh”) + “ighlighted “ + “Circle”; </p>
+<p>​       }</p>
+<p>}</p>
+<p>class Square extends Shape {</p>
+<p>​       boolean flag = false;</p>
+<p>​       public String toString() { </p>
+<p>​              return (flag ? “H” : “Unh”) + “ighlighted “ + “Square”; </p>
+<p>​       }</p>
+<p>}</p>
+<p>class Triangle extends Shape {</p>
+<p>​       boolean flag = false;</p>
+<p>​       public String toString() { </p>
+<p>​              return (flag ? “H” : “Unh”) + “ighlighted “ + “Triangle”; </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Shapes6 {</p>
+<p>​       public static void setFlag(Shape s) {</p>
+<p>​                     if(s instanceof Triangle)</p>
+<p>​                            ((Triangle)s).flag = true; </p>
+<p>​              }                    </p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                           List<shape> shapeList = Arrays.asList(</shape></p>
+<p>​                     new Circle(), new Square(), new Triangle()</p>
+<p>​              );</p>
+<p>​              for(Shape shape : shapeList) {</p>
+<p>​                     setFlag(shape);</p>
+<p>​                     System.out.println(shape);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Candy {</p>
+<p>​       static { print(“Loading Candy”); }</p>
+<p>}</p>
+<p>class Gum {</p>
+<p>​       static { print(“Loading Gum”); } </p>
+<p>}</p>
+<p>class Cookie {</p>
+<p>​       static { print(“Loading Cookie”); }</p>
+<p>}</p>
+<p>public class SweetShop7 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              if(args.length &lt; 1) {</p>
+<p>​                     System.out.println(“Usage: sweetName”);</p>
+<p>​                     System.exit(0);</p>
+<p>​              }</p>
+<p>​              Class c = null;</p>
+<p>​              try {</p>
+<p>​                     c = Class.forName(args[0]);</p>
+<p>​                     print(“Enjoy your “ + args[0]);</p>
+<p>​              } catch(ClassNotFoundException e) {</p>
+<p>​                     print(“Couldn’t find “ + args[0]);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>  class A {}</p>
+<p>class B extends A {}</p>
+<p>class C extends B {}</p>
+<p>public class Ex8 {</p>
+<p>​       public static void Hierarchy(Object o) {</p>
+<p>​              if(o.getClass().getSuperclass() != null) {             </p>
+<p>​                     System.out.println(o.getClass() + “ is a subclass of “ + </p>
+<p>​                            o.getClass().getSuperclass()); </p>
+<p>​                     try {</p>
+<p>​                            Hierarchy(o.getClass().getSuperclass().newInstance());</p>
+<p>​                     } catch(InstantiationException e) {</p>
+<p>​                            System.out.println(“Unable to instantiate obj”);</p>
+<p>​                     } catch(IllegalAccessException e) {</p>
+<p>​                            System.out.println(“Unable to access”);</p>
+<p>​                     }</p>
+<p>​              } </p>
+<p>​       }             </p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Hierarchy(new C());</p>
+<p>​       }</p>
+<p>}</p>
+<p>  class A { int i; String s; }</p>
+<p>class B extends A { int j; float f; }</p>
+<p>class C extends B { int k; B b;}</p>
+<p>public class Ex9 {</p>
+<p>​       public static void Hierarchy(Object o) {</p>
+<p>​              Object[] fields = o.getClass().getDeclaredFields();</p>
+<p>​              if(fields.length == 0)</p>
+<p>​                     System.out.println(o.getClass() + “ has no fields”);</p>
+<p>​              if(fields.length &gt; 0) {</p>
+<p>​                     System.out.println(“Field(s) of “ + o.getClass() + “:”);</p>
+<p>​                     for(Object obj : fields) </p>
+<p>​                            System.out.println(“ “ + obj);</p>
+<p>​              }</p>
+<p>​              if(o.getClass().getSuperclass() != null) {                    </p>
+<p>​                     System.out.println(o.getClass() + “ is a subclass of “ + </p>
+<p>​                            o.getClass().getSuperclass()); </p>
+<p>​                     try {</p>
+<p>​                            Hierarchy(o.getClass().getSuperclass().newInstance());</p>
+<p>​                     } catch(InstantiationException e) {</p>
+<p>​                            System.out.println(“Unabloe to instantiate obj”);</p>
+<p>​                     } catch(IllegalAccessException e) {</p>
+<p>​                            System.out.println(“Unable to access”);</p>
+<p>​                     }</p>
+<p>​              } </p>
+<p>​       }             </p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Hierarchy(new C());</p>
+<p>​       }</p>
+<p>}</p>
+<p>  public class Ex10 {     </p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              char[] c = new char[10];</p>
+<p>​                           System.out.println(“Superclass of char[] c: “ + </p>
+<p>​                     c.getClass().getSuperclass());</p>
+<p>​              System.out.println(“char[] c instanceof Object: “ + </p>
+<p>​                     (c instanceof Object));</p>
+<p>​       }</p>
+<p>}</p>
+<p>​             package typeinfo.pets;</p>
+<p>​       public class Gerbil extends Rodent {</p>
+<p>​              public Gerbil(String name) { super(name); }</p>
+<p>​              public Gerbil() { super(); }</p>
+<p>​       } </p>
+<p>​             “typeinfo.pets.Gerbil” </p>
+<p>​             if(pet instanceof Gerbil) counter.count(“Gerbil”); </p>
+<p>​             Gerbil.class </p>
+<p>public class Ex11 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              TypeCounter counter = new TypeCounter(Pet.class);</p>
+<p>​              for(Pet pet : Pets.createArray(20)) {</p>
+<p>​                     printnb(pet.getClass().getSimpleName() + “ “);</p>
+<p>​                     counter.count(pet);</p>
+<p>​              }      </p>
+<p>​              print();</p>
+<p>​              print(counter);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex12 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              TypeCounter counter = new TypeCounter(Coffee.class);</p>
+<p>​              for(Coffee coffee : new CoffeeGenerator(20)) {</p>
+<p>​                     printnb(coffee.getClass().getSimpleName() + “ “);</p>
+<p>​                     counter.count(coffee);</p>
+<p>​              }</p>
+<p>​              print();</p>
+<p>​              print(counter);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex13 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              TypeCounter counter = new TypeCounter(Part.class);</p>
+<p>​              List<part> partList = new ArrayList<part>();</part></part></p>
+<p>​              for(int i = 0; i &lt; 20; i++)              </p>
+<p>​                     partList.add(Part.createRandom());</p>
+<p>​              for(Part part : partList) {</p>
+<p>​                     printnb(part.getClass().getSimpleName() + “ “);</p>
+<p>​                     counter.count(part);</p>
+<p>​              }</p>
+<p>​              print();</p>
+<p>​              print(counter);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Part {</p>
+<p>​       public String toString() {</p>
+<p>​              return getClass().getSimpleName();</p>
+<p>​       }</p>
+<p>​       static List&lt;Class&lt;? extends Part&gt;&gt; partClasses = </p>
+<p>​              new ArrayList&lt;Class&lt;? extends Part&gt;&gt;();</p>
+<p>​       static {</p>
+<p>​                                        partClasses.add(FuelFilter.class);</p>
+<p>​              partClasses.add(AirFilter.class);</p>
+<p>​              partClasses.add(CabinAirFilter.class);</p>
+<p>​              partClasses.add(OilFilter.class);</p>
+<p>​              partClasses.add(FanBelt.class);</p>
+<p>​              partClasses.add(PowerSteeringBelt.class);</p>
+<p>​              partClasses.add(GeneratorBelt.class);</p>
+<p>​       }</p>
+<p>​       private static Random rand = new Random();</p>
+<p>​       public static Part createRandom() {</p>
+<p>​              int n = rand.nextInt(partClasses.size());</p>
+<p>​              try {</p>
+<p>​                     return partClasses.get(n).newInstance();</p>
+<p>​              } catch(InstantiationException e) {</p>
+<p>​                     throw new RuntimeException(e);</p>
+<p>​              } catch(IllegalAccessException e) {</p>
+<p>​                     throw new RuntimeException(e);</p>
+<p>​              }</p>
+<p>​       } </p>
+<p>}</p>
+<p>class Filter extends Part {}</p>
+<p>class FuelFilter extends Filter {</p>
+<p>​             public static class Factory implements typeinfo.factory.Factory<fuelfilter> {</fuelfilter></p>
+<p>​              public FuelFilter create() { return new FuelFilter(); }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class AirFilter extends Filter {</p>
+<p>​       public static class Factory implements typeinfo.factory.Factory<airfilter> {</airfilter></p>
+<p>​              public AirFilter create() { return new AirFilter(); }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class CabinAirFilter extends Filter {</p>
+<p>​       public static class Factory implements typeinfo.factory.Factory<cabinairfilter> {</cabinairfilter></p>
+<p>​              public CabinAirFilter create() { return new CabinAirFilter(); }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class OilFilter extends Filter {</p>
+<p>​       public static class Factory implements typeinfo.factory.Factory<oilfilter> {</oilfilter></p>
+<p>​              public OilFilter create() { return new OilFilter(); }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Belt extends Part {}</p>
+<p>class FanBelt extends Belt {</p>
+<p>​       public static class Factory implements typeinfo.factory.Factory<fanbelt> {</fanbelt></p>
+<p>​              public FanBelt create() { return new FanBelt(); }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class GeneratorBelt extends Belt {</p>
+<p>​       public static class Factory implements typeinfo.factory.Factory<generatorbelt> {</generatorbelt></p>
+<p>​              public GeneratorBelt create() { return new GeneratorBelt(); }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class PowerSteeringBelt extends Belt {</p>
+<p>​       public static class Factory implements typeinfo.factory.Factory<powersteeringbelt> {</powersteeringbelt></p>
+<p>​              public PowerSteeringBelt create() { return new PowerSteeringBelt(); }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class RegisteredClasses14 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              for(int i = 0; i &lt; 10; i++)</p>
+<p>​                     System.out.println(Part.createRandom());</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class RegisteredPetFactories15 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              for(int i = 0; i &lt; 10; i++)</p>
+<p>​                     System.out.println(PetFactory.createRandom());</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Coffee {</p>
+<p>​       private static long counter = 0;</p>
+<p>​       private final long id = counter++;</p>
+<p>​       public String toString() {</p>
+<p>​              return getClass().getSimpleName() + “ “ + id;</p>
+<p>​       }</p>
+<p>​       static List&lt;Factory&lt;? extends Coffee&gt;&gt; coffeeFactories =</p>
+<p>​              new ArrayList&lt;Factory&lt;? extends Coffee&gt;&gt;();</p>
+<p>​       static {</p>
+<p>​              coffeeFactories.add(new Latte.Factory());</p>
+<p>​              coffeeFactories.add(new Mocha.Factory());</p>
+<p>​              coffeeFactories.add(new Cappuccino.Factory());</p>
+<p>​              coffeeFactories.add(new Americano.Factory());</p>
+<p>​              coffeeFactories.add(new Breve.Factory());</p>
+<p>​       }</p>
+<p>​       private static Random rand = new Random();</p>
+<p>​       public static Coffee createRandom() {</p>
+<p>​              int n = rand.nextInt(coffeeFactories.size());</p>
+<p>​              return coffeeFactories.get(n).create();</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Latte extends Coffee {</p>
+<p>​       public static class Factory implements typeinfo.factory.Factory<latte> {</latte></p>
+<p>​              public Latte create() { return new Latte(); }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Mocha extends Coffee {</p>
+<p>​       public static class Factory implements typeinfo.factory.Factory<mocha> {</mocha></p>
+<p>​              public Mocha create() { return new Mocha(); }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Cappuccino extends Coffee {</p>
+<p>​       public static class Factory implements typeinfo.factory.Factory<cappuccino> {</cappuccino></p>
+<p>​              public Cappuccino create() { return new Cappuccino(); }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Americano extends Coffee {</p>
+<p>​       public static class Factory implements typeinfo.factory.Factory<americano> {</americano></p>
+<p>​              public Americano create() { return new Americano(); }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Breve extends Coffee {</p>
+<p>​       public static class Factory implements typeinfo.factory.Factory<breve> {</breve></p>
+<p>​              public Breve create() { return new Breve(); }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class RegisteredCoffeeFactories16 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              for(int i = 0; i &lt; 15; i++)</p>
+<p>​                     System.out.println(Coffee.createRandom());</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class ShowMethods17 {</p>
+<p>​       private static String usage =</p>
+<p>​              “usage:\n” +</p>
+<p>​              “ShowMethods qualified.class.name\n” +</p>
+<p>​              “To show all methods in class or:\n” +</p>
+<p>​              “ShowMethods qualified.class.name word\n” +</p>
+<p>​              “To search for methods involving ‘word’”;</p>
+<p>​       private static Pattern p = Pattern.compile(“(\w+\.)|\s<em>final|\s</em>native”);</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              if(args.length &lt; 1) {</p>
+<p>​                     print(usage);</p>
+<p>​                     System.exit(0);</p>
+<p>​              }</p>
+<p>​              int lines = 0;</p>
+<p>​              try {</p>
+<p>​                     Class&lt;?&gt; c = Class.forName(args[0]);</p>
+<p>​                     Method[] methods = c.getMethods();</p>
+<p>​                     Constructor[] ctors = c.getConstructors();</p>
+<p>​                     if(args.length == 1) {</p>
+<p>​                            for(Method method : methods) {</p>
+<p>​                                   print(p.matcher(method.toString()).replaceAll(“”));</p>
+<p>​                            }</p>
+<p>​                            for(Constructor ctor : ctors)</p>
+<p>​                                   print(p.matcher(ctor.toString()).replaceAll(“”));</p>
+<p>​                            lines = methods.length + ctors.length;</p>
+<p>​                     } else {</p>
+<p>​                            for(Method method : methods)</p>
+<p>​                                   if(method.toString().indexOf(args[1]) != -1) {</p>
+<p>​                                          print(p.matcher(method.toString()).replaceAll(“”));</p>
+<p>​                                          lines++;</p>
+<p>​                                   }</p>
+<p>​                            for(Constructor ctor : ctors) </p>
+<p>​                                   if(ctor.toString().indexOf(args[1]) != -1) {</p>
+<p>​                                          print(p.matcher(ctor.toString()).replaceAll(“”));</p>
+<p>​                                          lines++;</p>
+<p>​                            }</p>
+<p>​                     }</p>
+<p>​              } catch(ClassNotFoundException e) {</p>
+<p>​                     print(“No such class: “ + e);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class ShowMethods18 {</p>
+<p>​       private static String usage =</p>
+<p>​              “usage:\n” +</p>
+<p>​              “ShowMethods qualified.class.name\n” +</p>
+<p>​              “To show all methods in class or:\n” +</p>
+<p>​              “ShowMethods qualified.class.name word\n” +</p>
+<p>​              “To search for methods involving ‘word’”;</p>
+<p>​       private static Pattern p = Pattern.compile(“\w+\.”);</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              if(args.length &lt; 1) {</p>
+<p>​                     print(usage);</p>
+<p>​                     System.exit(0);</p>
+<p>​              }</p>
+<p>​              int lines = 0;</p>
+<p>​              try {</p>
+<p>​                     Class&lt;?&gt; c = Class.forName(args[0]);</p>
+<p>​                     Method[] methods = c.getMethods();</p>
+<p>​                     Constructor[] ctors = c.getConstructors();</p>
+<p>​                     if(args.length == 1) {</p>
+<p>​                            for(Method method : methods) {</p>
+<p>​                                   print(p.matcher(method.toString()).replaceAll(“”));</p>
+<p>​                            }</p>
+<p>​                            for(Constructor ctor : ctors)</p>
+<p>​                                   print(p.matcher(ctor.toString()).replaceAll(“”));</p>
+<p>​                            lines = methods.length + ctors.length;</p>
+<p>​                     } else {</p>
+<p>​                            for(Method method : methods)</p>
+<p>​                                   if(method.toString().indexOf(args[1]) != -1) {</p>
+<p>​                                          print(p.matcher(method.toString()).replaceAll(“”));</p>
+<p>​                                          lines++;</p>
+<p>​                                   }</p>
+<p>​                            for(Constructor ctor : ctors) </p>
+<p>​                                   if(ctor.toString().indexOf(args[1]) != -1) {</p>
+<p>​                                          print(p.matcher(ctor.toString()).replaceAll(“”));</p>
+<p>​                                          lines++;</p>
+<p>​                            }</p>
+<p>​                     }</p>
+<p>​              } catch(ClassNotFoundException e) {</p>
+<p>​                     print(“No such class: “ + e);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>interface HasBatteries {}</p>
+<p>interface Waterproof {}</p>
+<p>interface Shoots {}</p>
+<p>class Toy {</p>
+<p>​       Toy() {</p>
+<p>​              print(“Creating Toy() object”);      </p>
+<p>​       }</p>
+<p>​       Toy(int i) {</p>
+<p>​              print(“Creating Toy(“ + i + “) object”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class FancyToy extends Toy </p>
+<p>​       implements HasBatteries, Waterproof, Shoots {</p>
+<p>​              FancyToy() { super(1); }</p>
+<p>}</p>
+<p>public class ToyTest19 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                           try {</p>
+<p>​                     Toy.class.getDeclaredConstructor(int.class).newInstance(1);</p>
+<p>​                           } catch(NoSuchMethodException e) {</p>
+<p>​                     print(“No such method: “ + e);</p>
+<p>​              } catch(InstantiationException e) {</p>
+<p>​                     print(“Unable make Toy: “ + e);</p>
+<p>​              } catch(IllegalAccessException e) {</p>
+<p>​                     print(“Unable access: “ + e);</p>
+<p>​              } catch(InvocationTargetException e) {</p>
+<p>​                     print(“Target invocation problem: “ + e);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class ClassInfo {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              if(args.length &lt; 1) {</p>
+<p>​                     println(“Usage: name of class”);</p>
+<p>​                     System.exit(0);</p>
+<p>​              }</p>
+<p>​              Class&lt;?&gt; c = null;</p>
+<p>​              try {</p>
+<p>​                     c = Class.forName(args[0]);</p>
+<p>​              } catch(ClassNotFoundException e) {</p>
+<p>​                     println(“No such class: “ + e);</p>
+<p>​              }</p>
+<p>​              println(“c: “ + c);</p>
+<p>​              println(“c.getAnnotations(): “);</p>
+<p>​              if(c.getAnnotations().length == 0) println(“none”);</p>
+<p>​              for(Annotation a : c.getAnnotations())</p>
+<p>​                     println(a);</p>
+<p>​              println(“c.getCanonicalName(): “ + c.getCanonicalName());</p>
+<p>​              println(“c.getClasses(): “);</p>
+<p>​              if(c.getClasses().length == 0) println(“none”);</p>
+<p>​              for(Class cl : c.getClasses())</p>
+<p>​                     println(cl);</p>
+<p>​              println(“c.getClassLoader(): “ + c.getClassLoader());</p>
+<p>​              println(“c.getConstructors(): “);</p>
+<p>​              if(c.getConstructors().length == 0) println(“none”);</p>
+<p>​              for(Constructor ctor : c.getConstructors())</p>
+<p>​                     println(ctor);</p>
+<p>​              println(“c.getDeclaredAnnotations(): “);</p>
+<p>​              if(c.getDeclaredAnnotations().length == 0) println(“none”);</p>
+<p>​              for(Annotation a : c.getDeclaredAnnotations())</p>
+<p>​                     println(a);</p>
+<p>​              println(“c.getDeclaredClasses(): “);</p>
+<p>​              if(c.getDeclaredClasses().length == 0) println(“none”);</p>
+<p>​              for(Class cl : c.getDeclaredClasses())</p>
+<p>​                     println(cl);</p>
+<p>​              println(“c.getDeclaredConstructors(): “);</p>
+<p>​              if(c.getDeclaredConstructors().length == 0) println(“none”);</p>
+<p>​              for(Constructor ctor : c.getDeclaredConstructors())</p>
+<p>​                     println(ctor);</p>
+<p>​              println(“c.getDeclaredFields(): “);</p>
+<p>​              if(c.getDeclaredFields().length == 0) println(“none”);</p>
+<p>​              for(Field f : c.getDeclaredFields())</p>
+<p>​                     println(f);</p>
+<p>​              println(“c.getDeclaredMethods(): “);</p>
+<p>​              if(c.getDeclaredMethods().length == 0) println(“none”);</p>
+<p>​              for(Method m : c.getDeclaredMethods())</p>
+<p>​                     println(m);</p>
+<p>​              println(“c.getDeclaringClass(): “ + c.getDeclaringClass());</p>
+<p>​              println(“c.getEnclosingConstructor(): “ + c.getEnclosingConstructor());</p>
+<p>​              println(“c.getEnclosingMethod(): “ + c.getEnclosingMethod());</p>
+<p>​              println(“c.getEnumConstants(): “ + c.getEnumConstants());</p>
+<p>​              println(“c.getDeclaredFields(): “);</p>
+<p>​              if(c.getFields().length == 0) println(“none”);</p>
+<p>​              for(Field f : c.getFields())</p>
+<p>​                     println(f);</p>
+<p>​              println(“c.getGenericInterfaces(): “);</p>
+<p>​              if(c.getGenericInterfaces().length == 0) println(“none”);</p>
+<p>​              for(Type t : c.getGenericInterfaces())</p>
+<p>​                     println(t);</p>
+<p>​              println(“c.getGenericSuperclass(): “ + c.getGenericSuperclass());</p>
+<p>​              println(“c.getInterfaces(): “);</p>
+<p>​              if(c.getInterfaces().length == 0) println(“none”);</p>
+<p>​              for(Class i : c.getInterfaces())</p>
+<p>​                     println(i);</p>
+<p>​              println(“c.getMethods(): “);</p>
+<p>​              if(c.getMethods().length == 0) println(“none”);</p>
+<p>​              for(Method m : c.getMethods())</p>
+<p>​                     println(m);</p>
+<p>​              println(“c.getModifiers(): “ + c.getModifiers());</p>
+<p>​              println(“c.getName(): “ + c.getName());</p>
+<p>​              println(“c.getPackage(): “ + c.getPackage());</p>
+<p>​              println(“c.getProtectionDomain(): “ + c.getProtectionDomain());</p>
+<p>​              print(“c.getSigners(): “);</p>
+<p>​              if(c.getSigners() == null)</p>
+<p>​                     println(c.getSigners());</p>
+<p>​              if(c.getSigners() != null) {</p>
+<p>​                     println();</p>
+<p>​                     if(c.getSigners().length == 0) println(“none”);</p>
+<p>​                     if(c.getSigners().length &gt; 0) {</p>
+<p>​                            for(Object s : c.getSigners()) </p>
+<p>​                                   println(s);</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​              println(“c.getSimpleName(): “ + c.getSimpleName());</p>
+<p>​              println(“c.getSuperclass(): “ + c.getSuperclass());</p>
+<p>​              println(“c.getTypeParameters(): “ + c.getTypeParameters());</p>
+<p>​              println(“c.isAnnotation(): “ + c.isAnnotation());</p>
+<p>​              println(“c.isAnnotationPresent(Documented.class): “ + c.isAnnotationPresent(Documented.class));</p>
+<p>​              println(“c.isAnonymousClass(): “ + c.isAnonymousClass());</p>
+<p>​              println(“c.isArray(): “ + c.isArray());</p>
+<p>​              println(“c.isAssignableFrom(ClassInfo.class): “ + c.isAssignableFrom(ClassInfo.class));</p>
+<p>​              println(“c.isAssignableFrom(Object.class): “ + c.isAssignableFrom(Object.class));</p>
+<p>​              println(“c.isEnum(): “ + c.isEnum());</p>
+<p>​              println(“c.isInstance(Object.class): “ + c.isInstance(Object.class));</p>
+<p>​              println(“c.isInterface(): “ + c.isInterface());</p>
+<p>​              println(“c.isLocalClass(): “ + c.isLocalClass());</p>
+<p>​              println(“c.isMemberClass(): “ + c.isMemberClass());</p>
+<p>​              println(“c.isPrimitive(): “ + c.isPrimitive());</p>
+<p>​              println(“c.isSynthetic(): “ + c.isSynthetic());         </p>
+<p>​       }</p>
+<p>}</p>
+<p>interface Interface {</p>
+<p>​       void doSomething();</p>
+<p>​       void somethingElse(String arg);</p>
+<p>}</p>
+<p>class RealObject implements Interface {</p>
+<p>​       public void doSomething() { print(“doSomething”); }</p>
+<p>​       public void somethingElse(String arg) {</p>
+<p>​              print(“somethingElse “ + arg);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class SimpleProxy implements Interface {</p>
+<p>​       private Interface proxied;</p>
+<p>​       private static int doCount = 0;</p>
+<p>​       private static int sECount = 0;</p>
+<p>​       public SimpleProxy(Interface proxied) {</p>
+<p>​              this.proxied = proxied;</p>
+<p>​       }</p>
+<p>​       public void doSomething() { </p>
+<p>​              long timeIn = new Date().getTime();</p>
+<p>​              print(“Time called doSomething() “ + doCount + “: “ + timeIn + “ msecs”);</p>
+<p>​              print(“on “ + new Date());</p>
+<p>​              doCount++;</p>
+<p>​              proxied.doSomething();</p>
+<p>​              print(“Call-return time = “ + ((new Date().getTime()) - timeIn) + “ msecs”);</p>
+<p>​       }</p>
+<p>​       public void somethingElse(String arg) {</p>
+<p>​              long timeIn = new Date().getTime();</p>
+<p>​              print(“Time called somethingElse() “ + sECount + “: “ + timeIn + “ msecs”);</p>
+<p>​              print(“on “ + new Date());</p>
+<p>​              sECount++;</p>
+<p>​              proxied.somethingElse(arg);</p>
+<p>​              print(“Call-return time = “ + ((new Date().getTime()) - timeIn) + “ msecs”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class SimpleProxyDemo21 {</p>
+<p>​       public static void consumer(Interface iface) {</p>
+<p>​              iface.doSomething();</p>
+<p>​              iface.somethingElse(“bonobo”);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              consumer(new RealObject());</p>
+<p>​              print();</p>
+<p>​              consumer(new SimpleProxy(new RealObject()));</p>
+<p>​              print();</p>
+<p>​              consumer(new SimpleProxy(new RealObject()));</p>
+<p>​              print();</p>
+<p>​              consumer(new SimpleProxy(new RealObject()));                                   </p>
+<p>​       }</p>
+<p>}</p>
+<p>interface Interface {</p>
+<p>​       void doSomething();</p>
+<p>​       void somethingElse(String arg);</p>
+<p>}</p>
+<p>class RealObject implements Interface {</p>
+<p>​       public void doSomething() { print(“doSomething”); }</p>
+<p>​       public void somethingElse(String arg) {</p>
+<p>​              print(“somethingElse “ + arg);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class SimpleProxy implements Interface {</p>
+<p>​       private Interface proxied;</p>
+<p>​       private static int doCount = 0;</p>
+<p>​       private static int sECount = 0;</p>
+<p>​       public SimpleProxy(Interface proxied) {</p>
+<p>​              this.proxied = proxied;</p>
+<p>​       }</p>
+<p>​       public void doSomething() { </p>
+<p>​              long timeIn = new Date().getTime();</p>
+<p>​              print(“Time called doSomething() “ + doCount + “: “ + timeIn + “ msecs”);</p>
+<p>​              print(“on “ + new Date());</p>
+<p>​              doCount++;</p>
+<p>​              proxied.doSomething();</p>
+<p>​              print(“Call-return time = “ + ((new Date().getTime()) - timeIn) + “ msecs”);</p>
+<p>​       }</p>
+<p>​       public void somethingElse(String arg) {</p>
+<p>​              long timeIn = new Date().getTime();</p>
+<p>​              print(“Time called somethingElse() “ + sECount + “: “ + timeIn + “ msecs”);</p>
+<p>​              print(“on “ + new Date());</p>
+<p>​              sECount++;</p>
+<p>​              proxied.somethingElse(arg);</p>
+<p>​              print(“Call-return time = “ + ((new Date().getTime()) - timeIn) + “ msecs”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class SimpleProxyDemo21 {</p>
+<p>​       public static void consumer(Interface iface) {</p>
+<p>​              iface.doSomething();</p>
+<p>​              iface.somethingElse(“bonobo”);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              consumer(new RealObject());</p>
+<p>​              print();</p>
+<p>​              consumer(new SimpleProxy(new RealObject()));</p>
+<p>​              print();</p>
+<p>​              consumer(new SimpleProxy(new RealObject()));</p>
+<p>​              print();</p>
+<p>​              consumer(new SimpleProxy(new RealObject()));                                   </p>
+<p>​       }</p>
+<p>}</p>
+<p>class DynamicProxyHandler implements InvocationHandler {</p>
+<p>​       private Object proxied;</p>
+<p>​       public DynamicProxyHandler(Object proxied) {</p>
+<p>​              this.proxied = proxied;</p>
+<p>​       }</p>
+<p>​       public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {</p>
+<p>System.out.println(“**** proxy: “ + proxy.getClass() +</p>
+<p>​                     “, method: “ + method + “, args: “ + args);</p>
+<p>​              if(args != null)</p>
+<p>​                     for(Object arg : args)</p>
+<p>​                            System.out.println(“  “ + args);</p>
+<p>​              return method.invoke(proxied, args);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class SimpleDynamicProxy23 {</p>
+<p>​       public static void consumer(Interface iface) {</p>
+<p>​              iface.doSomething();</p>
+<p>​              iface.somethingElse(“bonobo”);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              RealObject real = new RealObject();</p>
+<p>​              consumer(real);</p>
+<p>​                           Interface proxy = (Interface)Proxy.newProxyInstance(</p>
+<p>​                     Interface.class.getClassLoader(),</p>
+<p>​                     new Class[]{ Interface.class },</p>
+<p>​                     new DynamicProxyHandler(real));</p>
+<p>​              consumer(proxy);         </p>
+<p>​       }</p>
+<p>}</p>
+<p>class Part {</p>
+<p>​       public String toString() {</p>
+<p>​              return getClass().getSimpleName();</p>
+<p>​       }</p>
+<p>​       static List&lt;Factory&lt;? extends Part&gt;&gt; partFactories = </p>
+<p>​              new ArrayList&lt;Factory&lt;? extends Part&gt;&gt;();</p>
+<p>​       static {</p>
+<p>​                                        partFactories.add(new FuelFilter.Factory());</p>
+<p>​              partFactories.add(new AirFilter.Factory());</p>
+<p>​              partFactories.add(new CabinAirFilter.Factory());</p>
+<p>​              partFactories.add(new OilFilter.Factory());</p>
+<p>​              partFactories.add(new FanBelt.Factory());</p>
+<p>​              partFactories.add(new PowerSteeringBelt.Factory());</p>
+<p>​              partFactories.add(new GeneratorBelt.Factory());</p>
+<p>​              partFactories.add(new NullPart.Factory());</p>
+<p>​       }</p>
+<p>​       private static Random rand = new Random();</p>
+<p>​       public static Part createRandom() {</p>
+<p>​              int n = rand.nextInt(partFactories.size());</p>
+<p>​              return partFactories.get(n).create();            </p>
+<p>​       } </p>
+<p>​       </p>
+<p>​       </p>
+<p>}</p>
+<p>class NullPart extends Part implements Null {</p>
+<p>​       private NullPart() { super(); } </p>
+<p>​       public static final Part NULL = new NullPart();</p>
+<p>​       public static class Factory implements typeinfo.factory.Factory<nullpart> {</nullpart></p>
+<p>​              public NullPart create() { return (NullPart)NULL; }</p>
+<p>​       }</p>
+<p>​       public String toString() { return “NULL”; }</p>
+<p>}</p>
+<p>class Filter extends Part {}</p>
+<p>class FuelFilter extends Filter {</p>
+<p>​             public static class Factory implements typeinfo.factory.Factory<fuelfilter> {</fuelfilter></p>
+<p>​              public FuelFilter create() { return new FuelFilter(); }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class AirFilter extends Filter {</p>
+<p>​       public static class Factory implements typeinfo.factory.Factory<airfilter> {</airfilter></p>
+<p>​              public AirFilter create() { return new AirFilter(); }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class CabinAirFilter extends Filter {</p>
+<p>​       public static class Factory implements typeinfo.factory.Factory<cabinairfilter> {</cabinairfilter></p>
+<p>​              public CabinAirFilter create() { return new CabinAirFilter(); }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class OilFilter extends Filter {</p>
+<p>​       public static class Factory implements typeinfo.factory.Factory<oilfilter> {</oilfilter></p>
+<p>​              public OilFilter create() { return new OilFilter(); }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Belt extends Part {}</p>
+<p>class FanBelt extends Belt {</p>
+<p>​       public static class Factory implements typeinfo.factory.Factory<fanbelt> {</fanbelt></p>
+<p>​              public FanBelt create() { return new FanBelt(); }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class GeneratorBelt extends Belt {</p>
+<p>​       public static class Factory implements typeinfo.factory.Factory<generatorbelt> {</generatorbelt></p>
+<p>​              public GeneratorBelt create() { return new GeneratorBelt(); }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class PowerSteeringBelt extends Belt {</p>
+<p>​       public static class Factory implements typeinfo.factory.Factory<powersteeringbelt> {</powersteeringbelt></p>
+<p>​              public PowerSteeringBelt create() { return new PowerSteeringBelt(); }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class RegisteredFactories24 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              for(int i = 0; i &lt; 10; i++)</p>
+<p>​                     System.out.println(Part.createRandom());</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Finder25 {</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              A a = SecretMaker.makeSecret();</p>
+<p>​              println(“a is of class type: “ + a.getClass().getName());</p>
+<p>​              for(Method m : a.getClass().getDeclaredMethods()) {</p>
+<p>​                     m.setAccessible(true);</p>
+<p>​                     m.invoke(a);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Instrument {</p>
+<p>​       void play(Note n) { print(“Instrument.play() “ + n); }</p>
+<p>​       public String toString() { return “Instrument”; }</p>
+<p>​       void adjust() { print(“Adjusting Instrument”); }</p>
+<p>}</p>
+<p>class Wind extends Instrument {</p>
+<p>​       void play(Note n) { print(“Wind.play() “ + n); }</p>
+<p>​       public String toString() { return “Wind”; }</p>
+<p>​       void adjust() { print(“Adjusting Wind”); }</p>
+<p>​       void clearSpitValve() { print(“Wind clearing spit valve”); }</p>
+<p>}</p>
+<p>class Percussion extends Instrument {</p>
+<p>​       void play(Note n) { print(“Percussion.play() “ + n); }</p>
+<p>​       public String toString() { return “Percussion”; }</p>
+<p>​       void adjust() { print(“Adjusting Percussion”); } </p>
+<p>}</p>
+<p>class Stringed extends Instrument {</p>
+<p>​       void play(Note n) { print(“Stringed.play() “ + n); }</p>
+<p>​       public String toString() { return “Stringed”; }</p>
+<p>​       void adjust() { print(“Adjusting Stringed”); } </p>
+<p>}</p>
+<p>class Keyboard extends Instrument {</p>
+<p>​       void play(Note n) { print(“Keyboard.play() “ + n); }</p>
+<p>​       public String toString() { return “Keyboard”; }</p>
+<p>​       void adjust() { print(“Adjusting Keyboard”); } </p>
+<p>}</p>
+<p>class Brass extends Wind {</p>
+<p>​       void play(Note n) { print(“Brass.play() “ + n); }</p>
+<p>​       public String toString() { return “Brass”; }</p>
+<p>​       void adjust() { print(“Adjusting Brass”); }</p>
+<p>​       void clearSpitValve() { print(“Brass clearing spit valve”); }</p>
+<p>}</p>
+<p>class Woodwind extends Wind {</p>
+<p>​       void play(Note n) { print(“Woodwind.play() “ + n); }</p>
+<p>​       public String toString() { return “Woodwind”; }</p>
+<p>​       void clearSpitValve() { print(“Woodwind clearing spit valve”); }</p>
+<p>}</p>
+<p>class Piano extends Keyboard {</p>
+<p>​       void play(Note n) { print(“Piano.play() “ + n); }</p>
+<p>​       public String toString() { return “Piano”; }</p>
+<p>}</p>
+<p>public class Music26 {</p>
+<p>​                   public static void tune(Instrument i) {</p>
+<p>​                           i.play(Note.MIDDLE_C);</p>
+<p>​       }</p>
+<p>​       public static void tuneAll(Instrument[] e) {</p>
+<p>​              for(Instrument i : e)</p>
+<p>​                     tune(i);</p>
+<p>​       }</p>
+<p>​       private static RandomInstrumentGenerator gen = new RandomInstrumentGenerator();    </p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                           Instrument[] orchestra = new Instrument[20];</p>
+<p>​                           for(int i = 0; i &lt; orchestra.length; i++)</p>
+<p>​                     orchestra[i] = gen.next();</p>
+<p>​              for(Instrument i : orchestra) {</p>
+<p>​                     if(i instanceof Wind)                         ((Wind)i).clearSpitValve();</p>
+<p>​                     i.adjust();</p>
+<p>​              }</p>
+<p>​              tuneAll(orchestra);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Instrument {</p>
+<p>​       void play(Note n) { print(“Instrument.play() “ + n); }</p>
+<p>​       public String toString() { return “Instrument”; }</p>
+<p>​       void adjust() { print(“Adjusting Instrument”); }</p>
+<p>}</p>
+<p>class Wind extends Instrument {</p>
+<p>​       void play(Note n) { print(“Wind.play() “ + n); }</p>
+<p>​       public String toString() { return “Wind”; }</p>
+<p>​       void adjust() { print(“Adjusting Wind”); }</p>
+<p>​       void clearSpitValve() { print(“Wind clearing spit valve”); }</p>
+<p>}</p>
+<p>class Percussion extends Instrument {</p>
+<p>​       void play(Note n) { print(“Percussion.play() “ + n); }</p>
+<p>​       public String toString() { return “Percussion”; }</p>
+<p>​       void adjust() { print(“Adjusting Percussion”); } </p>
+<p>}</p>
+<p>class Stringed extends Instrument {</p>
+<p>​       void play(Note n) { print(“Stringed.play() “ + n); }</p>
+<p>​       public String toString() { return “Stringed”; }</p>
+<p>​       void adjust() { print(“Adjusting Stringed”); } </p>
+<p>}</p>
+<p>class Keyboard extends Instrument {</p>
+<p>​       void play(Note n) { print(“Keyboard.play() “ + n); }</p>
+<p>​       public String toString() { return “Keyboard”; }</p>
+<p>​       void adjust() { print(“Adjusting Keyboard”); } </p>
+<p>}</p>
+<p>class Brass extends Wind {</p>
+<p>​       void play(Note n) { print(“Brass.play() “ + n); }</p>
+<p>​       public String toString() { return “Brass”; }</p>
+<p>​       void adjust() { print(“Adjusting Brass”); }</p>
+<p>​       void clearSpitValve() { print(“Brass clearing spit valve”); }</p>
+<p>}</p>
+<p>class Woodwind extends Wind {</p>
+<p>​       void play(Note n) { print(“Woodwind.play() “ + n); }</p>
+<p>​       public String toString() { return “Woodwind”; }</p>
+<p>​       void clearSpitValve() { print(“Woodwind clearing spit valve”); }</p>
+<p>}</p>
+<p>class Piano extends Keyboard {</p>
+<p>​       void play(Note n) { print(“Piano.play() “ + n); }</p>
+<p>​       public String toString() { return “Piano”; }</p>
+<p>}</p>
+<p>public class Music26 {</p>
+<p>​                   public static void tune(Instrument i) {</p>
+<p>​                           i.play(Note.MIDDLE_C);</p>
+<p>​       }</p>
+<p>​       public static void tuneAll(Instrument[] e) {</p>
+<p>​              for(Instrument i : e)</p>
+<p>​                     tune(i);</p>
+<p>​       }</p>
+<p>​       private static RandomInstrumentGenerator gen = new RandomInstrumentGenerator();    </p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                           Instrument[] orchestra = new Instrument[20];</p>
+<p>​                           for(int i = 0; i &lt; orchestra.length; i++)</p>
+<p>​                     orchestra[i] = gen.next();</p>
+<p>​              for(Instrument i : orchestra) {</p>
+<p>​                     if(i instanceof Wind)                         ((Wind)i).clearSpitValve();</p>
+<p>​                     i.adjust();</p>
+<p>​              }</p>
+<p>​              tuneAll(orchestra);</p>
+<p>​       }</p>
+<p>}</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/题解/" rel="tag"># 题解</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/06/2019-10-06-Java题解问题/" rel="next" title="Java题解问题">
+                <i class="fa fa-chevron-left"></i> Java题解问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/06/2019-10-06-Java题解重用/" rel="prev" title="Java题解重用">
+                Java题解重用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第十四章-类型信息"><span class="nav-number">1.</span> <span class="nav-text">第十四章 类型信息</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

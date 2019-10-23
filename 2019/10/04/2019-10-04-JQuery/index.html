@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Javascript,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="2015年8月31日jQuery样式    var myjq=$.noConflict();可以为美元符号$重新定义一个命名。     jQ操作css()的方法实例：      第一种      $(&amp;quot;div&amp;quot;).css(&amp;quot;width&amp;quot;,&amp;quot;100px&amp;quot;);     $(&amp;quot;div&amp;quot;).css(&amp;quot;height&amp;q">
+<meta name="keywords" content="Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JQuery">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-JQuery/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="2015年8月31日jQuery样式    var myjq=$.noConflict();可以为美元符号$重新定义一个命名。     jQ操作css()的方法实例：      第一种      $(&amp;quot;div&amp;quot;).css(&amp;quot;width&amp;quot;,&amp;quot;100px&amp;quot;);     $(&amp;quot;div&amp;quot;).css(&amp;quot;height&amp;q">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://i.imgur.com/bvNbEO0.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015%E5%B9%B49%E6%9C%8816%E6%97%A5-1.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/gongchangmoshi.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-22-1.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-22-2.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-22-2.jpg">
+<meta property="og:image" content="c:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1571646163445.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-25-1.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-25-2.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-25-3.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-25-4.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-25-5.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-25-1.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-25-2.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-25-3.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-25-4.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-25-5.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-26-1.jpg">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.221Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JQuery">
+<meta name="twitter:description" content="2015年8月31日jQuery样式    var myjq=$.noConflict();可以为美元符号$重新定义一个命名。     jQ操作css()的方法实例：      第一种      $(&amp;quot;div&amp;quot;).css(&amp;quot;width&amp;quot;,&amp;quot;100px&amp;quot;);     $(&amp;quot;div&amp;quot;).css(&amp;quot;height&amp;q">
+<meta name="twitter:image" content="http://i.imgur.com/bvNbEO0.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-JQuery/">
+
+
+
+
+
+  <title>JQuery | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-JQuery/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JQuery</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T10:00:00+08:00">
+                2019-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="2015年8月31日"><a href="#2015年8月31日" class="headerlink" title="2015年8月31日"></a>2015年8月31日</h1><h2 id="jQuery样式"><a href="#jQuery样式" class="headerlink" title="jQuery样式"></a>jQuery样式</h2><pre><code>    var myjq=$.noConflict();</code></pre><p>可以为美元符号<code>$</code>重新定义一个命名。</p>
+<pre><code>    jQ操作css()的方法实例：
+     第一种 
+    $(&quot;div&quot;).css(&quot;width&quot;,&quot;100px&quot;);
+    $(&quot;div&quot;).css(&quot;height&quot;,&quot;100px&quot;);
+    $(&quot;div&quot;).css(&quot;background&quot;,&quot;#FF0000&quot;);
+
+     第二种
+    $(&quot;div&quot;).css({
+        width:&quot;100px&quot;,
+        height:&quot;100px&quot;,
+        backgroundColor:&quot;#0f0&quot;s
+
+
+    //addClass()方法实例：
+    $(&quot;div&quot;).addClass(&quot;style1&quot;);
+
+    //去除效果
+    $(&quot;dic&quot;).removeClass(&quot;style1&quot;);
+
+    //toggle()是来回切换
+    $(&quot;dic&quot;).toggleClass(&quot;style1&quot;);</code></pre><pre><code>    $(&quot;obj&quot;).height();//返回盒子模型的content.height；
+    $(&quot;obj&quot;).innerHeight();//heigt+padding;
+    $(&quot;obj&quot;).outHeight();height+padding+boeder;
+    $(&quot;obj&quot;).outHeight(true);height+padding+boeder+maigin;</code></pre><h2 id="元素遍历"><a href="#元素遍历" class="headerlink" title="元素遍历"></a>元素遍历</h2><h3 id="向下遍历"><a href="#向下遍历" class="headerlink" title="向下遍历"></a>向下遍历</h3><pre><code>$(&quot;#div1&quot;).children(&quot;a&quot;).css({border:&quot;5px solid#FF00FF&quot;});</code></pre><blockquote>
+<p>遍历<code>div1</code>的子元素,加参数<code>&quot;a&quot;</code>表示是作用子元素<code>a</code>，只遍历一代。</p>
+</blockquote>
+<hr>
+<h3 id="向上遍历"><a href="#向上遍历" class="headerlink" title="向上遍历"></a>向上遍历</h3><pre><code>$(&quot;#div1&quot;).find(&quot;a&quot;).css({border:&quot;5px solid #FF00FF&quot;});</code></pre><blockquote>
+<p>寻找<code>#div1</code>后代元素，<code>find()</code>必须要参数。</p>
+</blockquote>
+<hr>
+<pre><code>$(&quot;a&quot;).parent().css({border:&quot;5px solid #0f0&quot;});//父元素，只能一层。
+$(&quot;a&quot;).parents().css({border:&quot;5px solid #0f0&quot;});//所有祖先元素，
+$(&quot;a&quot;).parentsUntil(&quot;#div1&quot;).css({border:&quot;5px solid #0f0&quot;});//区间之间的元素
+</code></pre><h3 id="同级遍历"><a href="#同级遍历" class="headerlink" title="同级遍历"></a>同级遍历</h3><pre><code>$(&quot;h4&quot;).siblings().css({border:&quot;3px solid red&quot;});
+//所有同级元素修改。
+
+$(&quot;h4&quot;).next().css({border:&quot;3px solid red&quot;});
+//下一个元素修改。
+
+$(&quot;h4&quot;).nextAll().css({border:&quot;3px solid red&quot;});
+//下面所有元素修改。
+
+$(&quot;h4&quot;).nextUntil(&quot;h6&quot;).css({border:&quot;3px solid red&quot;})
+//下面的元素的区间修改。</code></pre><blockquote>
+<p>prev() 、preAll() 、preUntil()同上。</p>
+</blockquote>
+<hr>
+<h3 id="元素过滤"><a href="#元素过滤" class="headerlink" title="元素过滤"></a>元素过滤</h3><pre><code>$(&quot;div p&quot;).first().css(&quot;background-color&quot;,&quot;red&quot;);
+//选择第一个。
+
+$(&quot;div p&quot;).last().css(&quot;background-color&quot;,&quot;red&quot;);
+//选择最后一个。
+
+$(&quot;div p&quot;).eq(n).css(&quot;background-color&quot;,&quot;red&quot;);
+//选择符合的第n个。
+
+$(&quot;div p&quot;).filter(&quot;.pclass&quot;).css(&quot;background-color&quot;,&quot;red&quot;);
+//选择符合要求而且类名是`.pclass`的元素。
+
+$(&quot;div p&quot;).not(&quot;.pclass&quot;).css(&quot;background-color&quot;,&quot;red&quot;);
+//除去符合要求而且类名是`.pclass`的元素。</code></pre><h1 id="2015年9月1日"><a href="#2015年9月1日" class="headerlink" title="2015年9月1日"></a>2015年9月1日</h1><h3 id="显示隐藏"><a href="#显示隐藏" class="headerlink" title="显示隐藏"></a>显示隐藏</h3><pre><code>$(&quot;obj&quot;).hide(duration)</code></pre><p>隐藏一个元素，可以加一个时间，表示过程时间。这只可以隐藏标签内的内容，不可以令标签消失。可以使用<code>remove()</code>令元素彻底移除。</p>
+<pre><code>$(&quot;obj&quot;).show(duration)</code></pre><p> 显示一个元素，可以加一个时间，表示过程时间。</p>
+<pre><code> $(&quot;obj&quot;).toggle(duration)</code></pre><p>显示或者隐藏一个元素的开关。</p>
+<h3 id="淡入淡出"><a href="#淡入淡出" class="headerlink" title="淡入淡出"></a>淡入淡出</h3><pre><code class="jquery">$(&quot;obj&quot;).fadeIn(duration);</code></pre>
+<p>淡入</p>
+<hr>
+<pre><code>$(&quot;obj&quot;).fadeOut(duration);</code></pre><p>淡出</p>
+<hr>
+<pre><code>$(&quot;obj&quot;).fadeToggle(duration);</code></pre><p>淡入淡出开关</p>
+<hr>
+<pre><code>$(&quot;obj&quot;).fadeTo(duration，opacity);</code></pre><p>调整到指定透明度</p>
+<h3 id="滑动"><a href="#滑动" class="headerlink" title="滑动"></a>滑动</h3><pre><code>$(&quot;obj&quot;).slideDown(duration);</code></pre><p>滑动出现</p>
+<hr>
+<pre><code>$(&quot;obj&quot;).slideUp(duration);</code></pre><p>滑动隐藏</p>
+<hr>
+<pre><code>$(&quot;obj&quot;).slideToggle(duration);</code></pre><p>显示隐藏开关</p>
+<h3 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h3><pre><code>$(&quot;obj&quot;).hide(duration,function(){
+    alert(&quot;END&quot;);
+});
+
+$(&quot;obj&quot;).css(&quot;name&quot;,&quot;value&quot;).slideUp(duration).slideDown(duration);</code></pre><p>动画结束后这行函数。</p>
+<h3 id="元素捕获"><a href="#元素捕获" class="headerlink" title="元素捕获"></a>元素捕获</h3><p><code>text()</code>：获取具体内容。<br><code>html()</code>:获取里面的内容，如果有标签，会显示出来。<br><code>val()</code>：获取标签的value的值。<br><code>attr()</code>：获取标签属性。</p>
+<h3 id="HTML设置"><a href="#HTML设置" class="headerlink" title="HTML设置"></a>HTML设置</h3><p><code>text()</code>：修改内容。<br><code>html()</code>：修改内容，可以增加标签。<br><code>val()</code>：修改value值。<br><code>attr()</code>:修改属性。</p>
+<h3 id="添加元素"><a href="#添加元素" class="headerlink" title="添加元素"></a>添加元素</h3><p><code>append()</code> - 在被选元素的结尾插入内容<br><code>prepend()</code> - 在被选元素的开头插入内容<br><code>after()</code> - 在被选元素之后插入内容<br><code>before()</code> - 在被选元素之前插入内容</p>
+<h3 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h3><p><code>remove()</code>：移除标签与内容。<br><code>empty()</code>：移除标签内的内容。</p>
+<h3 id="选择器与事件"><a href="#选择器与事件" class="headerlink" title="选择器与事件"></a>选择器与事件</h3><p><code>abclick()</code>：双击<br><code>click()</code>：点击<br><code>mouseenter()</code>：鼠标进入<br><code>mouseleave()</code>：鼠标离开</p>
+<h3 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h3><p><code>bind(eventType,eventData)</code>绑定事件。官方规定可以 使用<code>on()</code>代替。<br><code>unbind(eventType,eventData)</code>解除绑定事件。</p>
+<h3 id="事件目标与冒泡"><a href="#事件目标与冒泡" class="headerlink" title="事件目标与冒泡"></a>事件目标与冒泡</h3><p><code>event.stopPropagation()</code>：阻止父级冒泡事件。<br><code>event.stopImmediateProgation()</code>：阻止所有冒泡事件。</p>
+<h3 id="jQuery菜单"><a href="#jQuery菜单" class="headerlink" title="jQuery菜单"></a>jQuery菜单</h3><p><code>.show()</code>、<code>hide()</code>、<code>toggle()</code>开关；<br><code>slideDown()</code>、<code>slideUp()</code>、<code>slideToggle()</code>滑动开关，等于上面的自动加上时间的效果。</p>
+<h3 id="jQuery标签切换"><a href="#jQuery标签切换" class="headerlink" title="jQuery标签切换"></a>jQuery标签切换</h3><pre><code class="javascript">$(document).ready(function(index){
+        $(&quot;#tabfirst li&quot;).each(function(index){
+            var liNode=$(this);
+        $(this).mouseover(function(){
+            timeoutid=setTimeout(function(){
+                $(&quot;div.content&quot;).removeClass(&quot;content&quot;);
+            $(&quot;#tabfirst li.tabin&quot;).removeClass(&quot;tabin&quot;);
+            $(&quot;div&quot;).eq(index).addClass(&quot;content&quot;);
+            liNode.addClass(&quot;tabin&quot;);
+            },100);
+
+        }).mouseout(function(){
+            clearTimeout(timeoutid);
+        });
+    })
+})</code></pre>
+<pre><code class="html5"> &lt;ul id=&quot;tabfirst&quot;&gt;
+        &lt;li class=&quot;tabin&quot;&gt;Tab 1&lt;/li&gt;
+        &lt;li&gt;Tab 2&lt;/li&gt;
+        &lt;li&gt;Tab 3&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div class=&quot;content contentfirst&quot;&gt;内容一&lt;/div&gt;
+    &lt;div class=&quot;contentfirst&quot;&gt;内容二&lt;/div&gt;
+    &lt;div class=&quot;contentfirst&quot;&gt;内容三&lt;/div&gt;
+</code></pre>
+<h1 id="2015年9月3日"><a href="#2015年9月3日" class="headerlink" title="2015年9月3日"></a>2015年9月3日</h1><p><code>each()</code> : 遍历一个jQuery对象,为每个匹配元素执行一个函数。<br><code>eq(index)</code> : 匹配指定的元素。</p>
+<h2 id="标签切换"><a href="#标签切换" class="headerlink" title="标签切换"></a>标签切换</h2><pre><code>HTML:
+
+&lt;ul id=&quot;tabsecond&quot;&gt;
+        &lt;li class=&quot;tabin&quot;&gt;Menu One&lt;/li&gt;
+        &lt;li&gt;Menu two &lt;/li&gt;
+        &lt;li&gt;Menu Three&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div id=&quot;contentsecond&quot;&gt;
+        &lt;div id=&quot;realcontent&quot;&gt;
+            &lt;div&gt;&lt;/div&gt;  
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    jQuery:
+
+    $(&quot;#tabsecond li&quot;).each(function(index) {
+            $(this).click(function(){
+                $(&quot;#tabsecond li.tabin&quot;).removeClass(&quot;tabin&quot;);
+                $(this).addClass(&quot;tabin&quot;);
+            })
+        })</code></pre><hr>
+<ul>
+<li><code>&lt;br/&gt;</code>是更长远的使用方式。</li>
+<li>HTML 标签对大小写不敏感。</li>
+</ul>
+<h1 id="2015年9月4日"><a href="#2015年9月4日" class="headerlink" title="2015年9月4日"></a>2015年9月4日</h1><h2 id="jQuery-UI"><a href="#jQuery-UI" class="headerlink" title="jQuery UI"></a>jQuery UI</h2><h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery-2.1.4.min.js&quot;&gt;&lt;/script&gt;
+     &lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery-ui.min.js&quot;&gt;&lt;/script&gt;</code></pre><blockquote>
+<p>应用注意顺序。</p>
+</blockquote>
+<hr>
+<h3 id="交互"><a href="#交互" class="headerlink" title="交互"></a>交互</h3><ul>
+<li><code>draggable()</code>：拖动；</li>
+<li><code>droppable()</code>：被放置；</li>
+</ul>
+<pre><code>$(&quot;#div3&quot;).on(&quot;drop&quot;,function(event,ui){
+        $(&quot;#div3&quot;).css(&quot;background&quot;,&quot;rgba(99,288,118,0.7)&quot;).text(&quot;color change&quot;);
+    })
+</code></pre><blockquote>
+<p>绑定放置后的触发函数。</p>
+</blockquote>
+<ul>
+<li><code>resizable()</code>：调整大小；</li>
+<li><code>selectable()</code>:选择某项，然后会添加一个类名<code>.ui-selected()</code>。</li>
+<li><code>sortable()</code>：自动添加类名<code>.ui-sortable-handle</code>,可以拖动列表选项的位置。</li>
+</ul>
+<hr>
+<h3 id="HTML框架"><a href="#HTML框架" class="headerlink" title="HTML框架"></a>HTML框架</h3><h4 id="页面框架"><a href="#页面框架" class="headerlink" title="页面框架"></a>页面框架</h4><pre><code>&lt;html&gt;
+    &lt;frameset cols=&quot;25%,50%,25%&quot; &gt;
+        &lt;frame src=&quot;#&quot; &gt;
+        &lt;frame src=&quot;#&quot; &gt;
+        &lt;frame src=&quot;#&quot; &gt;
+        &lt;noframes &gt;
+            &lt;body&gt;您的浏览器无法处理框架！&lt;/body&gt;
+        &lt;/noframes &gt;
+    &lt;/frameset &gt;
+&lt;/html &gt;</code></pre><blockquote>
+<p><code>&lt;frameset&gt;&lt;/frameset&gt;</code> <strong>不能</strong>与标签一起使用 <code>&lt;body&gt;&lt;/body&gt;</code> 标签。</p>
+</blockquote>
+<h4 id="内联框架"><a href="#内联框架" class="headerlink" title="内联框架"></a>内联框架</h4><pre><code>&lt;iframe src=&quot;abc.html&quot; marginwidth=&quot;50&quot;&gt;
+      &lt;p&gt;您的浏览器不支持  iframe 标签。&lt;/p&gt;
+      &lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot;&gt;
+        &lt;title&gt;Examples&lt;/title&gt;
+        &lt;meta name=&quot;description&quot; content=&quot;&quot;&gt;
+        &lt;meta name=&quot;keywords&quot; content=&quot;&quot;&gt;
+        &lt;link href=&quot;&quot; rel=&quot;stylesheet&quot;&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+
+        &lt;/body&gt;
+        &lt;/html&gt;
+
+&lt;/iframe&gt;</code></pre><blockquote>
+<p>框架内会显示<code>src</code>所指引的页面。</p>
+</blockquote>
+<h3 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h3><p><strong>URL - Uniform Resource Locator</strong><br>当您点击 HTML 页面中的某个链接时，对应的 <a> 标签指向万维网上的一个地址。<br>统一资源定位器（URL）用于定位万维网上的文档（或其他数据）。<br>网址，比如 <a href="http://www.w3school.com.cn/html/index.asp，遵守以下的语法规则：" target="_blank" rel="noopener">http://www.w3school.com.cn/html/index.asp，遵守以下的语法规则：</a></a></p>
+<pre><code>scheme://host.domain:port/path/filename</code></pre><blockquote>
+<p>scheme - 定义因特网服务的类型。最常见的类型是 http<br>host - 定义域主机（http 的默认主机是 www）<br>domain - 定义因特网域名，比如 w3school.com.cn<br>:port - 定义主机上的端口号（http 的默认端口号是 80）<br>path - 定义服务器上的路径（如果省略，则文档必须位于网站的根目录中）。<br>filename - 定义文档/资源的名称</p>
+</blockquote>
+<blockquote>
+<p>编者注：URL 的英文全称是 Uniform Resource &gt;Locator，中文也译为“统一资源定位符”。</p>
+</blockquote>
+<h1 id="2015年9月5日"><a href="#2015年9月5日" class="headerlink" title="2015年9月5日"></a>2015年9月5日</h1><h2 id="Widgets"><a href="#Widgets" class="headerlink" title="Widgets"></a>Widgets</h2><p><code>accordion()</code>：可以实现手风琴的展示效果。</p>
+<p><code>autocomplete()</code>:自动补全功能。</p>
+<pre><code>核心代码：
+
+var aototags=[&quot;iwen&quot;,&quot;niefee&quot;,&quot;css&quot;,&quot;js&quot;,&quot;html&quot;,&quot;ios&quot;,&quot;java&quot;,&quot;javascript&quot;];
+$(&quot;#tags&quot;).autocomplete({
+        source:aototags
+    });</code></pre><p><code>datepicker()</code>:可以弹出日期选择框；</p>
+<pre><code>核心代码：
+
+&lt;p&gt;Date:&lt;input type=&quot;text&quot; id=&quot;txt&quot;&gt;&lt;/p&gt;
+
+$(&quot;#txt&quot;).datepicker();</code></pre><p><code>dialog()</code>：对话框；</p>
+<pre><code>&lt;div id=&quot;div1&quot;&gt;
+   &lt;p&gt;这是一个对话框&lt;/p&gt;
+&lt;/div&gt;
+&lt;a href=&quot;#&quot; id=&quot;btn2&quot;&gt;Btn&lt;/a&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(&quot;#btn2&quot;).button().on(&quot;click&quot;,function(){
+    $(&quot;#div1&quot;).dialog();
+})
+&lt;/script&gt;</code></pre><p><code>progressbar()</code>：进度条;</p>
+<pre><code>静态设置：
+
+$(function(){
+    $(&quot;#pb&quot;).progressbar({value:50});
+});
+
+动态滚动:
+
+var pb;
+var max=100;
+var current=0;
+$(document).ready(function(){
+    pb=$(&quot;#pb&quot;);
+    pb.progressbar({max:100})
+    setInterval(changepb,100);
+})
+function changepb(){
+    current++;
+    if(current&gt;=100){
+        current=0;
+}
+pb.progressbar(&quot;option&quot;,&quot;value&quot;,current);
+$(&quot;#pbar&quot;).text(current+&quot;%&quot;);
+}</code></pre><p><code>menu()</code>：将多级列表选项自动隐藏，可以放置时显示。</p>
+<p><code>slider()</code>：显示可拖动的进度条。</p>
+<p><code>spinner()</code>：显示选择数字框，<code>.spinner(&quot;value&quot;)</code>可以获取值。</p>
+<p><code>tabs()</code>：自动生成标签格式。标题用<code>&lt;a&gt;</code>的<code>href</code>标签连接并 显示下面的指定<code>id</code>内容。</p>
+<pre><code>&lt;div id=&quot;tabs&quot;&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;#hello1&quot;&gt;Alink&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#hello2&quot;&gt;Alink&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div id=&quot;hello1&quot;&gt;
+        &lt;div&gt;Hello  World11111&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id=&quot;hello2&quot;&gt;
+        &lt;div&gt;Hello  World22222&lt;/div&gt; 
+    &lt;/div&gt;
+&lt;/div&gt;
+
+jQuery代码：
+
+$(&quot;#tabs&quot;).tabs();
+</code></pre><h2 id="W3C笔记"><a href="#W3C笔记" class="headerlink" title="W3C笔记"></a>W3C笔记</h2><ul>
+<li><code>&lt;video&gt;</code> 元素无法通过 HTML 4 和 XHTML 验证。</li>
+<li><code>&lt;embed&gt;</code>元素无法通过 HTML 4 和 XHTML 验证。</li>
+</ul>
+<blockquote>
+<p>注释：使用 <!DOCTYPE html> (HTML5) 解决验证问题。</p>
+</blockquote>
+<hr>
+<pre><code>&lt;video width=&quot;320&quot; height=&quot;240&quot; controls=&quot;controls&quot;&gt;
+  &lt;source src=&quot;movie.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+  &lt;source src=&quot;movie.ogg&quot; type=&quot;video/ogg&quot; /&gt;
+  &lt;source src=&quot;movie.webm&quot; type=&quot;video/webm&quot; /&gt;
+  &lt;object data=&quot;movie.mp4&quot; width=&quot;320&quot; height=&quot;240&quot;&gt;
+    &lt;embed src=&quot;movie.swf&quot; width=&quot;320&quot; height=&quot;240&quot; /&gt;
+  &lt;/object&gt;
+&lt;/video&gt;</code></pre><blockquote>
+<p>上例中使用了 4 中不同的视频格式。HTML 5 <code>&lt;video&gt;</code> 元素会尝试播放以 mp4、ogg 或 webm 格式中的一种来播放视频。如果均失败，则回退到 <code>&lt;embed&gt;</code> 元素。</p>
+</blockquote>
+<h3 id="XML是什么"><a href="#XML是什么" class="headerlink" title="XML是什么"></a>XML是什么</h3><ul>
+<li>XML 指可扩展标记语言（EXtensible Markup Language）</li>
+<li>XML 是一种标记语言，很类似 HTML</li>
+<li>XML 的设计宗旨是传输数据，而非显示数据</li>
+<li>XML 标签没有被预定义。您需要自行定义标签。</li>
+<li>XML 被设计为具有自我描述性。</li>
+<li>XML 是 W3C 的推荐标准</li>
+</ul>
+<h3 id="什么是-XHTML？"><a href="#什么是-XHTML？" class="headerlink" title="什么是 XHTML？"></a>什么是 XHTML？</h3><ul>
+<li>XHTML 指的是可扩展超文本标记语言</li>
+<li>XHTML 与 HTML 4.01 几乎是相同的</li>
+<li>XHTML 是更严格更纯净的 HTML 版本</li>
+<li>XHTML 是以 XML 应用的方式定义的 HTML</li>
+<li>XHTML 是 2001 年 1 月发布的 W3C 推荐标准</li>
+<li>XHTML 得到所有主流浏览器的支持</li>
+</ul>
+<p><strong>与 HTML 相比最重要的区别：</strong></p>
+<ul>
+<li><p>文档结构</p>
+</li>
+<li><p>XHTML DOCTYPE 是强制性的</p>
+</li>
+<li><p><code>&lt;html&gt;</code> 中的 XML namespace 属性是强制性的</p>
+</li>
+<li><p><code>&lt;html&gt;</code>、<code>&lt;head&gt;</code>、<code>&lt;title&gt;</code> 以及 <code>&lt;body&gt;</code> 也是强制性的</p>
+</li>
+<li><p>元素语法</p>
+</li>
+<li><p>XHTML 元素必须正确嵌套</p>
+</li>
+<li><p>XHTML 元素必须始终关闭</p>
+</li>
+<li><p>XHTML 元素必须小写</p>
+</li>
+<li><p>XHTML 文档必须有一个根元素</p>
+</li>
+<li><p>属性语法</p>
+</li>
+<li><p>XHTML 属性必须使用小写</p>
+</li>
+<li><p>XHTML 属性值必须用引号包围</p>
+</li>
+<li><p>XHTML 属性最小化也是禁止的</p>
+<p><code>ellpadding</code>: 来创建单元格内容与其边框之间的空白。<br><code>cellspacing</code>: Cell spacing 增加单元格之间的距离。<br><code>&lt;table&gt;</code>的 <code>frame</code> 属性来控制围绕表格的边框。取值有<code>box</code>,<code>above</code>,<code>below</code>,<code>hside</code>,<code>vside</code>。</p>
+</li>
+</ul>
+<h1 id="2015年9月6日"><a href="#2015年9月6日" class="headerlink" title="2015年9月6日"></a>2015年9月6日</h1><h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>无序列表符号：<br><code>disc</code>：实心原点；<br><code>circle</code>：空心原点；<br><code>square</code>：方形点；</p>
+<p>有序列表符号：<br><code>A</code>:大写字母；<br><code>a</code>：小写字母；<br><code>I</code>:大小罗马字母；<br><code>i</code>：小写罗马字母；</p>
+<p>自定义列表：<br>自定义列表以<code>&lt;dl&gt;</code> 标签开始。每个自定义列表项以 <code>&lt;dt&gt;</code>开始。每个自定义列表项的定义以<code>&lt;dd&gt;</code>开始。</p>
+<pre><code>&lt;dl&gt;
+&lt;dt&gt;Coffee&lt;/dt&gt;
+&lt;dd&gt;Black hot drink&lt;/dd&gt;
+&lt;dt&gt;Milk&lt;/dt&gt;
+&lt;dd&gt;White cold drink&lt;/dd&gt;
+&lt;/dl&gt;</code></pre><hr>
+<h2 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h2><pre><code>&lt;form&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;健康信息&lt;/legend&gt;
+    身高：&lt;input type=&quot;text&quot; /&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;</code></pre><hr>
+<h2 id="图片映射"><a href="#图片映射" class="headerlink" title="图片映射"></a>图片映射</h2><p><code>&lt;map&gt;</code> 标签用于客户端图像映射。图像映射指带有可点击区域的一幅图像。<br><code>&lt;img&gt;</code>中的 usemap 属性可引用 <code>&lt;map&gt;</code> 中的 id 属性，所以我们应向 <code>&lt;map&gt;</code> 添加 id 属性。<br>area 元素永远嵌套在 map 元素内部。area 元素可定义图像映射中的区域。</p>
+<pre><code>示例：
+
+&lt;img src=&quot;planets.gif&quot; width=&quot;145&quot; height=&quot;126&quot; alt=&quot;Planets&quot; usemap=&quot;#planetmap&quot;&gt;
+&lt;map name=&quot;planetmap&quot;&gt;
+  &lt;area shape=&quot;rect&quot; coords=&quot;0,0,82,126&quot; href=&quot;sun.htm&quot; alt=&quot;Sun&quot;&gt;
+  &lt;area shape=&quot;circle&quot; coords=&quot;90,58,3&quot; href=&quot;mercur.htm&quot; alt=&quot;Mercury&quot;&gt;
+  &lt;area shape=&quot;circle&quot; coords=&quot;124,58,8&quot; href=&quot;venus.htm&quot; alt=&quot;Venus&quot;&gt;
+&lt;/map&gt;
+&lt;--
+shape : 有几个选择：
+rect : 矩形，coords对应的坐标为左上角和右下角。
+
+circle:圆，coords对应的是圆心（x，y），和半径r。
+
+poly：   多边形，coords对应的是每个点的坐标,每两个为一组表示一个点。
+
+coords：坐标，根据shape的值去定义。  
+href：链接。 
+--&gt;</code></pre><h2 id="lt-meta-gt-元素"><a href="#lt-meta-gt-元素" class="headerlink" title="&lt; meta &gt; 元素"></a>&lt; meta &gt; 元素</h2><blockquote>
+<p>参看：<a href="http://segmentfault.com/a/1190000002407912" target="_blank" rel="noopener"><code>meta（）</code>标签使用参考</a></p>
+</blockquote>
+<h1 id="2015年9月7日"><a href="#2015年9月7日" class="headerlink" title="2015年9月7日"></a>2015年9月7日</h1><h2 id="jQuery-mobile"><a href="#jQuery-mobile" class="headerlink" title="jQuery mobile"></a>jQuery mobile</h2><p>基本格式</p>
+<pre><code class="jquery">&lt;div data-role=&quot;page&quot; id=&quot;pageone&quot;&gt;
+    //头部
+  &lt;div data-role=&quot;header&quot;&gt;
+    &lt;h1&gt;在此处写入标题&lt;/h1&gt;
+  &lt;/div&gt;
+    //主题内容
+  &lt;div data-role=&quot;content&quot;&gt;
+    &lt;p&gt;在此处写入正文&lt;/p&gt;
+  &lt;/div&gt;
+    //尾部
+  &lt;div data-role=&quot;footer&quot;&gt;
+    &lt;h1&gt;在此处写入页脚文本&lt;/h1&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt; </code></pre>
+<h1 id="2015年9月8日"><a href="#2015年9月8日" class="headerlink" title="2015年9月8日"></a>2015年9月8日</h1><h2 id="jQuery-mobile-1"><a href="#jQuery-mobile-1" class="headerlink" title="jQuery mobile"></a>jQuery mobile</h2><h3 id="Widgets-button"><a href="#Widgets-button" class="headerlink" title="Widgets-button"></a>Widgets-button</h3><pre><code>1.&lt;button&gt;BTN1&lt;/button&gt;
+
+2.&lt;input type=&quot;button&quot; value=&quot;BTN2&quot;&gt;
+
+3.&lt;a href=&quot;#&quot; class=&quot;ui-btn ui-shadow&quot; &gt;BTN3&lt;/a&gt;
+</code></pre><blockquote>
+<p>三者效果一样，一般建议使用<code>&lt;a&gt;</code>标签，表单提交可以 用另外两者。</p>
+</blockquote>
+<p>jQuery Mobile 中的按钮会自动获得样式</p>
+<ul>
+<li><code>data-inline=&quot;true&quot;</code>：两个或多个按钮并排显示。</li>
+<li><code>data-role=&quot;controlgroup&quot;</code> 属性与 <code>data-type=&quot;horizontal|vertical&quot;</code> 一同使用，以规定水平或垂直地组合.</li>
+<li><code>data-rel=&quot;back&quot;</code>:创建后退按钮。<ul>
+<li><code>data-corners</code>:    <strong>true/false</strong>规定按钮是否有圆角。</li>
+</ul>
+</li>
+<li><code>data-mini</code>:<strong>true/false</strong>规定是否是小型按钮。</li>
+<li><code>data-shadow</code>:<strong>true/false</strong>规定按钮是否有阴影。</li>
+</ul>
+<h3 id="checkboxradio、collapsible"><a href="#checkboxradio、collapsible" class="headerlink" title="checkboxradio、collapsible"></a>checkboxradio、collapsible</h3><ul>
+<li>多选按钮</li>
+</ul>
+<pre><code>&lt;label&gt;
+    &lt;input type=&quot;checkbox&quot; name=&quot;cb0&quot;&gt;Apple
+&lt;/label&gt;</code></pre><ul>
+<li>单选按钮</li>
+</ul>
+<pre><code>&lt;label&gt;
+    &lt;input type=&quot;checkbox&quot; name=&quot;cb0&quot;&gt;Apple
+&lt;/label&gt;</code></pre><ul>
+<li>按钮横向排列</li>
+</ul>
+<pre><code> &lt;fieldset data-role=&quot;controlgroup&quot;data-type=&quot;horizontal&quot;  &gt;&lt;/fieldset&gt;</code></pre><ul>
+<li>对话框收缩与展开</li>
+</ul>
+<pre><code>&lt;--默认是展开，没有主题边框效果--&gt;
+&lt;div data-role=&quot;collapsible&quot; data-collapsed=&quot;false&quot; data-content-theme=&quot;false&quot;&gt;
+    &lt;--收缩栏标题。--&gt;
+    &lt;h4&gt;header&lt;/h4&gt; 
+    &lt;--内容--&gt;
+    &lt;p&gt;我是展开了吗？&lt;/p&gt;
+    &lt;--列表项--&gt;
+    &lt;ul data-role=&quot;listview&quot;&gt;
+      &lt;li&gt;
+         &lt;a href=&quot;#&quot;&gt;item one&lt;/a&gt;                    
+         &lt;li&gt;&lt;a href=&quot;#&quot;&gt;item 1&lt;/a&gt;&lt;/li&gt;
+         &lt;li&gt;&lt;a href=&quot;#&quot;&gt;item 2&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt; 
+&lt;/div&gt;</code></pre><h3 id="Grid"><a href="#Grid" class="headerlink" title="Grid"></a>Grid</h3><pre><code>一、
+    &lt;div class=&quot;ui-grid-d&quot;&gt;
+        &lt;div class=&quot;ui-block-a&quot; &gt;
+            &lt;div class=&quot;ui-bar ui-bar-a&quot;&gt;aa&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;ui-block-b&quot;&gt;
+            &lt;div class=&quot;ui-bar ui-bar-a&quot;&gt;bb&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;ui-block-c&quot;&gt;
+            &lt;div class=&quot;ui-bar ui-bar-a&quot;&gt;cc&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;ui-block-d&quot;&gt;
+            &lt;div class=&quot;ui-bar ui-bar-a&quot;&gt;dd&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;ui-block-e&quot;&gt;
+            &lt;div class=&quot;ui-bar ui-bar-a&quot;&gt;ee&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+
+二、
+     &lt;div class=&quot;ui-grid-solo&quot;&gt;
+        &lt;div class=&quot;ui-block-a&quot;&gt;
+            &lt;input type=&quot;button&quot; data-theme=&quot;b&quot; value=&quot;Button&quot;&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+</code></pre><blockquote>
+<p><strong>ui-grid-a/b/c/d</strong>：表示2/3/4/5列。<br><strong>ui-grid-solo</strong>：表示一列。<br><strong>ui-block-a/b/c/d/e</strong>：表示第1/2/3/4/5列。<br><strong>ui-bar-a/b</strong>：表示主题一、二。<br><strong>data-theme=”a/b”</strong>:同上。</p>
+</blockquote>
+<h3 id="listview"><a href="#listview" class="headerlink" title="listview"></a>listview</h3><pre><code>一、
+&lt;form&gt;
+    &lt;input id=&quot;autoinput&quot; datatype=&quot;search&quot;&gt;
+&lt;/form&gt;
+&lt;ul data-role=&quot;listview&quot; data-filter=&quot;true&quot; data-filter-reveal=&quot;true&quot; data-input=&quot;#autoinput&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;113&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;224&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;333&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;dsd&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;vsd&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;rv&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+
+二、
+ &lt;ul data-role=&quot;listview&quot; data-autodividers=&quot;true&quot; data-filter=&quot;true&quot; data-inset=&quot;true&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;113&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;1122w3&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;224&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;333&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;dsd&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;vsd&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;rv&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+</code></pre><blockquote>
+<p><strong>data-filter=”true” data-filter-reveal=”true” *<em>:数据过滤，默认隐藏列表。<br>*</em>data-autodividers=”true”</strong>：字母索引。<br><strong>data-inset=”true”</strong>：为列表添加圆角和外边距。</p>
+</blockquote>
+<h3 id="navbar"><a href="#navbar" class="headerlink" title="navbar"></a>navbar</h3><pre><code>&lt;div data-role=&quot;header&quot;&gt;
+        &lt;div data-role=&quot;navbar&quot; &gt;
+            &lt;ul data-theme=&quot;b&quot;&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot; data-icon=&quot;gear&quot;  class=&quot;ui-btn-active&quot; &gt;11&lt;/a&gt; &lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot; data-icon=&quot;grid&quot; data-theme=&quot;b&quot;&gt;22&lt;/a&gt; &lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot; data-icon=&quot;star&quot;&gt;33&lt;/a&gt; &lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot; data-icon=&quot;gear&quot;&gt;44&lt;/a&gt; &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;</code></pre><blockquote>
+<p>必须有<strong>data-role=”header”</strong>才有<strong>data-theme=”b”</strong>效果。</p>
+</blockquote>
+<h3 id="popup"><a href="#popup" class="headerlink" title="popup"></a>popup</h3><pre><code>&lt;a href=&quot;#pp&quot; class=&quot;ui-btn&quot; data-rel=&quot;popup&quot;&gt;弹出窗口&lt;/a&gt;
+    &lt;div  data-role=&quot;popup&quot; id=&quot;pp&quot;&gt;
+        &lt;p&gt;弹出窗口的内容&lt;/p&gt;
+&lt;/div&gt;</code></pre><h3 id="select"><a href="#select" class="headerlink" title="select"></a>select</h3><pre><code> &lt;div class=&quot;ui-field-contain&quot;&gt;
+        &lt;select name=&quot;select-native-1&quot; id=&quot;select-native-1&quot; data-iconpos=&quot;left&quot;&gt;
+            &lt;option value=&quot;1&quot;&gt;11&lt;/option&gt;
+            &lt;option value=&quot;2&quot; disabled=&quot;disabled&quot;&gt;22&lt;/option&gt;
+            &lt;option value=&quot;3&quot;&gt;33&lt;/option&gt;
+            &lt;option value=&quot;4&quot;&gt;44&lt;/option&gt;
+            &lt;option value=&quot;5&quot;&gt;55&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/div&gt;</code></pre><blockquote>
+<p>** disabled=”disabled”**：不能被选中。</p>
+</blockquote>
+<h1 id="2015年9月9日"><a href="#2015年9月9日" class="headerlink" title="2015年9月9日"></a>2015年9月9日</h1><h2 id="jQuery-Mobile-事件"><a href="#jQuery-Mobile-事件" class="headerlink" title="jQuery Mobile 事件"></a>jQuery Mobile 事件</h2><ul>
+<li><code>pageinit()</code>：加载完后触发。</li>
+<li><code>tap()</code>：点击后触发。</li>
+<li><code>taphold()</code>:长按后触发。</li>
+<li><code>swipe()/swipeleft()/swiperight()</code>：滑动触发。</li>
+<li><code>scrollstart()/scrolstop()</code>：开始或者结束滑动时触发。</li>
+<li><code>orientationchange()</code>:屏幕方向改变。</li>
+</ul>
+<h2 id="AngularJS"><a href="#AngularJS" class="headerlink" title="AngularJS"></a>AngularJS</h2><p>AngularJS的四个核心思想</p>
+<ol>
+<li>依赖注入</li>
+<li>模块化</li>
+<li>双向绑定</li>
+<li>语义化标签</li>
+</ol>
+<h1 id="2015年9月10日"><a href="#2015年9月10日" class="headerlink" title="2015年9月10日"></a>2015年9月10日</h1><h2 id="Angularjs"><a href="#Angularjs" class="headerlink" title="Angularjs"></a>Angularjs</h2><h3 id="MVC框架"><a href="#MVC框架" class="headerlink" title="MVC框架"></a>MVC框架</h3><p><strong>MVC</strong>全名是Model View Controller，是模型(model)－视图(view)－控制器(controller)的缩写。</p>
+<p>AngularJS 模块（<strong>Module</strong>） 定义了 AngularJS 应用。<br>AngularJS 控制器（<strong>Controller</strong>） 用于控制 AngularJS 应用。<br>ng-app指令定义了应用, ng-controller 定义了控制器。</p>
+<h3 id="双向绑定数据"><a href="#双向绑定数据" class="headerlink" title="双向绑定数据"></a>双向绑定数据</h3><pre><code>&lt;body style=&quot;padding:10px;&quot; ng-app=&quot;&quot;&gt;
+
+    &lt;input type=&quot;text&quot; ng-model=&quot;uName&quot;&gt;
+    &lt;h1&gt;{{uName}}&lt;/h1&gt;
+    &lt;h1 ng-cloak=&quot;&quot; class=&quot;ng-clock&quot;&gt;{{uName}}&lt;/h1&gt;
+    &lt;div ng-if=&quot;uName.length&gt;0&quot;&gt;{{'UserName:'+uName}}&lt;/div&gt;
+    &lt;div ng-bind=&quot;&#39;用户名：&#39;+uName&quot; ng-if=&quot;uName.length&gt;0&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;{{uName}}&quot;&gt;{{uName}}&lt;/div&gt;
+
+    &lt;script src=&quot;js/angular.min.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre><p>效果图：<br><img src="http://i.imgur.com/bvNbEO0.jpg" alt></p>
+<h3 id="Controllers-的使用"><a href="#Controllers-的使用" class="headerlink" title="Controllers 的使用"></a>Controllers 的使用</h3><pre><code>&lt;div ng-controller=&quot;NextCtrl&quot;&gt;
+  &lt;input type=&quot;text&quot; ng-model=&quot;msg&quot;&gt;
+  &lt;h1 ng-bind=&quot;msg&quot;&gt;&lt;/h1&gt;
+&lt;/div&gt;
+
+
+angular.module(&quot;app&quot;,[])
+    .controller(&#39;FirstCtrl&#39;,function($scope){
+        $scope.msg=&quot;hello  world&quot;;
+})</code></pre><ul>
+<li>定义controller</li>
+<li>在controller中声明变量</li>
+<li>使用ng-bind绑定数据并显示controller的作用域</li>
+</ul>
+<h3 id="scope-上声明变量和方法"><a href="#scope-上声明变量和方法" class="headerlink" title="$scope 上声明变量和方法"></a>$scope 上声明变量和方法</h3><p>示例代码：</p>
+<pre><code>&lt;div ng-controller=&quot;MyCtrl&quot;&gt;
+    &lt;input type=&quot;text&quot; ng-model=&quot;user.uName&quot;&gt;
+    &lt;input type=&quot;text&quot; ng-model=&quot;user.pwd&quot;&gt;
+    &lt;div class=&quot;button&quot; ng-click=&quot;login()&quot;&gt;login up&lt;/div&gt;
+    &lt;div  ng-show=&quot;errormsg.length&gt;0&quot; class=&quot;alert-box&quot;&gt;{{errormsg}}&lt;/div&gt;
+&lt;/div&gt;
+
+
+$scope.login=function(){
+    console.log($scope.user);
+    if($scope.user.uName==&quot;admin&quot; &amp;&amp; $scope.user.pwd==&quot;123&quot;){
+        alert(&quot;ok&quot;);
+    }else{
+       $scope.errormsg=&quot;用户名或者密码错误。&quot;;
+    }
+}
+</code></pre><h1 id="2015年9月11日"><a href="#2015年9月11日" class="headerlink" title="2015年9月11日"></a>2015年9月11日</h1><h2 id="Services与指令的使用"><a href="#Services与指令的使用" class="headerlink" title="Services与指令的使用"></a>Services与指令的使用</h2><h3 id="自定义一个Services服务"><a href="#自定义一个Services服务" class="headerlink" title="自定义一个Services服务"></a>自定义一个Services服务</h3><p>四种方法 ：</p>
+<pre><code>&lt;body style=&quot;padding: 10px;&quot; ng-app=&quot;app&quot;&gt;
+    &lt;div ng-controller=&quot;MyCtrl&quot;&gt;
+        &lt;h1&gt;{{realname}}&lt;/h1&gt;
+        &lt;h1&gt;{{http}}&lt;/h1&gt;
+        &lt;h1&gt;{{data.msg}}&lt;/h1&gt;
+        &lt;h1&gt;{{uName}}&lt;/h1&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;script src=&quot;js/angular.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    angular.module(&#39;app&#39;, [])
+        .value(&quot;realname&quot;,&quot;niefee&quot;)//value值可以改变的。
+        .value(&quot;realname&quot;,&quot;Muling&quot;)
+        .constant(&#39;http&#39;, &quot;www.baidu.com&quot;)//constant不可以改变。
+        .constant(&#39;http&#39;, &quot;www.qq.com&quot;)
+        .factory(&quot;Data&quot;,function(){
+            return {
+                msg:&#39;hello&#39;,
+                setMsg:function(){
+                    this.msg=&quot;我不好的&quot;;
+                }
+            }
+        })
+        .service(&quot;User&quot;,function(){
+            this.firstname=&quot;上官&quot;;
+            this.lastname=&quot;飞燕&quot;;
+            this.getName=function(){
+                return this.firstname+this.lastname;
+            }
+        })
+        .controller(&#39;MyCtrl&#39;, function($scope,realname,http,Data,User){
+        $scope.msg=&quot;hello&quot;;
+        $scope.realname=realname;
+        $scope.http=http;
+        $scope.data=Data;
+        $scope.uName=User.getName();
+        Data.setMsg();
+    })
+&lt;/script&gt;</code></pre><p>value的值可以改变。</p>
+<h3 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h3><p><strong>ng-show/hide，ng-if</strong></p>
+<pre><code>&lt;img ng-src=&quot;{{user.icon}}&quot; ng-show=&quot;user.isShowImg&quot; ng-class=&quot;{&#39;tx&#39;:user.showicon}&quot;&gt;
+&lt;img ng-src=&quot;{{user.icon}}&quot; ng-hide=&quot;user.isShowImg&quot; ng-class=&quot;{&#39;tx&#39;:user.showicon}&quot;&gt;
+&lt;img ng-src=&quot;{{user.icon}}&quot; ng-ig=&quot;user.isShowImg&quot; ng-class=&quot;{&#39;tx&#39;:user.showicon}&quot;&gt;</code></pre><p>显示与否取决于 <code>inShowImg</code> 的值是<code>true</code>或者<code>false</code>。</p>
+<p><strong>ng-dissbled</strong></p>
+<pre><code>&lt;button type=&quot;submit&quot; class=&quot;button expand&quot; ng-disabled=&quot;f.$invalid&quot;&gt;提交&lt;/button&gt;</code></pre><p><code>.$invalid</code>是内置表单验证方法。可以在前面的标签中加上<code>required</code>为必填项，没有的时候提交会置回。</p>
+<p><strong>ng-submit</strong><br>可以使用在表单提交时运行函数。</p>
+<h3 id="常用指令-ng-repeat-的使用"><a href="#常用指令-ng-repeat-的使用" class="headerlink" title="常用指令 ng-repeat 的使用"></a>常用指令 ng-repeat 的使用</h3><pre><code>&lt;li ng-repeat=&quot;a in list&quot;&gt;
+    &lt;h4&gt;{{a.address}}&lt;/h4&gt;
+&lt;/li&gt;</code></pre><p>遍历元素。</p>
+<h1 id="2015年9月12日"><a href="#2015年9月12日" class="headerlink" title="2015年9月12日"></a>2015年9月12日</h1><h2 id="Directive-的使用"><a href="#Directive-的使用" class="headerlink" title="Directive 的使用"></a>Directive 的使用</h2><p>restrict 的取值可以有三种：</p>
+<ul>
+<li>A 用于元素的 Attribute，这是默认值</li>
+<li>E 用于元素的名称</li>
+<li>C 用于 CSS 中的 class</li>
+</ul>
+<p>我们这样定义指令。</p>
+<pre><code class="javascript">var app = angular.module(&quot;app&quot;, [])
+    .directive(&quot;hello&quot;, function () {
+        var option = {
+            restrict: &quot;AEC&quot;,
+            template: &quot;Hello, Directive&quot;,
+        };
+        return option;
+    })</code></pre>
+<p>由于我们指定了可以用于三种情况下，那么，就可以如下三种形式来使用这个指令</p>
+<pre><code class="html">&lt;!-- 元素 --&gt;
+&lt;div&gt;
+    &lt;hello&gt;&lt;/hello&gt;
+&lt;/div&gt;
+&lt;!-- 属性--&gt;
+&lt;div&gt;
+    &lt;div hello&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- class --&gt;
+&lt;div&gt;
+    &lt;div class=&quot;hello&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<p> 查看元素的结果如下：</p>
+<pre><code> &lt;!-- 元素 --&gt;
+&lt;div&gt;
+    &lt;hello&gt;Hello, Directive&lt;/hello&gt;
+&lt;/div&gt;
+&lt;!-- 属性--&gt;
+&lt;div&gt;
+    &lt;div hello=&quot;&quot;&gt;Hello, Directive&lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- class --&gt;
+&lt;div&gt;
+    &lt;div class=&quot;hello&quot;&gt;Hello, Directive&lt;/div&gt;
+&lt;/div&gt;</code></pre><h2 id="Javascript-常用获取时间函数"><a href="#Javascript-常用获取时间函数" class="headerlink" title="Javascript 常用获取时间函数"></a>Javascript 常用获取时间函数</h2><pre><code class="javascript">var myDate = new Date();
+
+myDate.getYear(); //获取当前年份(2位)
+myDate.getFullYear(); //获取完整的年份(4位,1970-????)
+myDate.getMonth(); //获取当前月份(0-11,0代表1月)
+myDate.getDate(); //获取当前日(1-31)
+myDate.getDay(); //获取当前星期X(0-6,0代表星期天)
+myDate.getTime(); //获取当前时间(从1970.1.1开始的毫秒数)
+myDate.getHours(); //获取当前小时数(0-23)
+myDate.getMinutes(); //获取当前分钟数(0-59)
+myDate.getSeconds(); //获取当前秒数(0-59)
+myDate.getMilliseconds(); //获取当前毫秒数(0-999)
+myDate.toLocaleDateString(); //获取当前日期
+
+
+var mytime=myDate.toLocaleTimeString(); //获取当前时间
+myDate.toLocaleString( ); //获取日期与时间
+</code></pre>
+<h2 id="React程序"><a href="#React程序" class="headerlink" title="React程序"></a>React程序</h2><pre><code class="jsx">&lt;script src=&quot;js/react.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;js/JSXTransformer.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/jsx&quot;&gt;//这里的type是jsx。
+        var HelloWorld=React.createClass({
+            render: function(){
+                return &lt;p&gt;Hello  World&lt;/p&gt;  
+            }
+        });
+        React.render(&lt;HelloWorld&gt;&lt;/HelloWorld&gt;,document.body);
+&lt;/script&gt;</code></pre>
+<blockquote>
+<p>生成一个基本标签。</p>
+</blockquote>
+<h1 id="2015年9月16日"><a href="#2015年9月16日" class="headerlink" title="2015年9月16日"></a>2015年9月16日</h1><h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><p><strong>Git使用40个16进制字符的SHA-1 Hash来唯一标识对象。</strong></p>
+<p>e98757d0598ab6eeaf1df0d87dd00826048bd80b<br><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015%E5%B9%B49%E6%9C%8816%E6%97%A5-1.jpg" alt="Alt text"></p>
+<h3 id="远程仓库相关命令"><a href="#远程仓库相关命令" class="headerlink" title="远程仓库相关命令"></a>远程仓库相关命令</h3><p>检出仓库：$ git clone git://github.com/jquery/jquery.git</p>
+<p>查看远程仓库：$ git remote -v</p>
+<p>添加远程仓库：$ git remote add [name][url]</p>
+<p>删除远程仓库：$ git remote rm [name]</p>
+<p>拉取远程仓库：$ git pull [remoteName][localBranchName]</p>
+<p>推送远程仓库：$ git push [remoteName][localBranchName]</p>
+<h3 id="分支-branch-操作相关命令"><a href="#分支-branch-操作相关命令" class="headerlink" title="分支(branch)操作相关命令"></a>分支(branch)操作相关命令</h3><p>查看本地分支：$ git branch</p>
+<p>查看远程分支：$ git branch -r</p>
+<p>创建本地分支：$ git branch [name] —-注意新分支创建后不会自动切换为当前分支</p>
+<p>切换分支：$ git checkout [name]</p>
+<p>创建新分支并立即切换到新分支：$ git checkout -b [name]</p>
+<p>删除分支：$ git branch -d [name] —- -d选项只能删除已经参与了合并的分支，对于未有合并的分支是无法删除的。如果想强制删除一个分支，可以使用-D选项</p>
+<p>合并分支：$ git merge [name] —-将名称为[name]的分支与当前分支合并</p>
+<p>创建远程分支(本地分支push到远程)：$ git push origin [name]</p>
+<p>删除远程分支：$ git push origin :heads/[name]</p>
+<h2 id="慕课笔记"><a href="#慕课笔记" class="headerlink" title="慕课笔记"></a>慕课笔记</h2><p>互联网创业发展方向</p>
+<ul>
+<li>互联网+</li>
+</ul>
+<blockquote>
+<p>对传统行业的改造。</p>
+</blockquote>
+<ul>
+<li>文化+</li>
+</ul>
+<blockquote>
+<p>情感连接。<br>小米是一种情感的连接。</p>
+</blockquote>
+<p>BAT不形成垄断，小团队执行力、创新力都比较高。</p>
+<h1 id="2015年9月17日"><a href="#2015年9月17日" class="headerlink" title="2015年9月17日"></a>2015年9月17日</h1><h2 id="javascript模块化"><a href="#javascript模块化" class="headerlink" title="javascript模块化"></a>javascript模块化</h2><p>参看文章：<a href="http://www.ruanyifeng.com/blog/2012/10/javascript_module.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2012/10/javascript_module.html</a> 。</p>
+<p><strong>匿名函数自调用</strong></p>
+<pre><code>(function foo() {...})// 这里是故意换行，实际上可以和下面的括号连起来
+();
+
+这就等价于：
+
+var foo = function () {...};// 这就不是定义，而是表达式了。
+foo();</code></pre><blockquote>
+<p><code>(function(){...})()</code> 与 <code>(function(){...}())</code>没有区别。</p>
+</blockquote>
+<p>函数的定义，大致可分为三种方式</p>
+<p>第一种：这也是最常规的一种</p>
+<pre><code>function double(x){
+    return 2 * x;   
+}</code></pre><p>第二种：这种方法使用了Function构造函数，把参数列表和函数体都作为字符串，很不方便，不建议使用。</p>
+<pre><code>var double = new Function(&#39;x&#39;, &#39;return 2 * x;&#39;);</code></pre><p>第三种：</p>
+<pre><code>var double = function(x) { return 2* x; }</code></pre><p>注意“=”右边的函数就是一个匿名函数，创造完毕函数后，又将该函数赋给了变量double。</p>
+<blockquote>
+<p>上面三种方法定义了同一个方法函数fnMethodName，第1种就是最常用的方法，后两种都是把一个函数复制给变量fnMethodName，而这个函数是没有名字的，即匿名函数。</p>
+</blockquote>
+<p><strong>闭包</strong></p>
+<pre><code>function f1(){
+　　　　var n=999;
+　　　　function f2(){
+　　　　　　alert(n); 
+　　　　}
+　　　　return f2;
+　　}
+　　var result=f1();
+　　result(); // 999</code></pre><blockquote>
+<p>代码中的f2函数，就是<strong>闭包</strong>。<br>各种专业文献上的”闭包”（closure）定义非常抽象，很难看懂。我的理解是，闭包就是能够读取其他函数内部变量的函数。<br>由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成”定义在一个函数内部的函数”。<br>所以，在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。</p>
+</blockquote>
+<h1 id="2015年9月18日"><a href="#2015年9月18日" class="headerlink" title="2015年9月18日"></a>2015年9月18日</h1><h2 id="JavaScript面向切面编程"><a href="#JavaScript面向切面编程" class="headerlink" title="JavaScript面向切面编程"></a>JavaScript面向切面编程</h2><p>Aspect Oriented Programming(AOP)面向切面编程，是一个比较热门的话题。AOP主要实现的目的是针对业务处理过程中的切面进行提取，它所面对的是处理过程中的某个步骤或阶段，以获得逻辑过程中各部分之间低耦合性的隔离效果。</p>
+<h2 id="构造函数模式的作用与注意事项"><a href="#构造函数模式的作用与注意事项" class="headerlink" title="构造函数模式的作用与注意事项"></a>构造函数模式的作用与注意事项</h2><p>模式作用：</p>
+<ul>
+<li>用于创建特定类型的对象</li>
+<li>第一次生命的时候给对象赋值</li>
+<li>对自己声明构造函数，赋予属性与方法。</li>
+</ul>
+<p>注意事项</p>
+<ul>
+<li>生命函数的时候处理业务逻辑。</li>
+<li>区分与单例的区别，配合单例实现初始化。</li>
+<li>构造函数大写字母开头。</li>
+<li>注意new的成本</li>
+</ul>
+<pre><code>//1. 用于创建特定类型的对象。
+//2. 注意函数名的语义性与可读性。
+//3. javascript开发的时候用单引号，双引号在内部也会转成单引号。
+//4. js里面的构造函数比较特殊的地方是有一个 new。
+//5. 其他语言，比如PHP里人家实现有一个关键字  A class
+//6. zaomen就是构造函数，他又充当了类的概念。
+
+function zaomen(){
+    if(!(this instanceof zaomen)){
+        return zaomen();
+    }
+    this.suo=&quot;普通&quot;;
+    this.huawen=&quot;普通&quot;;
+    this.create=function(){
+        return &quot;【锁头】&quot;+this.suo+&quot;【花纹】&quot;+this.huawen
+    }
+}
+
+    var xiaozhang =new zaomen();
+    alert(&quot;xiaozhang&quot;+xiaozhang.create());</code></pre><h2 id="设计模式之建造者模式"><a href="#设计模式之建造者模式" class="headerlink" title="设计模式之建造者模式"></a>设计模式之建造者模式</h2><p>模式作用：</p>
+<ul>
+<li>分步创建一个复杂的对象</li>
+<li>解耦封装过程和具体创建的组件。</li>
+<li>无需关心组件如何组装</li>
+</ul>
+<p>注意事项：</p>
+<ul>
+<li>一定要一个稳定的算法进行支持。</li>
+<li>加工工艺是暴露的。</li>
+</ul>
+<pre><code class="javascript">    function Fangzi(){
+            this.woshi=&quot;&quot;;
+            this.keting=&quot;&quot;;
+            this.chufang=&quot;&quot;;
+}
+
+function Baogongtou(){
+    this.gaifangzi=function(gongren){
+        gongren.jian_woshi();
+        gongren.jian_keting();
+        gongren.jian_chufang();
+    };
+}
+
+function Gongren(){
+    this.jian_woshi=function(){
+        alert(&quot;卧室我盖好了&quot;);
+    };
+
+    this.jian_keting=function(){
+        alert(&quot;客厅我盖好了&quot;);
+    };
+    this.jian_chufang=function(){
+        alert(&quot;厨房我盖好了&quot;);
+    };
+
+    this.jiaogong=function(){
+
+        var _fangzi=new Fangzi();
+        _fangzi.woshi=&quot;ok&quot;;
+        _fangzi.keting=&quot;ok&quot;;
+        _fangzi.chufang=&quot;ok&quot;;
+        return _fangzi;
+    };
+}
+
+    var gongren=new Gongren();
+    var baogongtou=new Baogongtou();
+    baogongtou.gaifangzi(gongren);
+    var myfangzi=gongren.jiaogong();
+
+    console.log(myfangzi);</code></pre>
+<h2 id="设计模式之工厂模式"><a href="#设计模式之工厂模式" class="headerlink" title="设计模式之工厂模式"></a>设计模式之工厂模式</h2><p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/gongchangmoshi.jpg" alt="text"><br>模式作用 ：</p>
+<ul>
+<li>对象的构建十分复杂</li>
+<li>需要依赖具体的环境创建不同的实例</li>
+<li>处理大量具有相同属性的小对象</li>
+</ul>
+<p>注意事项：</p>
+<ul>
+<li>不要滥用工厂，有时候仅仅给代码增加复杂度</li>
+</ul>
+<pre><code class="javascript">简单工厂模式
+var gongchang={};
+    gongchang.chanyifu=function (argument){
+        this.gongren=50;
+    }
+    gongchang.chanxie=function(){
+        alert(&quot;产鞋子&quot;);
+    }
+    gongchang.yunshu=function(){
+        alert(&quot;运输&quot;);
+    }
+    gongchang.changzhang=function(para){
+        return new gongchang[para]();
+    }
+    var me=gongchang.changzhang(&#39;chanyifu&#39;);
+    alert(me.gongren);
+</code></pre>
+<h1 id="2015年9月19日"><a href="#2015年9月19日" class="headerlink" title="2015年9月19日"></a>2015年9月19日</h1><h2 id="JavaScript高级技巧"><a href="#JavaScript高级技巧" class="headerlink" title="JavaScript高级技巧"></a>JavaScript高级技巧</h2><ul>
+<li>javascript是函数级别作用域，在内部都能访问，外部不能访问内部的，内部可以访问外部的。</li>
+<li>函数会先收集变量。</li>
+</ul>
+<pre><code>function test(){
+    var j;
+    alert(j);
+    j=10;
+}
+test();</code></pre><blockquote>
+<p>结果为：<code>Undefined</code>,注意<code>j</code>的顺序。</p>
+</blockquote>
+<pre><code>var j=100;
+~function test(){
+    console.log(j);
+}();</code></pre><blockquote>
+<p><code>~</code>把当前函数转为表达式输出。</p>
+</blockquote>
+<ul>
+<li>this的使用<ul>
+<li>dd</li>
+</ul>
+</li>
+</ul>
+<pre><code>window.m=100;
+funciton test(){
+    alert(this.m);
+}
+window.test();
+</code></pre><blockquote>
+<p>谁调用指代谁，this指向window。</p>
+</blockquote>
+<pre><code>this.m=1000;
+var obj={
+    m:100,
+    test:function(){
+        alert(this.m);
+        return  function(){
+        alert(this.m);
+        }
+    }
+};
+(obj.test())();
+</code></pre><blockquote>
+<p>里面的function指向到了外面的window。</p>
+</blockquote>
+<h2 id="前端开发调试基础"><a href="#前端开发调试基础" class="headerlink" title="前端开发调试基础"></a>前端开发调试基础</h2><p><code>console.log(result)</code>打印结果；<br><code>console.error(result)</code>打印错误；<br><code>console.info(result)</code>打印信息；</p>
+<h1 id="2015年9月22日"><a href="#2015年9月22日" class="headerlink" title="2015年9月22日"></a>2015年9月22日</h1><h2 id="前端工程师和美工"><a href="#前端工程师和美工" class="headerlink" title="前端工程师和美工"></a>前端工程师和美工</h2><p>图片理论基础<br><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-22-1.jpg" alt="test"></p>
+<h2 id="全栈架构师"><a href="#全栈架构师" class="headerlink" title="全栈架构师"></a>全栈架构师</h2><p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-22-2.png" alt></p>
+<h2 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h2><p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-22-2.jpg" alt="test"></p>
+<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><p><img src alt="test"></p>
+<p><img src="C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1571646163445.png" alt="1571646163445"></p>
+<h1 id="2015年9月24日"><a href="#2015年9月24日" class="headerlink" title="2015年9月24日"></a>2015年9月24日</h1><h2 id="TCP-IP-协议族概述"><a href="#TCP-IP-协议族概述" class="headerlink" title="TCP/IP 协议族概述"></a>TCP/IP 协议族概述</h2><p>OSI七层模型</p>
+<ol>
+<li>应用层</li>
+<li>表示层</li>
+<li>会话层</li>
+<li>传输层</li>
+<li>网络层</li>
+<li>数据链路层</li>
+<li>物理层</li>
+</ol>
+<p>TCP/IP协议族四层模型</p>
+<ol>
+<li>应用层</li>
+<li>传输层</li>
+<li>网络层</li>
+<li>链路层</li>
+</ol>
+<p>四层模型中各个层次的作用和特点</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-25-1.png" alt="test"></p>
+<p>四层模型中各个层次的协议</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-25-2.png" alt="test"></p>
+<p>TCP报文段传输过程<br><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-25-3.jpg" alt></p>
+<p>最大传输单元<br>在数据链路层传输的数据包称为帧，帧的最大传输单元称为MTU。</p>
+<p>数据分用过程</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-25-4.jpg" alt></p>
+<p>ARP协议工作原理</p>
+<p>ARP协议作用：能实现任意网络地址到任意物理地址的转换。<br>ARP工作原理：广播一个ARP请求，被请求的机器回应一个ARP应答，其中包含自己的物理地址。</p>
+<p>ARP请求、应答报文详解<br><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-25-5.jpg" alt></p>
+<p><strong>DNS协议工作原理</strong><br>DNS的作用：讲机器的域名转换成IP地址<br>DNS的工作原理：解释器通过一个或者多个名字服务器来完成这种相互转换。</p>
+<h1 id="2015年9月24日-1"><a href="#2015年9月24日-1" class="headerlink" title="2015年9月24日"></a>2015年9月24日</h1><h2 id="TCP-IP-协议族概述-1"><a href="#TCP-IP-协议族概述-1" class="headerlink" title="TCP/IP 协议族概述"></a>TCP/IP 协议族概述</h2><p>OSI七层模型</p>
+<ol>
+<li>应用层</li>
+<li>表示层</li>
+<li>会话层</li>
+<li>传输层</li>
+<li>网络层</li>
+<li>数据链路层</li>
+<li>物理层</li>
+</ol>
+<p>TCP/IP协议族四层模型</p>
+<ol>
+<li>应用层</li>
+<li>传输层</li>
+<li>网络层</li>
+<li>链路层</li>
+</ol>
+<p>四层模型中各个层次的作用和特点</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-25-1.png" alt="test"></p>
+<p>四层模型中各个层次的协议</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-25-2.png" alt="test"></p>
+<p>TCP报文段传输过程<br><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-25-3.jpg" alt></p>
+<p>最大传输单元<br>在数据链路层传输的数据包称为帧，帧的最大传输单元称为MTU。</p>
+<p>数据分用过程</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-25-4.jpg" alt></p>
+<p>ARP协议工作原理</p>
+<p>ARP协议作用：能实现任意网络地址到任意物理地址的转换。<br>ARP工作原理：广播一个ARP请求，被请求的机器回应一个ARP应答，其中包含自己的物理地址。</p>
+<p>ARP请求、应答报文详解<br><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-25-5.jpg" alt></p>
+<p><strong>DNS协议工作原理</strong><br>DNS的作用：讲机器的域名转换成IP地址<br>DNS的工作原理：解释器通过一个或者多个名字服务器来完成这种相互转换。</p>
+<h1 id="2015年9月26日"><a href="#2015年9月26日" class="headerlink" title="2015年9月26日"></a>2015年9月26日</h1><h2 id="IP-协议详解"><a href="#IP-协议详解" class="headerlink" title="IP 协议详解"></a>IP 协议详解</h2><p><strong>IP服务特点</strong></p>
+<p>IP协议为上层协议提供无状态、无连接、不可靠的服务。</p>
+<p><strong>IPv4头部结构</strong></p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/9/img/2015-9-26-1.jpg" alt="text"></p>
+<p><strong>IP分片</strong><br>IP数据报的长度超过帧的MTU时，将会被分片传输。<br>IP头部中的三个字段给IP分片和重组提供了足够的信息：数据报标识、标识和片偏移。<br>以太网的MTU为1500字节，因此它携带的IP数据报最大为1480字节。 </p>
+<h1 id="2015年9月29日"><a href="#2015年9月29日" class="headerlink" title="2015年9月29日"></a>2015年9月29日</h1><h2 id="CSS内部的分类及其顺序"><a href="#CSS内部的分类及其顺序" class="headerlink" title="CSS内部的分类及其顺序"></a>CSS内部的分类及其顺序</h2><ul>
+<li>布局（grid）（.g-）：将页面分割为几个大块，通常有头部、主体、主栏、侧栏、尾部等！</li>
+<li>模块（module）（.m-）：通常是一个语义化的可以重复使用的较大的整体！比如导航、登录、注册、各种列表、评论、搜索等！</li>
+<li>元件（unit）（.u-）：通常是一个不可再分的较为小巧的个体，通常被重复用于各种模块中！比如按钮、输入框、loading、图标等！</li>
+<li>功能（function）（.f-）：为方便一些常用样式的使用，我们将这些使用率较高的样式剥离出来，按需使用，通常这些选择器具有固定样式表现，比如清除浮动等！不可滥用！</li>
+<li>皮肤（skin）（.s-）：如果你需要把皮肤型的样式抽离出来，通常为文字色、背景色（图）、边框色等，非换肤型网站通常只提取文字色！非换肤型网站不可滥用此类！</li>
+<li>状态（.z-）：为状态类样式加入前缀，统一标识，方便识别，她只能组合使用或作为后代出现（.u-ipt.z-dis{}，.m-list li.z-sel{}）。</li>
+</ul>
+<pre><code class="css">/* 重置 */
+div,p,ul,ol,li{margin:0;padding:0;}
+/* 默认 */
+strong,em{font-style:normal;font-weight:bold;}
+/* 统一调用背景图 */
+.m-logo a,.m-nav a,.m-nav em{background:url(images/sprite.png) no-repeat 9999px 9999px;}
+/* 统一清除浮动 */
+.g-bdc:after,.m-dimg ul:after,.u-tab:after{display:block;visibility:hidden;clear:both;height:0;overflow:hidden;content:&#39;.&#39;;}
+.g-bdc,.m-dimg ul,.u-tab{zoom:1;}
+/* 布局 */
+.g-sd{float:left;width:300px;}
+/* 模块 */
+.m-logo{width:200px;height:50px;}
+/* 元件 */
+.u-btn{height:20px;border:1px solid #333;}
+/* 功能 */
+.f-tac{text-align:center;}
+/* 皮肤 */
+.s-fc,a.s-fc:hover{color:#fff;}</code></pre>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-HTML知识点/" rel="next" title="HTML知识点">
+                <i class="fa fa-chevron-left"></i> HTML知识点
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-JS3/" rel="prev" title="JS3">
+                JS3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年8月31日"><span class="nav-number">1.</span> <span class="nav-text">2015年8月31日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery样式"><span class="nav-number">1.1.</span> <span class="nav-text">jQuery样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元素遍历"><span class="nav-number">1.2.</span> <span class="nav-text">元素遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#向下遍历"><span class="nav-number">1.2.1.</span> <span class="nav-text">向下遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向上遍历"><span class="nav-number">1.2.2.</span> <span class="nav-text">向上遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同级遍历"><span class="nav-number">1.2.3.</span> <span class="nav-text">同级遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元素过滤"><span class="nav-number">1.2.4.</span> <span class="nav-text">元素过滤</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年9月1日"><span class="nav-number">2.</span> <span class="nav-text">2015年9月1日</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#显示隐藏"><span class="nav-number">2.0.1.</span> <span class="nav-text">显示隐藏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#淡入淡出"><span class="nav-number">2.0.2.</span> <span class="nav-text">淡入淡出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#滑动"><span class="nav-number">2.0.3.</span> <span class="nav-text">滑动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回调"><span class="nav-number">2.0.4.</span> <span class="nav-text">回调</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元素捕获"><span class="nav-number">2.0.5.</span> <span class="nav-text">元素捕获</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML设置"><span class="nav-number">2.0.6.</span> <span class="nav-text">HTML设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加元素"><span class="nav-number">2.0.7.</span> <span class="nav-text">添加元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除元素"><span class="nav-number">2.0.8.</span> <span class="nav-text">删除元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择器与事件"><span class="nav-number">2.0.9.</span> <span class="nav-text">选择器与事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件绑定"><span class="nav-number">2.0.10.</span> <span class="nav-text">事件绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件目标与冒泡"><span class="nav-number">2.0.11.</span> <span class="nav-text">事件目标与冒泡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery菜单"><span class="nav-number">2.0.12.</span> <span class="nav-text">jQuery菜单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery标签切换"><span class="nav-number">2.0.13.</span> <span class="nav-text">jQuery标签切换</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年9月3日"><span class="nav-number">3.</span> <span class="nav-text">2015年9月3日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标签切换"><span class="nav-number">3.1.</span> <span class="nav-text">标签切换</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年9月4日"><span class="nav-number">4.</span> <span class="nav-text">2015年9月4日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery-UI"><span class="nav-number">4.1.</span> <span class="nav-text">jQuery UI</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#应用"><span class="nav-number">4.1.1.</span> <span class="nav-text">应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交互"><span class="nav-number">4.1.2.</span> <span class="nav-text">交互</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML框架"><span class="nav-number">4.1.3.</span> <span class="nav-text">HTML框架</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#页面框架"><span class="nav-number">4.1.3.1.</span> <span class="nav-text">页面框架</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内联框架"><span class="nav-number">4.1.3.2.</span> <span class="nav-text">内联框架</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL"><span class="nav-number">4.1.4.</span> <span class="nav-text">URL</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年9月5日"><span class="nav-number">5.</span> <span class="nav-text">2015年9月5日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Widgets"><span class="nav-number">5.1.</span> <span class="nav-text">Widgets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#W3C笔记"><span class="nav-number">5.2.</span> <span class="nav-text">W3C笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#XML是什么"><span class="nav-number">5.2.1.</span> <span class="nav-text">XML是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是-XHTML？"><span class="nav-number">5.2.2.</span> <span class="nav-text">什么是 XHTML？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年9月6日"><span class="nav-number">6.</span> <span class="nav-text">2015年9月6日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#列表"><span class="nav-number">6.1.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表单"><span class="nav-number">6.2.</span> <span class="nav-text">表单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片映射"><span class="nav-number">6.3.</span> <span class="nav-text">图片映射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lt-meta-gt-元素"><span class="nav-number">6.4.</span> <span class="nav-text">&lt; meta &gt; 元素</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年9月7日"><span class="nav-number">7.</span> <span class="nav-text">2015年9月7日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery-mobile"><span class="nav-number">7.1.</span> <span class="nav-text">jQuery mobile</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年9月8日"><span class="nav-number">8.</span> <span class="nav-text">2015年9月8日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery-mobile-1"><span class="nav-number">8.1.</span> <span class="nav-text">jQuery mobile</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Widgets-button"><span class="nav-number">8.1.1.</span> <span class="nav-text">Widgets-button</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#checkboxradio、collapsible"><span class="nav-number">8.1.2.</span> <span class="nav-text">checkboxradio、collapsible</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Grid"><span class="nav-number">8.1.3.</span> <span class="nav-text">Grid</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#listview"><span class="nav-number">8.1.4.</span> <span class="nav-text">listview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#navbar"><span class="nav-number">8.1.5.</span> <span class="nav-text">navbar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#popup"><span class="nav-number">8.1.6.</span> <span class="nav-text">popup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#select"><span class="nav-number">8.1.7.</span> <span class="nav-text">select</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年9月9日"><span class="nav-number">9.</span> <span class="nav-text">2015年9月9日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery-Mobile-事件"><span class="nav-number">9.1.</span> <span class="nav-text">jQuery Mobile 事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AngularJS"><span class="nav-number">9.2.</span> <span class="nav-text">AngularJS</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年9月10日"><span class="nav-number">10.</span> <span class="nav-text">2015年9月10日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Angularjs"><span class="nav-number">10.1.</span> <span class="nav-text">Angularjs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MVC框架"><span class="nav-number">10.1.1.</span> <span class="nav-text">MVC框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双向绑定数据"><span class="nav-number">10.1.2.</span> <span class="nav-text">双向绑定数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Controllers-的使用"><span class="nav-number">10.1.3.</span> <span class="nav-text">Controllers 的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scope-上声明变量和方法"><span class="nav-number">10.1.4.</span> <span class="nav-text">$scope 上声明变量和方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年9月11日"><span class="nav-number">11.</span> <span class="nav-text">2015年9月11日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Services与指令的使用"><span class="nav-number">11.1.</span> <span class="nav-text">Services与指令的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义一个Services服务"><span class="nav-number">11.1.1.</span> <span class="nav-text">自定义一个Services服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用指令"><span class="nav-number">11.1.2.</span> <span class="nav-text">常用指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用指令-ng-repeat-的使用"><span class="nav-number">11.1.3.</span> <span class="nav-text">常用指令 ng-repeat 的使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年9月12日"><span class="nav-number">12.</span> <span class="nav-text">2015年9月12日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Directive-的使用"><span class="nav-number">12.1.</span> <span class="nav-text">Directive 的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Javascript-常用获取时间函数"><span class="nav-number">12.2.</span> <span class="nav-text">Javascript 常用获取时间函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React程序"><span class="nav-number">12.3.</span> <span class="nav-text">React程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年9月16日"><span class="nav-number">13.</span> <span class="nav-text">2015年9月16日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git"><span class="nav-number">13.1.</span> <span class="nav-text">Git</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#远程仓库相关命令"><span class="nav-number">13.1.1.</span> <span class="nav-text">远程仓库相关命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支-branch-操作相关命令"><span class="nav-number">13.1.2.</span> <span class="nav-text">分支(branch)操作相关命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#慕课笔记"><span class="nav-number">13.2.</span> <span class="nav-text">慕课笔记</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年9月17日"><span class="nav-number">14.</span> <span class="nav-text">2015年9月17日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript模块化"><span class="nav-number">14.1.</span> <span class="nav-text">javascript模块化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年9月18日"><span class="nav-number">15.</span> <span class="nav-text">2015年9月18日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript面向切面编程"><span class="nav-number">15.1.</span> <span class="nav-text">JavaScript面向切面编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数模式的作用与注意事项"><span class="nav-number">15.2.</span> <span class="nav-text">构造函数模式的作用与注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计模式之建造者模式"><span class="nav-number">15.3.</span> <span class="nav-text">设计模式之建造者模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计模式之工厂模式"><span class="nav-number">15.4.</span> <span class="nav-text">设计模式之工厂模式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年9月19日"><span class="nav-number">16.</span> <span class="nav-text">2015年9月19日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript高级技巧"><span class="nav-number">16.1.</span> <span class="nav-text">JavaScript高级技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前端开发调试基础"><span class="nav-number">16.2.</span> <span class="nav-text">前端开发调试基础</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年9月22日"><span class="nav-number">17.</span> <span class="nav-text">2015年9月22日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前端工程师和美工"><span class="nav-number">17.1.</span> <span class="nav-text">前端工程师和美工</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全栈架构师"><span class="nav-number">17.2.</span> <span class="nav-text">全栈架构师</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP协议"><span class="nav-number">17.3.</span> <span class="nav-text">HTTP协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cookie"><span class="nav-number">17.4.</span> <span class="nav-text">cookie</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年9月24日"><span class="nav-number">18.</span> <span class="nav-text">2015年9月24日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-IP-协议族概述"><span class="nav-number">18.1.</span> <span class="nav-text">TCP/IP 协议族概述</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年9月24日-1"><span class="nav-number">19.</span> <span class="nav-text">2015年9月24日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-IP-协议族概述-1"><span class="nav-number">19.1.</span> <span class="nav-text">TCP/IP 协议族概述</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年9月26日"><span class="nav-number">20.</span> <span class="nav-text">2015年9月26日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IP-协议详解"><span class="nav-number">20.1.</span> <span class="nav-text">IP 协议详解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年9月29日"><span class="nav-number">21.</span> <span class="nav-text">2015年9月29日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS内部的分类及其顺序"><span class="nav-number">21.1.</span> <span class="nav-text">CSS内部的分类及其顺序</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="题解,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="第二十章 注释public class TableCreator1 { ​       public static void main(String[] args) throws Exception { ​              if(args.length &amp;lt; 1) { ​                     System.out.println(“arguments: annot">
+<meta name="keywords" content="题解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java题解注释">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解注释/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="第二十章 注释public class TableCreator1 { ​       public static void main(String[] args) throws Exception { ​              if(args.length &amp;lt; 1) { ​                     System.out.println(“arguments: annot">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.828Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java题解注释">
+<meta name="twitter:description" content="第二十章 注释public class TableCreator1 { ​       public static void main(String[] args) throws Exception { ​              if(args.length &amp;lt; 1) { ​                     System.out.println(“arguments: annot">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解注释/">
+
+
+
+
+
+  <title>Java题解注释 | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解注释/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java题解注释</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-06T10:00:00+08:00">
+                2019-10-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第二十章-注释"><a href="#第二十章-注释" class="headerlink" title="第二十章 注释"></a>第二十章 注释</h2><p>public class TableCreator1 {</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              if(args.length &lt; 1) {</p>
+<p>​                     System.out.println(“arguments: annotated classes”);</p>
+<p>​                     System.exit(0);</p>
+<p>​              }      </p>
+<p>​              for(String className : args) {</p>
+<p>​                     Class&lt;?&gt; cl = Class.forName(className);</p>
+<p>​                     DBTable dbTable = cl.getAnnotation(DBTable.class);</p>
+<p>​                     if(dbTable == null) {</p>
+<p>​                            System.out.println(“No DBTable annotations in class “ +</p>
+<p>​                                   className);</p>
+<p>​                            continue;</p>
+<p>​                     }</p>
+<p>​                     String tableName = dbTable.name();</p>
+<p>​                                         if(tableName.length() &lt; 1)</p>
+<p>​                            tableName = cl.getName().toUpperCase();</p>
+<p>​                     List<string> columnDefs = new ArrayList<string>();</string></string></p>
+<p>​                     for(Field field : cl.getDeclaredFields()) {</p>
+<p>​                            String columnName = null;</p>
+<p>​                            Annotation[] anns = field.getDeclaredAnnotations();</p>
+<p>​                            if(anns.length &lt; 1) continue;                          if(anns[0] instanceof SQLInteger) {</p>
+<p>​                                   SQLInteger sInt = (SQLInteger) anns[0];</p>
+<p>​                                                                     if(sInt.name().length() &lt; 1)</p>
+<p>​                                          columnName = field.getName().toUpperCase();</p>
+<p>​                                   else</p>
+<p>​                                          columnName = sInt.name();</p>
+<p>​                                   columnDefs.add(columnName + “ INT” +</p>
+<p>​                                          getConstraints(sInt.constraints()));</p>
+<p>​                            }</p>
+<p>​                            if(anns[0] instanceof SQLString) {</p>
+<p>​                                   SQLString sString = (SQLString)anns[0];</p>
+<p>​                                                                     if(sString.name().length() &lt; 1)</p>
+<p>​                                          columnName = field.getName().toUpperCase();</p>
+<p>​                                   else</p>
+<p>​                                           columnName = sString.name();</p>
+<p>​                                   columnDefs.add(columnName + “ VARCHAR(“ + </p>
+<p>​                                          sString.value() + “)” +</p>
+<p>​                                          getConstraints(sString.constraints()));</p>
+<p>​                            }</p>
+<p>​                            if(anns[0] instanceof SQLBoolean) {</p>
+<p>​                                   SQLBoolean sBool = (SQLBoolean) anns[0];</p>
+<p>​                                                                     if(sBool.name().length() &lt; 1)</p>
+<p>​                                          columnName = field.getName().toUpperCase();</p>
+<p>​                                   else</p>
+<p>​                                          columnName = sBool.name();</p>
+<p>​                                   columnDefs.add(columnName + “ BOOLEAN(“ +</p>
+<p>​                                          getConstraints(sBool.constraints()));</p>
+<p>​                            }</p>
+<p>​                            if(anns[0] instanceof SQLDateTime) { </p>
+<p>​                                   SQLDateTime sDateTime = (SQLDateTime)anns[0];</p>
+<p>​                                                                     if(sDateTime.name().length() &lt; 1)</p>
+<p>​                                          columnName = field.getName().toUpperCase();</p>
+<p>​                                   else</p>
+<p>​                                          columnName = sDateTime.name();</p>
+<p>​                                   columnDefs.add(columnName + “ DATETIME(“ +</p>
+<p>​                                          getConstraints(sDateTime.constraints()));  </p>
+<p>​                            }</p>
+<p>​                            if(anns[0] instanceof SQLVarChar) {</p>
+<p>​                                   SQLVarChar sVarChar = (SQLVarChar)anns[0];</p>
+<p>​                                   if(sVarChar.name().length() &lt; 1)</p>
+<p>​                                          columnName = field.getName().toUpperCase();</p>
+<p>​                                   else</p>
+<p>​                                          columnName = sVarChar.name();</p>
+<p>​                                   columnDefs.add(columnName + “ VARCHAR(“ +</p>
+<p>​                                          getConstraints(sVarChar.constraints()));</p>
+<p>​                            }</p>
+<p>​                            if(anns[0] instanceof SQLBlob) {</p>
+<p>​                                   SQLBlob sBlob = (SQLBlob)anns[0];</p>
+<p>​                                                                     if(sBlob.name().length() &lt; 1)</p>
+<p>​                                          columnName = field.getName().toUpperCase();</p>
+<p>​                                   else</p>
+<p>​                                          columnName = sBlob.name();</p>
+<p>​                                   columnDefs.add(columnName + “ BLOB(“ +</p>
+<p>​                                          getConstraints(sBlob.constraints()));</p>
+<p>​                            }</p>
+<p>​                            StringBuilder createCommand = new StringBuilder(</p>
+<p>​                                   “CREATE TABLE “ + tableName + “(“);</p>
+<p>​                            for(String columnDef : columnDefs)</p>
+<p>​                                   createCommand.append(“\n     “ + columnDef + “,”);</p>
+<p>​                                                       String tableCreate = createCommand.substring(</p>
+<p>​                                   0, createCommand.length() - 1) +”);”;</p>
+<p>​                            System.out.println(“Table Creation SQL for “ + </p>
+<p>​                                   className + “ is :\n” + tableCreate);</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       private static String getConstraints(Constraints con) {</p>
+<p>​              String  constraints = “”;</p>
+<p>​              if(!con.allowNull()) constraints += “ NOT NULL”;</p>
+<p>​              if(con.primaryKey()) constraints += “ PRIMARY KEY”;</p>
+<p>​              if(con.unique()) constraints += “ UNIQUE”;</p>
+<p>​              return constraints;</p>
+<p>​       }</p>
+<p>}      </p>
+<p>@ExtractInterface(“IDivider”)</p>
+<p>public class Divider {</p>
+<p>​       public int divide(int x, int y) throws ArithmeticException {</p>
+<p>​              if(y == 0) throw new ArithmeticException(“Divide by zero”);</p>
+<p>​              int diff = subtract(x, y);</p>
+<p>​              if(diff &lt; 0) return 0;</p>
+<p>​              if(diff == 0) return 1;</p>
+<p>​              int result = 0;</p>
+<p>​              while(diff &gt;= 0) {</p>
+<p>​                     result++;</p>
+<p>​                     diff = subtract(diff, y);                        </p>
+<p>​              }</p>
+<p>​              return result;</p>
+<p>​       }</p>
+<p>​       private int subtract(int x, int y) { return x - y; }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              try {</p>
+<p>​              Divider d = new Divider();</p>
+<p>​              print(“11              print(“10              print(“10              print(“10              print(“10              print(“10              } catch(Exception e)  {</p>
+<p>​                     print(e);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class TableCreationProcessorFactory3 implements AnnotationProcessorFactory {</p>
+<p>​       public AnnotationProcessor getProcessorFor(</p>
+<p>​              Set<annotationtypedeclaration> atds, AnnotationProcessorEnvironment env) {</annotationtypedeclaration></p>
+<p>​              return new TableCreationProcessor(env);</p>
+<p>​       }</p>
+<p>​       public Collection<string> supportedAnnotationTypes() {</string></p>
+<p>​              return Arrays.asList(</p>
+<p>​                     “annotations.database.DBTable”,</p>
+<p>​                     “annotations.database.Constraints”,</p>
+<p>​                     “annotations.database.SQLString”,</p>
+<p>​                     “annotations.database.SQLInteger”,</p>
+<p>​                     “annotations.database.SQLBoolean”,</p>
+<p>​                     “annotations.database.SQLVarChar”,</p>
+<p>​                     “annotations.database.SQLDateTime”,</p>
+<p>​                     “annotations.database.SQLBlob”);</p>
+<p>​       }</p>
+<p>​       public Collection<string> supportedOptions() {</string></p>
+<p>​              return Collections.emptySet();</p>
+<p>​       }</p>
+<p>​       private static class TableCreationProcessor implements AnnotationProcessor {</p>
+<p>​              private final AnnotationProcessorEnvironment env;</p>
+<p>​              private String sql = “”;</p>
+<p>​              public TableCreationProcessor(AnnotationProcessorEnvironment env) {</p>
+<p>​                     this.env = env;</p>
+<p>​              } </p>
+<p>​              public void process() {</p>
+<p>​                     for(TypeDeclaration typeDecl : env.getSpecifiedTypeDeclarations()) {</p>
+<p>​                            typeDecl.accept(getDeclarationScanner(new TableCreationVisitor(), NO_OP));</p>
+<p>​                            sql = sql.substring(0, sql.length() - 1) + “);”;</p>
+<p>​                            System.out.println(“creation SQL is :\n” + sql);</p>
+<p>​                            sql = “”;</p>
+<p>​                     }</p>
+<p>​              }      </p>
+<p>​              private class TableCreationVisitor extends SimpleDeclarationVisitor {</p>
+<p>​                     public void visitClassDeclaration(ClassDeclaration d) {</p>
+<p>​                            DBTable dbTable = d.getAnnotation(DBTable. class);</p>
+<p>​                            if(dbTable != null) {</p>
+<p>​                                   sql += “CREATE TABLE “;</p>
+<p>​                                   sql += (dbTable.name().length() &lt; 1) ? </p>
+<p>​                                          d.getSimpleName().toUpperCase() : dbTable.name();</p>
+<p>​                                   sql += “ (“;</p>
+<p>​                            }</p>
+<p>​                     }</p>
+<p>​                     public void visitFieldDeclaration(FieldDeclaration d) {</p>
+<p>​                            String columnName = “”;</p>
+<p>​                            if(d.getAnnotation(SQLInteger.class) != null) {</p>
+<p>​                                   SQLInteger sInt = d.getAnnotation(SQLInteger.class);</p>
+<p>​                                                                     if(sInt.name().length() &lt; 1)</p>
+<p>​                                          columnName = d.getSimpleName().toUpperCase();</p>
+<p>​                                   else</p>
+<p>​                                          columnName = sInt.name();</p>
+<p>​                                   sql += “\n   “ + columnName + “ INT” + </p>
+<p>​                                          getConstraints(sInt.constraints()) + “,”;</p>
+<p>​                            }</p>
+<p>​                            if(d.getAnnotation(SQLString.class) != null) {</p>
+<p>​                                   SQLString sString = d.getAnnotation(SQLString.class);</p>
+<p>​                                                                     if(sString.name().length() &lt; 1)</p>
+<p>​                                          columnName = d.getSimpleName().toUpperCase();</p>
+<p>​                                   else</p>
+<p>​                                          columnName = sString.name();</p>
+<p>​                                   sql += “\n   “ + columnName + “ VARCHAR(“ + </p>
+<p>​                                          sString.value() + “)” +</p>
+<p>​                                          getConstraints(sString.constraints()) + “,”;</p>
+<p>​                            }</p>
+<p>​                            if(d.getAnnotation(SQLBoolean.class) != null) {</p>
+<p>​                                   SQLBoolean sBoolean = d.getAnnotation(SQLBoolean.class);</p>
+<p>​                                                                     if(sBoolean.name().length() &lt; 1)</p>
+<p>​                                          columnName = d.getSimpleName().toUpperCase();</p>
+<p>​                                   else</p>
+<p>​                                          columnName = sBoolean.name();</p>
+<p>​                                   sql += “\n   “ + columnName + “ BOOLEAN(“ +</p>
+<p>​                                          getConstraints(sBoolean.constraints()) + “,”;</p>
+<p>​                            }</p>
+<p>​                            if(d.getAnnotation(SQLVarChar.class) != null) {</p>
+<p>​                                   SQLVarChar sVarChar = d.getAnnotation(SQLVarChar.class);</p>
+<p>​                                                                     if(sVarChar.name().length() &lt; 1)</p>
+<p>​                                          columnName = d.getSimpleName().toUpperCase();</p>
+<p>​                                   else</p>
+<p>​                                          columnName = sVarChar.name();</p>
+<p>​                                   sql += “\n   “ + columnName + “ VARCHAR(“ +</p>
+<p>​                                          getConstraints(sVarChar.constraints()) + “,”;     </p>
+<p>​                            }</p>
+<p>​                            if(d.getAnnotation(SQLDateTime.class) != null) {</p>
+<p>​                                   SQLDateTime sDateTime = d.getAnnotation(SQLDateTime.class);</p>
+<p>​                                   if(sDateTime.name().length() &lt; 1)</p>
+<p>​                                          columnName = d.getSimpleName().toUpperCase();</p>
+<p>​                                   else</p>
+<p>​                                          columnName = sDateTime.name();</p>
+<p>​                                   sql += “\n   “ + columnName + “ DATETIME(“ +</p>
+<p>​                                          getConstraints(sDateTime.constraints()) + “,”;</p>
+<p>​                            }</p>
+<p>​                            if(d.getAnnotation(SQLBlob.class) != null) {</p>
+<p>​                                   SQLBlob sBlob = d.getAnnotation(SQLBlob.class);</p>
+<p>​                                   if(sBlob.name().length()&lt; 1)</p>
+<p>​                                          columnName = d.getSimpleName().toUpperCase();</p>
+<p>​                                   else</p>
+<p>​                                          columnName = sBlob.name();</p>
+<p>​                                   sql += “\n   “ + columnName + “ BLOB(“ +</p>
+<p>​                                          getConstraints(sBlob.constraints()) + “,”;</p>
+<p>​                            }</p>
+<p>​                     }</p>
+<p>​                     private String getConstraints(Constraints con) {</p>
+<p>​                            String constraints = “”;</p>
+<p>​                            if(!con.allowNull())  constraints += “ NOT NULL”;</p>
+<p>​                            if(con.primaryKey())  constraints += “ PRIMARY KEY”;</p>
+<p>​                            if(con.unique()) constraints += “ UNIQUE”;</p>
+<p>​                            return constraints;</p>
+<p>​                     }</p>
+<p>​              }      </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class AtUnitComposition4 {</p>
+<p>​       AtUnitExampleEx4 testObject = new AtUnitExampleEx4();</p>
+<p>​       @Test boolean _methodOne() { </p>
+<p>​              return testObject.methodOne().equals(“This is methodOne”);</p>
+<p>​       }</p>
+<p>​       @Test boolean _methodTwo() {</p>
+<p>​              return testObject.methodTwo() == 2;</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              OSExecute.command(</p>
+<p>​                     “java net.mindview.atunit.AtUnit AtUnitComposition4”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class HashSetTest5 extends HashSet<string> {   @Test void initialization() {</string></p>
+<p>​              assert this.isEmpty();</p>
+<p>​       }</p>
+<p>​       @Test void _contains() {</p>
+<p>​              this.add(“one”);</p>
+<p>​              assert this.contains(“one”);</p>
+<p>​       }      </p>
+<p>​       @Test void _remove() {</p>
+<p>​              this.add(“one”);</p>
+<p>​              this.remove(“one”);</p>
+<p>​              assert this.isEmpty();</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              OSExecute.command(</p>
+<p>​                     “java net.mindview.atunit.AtUnit HashSetTest5”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class LinkedListTest6 {</p>
+<p>​       LinkedList<string> testObject = new LinkedList<string>();</string></string></p>
+<p>​       @Test void initialization() {</p>
+<p>​              assert testObject.isEmpty();</p>
+<p>​       }</p>
+<p>​       @Test void _contains() {</p>
+<p>​              testObject.add(“one”);</p>
+<p>​              assert testObject.contains(“one”);</p>
+<p>​       }</p>
+<p>​       @Test void _remove() {</p>
+<p>​              testObject.add(“one”);</p>
+<p>​              testObject.remove(“one”);</p>
+<p>​              assert testObject.isEmpty();</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              OSExecute.command(</p>
+<p>​                     “java net.mindview.atunit.AtUnit LinkedListTest6”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class LinkedListTest7 extends LinkedList<string> {</string></p>
+<p>​       @Test void initialization() {</p>
+<p>​              assert this.isEmpty();</p>
+<p>​       }</p>
+<p>​       @Test void _contains() {</p>
+<p>​              this.add(“one”);</p>
+<p>​              assert this.contains(“one”);</p>
+<p>​       }</p>
+<p>​       @Test void _remove() {</p>
+<p>​              this.add(“one”);</p>
+<p>​              this.remove(“one”);</p>
+<p>​              assert this.isEmpty();</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              OSExecute.command(</p>
+<p>​                     “java net.mindview.atunit.AtUnit LinkedListTest7”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex8Test extends Ex8 {</p>
+<p>​       @Test boolean _methodOneCall() { </p>
+<p>​              return methodOneCall().equals(“methodOne”);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              OSExecute.command(</p>
+<p>​                     “java net.mindview.atunit.AtUnit Ex8Test”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class HashMapTest9 extends HashMap&lt;Integer,String&gt; {</p>
+<p>​       @Test void _put() {</p>
+<p>​              put(1, “Hi”);</p>
+<p>​              assert get(1).equals(“Hi”);</p>
+<p>​       }</p>
+<p>​       @Test void _containsKey() {</p>
+<p>​              put(2, “Bye”);</p>
+<p>​              assert containsKey(2);</p>
+<p>​       }</p>
+<p>​       @Test void _containsValue() {</p>
+<p>​              put(3, “yes”);</p>
+<p>​              assert containsValue(“yes”);</p>
+<p>​       }</p>
+<p>​       @Test void _get() {</p>
+<p>​              put(4, “hello”);</p>
+<p>​              assert get(4).equals(“hello”);</p>
+<p>​       }</p>
+<p>​       @Test void _size() {</p>
+<p>​              assert size() == 0;</p>
+<p>​       }</p>
+<p>​       @Test void _clear() {</p>
+<p>​              put(5, “so long”);</p>
+<p>​              clear();</p>
+<p>​              assert size() == 0;</p>
+<p>​       }             </p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              OSExecute.command(</p>
+<p>​                     “java net.mindview.atunit.AtUnit HashMapTest9”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Element10 {</p>
+<p>​       private String ident;</p>
+<p>​       public Element10(String id) { ident = id; }</p>
+<p>​       public String toString() { return ident; }</p>
+<p>​       public int hashCode() { return ident.hashCode(); }</p>
+<p>​       public boolean equals(Object r) {</p>
+<p>​              return r instanceof Element10 &amp;&amp;</p>
+<p>​                     ident.equals(((Element10)r).ident);</p>
+<p>​       }</p>
+<p>​       protected void finalize() {</p>
+<p>​              System.out.println(“Finalizing “ + </p>
+<p>​              getClass().getSimpleName() + “ “ + ident);</p>
+<p>​       }</p>
+<p>​       @TestObjectCreate static Element10 create() {</p>
+<p>​              return new Element10(“hi”);</p>
+<p>​       }</p>
+<p>​       @Test void _hashCode() {</p>
+<p>​              String s = “hi”;</p>
+<p>​              assert hashCode() == s.hashCode(); </p>
+<p>​       }</p>
+<p>​       @Test void _equals() {</p>
+<p>​              Element10 e = new Element10(“hi”);</p>
+<p>​              assert this.equals(e);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​              OSExecute.command(</p>
+<p>​                     “java net.mindview.atunit.AtUnit Element10”);</p>
+<p>​       }</p>
+<p>}</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/题解/" rel="tag"># 题解</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-Cluster-NodeJS/" rel="next" title="Cluster-NodeJS">
+                <i class="fa fa-chevron-left"></i> Cluster-NodeJS
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/06/2019-10-06-Java题解问题/" rel="prev" title="Java题解问题">
+                Java题解问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第二十章-注释"><span class="nav-number">1.</span> <span class="nav-text">第二十章 注释</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

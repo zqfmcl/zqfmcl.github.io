@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Leetcode,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="004. Median of Two Sorted Arrays[H] 题目There are two sorted arrays nums1 and nums2 of size m and n respectively. Find the median of the two sorted arrays. The overall run time complexity should be O(lo">
+<meta name="keywords" content="Leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Median of Two Sorted Arrays[H]">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-Median-of-Two-Sorted-Arrays[H]/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="004. Median of Two Sorted Arrays[H] 题目There are two sorted arrays nums1 and nums2 of size m and n respectively. Find the median of the two sorted arrays. The overall run time complexity should be O(lo">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/leetbook-master/%E5%88%86%E6%B2%BB/004.%20Median%20of%20Two%20Sorted%20Arrays%5BH%5D/1460176468429.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/leetbook-master/%E5%88%86%E6%B2%BB/004.%20Median%20of%20Two%20Sorted%20Arrays%5BH%5D/1460176540020.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/leetbook-master/%E5%88%86%E6%B2%BB/004.%20Median%20of%20Two%20Sorted%20Arrays%5BH%5D/1461510936040.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/leetbook-master/%E5%88%86%E6%B2%BB/004.%20Median%20of%20Two%20Sorted%20Arrays%5BH%5D/1461510924594.png">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.300Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Median of Two Sorted Arrays[H]">
+<meta name="twitter:description" content="004. Median of Two Sorted Arrays[H] 题目There are two sorted arrays nums1 and nums2 of size m and n respectively. Find the median of the two sorted arrays. The overall run time complexity should be O(lo">
+<meta name="twitter:image" content="c:/Users/Administrator/Desktop/leetbook-master/%E5%88%86%E6%B2%BB/004.%20Median%20of%20Two%20Sorted%20Arrays%5BH%5D/1460176468429.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-Median-of-Two-Sorted-Arrays[H]/">
+
+
+
+
+
+  <title>Median of Two Sorted Arrays[H] | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-Median-of-Two-Sorted-Arrays[H]/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Median of Two Sorted Arrays[H]</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T10:00:00+08:00">
+                2019-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="004-Median-of-Two-Sorted-Arrays-H"><a href="#004-Median-of-Two-Sorted-Arrays-H" class="headerlink" title="004. Median of Two Sorted Arrays[H]"></a>004. Median of Two Sorted Arrays[H]</h1><hr>
+<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a><strong>题目</strong></h1><p>There are two sorted arrays nums1 and nums2 of size m and n respectively. Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a><strong>分析</strong></h1><p>这个题目是非常的常见，而且有特别多的变形。特别是在当前大数据的环境下，如何快速查找第i个元素有很现实的意义。</p>
+<p><font color="red">关注D&amp;C方法的，直接看思路2</font></p>
+<h2 id="思路1"><a href="#思路1" class="headerlink" title="思路1"></a><strong>思路1</strong></h2><p>很简单的思路：就是遍历两个数组，在里面找到第i个大元素，这个应该还是比较简单的，时间复杂度O(m+n)。</p>
+<p>用2个变量分别指向两个数组，每次取较小的一个，然后将其指针后移动。但是这里有个问题，就是奇偶判断，如果是奇数，中位数是num[mid]，但是如果是偶数，是(num[mid]+num[mid-1])/2。这里我的做法是把num[mid]看作(num[mid]+num[mid])/2。如果是偶数-1,奇数-0。</p>
+<pre><code class="c++">class Solution {
+public:
+    double findMedianSortedArrays(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) {
+        if(nums1.size() == 0)
+            return MedofArray(nums2);
+        if(nums2.size() == 0)
+            return MedofArray(nums1);    
+        vector&lt;int&gt; num3;
+        int size = (nums1.size()+nums2.size());
+        int mid = size/2;
+        int flag = !(size%2);
+        int i,m1,m2,cur;
+        double a,b;
+        for(i = m1 = m2 = 0;i &lt; size;i++)
+        {   
+            a = m1 &lt; nums1.size()?nums1[m1]:INT_MAX;//过界处理
+            b = m2 &lt; nums2.size()?nums2[m2]:INT_MAX;//过界处理
+            //cout&lt;&lt;i&lt;&lt;&quot; a &quot;&lt;&lt;a&lt;&lt;&quot; b &quot;&lt;&lt;b&lt;&lt;endl;
+            if(a &lt; b)
+            {
+                num3.push_back(nums1[m1]);
+                m1++;
+            }
+            else
+            {
+                num3.push_back(nums2[m2]);
+                m2++;
+            }
+            if(i == mid)
+                break;
+        }
+        return (num3[mid]+num3[mid-flag])/2.0;
+    }
+    double MedofArray(vector&lt;int&gt;&amp; nums)
+    {
+        int mid = nums.size()/2;
+        int flag = !(nums.size()%2);
+        return (nums[mid]+nums[mid-flag])/2.0;
+    }
+};</code></pre>
+<h2 id="思路2"><a href="#思路2" class="headerlink" title="思路2"></a>思路2</h2><p><strong><font color="orange" size="4">重点来了!!</font></strong></p>
+<p>这是一个很经典的Divide &amp; Conquer的题目，关键就在如何划分。这里引用stellari 的高分答案，觉得他这个讲的特别好：</p>
+<h1 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a><strong>预备知识</strong></h1><h2 id="先解释下“割”"><a href="#先解释下“割”" class="headerlink" title="先解释下“割”"></a><strong>先解释下“割”</strong></h2><blockquote>
+<p><font size="3">我们通过切一刀，能够把<strong>有序</strong>数组分成左右两个部分，切的那一刀就被称为割(Cut)，割的左右会有两个元素，分别是左边最大值和右边最小值。</font></p>
+</blockquote>
+<blockquote>
+<p><font size="3">我们定义L = Max(LeftPart)，R = Min(RightPart)</font></p>
+</blockquote>
+<p><font size="3">Ps. 割可以割在两个数中间，也可以割在1个数上，如果割在一个数上，那么这个数即属于左边，也属于右边。（后面讲单数组中值问题的时候会说）</font></p>
+<p><font size="3">比如说[2 3 5 7]这个序列，割就在3和5之间<br><font size="3">[2 3 / 5 7]<br><font size="3">中值就是（3+5）/2 = 4</font></font></font></p>
+<p><font size="3">如果[2 3 4 5 6]这个序列，割在4上，我们可以把4分成2个<br><font size="3">[2 3 (4/4) 5 7]<br><font size="3">中值就是（4+4）/2 = 4</font></font></font></p>
+<p><font size="3">这样可以保证不管中值是1个数还是2个数都能统一运算。</font></p>
+<h2 id="割和第k个元素"><a href="#割和第k个元素" class="headerlink" title="割和第k个元素"></a><strong>割和第k个元素</strong></h2><p><font size="3">对于单数组，<strong>找其中的第k个元素特别好做</strong>，我们用割的思想就是：</font></p>
+<blockquote>
+<p><font size="3"><strong>常识1：</strong>如果在k的位置割一下，然后A[k]就是L。换言之，就是如果左侧有k个元素，A[k]属于左边部分的最大值。（都是明显的事情，这个不用解释吧！）</font></p>
+</blockquote>
+<h2 id="双数组"><a href="#双数组" class="headerlink" title="双数组"></a><strong>双数组</strong></h2><p>我们设:<br><strong>$$C_i$$</strong>为第i个数组的割。<br><strong>$$L_i$$</strong>为第i个数组割后的左元素.<br><strong>$$R_i$$</strong>为第i个数组割后的右元素。<br><img src="C:/Users/Administrator/Desktop/leetbook-master/%E5%88%86%E6%B2%BB/004.%20Median%20of%20Two%20Sorted%20Arrays%5BH%5D/1460176468429.png" alt="Alt text"></p>
+<h3 id="我们看如何从双数组里取出第k个元素"><a href="#我们看如何从双数组里取出第k个元素" class="headerlink" title="我们看如何从双数组里取出第k个元素"></a><strong>我们看如何从双数组里取出第k个元素</strong></h3><ol>
+<li>首先$$L_i &lt;= R_i$$是肯定的（因为数组有序，左边肯定小于右边）</li>
+<li>如果我们让$$L_1 &lt;= R_2$$  &amp;&amp;   $$L_2 &lt;= R_1$$<br><img src="C:/Users/Administrator/Desktop/leetbook-master/%E5%88%86%E6%B2%BB/004.%20Median%20of%20Two%20Sorted%20Arrays%5BH%5D/1460176540020.png" alt="Alt text"></li>
+<li>那么左半边 全小于右半边，<font color="red">如果左边的元素个数相加刚好等于k</font>，那么第k个元素就是Max(L1,L2)，参考上面常识1。</li>
+<li>如果 <font color="blue">L1&gt;R2</font>，说明数组1的左边元素太大（多），我们把<font color="blue">C1减小，把C2增大。L2&gt;R1</font>同理，把<font color="blue">C1增大，C2减小。</font></li>
+</ol>
+<h3 id="假设k-3"><a href="#假设k-3" class="headerlink" title="假设k=3"></a><strong>假设k=3</strong></h3><p>对于</p>
+<p>$$[1\ 4\ 7\ 9]$$</p>
+<p>$$[2\ 3\ 5]$$</p>
+<p>设C1 = 2，那么C2 = k-C1 = 1</p>
+<p>$$[1\ 4/ 7\ 9]$$</p>
+<p>$$[2/3\ 5]$$</p>
+<p>这时候，L1(4)&gt;R2(3)，说明C1要减小，C2要增大，C1 = 1，C2=k-C1 = 2</p>
+<p>$$[1/4\ 7\ 9]$$</p>
+<p>$$[2\ 3/5]$$</p>
+<p>这时候，满足了$$L_1 &lt;= R_2$$  &amp;&amp;   $$L_2 &lt;= R_1$$，第3个元素就是Max(1,3) = 3。</p>
+<p>如果对于上面的例子，<font color="red">把k改成4就恰好是中值。</font></p>
+<p>下面具体来看特殊情况的中值问题。</p>
+<h2 id="双数组的奇偶"><a href="#双数组的奇偶" class="headerlink" title="双数组的奇偶"></a><strong>双数组的奇偶</strong></h2><p><font size="3">中值的关键在于，如何处理奇偶性，单数组的情况，我们已经讨论过了，那双数组的奇偶问题怎么办，m+n为奇偶处理方案都不同，</font></p>
+<h2 id="让数组恒为奇数"><a href="#让数组恒为奇数" class="headerlink" title="让数组恒为奇数"></a><strong>让数组恒为奇数</strong></h2><p><font size="3">有没有办法让两个数组长度相加一定为奇数或偶数呢？</font></p>
+<p><font size="3">其实有的，<strong>虚拟</strong>加入‘#’(这个trick在<a href="http://blog.csdn.net/hk2291976/article/details/51107886" target="_blank" rel="noopener">manacher算法</a>中也有应用)，让数组长度恒为奇数（2n+1恒为奇数）。<br><font size="3">Ps.注意是虚拟加，其实根本没这一步，因为通过下面的转换，我们可以保证虚拟加后每个元素跟原来的元素一一对应</font></font></p>
+<p><img src="C:/Users/Administrator/Desktop/leetbook-master/%E5%88%86%E6%B2%BB/004.%20Median%20of%20Two%20Sorted%20Arrays%5BH%5D/1461510936040.png" alt="Alt text"></p>
+<h2 id="映射关系"><a href="#映射关系" class="headerlink" title="映射关系"></a><strong>映射关系</strong></h2><p><font size="3">这有什么好处呢，为什么这么加?因为这么加完之后，<strong>每个位置可以通过/2得到原来元素的位置。</strong></font></p>
+<p><img src="C:/Users/Administrator/Desktop/leetbook-master/%E5%88%86%E6%B2%BB/004.%20Median%20of%20Two%20Sorted%20Arrays%5BH%5D/1461510924594.png" alt="Alt text"></p>
+<h2 id="在虚拟数组里表示“割”"><a href="#在虚拟数组里表示“割”" class="headerlink" title="在虚拟数组里表示“割”"></a><strong>在虚拟数组里表示“割”</strong></h2><p><font size="3">不仅如此，割更容易，如果割在‘#’上等于割在2个元素之间，割在数字上等于把数字划到2个部分。</font></p>
+<p><font size="3"><font color="red">奇妙的是不管哪种情况：</font></font></p>
+<blockquote>
+<p>Li = (Ci-1)/2<br>Ri = Ci/2</p>
+</blockquote>
+<p><font size="3">例：</font></p>
+<ol>
+<li><font size="3">割在4/7之间‘#’，C = 4，L=(4-1)/2=1 ，R=4/2=2<br>刚好是4和7的原来位置！</font></li>
+<li><font size="3">割在3上，C = 3，L=(3-1)/2=1，R=3/2 =1，刚好都是3的位置！</font></li>
+</ol>
+<hr>
+<p>剩下的事情就好办了，把2个数组看做一个虚拟的数组A，目前有2m+2n+2个元素，割在m+n+1处，所以我们只需找到m+n+1位置的元素和m+n+2位置的元素就行了。(在数组中是[m+n]和[m+n+1])</p>
+<p>左边：A[m+n] = Max(L1+L2)<br>右边：A[m+n+1] = Min(R1+R2)      </p>
+<blockquote>
+<p>Mid = (A[m+n]+A[m+n+1])/2<br>= (Max(L1+L2) + Min(R1+R2) )/2</p>
+</blockquote>
+<p>至于在两个数组里找割的方案，就是上面的方案。</p>
+<h2 id="分治的思路"><a href="#分治的思路" class="headerlink" title="分治的思路"></a>分治的思路</h2><p>有了上面的知识后，现在的问题就是如何利用分治的思想。</p>
+<h3 id="怎么分？"><a href="#怎么分？" class="headerlink" title="怎么分？"></a>怎么分？</h3><p>最快的分的方案是二分，有2个数组，我们对哪个做二分呢？<br>根据之前的分析，我们知道了，只要C1或C2确定，另外一个也就确定了。这里，为了效率，我们肯定是选长度较短的做二分，假设为C1。</p>
+<h3 id="怎么治？"><a href="#怎么治？" class="headerlink" title="怎么治？"></a>怎么治？</h3><p>也比较简单，我们之前分析了：就是比较L1,L2和R1,R2。</p>
+<ul>
+<li><font color="blue">L1&gt;R2</font>，把<font color="blue">C1减小，C2增大。<font color="red">—&gt; C1向左二分</font></font></li>
+<li><font color="blue">L2&gt;R1</font>，把<font color="blue">C1增大，C2减小。<font color="red">—&gt; C1向右二分</font></font></li>
+</ul>
+<h3 id="越界问题"><a href="#越界问题" class="headerlink" title="越界问题"></a>越界问题</h3><p>如果C1或C2已经到头了怎么办？<br>这种情况出现在：如果有个数组完全小于或大于中值。可能有4种情况：</p>
+<ul>
+<li>C1 = 0   —— 数组1整体都比中值大，L1 &gt;R2，中值在2中</li>
+<li>C2 = 0   —— 数组1整体都比中值小，L1 &lt;R2，中值在1中</li>
+<li>C1 = n*2  —— 数组1整体都比中值小，L1 &lt;R2，中位数在2中</li>
+<li>C2 = m*2 —— 数组1整体都比中值大，L1 &gt;R2，中位数在1中</li>
+</ul>
+<p>其实，如果我已经确定了数组1是最短的数组，那只有两种情况了，比较好处理：</p>
+<ul>
+<li>如果C1 = 0   —&gt; <font color="red">那么我们缩小L1，L1 = INT_MIN，保证判断正确。</font></li>
+<li>如果C1 = n*2  —&gt; <font color="red">那么我们增大R1，R1 = INT_MAX，保证判断正确。</font></li>
+</ul>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="c++">class Solution {
+public:
+    double findMedianSortedArrays(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) {
+        if(nums1.size() == 0)
+            return MedofArray(nums2);
+        if(nums2.size() == 0)
+            return MedofArray(nums1);
+        int n = nums1.size();
+        int m = nums2.size();
+        if(n &gt; m)   //保证数组1一定最短
+            return findMedianSortedArrays(nums2,nums1);
+        int L1,L2,R1,R2,c1,c2,lo = 0, hi = 2*n;  //我们目前是虚拟加了&#39;#&#39;所以数组1是2*n+1长度
+        while(lo &lt;= hi)   //二分
+        {
+            c1 = (lo+hi)/2;  //c1是二分的结果
+            c2 = m+n- c1;
+            L1 = (c1 == 0)?INT_MIN:nums1[(c1-1)/2];   //map to original element
+            R1 = (c1 == 2*n)?INT_MAX:nums1[c1/2];
+            L2 = (c2 == 0)?INT_MIN:nums2[(c2-1)/2];
+            R2 = (c2 == 2*m)?INT_MAX:nums2[c2/2];
+
+            if(L1 &gt; R2)
+                hi = c1-1;
+            else if(L2 &gt; R1)
+                lo = c1+1;
+            else
+                break;
+        }
+        return (max(L1,L2)+ min(R1,R2))/2.0;
+    }
+    double MedofArray(vector&lt;int&gt;&amp; nums)
+    {
+        if(nums.size() == 0)    return -1;
+        return (nums[nums.size()/2]+nums[(nums.size()-1)/2])/2.0;
+    }
+};</code></pre>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-Maximum-Subarray[M]/" rel="next" title="Maximum Subarray[M]">
+                <i class="fa fa-chevron-left"></i> Maximum Subarray[M]
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-Longest-Substring-Without-Repeating-Characters[M]/" rel="prev" title="Longest Substring Without Repeating Characters[M]">
+                Longest Substring Without Repeating Characters[M] <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#004-Median-of-Two-Sorted-Arrays-H"><span class="nav-number">1.</span> <span class="nav-text">004. Median of Two Sorted Arrays[H]</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#题目"><span class="nav-number">2.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-number">3.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#思路1"><span class="nav-number">3.1.</span> <span class="nav-text">思路1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路2"><span class="nav-number">3.2.</span> <span class="nav-text">思路2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#预备知识"><span class="nav-number">4.</span> <span class="nav-text">预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#先解释下“割”"><span class="nav-number">4.1.</span> <span class="nav-text">先解释下“割”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#割和第k个元素"><span class="nav-number">4.2.</span> <span class="nav-text">割和第k个元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双数组"><span class="nav-number">4.3.</span> <span class="nav-text">双数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#我们看如何从双数组里取出第k个元素"><span class="nav-number">4.3.1.</span> <span class="nav-text">我们看如何从双数组里取出第k个元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#假设k-3"><span class="nav-number">4.3.2.</span> <span class="nav-text">假设k=3</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双数组的奇偶"><span class="nav-number">4.4.</span> <span class="nav-text">双数组的奇偶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#让数组恒为奇数"><span class="nav-number">4.5.</span> <span class="nav-text">让数组恒为奇数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#映射关系"><span class="nav-number">4.6.</span> <span class="nav-text">映射关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在虚拟数组里表示“割”"><span class="nav-number">4.7.</span> <span class="nav-text">在虚拟数组里表示“割”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分治的思路"><span class="nav-number">4.8.</span> <span class="nav-text">分治的思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#怎么分？"><span class="nav-number">4.8.1.</span> <span class="nav-text">怎么分？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#怎么治？"><span class="nav-number">4.8.2.</span> <span class="nav-text">怎么治？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#越界问题"><span class="nav-number">4.8.3.</span> <span class="nav-text">越界问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">4.9.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

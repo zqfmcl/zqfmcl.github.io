@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="题解,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="第四章 初始化与清理public class ConstructorTest { ​       public static void main(String[] args) { ​              Tester t = new Tester(); ​              System.out.println(t.s); ​       } } class Tester2 { ​">
+<meta name="keywords" content="题解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java题解初始化">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解初始化/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="第四章 初始化与清理public class ConstructorTest { ​       public static void main(String[] args) { ​              Tester t = new Tester(); ​              System.out.println(t.s); ​       } } class Tester2 { ​">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.757Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java题解初始化">
+<meta name="twitter:description" content="第四章 初始化与清理public class ConstructorTest { ​       public static void main(String[] args) { ​              Tester t = new Tester(); ​              System.out.println(t.s); ​       } } class Tester2 { ​">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解初始化/">
+
+
+
+
+
+  <title>Java题解初始化 | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解初始化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java题解初始化</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-06T10:00:00+08:00">
+                2019-10-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第四章-初始化与清理"><a href="#第四章-初始化与清理" class="headerlink" title="第四章 初始化与清理"></a>第四章 初始化与清理</h2><p>public class ConstructorTest {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Tester t = new Tester();</p>
+<p>​              System.out.println(t.s);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Tester2 {</p>
+<p>​       String s1;</p>
+<p>​       String s2 = “hello”;</p>
+<p>​       String s3;</p>
+<p>​       Tester2() { s3 = “good-bye”; }</p>
+<p>}</p>
+<p>public class ConstructorTest2 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Tester2 t = new Tester2();</p>
+<p>​              System.out.println(“t.s1: “ + t.s1);</p>
+<p>​              System.out.println(“t.s2: “ + t.s2);</p>
+<p>​              System.out.println(“t.s3: “ + t.s3);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Kabayo {</p>
+<p>​        Kabayo() {</p>
+<p>​              System.out.println(“isa lang kabayo”);</p>
+<p>​       }</p>
+<p>} </p>
+<p>public class DefaultConstructorTest {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Kabayo k = new Kabayo();</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Kabayo2 {</p>
+<p>​       Kabayo2() {</p>
+<p>​              System.out.println(“isa lang kabayo”);</p>
+<p>​       }</p>
+<p>​       Kabayo2(String s) {</p>
+<p>​              System.out.println(s);</p>
+<p>​       }      </p>
+<p>} </p>
+<p>public class DefaultConstructorTest2 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Kabayo2 k = new Kabayo2();</p>
+<p>​              Kabayo2 k2 = new Kabayo2(“tumutugtog ng gitara”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Dog {</p>
+<p>​       void bark() {System.out.println(“quiet”);}</p>
+<p>​       void bark(char c) {System.out.println(“cawcaw”);}</p>
+<p>​       void bark(byte b) {System.out.println(“barkbark”);}</p>
+<p>​       void bark(short s) {System.out.println(“slurpslurp”);}</p>
+<p>​       void bark(int i) {System.out.println(“iyow”);}</p>
+<p>​       void bark(long L) {System.out.println(“lalala”);}</p>
+<p>​       void bark(float f) {System.out.println(“fififoofum”);}</p>
+<p>​       void bark(double d) {System.out.println(“dodo”);}</p>
+<p>}     </p>
+<p>public class DogTalk {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Dog d = new Dog();</p>
+<p>​              char c = ‘c’;</p>
+<p>​              byte b = 0;</p>
+<p>​              short s = 0;</p>
+<p>​              d.bark();</p>
+<p>​              d.bark((char)c);</p>
+<p>​              d.bark((byte)b);</p>
+<p>​              d.bark((short)s);</p>
+<p>​              d.bark(1);</p>
+<p>​              d.bark(1L);</p>
+<p>​              d.bark(1.0f);</p>
+<p>​              d.bark(1.0);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Dog {</p>
+<p>​       void bark() {System.out.println(“quiet”);}</p>
+<p>​       void bark(char c) {System.out.println(“cawcaw”);}</p>
+<p>​       void bark(byte b) {System.out.println(“barkbark”);}</p>
+<p>​       void bark(short s) {System.out.println(“slurpslurp”);}</p>
+<p>​       void bark(int i) {System.out.println(“iyow”);}</p>
+<p>​       void bark(long L) {System.out.println(“lalala”);}</p>
+<p>​       void bark(float f) {System.out.println(“fififoofum”);}</p>
+<p>​       void bark(double d) {System.out.println(“dodo”);}</p>
+<p>​       void bark(char c, int i) {System.out.println(“caw-iyow”);}</p>
+<p>​       void bark(int i, char c) {System.out.println(“iyow-caw”);}</p>
+<p>}     </p>
+<p>public class DogTalk2 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Dog d = new Dog();</p>
+<p>​              char c = ‘c’;</p>
+<p>​              byte b = 0;</p>
+<p>​              short s = 0;</p>
+<p>​              d.bark();</p>
+<p>​              d.bark((char)c);</p>
+<p>​              d.bark((byte)b);</p>
+<p>​              d.bark((short)s);</p>
+<p>​              d.bark(1);</p>
+<p>​              d.bark(1L);</p>
+<p>​              d.bark(1.0f);</p>
+<p>​              d.bark(1.0);</p>
+<p>​              d.bark(c, 1);</p>
+<p>​              d.bark(1, c);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Aso {</p>
+<p>​       void bark() {System.out.println(“woof”);}</p>
+<p>}     </p>
+<p>public class AutomaticConstructor {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Aso a = new Aso();</p>
+<p>​              a.bark();</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Doc {     </p>
+<p>​       void intubate() {</p>
+<p>​              System.out.println(“prepare patient”);</p>
+<p>​              laryngoscopy();</p>
+<p>​              this.laryngoscopy();      </p>
+<p>​       }</p>
+<p>​       void laryngoscopy() {</p>
+<p>​              System.out.println(“use laryngoscope”);</p>
+<p>​       }      </p>
+<p>}      </p>
+<p>public class PassingThisEx{  </p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              new Doc().intubate();           </p>
+<p>​       }             </p>
+<p>}</p>
+<p>  class Doc {</p>
+<p>​       Doc(int i) {</p>
+<p>​              this(“MD”);</p>
+<p>​              int yearsTraining = i;</p>
+<p>​              System.out.println(“New doc with “ + i + “ years of training”);</p>
+<p>​       }</p>
+<p>​       Doc(String s) {</p>
+<p>​              String degree = s;</p>
+<p>​              System.out.println(“New doc with “ + s + “ degree”);</p>
+<p>​       }      </p>
+<p>​       void intubate() {</p>
+<p>​              System.out.println(“prepare patient”);</p>
+<p>​              laryngoscopy();</p>
+<p>​       }</p>
+<p>​       void laryngoscopy() {</p>
+<p>​              System.out.println(“use laryngoscope”);</p>
+<p>​       }      </p>
+<p>}</p>
+<p>​       </p>
+<p>public class OverloadedConstructors {      </p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              new Doc(8).intubate();         </p>
+<p>​       }             </p>
+<p>}</p>
+<p>class WebBank {</p>
+<p>​       boolean loggedIn = false;</p>
+<p>​       WebBank(boolean logStatus) {</p>
+<p>​              loggedIn = logStatus;</p>
+<p>​       }</p>
+<p>​       void logIn() {</p>
+<p>​              loggedIn = true;</p>
+<p>​       }</p>
+<p>​       void logOut() {</p>
+<p>​              loggedIn = false;</p>
+<p>​       }</p>
+<p>​       protected void finalize() {</p>
+<p>​              if(loggedIn)</p>
+<p>​                     System.out.println(“Error: still logged in”);</p>
+<p>​                                 }</p>
+<p>}</p>
+<p>public class TerminationConditionEx {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              WebBank bank1 = new WebBank(true);</p>
+<p>​              WebBank bank2 = new WebBank(true);</p>
+<p>​                           bank1.logOut();</p>
+<p>​                           new WebBank(true);</p>
+<p>​                           System.gc();</p>
+<p>​       }      </p>
+<p>}</p>
+<p>class WebBank {</p>
+<p>​       boolean loggedIn = false;</p>
+<p>​       WebBank(boolean logStatus) {</p>
+<p>​              loggedIn = logStatus;</p>
+<p>​       }</p>
+<p>​       void logOut() {</p>
+<p>​              loggedIn = false;</p>
+<p>​       }</p>
+<p>​       protected void finalize() {</p>
+<p>​              if(loggedIn)</p>
+<p>​                     System.out.println(“Error: still logged in”);</p>
+<p>​                                 }</p>
+<p>}</p>
+<p>public class BankTest {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              WebBank bank1 = new WebBank(true);</p>
+<p>​              WebBank bank2 = new WebBank(true);</p>
+<p>​              new WebBank(true);</p>
+<p>​                           bank1.logOut();</p>
+<p>​                                        System.out.println(“Try 1: “); </p>
+<p>​              System.runFinalization();</p>
+<p>​              System.out.println(“Try 2: “);       </p>
+<p>​              Runtime.getRuntime().runFinalization();</p>
+<p>​              System.out.println(“Try 3: “); </p>
+<p>​              System.gc();</p>
+<p>​              System.out.println(“Try 4: “);</p>
+<p>​                           System.runFinalizersOnExit(true);       </p>
+<p>​       }      </p>
+<p>} </p>
+<p>class Tank {</p>
+<p>​       int howFull = 0;</p>
+<p>​       Tank() { this(0); }</p>
+<p>​       Tank(int fullness) {</p>
+<p>​              howFull = fullness;       </p>
+<p>​       }</p>
+<p>​       void sayHowFull() {</p>
+<p>​              if(howFull == 0) System.out.println(“Tank is empty”);</p>
+<p>​              else System.out.println(“Tank filling status = “ + howFull);</p>
+<p>​       }</p>
+<p>​       void empty() {</p>
+<p>​              howFull = 0;</p>
+<p>​       }</p>
+<p>​       protected void finalize() {</p>
+<p>​              if(howFull != 0)</p>
+<p>​                     System.out.println(“Error: Tank not empty”);</p>
+<p>​                                 }</p>
+<p>}</p>
+<p>public class TankTest {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Tank tank1 = new Tank();</p>
+<p>​              Tank tank2 = new Tank(3);</p>
+<p>​              Tank tank3 = new Tank(5);</p>
+<p>​                           tank2.empty();</p>
+<p>​                           new Tank(6);</p>
+<p>​              System.out.println(“Check tanks:”);</p>
+<p>​              System.out.println(“tank1: “);</p>
+<p>​              tank1.sayHowFull();</p>
+<p>​              System.out.println(“tank2: “);</p>
+<p>​              tank2.sayHowFull();</p>
+<p>​              System.out.println(“tank3: “);</p>
+<p>​              tank3.sayHowFull();</p>
+<p>​              System.out.println(“first forced gc():”);</p>
+<p>​              System.gc();</p>
+<p>​                                        System.out.println(“try deprecated runFinalizersOnExit(true):”);</p>
+<p>​              System.runFinalizersOnExit(true);</p>
+<p>​              System.out.println(“last forced gc():”);</p>
+<p>​              System.gc();</p>
+<p>​       }      </p>
+<p>}</p>
+<p>class Cup {</p>
+<p>​       Cup(int marker) {</p>
+<p>​              print(“Cup(“ + marker + “)”);</p>
+<p>​       }</p>
+<p>​       void f(int marker) {</p>
+<p>​              print(“f(“ + marker + “)”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Cups {</p>
+<p>​       static Cup cup1;</p>
+<p>​       static Cup cup2;</p>
+<p>​       static {</p>
+<p>​              cup1 = new Cup(1);</p>
+<p>​              cup2 = new Cup(2);</p>
+<p>​       }</p>
+<p>​       Cups() {</p>
+<p>​              print(“Cups()”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class ExplicitStatic {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              print(“Inside main()”);</p>
+<p>​              Cups.cup1.f(99);   }</p>
+<p>​       static Cups cups1 = new Cups();       static Cups cups2 = new Cups();  }</p>
+<p>class Go {</p>
+<p>​       static String s1 = “run”;</p>
+<p>​       static String s2, s3;</p>
+<p>​       static {</p>
+<p>​              s2 = “drive car”;</p>
+<p>​              s3 = “fly plane”;</p>
+<p>​              print(“s2 &amp; s3 initialized”);</p>
+<p>​       }</p>
+<p>​       static void how() {</p>
+<p>​              print(s1 + “ or “ + s2 + “ or “ + s3);</p>
+<p>​       }</p>
+<p>​       Go() { print(“Go()”); }     </p>
+<p>}</p>
+<p>public class ExplicitStaticEx {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              print(“Inside main()”);</p>
+<p>​              Go.how();</p>
+<p>​              print(“Go.s1: “ + Go.s1);              </p>
+<p>​       }</p>
+<p>​       static Go g1 = new Go();</p>
+<p>​       static Go g2 = new Go();</p>
+<p>}</p>
+<p> class Tester {</p>
+<p>​       String s;</p>
+<p>​       {</p>
+<p>​              s = “Initializing string in Tester”;</p>
+<p>​              System.out.println(s);</p>
+<p>​       }</p>
+<p>​       Tester() {</p>
+<p>​              System.out.println(“Tester()”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class InstanceClauseTest {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              new Tester();                       </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class StringArrayEx16 {</p>
+<p>​       public static void main(String[] args) {                     </p>
+<p>​              String[] s = { “one”, “two”, “three”, };          </p>
+<p>​              for(int i = 0; i &lt; s.length; i++)</p>
+<p>​                     System.out.println(“s[“ + i + “] = “ + s[i]);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class InitTest {</p>
+<p>​       InitTest(String s) {</p>
+<p>​              System.out.println(“InitTest()”);</p>
+<p>​              System.out.println(s);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class InitTest17 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              InitTest[] it = new InitTest[10];</p>
+<p>​       }</p>
+<p>}</p>
+<p>class InitTest {</p>
+<p>​       InitTest(String s) {</p>
+<p>​              System.out.println(“InitTest()”);</p>
+<p>​              System.out.println(s);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class InitTest18 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              InitTest[] it = new InitTest[5];</p>
+<p>​              for(int i = 0; i &lt; it.length; i++)</p>
+<p>​                     it[i] = new InitTest(Integer.toString(i));</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class VarargEx19 {</p>
+<p>​       static void showStrings(String… args) {</p>
+<p>​              for(String s : args)</p>
+<p>​                     System.out.print(s + “ “);</p>
+<p>​              System.out.println();</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              showStrings(“one”, “TWO”, “three”, “four”);</p>
+<p>​              showStrings(new String[]{“1”, “2”, “3”, “4”});</p>
+<p>​       }</p>
+<p>public class VarargEx20 {</p>
+<p>​       public static void main(String… args) {</p>
+<p>​              for(String s : args)</p>
+<p>​                     System.out.print(s + “ “);</p>
+<p>​              System.out.println();</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class EnumEx21 {</p>
+<p>​       public enum Bills {</p>
+<p>​              ONE, FIVE, TEN, TWENTY, FIFTY, HUNDRED</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              for(Bills b : Bills.values())</p>
+<p>​                     System.out.println(b + “, ordinal “ + b.ordinal());      </p>
+<p>​       }      </p>
+<p>}</p>
+<p>public class Wallet {</p>
+<p>​       Bills b;</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              for(Bills b : Bills.values()) {</p>
+<p>​                     System.out.print(“Worth: “);</p>
+<p>​                     switch(b) {</p>
+<p>​                            case ONE: System.out.println(“$1”); break; </p>
+<p>​                            case FIVE: System.out.println(“$5”); break;</p>
+<p>​                            case TEN: System.out.println(“$10”); break;</p>
+<p>​                            case TWENTY: System.out.println(“$20”); break; </p>
+<p>​                            case FIFTY: System.out.println(“$50”); break;</p>
+<p>​                            case HUNDRED: System.out.println(“$100”); break;</p>
+<p>​                            default: break;</p>
+<p>​                     }</p>
+<p>​              }      </p>
+<p>​       }</p>
+<p>}</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/题解/" rel="tag"># 题解</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/06/2019-10-06-Java题解处理异常/" rel="next" title="Java题解处理异常">
+                <i class="fa fa-chevron-left"></i> Java题解处理异常
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/06/2019-10-06-Java题解IO/" rel="prev" title="Java题解IO">
+                Java题解IO <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章-初始化与清理"><span class="nav-number">1.</span> <span class="nav-text">第四章 初始化与清理</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

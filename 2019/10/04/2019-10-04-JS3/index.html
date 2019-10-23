@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Javascript,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="2015年10月8日querySelector和querySelectorAlldocument.querySelector(&amp;quot;body&amp;quot;);//放回body节点 document.querySelector(&amp;quot;#k&amp;quot;);//返回id为k的节点 document.querySelector(&amp;quot;#k span&amp;quot;);//返回id为k的节点下的">
+<meta name="keywords" content="Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS3">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-JS3/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="2015年10月8日querySelector和querySelectorAlldocument.querySelector(&amp;quot;body&amp;quot;);//放回body节点 document.querySelector(&amp;quot;#k&amp;quot;);//返回id为k的节点 document.querySelector(&amp;quot;#k span&amp;quot;);//返回id为k的节点下的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/10/img/math%E5%87%BD%E6%95%B0.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/10/img/math%E5%87%BD%E6%95%B0-2.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/10/img/random.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/10/img/HTTP.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/10/img/HTTP-2.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/10/img/box-sizing.png">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.230Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS3">
+<meta name="twitter:description" content="2015年10月8日querySelector和querySelectorAlldocument.querySelector(&amp;quot;body&amp;quot;);//放回body节点 document.querySelector(&amp;quot;#k&amp;quot;);//返回id为k的节点 document.querySelector(&amp;quot;#k span&amp;quot;);//返回id为k的节点下的">
+<meta name="twitter:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2015/10/img/math%E5%87%BD%E6%95%B0.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-JS3/">
+
+
+
+
+
+  <title>JS3 | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-JS3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JS3</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T10:00:00+08:00">
+                2019-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="2015年10月8日"><a href="#2015年10月8日" class="headerlink" title="2015年10月8日"></a>2015年10月8日</h1><h2 id="querySelector和querySelectorAll"><a href="#querySelector和querySelectorAll" class="headerlink" title="querySelector和querySelectorAll"></a>querySelector和querySelectorAll</h2><pre><code class="js">document.querySelector(&quot;body&quot;);//放回body节点
+document.querySelector(&quot;#k&quot;);//返回id为k的节点
+document.querySelector(&quot;#k span&quot;);//返回id为k的节点下的第一个span节点
+document.querySelector(&quot;#k&quot;).querySelector(&quot;span&quot;);//返回id为k的节点下的第一个span节点
+
+document.querySelectorAll(&quot;li&quot;);//返回所用tagName为li的节点集合（NodeList）
+document.querySelectorAll(&quot;div .li&quot;);//返回class为li的div</code></pre>
+<blockquote>
+<p>querySelectorAll 方法接收的参数是一个 <strong>CSS 选择符</strong>。而 getElementsBy 系列接收的参数只能是单一的<em>className<em>、</em>tagName</em> 和<em>name</em>。<br>querySelectorAll比较耗费性能。</p>
+</blockquote>
+<h1 id="2015年10月9日"><a href="#2015年10月9日" class="headerlink" title="2015年10月9日"></a>2015年10月9日</h1><h2 id="javascript"><a href="#javascript" class="headerlink" title="javascript"></a>javascript</h2><h3 id="javascript中的-是什么意思"><a href="#javascript中的-是什么意思" class="headerlink" title="javascript中的[ ] { }是什么意思"></a>javascript中的[ ] { }是什么意思</h3><pre><code class="js">//用{}定义一组对像
+var obj = {a:1111,b:2222,c:&#39;abc&#39;,d:function(){
+alert(&#39;对像：d函数&#39;);
+}}; 
+alert(&#39;对像：&#39;+obj.b);//调用对像b
+obj.d(); //调用对像d函数
+
+
+//[]是数组形式，{}是对象形式，都可以包含其他类型.
+var a= [&quot;A&quot;,&quot;B&quot;,{a:1,b:2}];
+//a[1] 取得的是B,a[2].b取得的是2;
+var s = {a:1,b:[&quot;A&quot;,&quot;B&quot;]}
+//s.a取得的是1,s.b[1]取得的是A
+//
+//
+////JSON中同时使用[]和{}
+var json = [{&quot;arr1&quot;:{&quot;a&quot;:123,&quot;b&quot;:456},&quot;arr2&quot;:{&quot;a&quot;:789,&quot;c&quot;:&quot;abcdefg&quot;}},{&quot;arr1&quot;:{&quot;a&quot;:&quot;uuuuu&quot;,&quot;b&quot;:&quot;oooo&quot;},&quot;arr2&quot;:{&quot;a&quot;:&quot;aaa9999&quot;,&quot;c&quot;:&quot;abcdefg&quot;}}];
+alert(&#39;JSON1:&#39;+json[0].arr2.a);
+alert(&#39;JSON2:&#39;+json[1].arr2.a);</code></pre>
+<h3 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h3><p><strong>split()</strong> 方法用于把一个字符串分割成字符串数组。<br>语法：<code>stringObject.split(separator,howmany)</code>。</p>
+<h3 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h3><p><strong>join()</strong> 方法用于把数组中的所有元素放入一个字符串。<br>语法：<code>arrayObject.join(separator)</code>。</p>
+<h3 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf()"></a>indexOf()</h3><p><strong>indexOf()</strong>方法可返回某个指定的字符串值在字符串中首次出现的位置。.</p>
+<h3 id="substring"><a href="#substring" class="headerlink" title="substring()"></a>substring()</h3><p><strong>substring()</strong> 方法用于提取字符串中介于两个指定下标之间的字符。substring() 不接受负的参数。</p>
+<h3 id="decodeURIComponent-与encodeURIComponent"><a href="#decodeURIComponent-与encodeURIComponent" class="headerlink" title="decodeURIComponent()与encodeURIComponent()"></a>decodeURIComponent()与encodeURIComponent()</h3><p><code>encodeURIComponent()</code>函数可把字符串作为 URI 组件进行编码。<br><code>decodeURIComponent()</code>函数可对<code>encodeURIComponent()</code> 函数编码的 URI 进行解码。</p>
+<pre><code class="js">var test1=&quot;http://www.w3school.com.cn/My first/&quot;
+
+document.write(encodeURIComponent(test1)+ &quot;&lt;br /&gt;&quot;)
+document.write(decodeURIComponent(test1))
+</code></pre>
+<p>输出</p>
+<pre><code class="js">http%3A%2F%2Fwww.w3school.com.cn%2FMy%20first%2F
+http://www.w3school.com.cn/My first/
+</code></pre>
+<h1 id="2015年10月10日"><a href="#2015年10月10日" class="headerlink" title="2015年10月10日"></a>2015年10月10日</h1><h2 id="javascript-1"><a href="#javascript-1" class="headerlink" title="javascript"></a>javascript</h2><ul>
+<li>addEventListener是一个侦听事件并处理相应的函数。</li>
+</ul>
+<p><strong>语法</strong></p>
+<pre><code>element.addEventListener(event, function, useCapture)</code></pre><blockquote>
+<p>第一个参数是需要绑定的事件，第二个参数是触发事件后要执行的函数。而第三个参数默认值是false，表示在事件冒泡的阶段调用事件处理函数，如果参数为true，则表示在事件捕获阶段调用处理函数。</p>
+</blockquote>
+<p><strong>事件冒泡</strong></p>
+<p>微软提出了名为事件冒泡(event bubbling)的事件流。事件冒泡可以形象地比喻为把一颗石头投入水中，泡泡会一直从水底冒出水面。也就是说，事件会从最内层的元素开始发生，一直向上传播，直到document对象。</p>
+<p>因此上面的例子在事件冒泡的概念下发生click事件的顺序应该是p -&gt; div -&gt; body -&gt; html -&gt; document</p>
+<p><strong>事件捕获</strong></p>
+<p>网景提出另一种事件流名为事件捕获(event capturing)。与事件冒泡相反，事件会从最外层开始发生，直到最具体的元素。</p>
+<p>上面的例子在事件捕获的概念下发生click事件的顺序应该是document -&gt; html -&gt; body -&gt; div -&gt; p</p>
+<pre><code class="javascript">document.getElementById(&quot;myP&quot;).addEventListener(&quot;click&quot;, function() {
+    alert(&quot;你点击了 P 元素!&quot;);
+}, false);
+
+document.getElementById(&quot;myDiv&quot;).addEventListener(&quot;click&quot;, function() {
+    alert(&quot;你点击了 DIV 元素!&quot;);
+}, false);
+
+document.getElementById(&quot;myP2&quot;).addEventListener(&quot;click&quot;, function() {
+    alert(&quot;你点击了 P 元素!&quot;);
+}, true);
+
+document.getElementById(&quot;myDiv2&quot;).addEventListener(&quot;click&quot;, function() {
+    alert(&quot;你点击了 DIV 元素!&quot;);
+}, true);</code></pre>
+<blockquote>
+<p>详情查看<a href="http://sandbox.runjs.cn/show/lsxcibvm" target="_blank" rel="noopener">连接</a></p>
+</blockquote>
+<p><strong>兼容</strong><br>要兼容旧版本的IE浏览器，可以使用IE的attachEvent函数。</p>
+<pre><code>object.attachEvent(event, function)</code></pre><p>两个参数与addEventListener相似，分别是事件和处理函数，默认是事件冒泡阶段调用处理函数，要注意的是，写事件名时候要加上”on”前缀（”onload”、”onclick”等）。</p>
+<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><pre><code class="python">#TempConvert.py
+val = input(&quot;请输入带温度表示符号的温度值(例如: 32C): &quot;)
+if val[-1] in [&#39;C&#39;,&#39;c&#39;]:
+    f = 1.8 * float(val[0:-1]) + 32
+    print(&quot;转换后的温度为: %.2fF&quot;%f)
+elif val[-1] in [&#39;F&#39;,&#39;f&#39;]:
+    c = (float(val[0:-1]) - 32) / 1.8
+    print(&quot;转换后的温度为: %.2fC&quot;%c)
+else:
+    print(&quot;输入有误&quot;)
+</code></pre>
+<blockquote>
+<p><code>%.2f</code>保留表示小数点后面两位。</p>
+</blockquote>
+<ul>
+<li><p>注释</p>
+<p>方式：</p>
+<ul>
+<li>单行一<code>#</code>开头；</li>
+<li>多行一<code>&#39;&#39;&#39;</code>开头与结尾；</li>
+</ul>
+</li>
+</ul>
+<h1 id="2015年10月15日"><a href="#2015年10月15日" class="headerlink" title="2015年10月15日"></a>2015年10月15日</h1><h2 id="Python-1"><a href="#Python-1" class="headerlink" title="Python"></a>Python</h2><ul>
+<li>数字类型的运算</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>运算符和运算函数</th>
+<th>操作含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>x+y</td>
+<td>x与y之和</td>
+</tr>
+<tr>
+<td>x-y</td>
+<td>x与y之差</td>
+</tr>
+<tr>
+<td>x*y</td>
+<td>x与y之积</td>
+</tr>
+<tr>
+<td>x/y</td>
+<td>x与y之商</td>
+</tr>
+<tr>
+<td>x//y</td>
+<td>不大于x与y之商的最大整数</td>
+</tr>
+<tr>
+<td>x%y</td>
+<td>x与y之商的余数</td>
+</tr>
+<tr>
+<td>+x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>x的负值</td>
+</tr>
+<tr>
+<td>x**y</td>
+<td>x的y次幂</td>
+</tr>
+<tr>
+<td>abs(x)</td>
+<td>x的绝对值</td>
+</tr>
+<tr>
+<td>divmod(x,y)</td>
+<td>(x//y,x%y)</td>
+</tr>
+<tr>
+<td>pow(x,y)</td>
+<td>x的y次幂</td>
+</tr>
+</tbody></table>
+<ul>
+<li>字符串处理方法</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+</td>
+<td>连接</td>
+</tr>
+<tr>
+<td>*</td>
+<td>重复</td>
+</tr>
+<tr>
+<td>&lt; string&gt;[ ]</td>
+<td>索引</td>
+</tr>
+<tr>
+<td>&lt; string&gt;[ : ]</td>
+<td>剪切</td>
+</tr>
+<tr>
+<td>len(&lt; string&gt;)</td>
+<td>长度</td>
+</tr>
+<tr>
+<td>&lt; string&gt;.upper()</td>
+<td>字符串中字母大写</td>
+</tr>
+<tr>
+<td>&lt; string&gt;.lower()</td>
+<td>字符串中字母小写</td>
+</tr>
+<tr>
+<td>&lt; string&gt;.strip()</td>
+<td>去两边空格及去指定字符</td>
+</tr>
+<tr>
+<td>&lt; string&gt;.split()</td>
+<td>按指定字符分割字符串为数组</td>
+</tr>
+<tr>
+<td>&lt; string&gt;.join()</td>
+<td>连接两个字符串序列</td>
+</tr>
+<tr>
+<td>&lt; string&gt;.find()</td>
+<td>搜索指定字符串</td>
+</tr>
+<tr>
+<td>&lt; string&gt;.replace()</td>
+<td>字符串替换</td>
+</tr>
+<tr>
+<td>for &lt; var&gt; in &lt; string&gt;</td>
+<td>字符串迭代</td>
+</tr>
+</tbody></table>
+<pre><code class="python">&lt;!-- 月份输出代码 --&gt;
+# month.py
+months=&quot;JanFebMarAprMayJunJulAugSepOctNovDec&quot;
+n=input(&quot;请输入月份数（1-12）：&quot;)
+pos=(int(n)-1)*3
+monthAbbrev=months[pos:pos+3]
+print(&quot;月份数是&quot;+monthAbbrev+&quot;.&quot;)
+
+</code></pre>
+<h1 id="2015年10月18日"><a href="#2015年10月18日" class="headerlink" title="2015年10月18日"></a>2015年10月18日</h1><h2 id="Python-2"><a href="#Python-2" class="headerlink" title="Python"></a>Python</h2><p><strong>元组</strong></p>
+<p>元组是包含多个元素的类型，元素之间用逗号分割。<br>元组中各元素存在先后关系，可以通过索引访问元组<br>中元素。</p>
+<pre><code class="python">&gt;&gt;&gt; t2=123,123314,24,(&quot;hello&quot;,&quot;china&quot;)
+&gt;&gt;&gt; print(t2[2])
+24
+&gt;&gt;&gt; print(t2[3])
+(&#39;hello&#39;, &#39;china&#39;)
+&gt;&gt;&gt; print(t2[3][1])
+china
+&gt;&gt;&gt; </code></pre>
+<p><strong>列表</strong></p>
+<ul>
+<li>列表(list)是有序的元素集合；</li>
+<li>列表元素可以通过索引访问单个元素；</li>
+</ul>
+<p>列表与元组不同<br>列表大小没有限制，可以随时修改。</p>
+<p><strong>列表操作</strong></p>
+<table>
+<thead>
+<tr>
+<th>列表操作符</th>
+<th>操作符含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt; list1 &gt; + &lt; list2&gt;</td>
+<td>连接两个列表</td>
+</tr>
+<tr>
+<td>&lt; list &gt; * &lt; 整数类型 &gt;</td>
+<td>对列表进行整数次重复</td>
+</tr>
+<tr>
+<td>&lt; list &gt; [&lt; 整数类型 &gt;]</td>
+<td>索引列表中的元素</td>
+</tr>
+<tr>
+<td>len( &lt; seq &gt; )</td>
+<td>列表中元素个数</td>
+</tr>
+</tbody></table>
+<p>|&lt; list &gt;[ &lt; 整数类型 &gt; : |&lt; 整数类型 &gt;] 取列表的一个子序列<br>|for &lt; var &gt; in &lt; list &gt; :| 对列表进行循环列举<br>|&lt; expr &gt; in &lt; list &gt; |成员检查，判断&lt; expr&gt;是否在列表中|</p>
+<p><strong>列表相关方法</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>方法含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt; list &gt; . append ( x )</td>
+<td>将元素x增加到列表的最后</td>
+</tr>
+<tr>
+<td>&lt; list &gt; . sort ( )</td>
+<td>将列表元素排序</td>
+</tr>
+<tr>
+<td>&lt; list &gt; . reverse ( )</td>
+<td>将序列元素反转</td>
+</tr>
+<tr>
+<td>&lt; list &gt; . index ( )</td>
+<td>返回第一次出现元素x的索引值</td>
+</tr>
+<tr>
+<td>&lt; list &gt; . insert ( i, x )</td>
+<td>在位置i处插入新元素x</td>
+</tr>
+<tr>
+<td>&lt; list &gt; . count ( x )</td>
+<td>返回元素x在列表中的数量</td>
+</tr>
+<tr>
+<td>&lt; list &gt; . remove ( x )</td>
+<td>删除列表中第一次出现的元素x</td>
+</tr>
+<tr>
+<td>&lt; list &gt; . pop ( i )</td>
+<td>取出列表中位置i的元素，并删除它</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>补充：split()函数，将字符串拆分成一个列表，默认以空格分割。</p>
+</blockquote>
+<p><strong>math库中常用的数学函数</strong></p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/10/img/math%E5%87%BD%E6%95%B0.jpg" alt="txt"><br><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/10/img/math%E5%87%BD%E6%95%B0-2.jpg" alt="txt"></p>
+<p><strong>random库中常用的函数</strong></p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/10/img/random.jpg" alt="txt"></p>
+<p><strong>Pi圆周率计算函数</strong></p>
+<pre><code class="python"># pi.py
+from random import random
+from math import sqrt
+from time import clock
+&lt;!-- 这里主要设计精度 --&gt;
+DARTS = 1200000
+hits = 0
+clock()
+for i in range(1,DARTS):
+    x, y = random(), random()
+    dist = sqrt(x**2 + y**2)
+    if dist &lt;= 1.0:
+        hits = hits + 1
+pi = 4 * (hits/DARTS)
+print(&quot;Pi的值是 %s&quot; % pi)
+print(&quot;程序运行时间是 %-5.5ss&quot; % clock())
+
+</code></pre>
+<h2 id="慕课"><a href="#慕课" class="headerlink" title="慕课"></a>慕课</h2><p>当代人社会心理的三大特点</p>
+<ul>
+<li>渴望发言</li>
+<li>寻求联系</li>
+<li>得到庇护</li>
+</ul>
+<p>社交关系</p>
+<ul>
+<li>强关系</li>
+<li>弱关系<ul>
+<li>线上关系</li>
+<li>线下关系</li>
+</ul>
+</li>
+<li>无关系 </li>
+</ul>
+<h1 id="2015年10月19日"><a href="#2015年10月19日" class="headerlink" title="2015年10月19日"></a>2015年10月19日</h1><h2 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h2><p><strong>创建 XMLHttpRequest 对象</strong></p>
+<pre><code>variable=new XMLHttpRequest();</code></pre><p><strong>Ajax调用示例</strong></p>
+<pre><code class="js">//创建XHR对象
+var xhr=new XMLHttpRequest();
+//处理返还数据
+xhr.onreadystatechange=function(callback){
+    if(xhr.readyState==4){
+        if((xhr.status&gt;=200&amp;&amp;xhr.status&lt;300)||xhr.status==304){
+            callback(xhr.responseText);
+        }else{
+            alert(&quot;Request was unsuccessful:&quot;+xhr.status);
+        }
+    }
+}
+//发送请求
+xhr.open(&#39;get&#39;,&#39;example.json&#39;,true);
+xhr.setRequestHeader(&#39;myHeader&#39;,&#39;myValue&#39;);
+xhr.send(null);</code></pre>
+<ul>
+<li>xhr.open(method,url[,async=true);</li>
+</ul>
+<p>method一般有<code>get</code>、<code>post</code>等方法。<br>url[ ：请求资源相对文档路径。<br>async ：是一个布尔值。</p>
+<ul>
+<li>xhr.setRequestHeader(‘myHeader’,’myValue’);</li>
+</ul>
+<p><strong>XMLHttpRequest 对象的三个重要的属性</strong></p>
+<table class="dataintable">
+<tbody><tr>
+<th style="width:25%;">属性</th>
+<th>描述</th>
+</tr>
+
+<tr>
+<td>onreadystatechange</td>
+<td>存储函数（或函数名），每当 readyState 属性改变时，就会调用该函数。</td>
+</tr>
+
+<tr>
+<td class>readyState</td>
+<td>
+    <p>存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。</p>
+    <ul class="listintable">
+    <li>0: 请求未初始化</li>
+    <li>1: 服务器连接已建立</li>
+    <li>2: 请求已接收</li>
+    <li>3: 请求处理中</li>
+    <li>4: 请求已完成，且响应已就绪</li>
+    </ul>
+</td>
+</tr>
+
+<tr>
+<td>status</td>
+<td><p>200: "OK"</p><p>404: 未找到页面</p></td>
+</tr>
+</tbody></table>
+
+<h2 id="慕课-1"><a href="#慕课-1" class="headerlink" title="慕课"></a>慕课</h2><ul>
+<li>金牌用户策略</li>
+<li>信息平衡策略</li>
+<li>资源聚焦策略</li>
+</ul>
+<h1 id="2015年10月20日"><a href="#2015年10月20日" class="headerlink" title="2015年10月20日"></a>2015年10月20日</h1><h2 id="Ajax-1"><a href="#Ajax-1" class="headerlink" title="Ajax"></a>Ajax</h2><p>概念介绍</p>
+<ul>
+<li>运动HTML和css实现页面，表达信息。</li>
+<li>运行XMLHttpRequest和web服务器进行数据的异步交换。</li>
+<li>运行javascript操作DOM，实现动态局部刷新。</li>
+</ul>
+<p>首先要构建XML对象</p>
+<pre><code class="js">var xmlhttp;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+  }</code></pre>
+<p><strong><code>HTTP</code>一种无状态协议。</strong><br> HTTP请求的七个步骤：</p>
+<ul>
+<li>建立TCP连接</li>
+<li>Web浏览器向Web服务器发送请求命令</li>
+<li>Web浏览器发送请求头信息</li>
+<li>Web服务器应答</li>
+<li>Web服务器发送应答头信息</li>
+<li>Web服务器向浏览器发送数据</li>
+<li>Web服务器关闭TCP连接</li>
+</ul>
+<p><strong>HTTP请求</strong><br><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/10/img/HTTP.jpg" alt="txt"></p>
+<p><strong>XHR发送请求</strong></p>
+<ul>
+<li>open(method,url,async)</li>
+<li>send(string)</li>
+</ul>
+<p><strong>XMLHttpRequest取得响应</strong><br><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/10/img/HTTP-2.jpg" alt="txt"></p>
+<p><strong>readyState属性</strong></p>
+<ul>
+<li>0：请求未初始化，open还没有调用。</li>
+<li>1：服务器连接已建立，open已经调用了。</li>
+<li>2：请求已接受，也就是接收到头信息。</li>
+<li>3：请求处理中，也就是接收到响应主体。 </li>
+<li>4：请求已完成，且响应已就绪，也就是响应完成了。</li>
+</ul>
+<p>监听代码：</p>
+<pre><code class="js">var request=new XMLHttpRequest();
+request.open(&quot;GET&quot;,&quot;get.php&quot;,true);
+request.send();
+request.onreadystatechange=function{
+    if(request.readyState===4&amp;&amp;request.status===200){
+        //做一些事情 request.responseText
+    }
+}</code></pre>
+<h1 id="2015年10月26日"><a href="#2015年10月26日" class="headerlink" title="2015年10月26日"></a>2015年10月26日</h1><h2 id="Ajax-2"><a href="#Ajax-2" class="headerlink" title="Ajax"></a>Ajax</h2><ul>
+<li>无刷新数据获取</li>
+<li>用户注册、在线聊天室</li>
+</ul>
+<p>eval(str):可以把字符串解析成可识别的json数据。</p>
+<pre><code class="js">function ajax(url, fnSucc, fnFaild)
+{
+    //1.创建Ajax对象
+    if(window.XMLHttpRequest)
+    {
+        var oAjax=new XMLHttpRequest();
+    }
+    else
+    {
+        var oAjax=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+    }
+
+    //2.连接服务器（打开和服务器的连接）
+    oAjax.open(&#39;GET&#39;, url, true);
+
+
+    //3.发送
+    oAjax.send();
+
+    //4.接收
+    oAjax.onreadystatechange=function ()
+    {
+        if(oAjax.readyState==4)
+        {
+            if(oAjax.status==200)
+            {
+                //alert(&#39;成功了：&#39;+oAjax.responseText);
+                fnSucc(oAjax.responseText);
+            }
+            else
+            {
+                //alert(&#39;失败了&#39;);
+                if(fnFaild)
+                {
+                    fnFaild();
+                }
+            }
+        }
+    };
+}</code></pre>
+<pre><code>[{a: 5, b: 7}, {a: 8, b: 12}]
+arr[0] ------[object Object]
+arr[0].a------5
+
+[{user: &#39;blue&#39;, pass: &#39;123456&#39;},{user: &#39;张三&#39;, pass: &#39;654321&#39;},{user: &#39;李四&#39;, pass: &#39;789456&#39;},{user: &#39;王五&#39;, pass: &#39;7777&#39;}]
+aLi.innerHTML=&quot;user:&lt;strong&gt;&quot;+data[i].user+&quot;&lt;/strong&gt;;pass:&lt;span&gt;&quot;+data[i].pass+&quot;&lt;/span&gt;&quot;;</code></pre><h2 id="javascript-2"><a href="#javascript-2" class="headerlink" title="javascript"></a>javascript</h2><ol>
+<li>{ } 大括号，表示定义一个对象，大部分情况下要有成对的属性和值，或是函数。 </li>
+</ol>
+<blockquote>
+<p>var LangShen = {“Name”:”Langshen”,”AGE”:”28”}; </p>
+</blockquote>
+<pre><code class="javascript">var LangShen = { 
+Name = function(){ 
+return &quot;LangShen&quot;; 
+}, 
+Age = function(){ 
+return &quot;28&quot;; 
+} 
+} </code></pre>
+<ol>
+<li>[ ]中括号，表示一个数组，也可以理解为一个数组对象。<br>var LangShen = [ “Name”,”LangShen”,”AGE”,”28” ]; </li>
+<li>{ } 和[ ] 一起使用，我们前面说到，{ } 是一个对象，[ ] 是一个数组，我们可以组成一个对象数组.</li>
+</ol>
+<pre><code class="javascript">var LangShen = { &quot;Name&quot;:&quot;Langshen&quot;, 
+&quot;MyWife&quot;:[ &quot;LuLu&quot;,&quot;26&quot; ], 
+&quot;MySon&quot;:[{&quot;Name&quot;:&quot;Son1&quot;},{&quot;Name&quot;:&quot;Son2&quot;},{&quot;Name&quot;:&quot;Son3&quot;}] 
+} </code></pre>
+<blockquote>
+<p>调用起来，也是一层一层访问，对象的属性用.（点）叠加，数组用 [下标] 来访问。<br>如：alert( LangShen.MySon[1].Name ) ;</p>
+</blockquote>
+<p><strong>eval函数的工作原理</strong></p>
+<p>eval函数会评估一个给定的含有JavaScript代码的字符串，并且试图去执行包含在字符串里的表达式或者一系列的合法的JavaScript语句。eval函数将把最后一个表达式或者语句所包含的值或引用作为返回值。</p>
+<h1 id="2015年10月28日"><a href="#2015年10月28日" class="headerlink" title="2015年10月28日"></a>2015年10月28日</h1><h2 id="Ajax-3"><a href="#Ajax-3" class="headerlink" title="Ajax"></a>Ajax</h2><pre><code>alert(a);
+//Error，这是一个没有定义的变量。
+
+alert（window.a);
+//underfined,，没有定义的属性。</code></pre><p><strong>同步与异步</strong><br>同步：事情一个个来；<br>异步：多个事情一起来；</p>
+<p>Ajax请求函数</p>
+<pre><code class="javascript">function ajax(url,fnSucc,fnFaild){
+var oAjax=new XMLHttpRequest()|| new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+
+            //连接服务器，
+            //open（方法，文件名，异步传输）
+             oAjax.open(&#39;GET&#39;, url,true)
+
+             //发送请求
+             oAjax.send();
+
+             //接受返回
+             oAjax.onreadystatechange=function(){
+                //oAjax.readyState     浏览器和服务器，进行到哪一步。
+                if(oAjax.readyState==4)//读取完成,代表交互已经完成了。
+                {
+                    if (oAjax.status==200) {//读取后可以正常解析。
+                       fnSucc(oAjax.responseText);
+                    }else{
+                        if(fnFaild){
+                            fnFaild(oAjax.status);
+                        }                       
+                    }
+                }
+             }
+        }</code></pre>
+<blockquote>
+<p>存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。<br>-0: 请求未初始化<br>-1: 服务器连接已建立<br>-2: 请求已接收<br>-3: 请求处理中<br>-4: 请求已完成，且响应已就绪</p>
+</blockquote>
+<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><pre><code>document.cookie=&#39;user=blue&#39;;</code></pre><p>加上过期时间：</p>
+<pre><code>oDate=new Date();
+oDate.setDate(oDate.getDate()+14);//把对象内部时间设置成14天后。
+document.cookie=&#39;user=blue,expires=&#39;+oDate;//过期时间是14天后。</code></pre><p>封装函数：</p>
+<pre><code class="javascript">function setCookie(name,value,iDay){
+    var oDate=new Date();
+    oDate.setDate(oDate.getDate()+iDay);
+
+    document.cookie=name+&#39;=&#39;+value+&#39;;expires=&#39;+oDate;
+}</code></pre>
+<p>获取cookie</p>
+<blockquote>
+<p><code>split()</code> 方法用于把一个字符串分割成字符串数组。</p>
+</blockquote>
+<pre><code class="javascript">function getCookie(name){
+    var arr=document.cookie.split(&quot;; &quot;);
+
+    for(var i=0;i&lt;arr.length;i++){
+        var arr2=arr[i].split(&#39;=&#39;);
+        if(arr2[0]==name){
+            return arr2[1];
+        }
+    }
+    return &#39;&#39;;
+}</code></pre>
+<p>删除cookie</p>
+<pre><code class="javascript">function removeCookie(name){
+    setCookie(name,1,-1)
+}</code></pre>
+<h1 id="2015年10月29日"><a href="#2015年10月29日" class="headerlink" title="2015年10月29日"></a>2015年10月29日</h1><h2 id="css"><a href="#css" class="headerlink" title="css"></a>css</h2><p><strong>content-box</strong>：此值为其默认值，其让元素维持W3C的标准Box Model，也就是说元素的宽度/高度（width/height）等于元素边框宽度（border）加上元素内边距（padding）加上元素内容宽度 /高度（content width/height）即：Element Width/Height = border+padding+content width/height。</p>
+<p><strong>border-box</strong>:此值让元素维持IE传统的Box Model（IE6以下版本），也就是说元素的宽度/高度等于元素内容的宽度/高度。这里的content width/height包含了元素的border,padding,内容的width/height。即此处的内容宽度/高度=width /height-border-padding。</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2015/10/img/box-sizing.png" alt="txt"></p>
+<p><strong>z-index</strong><br>决定元素层次的属性，拥有较高堆叠数值的元素在上层。</p>
+<h1 id="2015年10月31日"><a href="#2015年10月31日" class="headerlink" title="2015年10月31日"></a>2015年10月31日</h1><h2 id="json"><a href="#json" class="headerlink" title="json"></a>json</h2><p>名称/值对组合中的名称写在前面（<strong>在双引号中</strong>），值对写在后面(<strong>同样在双引号中</strong>)，中间用冒号隔开：</p>
+<pre><code>{&quot;firstName&quot;:&quot;John&quot;}</code></pre><p>var dataObj=eval(“(“+data+”)”);//转换为json对象</p>
+<blockquote>
+<p>加上圆括号的目的是迫使eval函数在处理JavaScript代码的时候强制将括号内的表达式（expression）转化为对象，而不是作为语句（statement）来执行。</p>
+</blockquote>
+<pre><code class="json">  //示例1：此示例使用 JSON.parse 将 JSON 字符串转换为对象  
+    var jsontext = &#39;{&quot;firstname&quot;:&quot;Jesper&quot;,&quot;surname&quot;:&quot;Aaberg&quot;,&quot;phone&quot;:[&quot;555-0100&quot;,&quot;555-0120&quot;]}&#39;;  
+    var contact = JSON.parse(jsontext);  
+    document.write(contact.surname + &quot;, &quot; + contact.firstname + &quot;, &quot;+ contact.phone);  
+</code></pre>
+<blockquote>
+<p>建议使用JSON.parse（），eval（）存在安全隐患。</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-JQuery/" rel="next" title="JQuery">
+                <i class="fa fa-chevron-left"></i> JQuery
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-Integer-to-Roman[M]/" rel="prev" title="Integer to Roman[M]">
+                Integer to Roman[M] <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年10月8日"><span class="nav-number">1.</span> <span class="nav-text">2015年10月8日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#querySelector和querySelectorAll"><span class="nav-number">1.1.</span> <span class="nav-text">querySelector和querySelectorAll</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年10月9日"><span class="nav-number">2.</span> <span class="nav-text">2015年10月9日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript"><span class="nav-number">2.1.</span> <span class="nav-text">javascript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#javascript中的-是什么意思"><span class="nav-number">2.1.1.</span> <span class="nav-text">javascript中的[ ] { }是什么意思</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#split"><span class="nav-number">2.1.2.</span> <span class="nav-text">split()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#join"><span class="nav-number">2.1.3.</span> <span class="nav-text">join()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#indexOf"><span class="nav-number">2.1.4.</span> <span class="nav-text">indexOf()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#substring"><span class="nav-number">2.1.5.</span> <span class="nav-text">substring()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#decodeURIComponent-与encodeURIComponent"><span class="nav-number">2.1.6.</span> <span class="nav-text">decodeURIComponent()与encodeURIComponent()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年10月10日"><span class="nav-number">3.</span> <span class="nav-text">2015年10月10日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript-1"><span class="nav-number">3.1.</span> <span class="nav-text">javascript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python"><span class="nav-number">3.2.</span> <span class="nav-text">Python</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年10月15日"><span class="nav-number">4.</span> <span class="nav-text">2015年10月15日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-1"><span class="nav-number">4.1.</span> <span class="nav-text">Python</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年10月18日"><span class="nav-number">5.</span> <span class="nav-text">2015年10月18日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-2"><span class="nav-number">5.1.</span> <span class="nav-text">Python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#慕课"><span class="nav-number">5.2.</span> <span class="nav-text">慕课</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年10月19日"><span class="nav-number">6.</span> <span class="nav-text">2015年10月19日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Ajax"><span class="nav-number">6.1.</span> <span class="nav-text">Ajax</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#慕课-1"><span class="nav-number">6.2.</span> <span class="nav-text">慕课</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年10月20日"><span class="nav-number">7.</span> <span class="nav-text">2015年10月20日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Ajax-1"><span class="nav-number">7.1.</span> <span class="nav-text">Ajax</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年10月26日"><span class="nav-number">8.</span> <span class="nav-text">2015年10月26日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Ajax-2"><span class="nav-number">8.1.</span> <span class="nav-text">Ajax</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript-2"><span class="nav-number">8.2.</span> <span class="nav-text">javascript</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年10月28日"><span class="nav-number">9.</span> <span class="nav-text">2015年10月28日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Ajax-3"><span class="nav-number">9.1.</span> <span class="nav-text">Ajax</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cookie"><span class="nav-number">9.2.</span> <span class="nav-text">cookie</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年10月29日"><span class="nav-number">10.</span> <span class="nav-text">2015年10月29日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#css"><span class="nav-number">10.1.</span> <span class="nav-text">css</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2015年10月31日"><span class="nav-number">11.</span> <span class="nav-text">2015年10月31日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#json"><span class="nav-number">11.1.</span> <span class="nav-text">json</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

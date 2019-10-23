@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="题解,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="第九章 接口abstract class Rodent { ​       private String name = “Rodent”; ​       abstract protected void eat();  ​       abstract protected void run();  ​       abstract protected void sleep(); ​       a">
+<meta name="keywords" content="题解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java题解接口">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解接口/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="第九章 接口abstract class Rodent { ​       private String name = “Rodent”; ​       abstract protected void eat();  ​       abstract protected void run();  ​       abstract protected void sleep(); ​       a">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.795Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java题解接口">
+<meta name="twitter:description" content="第九章 接口abstract class Rodent { ​       private String name = “Rodent”; ​       abstract protected void eat();  ​       abstract protected void run();  ​       abstract protected void sleep(); ​       a">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解接口/">
+
+
+
+
+
+  <title>Java题解接口 | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解接口/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java题解接口</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-06T10:00:00+08:00">
+                2019-10-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第九章-接口"><a href="#第九章-接口" class="headerlink" title="第九章 接口"></a>第九章 接口</h2><p>abstract class Rodent {</p>
+<p>​       private String name = “Rodent”;</p>
+<p>​       abstract protected void eat(); </p>
+<p>​       abstract protected void run(); </p>
+<p>​       abstract protected void sleep();</p>
+<p>​       abstract public String toString(); </p>
+<p>}</p>
+<p>class Mouse extends Rodent {</p>
+<p>​       private String name = “Mouse”;</p>
+<p>​       protected void eat() { println(“Mouse.eat()”); }</p>
+<p>​       protected void run() { println(“Mouse.run()”); }</p>
+<p>​       protected void sleep() { println(“Mouse.sleep()”); }</p>
+<p>​       public String toString() { return name; }</p>
+<p>}</p>
+<p>class Rat extends Rodent {</p>
+<p>​       private String name = “Rat”;</p>
+<p>​       protected void eat() { println(“Rat.eat()”); }</p>
+<p>​       protected void run() { println(“Rat.run()”); }</p>
+<p>​       protected void sleep() { println(“Rat.sleep()”); }</p>
+<p>​       public String toString() { return name; }</p>
+<p>}</p>
+<p>class Squirrel extends Rodent {</p>
+<p>​       private String name = “Squirrel”;</p>
+<p>​       protected void eat() { println(“Squirrel.eat()”); }</p>
+<p>​       protected void run() { println(“Squirrel.run()”); }</p>
+<p>​       protected void sleep() { println(“Squirrel.sleep()”); }</p>
+<p>​       public String toString() { return name; }</p>
+<p>}</p>
+<p>public class Rodent1 {</p>
+<p>​       private static RandomRodentGenerator1 gen = new RandomRodentGenerator1();</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                                                     Rodent[] rodents = new Rodent[10];</p>
+<p>​              for(Rodent r : rodents) {</p>
+<p>​                     r = gen.next();</p>
+<p>​                     println(r + “: “);</p>
+<p>​                     r.eat();</p>
+<p>​                     r.run();</p>
+<p>​                     r.sleep();                </p>
+<p>​              }             </p>
+<p>​       }</p>
+<p>}</p>
+<p>  abstract class Nogo1 {</p>
+<p>​       Nogo1() { System.out.println(“Nogo1()”); }</p>
+<p>}</p>
+<p>abstract class Nogo2 {}</p>
+<p>class Go1 extends Nogo1 {</p>
+<p>​       Go1() { System.out.println(“Go1()”); }</p>
+<p>}</p>
+<p>public class Ex2 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                                                                  Go1 g1 = new Go1();</p>
+<p>​       }</p>
+<p>}</p>
+<p>abstract class Dad {</p>
+<p>​       protected abstract void print();</p>
+<p>​       Dad() { print(); }</p>
+<p>}</p>
+<p>class Son extends Dad {</p>
+<p>​       private int i = 1;</p>
+<p>​       @Override protected void print() { println(“Son.i = “ + i); }</p>
+<p>}</p>
+<p>public class Ex3 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                           * 1. Storage for Son s allocated and initialized to binary zero</p>
+<p>​              * 2. Dad() called</p>
+<p>​              * 3. Son.print() called in Dad() (s.i = 0)</p>
+<p>​              * 4. Member initializers called in order (s.i = 1)</p>
+<p>​              * 5. Body of Son() called</p>
+<p>​              *            Son s = new Son();</p>
+<p>​              s.print();</p>
+<p>​       }</p>
+<p>}</p>
+<p>abstract class Dad {</p>
+<p>}</p>
+<p>class Son extends Dad {</p>
+<p>​       protected void print() { println(“Son”); }</p>
+<p>}</p>
+<p>abstract class SecondDad {</p>
+<p>​       abstract protected void print();</p>
+<p>}</p>
+<p>class SecondSon extends SecondDad {</p>
+<p>​       protected void print() { println(“SecondSon”); }</p>
+<p>}</p>
+<p>public class Ex4 {</p>
+<p>​       public static void testPrint(Dad d) {</p>
+<p>​              ((Son)d).print();</p>
+<p>​       }</p>
+<p>​       public static void secondTestPrint(SecondDad sd) {</p>
+<p>​              sd.print();</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Son s = new Son();</p>
+<p>​              Ex4.testPrint(s);</p>
+<p>​              SecondSon ss = new SecondSon();</p>
+<p>​              Ex4.secondTestPrint(ss);                     </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class TestEx5 implements Ex5 {</p>
+<p>​       public void sayOne() { System.out.println(“one”); }</p>
+<p>​       public void sayTwo() { System.out.println(“two”); }</p>
+<p>​       public void sayThree() { System.out.println(“three”); }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              TestEx5 x = new TestEx5();</p>
+<p>​              x.sayOne();</p>
+<p>​              x.sayTwo();</p>
+<p>​              x.sayThree();</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class TestEx6 {    </p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Ex6b x = new Ex6b();</p>
+<p>​              x.sayOne();</p>
+<p>​              x.sayTwo();</p>
+<p>​              x.sayThree();</p>
+<p>​       }</p>
+<p>}</p>
+<p>interface Rodent {</p>
+<p>​       String name = “Rodent”;</p>
+<p>​       void eat(); </p>
+<p>​       void run(); </p>
+<p>​       void sleep();</p>
+<p>​       String toString(); </p>
+<p>}</p>
+<p>class Mouse implements Rodent {</p>
+<p>​       private String name = “Mouse”;</p>
+<p>​       public void eat() { println(“Mouse.eat()”); }</p>
+<p>​       public void run() { println(“Mouse.run()”); }</p>
+<p>​       public void sleep() { println(“Mouse.sleep()”); }</p>
+<p>​       public String toString() { return name; }</p>
+<p>}</p>
+<p>class Rat implements Rodent {</p>
+<p>​       private String name = “Rat”;</p>
+<p>​       public void eat() { println(“Rat.eat()”); }</p>
+<p>​       public void run() { println(“Rat.run()”); }</p>
+<p>​       public void sleep() { println(“Rat.sleep()”); }</p>
+<p>​       public String toString() { return name; }</p>
+<p>}</p>
+<p>class Squirrel implements Rodent {</p>
+<p>​       private String name = “Squirrel”;</p>
+<p>​       public void eat() { println(“Squirrel.eat()”); }</p>
+<p>​       public void run() { println(“Squirrel.run()”); }</p>
+<p>​       public void sleep() { println(“Squirrel.sleep()”); }</p>
+<p>​       public String toString() { return name; }</p>
+<p>}</p>
+<p>public class Rodent7 {</p>
+<p>​       private static RandomRodentGenerator1 gen = new RandomRodentGenerator1();</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                                                     Rodent[] rodents = new Rodent[10];</p>
+<p>​              for(Rodent r : rodents) {</p>
+<p>​                     r = gen.next();</p>
+<p>​                     println(r + “: “);</p>
+<p>​                     r.eat();</p>
+<p>​                     r.run();</p>
+<p>​                     r.sleep();                </p>
+<p>​              }             </p>
+<p>​       }</p>
+<p>}</p>
+<p>interface FastFood {</p>
+<p>​       void cheeseburger();</p>
+<p>​       void fries();</p>
+<p>​       void softDrink();</p>
+<p>}</p>
+<p>class Meal {</p>
+<p>​       Meal() { print(“Meal()”); } </p>
+<p>}</p>
+<p>class Bread {</p>
+<p>​       Bread() { print(“Bread()”); } </p>
+<p>}</p>
+<p>class Cheese {</p>
+<p>​       Cheese() { print(“Cheese()”); } </p>
+<p>}</p>
+<p>class Lettuce {</p>
+<p>​       Lettuce() { print(“Lettuce()”); } </p>
+<p>}</p>
+<p>class Lunch extends Meal {</p>
+<p>​       Lunch() { print(“Lunch()”); } </p>
+<p>}</p>
+<p>class PortableLunch extends Lunch {</p>
+<p>​       PortableLunch() { print(“PortableLunch()”); } </p>
+<p>}      </p>
+<p>public class Sandwich8 extends PortableLunch implements FastFood {</p>
+<p>​       private Bread b = new Bread();</p>
+<p>​       private Cheese c = new Cheese();</p>
+<p>​       private Lunch l = new Lunch();</p>
+<p>​       public Sandwich8() { print(“Sandwich8()”); }</p>
+<p>​       public void cheeseburger() {</p>
+<p>​              print(“Cheeseburger”);</p>
+<p>​       }</p>
+<p>​       public void fries() {</p>
+<p>​              print(“Fries”);</p>
+<p>​       }</p>
+<p>​       public void softDrink(){</p>
+<p>​              print(“Soft Drink”);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Sandwich8 s = new Sandwich8();</p>
+<p>​              s.cheeseburger();</p>
+<p>​              s.fries();</p>
+<p>​              s.softDrink();</p>
+<p>​              </p>
+<p>​       } </p>
+<p>}</p>
+<p>abstract class Instrument {</p>
+<p>​       private int i; </p>
+<p>​       public abstract void play(Note n);</p>
+<p>​       public String toString() { return “Instrument”; } </p>
+<p>​       public abstract void adjust(); </p>
+<p>}</p>
+<p>class Wind extends Instrument {</p>
+<p>​       public void play(Note n) {</p>
+<p>​              print(this + “.play() “ + n);</p>
+<p>​       }</p>
+<p>​       public String toString() { return “Wind”; }</p>
+<p>​       public void adjust() { print(this + “.adjust()”); }</p>
+<p>}</p>
+<p>class Percussion extends Instrument {</p>
+<p>​       public void play(Note n) {</p>
+<p>​              print(this + “.play() “ + n);</p>
+<p>​       }</p>
+<p>​       public String toString() { return “Percussion”; }</p>
+<p>​       public void adjust() { print(this + “.adjust()”); }</p>
+<p>}</p>
+<p>class Stringed extends Instrument {</p>
+<p>​       public void play(Note n) {</p>
+<p>​              print(this + “.play() “ + n);</p>
+<p>​       }</p>
+<p>​       public String toString() { return “Stringed”; }</p>
+<p>​       public void adjust() { print(this + “.adjust()”); }</p>
+<p>}</p>
+<p>class Brass extends Wind {</p>
+<p>​       public String toString() { return “Brass”; }</p>
+<p>}</p>
+<p>class Woodwind extends Wind {</p>
+<p>​       public String toString() { return “Woodwing”; }</p>
+<p>}</p>
+<p>public class Music9 {</p>
+<p>​                   static void tune(Instrument i) {</p>
+<p>​                           i.play(Note.MIDDLE_C);</p>
+<p>​       }</p>
+<p>​       static void tuneAll(Instrument[] e) {</p>
+<p>​              for(Instrument i : e)</p>
+<p>​                     tune(i);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                           Instrument[] orchestra = {</p>
+<p>​                     new Wind(),</p>
+<p>​                     new Percussion(),</p>
+<p>​                     new Stringed(),</p>
+<p>​                     new Brass(),</p>
+<p>​                     new Woodwind()</p>
+<p>​              };</p>
+<p>​              tuneAll(orchestra);</p>
+<p>​       }</p>
+<p>}</p>
+<p>interface Instrument {</p>
+<p>​             int VALUE = 5;           void adjust(); </p>
+<p>}</p>
+<p>interface Playable {</p>
+<p>​       void play(Note n);  }</p>
+<p>class Wind implements Instrument, Playable {</p>
+<p>​       public void play(Note n) {</p>
+<p>​              print(this + “.play() “ + n);</p>
+<p>​       }</p>
+<p>​       public String toString() { return “Wind”; }</p>
+<p>​       public void adjust() { print(this + “.adjust()”); }</p>
+<p>}</p>
+<p>class Percussion implements Instrument, Playable {</p>
+<p>​       public void play(Note n) {</p>
+<p>​              print(this + “.play() “ + n);</p>
+<p>​       }</p>
+<p>​       public String toString() { return “Percussion”; }</p>
+<p>​       public void adjust() { print(this + “.adjust()”); }</p>
+<p>}</p>
+<p>class Stringed implements Instrument, Playable {</p>
+<p>​       public void play(Note n) {</p>
+<p>​              print(this + “.play() “ + n);</p>
+<p>​       }</p>
+<p>​       public String toString() { return “Stringed”; }</p>
+<p>​       public void adjust() { print(this + “.adjust()”); }</p>
+<p>}</p>
+<p>class Brass extends Wind {</p>
+<p>​       public String toString() { return “Brass”; }</p>
+<p>}</p>
+<p>class Woodwind extends Wind {</p>
+<p>​       public String toString() { return “Woodwing”; }</p>
+<p>}</p>
+<p>public class Music10 {</p>
+<p>​                   static void tune(Playable p) {</p>
+<p>​                           p.play(Note.MIDDLE_C);</p>
+<p>​       }</p>
+<p>​       static void tuneAll(Playable[] e) {</p>
+<p>​              for(Playable p : e)</p>
+<p>​                     tune(p);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                           Playable[] orchestra = {</p>
+<p>​                     new Wind(),</p>
+<p>​                     new Percussion(),</p>
+<p>​                     new Stringed(),</p>
+<p>​                     new Brass(),</p>
+<p>​                     new Woodwind()</p>
+<p>​              };</p>
+<p>​              tuneAll(orchestra);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class StringMixerAdapter implements Processor {</p>
+<p>​       public String name() { return “StringMixerAdapter”; }</p>
+<p>​       StringMixer stringMixer;</p>
+<p>​       public StringMixerAdapter(StringMixer stringMixer) {</p>
+<p>​              this.stringMixer = stringMixer;</p>
+<p>​       }</p>
+<p>​       public String process(Object input) {</p>
+<p>​              return stringMixer.process((String)input);</p>
+<p>​       }      </p>
+<p>}</p>
+<p>public class StringMixerProcessor {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              String s = new String(args[0]);</p>
+<p>​              Apply.process(new StringMixerAdapter(new StringMixer()), s);</p>
+<p>​       }</p>
+<p>}</p>
+<p>interface CanFight {</p>
+<p>​       void fight();</p>
+<p>}</p>
+<p>interface CanSwim {</p>
+<p>​       void swim();</p>
+<p>}</p>
+<p>interface CanFly {</p>
+<p>​       void fly();</p>
+<p>}</p>
+<p>interface CanClimb {</p>
+<p>​       void climb();</p>
+<p>}</p>
+<p>class ActionCharacter {</p>
+<p>​       public void fight() {}</p>
+<p>}</p>
+<p>class Hero extends ActionCharacter </p>
+<p>​              implements CanFight, CanSwim, CanFly {</p>
+<p>​       public void swim() {}</p>
+<p>​       public void fly() {}  </p>
+<p>}</p>
+<p>public class Adventure12 {</p>
+<p>​       public static void t(CanFight x) { x.fight(); }</p>
+<p>​       public static void u(CanSwim x) { x.swim(); }</p>
+<p>​       public static void v(CanFly x) { x.fly(); }</p>
+<p>​       public static void c(CanClimb x) { x.climb(); }     </p>
+<p>​       public static void w(ActionCharacter x) { x.fight(); }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Hero h = new Hero();</p>
+<p>​              t(h);              u(h);             v(h);             c(h);             w(h);     }</p>
+<p>}</p>
+<p>interface CanDo {</p>
+<p>​       void doIt();</p>
+<p>}</p>
+<p>interface CanDoMore extends CanDo {</p>
+<p>​       void doMore();</p>
+<p>}</p>
+<p>interface CanDoFaster extends CanDo {</p>
+<p>​       void doFaster();</p>
+<p>}</p>
+<p>interface CanDoMost extends CanDoMore, CanDoFaster {</p>
+<p>​       void doMost();</p>
+<p>}</p>
+<p>class Doer implements CanDoMost {</p>
+<p>​       public void doIt() {}</p>
+<p>​       public void doMore() {}</p>
+<p>​       public void doFaster() {}</p>
+<p>​       public void doMost() {}</p>
+<p>}</p>
+<p>public class DiamondInheritance13 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Doer d = new Doer();</p>
+<p>​              ((CanDoMore)d).doMore();</p>
+<p>​              ((CanDoFaster)d).doFaster();</p>
+<p>​              ((CanDo)d).doIt();  </p>
+<p>​       }</p>
+<p>}</p>
+<p>interface History {</p>
+<p>​       void u();</p>
+<p>​       void v();</p>
+<p>}</p>
+<p>interface Exam {</p>
+<p>​       void w();</p>
+<p>​       void x();</p>
+<p>}</p>
+<p>interface Labs {</p>
+<p>​       void y();</p>
+<p>​       void z();</p>
+<p>}</p>
+<p>interface Workup extends History, Exam, Labs {</p>
+<p>​       void zz();</p>
+<p>}</p>
+<p>class Doctor {</p>
+<p>​       private int i = 0;</p>
+<p>​       public void doc() {}</p>
+<p>}</p>
+<p>class Anesthesiologist extends Doctor implements Workup {</p>
+<p>​       private int j = 0;</p>
+<p>​       public void u() {}</p>
+<p>​       public void v() {}</p>
+<p>​       public void w() {}</p>
+<p>​       public void x() {}</p>
+<p>​       public void y() {}</p>
+<p>​       public void z() {}</p>
+<p>​       public void zz() {}</p>
+<p>}</p>
+<p>public class Ex14 {</p>
+<p>​       public static void m1(History history) { history.v(); }</p>
+<p>​       public static void m2(Exam exam) { exam.w(); }</p>
+<p>​       public static void m3(Labs labs) { labs.y(); } </p>
+<p>​       public static void m4(Workup workup) { workup.zz(); }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Anesthesiologist anes = new Anesthesiologist();</p>
+<p>​              m1(anes);</p>
+<p>​              m2(anes);</p>
+<p>​              m3(anes);</p>
+<p>​              m4(anes);</p>
+<p>​       }</p>
+<p>}</p>
+<p>interface History {</p>
+<p>​       void u();</p>
+<p>​       void v();</p>
+<p>}</p>
+<p>interface Exam {</p>
+<p>​       void w();</p>
+<p>​       void x();</p>
+<p>}</p>
+<p>interface Labs {</p>
+<p>​       void y();</p>
+<p>​       void z();</p>
+<p>}</p>
+<p>interface Workup extends History, Exam, Labs {</p>
+<p>​       void zz();</p>
+<p>}</p>
+<p>abstract class Doctor {</p>
+<p>​       private int i = 0;</p>
+<p>​       abstract void doc();</p>
+<p>}</p>
+<p>class Anesthesiologist extends Doctor implements Workup {</p>
+<p>​       private int j = 0;</p>
+<p>​       public void u() {}</p>
+<p>​       public void v() {}</p>
+<p>​       public void w() {}</p>
+<p>​       public void x() {}</p>
+<p>​       public void y() {}</p>
+<p>​       public void z() {}</p>
+<p>​       public void zz() {}</p>
+<p>​       public void doc() {}  }</p>
+<p>public class Ex15 {</p>
+<p>​       public static void m1(History history) { history.v(); }</p>
+<p>​       public static void m2(Exam exam) { exam.w(); }</p>
+<p>​       public static void m3(Labs labs) { labs.y(); } </p>
+<p>​       public static void m4(Workup workup) { workup.zz(); }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Anesthesiologist anes = new Anesthesiologist();</p>
+<p>​              m1(anes);</p>
+<p>​              m2(anes);</p>
+<p>​              m3(anes);</p>
+<p>​              m4(anes);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class AdaptedRandomChars16 </p>
+<p>​              extends RandomChars </p>
+<p>​              implements Readable {</p>
+<p>​       private int count;</p>
+<p>​       public AdaptedRandomChars16(int count) {</p>
+<p>​              this.count = count;</p>
+<p>​       }                    </p>
+<p>​       public int read(CharBuffer cb) {</p>
+<p>​              if(count– == 0) return -1;</p>
+<p>​              String result = Character.toString(next()) + “ “;</p>
+<p>​              cb.append(result);</p>
+<p>​              return result.length();</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Scanner s = new Scanner(new AdaptedRandomChars16(10));</p>
+<p>​              while(s.hasNext())</p>
+<p>​                     System.out.println(s.next() + “ “);</p>
+<p>​       }</p>
+<p>}</p>
+<p> interface Days {</p>
+<p>​       int SUNDAY = 1, MONDAY = 2, TUESDAY = 3, WEDNESDAY = 4, </p>
+<p>​              THURSDAY = 5, FRIDAY = 6, SATURDAY = 7; </p>
+<p>}</p>
+<p>class Week implements Days {</p>
+<p>​       private static int count = 0;</p>
+<p>​       private int id = count++;</p>
+<p>​       public Week() { System.out.println(“Week() “ + id); }</p>
+<p>}</p>
+<p>public class Ex17 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                           System.out.println(“SUNDAY = “ + Days.SUNDAY);</p>
+<p>​              System.out.println(“MONDAY = “ + Days.MONDAY);</p>
+<p>​              Week w0 = new Week();</p>
+<p>​              Week w1 = new Week();</p>
+<p>​                                                           }</p>
+<p>}</p>
+<p>interface Cycle {</p>
+<p>​       void ride();</p>
+<p>}</p>
+<p>interface CycleFactory {</p>
+<p>​       Cycle getCycle();</p>
+<p>}</p>
+<p>class Unicycle implements Cycle {</p>
+<p>​       public void ride() { println(“Ride Unicycle”); }</p>
+<p>}</p>
+<p>class UnicycleFactory implements CycleFactory {</p>
+<p>​       public Cycle getCycle() {</p>
+<p>​              return new Unicycle();</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Bicycle implements Cycle {</p>
+<p>​       public void ride() { println(“Ride Bicycle”); }</p>
+<p>}</p>
+<p>class BicycleFactory implements CycleFactory {</p>
+<p>​       public Cycle getCycle() {</p>
+<p>​              return new Bicycle();</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Tricycle implements Cycle {</p>
+<p>​       Tricycle() { println(“Tricycle()”); }</p>
+<p>​       public void ride() { println(“Ride Tricycle”); }</p>
+<p>}</p>
+<p>class TricycleFactory implements CycleFactory {</p>
+<p>​       public Cycle getCycle() {</p>
+<p>​              return new Tricycle();</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Cycles {</p>
+<p>​       public static void rideCycle(CycleFactory factory) {</p>
+<p>​              Cycle c = factory.getCycle();</p>
+<p>​              c.ride();</p>
+<p>​       }</p>
+<p>​       public static void main(String [] args) {</p>
+<p>​              rideCycle(new UnicycleFactory());</p>
+<p>​              rideCycle(new BicycleFactory());</p>
+<p>​              rideCycle(new TricycleFactory()); </p>
+<p>​       }</p>
+<p>}</p>
+<p>interface Games {</p>
+<p>​       void play();</p>
+<p>}</p>
+<p>interface GamesFactory {</p>
+<p>​       Games getGames();</p>
+<p>}</p>
+<p>class CoinToss implements Games {</p>
+<p>​       Random rand = new Random();</p>
+<p>​       public void play() { </p>
+<p>​              print(“Toss Coin: “);</p>
+<p>​              switch(rand.nextInt(2)) {</p>
+<p>​                     case 0 : println(“Heads”); return;</p>
+<p>​                     case 1 : println(“Tails”); return;</p>
+<p>​                     default: println(“OnEdge”); return;</p>
+<p>​              } </p>
+<p>​       }</p>
+<p>}</p>
+<p>class CoinTossFactory implements GamesFactory {</p>
+<p>​       public Games getGames() {</p>
+<p>​              return new CoinToss();</p>
+<p>​       }</p>
+<p>}</p>
+<p>class DiceThrow implements Games {</p>
+<p>​       Random rand = new Random();</p>
+<p>​       public void play() { </p>
+<p>​              print(“Throw Dice: “ + (rand.nextInt(6) + 1));            </p>
+<p>​       }</p>
+<p>}</p>
+<p>class DiceThrowFactory implements GamesFactory {</p>
+<p>​       public Games getGames() {</p>
+<p>​              return new DiceThrow();</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Games19 {</p>
+<p>​       public static void playGame(GamesFactory factory) {</p>
+<p>​              Games g = factory.getGames();</p>
+<p>​              g.play();</p>
+<p>​       }</p>
+<p>​       public static void main(String [] args) {</p>
+<p>​              playGame(new CoinTossFactory());</p>
+<p>​              playGame(new DiceThrowFactory());                </p>
+<p>​       }</p>
+<p>}</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/题解/" rel="tag"># 题解</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/06/2019-10-06-Java题解控制/" rel="next" title="Java题解控制">
+                <i class="fa fa-chevron-left"></i> Java题解控制
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/06/2019-10-06-Java题解容器/" rel="prev" title="Java题解容器">
+                Java题解容器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第九章-接口"><span class="nav-number">1.</span> <span class="nav-text">第九章 接口</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Javascript,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="二进制数据事件paste事件监听右键粘贴时间提供一个clipboardData的属性，其实是DataTransfer类型的对象。如果该属性有items属性，那么就可以查看items中是否有图片类型的数据了。Chrome有该属性，Safari没有。   files、items、types属性是含有内容，但无法具体显示，可通过clipboard.items[0]获取     属性 类型 说明    d">
+<meta name="keywords" content="Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二进制">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-二进制/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="二进制数据事件paste事件监听右键粘贴时间提供一个clipboardData的属性，其实是DataTransfer类型的对象。如果该属性有items属性，那么就可以查看items中是否有图片类型的数据了。Chrome有该属性，Safari没有。   files、items、types属性是含有内容，但无法具体显示，可通过clipboard.items[0]获取     属性 类型 说明    d">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/javascript/img/DataTransfer.jpg">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.591Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="二进制">
+<meta name="twitter:description" content="二进制数据事件paste事件监听右键粘贴时间提供一个clipboardData的属性，其实是DataTransfer类型的对象。如果该属性有items属性，那么就可以查看items中是否有图片类型的数据了。Chrome有该属性，Safari没有。   files、items、types属性是含有内容，但无法具体显示，可通过clipboard.items[0]获取     属性 类型 说明    d">
+<meta name="twitter:image" content="c:/Users/Administrator/Desktop/My-study-records-master/javascript/img/DataTransfer.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-二进制/">
+
+
+
+
+
+  <title>二进制 | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-二进制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">二进制</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T10:00:00+08:00">
+                2019-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="二进制数据事件"><a href="#二进制数据事件" class="headerlink" title="二进制数据事件"></a>二进制数据事件</h1><h2 id="paste事件"><a href="#paste事件" class="headerlink" title="paste事件"></a>paste事件</h2><p>监听右键粘贴时间提供一个<code>clipboardData</code>的属性，其实是<code>DataTransfer</code>类型的对象。如果该属性有<code>items</code>属性，那么就可以查看<code>items</code>中是否有图片类型的数据了。<code>Chrome</code>有该属性，<code>Safari</code>没有。</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/javascript/img/DataTransfer.jpg" alt="DataTransfer"></p>
+<blockquote>
+<p><code>files</code>、<code>items</code>、<code>types</code>属性是含有内容，但无法具体显示，可通过<code>clipboard.items[0]</code>获取</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>dropEffect</td>
+<td>String</td>
+<td>默认是 none</td>
+</tr>
+<tr>
+<td>effectAllowed</td>
+<td>String</td>
+<td>默认是 uninitialized</td>
+</tr>
+<tr>
+<td>files</td>
+<td>FileList</td>
+<td>粘贴操作为空List</td>
+</tr>
+<tr>
+<td>items</td>
+<td>DataTransferItemList</td>
+<td>剪切板中的各项数据</td>
+</tr>
+<tr>
+<td>types</td>
+<td>Array</td>
+<td>剪切板中的数据类型 该属性在Safari下比较混乱</td>
+</tr>
+</tbody></table>
+<p><code>items</code>是一个<code>DataTransferItemList</code>对象，有<code>kind</code>和<code>type</code>属性：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>kind</td>
+<td>一般为string或者file</td>
+</tr>
+<tr>
+<td>type</td>
+<td>具体的数据类型，例如具体是哪种类型字符串或者哪种类型的文件，即MIME-Type</td>
+</tr>
+</tbody></table>
+<p>以及两个方法<code>getAsFile</code>与<code>getAsString</code>：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>getAsFile</td>
+<td>空</td>
+<td>如果kind是file，可以用该方法获取到文件</td>
+</tr>
+<tr>
+<td>getAsString</td>
+<td>回调函数</td>
+<td>如果kind是string，可以用该方法获取到字符串，字符串需要用回调函数得到，回调函数的第一个参数就是剪切板中的字符串</td>
+</tr>
+</tbody></table>
+<p>一般<code>types</code>是剪切板的数据类型，常见的值有text/plain、text/html、Files。</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;textarea id=&quot;result&quot; style=&quot;width:800px; height:600px; resize:none&quot;&gt;&lt;/textarea&gt;
+    &lt;script&gt;
+        var body = document.getElementsByTagName(&#39;body&#39;)[0];
+        body.addEventListener(&#39;paste&#39;, function(e){
+            var clipboard = e.clipboardData;
+            var type = clipboard.items[0].type;
+            if (type.match(/image/)) {
+                // 获取剪切板的二进制数据
+                var blob = clipboard.items[0].getAsFile();
+
+                var file = new FileReader();
+                file.addEventListener(&#39;loadend&#39;, function(e){
+                    document.getElementById(&#39;result&#39;).value = e.target.result;
+                });
+                file.readAsDataURL(blob);
+            } else {
+                document.getElementById(&#39;result&#39;).value = &quot;not an image\ntype: &quot; + type + &quot;\n\n&quot;;
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<blockquote>
+<p><a href="https://segmentfault.com/a/1190000004288686" target="_blank" rel="noopener">https://segmentfault.com/a/1190000004288686</a></p>
+</blockquote>
+<h2 id="FileReader"><a href="#FileReader" class="headerlink" title="FileReader"></a>FileReader</h2><p><code>FileReader</code> 对象允许Web应用程序异步读取存储在用户计算机上的文件。<br>使用 <code>File</code> 或 <code>Blob</code> 对象指定要读取的文件或数据。</p>
+<p><code>File</code> 关于文件的信息对象，来自用户在一个<code>&lt;input&gt;</code>元素上选择文件后返回的 <code>FileList</code> 对象,也可以是来自由拖放操作生成的 <code>DataTransfer</code> 对象，或者来自 <code>HTMLCanvasElement</code> 上的 <code>mozGetAsFile()</code> API。</p>
+<p><code>BLOB (binary large object)</code>，二进制大对象，是一个可以存储二进制文件的<strong>容器</strong>。<code>File</code> 接口基于<code>Blob</code>。</p>
+<p>可使用<code>new Blob()</code>函数构造一个<code>Blob对象</code>：</p>
+<pre><code class="js">var obj = {hello: &quot;world&quot;};
+var blob = new Blob([JSON.stringify(debug,obj, 4)]);
+
+console.log(blob);  // Blob(24) {size: 24, type: &quot;&quot;}
+
+var fr = new FileReader();
+fr.readAsDataURL(blob);
+fr.addEventListener(&#39;loadend&#39;, function(e){
+    console.log(e.target.result);   // data:;base64,ewogICAgImhlbGxvIjogIndvcmxkIgp9
+});</code></pre>
+<blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Blob/Blob" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/Blob/Blob</a></p>
+</blockquote>
+<p><code>FileReader</code>示例</p>
+<pre><code class="html">&lt;script&gt;
+function showPreview(source) {
+    var file = source.files[0];
+    if(window.FileReader) {
+        var fr = new FileReader();
+        fr.onloadend = function(e) {
+            document.getElementById(&quot;portrait&quot;).src = e.target.result;
+        };
+        fr.readAsDataURL(file);
+    }
+}
+&lt;/script&gt;
+
+&lt;input type=&quot;file&quot; name=&quot;file&quot; onchange=&quot;showPreview(this)&quot; /&gt;
+&lt;img id=&quot;portrait&quot; src=&quot;&quot; width=&quot;70&quot; height=&quot;75&quot;&gt;</code></pre>
+<p><code>FileReader.onload</code>事件在读取操作完成时触发。<br>当 FileReader 读取文件的方式为  <code>readAsArrayBuffer</code>, <code>readAsBinaryString</code>, <code>readAsDataURL</code> 或者 <code>readAsText</code> 的时候，会触发一个 <strong>load</strong> 事件。从而可以使用  <code>FileReader.onload</code> 属性对该事件进行处理，回调中包含一个事件对象(<code>event</code>)参数。</p>
+<blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader</a></p>
+</blockquote>
+<h2 id="拖放事件与DataTransfer"><a href="#拖放事件与DataTransfer" class="headerlink" title="拖放事件与DataTransfer"></a>拖放事件与DataTransfer</h2><p>一个拖放(<code>drap</code>)的实现：用户用鼠标选中一个可拖动的（<code>draggable</code>）元素，移动鼠标到一个可放置的（<code>droppable</code>）元素，然后释放鼠标。<br>期间会触发一系列事件，回调中都包含了一个事件对象。</p>
+<p>在进行拖放操作时，回调函数里的事件对象参数(<code>DragEvent</code>)，包含一个<code>DataTransfer</code>属性。<code>DataTransfer</code> 对象用来保存被拖动的数据。它可以保存一项或多项数据、一种或者多种数据类型。</p>
+<h3 id="事件类型"><a href="#事件类型" class="headerlink" title="事件类型"></a>事件类型</h3><ul>
+<li><strong>drag</strong><ul>
+<li>拖动元素或选择文本时触发此事件。</li>
+</ul>
+</li>
+<li><strong>dragend</strong><ul>
+<li>当拖动操作结束时（释放鼠标按钮或按下退出键），会触发此事件。</li>
+</ul>
+</li>
+<li><strong>dragenter</strong><ul>
+<li>当拖动的元素或选择文本输入有效的放置目标时，会触发此事件。</li>
+</ul>
+</li>
+<li><strong>dragexit</strong><ul>
+<li>当元素不再是拖动操作的选择目标时触发此事件。</li>
+</ul>
+</li>
+<li><strong>dragleave</strong><ul>
+<li>当拖动的元素或文本选择离开有效的放置目标时，会触发此事件。</li>
+</ul>
+</li>
+<li><strong>dragover</strong><ul>
+<li>当将元素或文本选择拖动到有效放置目标（每几百毫秒）上时，会触发此事件。</li>
+</ul>
+</li>
+<li><strong>dragstart</strong><ul>
+<li>当用户开始拖动元素或选择文本时触发此事件。</li>
+</ul>
+</li>
+<li><strong>drop</strong><ul>
+<li>当在有效放置目标上放置元素或选择文本时触发此事件。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="html">&lt;script type=&quot;text/javascript&quot;&gt;
+    function allowDrop(ev) {
+        // 默认地，无法将数据/元素放置到其他元素中。如果需要设置允许放置，我们必须阻止对元素的默认处理方式。
+        ev.preventDefault();
+    }
+
+    function drag(ev) {
+        ev.dataTransfer.setData(&quot;text_name&quot;, ev.target.id);
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData(&quot;text_name&quot;);
+        ev.target.appendChild(document.getElementById(data));
+    }
+&lt;/script&gt;
+&lt;div id=&quot;div1&quot; ondrop=&quot;drop(event)&quot; ondragover=&quot;allowDrop(event)&quot;&gt;
+
+    &lt;!-- 让一个元素被拖动需要添加 draggable 属性，再加上全局事件处理函数ondragstart --&gt;
+    &lt;span ondragstart=&quot;drag(event)&quot; id=&quot;drag&quot; draggable=&quot;true&quot;&gt;hello world&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id=&quot;div2&quot; ondrop=&quot;drop(event)&quot; ondragover=&quot;allowDrop(event)&quot;&gt;&lt;/div&gt;</code></pre>
+<blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_Drag_and_Drop_API" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_Drag_and_Drop_API</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/DataTransfer" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/DataTransfer</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-堆排序/" rel="next" title="堆排序">
+                <i class="fa fa-chevron-left"></i> 堆排序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-函数/" rel="prev" title="函数">
+                函数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#二进制数据事件"><span class="nav-number">1.</span> <span class="nav-text">二进制数据事件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#paste事件"><span class="nav-number">1.1.</span> <span class="nav-text">paste事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FileReader"><span class="nav-number">1.2.</span> <span class="nav-text">FileReader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拖放事件与DataTransfer"><span class="nav-number">1.3.</span> <span class="nav-text">拖放事件与DataTransfer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件类型"><span class="nav-number">1.3.1.</span> <span class="nav-text">事件类型</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

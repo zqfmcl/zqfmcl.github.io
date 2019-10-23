@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="NodeJs,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="Stream 简介 从流中读取 写入流 cork()与uncork()   管道流 unpipe()   链式流      Stream简介Stream 有四种流类型：  Readable - 可读操作。 Writable - 可写操作。 Duplex - 可读可写操作. Transform - 操作被写入数据，然后读出结果。  所有的 Stream 对象都是 EventEmitter 的">
+<meta name="keywords" content="NodeJs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Stream-NodeJs">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-Stream-NodeJs/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="Stream 简介 从流中读取 写入流 cork()与uncork()   管道流 unpipe()   链式流      Stream简介Stream 有四种流类型：  Readable - 可读操作。 Writable - 可写操作。 Duplex - 可读可写操作. Transform - 操作被写入数据，然后读出结果。  所有的 Stream 对象都是 EventEmitter 的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.465Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Stream-NodeJs">
+<meta name="twitter:description" content="Stream 简介 从流中读取 写入流 cork()与uncork()   管道流 unpipe()   链式流      Stream简介Stream 有四种流类型：  Readable - 可读操作。 Writable - 可写操作。 Duplex - 可读可写操作. Transform - 操作被写入数据，然后读出结果。  所有的 Stream 对象都是 EventEmitter 的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-Stream-NodeJs/">
+
+
+
+
+
+  <title>Stream-NodeJs | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-Stream-NodeJs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Stream-NodeJs</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T10:00:00+08:00">
+                2019-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+
+<ul>
+<li><a href="#stream">Stream</a><ul>
+<li><a href="#简介">简介</a></li>
+<li><a href="#从流中读取">从流中读取</a></li>
+<li><a href="#写入流">写入流</a><ul>
+<li><a href="#cork与uncork">cork()与uncork()</a></li>
+</ul>
+</li>
+<li><a href="#管道流">管道流</a><ul>
+<li><a href="#unpipe">unpipe()</a></li>
+</ul>
+</li>
+<li><a href="#链式流">链式流</a></li>
+</ul>
+</li>
+</ul>
+<!-- /code_chunk_output -->
+
+<h1 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Stream 有四种流类型：</p>
+<ul>
+<li>Readable - 可读操作。</li>
+<li>Writable - 可写操作。</li>
+<li>Duplex - 可读可写操作.</li>
+<li>Transform - 操作被写入数据，然后读出结果。</li>
+</ul>
+<p>所有的 Stream 对象都是 EventEmitter 的实例。常用的事件有：</p>
+<ul>
+<li>data - 当有数据可读时触发。</li>
+<li>end - 没有更多的数据可读时触发。</li>
+<li>error - 在接收和写入过程中发生错误时触发。</li>
+<li>finish - 所有数据已被写入到底层系统时触发。</li>
+</ul>
+<h2 id="从流中读取"><a href="#从流中读取" class="headerlink" title="从流中读取"></a>从流中读取</h2><pre><code class="js">var fs = require(&quot;fs&quot;);
+var data = &#39;&#39;;
+
+// 创建可读流
+var readerStream = fs.createReadStream(&#39;input.txt&#39;);
+
+// 设置编码为 utf8。
+readerStream.setEncoding(&#39;UTF8&#39;);
+
+// 处理流事件 --&gt; data, end, and error
+readerStream.on(&#39;data&#39;, function(chunk) {
+   data += chunk;
+});
+
+readerStream.on(&#39;error&#39;, function(err){
+   console.log(err.stack);
+});
+
+//&#39;readable&#39; 事件将在流中有数据可供读取时触发
+//当到达流数据尾部时， &#39;readable&#39; 事件也会触发。触发顺序在 &#39;end&#39; 事件之前。
+readerStream.on(&#39;readable&#39;, () =&gt; {
+  // 有一些数据可读了
+});
+
+readerStream.on(&#39;end&#39;,function(){
+    console.log(data);
+});
+
+console.log(&quot;程序执行完毕&quot;);</code></pre>
+<h3 id="readable-pause-与readable-resume"><a href="#readable-pause-与readable-resume" class="headerlink" title="readable.pause()与readable.resume()"></a>readable.pause()与readable.resume()</h3><p><strong>readable.pause()</strong>:暂停读取流操作</p>
+<p><strong>readable.resume()</strong>:继续读取流操作</p>
+<pre><code class="js">// 新建一个readable数据流
+var readable = getReadableStreamSomehow();
+readable.on(&#39;data&#39;, function(chunk) {
+  console.log(&#39;读取%d字节的数据&#39;, chunk.length);
+  readable.pause();
+  console.log(&#39;接下来的1秒内不读取数据&#39;);
+
+  setTimeout(function() {
+    console.log(&#39;数据恢复读取&#39;);
+    readable.resume();
+  }, 1000);
+});</code></pre>
+<h2 id="写入流"><a href="#写入流" class="headerlink" title="写入流"></a>写入流</h2><p>可用概念：</p>
+<ul>
+<li><code>objectMode</code> 默认是 false， 设置成 true 后 writable.write() 方法除了写入 string 和 buffer 外，还可以写入任意 JavaScript 对象。很有用的一个选项，后面介绍 transform 流的时候详细介绍</li>
+<li><code>highWaterMark</code> 每次最多写入的数据量， Buffer 的时候默认值 16kb， objectMode 时默认值 16</li>
+<li><code>decodeStrings</code> 是否把传入的数据转成 Buffer，默认是 true</li>
+</ul>
+<pre><code class="js">var fs = require(&quot;fs&quot;);
+var data = &#39;hello world&#39;;
+
+// 创建一个可以写入的流，写入到文件 output.txt 中
+var writerStream = fs.createWriteStream(&#39;output.txt&#39;);
+
+// 使用 utf8 编码写入数据
+writerStream.write(data,&#39;UTF8&#39;);
+
+// 标记文件末尾
+// 如有callback，在finish前调用
+writerStream.end(&#39;&#39;,function(){});
+
+// 处理流事件 --&gt; data, end, and error
+writerStream.on(&#39;finish&#39;, function() {
+    console.log(&quot;写入完成。&quot;);
+});
+
+writerStream.on(&#39;error&#39;, function(err){
+   console.log(err.stack);
+});
+
+console.log(&quot;程序执行完毕&quot;);</code></pre>
+<h3 id="cork-与uncork"><a href="#cork-与uncork" class="headerlink" title="cork()与uncork()"></a>cork()与uncork()</h3><p>调用<code>writable.cork()</code>，写入的数据将会被存放在内存的缓冲区里，只要再调用<code>writable.uncork()</code>跟<code>writable.end()</code>,被缓冲的数据才会被输出。</p>
+<h2 id="管道流"><a href="#管道流" class="headerlink" title="管道流"></a>管道流</h2><pre><code class="js">// 创建一个可读流
+// new stream.Readable([options])
+var readerStream = fs.createReadStream(&#39;input.txt&#39;);
+
+// 创建一个可写流
+var writerStream = fs.createWriteStream(&#39;output.txt&#39;);
+
+// 当writerStream.write()返回false时，便会在合适的时机触发drain事件。
+writerStream.on(&#39;drain&#39;,function(){
+    readerStream.resume(); // 数据已经写完，继续读取
+    console.log(&#39;drain&#39;);
+});
+// 管道读写操作
+
+readerStream.on(&#39;data&#39;, function(chunk){
+  if(writerStream.write(chunk) === false){ // 尚未写完，停止读取
+    readerStream.pause();
+  }
+});
+// 读取 input.txt 文件内容，并将内容写入到 output.txt 文件中
+readerStream.pipe(writerStream);</code></pre>
+<p><strong>pipe 的过程:</strong></p>
+<ol>
+<li>首先执行 <code>readbable.pipe(writable)</code>，将 readable 与 writable 对接上</li>
+<li>当 readable 中有数据时，<code>readable.emit(&#39;data&#39;)</code>，将数据写入 writable</li>
+<li>如果 <code>writable.write(chunk)</code> 返回 false，则进入 pause 模式，等待 drain 事件触发</li>
+<li>drain 事件全部触发后，再次进入 flow 模式，写入数据</li>
+<li>不管数据写入完成或发生中断，最后都会调用 <code>unpipe()</code></li>
+<li><code>unpipe()</code> 调用 <code>Readable.prototype.unpipe()</code>，触发 dest 的 unpipe 事件，清理相关数据</li>
+</ol>
+<h3 id="unpipe"><a href="#unpipe" class="headerlink" title="unpipe()"></a>unpipe()</h3><p>该方法移除pipe方法指定的数据流目的地，目的地数据会被清空。</p>
+<pre><code class="js">readable.pipe(writable);
+setTimeout(function() {
+    console.log(&#39;停止写入file.txt&#39;);
+    readable.unpipe(writable);
+    console.log(&#39;手动关闭file.txt的写入数据流&#39;);
+    writable.end();
+}, 1000);
+
+readable.on(&#39;unpipe&#39;, function(src) {
+    //do ...
+});</code></pre>
+<h2 id="链式流"><a href="#链式流" class="headerlink" title="链式流"></a>链式流</h2><pre><code class="js">// 压缩 input.txt 文件为 input.txt.gz
+fs.createReadStream(&#39;input.txt&#39;)
+  .pipe(zlib.createGzip())
+  .pipe(fs.createWriteStream(&#39;input.txt.gz&#39;));
+
+
+// 解压 input.txt.gz 文件为 input.txt
+fs.createReadStream(&#39;input.txt.gz&#39;)
+  .pipe(zlib.createGunzip())
+  .pipe(fs.createWriteStream(&#39;input.txt&#39;));</code></pre>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/NodeJs/" rel="tag"># NodeJs</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-String-to-Integer-(atoi)-[E]/" rel="next" title="String to Integer (atoi) [E]">
+                <i class="fa fa-chevron-left"></i> String to Integer (atoi) [E]
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-Set/" rel="prev" title="Set">
+                Set <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Stream"><span class="nav-number">1.</span> <span class="nav-text">Stream</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从流中读取"><span class="nav-number">1.2.</span> <span class="nav-text">从流中读取</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#readable-pause-与readable-resume"><span class="nav-number">1.2.1.</span> <span class="nav-text">readable.pause()与readable.resume()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写入流"><span class="nav-number">1.3.</span> <span class="nav-text">写入流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cork-与uncork"><span class="nav-number">1.3.1.</span> <span class="nav-text">cork()与uncork()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#管道流"><span class="nav-number">1.4.</span> <span class="nav-text">管道流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#unpipe"><span class="nav-number">1.4.1.</span> <span class="nav-text">unpipe()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链式流"><span class="nav-number">1.5.</span> <span class="nav-text">链式流</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="题解,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="第十九章 枚举public class TrafficLight1 { ​       Signal color = RED; ​       public void change() { ​              switch(color) { ​                     case RED:       color = GREEN; ​">
+<meta name="keywords" content="题解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java题解枚举">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解枚举/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="第十九章 枚举public class TrafficLight1 { ​       Signal color = RED; ​       public void change() { ​              switch(color) { ​                     case RED:       color = GREEN; ​">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.818Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java题解枚举">
+<meta name="twitter:description" content="第十九章 枚举public class TrafficLight1 { ​       Signal color = RED; ​       public void change() { ​              switch(color) { ​                     case RED:       color = GREEN; ​">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解枚举/">
+
+
+
+
+
+  <title>Java题解枚举 | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解枚举/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java题解枚举</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-06T10:00:00+08:00">
+                2019-10-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第十九章-枚举"><a href="#第十九章-枚举" class="headerlink" title="第十九章 枚举"></a>第十九章 枚举</h2><p>public class TrafficLight1 {</p>
+<p>​       Signal color = RED;</p>
+<p>​       public void change() {</p>
+<p>​              switch(color) {</p>
+<p>​                     case RED:       color = GREEN;</p>
+<p>​                                   break;</p>
+<p>​                     case GREEN:  color = YELLOW;</p>
+<p>​                                   break;</p>
+<p>​                     case YELLOW:       color = RED;</p>
+<p>​                                   break;                   </p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       public String toString() {</p>
+<p>​              return “The traffic light is “ + color;</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              TrafficLight1 t = new TrafficLight1();</p>
+<p>​              for(int i = 0; i &lt; 7; i++) {</p>
+<p>​                     print(t);</p>
+<p>​                     t.change();</p>
+<p>​              }             </p>
+<p>​       }</p>
+<p>}</p>
+<p>enum CartoonCharacter { </p>
+<p>​       SLAPPY, SPANKY, PUNCHY, SILLY, BOUNCY, NUTTY, BOB;</p>
+<p>​       private static Random rand = new Random();</p>
+<p>​       public static CartoonCharacter next() {</p>
+<p>​              return values()[rand.nextInt(values().length)];</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class EnumImplementation2 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                           CartoonCharacter cc = CartoonCharacter.BOB;</p>
+<p>​              for(int i = 0; i &lt; 10; i++) {</p>
+<p>​                     System.out.print(cc.next()); </p>
+<p>​                     System.out.print((i &lt; 9) ? “, “ : “”);                     </p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}      </p>
+<p>enum Course3 {</p>
+<p>​       APPETIZER(Food3.Appetizer.class),</p>
+<p>​       MAINCOURSE(Food3.MainCourse.class),</p>
+<p>​       SECONDCOURSE(Food3.SecondCourse.class),       DESSERT(Food3.Dessert.class),</p>
+<p>​       COFFEE(Food3.Coffee.class);</p>
+<p>​       private Food3[] values;</p>
+<p>​       private Course3(Class&lt;? extends Food3&gt; kind) {</p>
+<p>​              values = kind.getEnumConstants();</p>
+<p>​       }</p>
+<p>​       public Food3 randomSelection() {</p>
+<p>​              return Enums.random(values);</p>
+<p>​       }</p>
+<p>}</p>
+<p>interface Food3 {</p>
+<p>​       enum Appetizer implements Food3 {</p>
+<p>​              SALAD, SOUP, SPRING_ROLLS;</p>
+<p>​       }</p>
+<p>​       enum MainCourse implements Food3 {</p>
+<p>​              LASAGNE, BURRITO, PAD_THAI,</p>
+<p>​              LENTILS, HUMMOUS, VINDALOO;</p>
+<p>​       }</p>
+<p>​       enum SecondCourse implements Food3 {</p>
+<p>​              LEG_OF_LAMB, NEW_YORK_STEAK, </p>
+<p>​              MAINE_LOBSTER, ALASKAN_KING_CRAB;</p>
+<p>​       }</p>
+<p>​       enum Dessert implements Food3 {</p>
+<p>​              TIRAMISU, GELATO, BLACK_FOREST_CAKE,</p>
+<p>​              FRUIT, CREME_CARAMEL;</p>
+<p>​       }</p>
+<p>​       enum Coffee implements Food3 {</p>
+<p>​              BLACK_COFFEE, DECAF_COFFEE, ESPRESSO,</p>
+<p>​              LATTE, CAPPUCCINO, TEA, HERB_TEA;</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Meal3 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              for(int i = 0; i &lt; 5; i++) {</p>
+<p>​                     for(Course3 course : Course3.values()) {</p>
+<p>​                            Food3 food = course.randomSelection();</p>
+<p>​                            System.out.println(food);</p>
+<p>​                     }</p>
+<p>​                     System.out.println(“—“);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>public enum Meal4 {</p>
+<p>​       APPETIZER(Food.Appetizer.class),</p>
+<p>​       MAINCOURSE(Food.MainCourse.class),</p>
+<p>​       SECONDCOURSE(Food.SecondCourse.class),         DESSERT(Food.Dessert.class),</p>
+<p>​       COFFEE(Food.Coffee.class);</p>
+<p>​       private Food[] values;</p>
+<p>​       private Meal4(Class&lt;? extends Food&gt; kind) {</p>
+<p>​              values = kind.getEnumConstants();</p>
+<p>​       }</p>
+<p>​       public interface Food {</p>
+<p>​             enum Appetizer implements Food {</p>
+<p>​                     SALAD, SOUP, SPRING_ROLLS;</p>
+<p>​                     }</p>
+<p>​              enum MainCourse implements Food {</p>
+<p>​                     LASAGNE, BURRITO, PAD_THAI,</p>
+<p>​                     LENTILS, HUMMOUS, VINDALOO;</p>
+<p>​              }</p>
+<p>​              enum SecondCourse implements Food {</p>
+<p>​                     LEG_OF_LAMB, NEW_YORK_STEAK, </p>
+<p>​                     MAINE_LOBSTER, ALASKAN_KING_CRAB;</p>
+<p>​              }</p>
+<p>​              enum Dessert implements Food {</p>
+<p>​                     TIRAMISU, GELATO, BLACK_FOREST_CAKE,</p>
+<p>​                     FRUIT, CREME_CARAMEL;</p>
+<p>​              }</p>
+<p>​              enum Coffee implements Food {</p>
+<p>​                     BLACK_COFFEE, DECAF_COFFEE, ESPRESSO,</p>
+<p>​                     LATTE, CAPPUCCINO, TEA, HERB_TEA;</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       public Food randomSelection() {</p>
+<p>​              return Enums.random(values);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              for(int i = 0; i &lt; 5; i++) {</p>
+<p>​                     for(Meal4 meal: Meal4.values()) {</p>
+<p>​                            Food food = meal.randomSelection();</p>
+<p>​                            System.out.println(food);</p>
+<p>​                     }</p>
+<p>​                     System.out.println(“—“);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public enum VowelsAndConsonants5 {</p>
+<p>​       VOWEL(‘a’, ‘e’, ‘i’, ‘o’, ‘u’),</p>
+<p>​       SOMETIMES_A_VOWEL(‘w’, ‘y’),</p>
+<p>​       CONSONANT(‘b’, ‘c’, ‘d’, ‘f’, ‘g’, ‘h’, ‘j’, ‘k’, ‘l’, ‘m’,</p>
+<p>​              ‘n’, ‘p’, ‘q’, ‘r’, ‘s’, ‘t’, ‘v’, ‘x’, ‘z’);</p>
+<p>​       private Character[] letters;</p>
+<p>​       private VowelsAndConsonants5(Character… letters) {</p>
+<p>​              this.letters = letters;</p>
+<p>​       }</p>
+<p>​       public static VowelsAndConsonants5 LetterType(Character c) {</p>
+<p>​              if(Arrays.asList(VOWEL.letters).contains(c)) return VOWEL;</p>
+<p>​              if(Arrays.asList(SOMETIMES_A_VOWEL.letters).contains(c)) </p>
+<p>​                     return SOMETIMES_A_VOWEL;</p>
+<p>​              return CONSONANT;</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Random rand = new Random();</p>
+<p>​              for(int i = 0; i &lt; 100; i++) {</p>
+<p>​                     int c = rand.nextInt(26) + ‘a’;</p>
+<p>​                     printnb((char)c + “, “ + c + “: “); </p>
+<p>​                     print(LetterType((char)c));                   </p>
+<p>​              }             </p>
+<p>​       }</p>
+<p>}</p>
+<p>interface Food {}</p>
+<p>enum Appetizer implements Food {</p>
+<p>​       SALAD, SOUP, SPRING_ROLLS;</p>
+<p>​       }</p>
+<p>enum MainCourse implements Food {</p>
+<p>​       LASAGNE, BURRITO, PAD_THAI,</p>
+<p>​       LENTILS, HUMMOUS, VINDALOO;</p>
+<p>}</p>
+<p>enum Dessert implements Food {</p>
+<p>​       TIRAMISU, GELATO, BLACK_FOREST_CAKE,</p>
+<p>​       FRUIT, CREME_CARAMEL;</p>
+<p>}</p>
+<p>enum Coffee implements Food {</p>
+<p>​       BLACK_COFFEE, DECAF_COFFEE, ESPRESSO,</p>
+<p>​       LATTE, CAPPUCCINO, TEA, HERB_TEA;</p>
+<p>}</p>
+<p>public enum Meal6 {</p>
+<p>​       APPETIZER(Appetizer.class),</p>
+<p>​       MAINCOURSE(MainCourse.class),</p>
+<p>​       DESSERT(Dessert.class),</p>
+<p>​       COFFEE(Coffee.class);</p>
+<p>​       private Food[] values;</p>
+<p>​       private Meal6(Class&lt;? extends Food&gt; kind) {</p>
+<p>​              values = kind.getEnumConstants();</p>
+<p>​       }      </p>
+<p>​       public Food randomSelection() {</p>
+<p>​              return Enums.random(values);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              for(int i = 0; i &lt; 5; i++) {</p>
+<p>​                     for(Meal6 meal: Meal6.values()) {</p>
+<p>​                            Food food = meal.randomSelection();</p>
+<p>​                            System.out.println(food);</p>
+<p>​                     }</p>
+<p>​                     System.out.println(“—“);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>Source code is in the src.zip file in the downloadable JDK, e.g., C:\jdk1.6.0\src.zip.</p>
+<p>EnumSet.java file is in folder C:\jdk1.6.0\src\java\util. Open with a web browser or WordPad.</p>
+<p>Package &amp; import:</p>
+<p>package java.util;</p>
+<p>import sun.misc.SharedSecrets;</p>
+<p>EnumSet is specialized Set for enums: </p>
+<p>public abstract class EnumSet&lt;E extends Enum<e>&gt; extends AbstractSet<e></e></e></p>
+<p>​    implements Cloneable, java.io.Serializable</p>
+<p>Fields:</p>
+<p>final Class<e> elementType;  final Enum[] universe;</e></p>
+<p>private static Enum[] ZERO_LENGTH_ENUM_ARRAY = new Enum[0];</p>
+<p>Constructor:</p>
+<p>EnumSet(Class<e>elementType, Enum[] universe) {</e></p>
+<p>​        this.elementType = elementType;</p>
+<p>​        this.universe    = universe;</p>
+<p>​    }</p>
+<p>Methods:</p>
+<p>public static &lt;E extends Enum<e>&gt; EnumSet<e> noneOf(Class<e> elementType) {</e></e></e></p>
+<p>​        Enum[] universe = getUniverse(elementType);</p>
+<p>​        if (universe == null)</p>
+<p>​            throw new ClassCastException(elementType + “ not an enum”);</p>
+<p>​        if (universe.length &lt;= 64)</p>
+<p>​            return new RegularEnumSet<e>(elementType, universe);</e></p>
+<p>​        else</p>
+<p>​            return new JumboEnumSet<e>(elementType, universe);</e></p>
+<p>​    }</p>
+<p>public static &lt;E extends Enum<e>&gt; EnumSet<e> allOf(Class<e> elementType) {</e></e></e></p>
+<p>​        EnumSet<e> result = noneOf(elementType);</e></p>
+<p>​        result.addAll();</p>
+<p>​        return result;</p>
+<p>​    }</p>
+<p>abstract void addAll();</p>
+<p>public static &lt;E extends Enum<e>&gt; EnumSet<e> copyOf(EnumSet<e> s) {</e></e></e></p>
+<p>​        return s.clone();</p>
+<p>​    }</p>
+<p>public static &lt;E extends Enum<e>&gt; EnumSet<e> copyOf(Collection<e> c) {</e></e></e></p>
+<p>​        if (c instanceof EnumSet) {</p>
+<p>​            return ((EnumSet<e>)c).clone();</e></p>
+<p>​        } else {</p>
+<p>​            if (c.isEmpty())</p>
+<p>​                throw new IllegalArgumentException(“Collection is empty”);</p>
+<p>​            Iterator<e> i = c.iterator();</e></p>
+<p>​            E first = i.next();</p>
+<p>​            EnumSet<e> result = EnumSet.of(first);</e></p>
+<p>​            while (i.hasNext())</p>
+<p>​                result.add(i.next());</p>
+<p>​            return result;</p>
+<p>​        }</p>
+<p>​    }</p>
+<p>public static &lt;E extends Enum<e>&gt; EnumSet<e> complementOf(EnumSet<e> s) {</e></e></e></p>
+<p>​        EnumSet<e> result = copyOf(s);</e></p>
+<p>​        result.complement();</p>
+<p>​        return result;</p>
+<p>​    }</p>
+<p>public static &lt;E extends Enum<e>&gt; EnumSet<e> of(E e) {</e></e></p>
+<p>​        EnumSet<e> result = noneOf(e.getDeclaringClass());</e></p>
+<p>​        result.add(e);</p>
+<p>​        return result;</p>
+<p>​    }</p>
+<p>public static &lt;E extends Enum<e>&gt; EnumSet<e> of(E e1, E e2) {</e></e></p>
+<p>​        EnumSet<e> result = noneOf(e1.getDeclaringClass());</e></p>
+<p>​        result.add(e1);</p>
+<p>​        result.add(e2);</p>
+<p>​        return result;</p>
+<p>​    }</p>
+<p>public static &lt;E extends Enum<e>&gt; EnumSet<e> of(E e1, E e2, E e3) {</e></e></p>
+<p>​        EnumSet<e> result = noneOf(e1.getDeclaringClass());</e></p>
+<p>​        result.add(e1);</p>
+<p>​        result.add(e2);</p>
+<p>​        result.add(e3);</p>
+<p>​        return result;</p>
+<p>​    }</p>
+<p>public static &lt;E extends Enum<e>&gt; EnumSet<e> of(E e1, E e2, E e3, E e4) {</e></e></p>
+<p>​        EnumSet<e> result = noneOf(e1.getDeclaringClass());</e></p>
+<p>​        result.add(e1);</p>
+<p>​        result.add(e2);</p>
+<p>​        result.add(e3);</p>
+<p>​        result.add(e4);</p>
+<p>​        return result;</p>
+<p>​    }</p>
+<p>public static &lt;E extends Enum<e>&gt; EnumSet<e> of(E e1, E e2, E e3, E e4,</e></e></p>
+<p>​                                                    E e5)</p>
+<p>​    {</p>
+<p>​        EnumSet<e> result = noneOf(e1.getDeclaringClass());</e></p>
+<p>​        result.add(e1);</p>
+<p>​        result.add(e2);</p>
+<p>​        result.add(e3);</p>
+<p>​        result.add(e4);</p>
+<p>​        result.add(e5);</p>
+<p>​        return result;</p>
+<p>​    }</p>
+<p>public static &lt;E extends Enum<e>&gt; EnumSet<e> of(E first, E… rest) {</e></e></p>
+<p>​        EnumSet<e> result = noneOf(first.getDeclaringClass());</e></p>
+<p>​        result.add(first);</p>
+<p>​        for (E e : rest)</p>
+<p>​            result.add(e);</p>
+<p>​        return result;</p>
+<p>​    }</p>
+<p>public static &lt;E extends Enum<e>&gt; EnumSet<e> range(E from, E to) {</e></e></p>
+<p>​        if (from.compareTo(to) &gt; 0)</p>
+<p>​            throw new IllegalArgumentException(from + “ &gt; “ + to);</p>
+<p>​        EnumSet<e> result = noneOf(from.getDeclaringClass());</e></p>
+<p>​        result.addRange(from, to);</p>
+<p>​        return result;</p>
+<p>​    }</p>
+<p>abstract void addRange(E from, E to);</p>
+<p>public EnumSet<e> clone() {</e></p>
+<p>​        try {</p>
+<p>​            return (EnumSet<e>) super.clone();</e></p>
+<p>​        } catch(CloneNotSupportedException e) {</p>
+<p>​            throw new AssertionError(e);</p>
+<p>​        }</p>
+<p>​    }</p>
+<p>abstract void complement();</p>
+<p> final void typeCheck(E e) {</p>
+<p>​        Class eClass = e.getClass();</p>
+<p>​        if (eClass != elementType &amp;&amp; eClass.getSuperclass() != elementType)</p>
+<p>​            throw new ClassCastException(eClass + “ != “ + elementType);</p>
+<p>​    }</p>
+<p>private static &lt;E extends Enum<e>&gt; E[] getUniverse(Class<e> elementType) {</e></e></p>
+<p>​        return SharedSecrets.getJavaLangAccess()</p>
+<p>​                                   .getEnumConstantsShared(elementType);</p>
+<p>​    }</p>
+<p>For serialization:</p>
+<p>Class used to serialize EnumSet instances:</p>
+<p>private static class SerializationProxy &lt;E extends Enum<e>&gt;</e></p>
+<p>​        implements java.io.Serializable {</p>
+<p>​       private final Class<e> elementType;</e></p>
+<p>​       private final Enum[] elements;</p>
+<p>​       SerializationProxy(EnumSet<e> set) {</e></p>
+<p>​            elementType = set.elementType;</p>
+<p>​            elements = (Enum[]) set.toArray(ZERO_LENGTH_ENUM_ARRAY);</p>
+<p>​        }</p>
+<p>​       private Object readResolve() {</p>
+<p>​            EnumSet<e> result = EnumSet.noneOf(elementType);</e></p>
+<p>​            for (Enum e : elements)</p>
+<p>​                result.add((E)e);</p>
+<p>​            return result;</p>
+<p>​        }</p>
+<p>​        private static final long serialVersionUID = 362491234563181265L;</p>
+<p>}</p>
+<p>Object writeReplace() {</p>
+<p>​        return new SerializationProxy<e>(this);</e></p>
+<p>​    }</p>
+<p>class Mail {</p>
+<p>​             enum GeneralDelivery { YES, NO1, NO2, NO3, NO4, NO5 }</p>
+<p>​       enum Scannability { UNSCANNABLE, YES1, YES2, }</p>
+<p>​       enum Readability { ILLEGIBLE, YES1, YES2, YES3, YES4 }</p>
+<p>​       enum ForwardAddress { YES, NO1, NO2, NO3, NO4, NO5 }</p>
+<p>​       enum Address { INCORRECT, OK1, OK2, OK3, OK4, OK5 }</p>
+<p>​       enum ReturnAddress { MISSING, OK1, OK2, OK3, OK4, OK5 }</p>
+<p>​       GeneralDelivery generalDelivery;</p>
+<p>​       Scannability scannability;</p>
+<p>​       Readability readability;</p>
+<p>​       ForwardAddress forwardAddress;</p>
+<p>​       Address address;</p>
+<p>​       ReturnAddress returnAddress;</p>
+<p>​       static long counter = 0;</p>
+<p>​       long id = counter++;</p>
+<p>​       public String toString() { return “Mail “ + id; }</p>
+<p>​       public String details() {</p>
+<p>​              return toString() +</p>
+<p>​                     “, General Delivery: “ + generalDelivery +</p>
+<p>​                     “, Address Scannability: “ + scannability + </p>
+<p>​                     “, Address Readability: “ + readability + </p>
+<p>​                     “, ForwardAddress: “ + forwardAddress + </p>
+<p>​                     “, Address Address: “ + address +</p>
+<p>​                     “, Return address: “ + returnAddress;</p>
+<p>​       } </p>
+<p>​             public static Mail randomMail() {</p>
+<p>​              Mail m = new Mail();</p>
+<p>​              m.generalDelivery = Enums.random(GeneralDelivery.class);</p>
+<p>​              m.scannability = Enums.random(Scannability.class);</p>
+<p>​              m.readability = Enums.random(Readability.class);</p>
+<p>​              m.forwardAddress = Enums.random(ForwardAddress.class);</p>
+<p>​              m.address = Enums.random(Address.class);</p>
+<p>​              m.returnAddress = Enums.random(ReturnAddress.class);      </p>
+<p>​              return m;</p>
+<p>​       }</p>
+<p>​       public static Iterable<mail> generator(final int count) {</mail></p>
+<p>​              return new Iterable<mail>() {</mail></p>
+<p>​                     int n = count;</p>
+<p>​                     public Iterator<mail> iterator() {</mail></p>
+<p>​                            return new Iterator<mail>() {</mail></p>
+<p>​                                   public boolean hasNext() { return n– &gt; 0; }</p>
+<p>​                                   public Mail next() { return randomMail(); }</p>
+<p>​                                   public void remove() {                                           throw new UnsupportedOperationException();</p>
+<p>​                                   }      </p>
+<p>​                            };</p>
+<p>​                     }</p>
+<p>​              };</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class PostOffice8 {</p>
+<p>​       enum MailHandler {</p>
+<p>​              GENERAL_DELIVERY {</p>
+<p>​                     boolean handle(Mail m) {</p>
+<p>​                            switch(m.generalDelivery) {</p>
+<p>​                                   case YES:</p>
+<p>​                                          print(“Using general delivery for “ + m);</p>
+<p>​                                          return true;</p>
+<p>​                                   default: return false;</p>
+<p>​                            }</p>
+<p>​                     }</p>
+<p>​              },</p>
+<p>​              MACHINE_SCAN {</p>
+<p>​                     boolean handle(Mail m) {</p>
+<p>​                            switch(m.scannability) {</p>
+<p>​                                   case UNSCANNABLE: return false;</p>
+<p>​                                   default:</p>
+<p>​                                          switch(m.forwardAddress) {</p>
+<p>​                                                 case YES: </p>
+<p>​                                                        print(“Forwarding “ + m + “ automatically”);</p>
+<p>​                                                        return true;</p>
+<p>​                                                 default: </p>
+<p>​                                                        switch(m.address) {</p>
+<p>​                                                               case INCORRECT: return false;</p>
+<p>​                                                               default:</p>
+<p>​                                                                      print(“Delivering “ + m + “ automatically”);</p>
+<p>​                                                                      return true;</p>
+<p>​                                                        }</p>
+<p>​                                          }                                         </p>
+<p>​                            }</p>
+<p>​                     }</p>
+<p>​              },</p>
+<p>​              FORWARDING {</p>
+<p>​                     boolean handle(Mail m) {</p>
+<p>​                            switch(m.forwardAddress) {</p>
+<p>​                                   case YES: </p>
+<p>​                                          print(“Forwarding “ + m);</p>
+<p>​                                          return true;</p>
+<p>​                                   default: return false;</p>
+<p>​                                          </p>
+<p>​                            }</p>
+<p>​                     }</p>
+<p>​              },</p>
+<p>​              VISUAL_INSPECTION {</p>
+<p>​                     boolean handle(Mail m) {</p>
+<p>​                            switch(m.readability) {</p>
+<p>​                                   case ILLEGIBLE: return false;</p>
+<p>​                                   default:</p>
+<p>​                                          switch(m.address) {</p>
+<p>​                                                 case INCORRECT: return false;</p>
+<p>​                                                 default:</p>
+<p>​                                                        print(“Delivering “ + m + “ normally”);</p>
+<p>​                                                        return true;</p>
+<p>​                                          }</p>
+<p>​                            }</p>
+<p>​                     }</p>
+<p>​              },</p>
+<p>​              RETURN_TO_SENDER {</p>
+<p>​                     boolean handle(Mail m) {</p>
+<p>​                            switch(m.returnAddress) {</p>
+<p>​                                   case MISSING: return false;</p>
+<p>​                                   default:</p>
+<p>​                                          print(“Return “ + m + “ to sender”);</p>
+<p>​                                          return true;</p>
+<p>​                            }</p>
+<p>​                     }</p>
+<p>​              };</p>
+<p>​              abstract boolean handle(Mail m);</p>
+<p>​       }</p>
+<p>​       static void handle(Mail m) {</p>
+<p>​              for(MailHandler handler : MailHandler.values())</p>
+<p>​                     if(handler.handle(m)) return;</p>
+<p>​                     print(m + “ is a dead letter”);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              for(Mail mail : Mail.generator(20)) {</p>
+<p>​                     print(mail.details());</p>
+<p>​                     handle(mail);</p>
+<p>​                     print(“*****”);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Mail {</p>
+<p>​             enum GeneralDelivery { YES, NO1, NO2, NO3, NO4, NO5 }</p>
+<p>​       enum Scannability { UNSCANNABLE, YES1, YES2, YES3, YES4 }</p>
+<p>​       enum Readability { ILLEGIBLE, YES1, YES2, YES3, YES4 }</p>
+<p>​       enum Address { INCORRECT, OK1, OK2, OK3, OK4, OK5, OK6 }</p>
+<p>​       enum ReturnAddress { MISSING, OK1, OK2, OK3, OK4, OK5 }</p>
+<p>​       GeneralDelivery generalDelivery;</p>
+<p>​       Scannability scannability;</p>
+<p>​       Readability readability;</p>
+<p>​       Address address;</p>
+<p>​       ReturnAddress returnAddress;</p>
+<p>​       static long counter = 0;</p>
+<p>​       long id = counter++;</p>
+<p>​       public String toString() { return “Mail “ + id; }</p>
+<p>​       public String details() {</p>
+<p>​              return toString() +</p>
+<p>​                     “, General Delivery: “ + generalDelivery +</p>
+<p>​                     “, Address Scannability: “ + scannability + </p>
+<p>​                     “, Address Readability: “ + readability + </p>
+<p>​                     “, Address Address: “ + address +</p>
+<p>​                     “, Return address: “ + returnAddress;</p>
+<p>​       } </p>
+<p>​             public static Mail randomMail() {</p>
+<p>​              Mail m = new Mail();</p>
+<p>​              m.generalDelivery = Enums.random(GeneralDelivery.class);</p>
+<p>​              m.scannability = Enums.random(Scannability.class);</p>
+<p>​              m.readability = Enums.random(Readability.class);</p>
+<p>​              m.address = Enums.random(Address.class);</p>
+<p>​              m.returnAddress = Enums.random(ReturnAddress.class);      </p>
+<p>​              return m;</p>
+<p>​       }</p>
+<p>​       public static Iterable<mail> generator(final int count) {</mail></p>
+<p>​              return new Iterable<mail>() {</mail></p>
+<p>​                     int n = count;</p>
+<p>​                     public Iterator<mail> iterator() {</mail></p>
+<p>​                            return new Iterator<mail>() {</mail></p>
+<p>​                                   public boolean hasNext() { return n– &gt; 0; }</p>
+<p>​                                   public Mail next() { return randomMail(); }</p>
+<p>​                                   public void remove() {                                           throw new UnsupportedOperationException();</p>
+<p>​                                   }      </p>
+<p>​                            };</p>
+<p>​                     }</p>
+<p>​              };</p>
+<p>​       }</p>
+<p>}</p>
+<p>interface Handler { abstract boolean handle(Mail m); }  </p>
+<p>public class PostOffice9 {</p>
+<p>​       enum MailHandler { GENERAL_DELIVERY, MACHINE_SCAN, VISUAL_INSPECTION, RETURN_TO_SENDER }</p>
+<p>​       public static void handle(Mail m, EnumMap&lt;MailHandler,Handler&gt; em) {   </p>
+<p>​              for(Map.Entry&lt;MailHandler,Handler&gt; e : em.entrySet()) {</p>
+<p>​                     if(e.getValue().handle(m)) return;                                                 </p>
+<p>​              }</p>
+<p>​              print(m + “ is a dead letter”);              </p>
+<p>​       }      </p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              EnumMap&lt;MailHandler,Handler&gt; em = new EnumMap&lt;MailHandler,Handler&gt;(MailHandler.class);</p>
+<p>​              em.put(MailHandler.GENERAL_DELIVERY, new Handler() {</p>
+<p>​                     public boolean handle(Mail m) {</p>
+<p>​                            switch(m.generalDelivery) {</p>
+<p>​                                   case YES:</p>
+<p>​                                          print(“Using general delivery for “ + m);</p>
+<p>​                                          return true;</p>
+<p>​                                   default: return false;</p>
+<p>​                            }</p>
+<p>​                     }</p>
+<p>​              });</p>
+<p>​              em.put(MailHandler.MACHINE_SCAN, new Handler() {</p>
+<p>​                     public boolean handle(Mail m) {</p>
+<p>​                            switch(m.scannability) {</p>
+<p>​                                   case UNSCANNABLE: return false;</p>
+<p>​                                   default:</p>
+<p>​                                          switch(m.address) {</p>
+<p>​                                                 case INCORRECT: return false;</p>
+<p>​                                                 default:</p>
+<p>​                                                        print(“Delivering “ + m + “ automatically”);</p>
+<p>​                                                        return true;</p>
+<p>​                                          }</p>
+<p>​                            }</p>
+<p>​                     }      </p>
+<p>​              });</p>
+<p>​              em.put(MailHandler.VISUAL_INSPECTION, new Handler() {</p>
+<p>​                     public boolean handle(Mail m) {</p>
+<p>​                            switch(m.readability) {</p>
+<p>​                                   case ILLEGIBLE: return false;</p>
+<p>​                                   default:</p>
+<p>​                                          switch(m.address) {</p>
+<p>​                                                 case INCORRECT: return false;</p>
+<p>​                                                 default:</p>
+<p>​                                                        print(“Delivering “ + m + “ normally”);</p>
+<p>​                                                        return true;</p>
+<p>​                                          }</p>
+<p>​                            }</p>
+<p>​                     }</p>
+<p>​              });</p>
+<p>​              em.put(MailHandler.RETURN_TO_SENDER, new Handler() {</p>
+<p>​                     public boolean handle(Mail m) {</p>
+<p>​                            switch(m.returnAddress) {</p>
+<p>​                                   case MISSING: return false;</p>
+<p>​                                   default:</p>
+<p>​                                          print(“Return “ + m + “ to sender”);</p>
+<p>​                                          return true;</p>
+<p>​                            }</p>
+<p>​                     }</p>
+<p>​              });</p>
+<p>​              for(Mail mail : Mail.generator(10)) {</p>
+<p>​                     print(mail.details());</p>
+<p>​                     handle(mail, em);</p>
+<p>​                     print(“*****”); </p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>enum Category {</p>
+<p>​       MONEY(NICKEL, DIME, QUARTER, DOLLAR),</p>
+<p>​       ITEM_SELECTION(TOOTHPASTE, CHIPS, SODA, SOAP),</p>
+<p>​       QUIT_TRANSACTION(ABORT_TRANSACTION),</p>
+<p>​       SHUT_DOWN(STOP);</p>
+<p>​       private Input[] values;</p>
+<p>​       Category(Input… types) { values = types; }</p>
+<p>​       private static EnumMap&lt;Input,Category&gt; categories =</p>
+<p>​              new EnumMap&lt;Input,Category&gt;(Input.class);</p>
+<p>​       static {</p>
+<p>​              for(Category c : Category.class.getEnumConstants())</p>
+<p>​                     for(Input type : c.values)</p>
+<p>​                            categories.put(type, c);</p>
+<p>​       }      </p>
+<p>​       public static Category categorize(Input input) {</p>
+<p>​              return categories.get(input);</p>
+<p>​       }</p>
+<p>}</p>
+<p>interface Command {        void next(Input input);</p>
+<p>​       void next();</p>
+<p>}</p>
+<p>enum State {</p>
+<p>​       RESTING,</p>
+<p>​       ADDING_MONEY,</p>
+<p>​       DISPENSING,</p>
+<p>​       GIVING_CHANGE, </p>
+<p>​       TERMINAL</p>
+<p>}</p>
+<p>class VendingMachine10 {</p>
+<p>​       int id = ++count;</p>
+<p>​       static int count = 0; </p>
+<p>​       State state = State.RESTING;</p>
+<p>​       int amount = 0;   int banked = 0;    Input input = null;</p>
+<p>​       Input selection = null;</p>
+<p>​       boolean isTransient = false;</p>
+<p>​             class RestingDo implements Command {</p>
+<p>​              public void next(Input in) {</p>
+<p>​                     isTransient = false;</p>
+<p>​                     input = in;</p>
+<p>​                     switch(Category.categorize(in)) {</p>
+<p>​                            case MONEY:</p>
+<p>​                                   amount += in.amount();</p>
+<p>​                                   state = State.ADDING_MONEY;</p>
+<p>​                                   break;</p>
+<p>​                            case SHUT_DOWN:</p>
+<p>​                                   state = State.TERMINAL;</p>
+<p>​                            default:                               </p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​              public void next() { </p>
+<p>​                     isTransient = false;                     </p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       class AddingMoneyDo implements Command {</p>
+<p>​              public void next(Input input) {</p>
+<p>​                     isTransient = false;</p>
+<p>​                     switch(Category.categorize(input)) {</p>
+<p>​                            case MONEY:</p>
+<p>​                                   amount += input.amount();</p>
+<p>​                                   break;</p>
+<p>​                            case ITEM_SELECTION:</p>
+<p>​                                   selection = input;</p>
+<p>​                                   if(amount &lt; selection.amount()) {</p>
+<p>​                                          print(“Insufficient money for “ + selection);                                                 }</p>
+<p>​                                   else {</p>
+<p>​                                          state = State.DISPENSING;</p>
+<p>​                                          isTransient = true;</p>
+<p>​                                   }</p>
+<p>​                                   break;</p>
+<p>​                            case QUIT_TRANSACTION:</p>
+<p>​                                   state = State.GIVING_CHANGE;</p>
+<p>​                                   isTransient = true;</p>
+<p>​                                   break;</p>
+<p>​                            case SHUT_DOWN:</p>
+<p>​                                   state = State.TERMINAL;</p>
+<p>​                                   banked = banked += amount;                               </p>
+<p>​                            default:</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​              public void next() { isTransient = false; }</p>
+<p>​       }</p>
+<p>​       class DispensingDo implements Command {</p>
+<p>​              public void next() {</p>
+<p>​                     isTransient = true; </p>
+<p>​                     print(“Here is your “ + selection);</p>
+<p>​                     state = State.GIVING_CHANGE;</p>
+<p>​              }</p>
+<p>​              public void next(Input input) { </p>
+<p>​                     isTransient = true; </p>
+<p>​                     print(“Here is your “ + selection);</p>
+<p>​                     state = State.GIVING_CHANGE;  </p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       class GivingChangeDo implements Command {</p>
+<p>​              public void next(Input input) { </p>
+<p>​                     isTransient = true; </p>
+<p>​                     if(amount &gt; selection.amount()) {</p>
+<p>​                            print(“Your change: “ + (amount - selection.amount()));                              </p>
+<p>​                     }</p>
+<p>​                     banked = banked += selection.amount();</p>
+<p>​                     amount = 0;                      state = State.RESTING;                               </p>
+<p>​              }</p>
+<p>​              public void next() {</p>
+<p>​                     isTransient = true; </p>
+<p>​                     if(amount &lt; selection.amount())</p>
+<p>​                            print(“Returning your: “ + amount); </p>
+<p>​                     if(amount &gt; selection.amount()) {</p>
+<p>​                            print(“Your change: “ + (amount - selection.amount()));</p>
+<p>​                            banked = banked += selection.amount();                              </p>
+<p>​                     }</p>
+<p>​                     if(amount == selection.amount())</p>
+<p>​                            banked = banked += selection.amount();</p>
+<p>​                     amount = 0;</p>
+<p>​                     state = State.RESTING;</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       class TerminalDo implements Command { </p>
+<p>​              public void next(Input input) {</p>
+<p>​                     print(“state TERMINAL”);</p>
+<p>​                     isTransient = false;</p>
+<p>​              }</p>
+<p>​              public void next() {</p>
+<p>​                     print(“state TERMINAL”);</p>
+<p>​                     isTransient = false;              </p>
+<p>​              }             </p>
+<p>​       }</p>
+<p>​       Map&lt;State,Command&gt; em = </p>
+<p>​              Collections.synchronizedMap(new EnumMap&lt;State,Command&gt;(State.class));</p>
+<p>​       VendingMachine10() {              print(“VendingMachine10()#” + id);   </p>
+<p>​              em.put(State.RESTING, new RestingDo());</p>
+<p>​              em.put(State.ADDING_MONEY, new AddingMoneyDo());</p>
+<p>​              em.put(State.DISPENSING, new DispensingDo());</p>
+<p>​              em.put(State.GIVING_CHANGE, new GivingChangeDo());</p>
+<p>​              em.put(State.TERMINAL, new TerminalDo());</p>
+<p>​       }</p>
+<p>​       void showAmount() { print(“amount = “ + amount); }</p>
+<p>​       void showBanked() { print(“banked = “ + banked); }</p>
+<p>​       public static void main(String[] args) {       </p>
+<p>​              Generator<input> gen = new RandomInputGenerator();</p>
+<p>​              if(args.length == 1)</p>
+<p>​                     gen = new FileInputGenerator10(args[0]);</p>
+<p>​              VendingMachine10 vm10a = new VendingMachine10();</p>
+<p>​              VendingMachine10 vm10b = new VendingMachine10(); </p>
+<p>​              VendingMachine10 vm10c = new VendingMachine10();</p>
+<p>​              print();</p>
+<p>​              print(“Testing VendingMachine 10a:”);</p>
+<p>​              while(vm10a.state != State.TERMINAL) {</p>
+<p>​                     Input in = gen.next();</p>
+<p>​                     (vm10a.em.get(vm10a.state)).next(in);</p>
+<p>​                     while(vm10a.isTransient) {</p>
+<p>​                            (vm10a.em.get(vm10a.state)).next();                         </p>
+<p>​                     }      </p>
+<p>​                     vm10a.showAmount();                                           </p>
+<p>​              }</p>
+<p>​              vm10a.showBanked();</p>
+<p>​              print();</p>
+<p>​              print(“Testing VendingMachine 10b:”);</p>
+<p>​              gen = new FileInputGenerator10(“VendingMachine10bInput.txt”);</p>
+<p>​              while(vm10b.state != State.TERMINAL) {</p>
+<p>​                     Input in = gen.next();</p>
+<p>​                     (vm10b.em.get(vm10b.state)).next(in);</p>
+<p>​                     while(vm10b.isTransient) {</p>
+<p>​                            (vm10b.em.get(vm10b.state)).next();                        </p>
+<p>​                     }      </p>
+<p>​                     vm10b.showAmount();                                           </p>
+<p>​              }</p>
+<p>​              print();</p>
+<p>​              print(“Testing VendingMachine 10c:”);</p>
+<p>​              gen = new FileInputGenerator10(“VendingMachine10cInput.txt”);</p>
+<p>​              while(vm10c.state != State.TERMINAL) {</p>
+<p>​                     Input in = gen.next();</p>
+<p>​                     (vm10c.em.get(vm10c.state)).next(in);</p>
+<p>​                     while(vm10c.isTransient) {</p>
+<p>​                            (vm10c.em.get(vm10c.state)).next();                         </p>
+<p>​                     }      </p>
+<p>​                     vm10c.showAmount();                                            </p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p> class FileInputGenerator10 implements Generator<input> {</p>
+<p>​       private Iterator<string> input;</string></p>
+<p>​       public FileInputGenerator10(String fileName) {</p>
+<p>​              input = new TextFile(fileName, “;”).iterator();</p>
+<p>​       }</p>
+<p>​       public Input next() {</p>
+<p>​              if(input.hasNext()) {</p>
+<p>​                     return Enum.valueOf(Input.class, input.next().trim());</p>
+<p>​              }</p>
+<p>​              return null;</p>
+<p>​       }      </p>
+<p>}</p>
+<p> interface VendingInput { String name(); } </p>
+<p>class MonetaryUnit implements VendingInput {</p>
+<p>​       private String name;</p>
+<p>​       private int amount = 0;</p>
+<p>​       MonetaryUnit(String name, int amount) {</p>
+<p>​              this.name = name;</p>
+<p>​              this.amount = amount;</p>
+<p>​       }</p>
+<p>​       public String name() { return name; }</p>
+<p>​       public int amount() { return amount; }</p>
+<p>}</p>
+<p>class VendedItem implements VendingInput {</p>
+<p>​       private String name;</p>
+<p>​       private int price = 0;</p>
+<p>​       VendedItem(String name, int price) {</p>
+<p>​              this.name = name;</p>
+<p>​              this.price = price;</p>
+<p>​       }</p>
+<p>​       public String name() { return name; }</p>
+<p>​       public int price() { return price; }</p>
+<p>} </p>
+<p>class VendingEvent implements VendingInput {</p>
+<p>​       private String name;</p>
+<p>​       VendingEvent(String name) {</p>
+<p>​              this.name = name;</p>
+<p>​       }</p>
+<p>​       public String name() { return name; }  </p>
+<p>}</p>
+<p>public class VendingMachine11 {</p>
+<p>​       private static State state = State.RESTING;</p>
+<p>​       private static int amount = 0;</p>
+<p>​       private static VendedItem selection = null;</p>
+<p>​       enum StateDuration { TRANSIENT }         enum State {</p>
+<p>​              RESTING {</p>
+<p>​                     void next(VendingInput in) {</p>
+<p>​                            if(MonetaryUnit.class.isInstance(in)) {</p>
+<p>​                                   amount += ((MonetaryUnit)in).amount();</p>
+<p>​                                   state = ADDING_MONEY;   </p>
+<p>​                            }</p>
+<p>​                            if(VendingEvent.class.isInstance(in)) {</p>
+<p>​                                   if(((VendingEvent)in).name().equals(“Stop”))</p>
+<p>​                                          state = TERMINAL;</p>
+<p>​                            }</p>
+<p>​                     }</p>
+<p>​              },</p>
+<p>​              ADDING_MONEY {</p>
+<p>​                     void next(VendingInput in) {</p>
+<p>​                            if(MonetaryUnit.class.isInstance(in)) {</p>
+<p>​                                   amount += ((MonetaryUnit)in).amount();</p>
+<p>​                            }                           </p>
+<p>​                            if(VendedItem.class.isInstance(in)) {</p>
+<p>​                                   selection = (VendedItem)in;</p>
+<p>​                                   if(amount &lt; selection.price())</p>
+<p>​                                          print(“Insufficient money for “ + selection.name());</p>
+<p>​                                   else state = DISPENSING;</p>
+<p>​                            }</p>
+<p>​                            if(VendingEvent.class.isInstance(in)) {</p>
+<p>​                                   if(((VendingEvent)in).name().equals(“AbortTransaction”))</p>
+<p>​                                          state = GIVING_CHANGE;</p>
+<p>​                                   if(((VendingEvent)in).name().equals(“Stop”))</p>
+<p>​                                          state = TERMINAL;</p>
+<p>​                            }                           </p>
+<p>​                     }</p>
+<p>​              },</p>
+<p>​              DISPENSING(StateDuration.TRANSIENT) {</p>
+<p>​                     void next() {</p>
+<p>​                            print(“here is your “ + selection.name());</p>
+<p>​                            amount -= selection.price();</p>
+<p>​                            state = GIVING_CHANGE;</p>
+<p>​                     }</p>
+<p>​              },</p>
+<p>​              GIVING_CHANGE(StateDuration.TRANSIENT) {</p>
+<p>​                     void next() {</p>
+<p>​                            if(amount &gt; 0) {</p>
+<p>​                                   print(“Your change: “ + amount);</p>
+<p>​                                   amount = 0;</p>
+<p>​                            }</p>
+<p>​                            state = RESTING;</p>
+<p>​                     }</p>
+<p>​              },</p>
+<p>​              TERMINAL { void output() { print(“Halted”); } };</p>
+<p>​              private boolean isTransient = false;</p>
+<p>​              State()     {}           State(StateDuration trans) { isTransient = true; }</p>
+<p>​              void next(VendingInput in) {</p>
+<p>​                     throw new RuntimeException(“Only call “ +</p>
+<p>​                            “next(VendingInput in) for non-transient states”);</p>
+<p>​              }</p>
+<p>​              void next() {   </p>
+<p>​                     throw new RuntimeException(“Only call next() for “ +</p>
+<p>​                            “StateDuration.TRANSIENT states”);</p>
+<p>​              }</p>
+<p>​              void output() { print(amount); }</p>
+<p>​       }</p>
+<p>​       static void run(Generator<vendinginput> gen) {</vendinginput></p>
+<p>​              while(state != State.TERMINAL) {        </p>
+<p>​                     state.next(((FileInputGenerator11)gen).next());</p>
+<p>​                     while(state.isTransient) </p>
+<p>​                            state.next();</p>
+<p>​                     state.output();                             </p>
+<p>​              }</p>
+<p>​              state = State.RESTING;</p>
+<p>​              print();</p>
+<p>​       }</p>
+<p>​       static void runRandom(Generator<vendinginput> gen) {</vendinginput></p>
+<p>​              while(state != State.TERMINAL) {        </p>
+<p>​                     state.next(((FileInputGenerator11)gen).randomNext());</p>
+<p>​                     while(state.isTransient) </p>
+<p>​                            state.next();</p>
+<p>​                     state.output();                             </p>
+<p>​              }</p>
+<p>​              state = State.RESTING;</p>
+<p>​              print();                         </p>
+<p>​       }</p>
+<p>​       static void runTextExample(Generator<vendinginput> gen) {</vendinginput></p>
+<p>​              while(state != State.TERMINAL) { </p>
+<p>​                                  state.next(((FileInputGenerator11)gen).textExampleNext(“VendingMachineInput.txt”));</p>
+<p>​                     while(state.isTransient) </p>
+<p>​                            state.next();</p>
+<p>​                     state.output();                             </p>
+<p>​              }</p>
+<p>​              state = State.RESTING;</p>
+<p>​              print();                         </p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              FileInputGenerator11 gen = </p>
+<p>​                     new FileInputGenerator11(“VendingMachine11Input.txt”);</p>
+<p>​              runRandom(gen);              run(gen); </p>
+<p>​              runTextExample(gen);        }      </p>
+<p>}</p>
+<p>class FileInputGenerator11 implements Generator<vendinginput> {</vendinginput></p>
+<p>​       private ArrayList<string> list;</string></p>
+<p>​       private List<vendinginput> vendList = new ArrayList<vendinginput>();</vendinginput></vendinginput></p>
+<p>​       private Iterator<vendinginput> it;</vendinginput></p>
+<p>​       private Random rand = new Random();</p>
+<p>​       private Iterator<string> input = new TextFile(“VendingMachineInput.txt”, “;”).iterator();</string></p>
+<p>​             public FileInputGenerator11(String fileName) { </p>
+<p>​              list = new TextFile(fileName, “,|;|:”);</p>
+<p>​              int m = list.indexOf(“Money”);</p>
+<p>​              int se = list.indexOf(“Selection”);</p>
+<p>​              int e = list.indexOf(“VendingEvent”);</p>
+<p>​              VendingInput vIn;</p>
+<p>​              for(String s : list) {</p>
+<p>​                            int x = list.indexOf(s);</p>
+<p>​                            if(m &lt; x &amp;&amp; x &lt; se) {</p>
+<p>​                                   String[] sa = s.split(“\(|\)”);</p>
+<p>​                                   vIn = new MonetaryUnit(sa[0], Integer.parseInt(sa[1]));</p>
+<p>​                                   vendList.add(vIn);</p>
+<p>​                            }</p>
+<p>​                            else if(se &lt; x &amp;&amp; x &lt; e) {</p>
+<p>​                                   String[] sa = s.split(“\(|\)”);</p>
+<p>​                                   vIn = new VendedItem(sa[0], Integer.parseInt(sa[1]));</p>
+<p>​                                   vendList.add(vIn);</p>
+<p>​                            }</p>
+<p>​                            else if(e &lt; x) {</p>
+<p>​                                   vIn = new VendingEvent(s);</p>
+<p>​                                   vendList.add(vIn);</p>
+<p>​                            }                    </p>
+<p>​              }</p>
+<p>​              it = vendList.iterator();         </p>
+<p>​       }</p>
+<p>​       public VendingInput next() {</p>
+<p>​              if(list.isEmpty()) return null;         </p>
+<p>​              if(it.hasNext()) {</p>
+<p>​                     return it.next();                     </p>
+<p>​              }</p>
+<p>​              return null;</p>
+<p>​       }</p>
+<p>​       public VendingInput randomNext() { </p>
+<p>​              return vendList.get(rand.nextInt(vendList.size()));</p>
+<p>​       }</p>
+<p>​       public VendingInput textExampleNext(String fileName) {              </p>
+<p>​              if(!input.hasNext()) return null;</p>
+<p>​              String s = input.next().trim();</p>
+<p>​              String s1 = s.charAt(0) + s.substring(1).toLowerCase();</p>
+<p>​              for(int i = 0; i &lt; this.vendList.size(); i++) {</p>
+<p>​                     if(vendList.get(i).name().equals(s1)) { </p>
+<p>​                            return vendList.get(i);                  </p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​              return null;</p>
+<p>​       }      </p>
+<p>}</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/题解/" rel="tag"># 题解</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/06/2019-10-06-Java题解重用/" rel="next" title="Java题解重用">
+                <i class="fa fa-chevron-left"></i> Java题解重用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/06/2019-10-06-Java题解权限/" rel="prev" title="Java题解权限">
+                Java题解权限 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第十九章-枚举"><span class="nav-number">1.</span> <span class="nav-text">第十九章 枚举</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

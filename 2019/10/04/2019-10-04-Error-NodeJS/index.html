@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="NodeJs,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="Error Error类型 Error实例 系统错误      ErrorError类型所有 Node.js 引起的 JavaScript 和系统错误都是继承自或实例化自标准的 JavaScript 的 &amp;lt;Error&amp;gt;类，且保证至少提供类中的可用的属性。  标准的 JavaScript 错误： &amp;lt;EvalError&amp;gt; : 当调用 eval() 失败时抛出。 &amp;lt;S">
+<meta name="keywords" content="NodeJs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Error-NodeJS">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-Error-NodeJS/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="Error Error类型 Error实例 系统错误      ErrorError类型所有 Node.js 引起的 JavaScript 和系统错误都是继承自或实例化自标准的 JavaScript 的 &amp;lt;Error&amp;gt;类，且保证至少提供类中的可用的属性。  标准的 JavaScript 错误： &amp;lt;EvalError&amp;gt; : 当调用 eval() 失败时抛出。 &amp;lt;S">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.163Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Error-NodeJS">
+<meta name="twitter:description" content="Error Error类型 Error实例 系统错误      ErrorError类型所有 Node.js 引起的 JavaScript 和系统错误都是继承自或实例化自标准的 JavaScript 的 &amp;lt;Error&amp;gt;类，且保证至少提供类中的可用的属性。  标准的 JavaScript 错误： &amp;lt;EvalError&amp;gt; : 当调用 eval() 失败时抛出。 &amp;lt;S">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-Error-NodeJS/">
+
+
+
+
+
+  <title>Error-NodeJS | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-Error-NodeJS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Error-NodeJS</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T10:00:00+08:00">
+                2019-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <!-- toc orderedList:0 depthFrom:1 depthTo:6 -->
+
+<ul>
+<li><a href="#error">Error</a><ul>
+<li><a href="#error类型">Error类型</a></li>
+<li><a href="#error实例">Error实例</a></li>
+<li><a href="#系统错误">系统错误</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h1><h2 id="Error类型"><a href="#Error类型" class="headerlink" title="Error类型"></a>Error类型</h2><p>所有 <code>Node.js</code> 引起的 <code>JavaScript</code> 和系统错误都是继承自或实例化自标准的 <code>JavaScript</code> 的 <code>&lt;Error&gt;</code>类，且保证至少提供类中的可用的属性。</p>
+<ul>
+<li>标准的 JavaScript 错误：<ul>
+<li><code>&lt;EvalError&gt;</code> : 当调用 <code>eval()</code> 失败时抛出。</li>
+<li><code>&lt;SyntaxError&gt;</code> : 当 <code>JavaScript</code> 语法错误时抛出。</li>
+<li><code>&lt;RangeError&gt;</code> : 当一个值不在预期范围内时抛出。</li>
+<li><code>&lt;ReferenceError&gt;</code> : 当使用未定义的变量时抛出。</li>
+<li><code>&lt;TypeError&gt;</code> : 当传入错误类型的参数时抛出。</li>
+<li><code>&lt;URIError&gt;</code> : 当一个全局的 URI 处理函数被误用时抛出。</li>
+<li><code>&lt;InternalError&gt;</code>(非标志特性) :创建一个代表Javascript引擎内部错误的异常抛出的实例。 如: “递归太多”。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">//使用Chrome浏览器开发者工具运行
+
+throw new Error(&#39;一个错误产生&#39;);
+// VM639:1 Uncaught Error: 一个错误产生
+//     at &lt;anonymous&gt;:1:7
+// (anonymous) @ VM639:1
+
+throw new EvalError(&#39;一个错误产生&#39;);
+// VM640:1 Uncaught EvalError: 一个错误产生
+//     at &lt;anonymous&gt;:1:7
+// (anonymous) @ VM640:1
+
+throw new SyntaxError(&#39;一个错误产生&#39;);
+// VM641:1 Uncaught SyntaxError: 一个错误产生
+//     at &lt;anonymous&gt;:1:7
+// (anonymous) @ VM641:1</code></pre>
+<h2 id="Error实例"><a href="#Error实例" class="headerlink" title="Error实例"></a>Error实例</h2><ul>
+<li>Error.prototype.constructor</li>
+<li>Error.prototype.message<ul>
+<li>Error message.</li>
+</ul>
+</li>
+<li>Error.prototype.name<ul>
+<li>Error name.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">// Create a new object, that prototypally inherits from the Error constructor.
+function MyError(message) {
+  this.name = &#39;MyError&#39;;
+  this.message = message || &#39;Default Message&#39;;
+  this.stack = (new Error()).stack;
+}
+MyError.prototype = Object.create(Error.prototype);
+MyError.prototype.constructor = MyError;
+
+try {
+  throw new MyError();
+} catch (e) {
+  console.log(e.name);     // &#39;MyError&#39;
+  console.log(e.message);  // &#39;Default Message&#39;
+}</code></pre>
+<h2 id="系统错误"><a href="#系统错误" class="headerlink" title="系统错误"></a>系统错误</h2><p>系统错误是当程序运行环境中发生异常时产生的。</p>
+<p>常见的系统错误:</p>
+<ul>
+<li><code>EACCES</code> (拒绝访问): 试图以被一个文件的访问权限禁止的方式访问一个文件。</li>
+<li><code>EADDRINUSE</code> (地址已被使用): 试图绑定一个服务器（net、http 或 https）到本地地址，但因另一个本地系统的服务器已占用了该地址而导致失败。</li>
+<li><code>ECONNREFUSED</code> (连接被拒绝): 无法连接，因为目标机器积极拒绝。 这通常是因为试图连接到外部主机上的废弃的服务。</li>
+<li><code>ECONNRESET</code> (连接被重置): 一个连接被强行关闭。 这通常是因为连接到远程 socket 超时或重启。 常发生于 http 和 net 模块。</li>
+<li><code>EEXIST</code> (文件已存在): 一个操作的目标文件已存在，而要求目标不存在。</li>
+<li><code>EISDIR</code> (是一个目录): 一个操作要求一个文件，但给定的路径是一个目录。</li>
+<li><code>EMFILE</code> (系统打开了太多文件): 已达到系统文件描述符允许的最大数量，且描述符的请求不能被满足直到至少关闭其中一个。 当一次并行打开多个文件时会发生这个错误，尤其是在进程的文件描述限制数量较低的操作系统（如 OS X）。 要解决这个限制，可在运行 Node.js 进程的同一 shell 中运行 ulimit -n 2048。</li>
+<li><code>ENOENT</code> (无此文件或目录): 通常是由 fs 操作引起的，表明指定的路径不存在，即给定的路径找不到文件或目录。</li>
+<li><code>ENOTDIR</code> (不是一个目录): 给定的路径虽然存在，但不是一个目录。 通常是由 fs.readdir 引起的。</li>
+<li><code>ENOTEMPTY</code> (目录非空): 一个操作的目标是一个非空的目录，而要求的是一个空目录。 通常是由 fs.unlink 引起的。</li>
+<li><code>EPERM</code> (操作不被允许): 试图执行一个需要更高权限的操作。</li>
+<li><code>EPIPE</code> (管道损坏): 写入一个管道、socket 或 FIFO 时没有进程读取数据。 常见于 net 和 http 层，表明远端要写入的流已被关闭。</li>
+<li><code>ETIMEDOUT</code> (操作超时): 一个连接或发送的请求失败，因为连接方在一段时间后没有做出合适的响应。 常见于 http 或 net。 往往标志着 socket.end() 没有被正确地调用。</li>
+</ul>
+<blockquote>
+<p><a href="http://nodejs.cn/api/errors.html#errors_common_system_errors" target="_blank" rel="noopener">参考</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/NodeJs/" rel="tag"># NodeJs</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-ES数组/" rel="next" title="ES数组">
+                <i class="fa fa-chevron-left"></i> ES数组
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-ES6函数扩展/" rel="prev" title="ES6函数扩展">
+                ES6函数扩展 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Error"><span class="nav-number">1.</span> <span class="nav-text">Error</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Error类型"><span class="nav-number">1.1.</span> <span class="nav-text">Error类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Error实例"><span class="nav-number">1.2.</span> <span class="nav-text">Error实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统错误"><span class="nav-number">1.3.</span> <span class="nav-text">系统错误</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

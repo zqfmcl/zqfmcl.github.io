@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="HTML,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="[TOC] html的文件结构&amp;lt;html&amp;gt;     &amp;lt;head&amp;gt;...&amp;lt;/head&amp;gt;     &amp;lt;body&amp;gt;...&amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  写在开头网页技术严格的三层分离：  html就是负责描述页面的语义（结构层）； css负责描述页面的样式（样示层/表示层）； js负责描述页面的动态效果的（行为层）。  html中，">
+<meta name="keywords" content="HTML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML知识点">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-HTML知识点/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="[TOC] html的文件结构&amp;lt;html&amp;gt;     &amp;lt;head&amp;gt;...&amp;lt;/head&amp;gt;     &amp;lt;body&amp;gt;...&amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  写在开头网页技术严格的三层分离：  html就是负责描述页面的语义（结构层）； css负责描述页面的样式（样示层/表示层）； js负责描述页面的动态效果的（行为层）。  html中，">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://img.hksite.cn/2019-04-05-062712.jpg">
+<meta property="og:image" content="http://img.hksite.cn/2019-04-05-064425.png">
+<meta property="og:image" content="http://img.hksite.cn/2019-04-05-064255.png">
+<meta property="og:image" content="http://img.hksite.cn/2019-04-05-065838.png">
+<meta property="og:image" content="http://img.hksite.cn/2019-04-05-065906.png">
+<meta property="og:image" content="http://img.hksite.cn/2019-04-05-070136.png">
+<meta property="og:image" content="http://img.hksite.cn/2019-04-05-070258.png">
+<meta property="og:image" content="http://img.hksite.cn/1473842446659">
+<meta property="og:image" content="http://img.hksite.cn/1473841390637">
+<meta property="og:image" content="http://img.hksite.cn/1473841501816">
+<meta property="og:image" content="http://img.hksite.cn/1488868869467">
+<meta property="og:image" content="http://img.hksite.cn/1473841886075">
+<meta property="og:image" content="http://img.hksite.cn/1473845077992">
+<meta property="og:image" content="http://img.hksite.cn/1473844238263">
+<meta property="og:image" content="http://img.hksite.cn/1473844600847">
+<meta property="og:image" content="http://img.hksite.cn/1473844735310">
+<meta property="og:image" content="http://img.hksite.cn/2019-04-05-071916.png">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.194Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML知识点">
+<meta name="twitter:description" content="[TOC] html的文件结构&amp;lt;html&amp;gt;     &amp;lt;head&amp;gt;...&amp;lt;/head&amp;gt;     &amp;lt;body&amp;gt;...&amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  写在开头网页技术严格的三层分离：  html就是负责描述页面的语义（结构层）； css负责描述页面的样式（样示层/表示层）； js负责描述页面的动态效果的（行为层）。  html中，">
+<meta name="twitter:image" content="http://img.hksite.cn/2019-04-05-062712.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-HTML知识点/">
+
+
+
+
+
+  <title>HTML知识点 | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-HTML知识点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HTML知识点</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T10:00:00+08:00">
+                2019-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]</p>
+<h1 id="html的文件结构"><a href="#html的文件结构" class="headerlink" title="html的文件结构"></a>html的文件结构</h1><pre><code class="html">&lt;html&gt;
+    &lt;head&gt;...&lt;/head&gt;
+    &lt;body&gt;...&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h1 id="写在开头"><a href="#写在开头" class="headerlink" title="写在开头"></a>写在开头</h1><p>网页技术严格的三层分离：</p>
+<ul>
+<li>html就是负责描述页面的语义（<strong>结构层</strong>）；</li>
+<li>css负责描述页面的样式（<strong>样示层/表示层</strong>）；</li>
+<li>js负责描述页面的动态效果的（<strong>行为层</strong>）。</li>
+</ul>
+<p><strong>html中，除了语义，其他什么都没有。</strong></p>
+<p>html的作用只是增加语义！没有任何别的作用！比如：<strong>h1标签只是给文本增加主标题的语义</strong>，而不给文字加粗、加黑、变大，所有样式都属于css干的事情。</p>
+<h2 id="何谓语义化"><a href="#何谓语义化" class="headerlink" title="何谓语义化"></a>何谓语义化</h2><p>通俗来讲就是：每个标签命名直接表明其用途比如，网页上的文章的标题就可以用标题标签，网页上的各个栏目的栏目名称也可以使用标题标签。文章中内容的段落就得放在段落标签中，在文章中有想强调的文本，就可以使用 em 标签表示强调等等。</p>
+<p>讲了这么多语义化，但是语义化可以给我们带来什么样的好处呢？</p>
+<ol>
+<li>更容易被搜索引擎收录。</li>
+<li>更容易让屏幕阅读器读出网页内容。</li>
+</ol>
+<h2 id="HTML语法特性"><a href="#HTML语法特性" class="headerlink" title="HTML语法特性"></a>HTML语法特性</h2><ul>
+<li><p>HTML对换行不敏感，对tab不敏感</p>
+<p>所以HTML并不依靠缩进来表明嵌套关系，html可以进行压缩处理。</p>
+<p><img src="http://img.hksite.cn/2019-04-05-062712.jpg" alt></p>
+</li>
+<li><p>空白折叠现象</p>
+<p>HTML中所有的文字之间，如果有<strong>空格、换行、tab</strong>都将被折叠为一个空格显示。</p>
+</li>
+<li><p>标签要严格封闭</p>
+<p>如果标签不封闭的话，会启用自动添加闭合标签的策略，可能会引来灾难！</p>
+<pre><code class="html">&lt;h1&gt;这是标题1
+&lt;div&gt;这是内容</code></pre>
+<p>会转换成</p>
+<pre><code class="html">&lt;h1&gt;
+    这是标题1
+    &lt;div&gt;这是内容&lt;/div&gt;
+&lt;/h1&gt;</code></pre>
+</li>
+</ul>
+<h2 id="文本级、容器级"><a href="#文本级、容器级" class="headerlink" title="文本级、容器级"></a>文本级、容器级</h2><p>HTML标签是分等级的，HTML将所有的标签分为两种：<strong>容器级、文本级</strong>。</p>
+<p>顾名思义，<strong>容器级的标签，里面可以放置任何东西；文本级的标签里面，只能放置文字、图片、表单元素</strong>。</p>
+<p>再次强调：<strong>文本级的标签里面，只能放置文字、图片、表单元素</strong>，不要试图在<code>&lt;p&gt;</code>标签里放别的标签比如<code>&lt;h1&gt;</code>标签。</p>
+<h2 id="块级、行内级"><a href="#块级、行内级" class="headerlink" title="块级、行内级"></a>块级、行内级</h2><p>每个HTML元素都有一个默认的显示值，具体取决于它的元素类型。大多数元素的默认显示值是<strong>块（block）</strong>或<strong>内联(inline)</strong>。他们决定了元素默认显示模型，可以参考 重读css规范：可视化格式模型</p>
+<p>常见<strong>块级标签</strong>：<code>&lt;div&gt; &lt;form&gt; &lt;hx&gt;  &lt;hr&gt; &lt;dl&gt; &lt;dt&gt; &lt;ol&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;pre&gt; &lt;table&gt;</code>，当然html5新增了很多新的语义化标签类型：<code>&lt;header&gt; &lt;footer&gt; &lt;aside&gt; &lt;nav&gt;...</code>，还有很多新特性功能性的块级标签: <code>&lt;canvas&gt; &lt;svg&gt; &lt;video&gt;</code></p>
+<p>常见<strong>行内标签</strong>：<code>&lt;a&gt; &lt;br&gt; &lt;button&gt; &lt;code&gt; &lt;em&gt; &lt;strong&gt; &lt;i&gt; &lt;img&gt; &lt;input&gt; &lt;label&gt; &lt;q&gt;  &lt;script&gt; &lt;select&gt; &lt;span&gt; &lt;sub&gt; &lt;sup&gt; &lt;textarea&gt; ...</code></p>
+<h2 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h2><p>默认情况下，<code>&lt; &gt;</code>都会被自动识别成标签部分内容，然后空白字符又会自动折叠，因此需要对这些特殊符号进行转换：</p>
+<pre><code>&lt; : &amp;lt;
+&gt; : &amp;gt;
+空格：&amp;nbsp;
+换行：使用&lt;br&gt;
+“： &amp;quot;
+&amp;：&amp;amp;
+©: &amp;copy;
+</code></pre><h1 id="head-c"><a href="#head-c" class="headerlink" title="head [c]"></a>head [c]</h1><p>head部分主要有：<code>&lt;title&gt;、&lt;script&gt;、 &lt;style&gt;、&lt;link&gt;、 &lt;meta&gt;</code></p>
+<h2 id="meta"><a href="#meta" class="headerlink" title="meta"></a>meta</h2><p>meta是<code>自封闭标签</code>，不需要加闭合标签。里面可以定义：</p>
+<ul>
+<li>字符集 <strong>charset</strong> utf-8  / gb2312 ……</li>
+<li>关键字 <strong>Keywords</strong>  SEO搜索引擎优化</li>
+<li>页面描述 <strong>Description</strong> SEO搜索引擎优化</li>
+<li>页面缩放……</li>
+</ul>
+<h2 id="title"><a href="#title" class="headerlink" title="title"></a>title</h2><p>title标签是网页的标题信息，可以用来SOE</p>
+<p><img src="http://img.hksite.cn/2019-04-05-064425.png" alt="image-20190405144422924"></p>
+<h1 id="body"><a href="#body" class="headerlink" title="body"></a>body</h1><p>body部分主要有：<code>&lt;h1&gt;、&lt;p&gt;、&lt;a&gt;、&lt;img&gt;</code>等网页内容标签，<strong>在这里的标签中的内容会在浏览器中显示出来</strong>。</p>
+<h2 id="hx-B"><a href="#hx-B" class="headerlink" title="hx  [B]"></a>hx  [B]</h2><p><code>&lt;hx&gt;</code>标签是标题标签，表示文章标题（x=1-6）</p>
+<pre><code class="vbscript-html">&lt;h1&gt;一级标题&lt;/h1&gt;
+&lt;h2&gt;二级标题&lt;/h2&gt;
+&lt;h3&gt;三级标题&lt;/h3&gt;
+&lt;h4&gt;四级标题&lt;/h4&gt;
+&lt;h5&gt;五级标题&lt;/h5&gt;
+&lt;h6&gt;六级标题&lt;/h6&gt;
+&lt;h7&gt;七级标题（不存在）&lt;/h7&gt;
+</code></pre>
+<p><img src="http://img.hksite.cn/2019-04-05-064255.png" alt></p>
+<h2 id="p-B"><a href="#p-B" class="headerlink" title="p [B]"></a>p [B]</h2><p>作用：p标签是段落标签，<strong>文本级</strong>，不要试图在<code>&lt;p&gt;</code>标签里放别的标签比如<code>&lt;h1&gt;</code>标签</p>
+<p>语法：<code>&lt;p&gt;段落文本&lt;/p&gt;</code></p>
+<h2 id="em-strong-I"><a href="#em-strong-I" class="headerlink" title="em/strong [I]"></a>em/strong [I]</h2><p>作用：强调文字，默认em是斜体，strong是粗体，都可以用css调整</p>
+<p>用法：<code>&lt;em&gt;强调文本&lt;/em&gt;</code></p>
+<p>用法：<code>&lt;strong&gt;强调文本&lt;/strong&gt;</code></p>
+<h2 id="q-I"><a href="#q-I" class="headerlink" title="q [I]"></a>q [I]</h2><p>作用：q标签是引用标签，<strong>引用的文字会自动加上引号</strong></p>
+<p>用法：<code>&lt;q&gt;引用文本&lt;/q&gt;</code></p>
+<p><img src="http://img.hksite.cn/2019-04-05-065838.png" alt></p>
+<h2 id="blockquote-B"><a href="#blockquote-B" class="headerlink" title="blockquote [B]"></a>blockquote [B]</h2><p>作用：长引用标签，默认做法是缩进</p>
+<p>用法：<code>&lt;blockquote&gt;引用文本&lt;/blockquote&gt;</code></p>
+<p><img src="http://img.hksite.cn/2019-04-05-065906.png" alt="image-20190405145906272"></p>
+<h2 id="br-I"><a href="#br-I" class="headerlink" title="br [I]"></a>br [I]</h2><p>作用：换行 ( break ) <strong>自封闭</strong></p>
+<p>用法：<code>&lt;br /&gt;</code></p>
+<p>注意：很多时候，应该用<code>&lt;p&gt;</code>代替<code>&lt;br&gt;</code>，如果文字需要换行，那它应该是另一个文本块。</p>
+<h2 id="hr-B"><a href="#hr-B" class="headerlink" title="hr [B]"></a>hr [B]</h2><p>作用：分隔线 ( horizontal )</p>
+<p>用法：<code>&lt;hr&gt;</code></p>
+<h2 id="code-I"><a href="#code-I" class="headerlink" title="code [I]"></a>code [I]</h2><p>作用：代码，防止浏览器误认为是要执行代码，而没显示代码。加了标签浏览器就不会执行了，而是像文本一样显示出来</p>
+<p>用法：<code>&lt;code&gt;代码语言&lt;/code&gt;</code></p>
+<p><img src="http://img.hksite.cn/2019-04-05-070136.png" alt></p>
+<h2 id="pre-I"><a href="#pre-I" class="headerlink" title="pre [I]"></a>pre [I]</h2><p>作用：在处理多段预览文字或代码时使用（<strong>保证显示的格式</strong>，不需要<code>&lt;br /&gt;</code>或<code>&amp;nbsp</code>控制格式）</p>
+<p>用法：<code>&lt;pre&gt;语言代码段&lt;/pre&gt;</code></p>
+<pre><code class="html">&lt;pre&gt;
+let a = 1;
+let b = a + 1;
+if (b &gt; a) {
+  ...
+}
+&lt;/pre&gt;</code></pre>
+<p><img src="http://img.hksite.cn/2019-04-05-070258.png" alt></p>
+<h2 id="a-I"><a href="#a-I" class="headerlink" title="a [I]"></a>a [I]</h2><h3 id="作用1：实现超链接"><a href="#作用1：实现超链接" class="headerlink" title="作用1：实现超链接"></a><strong>作用1</strong>：实现超链接</h3><p>用法：<code>&lt;a  href=&quot;目标网址&quot;  title=&quot;鼠标滑过显示的文本&quot; target=&quot;_blank&quot;&gt;链接显示的文本&lt;/a&gt;</code></p>
+<p><code>target</code>属性表示是在当前窗口还是新窗口打开，<code>_blank</code>表示新窗口，还有<code>_self</code>自身窗口，<code>_top</code>顶部框架,<code>_parent</code>父框架。</p>
+<h3 id="作用2：链接Email地址mailto"><a href="#作用2：链接Email地址mailto" class="headerlink" title="作用2：链接Email地址mailto"></a><strong>作用2</strong>：链接Email地址<strong>mailto</strong></h3><p><img src="http://img.hksite.cn/1473842446659" alt="your text"></p>
+<pre><code class="html">&lt;a href=&quot;mailto: hk2291976@hotmail.com ? cc=abc@hotmail.com ; bb@hotmail.com &amp; subject=主题 &amp; body =邮件内容 &quot;&gt;发送邮件&lt;/a&gt;
+</code></pre>
+<h3 id="作用3：页面锚点"><a href="#作用3：页面锚点" class="headerlink" title="作用3：页面锚点"></a><strong>作用3</strong>：页面锚点</h3><p>锚点用name属性来设置，一个a标签如果name属性（或者id属性），那么就是页面的一个锚点。</p>
+<pre><code class="html">&lt;a name=&quot;foot&quot;&gt;跳转到文末&lt;/a&gt;
+
+或者：
+
+&lt;a id=&quot;foot&quot;&gt;跳转到文末&lt;/a&gt;
+</code></pre>
+<p>那么网址：<code>html#foot</code>就能够让这个锚点在页面最末端显示，此时页面有卷动。</p>
+<p>同时如果有一个超链接，也可以跳转到锚点</p>
+<pre><code class="html">    &lt;a href=&quot;#foot&quot;&gt;点击我就查看我的作品&lt;/a&gt;
+</code></pre>
+<p><strong>注意：</strong>如果需要一个段落内文字都被点击，那么应该是用<strong>p包裹a</strong>而不是a包裹p，<strong>a的语义要小于p，a就是可以当做文本来处理，所以p里面相当于放的就是纯文字。</strong></p>
+<h2 id="img-I"><a href="#img-I" class="headerlink" title="img [I]"></a>img [I]</h2><p>作用：插入图片，<strong>自封闭标签，也称为单标签</strong></p>
+<p>语法：<code>&lt;img src=&quot;图片地址&quot; title=&quot;鼠标滑过显示文字&quot; alt=&quot;下载失败时的替换文本&quot; title = &quot;提示文本&quot;&gt;</code></p>
+<p><strong>注意：</strong>src可以使用相对或绝对路径，相对路径的<code>..</code>只能写在开头</p>
+<h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><h2 id="ul-li-B"><a href="#ul-li-B" class="headerlink" title="ul-li [B]"></a>ul-li [B]</h2><p>作用：<strong>无序</strong>列表显示，<strong>导航条</strong>，内容列表</p>
+<p>用法：</p>
+<pre><code class="html">&lt;ul&gt;
+  &lt;li&gt;新闻1&lt;/li&gt;
+  &lt;li&gt;新闻2&lt;/li&gt;
+   ......
+&lt;/ul&gt;
+</code></pre>
+<p>效果：</p>
+<p><img src="http://img.hksite.cn/1473841390637" alt="your text"></p>
+<p><strong>注意</strong>：ul里面只能放li。<strong>ul的作用，并不是给文字增加小圆点的，而是增加无序列表的“语义”的</strong>。同时li是一个<strong>容器级</strong>标签，里面啥都可以放(div，p，hx，ul，img……)！！这也是为什么li经常用来做导航/内容列表</p>
+<h2 id="ol-li-B"><a href="#ol-li-B" class="headerlink" title="ol-li [B]"></a>ol-li [B]</h2><p>作用：<strong>有序</strong>列表显示</p>
+<p>用法：</p>
+<pre><code class="html">&lt;ol&gt;
+  &lt;li&gt;新闻1&lt;/li&gt;
+  &lt;li&gt;新闻2&lt;/li&gt;
+   ......
+&lt;/ol&gt;
+</code></pre>
+<p>效果：</p>
+<p><img src="http://img.hksite.cn/1473841501816" alt="your text"></p>
+<p>注意：用的不多，除非是非要自动编号的场景。</p>
+<h2 id="dl-dt-dd-B"><a href="#dl-dt-dd-B" class="headerlink" title="dl-dt-dd [B]"></a>dl-dt-dd [B]</h2><p>作用：带<strong>标题</strong>的列表显示用法：</p>
+<p>用法</p>
+<pre><code class="html">&lt;dl&gt;
+   &lt;dt&gt;计算机&lt;/dt&gt;
+   &lt;dd&gt;用来计算的仪器 ... ...&lt;/dd&gt;
+   &lt;dt&gt;显示器&lt;/dt&gt;
+   &lt;dd&gt;以视觉方式显示信息的装置 ... ...&lt;/dd&gt;
+&lt;/dl&gt;
+</code></pre>
+<p>效果：<img src="http://img.hksite.cn/1488868869467" alt="your text"></p>
+<p>注意：基本都可以用<strong>div+ul</strong>来代替，根据场景需要使用，基本所有列表的使用方法都可以转换。</p>
+<h1 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h1><h2 id="table-B"><a href="#table-B" class="headerlink" title="table [B]"></a>table [B]</h2><p>作用，产生一个表格</p>
+<p>用法：主要是<code>table、tbody、tr、th、td</code>四元素的使用</p>
+<p><code>&lt;table&gt;</code>表示一个表格</p>
+<p><code>&lt;tbody&gt;</code>表示这个表格内容是一个整体（一次显示而不是多次加载）</p>
+<p><code>&lt;tr&gt;</code>表示一行</p>
+<p><code>&lt;td&gt;</code>表示一个单元格</p>
+<p><code>&lt;th&gt;</code>表示<strong>表头</strong></p>
+<p>注意：默认是不代框的，如果加框可以用css样式</p>
+<pre><code class="html">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;班级&lt;/th&gt;
+      &lt;th&gt;学生数&lt;/th&gt;
+      &lt;th&gt;平均成绩&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;一班&lt;/td&gt;
+      &lt;td&gt;30&lt;/td&gt;
+      &lt;td&gt;89&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;二班&lt;/td&gt;
+      &lt;td&gt;35&lt;/td&gt;
+      &lt;td&gt;85&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+<p><img src="http://img.hksite.cn/1473841886075" alt="your text"></p>
+<h2 id="caption"><a href="#caption" class="headerlink" title="caption"></a>caption</h2><p>作用：表格标题</p>
+<h2 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h2><p>作用：表格</p>
+<h1 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h1><h2 id="form"><a href="#form" class="headerlink" title="form"></a>form</h2><p>作用：表单数据，用于和用户交互</p>
+<p>语法：<code>&lt;form   method=&quot;传送方式&quot;   action=&quot;服务器文件&quot;&gt;</code></p>
+<p>传送方式：<code>POST</code>,<code>GET</code></p>
+<h2 id="label"><a href="#label" class="headerlink" title="label"></a>label</h2><p>作用：显示文本和<strong>关联控件</strong></p>
+<p>语法：<code>&lt;label for=&quot;关联名字&quot;&gt;显示文本&lt;/label&gt;</code></p>
+<p><strong>注意：</strong>用<code>for</code>属性可以关联控件的<strong>id</strong>，有些像单选多选框这类不易点击的，可以用label关联</p>
+<pre><code class="html">&lt;form&gt;
+   &lt;label for=&quot;male&quot;&gt;男&lt;/label&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;gender&quot; id=&quot;male&quot; /&gt;
+  &lt;br /&gt;
+  &lt;label for=&quot;female&quot;&gt;女&lt;/label&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;gender&quot; id=&quot;female&quot; /&gt;
+  &lt;br /&gt;
+&lt;/form&gt;
+</code></pre>
+<p>这样就可以点击“男”或“女”触发点击单选的功能</p>
+<p><img src="http://img.hksite.cn/1473845077992" alt="your text"></p>
+<p><strong>注意</strong>：什么表单元素都可以有label。</p>
+<h2 id="input"><a href="#input" class="headerlink" title="input"></a>input</h2><p>作用：根据type类型可以展现出不同的表现形式<br>用法：<code>&lt;input type=&quot;类型&quot;&gt;显示文本&lt;/input</code></p>
+<p>type类型：</p>
+<ul>
+<li><code>text</code>: 文本类型，<strong>value</strong>里放值，可以显示在文本框里（<strong>作默认值</strong>）</li>
+<li><code>password</code>: 密码类型</li>
+<li><code>radio</code>：name=”name” <strong>name属性相同</strong>的单选框</li>
+<li><code>checkbox</code>：name=”name” <strong>name属性相同</strong>的单选框复选框</li>
+<li><code>file</code>: 选择文件</li>
+<li><code>button</code>：按钮（定义onclik触发消息），和button标签实现功能一样</li>
+<li><code>submit</code>：提交数据，自动有“提交”文字，点击这个表单就会被提交到form标签的action属性中的那个页面中去</li>
+<li><code>reset</code> : 重置数据</li>
+</ul>
+<p>HTML5中还加入了例如<code>datatime,date,color,tel,range,number……</code>等类型</p>
+<p><a href="http://www.monmonkey.com/rumenpian/html/input.html" target="_blank" rel="noopener">详细信息</a></p>
+<p><strong>注意：</strong>在HTML5中，可以用<code>placeholder</code>属性作为占位符，可以实现提示信息，input的<strong>值都需要通过value</strong>设置和取得。</p>
+<p><img src="http://img.hksite.cn/1473844238263" alt="your text"></p>
+<h2 id="textarea"><a href="#textarea" class="headerlink" title="textarea"></a>textarea</h2><p>作用：文本域，支持多段文本<br>用法：<code>&lt;textarea  rows=&quot;行数&quot; cols=&quot;列数&quot;&gt;文本&lt;/textarea&gt;</code></p>
+<p><strong>注：</strong>属性可以通过css修改<code>weight</code>和<code>height</code>更改，或者通过<code>cols</code>或<code>rows</code>更改。</p>
+<h2 id="select-option"><a href="#select-option" class="headerlink" title="select-option"></a>select-option</h2><p>作用：选择框，<strong>节约空间</strong></p>
+<p>用法：<code>&lt;option value=&#39;提交值&#39; selected=&quot;selected&quot;&gt;显示值&lt;/option&gt;</code></p>
+<p>其中：<code>selected=&quot;selected&quot;</code>表示选中</p>
+<pre><code>    &lt;label&gt;爱好:&lt;/label&gt;
+
+    &lt;select&gt;
+      &lt;option value=&quot;看书&quot;&gt;看书&lt;/option&gt;
+      &lt;option value=&quot;旅游&quot; selected=&quot;selected&quot;&gt;旅游&lt;/option&gt;
+      &lt;option value=&quot;运动&quot;&gt;运动&lt;/option&gt;
+      &lt;option value=&quot;购物&quot;&gt;购物&lt;/option&gt;
+    &lt;/select&gt;</code></pre><p><img src="http://img.hksite.cn/1473844600847" alt="your text"></p>
+<p>注意：下拉框可以多选，<code>select</code>启用属性<code>multiple=&quot;multiple&quot;</code>,然后在选择的时候，按<code>ctrl</code>（mac上<code>command</code>），就可以多选</p>
+<p><img src="http://img.hksite.cn/1473844735310" alt="your text"></p>
+<h1 id="用来布局的两大盒子"><a href="#用来布局的两大盒子" class="headerlink" title="用来布局的两大盒子"></a>用来布局的两大盒子</h1><h2 id="div"><a href="#div" class="headerlink" title="div"></a>div</h2><p>作用：<strong>最常用的标签之一</strong>，是<strong>最重要的容器</strong>（盒子），划分（division ），可以根据逻辑组成把页面划分成不同部分，然后通过css对不同部分进行装饰。（就像屋内的房间划分一样）</p>
+<p>用法：<code>&lt;div&gt;…&lt;/div&gt;</code></p>
+<p><img src="http://img.hksite.cn/2019-04-05-071916.png" alt="image-20190405151907354"></p>
+<p>由于div太常用了，所以，我们亲切的称呼这种模式叫做“<strong>div+css</strong>”。div标签负责布局，负责结构，负责分块。css负责样式。</p>
+<h2 id="span"><a href="#span" class="headerlink" title="span"></a>span</h2><p>作用：<strong>最常用的标签之一</strong>，也是<strong>很重要的盒子</strong>，它是<strong>文本级的标签</strong>，span标签为文字单独设置样式（通过css）</p>
+<p>用法：<code>&lt;span&gt;单独处理文本&lt;/span&gt;</code></p>
+<p>可以说，span里面是放置文本元素的，div里面放置布局元素的</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTML/" rel="tag"># HTML</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-Javascript数值/" rel="next" title="Javascript数值">
+                <i class="fa fa-chevron-left"></i> Javascript数值
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-JQuery/" rel="prev" title="JQuery">
+                JQuery <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#html的文件结构"><span class="nav-number">1.</span> <span class="nav-text">html的文件结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#写在开头"><span class="nav-number">2.</span> <span class="nav-text">写在开头</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#何谓语义化"><span class="nav-number">2.1.</span> <span class="nav-text">何谓语义化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML语法特性"><span class="nav-number">2.2.</span> <span class="nav-text">HTML语法特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本级、容器级"><span class="nav-number">2.3.</span> <span class="nav-text">文本级、容器级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#块级、行内级"><span class="nav-number">2.4.</span> <span class="nav-text">块级、行内级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转义字符"><span class="nav-number">2.5.</span> <span class="nav-text">转义字符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#head-c"><span class="nav-number">3.</span> <span class="nav-text">head [c]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#meta"><span class="nav-number">3.1.</span> <span class="nav-text">meta</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#title"><span class="nav-number">3.2.</span> <span class="nav-text">title</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#body"><span class="nav-number">4.</span> <span class="nav-text">body</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#hx-B"><span class="nav-number">4.1.</span> <span class="nav-text">hx  [B]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p-B"><span class="nav-number">4.2.</span> <span class="nav-text">p [B]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#em-strong-I"><span class="nav-number">4.3.</span> <span class="nav-text">em/strong [I]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#q-I"><span class="nav-number">4.4.</span> <span class="nav-text">q [I]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#blockquote-B"><span class="nav-number">4.5.</span> <span class="nav-text">blockquote [B]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#br-I"><span class="nav-number">4.6.</span> <span class="nav-text">br [I]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hr-B"><span class="nav-number">4.7.</span> <span class="nav-text">hr [B]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#code-I"><span class="nav-number">4.8.</span> <span class="nav-text">code [I]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pre-I"><span class="nav-number">4.9.</span> <span class="nav-text">pre [I]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#a-I"><span class="nav-number">4.10.</span> <span class="nav-text">a [I]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用1：实现超链接"><span class="nav-number">4.10.1.</span> <span class="nav-text">作用1：实现超链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用2：链接Email地址mailto"><span class="nav-number">4.10.2.</span> <span class="nav-text">作用2：链接Email地址mailto</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用3：页面锚点"><span class="nav-number">4.10.3.</span> <span class="nav-text">作用3：页面锚点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#img-I"><span class="nav-number">4.11.</span> <span class="nav-text">img [I]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#列表"><span class="nav-number">5.</span> <span class="nav-text">列表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ul-li-B"><span class="nav-number">5.1.</span> <span class="nav-text">ul-li [B]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ol-li-B"><span class="nav-number">5.2.</span> <span class="nav-text">ol-li [B]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dl-dt-dd-B"><span class="nav-number">5.3.</span> <span class="nav-text">dl-dt-dd [B]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表格"><span class="nav-number">6.</span> <span class="nav-text">表格</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#table-B"><span class="nav-number">6.1.</span> <span class="nav-text">table [B]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#caption"><span class="nav-number">6.2.</span> <span class="nav-text">caption</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#summary"><span class="nav-number">6.3.</span> <span class="nav-text">summary</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表单"><span class="nav-number">7.</span> <span class="nav-text">表单</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#form"><span class="nav-number">7.1.</span> <span class="nav-text">form</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#label"><span class="nav-number">7.2.</span> <span class="nav-text">label</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#input"><span class="nav-number">7.3.</span> <span class="nav-text">input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#textarea"><span class="nav-number">7.4.</span> <span class="nav-text">textarea</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#select-option"><span class="nav-number">7.5.</span> <span class="nav-text">select-option</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用来布局的两大盒子"><span class="nav-number">8.</span> <span class="nav-text">用来布局的两大盒子</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#div"><span class="nav-number">8.1.</span> <span class="nav-text">div</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#span"><span class="nav-number">8.2.</span> <span class="nav-text">span</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

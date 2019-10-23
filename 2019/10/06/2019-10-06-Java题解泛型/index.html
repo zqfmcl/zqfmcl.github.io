@@ -1,0 +1,2324 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="题解,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="第十五章 泛型class Robot { ​       private String name; ​       public Robot(String name) { this.name = name; } ​       public String toString() {  ​              return name; ​       } } public class Holde">
+<meta name="keywords" content="题解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java题解泛型">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解泛型/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="第十五章 泛型class Robot { ​       private String name; ​       public Robot(String name) { this.name = name; } ​       public String toString() {  ​              return name; ​       } } public class Holde">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.823Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java题解泛型">
+<meta name="twitter:description" content="第十五章 泛型class Robot { ​       private String name; ​       public Robot(String name) { this.name = name; } ​       public String toString() {  ​              return name; ​       } } public class Holde">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解泛型/">
+
+
+
+
+
+  <title>Java题解泛型 | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解泛型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java题解泛型</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-06T10:00:00+08:00">
+                2019-10-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第十五章-泛型"><a href="#第十五章-泛型" class="headerlink" title="第十五章 泛型"></a>第十五章 泛型</h2><p>class Robot {</p>
+<p>​       private String name;</p>
+<p>​       public Robot(String name) { this.name = name; }</p>
+<p>​       public String toString() { </p>
+<p>​              return name;</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class HolderEx2<t> {</t></p>
+<p>​       private T x, y, z;</p>
+<p>​       public HolderEx2(T x, T y, T z) { </p>
+<p>​              this.x = x;</p>
+<p>​              this.y = y;</p>
+<p>​              this.z = z;</p>
+<p>​        }</p>
+<p>​       public void setX(T x) { this.x = x; }</p>
+<p>​       public void setY(T y) { this.y = y; }</p>
+<p>​       public void setZ(T z) { this.z = z; }</p>
+<p>​       public T getX() { return x; }</p>
+<p>​       public T getY() { return y; }</p>
+<p>​       public T getZ() { return z; }</p>
+<p>​       public String toString() {</p>
+<p>​              return x + “, “ + y + “, “ + z;</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Robot a = new Robot(“bot1”);</p>
+<p>​              Robot b = new Robot(“bot2”);</p>
+<p>​              Robot c = new Robot(“bot3”);</p>
+<p>​              HolderEx2<robot> hEx2 = </robot></p>
+<p>​                     new HolderEx2<robot>(a, b, c);</robot></p>
+<p>​              System.out.println(“Holding: “ + hEx2);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Robot {}</p>
+<p>class Amphibian {}</p>
+<p>class Vehicle {}</p>
+<p>class SixTuple&lt;A,B,C,D,E,F&gt;</p>
+<p>extends FiveTuple&lt;A,B,C,D,E&gt; {</p>
+<p>  public final F sixth;</p>
+<p>  public SixTuple(A a, B b, C c, D d, E e, F f) {</p>
+<p>​    super(a, b, c, d, e);</p>
+<p>​    sixth = f;</p>
+<p>  }</p>
+<p>  public String toString() {</p>
+<p>​    return “(“ + first + “, “ + second + “, “ +</p>
+<p>​      third + “, “ + fourth + “, “ + fifth + “, “ + sixth +”)”;</p>
+<p>  }</p>
+<p>} </p>
+<p>public class SixTupleTest {</p>
+<p>​       static SixTuple&lt;Robot, Vehicle, Amphibian, String, Integer, Double&gt; f() {</p>
+<p>​              return new SixTuple&lt;Robot, Vehicle, Amphibian, String, Integer, Double&gt;( </p>
+<p>​              new Robot(), new Vehicle(), new Amphibian(), “hi”, 47, 11.1);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              SixTuple&lt;Robot, Vehicle, Amphibian, String, Integer, Double&gt; st = f();</p>
+<p>​              System.out.println(st);</p>
+<p>​              System.out.println(f());         </p>
+<p>​       }</p>
+<p>} </p>
+<p>interface Selector {</p>
+<p>​       boolean end();</p>
+<p>​       Object current();</p>
+<p>​       void next();</p>
+<p>}</p>
+<p>public class GenericSequence<e> {    </e></p>
+<p>​       private List<e> list = new ArrayList<e>();</e></e></p>
+<p>​       private int next = 0;</p>
+<p>​       public GenericSequence(List<e> list) { this.list = list; }</e></p>
+<p>​       public void add(E e) { list.add(e); }</p>
+<p>​       private class SequenceSelector implements Selector {</p>
+<p>​              private int i = 0;</p>
+<p>​              public boolean end() { return i == list.size(); }</p>
+<p>​              public Object current() { return list.get(i); }</p>
+<p>​              public void next() { if(i &lt; list.size()) i++; } </p>
+<p>​       }</p>
+<p>​       public Selector selector() {</p>
+<p>​              return new SequenceSelector();</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              List<string> ls = new ArrayList<string>();</string></string></p>
+<p>​              GenericSequence<string> gs = new GenericSequence<string>(ls);</string></string></p>
+<p>​              for(int i = 0; i &lt; 10; i++)</p>
+<p>​                     gs.add(Integer.toString(i));</p>
+<p>​              Selector selector = gs.selector();</p>
+<p>​              while(!selector.end()) {</p>
+<p>​                     System.out.print(selector.current() + “ “);</p>
+<p>​                     selector.next();</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class LinkedStack5<t> {</t></p>
+<p>​             private class Node {</p>
+<p>​              T item;</p>
+<p>​              Node next;</p>
+<p>​              Node() { item = null; next = null; }</p>
+<p>​              Node(T item, Node next) {</p>
+<p>​                     this.item = item;</p>
+<p>​                     this.next = next;</p>
+<p>​              }</p>
+<p>​              boolean end() { return item == null &amp;&amp; next == null; }</p>
+<p>​       }</p>
+<p>​       private Node top = new Node();      public void push(T item) {</p>
+<p>​              top = new Node(item, top);</p>
+<p>​       }</p>
+<p>​       public T pop() {</p>
+<p>​              T result = top.item;</p>
+<p>​              if(!top.end())</p>
+<p>​                     top = top.next;</p>
+<p>​              return result;</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              LinkedStack5<string> lss = new LinkedStack5<string>();</string></string></p>
+<p>​              for(String s: “Phasers on stun!”.split(“ “)) </p>
+<p>​                     lss.push(s);</p>
+<p>​              String s;</p>
+<p>​              while((s = lss.pop()) != null)</p>
+<p>​                     System.out.println(s);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class RandomList6<t> {</t></p>
+<p>​       private ArrayList<t> storage = new ArrayList<t>();</t></t></p>
+<p>​       private Random rand = new Random(47);</p>
+<p>​       public void add(T item) { storage.add(item); }</p>
+<p>​       public T select() {</p>
+<p>​              return storage.get(rand.nextInt(storage.size()));</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              RandomList6<string> rs = new RandomList6<string>();</string></string></p>
+<p>​              for(String s : (“The quick brown fox jumped over “ +</p>
+<p>​                     “the lazy brown dog”).split(“ “))</p>
+<p>​                     rs.add(s);</p>
+<p>​              for(int i = 0; i &lt; 11; i++)</p>
+<p>​                     System.out.print(rs.select() + “ “);</p>
+<p>​              System.out.println();</p>
+<p>​              RandomList6<integer> ri = new RandomList6<integer>();</integer></integer></p>
+<p>​              for(int i = 0; i &lt; 11; i++)</p>
+<p>​                     ri.add(i);               for(int i = 0; i &lt; 11; i++)</p>
+<p>​                     System.out.print(ri.select() + “ “); </p>
+<p>​              System.out.println();</p>
+<p>​              RandomList6<pet> rp = new RandomList6<pet>();</pet></pet></p>
+<p>​              for(Pet p : Pets.arrayList(10))</p>
+<p>​                     rp.add(p);</p>
+<p>​              for(int i = 0; i &lt; 11; i++)</p>
+<p>​                     System.out.print(rp.select() + “ “);      </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Fibonacci7 implements Generator<integer>, Iterable<integer> {</integer></integer></p>
+<p>​       private int count = 0;</p>
+<p>​       private int m;</p>
+<p>​       public Integer next() { return fib(count++); }</p>
+<p>​       private int fib(int n) {</p>
+<p>​              if(n &lt; 2) return 1;</p>
+<p>​              return fib(n - 2) + fib(n - 1);</p>
+<p>​       }</p>
+<p>​       public Fibonacci7() {}</p>
+<p>​       public Fibonacci7(int m) { this.m = m; }</p>
+<p>​       public Iterator<integer> iterator() {</integer></p>
+<p>​              return new Iterator<integer>() {</integer></p>
+<p>​                     public boolean hasNext() { return m &gt; 0; }</p>
+<p>​                     public Integer next() {</p>
+<p>​                            m–;</p>
+<p>​                            return Fibonacci7.this.next();</p>
+<p>​                     }</p>
+<p>​                     public void remove() {                             throw new UnsupportedOperationException();</p>
+<p>​                     }</p>
+<p>​              };</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Fibonacci7 gen = new Fibonacci7();</p>
+<p>​              for(int i = 0; i &lt; 18; i++)</p>
+<p>​                     System.out.print(gen.next() + “ “);</p>
+<p>​              System.out.println();</p>
+<p>​              Iterator it = new Fibonacci7(20).iterator();</p>
+<p>​              while(it.hasNext())</p>
+<p>​                     System.out.print(it.next() + “ “);</p>
+<p>​       }</p>
+<p>​       </p>
+<p>}</p>
+<p>public class StoryCharacterGenerator </p>
+<p>​       implements Generator<storycharacter>,  Iterable<storycharacter> {</storycharacter></storycharacter></p>
+<p>​       private Class[] types = { DarthVader.class, JabbaTheHut.class, </p>
+<p>​              LukeSkywalker.class, Yoda.class };</p>
+<p>​       private static Random rand = new Random();</p>
+<p>​       public StoryCharacterGenerator() {}</p>
+<p>​             private int size = 0;</p>
+<p>​       public StoryCharacterGenerator(int sz) { size = sz; }</p>
+<p>​       public StoryCharacter next() {</p>
+<p>​              try {</p>
+<p>​                     return </p>
+<p>​                     (StoryCharacter)types[rand.nextInt(types.length)].newInstance();</p>
+<p>​                           } catch(Exception e) {</p>
+<p>​                     throw new RuntimeException(e);</p>
+<p>​              }</p>
+<p>​       }      </p>
+<p>​       class StoryCharacterIterator implements Iterator<storycharacter> {</storycharacter></p>
+<p>​              int count = size;</p>
+<p>​              public boolean hasNext() { return count &gt; 0; }</p>
+<p>​              public StoryCharacter next() {</p>
+<p>​                     count–;</p>
+<p>​                     return StoryCharacterGenerator.this.next();</p>
+<p>​              }</p>
+<p>​              public void remove() {                      throw new UnsupportedOperationException();</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       public Iterator<storycharacter> iterator() {</storycharacter></p>
+<p>​              return new StoryCharacterIterator();</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              StoryCharacterGenerator gen = new StoryCharacterGenerator();</p>
+<p>​              for(int i = 0; i &lt; 5; i++)</p>
+<p>​                     System.out.println(gen.next());</p>
+<p>​              for(StoryCharacter s : new StoryCharacterGenerator(5))</p>
+<p>​                     System.out.println(s); </p>
+<p>​       }</p>
+<p>}</p>
+<p>  public class GenericMethods9 {</p>
+<p>​       public &lt;T, U, V&gt; void f(T x, U y, V z) {</p>
+<p>​              System.out.println(x.getClass().getName() +</p>
+<p>​              “ “ + y.getClass().getName() +</p>
+<p>​              “ “ + z.getClass().getName());</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              GenericMethods9 gm = new GenericMethods9();</p>
+<p>​              gm.f(“”, 1, 1.0);</p>
+<p>​              gm.f(1.0F, ‘c’, gm);</p>
+<p>​       }</p>
+<p>}</p>
+<p>  public class GenericMethods10 {</p>
+<p>​       public &lt;T, U&gt; void f(T x, U y, Integer z) {</p>
+<p>​              System.out.println(x.getClass().getName() +</p>
+<p>​              “ “ + y.getClass().getName() +</p>
+<p>​              “ “ + z.getClass().getName());</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              GenericMethods10 gm = new GenericMethods10();</p>
+<p>​              gm.f(“”, 1, 1);</p>
+<p>​              gm.f(1.0F, ‘c’, 1);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class A { public String toString() { return “A”; } }</p>
+<p>class B { public String toString() { return “B”; } }</p>
+<p>class C extends B { </p>
+<p>​       public String toString() { return “C”; }</p>
+<p>}  </p>
+<p>public class New11 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              A a = new A();</p>
+<p>​              B b = new B();</p>
+<p>​              C c = new C();</p>
+<p>​              List<c> lc = New.list();</c></p>
+<p>​              lc.add(new C());</p>
+<p>​              Map&lt;A,List&lt;? extends B&gt;&gt; mab = New.map();</p>
+<p>​              mab.put(a,lc);</p>
+<p>​              LinkedList<b> llb = New.lList();</b></p>
+<p>​              llb.add(new B());</p>
+<p>​              Set<a> sa = New.set();</a></p>
+<p>​              sa.add(new A());</p>
+<p>​              Queue<b> qb = New.queue();</b></p>
+<p>​              qb.add(new B());</p>
+<p>​              println(lc);</p>
+<p>​              println(mab);</p>
+<p>​              println(llb);</p>
+<p>​              println(sa);</p>
+<p>​              println(qb);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class LimitsOfInference12 {</p>
+<p>​       static void f(Map&lt;Person, List&lt;? extends Pet&gt;&gt; petPeople) {}</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              f(New.&lt;Person, List&lt;? extends Pet&gt;&gt;map()); </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Generators13 {</p>
+<p>​       public static <t> Collection<t> fill(Collection<t> coll, Generator<t> gen, int n) {</t></t></t></t></p>
+<p>​              for(int i = 0; i &lt; n; i++) coll.add(gen.next());</p>
+<p>​              return coll;</p>
+<p>​       }</p>
+<p>​       public static <t> List<t> fill(List<t> l, Generator<t> gen, int n) {</t></t></t></t></p>
+<p>​              for(int i = 0; i &lt; n; i++) l.add(gen.next());</p>
+<p>​              return l;</p>
+<p>​       }</p>
+<p>​       public static <t> Queue<t> fill(Queue<t> q, Generator<t> gen, int n) {</t></t></t></t></p>
+<p>​              for(int i = 0; i &lt; n; i++) q.add(gen.next());</p>
+<p>​              return q;</p>
+<p>​       }</p>
+<p>​       public static <t> Set<t> fill(Set<t> s, Generator<t> gen, int n) {</t></t></t></t></p>
+<p>​              for(int i = 0; i &lt; n; i++) s.add(gen.next());</p>
+<p>​              return s;</p>
+<p>​       }</p>
+<p>​             public static <t> LinkedList<t> fill(LinkedList<t> ll, Generator<t> gen, int n) {</t></t></t></t></p>
+<p>​              for(int i = 0; i &lt; n; i++) ll.add(gen.next());</p>
+<p>​              return ll;</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Collection<coffee> coffee = fill(new ArrayList<coffee>(), new CoffeeGenerator(), 4);</coffee></coffee></p>
+<p>​              for(Coffee c : coffee) System.out.println(c);</p>
+<p>​              Collection<integer> fnumbers = fill(new ArrayList<integer>(), new Fibonacci(), 12);</integer></integer></p>
+<p>​              for(int i : fnumbers) System.out.print(i + “, “);</p>
+<p>​              println();</p>
+<p>​              List<coffee> coffeeList = fill(new ArrayList<coffee>(), new CoffeeGenerator(), 5);</coffee></coffee></p>
+<p>​              println(“List type: “ + coffeeList.getClass());</p>
+<p>​              println(“coffeeList:” + coffeeList);        </p>
+<p>​              Queue<coffee> coffeeQueue = fill(new ArrayDeque<coffee>(), new CoffeeGenerator(), 5);</coffee></coffee></p>
+<p>​              println(“Queue type: “ + coffeeQueue.getClass());</p>
+<p>​              println(“coffeeQueue: “ + coffeeQueue); </p>
+<p>​              Set<coffee> coffeeSet = fill(new HashSet<coffee>(), new CoffeeGenerator(), 5);</coffee></coffee></p>
+<p>​              println(“Set type: “ + coffeeSet.getClass());</p>
+<p>​              println(“coffeeSet: “ + coffeeSet);</p>
+<p>​              LinkedList<coffee> coffeeLinkedList = fill(new LinkedList<coffee>(), new CoffeeGenerator(), 5);</coffee></coffee></p>
+<p>​              println(“LinkedList type: “ + coffeeLinkedList.getClass());</p>
+<p>​              println(“coffeeLinkedList: “ + coffeeLinkedList);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class BasicGeneratorDemo14  {     </p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Generator<countedobject> gen = </countedobject></p>
+<p>​                     new BasicGenerator<countedobject>(CountedObject.class);</countedobject></p>
+<p>​              for(int i = 0; i &lt; 5; i++)</p>
+<p>​                     System.out.println(gen.next());</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class TupleTest15 {</p>
+<p>​       static TwoTuple&lt;String,Integer&gt; f() {</p>
+<p>​              return tuple(“hi”, 47);</p>
+<p>​       }</p>
+<p>​       static TwoTuple f2() { return tuple(“hi”, 47); }</p>
+<p>​       static ThreeTuple&lt;Amphibian,String,Integer&gt; g() {</p>
+<p>​              return tuple(new Amphibian(), “hi”, 47);</p>
+<p>​       }</p>
+<p>​       static FourTuple&lt;Vehicle,Amphibian,String,Integer&gt; h() {</p>
+<p>​              return tuple(new Vehicle(), new Amphibian(), “hi”, 47);</p>
+<p>​       }</p>
+<p>​       static FiveTuple&lt;Vehicle,Amphibian,String,Integer,Double&gt; k() {</p>
+<p>​              return tuple(new Vehicle(), new Amphibian(), “hi”, 47,</p>
+<p>​              11.1);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              TwoTuple&lt;String,Integer&gt; ttsi = f();</p>
+<p>​                           TwoTuple&lt;String,Integer&gt; ttsi2 = f2();</p>
+<p>​              System.out.println(ttsi);</p>
+<p>​              System.out.println(f2());</p>
+<p>​              System.out.println(g());</p>
+<p>​              System.out.println(h());</p>
+<p>​              System.out.println(k());</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class TupleTest16 {</p>
+<p>​       static TwoTuple&lt;String,Integer&gt; f() {</p>
+<p>​              return tuple(“hi”, 47);</p>
+<p>​       }</p>
+<p>​       static TwoTuple f2() { return tuple(“hi”, 47); }</p>
+<p>​       static ThreeTuple&lt;Amphibian,String,Integer&gt; g() {</p>
+<p>​              return tuple(new Amphibian(), “hi”, 47);</p>
+<p>​       }</p>
+<p>​       static FourTuple&lt;Vehicle,Amphibian,String,Integer&gt; h() {</p>
+<p>​              return tuple(new Vehicle(), new Amphibian(), “hi”, 47);</p>
+<p>​       }</p>
+<p>​       static FiveTuple&lt;Vehicle,Amphibian,String,Integer,Double&gt; k() {</p>
+<p>​              return tuple(new Vehicle(), new Amphibian(), “hi”, 47,</p>
+<p>​              11.1);</p>
+<p>​       }</p>
+<p>​             static org.greggordon.util.SixTuple&lt;Robot,Vehicle,Amphibian,String,Integer,Double&gt; m() {</p>
+<p>​              return tuple(new Robot(), new Vehicle(), new Amphibian(), “hi”, 47, 11.1);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              TwoTuple&lt;String,Integer&gt; ttsi = f();</p>
+<p>​              System.out.println(ttsi);</p>
+<p>​              System.out.println(f2());</p>
+<p>​              System.out.println(g());</p>
+<p>​              System.out.println(h());</p>
+<p>​              System.out.println(k());</p>
+<p>​              System.out.println(m());</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Sets17 {     </p>
+<p>​       public static <t> Set<t> union(Set<t> a, Set<t> b) {          </t></t></t></t></p>
+<p>​              try {</p>
+<p>​                     if(a instanceof EnumSet) {</p>
+<p>​                            Set<t> result = ((EnumSet<t>)a).clone();</t></t></p>
+<p>​                            result.addAll(b);</p>
+<p>​                                return result;</p>
+<p>​                            }</p>
+<p>​              } catch(Exception e) {</p>
+<p>​                     throw new RuntimeException(e);</p>
+<p>​              }</p>
+<p>​              Set<t> result = new HashSet<t>(a);</t></t></p>
+<p>​                  result.addAll(b);</p>
+<p>​                  return result;</p>
+<p>​       }      </p>
+<p>​      public static <t> Set<t> intersection(Set<t> a, Set<t> b) {</t></t></t></t></p>
+<p>​              try {</p>
+<p>​                     if(a instanceof EnumSet) {</p>
+<p>​                            Set<t> result = ((EnumSet<t>)a).clone();</t></t></p>
+<p>​                            result.retainAll(b);</p>
+<p>​                                return result;</p>
+<p>​                            }</p>
+<p>​              } catch(Exception e) {</p>
+<p>​                     throw new RuntimeException(e);</p>
+<p>​              }</p>
+<p>​                  Set<t> result = new HashSet<t>(a);</t></t></p>
+<p>​                  result.retainAll(b);</p>
+<p>​                  return result;</p>
+<p>​      }      </p>
+<p>​           public static <t> Set<t>  difference(Set<t> superset, Set<t> subset) {</t></t></t></t></p>
+<p>​              try {</p>
+<p>​                     if(superset instanceof EnumSet) {</p>
+<p>​                            Set<t> result = ((EnumSet<t>)superset).clone();</t></t></p>
+<p>​                            result.removeAll(subset);</p>
+<p>​                                return result;</p>
+<p>​                            }</p>
+<p>​              } catch(Exception e) {</p>
+<p>​                     throw new RuntimeException(e);</p>
+<p>​              }</p>
+<p>​                  Set<t> result = new HashSet<t>(superset);</t></t></p>
+<p>​                  result.removeAll(subset);</p>
+<p>​                  return result;</p>
+<p>​      }</p>
+<p>​           public static <t> Set<t> complement(Set<t> a, Set<t> b) {</t></t></t></t></p>
+<p>​                  return difference(union(a, b), intersection(a, b));</p>
+<p>​      }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Set<watercolors> set1 =</watercolors></p>
+<p>​                     EnumSet.range(BRILLIANT_RED, VIRIDIAN_HUE);</p>
+<p>​              Set<watercolors> set2 =</watercolors></p>
+<p>​                     EnumSet.range(CERULEAN_BLUE_HUE, BURNT_UMBER);</p>
+<p>​              print(“set1: “ + set1);</p>
+<p>​              print(“set2: “ + set2);</p>
+<p>​              print(“union(set1, set2): “ + union(set1, set2));</p>
+<p>​              Set<watercolors> subset = intersection(set1, set2);</watercolors></p>
+<p>​              print(“intersection(set1, set2): “ + subset);</p>
+<p>​              print(“difference(set1, set2): “ + </p>
+<p>​                     difference(set1, set2));</p>
+<p>​              print(“difference(set2, subset): “ + </p>
+<p>​                     difference(set2, subset));</p>
+<p>​              print(“complement(set1, set2): “ + </p>
+<p>​                     complement(set1, set2));</p>
+<p>​       }</p>
+<p>} </p>
+<p>class BigFish {</p>
+<p>​       private static long counter = 0;</p>
+<p>​       private final long id = ++counter;</p>
+<p>​       private BigFish() {}</p>
+<p>​       public String toString() {</p>
+<p>​              return “BigFish” + id;</p>
+<p>​       }</p>
+<p>​       public static Generator<bigfish> generator() {</bigfish></p>
+<p>​              return new Generator<bigfish>() {</bigfish></p>
+<p>​                     public BigFish next() {</p>
+<p>​                            return new BigFish();</p>
+<p>​                     }      </p>
+<p>​              };</p>
+<p>​       }</p>
+<p>}</p>
+<p>class LittleFish {</p>
+<p>​       private static long counter = 0;</p>
+<p>​       private final long id = ++counter;</p>
+<p>​       private LittleFish() {}</p>
+<p>​       public String toString() {</p>
+<p>​              return “LittleFish” + id;</p>
+<p>​       }</p>
+<p>​       public static Generator<littlefish> generator =</littlefish></p>
+<p>​              new Generator<littlefish>() {</littlefish></p>
+<p>​                     public LittleFish next() {</p>
+<p>​                            return new LittleFish();</p>
+<p>​                     }</p>
+<p>​              };</p>
+<p>}</p>
+<p>public class Ocean18 {</p>
+<p>​       public static void eat(BigFish bf, LittleFish lf) {</p>
+<p>​              System.out.println(bf + “ eats “ + lf);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Random rand = new Random();</p>
+<p>​              List<bigfish> hunters = new ArrayList<bigfish>();</bigfish></bigfish></p>
+<p>​              Generators.fill(hunters, BigFish.generator(), 3);</p>
+<p>​              Queue<littlefish> school = new LinkedList<littlefish>();</littlefish></littlefish></p>
+<p>​              Generators.fill(school, LittleFish.generator, 15);</p>
+<p>​              for(LittleFish f : school)</p>
+<p>​                     eat(hunters.get(rand.nextInt(hunters.size())), f);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Item {</p>
+<p>​       private final int id;</p>
+<p>​       private String description;</p>
+<p>​       private String destination;</p>
+<p>​       private double price;</p>
+<p>​       public Item(int idNumber, String what, String whereTo, double price) {</p>
+<p>​              id = idNumber;</p>
+<p>​              description = what;</p>
+<p>​              destination = whereTo;</p>
+<p>​              this.price = price;</p>
+<p>​              System.out.println(toString());</p>
+<p>​       } </p>
+<p>​       public String toString() {</p>
+<p>​              return id + “, “ + description + “, “ + “$” + price + “, to: “ +</p>
+<p>​                     destination;</p>
+<p>​       }</p>
+<p>​       public void priceChange(double change) {</p>
+<p>​              price += change;</p>
+<p>​       }</p>
+<p>​       public static Generator<item> generator = </item></p>
+<p>​              new Generator<item>() {</item></p>
+<p>​                     private Random rand = new Random();</p>
+<p>​                     public Item next() {</p>
+<p>​                            return new Item(rand.nextInt(1000), </p>
+<p>​                            “Very nice … “,  “Destination: …”, </p>
+<p>​                            Math.round(rand.nextDouble() * 1000.0)); </p>
+<p>​                     }</p>
+<p>​              };</p>
+<p>}</p>
+<p>class Shelf extends ArrayList<item> {</item></p>
+<p>​       public Shelf(int nItems) {</p>
+<p>​              Generators.fill(this, Item.generator, nItems);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class StorageArea extends ArrayList<shelf> {</shelf></p>
+<p>​       public StorageArea(int nShelves, int nItems) {</p>
+<p>​              for(int i = 0; i &lt; nShelves; i++)</p>
+<p>​                     add(new Shelf(nItems));</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Deck extends ArrayList<storagearea> {</storagearea></p>
+<p>​       public Deck(int nStorageAreas, int nShelves, int nItems) {</p>
+<p>​              for(int i = 0; i &lt; nStorageAreas; i++)</p>
+<p>​                     add(new StorageArea(nShelves, nItems));</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Office {}</p>
+<p>public class CargoShip19 extends ArrayList<deck> {</deck></p>
+<p>​       private Office office;</p>
+<p>​       public CargoShip19(int nDecks, int nStorageAreas, int nShelves, int nItems) {</p>
+<p>​              for(int i = 0; i &lt; nDecks; i++)</p>
+<p>​                     add(new Deck(nStorageAreas, nShelves, nItems));</p>
+<p>​       }      </p>
+<p>​       public String toString() {</p>
+<p>​              StringBuilder result = new StringBuilder();</p>
+<p>​              for(Deck d : this)</p>
+<p>​                     for(StorageArea sa : d)</p>
+<p>​                            for(Shelf s : sa)</p>
+<p>​                                   for(Item i : s) {</p>
+<p>​                                          result.append(i);</p>
+<p>​                                          result.append(‘\n’);</p>
+<p>​                                   }</p>
+<p>​              return result.toString();</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              System.out.println(new CargoShip19(3, 4, 3, 10));</p>
+<p>​       }</p>
+<p>}</p>
+<p>interface A {</p>
+<p>​       void f();</p>
+<p>​       void g();</p>
+<p>}</p>
+<p>class A3 implements A {</p>
+<p>​       public void f() { System.out.println(“A3.f()”); }</p>
+<p>​       public void g() { System.out.println(“A3.g()”); }</p>
+<p>​       public void h() { System.out.println(“A3.h()”); }</p>
+<p>}</p>
+<p>class G {</p>
+<p>​       public static <t extends a> void j(T x) { </t></p>
+<p>​              x.f();</p>
+<p>​              x.g();</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex20 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              A3 a3 = new A3();</p>
+<p>​              G.j(a3);    </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class ClassTypeCapture21<t> {</t></p>
+<p>​       Class&lt;?&gt; kind;</p>
+<p>​       Map&lt;String,Class&lt;?&gt;&gt; map;</p>
+<p>​       public ClassTypeCapture21(Class&lt;?&gt; kind) {</p>
+<p>​              this.kind = kind;</p>
+<p>​       }</p>
+<p>​       public ClassTypeCapture21(Class<?> kind, Map<string,class<?>&gt; map) {</string,class<?></p>
+<p>​              this.kind = kind;</p>
+<p>​              this.map = map;</p>
+<p>​       }</p>
+<p>​       public boolean f(Object arg) {</p>
+<p>​              return kind.isInstance(arg);</p>
+<p>​       }</p>
+<p>​       public void addType(String typename, Class&lt;?&gt; kind) {</p>
+<p>​              map.put(typename, kind);</p>
+<p>​       }</p>
+<p>​       public Object createNew(String typename) </p>
+<p>​              throws IllegalAccessException, InstantiationException {</p>
+<p>​              if(map.containsKey(typename))</p>
+<p>​                     return map.get(typename).newInstance();                </p>
+<p>​              System.out.println(typename + “ class not available”);</p>
+<p>​              return null;</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              ClassTypeCapture21<building> ctt1 = new ClassTypeCapture21<building>(Building.class);</building></building></p>
+<p>​              println(ctt1.f(new Building()));</p>
+<p>​              println(ctt1.f(new House()));</p>
+<p>​              ClassTypeCapture21<house> ctt2 = new ClassTypeCapture21<house>(House.class);</house></house></p>
+<p>​              println(ctt2.f(new Building()));</p>
+<p>​              println(ctt2.f(new House()));</p>
+<p>​              ClassTypeCapture21<building> ct = </building></p>
+<p>​              new ClassTypeCapture21<building>(Building.class, new HashMap&lt;String, Class&lt;?&gt;&gt;());</building></p>
+<p>​              ct.addType(“House”, House.class);</p>
+<p>​              ct.addType(“Building”, Building.class);</p>
+<p>​              println(“ct.map = “ + ct.map);</p>
+<p>​              try {</p>
+<p>​                     Building b = (Building)ct.createNew(“Building”);</p>
+<p>​                     House h = (House)ct.createNew(“House”);</p>
+<p>​                     print(“b.getClass().getName(): “);</p>
+<p>​                     println(b.getClass().getName());</p>
+<p>​                     print(“h.getClass().getName(): “);</p>
+<p>​                     println(h.getClass().getName());</p>
+<p>​                     print(“House h is instance House: “);</p>
+<p>​                     println(h instanceof House);</p>
+<p>​                     print(“House h is instance of Building: “);</p>
+<p>​                     println(h instanceof Building);</p>
+<p>​                     print(“Building b is instance of House: “);</p>
+<p>​                     println(b instanceof House);</p>
+<p>​                     ct.createNew(“String”);             } catch(IllegalAccessException e) {</p>
+<p>​                     println(“IllegalAccessException in main”);</p>
+<p>​              } catch(InstantiationException e) {</p>
+<p>​                     println(“InstantiationException in main”);</p>
+<p>​              }             </p>
+<p>​       }</p>
+<p>}</p>
+<p>class Building {}</p>
+<p>class House extends Building {</p>
+<p>​       private String location;</p>
+<p>​       private Integer area;</p>
+<p>​       public House() { location = null; }</p>
+<p>​       public House(Integer area) { this.area = area; }</p>
+<p>​       public House(String location) {</p>
+<p>​              this.location = location;</p>
+<p>​       }</p>
+<p>​       public House(String location, Integer area) {</p>
+<p>​              this.location = location;</p>
+<p>​              this.area = area;</p>
+<p>​       }</p>
+<p>​       public String toString() {</p>
+<p>​              return “House” + ((location == null) ? “” :  “ in “ + location) +</p>
+<p>​                     ((area != null) ? (“, “+ area + “ sqft”) : “”);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class ClassTypeCreator22<t> {</t></p>
+<p>​       Class&lt;?&gt; kind;</p>
+<p>​       public ClassTypeCreator22(Class&lt;?&gt; kind) {</p>
+<p>​              this.kind = kind;</p>
+<p>​       }</p>
+<p>​       public Object createNew(String typename) </p>
+<p>​              throws   IllegalAccessException, </p>
+<p>​                     InstantiationException, </p>
+<p>​                     ClassNotFoundException {</p>
+<p>​              return Class.forName(typename).newInstance();</p>
+<p>​       }      </p>
+<p>​             public Object createNew(String typename, Object… args) </p>
+<p>​              throws   IllegalAccessException, </p>
+<p>​                     InstantiationException, </p>
+<p>​                     ClassNotFoundException,</p>
+<p>​                     NoSuchMethodException,</p>
+<p>​                     InvocationTargetException {</p>
+<p>​              switch(args.length) {</p>
+<p>​              case 1 : return Class.forName(typename).getConstructor(args[0].getClass()).newInstance(args[0]);</p>
+<p>​              case 2 : return Class.forName(typename).getConstructor(args[0].getClass(), args[1].getClass()).</p>
+<p>​                     newInstance(args[0], args[1]);</p>
+<p>​              }</p>
+<p>​              return null;</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              ClassTypeCreator22<building> ctcb = new ClassTypeCreator22<building>(Building.class);</building></building></p>
+<p>​              ClassTypeCreator22<house> ctch = new ClassTypeCreator22<house>(House.class);</house></house></p>
+<p>​              try {</p>
+<p>​                     Building b = (Building)ctcb.createNew(“Building”);</p>
+<p>​                                         println(“House constructors:”);</p>
+<p>​                     Constructor[] ctors = House.class.getConstructors();</p>
+<p>​                     for(Constructor ctor : ctors) println(ctor);</p>
+<p>​                                         House h = (House)ctch.createNew(“House”, “Hawaii”);</p>
+<p>​                     House h2 = (House)ctch.createNew(“House”, 3000);</p>
+<p>​                     House h3 = (House)ctch.createNew(“House”, “Manila”, 5000);</p>
+<p>​                     println(“Constructed House objects:”);</p>
+<p>​                     println(h);</p>
+<p>​                     println(h2);</p>
+<p>​                     println(h3);</p>
+<p>​              } catch(IllegalAccessException e) {</p>
+<p>​                     println(“IllegalAccessException in main”);</p>
+<p>​              } catch(InstantiationException e) {</p>
+<p>​                     println(“InstantiationException in main”);</p>
+<p>​              } catch(ClassNotFoundException e) {</p>
+<p>​                     println(“ClassNotFoundException in main”);</p>
+<p>​              } catch(NoSuchMethodException e) {</p>
+<p>​                     println(“NoSuchMethodException in main”);</p>
+<p>​              } catch(InvocationTargetException e) {</p>
+<p>​                     println(“InvocationTargetException in main”);</p>
+<p>​              }             </p>
+<p>​       }</p>
+<p>}</p>
+<p> interface FactoryI<t> {</t></p>
+<p>​       T create(Integer i);</p>
+<p>}</p>
+<p>class Foo2<t> {</t></p>
+<p>​       private T x;</p>
+<p>​       public void get() { System.out.println(x); }</p>
+<p>​       public &lt;F extends FactoryI<t>&gt; Foo2(F factory, Integer i) {</t></p>
+<p>​              x = factory.create(i);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class IntegerFactory implements FactoryI<integer> {</integer></p>
+<p>​       public Integer create(Integer i) {</p>
+<p>​              return new Integer(i);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Widget {</p>
+<p>​       int i;</p>
+<p>​       public static class Factory implements FactoryI<widget> {</widget></p>
+<p>​              public Widget create(Integer i) {</p>
+<p>​                     Widget w = new Widget();</p>
+<p>​                     w.i = i;</p>
+<p>​                     return w;</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       public String toString() {</p>
+<p>​              return “Widget “ + i;     </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class FactoryConstraint23 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Foo2 f1 = new Foo2<integer>(new IntegerFactory(), 1);</integer></p>
+<p>​              Foo2 f2 = new Foo2<widget>(new Widget.Factory(), 2);</widget></p>
+<p>​              f1.get();</p>
+<p>​              f2.get();</p>
+<p>​              }</p>
+<p>}</p>
+<p>interface Factory<t> {</t></p>
+<p>​       T create();</p>
+<p>}</p>
+<p>class Building {}</p>
+<p>class House extends Building {}</p>
+<p>class BuildingFactory implements Factory<building> {</building></p>
+<p>​       public Building create() {</p>
+<p>​              return new Building();</p>
+<p>​       }</p>
+<p>}</p>
+<p>class HouseFactory implements Factory<house> {</house></p>
+<p>​       public House create() {</p>
+<p>​              return new House();</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class ClassTypeCapture24<t> {</t></p>
+<p>​       Class&lt;?&gt; kind;</p>
+<p>​       public ClassTypeCapture24(Class&lt;?&gt; kind) {</p>
+<p>​              this.kind = kind;</p>
+<p>​       }</p>
+<p>​       Map&lt;String,Factory&gt; map;  </p>
+<p>​       public ClassTypeCapture24(Class&lt;?&gt; kind, Map&lt;String,Factory&gt; map) {</p>
+<p>​              this.kind = kind;</p>
+<p>​              this.map = map;</p>
+<p>​       }</p>
+<p>​       public boolean f(Object arg) {</p>
+<p>​              return kind.isInstance(arg);</p>
+<p>​       }</p>
+<p>​       public void addType(String typename, Factory factory) {</p>
+<p>​              map.put(typename, factory);</p>
+<p>​       }</p>
+<p>​       public Object createNew(String typename) </p>
+<p>​              throws IllegalAccessException, InstantiationException {</p>
+<p>​              if(map.containsKey(typename))</p>
+<p>​                     return map.get(typename).create();                  </p>
+<p>​              System.out.println(typename + “ class not available”);</p>
+<p>​              return null;</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              ClassTypeCapture24<building> ctt1 = </building></p>
+<p>​                     new ClassTypeCapture24<building>(Building.class);</building></p>
+<p>​              println(ctt1.f(new Building()));</p>
+<p>​              println(ctt1.f(new House()));</p>
+<p>​              ClassTypeCapture24<house> ctt2 = </house></p>
+<p>​                     new ClassTypeCapture24<house>(House.class);</house></p>
+<p>​              println(ctt2.f(new Building()));</p>
+<p>​              println(ctt2.f(new House()));</p>
+<p>​              ClassTypeCapture24<building> ct = </building></p>
+<p>​              new ClassTypeCapture24<building>(</building></p>
+<p>​                     Building.class, new HashMap&lt;String,Factory&gt;());</p>
+<p>​              ct.addType(“House”, new HouseFactory());</p>
+<p>​              ct.addType(“Building”, new BuildingFactory());</p>
+<p>​              println(“ct.map = “ + ct.map);</p>
+<p>​              try {</p>
+<p>​                     Building b = (Building)ct.createNew(“Building”);</p>
+<p>​                     House h = (House)ct.createNew(“House”);</p>
+<p>​                     print(“b.getClass().getName(): “);</p>
+<p>​                     println(b.getClass().getName());</p>
+<p>​                     print(“h.getClass().getName(): “);</p>
+<p>​                     println(h.getClass().getName());</p>
+<p>​                     print(“House h is instance House: “);</p>
+<p>​                     println(h instanceof House);</p>
+<p>​                     print(“House h is instance of Building: “);</p>
+<p>​                     println(h instanceof Building);</p>
+<p>​                     print(“Building b is instance of House: “);</p>
+<p>​                     println(b instanceof House);</p>
+<p>​                     ct.createNew(“String”);             } catch(IllegalAccessException e) {</p>
+<p>​                     println(“IllegalAccessException in main”);</p>
+<p>​              } catch(InstantiationException e) {</p>
+<p>​                     println(“InstantiationException in main”);</p>
+<p>​              }             </p>
+<p>​       }</p>
+<p>}</p>
+<p>interface A {}</p>
+<p>interface B {} </p>
+<p>class C implements A, B {</p>
+<p>​       public String toString() { return “C”; }</p>
+<p>}</p>
+<p>public class Ex25 {</p>
+<p>​       <t extends a> void a(T t) { System.out.println(“a(“ + t + “)”); }</t></p>
+<p>​       <t extends b> void b(T t) { System.out.println(“b(“ + t + “)”); }</t></p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              C c = new C();</p>
+<p>​              Ex25 ex = new Ex25();</p>
+<p>​              ex.a(c);</p>
+<p>​              ex.b(c);</p>
+<p>​       }</p>
+<p>}</p>
+<p> public class Ex26 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Number[] numbers = new Integer[3];</p>
+<p>​              numbers[0] = new Integer(0);</p>
+<p>​              numbers[1] = new Integer(1);</p>
+<p>​              numbers[2] = new Integer(2);</p>
+<p>​                                        try {                     numbers[1] = new Double(3.4);</p>
+<p>​              } catch(Exception e) {</p>
+<p>​                     System.out.println(e);</p>
+<p>​              }</p>
+<p>​              for(Number n : numbers)</p>
+<p>​                     System.out.println(n);</p>
+<p>​                                                                               for(Number n : numbers)</p>
+<p>​                     System.out.println(n.getClass().getSimpleName());    </p>
+<p>​       }      </p>
+<p>}</p>
+<p>​    import java.util.*;</p>
+<p>public class Ex27 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                                        List&lt;? extends Number&gt; nlist = new ArrayList<integer>();</integer></p>
+<p>​                                        nlist.add(null);             Number x = nlist.get(0);            System.out.println(nlist);</p>
+<p>​       }      </p>
+<p>}</p>
+<p>public class Ex28 {</p>
+<p>​       class Generic1<t> {</t></p>
+<p>​              T t;</p>
+<p>​              void take(T t) { this.t = t; }</p>
+<p>​       }</p>
+<p>​             class Generic2<t> {</t></p>
+<p>​              T t;</p>
+<p>​              T give() { return t; }</p>
+<p>​       }</p>
+<p>​       <t> void contra(Generic1&lt;? super T&gt; g1t, T t) {</t></p>
+<p>​              g1t.take(t);</p>
+<p>​       }</p>
+<p>​       <t> T co(Generic2&lt;? extends T&gt; g2t) {</t></p>
+<p>​              return g2t.give();</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Ex28 e28 = new Ex28();</p>
+<p>​              e28.contra(e28.new Generic1<pet>(), new Cat(“kitty”));</pet></p>
+<p>​              e28.co(e28.new Generic2<pet>());             </pet></p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Ex29 {</p>
+<p>​       static void f1(Holder&lt;List&lt;?&gt;&gt; holder) {</p>
+<p>​              println(“Calling methods for the Holder: “);</p>
+<p>​              println(“holder: “ + holder);</p>
+<p>​              println(“holder.get(): “ + holder.get());</p>
+<p>​              println(“Calling holder.set(Arrays.asList(1,2,3)”);</p>
+<p>​              holder.set(Arrays.asList(1,2,3));</p>
+<p>​              println(“holder.get(): “ + holder.get());</p>
+<p>​              int[] ia = {1,2,3};</p>
+<p>​              println(“int[] ia = {1,2,3}”);</p>
+<p>​              println(“holder.equals(ia): “ + holder.equals(ia));</p>
+<p>​              List iaList = Arrays.asList(ia);</p>
+<p>​              println(“List iaList = Arrays.asList(ia)”);</p>
+<p>​              println(“holder.equals(iaList): “ + holder.equals(iaList));</p>
+<p>​              List<integer> l = new ArrayList<integer>();</integer></integer></p>
+<p>​              for(int i = 1; i &lt; 4; i++) l.add(i);</p>
+<p>​              println(“l = List<integer>() and add 1,2,3”);</integer></p>
+<p>​              println(“holder.equals(l): “ + holder.equals(l));</p>
+<p>​              println();</p>
+<p>​                                   </p>
+<p>​              println(“Calling methods for the List: “);</p>
+<p>​              println(“holder.get(): “ + holder.get());</p>
+<p>​              println(“holder.get().getClass(): “ + holder.get().getClass());</p>
+<p>​                                                     List&lt;?&gt; list = holder.get();</p>
+<p>​              println(“list: “ + list); </p>
+<p>​                           List list1 = holder.get();                                       println(“list1.getClass(): “ + list1.getClass());</p>
+<p>​              println(“list.equals(list1): “ + list.equals(list1));</p>
+<p>​                           println(“list.contains(1): “ + list.contains(1));              </p>
+<p>​              Collection<integer> c = new HashSet<integer>();</integer></integer></p>
+<p>​              for(int i = 1; i &lt; 4; i++) c.add(i);</p>
+<p>​              println(“list.containsAll(c): “ + list.containsAll(c));       </p>
+<p>​              println(“list.equals(c): “ + list.equals(c));</p>
+<p>​              println(“list = “ + list);</p>
+<p>​              println(“c = “ + c);</p>
+<p>​              println(“c.getClass(): “ + c.getClass());              println(“list.get(0) = “ + list.get(0));</p>
+<p>​              println(“list.hashCode() = “ + list.hashCode());</p>
+<p>​              println(“list.indexOf(2) = “ + list.indexOf(2));      </p>
+<p>​              ListIterator li = list.listIterator();</p>
+<p>​              println(“After ListIterator li = list.listIterator():”);</p>
+<p>​              println(“li.next() = “ + li.next());</p>
+<p>​                                                                                            println(“list.size() = “ + list.size());</p>
+<p>​              println(“list.subList(1,2) = “ + list.subList(1,2));</p>
+<p>​              Object[] oa = list.toArray();</p>
+<p>​              println(“After Object[] oa = list.toArray():”);</p>
+<p>​              print(“oa = “);</p>
+<p>​              for(Object o : oa) print(o + “ “);</p>
+<p>​              println(); </p>
+<p>​                                        Number[] na = list.toArray(new Number[3]);</p>
+<p>​              println(“After Number[] na = list.toArray(new Number[3]):”);</p>
+<p>​              print(“na = “);</p>
+<p>​              for(Number n : na) print(n + “ “);</p>
+<p>​              println();</p>
+<p>​       }</p>
+<p>​       static void f2(List&lt;Holder&lt;?&gt;&gt; list) {</p>
+<p>​              println(“Calling methods for the List: “);</p>
+<p>​              println(“list = “ + list);</p>
+<p>​              println(“Adding Integer, String, Double”);</p>
+<p>​              list.add(new Holder<integer>(1));</integer></p>
+<p>​              list.add(new Holder<string>(“two”));</string></p>
+<p>​              list.add(new Holder<double>(3.0));</double></p>
+<p>​              println(“list = “ + list);</p>
+<p>​              println(“Elements of list: “);</p>
+<p>​              for(Holder h : list) </p>
+<p>​                     println(“h.get() = “ + h.get());</p>
+<p>​              println(“Adding Float”);</p>
+<p>​              list.add(3, new Holder<float>(4.0f));</float></p>
+<p>​              println(“list = “ + list);</p>
+<p>​              println(“Elements of list: “);</p>
+<p>​              for(Holder h : list) </p>
+<p>​                     println(“h.get() = “ + h.get());</p>
+<p>​              println(“list.clear()”);</p>
+<p>​              list.clear();</p>
+<p>​              println(“list = “ + list);</p>
+<p>​              Collection&lt;Holder&lt;?&gt;&gt; c = </p>
+<p>​                     new ArrayList&lt;Holder&lt;?&gt;&gt;();</p>
+<p>​              c.add(new Holder<string>(“one”));</string></p>
+<p>​              c.add(new Holder<float>(2.0f));</float></p>
+<p>​              c.add(new Holder<double>(3.0));</double></p>
+<p>​              list.addAll(c);</p>
+<p>​              println(“Adding String, Float, Double”);</p>
+<p>​              println(“list = “ + list);</p>
+<p>​              println(“Elements of list: “);</p>
+<p>​              for(Holder h : list) </p>
+<p>​                     println(“h.get() = “ + h.get().getClass().getSimpleName() </p>
+<p>​                            + “ “ + h.get());</p>
+<p>​              list.add(3, new Holder<string>(“four”));</string></p>
+<p>​              println(“Elements of list: “);</p>
+<p>​              for(Holder h : list) </p>
+<p>​                     println(“h.get() = “ + h.get().getClass().getSimpleName() </p>
+<p>​                            + “ “ + h.get());</p>
+<p>​              Object listClone = ((ArrayList)list).clone();</p>
+<p>​              println(“((ArrayList)list).clone() = “ +  listClone);</p>
+<p>​              println(“((ArrayList)list).clone().getClass() = “ +</p>
+<p>​                     ((ArrayList)list).clone().getClass());</p>
+<p>​                                        println(“Replacing element with h4, new Holder<integer>(4)”);</integer></p>
+<p>​              Holder<integer> h4 = new Holder<integer>(4);</integer></integer></p>
+<p>​              list.set(3, h4);</p>
+<p>​              println(“Elements of list Holders: “);</p>
+<p>​              for(Holder h : list) </p>
+<p>​                     println(h.get().getClass().getSimpleName() </p>
+<p>​                            + “ “ + h.get());</p>
+<p>​              println(“list.contains(list.set(3, h4): “ + </p>
+<p>​                            list.contains(list.set(3, h4)));</p>
+<p>​              println(“list.contains(4): “ + list.contains(4));</p>
+<p>​              println(“list.contains(h4): “ + list.contains(h4));</p>
+<p>​              println(“Adding null member to list”);        </p>
+<p>​              list.add(null);</p>
+<p>​              println(“list.contains(null): “ + list.contains(null));</p>
+<p>​              println(“list.get(0).get(): “ + list.get(0).get());</p>
+<p>​              println(“list.indexOf(h4) = “ + list.indexOf(h4));</p>
+<p>​              println(“list.indexOf(null) = “ + list.indexOf(null));</p>
+<p>​              println(“list.isEmpty(): “ + list.isEmpty());</p>
+<p>​              println(“list.lastIndexOf(null) = “ + list.lastIndexOf(null));  </p>
+<p>​              println(“Removing index 0”);</p>
+<p>​              list.remove(0);</p>
+<p>​              println(“Elements of list Holders: “);</p>
+<p>​              for(Holder h : list) {</p>
+<p>​                     if(h == null) println(“null”);</p>
+<p>​                     else</p>
+<p>​                     println(h.get().getClass().getSimpleName() </p>
+<p>​                            + “ “ + h.get());      </p>
+<p>​                     }</p>
+<p>​              println(“Removing null”);</p>
+<p>​              println(“Elements of list Holders: “);</p>
+<p>​              for(Holder h : list) {</p>
+<p>​                     if(h == null) println(“null”);</p>
+<p>​                     else</p>
+<p>​                     println(h.get().getClass().getSimpleName() </p>
+<p>​                            + “ “ + h.get());      </p>
+<p>​                     }</p>
+<p>​                                        println(“list.size() = “ + list.size());</p>
+<p>​              Object[] oa = list.toArray();</p>
+<p>​              print(“list.toArray() = “);</p>
+<p>​              for(int i = 0; i &lt; oa.length; i++) </p>
+<p>​                     print(oa[i] + “ “);</p>
+<p>​              println();</p>
+<p>​              Holder[] ha = ((ArrayList&lt;Holder&lt;?&gt;&gt;)list).toArray(new Holder[4]);</p>
+<p>​              println(“(ArrayList&lt;Holder&lt;?&gt;&gt;list).toArray(new Holder[4]) = “);</p>
+<p>​              for(int i = 0; i &lt; ha.length; i++)</p>
+<p>​                     print(ha[i] + “ “);</p>
+<p>​              println();</p>
+<p>​              println(“Holder[4] Holders are holding: “);</p>
+<p>​              for(Holder h : ha) {</p>
+<p>​                     if(h == null) println(“null”);</p>
+<p>​                     else println(h.get());</p>
+<p>​              }</p>
+<p>​              println();         </p>
+<p>​       </p>
+<p>​              println(“Calling methods for the Holder: “);</p>
+<p>​              println(“list = “ + list);</p>
+<p>​              print(“Three Holders (one null) in list:”);</p>
+<p>​              for(int i = 0; i &lt; list.size(); i++) {</p>
+<p>​                     if(list.get(i) == null) println(“null”); </p>
+<p>​                     else</p>
+<p>​                     println(list.get(i).getClass().getSimpleName());</p>
+<p>​              }</p>
+<p>​              list.remove(3);</p>
+<p>​              println(“Holders are holding:”);</p>
+<p>​              for(Holder h : list) println(h.get());</p>
+<p>​              Holder&lt;?&gt; h1 = list.get(0);</p>
+<p>​              Holder&lt;?&gt; h2 = list.get(1);</p>
+<p>​              Holder&lt;?&gt; h3 = list.get(2);</p>
+<p>​              println(list.get(0).getClass() + “: “ </p>
+<p>​                     + list.get(0).get().getClass().getSimpleName() + “, “ </p>
+<p>​                     + list.get(0).get());</p>
+<p>​              println(list.get(1).getClass() + “: “ </p>
+<p>​                     + list.get(1).get().getClass().getSimpleName() + “, “ </p>
+<p>​                     + list.get(1).get());</p>
+<p>​              println(list.get(2).getClass() + “: “ </p>
+<p>​                     + list.get(2).get().getClass().getSimpleName() + “, “</p>
+<p>​                     + list.get(2).get());</p>
+<p>​                                                     </p>
+<p>​       }      </p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              println(“new Holder&lt;List&lt;?&gt;&gt; holder”);</p>
+<p>​              f1(new Holder&lt;List&lt;?&gt;&gt;());</p>
+<p>​              println();</p>
+<p>​              println(“List&lt;Holder<?>> list = new ArrayList<holder<?>&gt;();”);</holder<?></p>
+<p>​              List&lt;Holder<?>> list = new ArrayList<holder<?>&gt;();</holder<?></p>
+<p>​              f2(list);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Holders30 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Holder<character> charHolder = new Holder<character>();</character></character></p>
+<p>​              Holder<byte> byteHolder = new Holder<byte>();</byte></byte></p>
+<p>​              Holder<short> shortHolder = new Holder<short>();</short></short></p>
+<p>​              Holder<integer> intHolder = new Holder<integer>();</integer></integer></p>
+<p>​              Holder<long> longHolder = new Holder<long>();</long></long></p>
+<p>​              Holder<float> floatHolder = new Holder<float>();</float></float></p>
+<p>​              Holder<double> doubleHolder = new Holder<double>();</double></double></p>
+<p>​                           charHolder.set(‘a’);</p>
+<p>​              print(charHolder.get() + “, “);</p>
+<p>​              println(charHolder.get().getClass());</p>
+<p>​              char c = charHolder.get();</p>
+<p>​              println(“char c = charHolder.get() = “ + c);</p>
+<p>​              byte b = 1;</p>
+<p>​              byteHolder.set(b);</p>
+<p>​              print(byteHolder.get() + “, “);</p>
+<p>​              println(byteHolder.get().getClass());</p>
+<p>​              byte bb = byteHolder.get();</p>
+<p>​              println(“byte bb = byteHolder.get() = “ + bb);                </p>
+<p>​              short s = 1;</p>
+<p>​              shortHolder.set(s);</p>
+<p>​              print(shortHolder.get() + “, “);</p>
+<p>​              println(shortHolder.get().getClass());</p>
+<p>​              short ss = shortHolder.get();</p>
+<p>​              println(“short ss = shortHolder.get() = “ + ss);</p>
+<p>​              intHolder.set(1);</p>
+<p>​              print(intHolder.get() + “. “);</p>
+<p>​              println(intHolder.get().getClass());</p>
+<p>​              int i = intHolder.get();</p>
+<p>​              println(“int i = intHolder.get() = “ + i);</p>
+<p>​              long l = 2;</p>
+<p>​              longHolder.set(l);</p>
+<p>​              print(longHolder.get() + “, “);</p>
+<p>​              println(longHolder.get().getClass());</p>
+<p>​              long ll = longHolder.get();</p>
+<p>​              println(“long ll = longHolder.get() = “ + ll);</p>
+<p>​              float f = 1f;</p>
+<p>​              floatHolder.set(f);</p>
+<p>​              print(floatHolder.get() + “, “);</p>
+<p>​              println(floatHolder.get().getClass());</p>
+<p>​              float ff = floatHolder.get();</p>
+<p>​              println(“float ff = floatHolder.get() = “ + ff);</p>
+<p>​              double d = 1.1;</p>
+<p>​              doubleHolder.set(d);</p>
+<p>​              print(doubleHolder.get() + “, “);</p>
+<p>​              println(doubleHolder.get().getClass());</p>
+<p>​              double dd = doubleHolder.get();</p>
+<p>​              println(“double dd = doubleHolder.get() = “ + dd);        </p>
+<p>​       }             </p>
+<p>​              </p>
+<p>}</p>
+<p>  interface Payable { float getPay(); }</p>
+<p>class Employee implements Payable {</p>
+<p>​       private float weeklyPay;</p>
+<p>​       public float getPay() {</p>
+<p>​              return weeklyPay;</p>
+<p>​       }             </p>
+<p>} </p>
+<p>class Hourly extends Employee {</p>
+<p>​       public String name;</p>
+<p>​       protected float hourlyPay;</p>
+<p>​       public int hoursWorked;</p>
+<p>​       Hourly(String s, float pay, int hours) {</p>
+<p>​              name = s;</p>
+<p>​              hourlyPay = pay;</p>
+<p>​              hoursWorked = hours;</p>
+<p>​       }</p>
+<p>​       public float getPay() {</p>
+<p>​              System.out.println(“Pay “ + name + </p>
+<p>​                     “ $” + hourlyPay * hoursWorked);</p>
+<p>​              return hourlyPay * hoursWorked;      </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class MultipleInterfaceVariants31 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Hourly h = new Hourly(“Joe”, 50.00f, 40);</p>
+<p>​              h.getPay();</p>
+<p>​       }</p>
+<p>}</p>
+<p>class FixedSizeStack<t> {</t></p>
+<p>​       private int index = 0;</p>
+<p>​       private Object[] storage;</p>
+<p>​       public FixedSizeStack(int size) {</p>
+<p>​              storage = new Object[size];</p>
+<p>​       }</p>
+<p>​       int getIndex() { return index; } </p>
+<p>​       public void push(T item) { storage[index++] = item; }</p>
+<p>​       @SuppressWarnings(“unchecked”)</p>
+<p>​       public T pop() { return (T)storage[–index]; }</p>
+<p>}</p>
+<p>public class GenericCast32 {</p>
+<p>​       public static final int SIZE = 10;</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              FixedSizeStack<string> strings = </string></p>
+<p>​                     new FixedSizeStack<string>(SIZE);</string></p>
+<p>​              for(String s : “A B C D E F G H I J”.split(“ “))</p>
+<p>​                     strings.push(s);</p>
+<p>​                                        if(strings.getIndex() &lt; SIZE) strings.push(“oops”);</p>
+<p>​              for(int i = 0; i &lt; SIZE; i++) {</p>
+<p>​                     String s = strings.pop();</p>
+<p>​                     System.out.print(s + “ “);</p>
+<p>​              }                                  </p>
+<p>​       }             </p>
+<p>​              </p>
+<p>}</p>
+<p>class VariableSizeStack<t> { </t></p>
+<p>​       private ArrayList<t> storage = new ArrayList<t>();</t></t></p>
+<p>​           public int count() {</p>
+<p>​              return storage.size();</p>
+<p>​           } </p>
+<p>​           public void push(T item) { </p>
+<p>​              storage.add(item); </p>
+<p>​           }</p>
+<p>​           public T pop() { </p>
+<p>​              return storage.remove(storage.size() - 1);</p>
+<p>​           }</p>
+<p>}</p>
+<p>public class GenericCast33 {</p>
+<p>​      public static void main(String[] args) {</p>
+<p>​               VariableSizeStack<string> strings =</string></p>
+<p>​                          new VariableSizeStack<string>();</string></p>
+<p>​               for(String s : “A B C D E F G H I J”.split(“ “))</p>
+<p>​                          strings.push(s);</p>
+<p>​              int currentCount = strings.count();</p>
+<p>​              for(int i = 0; i &lt; currentCount; i++) {</p>
+<p>​                   String s = strings.pop();</p>
+<p>​                   System.out.print(s + “ “);</p>
+<p>​              }                }      }</p>
+<p>abstract class SelfBoundedType&lt;T extends SelfBoundedType<t>&gt; {</t></p>
+<p>​       abstract T f(T arg);</p>
+<p>​       T g(T arg) { </p>
+<p>​              System.out.println(“g(T arg)”);</p>
+<p>​              return f(arg); </p>
+<p>​       }      </p>
+<p>}</p>
+<p>class D extends SelfBoundedType<d> {</d></p>
+<p>​       D f(D arg) { </p>
+<p>​              System.out.println(“f(D arg)”);</p>
+<p>​              return arg; </p>
+<p>​       }      </p>
+<p>}</p>
+<p>public class Ex34 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              D d = new D();</p>
+<p>​              d.f(d).g(d);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class CheckedList35 {</p>
+<p>​       @SuppressWarnings(“unchecked”)</p>
+<p>​       static void oldStyleMethod(List probablyMocha) {</p>
+<p>​              probablyMocha.add(new Breve());</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              List<mocha> mocha1 = new ArrayList<mocha>();</mocha></mocha></p>
+<p>​              oldStyleMethod(mocha1);                List<mocha> mocha2 = Collections.checkedList(</mocha></p>
+<p>​                     new ArrayList<mocha>(), Mocha.class);</mocha></p>
+<p>​              try {</p>
+<p>​                     oldStyleMethod(mocha2);                } catch(Exception e) {</p>
+<p>​                     System.out.println(e);</p>
+<p>​              }</p>
+<p>​                           List<coffee> coffee = Collections.checkedList(</coffee></p>
+<p>​                     new ArrayList<coffee>(), Coffee.class);</coffee></p>
+<p>​              coffee.add(new Mocha());</p>
+<p>​              coffee.add(new Breve());             </p>
+<p>​       }</p>
+<p>}      </p>
+<p>​    import java.util.*;</p>
+<p>interface Processor&lt;T,E extends Exception, E2 extends Exception&gt; {</p>
+<p>​       void process(List<t> resultCollector) throws E,E2;</t></p>
+<p>}</p>
+<p>class ProcessRunner&lt;T,E extends Exception, E2 extends Exception&gt; </p>
+<p>extends ArrayList&lt;Processor&lt;T,E,E2&gt;&gt; {</p>
+<p>​       List<t> processAll() throws E,E2 {</t></p>
+<p>​              List<t> resultCollector = new ArrayList<t>();</t></t></p>
+<p>​              for(Processor&lt;T,E,E2&gt; processor : this)</p>
+<p>​                     processor.process(resultCollector);</p>
+<p>​              return resultCollector;</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Failure1 extends Exception {}</p>
+<p>class Failure3 extends Exception {}</p>
+<p>class Processor1 implements Processor&lt;String,Failure1,Failure3&gt; {</p>
+<p>​       static int count = 3;</p>
+<p>​       public void</p>
+<p>​       process(List<string> resultCollector) throws Failure1, Failure3 {</string></p>
+<p>​              if(count– &gt; 1)</p>
+<p>​                     resultCollector.add(“Hep!”);</p>
+<p>​              else</p>
+<p>​                     resultCollector.add(“Ho!”);</p>
+<p>​              if(count &lt; 0)</p>
+<p>​                     throw new Failure1();</p>
+<p>​              if(count &lt; -1)</p>
+<p>​                     throw new Failure3();</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Processor1b implements Processor&lt;String,Failure1,Failure3&gt; {</p>
+<p>​       static int count = 3;</p>
+<p>​       public void</p>
+<p>​       process(List<string> resultCollector) throws Failure1, Failure3 {</string></p>
+<p>​              if(count– &gt; 1)</p>
+<p>​                     resultCollector.add(“Hep!”);</p>
+<p>​              else</p>
+<p>​                     resultCollector.add(“Ho!”);</p>
+<p>​              if(count &lt; 0)</p>
+<p>​                     throw new Failure1();</p>
+<p>​              if(count == 1)</p>
+<p>​                     throw new Failure3();</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Failure2 extends Exception {}</p>
+<p>class Processor2 implements Processor&lt;Integer,Failure2,Failure3&gt; {</p>
+<p>​       static int count = 2;</p>
+<p>​       public void</p>
+<p>​       process(List<integer> resultCollector) throws Failure2, Failure3 {</integer></p>
+<p>​              if(count– == 0)</p>
+<p>​                     resultCollector.add(47);</p>
+<p>​              else {</p>
+<p>​                     resultCollector.add(11);</p>
+<p>​              }</p>
+<p>​              if(count &lt; 0)</p>
+<p>​                     throw new Failure2();</p>
+<p>​              if(count &lt; -1)</p>
+<p>​                     throw new Failure3();</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Processor2b implements Processor&lt;Integer,Failure2,Failure3&gt; {</p>
+<p>​       static int count = 2;</p>
+<p>​       public void</p>
+<p>​       process(List<integer> resultCollector) throws Failure2, Failure3 {</integer></p>
+<p>​              if(count– == 0)</p>
+<p>​                     resultCollector.add(47);</p>
+<p>​              else {</p>
+<p>​                     resultCollector.add(11);</p>
+<p>​              }</p>
+<p>​              if(count &lt; 0)</p>
+<p>​                     throw new Failure2();</p>
+<p>​              if(count == 1)</p>
+<p>​                     throw new Failure3();</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class ThrowGenericException36 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              ProcessRunner&lt;String,Failure1,Failure3&gt; runner =</p>
+<p>​                     new ProcessRunner&lt;String,Failure1,Failure3&gt;();</p>
+<p>​              for(int i = 0; i &lt; 3; i++)</p>
+<p>​                     runner.add(new Processor1());</p>
+<p>​              try {</p>
+<p>​                     System.out.println(runner.processAll());</p>
+<p>​              } catch(Failure1 e) {</p>
+<p>​                     System.out.println(e);</p>
+<p>​              } catch(Failure3 e) {</p>
+<p>​                     System.out.println(e);</p>
+<p>​              }</p>
+<p>​              ProcessRunner&lt;String,Failure1,Failure3&gt; runnerb =</p>
+<p>​                     new ProcessRunner&lt;String,Failure1,Failure3&gt;();</p>
+<p>​              for(int i = 0; i &lt; 3; i++)</p>
+<p>​                     runnerb.add(new Processor1b());</p>
+<p>​              try {</p>
+<p>​                     System.out.println(runnerb.processAll());</p>
+<p>​              } catch(Failure1 e) {</p>
+<p>​                     System.out.println(e);</p>
+<p>​              } catch(Failure3 e) {</p>
+<p>​                     System.out.println(e);</p>
+<p>​              }</p>
+<p>​              ProcessRunner&lt;Integer,Failure2,Failure3&gt; runner2 =</p>
+<p>​                     new ProcessRunner&lt;Integer,Failure2,Failure3&gt;();</p>
+<p>​              for(int i = 0; i &lt; 3; i++)</p>
+<p>​                     runner2.add(new Processor2());</p>
+<p>​              try {</p>
+<p>​                     System.out.println(runner2.processAll());</p>
+<p>​              } catch(Failure2 e) {</p>
+<p>​                     System.out.println(e);</p>
+<p>​              } catch(Failure3 e) {</p>
+<p>​                     System.out.println(e);</p>
+<p>​              }</p>
+<p>​              ProcessRunner&lt;Integer,Failure2,Failure3&gt; runner2b =</p>
+<p>​                     new ProcessRunner&lt;Integer,Failure2,Failure3&gt;();</p>
+<p>​              for(int i = 0; i &lt; 3; i++)</p>
+<p>​                     runner2b.add(new Processor2b());</p>
+<p>​              try {</p>
+<p>​                     System.out.println(runner2b.processAll());</p>
+<p>​              } catch(Failure2 e) {</p>
+<p>​                     System.out.println(e);</p>
+<p>​              } catch(Failure3 e) {</p>
+<p>​                     System.out.println(e);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       </p>
+<p>}      </p>
+<p>class TimeStampedImp implements TimeStamped {</p>
+<p>​       private final long timeStamp;</p>
+<p>​       public TimeStampedImp() {</p>
+<p>​              timeStamp = new Date().getTime();</p>
+<p>​       }</p>
+<p>​       public long getStamp() { return timeStamp; }</p>
+<p>}</p>
+<p>interface SerialNumbered { long getSerialNumber(); }</p>
+<p>class SerialNumberedImp implements SerialNumbered {</p>
+<p>​       private static long counter = 1;</p>
+<p>​       private final long serialNumber = counter++;</p>
+<p>​       public long getSerialNumber() { return serialNumber; }</p>
+<p>}</p>
+<p>interface Color { String getColor();  }</p>
+<p>class Colored implements Color {</p>
+<p>​       private String color = “blue”;</p>
+<p>​       public void setColor(String col) { color = col; }</p>
+<p>​       public String getColor() { return color; }</p>
+<p>}</p>
+<p>interface Basic {</p>
+<p>​       public void set(String val);</p>
+<p>​       public String get();</p>
+<p>}</p>
+<p>class BasicImp implements Basic {</p>
+<p>​       private String value;</p>
+<p>​       public void set(String val) { value = val; }</p>
+<p>​       public String get() { return value; }</p>
+<p>}</p>
+<p>class Mixin extends BasicImp </p>
+<p>implements TimeStamped, SerialNumbered, Color {</p>
+<p>​       private TimeStamped timeStamp = new TimeStampedImp();</p>
+<p>​       private SerialNumbered serialNumber = new SerialNumberedImp();</p>
+<p>​       private Colored color = new Colored();</p>
+<p>​       public long getStamp() { return timeStamp.getStamp(); }</p>
+<p>​       public long getSerialNumber() { </p>
+<p>​              return serialNumber.getSerialNumber(); </p>
+<p>​       }</p>
+<p>​       public String getColor() { return color.getColor(); }</p>
+<p>}</p>
+<p>public class Mixins37 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Mixin mixin1 = new Mixin(), mixin2 = new Mixin();</p>
+<p>​              mixin1.set(“test string 1”);</p>
+<p>​              mixin2.set(“test string 2”);</p>
+<p>​              System.out.println(mixin1.get() + “ “ + mixin1.getStamp() </p>
+<p>​                     + “ “ + mixin1.getSerialNumber() + “ “ + </p>
+<p>​                     mixin1.getColor());</p>
+<p>​              System.out.println(mixin2.get() + “ “ + mixin2.getStamp() </p>
+<p>​                     + “ “ + mixin2.getSerialNumber() + “ “ + </p>
+<p>​                     mixin2.getColor());</p>
+<p>​       }</p>
+<p>}</p>
+<p>class BasicCoffee {</p>
+<p>​       private static long counter = 0;</p>
+<p>​      private final long id = counter++;</p>
+<p>​       private String value;</p>
+<p>​       public void set(String val) { value = val; }</p>
+<p>​       public String get() { return value; }</p>
+<p>​      public String toString() {</p>
+<p>​                  return getClass().getSimpleName() + “ “ + id;</p>
+<p>​      }</p>
+<p>}</p>
+<p>class Decorator extends BasicCoffee {</p>
+<p>​       protected BasicCoffee basicCoffee;</p>
+<p>​       public Decorator(BasicCoffee basicCoffee) { </p>
+<p>​              this.basicCoffee = basicCoffee; </p>
+<p>​       }</p>
+<p>​       public void set(String val) { basicCoffee.set(val); }</p>
+<p>​       public String get() { return basicCoffee.get(); }</p>
+<p>}</p>
+<p>class SteamedMilk extends Decorator {</p>
+<p>​       private final String steamedMilk = “steamedMilk”;</p>
+<p>​       public SteamedMilk(BasicCoffee basicCoffee) {</p>
+<p>​              super(basicCoffee);</p>
+<p>​       }</p>
+<p>​       public String getSteamedMilk() { return steamedMilk; }</p>
+<p>}</p>
+<p>class Foam extends Decorator {</p>
+<p>​       private final String foam = “foam”;</p>
+<p>​       public Foam(BasicCoffee basicCoffee) {</p>
+<p>​              super(basicCoffee);</p>
+<p>​       }</p>
+<p>​       public String getFoam() { return foam; }</p>
+<p>}</p>
+<p>class Chocolate extends Decorator {</p>
+<p>​       private final String chocolate = “chocolate”;</p>
+<p>​       public Chocolate(BasicCoffee basicCoffee) {</p>
+<p>​              super(basicCoffee);</p>
+<p>​       }</p>
+<p>​       public String getChocolate() { return chocolate; }</p>
+<p>}</p>
+<p>class Caramel extends Decorator {</p>
+<p>​       private final String caramel = “caramel”;</p>
+<p>​       public Caramel(BasicCoffee basicCoffee) {</p>
+<p>​              super(basicCoffee);</p>
+<p>​       }</p>
+<p>​       public String getCaramel() { return caramel; }</p>
+<p>}</p>
+<p>class WhippedCream extends Decorator {</p>
+<p>​       private final String whippedCream = “whippedCream”;</p>
+<p>​       public WhippedCream(BasicCoffee basicCoffee) {</p>
+<p>​              super(basicCoffee);</p>
+<p>​       }</p>
+<p>​       public String getWhippedCream() { return whippedCream; }</p>
+<p>}</p>
+<p>public class CoffeeDecoration38 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              SteamedMilk sm = new SteamedMilk(new BasicCoffee());</p>
+<p>​              SteamedMilk sm2 = new SteamedMilk(</p>
+<p>​                     new Foam(new BasicCoffee()));</p>
+<p>​              Chocolate c = new Chocolate(new BasicCoffee());</p>
+<p>​              WhippedCream wc = new WhippedCream(new Caramel(</p>
+<p>​                     new Chocolate(new Foam(new SteamedMilk(</p>
+<p>​                     new BasicCoffee())))));</p>
+<p>​       }</p>
+<p>}</p>
+<p>class MixinProxy implements InvocationHandler {</p>
+<p>​       Map&lt;String,Object&gt; delegatesByMethod;</p>
+<p>​       public MixinProxy(TwoTuple&lt;Object,Class&lt;?&gt;&gt;… pairs) {</p>
+<p>​              delegatesByMethod = new HashMap&lt;String,Object&gt;();</p>
+<p>​              for(TwoTuple&lt;Object,Class&lt;?&gt;&gt; pair : pairs) {</p>
+<p>​                     for(Method method : pair.second.getMethods()) {</p>
+<p>​                            String methodName = method.getName();</p>
+<p>​                                                                                  if(!delegatesByMethod.containsKey(methodName))</p>
+<p>​                                   delegatesByMethod.put(methodName, pair.first);</p>
+<p>​                     }</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {</p>
+<p>​              String methodName = method.getName();</p>
+<p>​              Object delegate = delegatesByMethod.get(methodName);</p>
+<p>​              return method.invoke(delegate, args);</p>
+<p>​       }</p>
+<p>​       @SuppressWarnings(“unchecked”)</p>
+<p>​       public static Object newInstance(TwoTuple… pairs) {</p>
+<p>​              Class[] interfaces = new Class[pairs.length];</p>
+<p>​              for(int i = 0; i &lt; pairs.length; i++) {</p>
+<p>​                     interfaces[i] = (Class)pairs[i].second;</p>
+<p>​              }</p>
+<p>​              ClassLoader cl = pairs[0].first.getClass().getClassLoader();</p>
+<p>​              return Proxy.newProxyInstance(cl, interfaces, new MixinProxy(pairs));</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class DynamicProxyMixin39 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Object mixin = MixinProxy.newInstance(tuple(new BasicImp(), Basic.class), </p>
+<p>​                     tuple(new TimeStampedImp(), TimeStamped.class),</p>
+<p>​                     tuple(new SerialNumberedImp(), SerialNumbered.class),</p>
+<p>​                     tuple(new Colored(), Color.class));</p>
+<p>​              Basic b = (Basic)mixin;</p>
+<p>​              TimeStamped t = (TimeStamped)mixin;</p>
+<p>​              SerialNumbered s = (SerialNumbered)mixin;</p>
+<p>​              b.set(“Hello”);</p>
+<p>​              Color c = (Color)mixin;</p>
+<p>​              System.out.println(b.get());</p>
+<p>​              System.out.println(t.getStamp());</p>
+<p>​              System.out.println(s.getSerialNumber());</p>
+<p>​              System.out.println(c.getColor());         </p>
+<p>​       }</p>
+<p>public class Apply40 {</p>
+<p>​       public static &lt;T,S extends Iterable&lt;? extends T&gt;&gt; void apply(S seq, Method f, Object… args) {</p>
+<p>​              try {</p>
+<p>​                     for(T t : seq)</p>
+<p>​                            f.invoke(t, args);</p>
+<p>​              } catch(Exception e) {</p>
+<p>​                                         throw new RuntimeException(e);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class FilledList<t> extends ArrayList<t> { </t></t></p>
+<p>​       public FilledList(Class&lt;? extends T&gt; type, int size) {</p>
+<p>​              try {</p>
+<p>​                     for(int i = 0; i &lt; size; i++)</p>
+<p>​                                                       add(type.newInstance());</p>
+<p>​              } catch(Exception e) {</p>
+<p>​                     throw new RuntimeException(e);</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>}</p>
+<p>class ApplyTest40 {</p>
+<p>​       public static void main(String[] args) throws Exception {</p>
+<p>​                           List<pet> pets = Pets.arrayList(10);</pet></p>
+<p>​              print(“Random pets: “ + pets);</p>
+<p>​                           Apply40.apply(pets, Pet.class.getMethod(“speak”));</p>
+<p>​                           Apply40.apply(new FilledList<pet>(Dog.class, 5), Pet.class.getMethod(“speak”));</pet></p>
+<p>​       }</p>
+<p>}</p>
+<p>interface Addable<t> { void add(T t); }</t></p>
+<p>public class Fill41 {</p>
+<p>​             public static <t> void fill(Addable<t> addable, </t></t></p>
+<p>​       Class&lt;? extends T&gt; classToken, int size) {</p>
+<p>​              for(int i = 0; i &lt; size; i++) </p>
+<p>​                     try {</p>
+<p>​                            addable.add(classToken.newInstance());</p>
+<p>​                     } catch(Exception e) {</p>
+<p>​                            throw new RuntimeException(e);</p>
+<p>​                     }</p>
+<p>​       }</p>
+<p>​             public static <t> void fill(Addable<t> addable, </t></t></p>
+<p>​       Generator<t> generator, int size) {</t></p>
+<p>​              for(int i = 0; i &lt; size; i++)</p>
+<p>​                     addable.add(generator.next());</p>
+<p>​       }</p>
+<p>}</p>
+<p>  class AddableCollectionAdapter<t> implements Addable<t> {</t></t></p>
+<p>​       private Collection<t> c;</t></p>
+<p>​       public AddableCollectionAdapter(Collection<t> c) {</t></p>
+<p>​              this.c = c;</p>
+<p>​       }</p>
+<p>​       public void add(T item) { c.add(item); }</p>
+<p>}</p>
+<p> class Adapter {</p>
+<p>​       public static <t> </t></p>
+<p>​       Addable<t> collectionAdapter(Collection<t> c) {</t></t></p>
+<p>​              return new AddableCollectionAdapter<t>(c);          </t></p>
+<p>​       }</p>
+<p>}</p>
+<p>  class AddableSimpleQueue<t></t></p>
+<p>extends SimpleQueue<t> implements Addable<t> {</t></t></p>
+<p>​       public void add(T item) { super.add(item); }</p>
+<p>}</p>
+<p>class Fill41Test {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                           List<pet> pets = new ArrayList<pet>();</pet></pet></p>
+<p>​              Fill41.fill(</p>
+<p>​                     new AddableCollectionAdapter<pet>(pets),</pet></p>
+<p>​                     Pet.class, 3);</p>
+<p>​                           Fill41.fill(Adapter.collectionAdapter(pets), Manx.class, 2);</p>
+<p>​              for(Pet p : pets) print(p);</p>
+<p>​              print(“—————“);</p>
+<p>​                           AddableSimpleQueue<pet> petQueue = </pet></p>
+<p>​                     new AddableSimpleQueue<pet>();</pet></p>
+<p>​              Fill41.fill(petQueue, Pug.class, 4);</p>
+<p>​              Fill41.fill(petQueue, Gerbil.class, 1);</p>
+<p>​              for(Pet p : petQueue) print(p);            </p>
+<p>​       }</p>
+<p>}</p>
+<p> interface Combiner<t> { T combine(T x, T y); }</t></p>
+<p>interface UnaryFunction&lt;R,T&gt; { R function(T x); }</p>
+<p>interface Collector<t> extends UnaryFunction&lt;T,T&gt; {</t></p>
+<p>​       T result();  }</p>
+<p>class Food {</p>
+<p>​       private String foodName = “”;</p>
+<p>​       public Food() { foodName = “”; } </p>
+<p>​       public Food(String name) { foodName = name; }</p>
+<p>​       public void set(String name) { foodName = name; }</p>
+<p>​       public String get() { return foodName; }</p>
+<p>​       public void eat() { foodName = “”; }</p>
+<p>​       public String toString() { return “Food: “ + foodName; }</p>
+<p>}</p>
+<p>class Drink {</p>
+<p>​       private String drinkName = “”;</p>
+<p>​       public Drink() { drinkName= “”; }</p>
+<p>​       public Drink(String name) { drinkName = name; }</p>
+<p>​       public void set(String name) { drinkName = name; }</p>
+<p>​       public String get() { return drinkName; }</p>
+<p>​       public void eat() { drinkName = “”; }</p>
+<p>​       public String toString() { return “Drink: “ + drinkName; } </p>
+<p>}</p>
+<p>public class Functional42 {</p>
+<p>​                   public static <t> T</t></p>
+<p>​       reduce(Iterable<t> seq, Combiner<t> combiner) {</t></t></p>
+<p>​              Iterator<t> it = seq.iterator();</t></p>
+<p>​              if(it.hasNext()) {</p>
+<p>​                     T result = it.next();</p>
+<p>​                     while(it.hasNext())</p>
+<p>​                            result = combiner.combine(result, it.next());</p>
+<p>​                     return result;</p>
+<p>​              }</p>
+<p>​                           return null;   } </p>
+<p>​                               public static <t> Collector<t></t></t></p>
+<p>​       forEach(Iterable<t> seq, Collector<t> func) {</t></t></p>
+<p>​              for(T t : seq) func.function(t);</p>
+<p>​              return func;</p>
+<p>​       }      </p>
+<p>​       static class MealMaker implements Combiner<food> {</food></p>
+<p>​              public Food combine(Food f1, Food f2) {</p>
+<p>​                     return new Food(f1.get() + “ “ + f2.get());</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       static class DrinkMaker implements Combiner<drink> {</drink></p>
+<p>​              public Drink combine(Drink d1, Drink d2) {</p>
+<p>​                     return new Drink(d1.get() + “ “ + d2.get());</p>
+<p>​              }</p>
+<p>​       }</p>
+<p>​       static class CookedMeal</p>
+<p>​       implements Collector<food> {</food></p>
+<p>​              private Food f = new Food(“”);</p>
+<p>​              public Food function(Food x) {</p>
+<p>​                     f = new Food(f.get() + “ “ + x.get());</p>
+<p>​                     return f;</p>
+<p>​              }</p>
+<p>​              public Food result() { return new Food(“cooked “ + f.get()); }</p>
+<p>​       }      </p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              List<food> lf = Arrays.asList(new Food(“bread”),</food></p>
+<p>​                     new Food(“ham”), new Food(“cheese”));</p>
+<p>​              Food meal = reduce(lf, new MealMaker());</p>
+<p>​              print(meal);</p>
+<p>​              List<drink> ld = Arrays.asList(new Drink(“water”),</drink></p>
+<p>​                     new Drink(“orange juice”), new Drink(“lemon”));</p>
+<p>​              Drink drink = reduce(ld, new DrinkMaker());</p>
+<p>​              print(drink);</p>
+<p>​              print(forEach(lf, new CookedMeal()).result());</p>
+<p>​              </p>
+<p>​       }</p>
+<p>}</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/题解/" rel="tag"># 题解</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/06/2019-10-06-Java题解并发/" rel="next" title="Java题解并发">
+                <i class="fa fa-chevron-left"></i> Java题解并发
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/06/2019-10-06-Java题解持有对象/" rel="prev" title="Java题解持有对象">
+                Java题解持有对象 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第十五章-泛型"><span class="nav-number">1.</span> <span class="nav-text">第十五章 泛型</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

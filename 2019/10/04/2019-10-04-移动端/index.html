@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Javascript,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="2016年5月4日移动端开发alert(document.documentElement.clientWidth);//文档屏幕宽度  window.screen.width//设备屏幕宽度  alert(window.devicePixelRatio);//设备物理像素与设备独立像素的比值 事件   touchstart  手指按上 touchmove  手指按着移动 touchend  手指移">
+<meta name="keywords" content="Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-移动端/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="2016年5月4日移动端开发alert(document.documentElement.clientWidth);//文档屏幕宽度  window.screen.width//设备屏幕宽度  alert(window.devicePixelRatio);//设备物理像素与设备独立像素的比值 事件   touchstart  手指按上 touchmove  手指按着移动 touchend  手指移">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.694Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动端">
+<meta name="twitter:description" content="2016年5月4日移动端开发alert(document.documentElement.clientWidth);//文档屏幕宽度  window.screen.width//设备屏幕宽度  alert(window.devicePixelRatio);//设备物理像素与设备独立像素的比值 事件   touchstart  手指按上 touchmove  手指按着移动 touchend  手指移">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-移动端/">
+
+
+
+
+
+  <title>移动端 | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-移动端/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">移动端</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T10:00:00+08:00">
+                2019-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="2016年5月4日"><a href="#2016年5月4日" class="headerlink" title="2016年5月4日"></a>2016年5月4日</h1><h2 id="移动端开发"><a href="#移动端开发" class="headerlink" title="移动端开发"></a>移动端开发</h2><pre><code>alert(document.documentElement.clientWidth);//文档屏幕宽度
+
+window.screen.width//设备屏幕宽度
+
+alert(window.devicePixelRatio);//设备物理像素与设备独立像素的比值</code></pre><ul>
+<li><strong>事件</strong></li>
+</ul>
+<ol>
+<li>touchstart  手指按上</li>
+<li>touchmove  手指按着移动</li>
+<li>touchend  手指移开 </li>
+</ol>
+<ul>
+<li><strong>touchEvent</strong></li>
+</ul>
+<ol>
+<li>touches  当前位于屏幕上的所有手指的一个列表</li>
+<li>targetTouches  位于当前DOM元素上的手指的一个列表</li>
+<li>changedTouches   涉及当前事件的手指的一个列表 </li>
+</ol>
+<pre><code class="js">box.ontouchend=function(ev){
+    console.log(&quot;3...&quot;);
+    console.log(ev.touches);
+    console.log(ev.targetTouches);
+    console.log(ev.changedTouches);
+}</code></pre>
+<ul>
+<li><strong>自定义属性</strong></li>
+</ul>
+<p>使用JavaScript操作dataset：</p>
+<ol>
+<li>我们在添加或读取属性的时候需要去掉前缀data-*，像上面的例子我们没有使用test.dataset.data-my = ‘Byron’;的形式。</li>
+<li>如果属性名称中还包含连字符(-)，需要转成驼峰命名方式，但如果在CSS中使用选择器，我们需要使用连字符格式</li>
+</ol>
+<pre><code class="css">        div[data-birth-date]
+        {
+            background-color: #0f0;
+            width:100px;
+            margin:20px;
+        }</code></pre>
+<p>使用getAttribute/setAttribute操作</p>
+<pre><code class="js">var test = document.getElementById(&#39;test&#39;);
+test.dataset.birthDate = &#39;19890615&#39;;
+test.setAttribute(&#39;age&#39;, 25);
+test.setAttribute(&#39;data-sex&#39;, &#39;male&#39;);
+
+console.log(test.getAttribute(&#39;data-age&#39;)); //24
+console.log(test.getAttribute(&#39;data-birth-date&#39;)); //19890516
+console.log(test.dataset.age); //24
+console.log(test.dataset.sex); //male</code></pre>
+<p>所有自定义属性在dataset对象中统一管理,方便调用遍历。</p>
+<pre><code class="html">&lt;a data-href=&quot;http://www.qq.com&quot; ontouchmove=&quot;this.s=1&quot; ontouchend=&quot;this.s||window.open(this.dataset.href),this.s=0&quot;&gt;
+        &lt;img src=&quot;1.jpg&quot;&gt;
+&lt;/a&gt;
+</code></pre>
+<p>[TOC]</p>
+<h1 id="2016年5月5日"><a href="#2016年5月5日" class="headerlink" title="2016年5月5日"></a>2016年5月5日</h1><h2 id="javascript"><a href="#javascript" class="headerlink" title="javascript"></a>javascript</h2><ul>
+<li><strong>window.open</strong></li>
+</ul>
+<p>语法：</p>
+<pre><code>window = object.open([URL ][, name ][, features ][, replace]) </code></pre><ul>
+<li>URL：新窗口的URL地址 </li>
+<li>name：新窗口的名称，可以为空 </li>
+<li>featurse：属性控制字符串，在此控制窗口的各种属性，属性之间以逗号隔开。 </li>
+<li>fullscreen= { yes/no/1/0 } 是否全屏，默认no </li>
+<li>channelmode= { yes/no/1/0 } 是否显示频道栏，默认no </li>
+<li>toolbar= { yes/no/1/0 } 是否显示工具条，默认no </li>
+<li>location= { yes/no/1/0 } 是否显示地址栏，默认no </li>
+<li>directories = { yes/no/1/0 } 是否显示转向按钮，默认no </li>
+<li>status= { yes/no/1/0 } 是否显示窗口状态条，默认no </li>
+<li>menubar= { yes/no/1/0 } 是否显示菜单，默认no </li>
+<li>scrollbars= { yes/no/1/0 } 是否显示滚动条，默认yes </li>
+<li>resizable= { yes/no/1/0 } 是否窗口可调整大小，默认no </li>
+<li>width=number 窗口宽度（像素单位） </li>
+<li>height=number 窗口高度（像素单位） </li>
+<li>top=number 窗口离屏幕顶部距离（像素单位） </li>
+<li>left=number 窗口离屏幕左边距离（像素单位）</li>
+</ul>
+<h3 id="数组操作"><a href="#数组操作" class="headerlink" title="数组操作"></a>数组操作</h3><ul>
+<li>shift()，unshift()</li>
+</ul>
+<p>shift方法用于删除数组的第一个元素，并返回该元素。注意，该方法会改变原数组。</p>
+<pre><code class="js">var a = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;];
+
+a.shift() // &#39;a&#39;
+a // [&#39;b&#39;, &#39;c&#39;]</code></pre>
+<p>unshift方法用于在数组的第一个位置添加元素，并返回添加新元素后的数组长度。注意，该方法会改变原数组。</p>
+<pre><code class="js">var a = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;];
+
+a.unshift(&#39;x&#39;); // 4
+a // [&#39;x&#39;, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</code></pre>
+<ul>
+<li>reverse()</li>
+</ul>
+<p>reverse方法用于颠倒数组中元素的顺序，使用这个方法以后，返回改变后的原数组。</p>
+<pre><code class="js">var a = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;];
+
+a.reverse() // [&quot;c&quot;, &quot;b&quot;, &quot;a&quot;] 
+a // [&quot;c&quot;, &quot;b&quot;, &quot;a&quot;]    </code></pre>
+<ul>
+<li>slice()</li>
+</ul>
+<p>slice方法用于提取原数组的一部分，返回一个新数组，原数组不变。<br>它的第一个参数为起始位置（从0开始），第二个参数为终止位置（但该位置的元素本身不包括在内）。</p>
+<pre><code class="js">// 格式
+arr.slice(start_index, upto_index);
+
+// 用法
+var a = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;];
+
+a.slice(0) // [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
+a.slice(1) // [&quot;b&quot;, &quot;c&quot;]
+a.slice(1, 2) // [&quot;b&quot;]
+a.slice(2, 6) // [&quot;c&quot;]</code></pre>
+<ul>
+<li>splice()</li>
+</ul>
+<p>splice的第一个参数是删除的起始位置，第二个参数是被删除的元素个数。如果后面还有更多的参数，则表示这些就是要被插入数组的新元素。</p>
+<pre><code class="javascript">// 格式
+arr.splice(index, count_to_remove, addElement1, addElement2, ...);
+
+// 用法
+var a = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;];
+a.splice(4, 2) // [&quot;e&quot;, &quot;f&quot;]
+a // [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;]</code></pre>
+<ul>
+<li>sort()</li>
+</ul>
+<p>sort方法对数组成员进行排序，默认是按照字典顺序排序。排序后，原数组将被改变。</p>
+<pre><code class="javascript">[&#39;d&#39;, &#39;c&#39;, &#39;b&#39;, &#39;a&#39;].sort()
+// [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]
+
+[4, 3, 2, 1].sort()
+// [1, 2, 3, 4]
+
+[11, 101].sort()
+// [101, 11]
+
+[10111,1101,111].sort()
+// [10111, 1101, 111]</code></pre>
+<p>[TOC]</p>
+<h1 id="2016年5月6日"><a href="#2016年5月6日" class="headerlink" title="2016年5月6日"></a>2016年5月6日</h1><h2 id="javascript-1"><a href="#javascript-1" class="headerlink" title="javascript"></a>javascript</h2><h3 id="Date对象"><a href="#Date对象" class="headerlink" title="Date对象"></a>Date对象</h3><p><strong>Date对象的静态方法：</strong></p>
+<ul>
+<li>Date.now()</li>
+</ul>
+<p>Date.now方法返回当前距离1970年1月1日 00:00:00 UTC的毫秒数</p>
+<p><strong>window.performance.now()</strong>提供页面加载到命令运行时的已经过去的时间，可以精确到千分之一毫秒。</p>
+<ul>
+<li>Date.parse()</li>
+</ul>
+<p>Date.parse方法用来解析日期字符串，返回距离1970年1月1日 00:00:00的毫秒数。</p>
+<pre><code>Date.parse(&#39;Aug 9, 1995&#39;)
+// 返回807897600000，以下省略返回值</code></pre><ul>
+<li>Date.UTC()</li>
+</ul>
+<p>Date.UTC方法可以返回UTC时间（世界标准时间）。</p>
+<pre><code class="js">// 格式
+Date.UTC(year, month[, date[, hrs[, min[, sec[, ms]]]]])
+
+// 用法
+Date.UTC(2011, 0, 1, 2, 3, 4, 567)
+// 1293847384567</code></pre>
+<p><strong>Date的实例对象分为以下三类:</strong></p>
+<ul>
+<li>to类：从Date对象返回一个字符串，表示指定的时间。</li>
+<li>get类：获取Date对象的日期和时间。</li>
+<li>set类：设置Date对象的日期和时间。</li>
+</ul>
+<p><strong>to类方法</strong></p>
+<ul>
+<li>Date.prototype.toString()</li>
+</ul>
+<p>toString方法返回一个完整的日期字符串。</p>
+<pre><code class="js">var d = new Date(2013, 0, 1);
+
+d.toString()
+// &quot;Tue Jan 01 2013 00:00:00 GMT+0800 (CST)&quot;
+
+d
+// &quot;Tue Jan 01 2013 00:00:00 GMT+0800 (CST)&quot;</code></pre>
+<ul>
+<li>Date.prototype.toUTCString()</li>
+</ul>
+<p>toUTCString方法返回对应的UTC时间，也就是比北京时间晚8个小时。</p>
+<pre><code class="js">var d = new Date(2013, 0, 1);
+
+d.toUTCString()
+// &quot;Mon, 31 Dec 2012 16:00:00 GMT&quot;
+
+d.toString()
+// &quot;Tue Jan 01 2013 00:00:00 GMT+0800 (CST)&quot;</code></pre>
+<ul>
+<li>Date.prototype.toISOString()</li>
+</ul>
+<p>toISOString方法返回对应时间的ISO8601写法。</p>
+<pre><code class="js">var d = new Date(2013, 0, 1);
+
+d.toString()
+// &quot;Tue Jan 01 2013 00:00:00 GMT+0800 (CST)&quot;
+
+d.toISOString()
+// &quot;2012-12-31T16:00:00.000Z&quot;</code></pre>
+<ul>
+<li>Date.prototype.toJSON()</li>
+</ul>
+<p>toJSON方法返回一个符合JSON格式的ISO格式的日期字符串，与toISOString方法的返回结果完全相同。</p>
+<pre><code class="js">var d = new Date(2013, 0, 1);
+
+d.toJSON()
+// &quot;2012-12-31T16:00:00.000Z&quot;
+
+d.toISOString()
+// &quot;2012-12-31T16:00:00.000Z&quot;</code></pre>
+<ul>
+<li>Date.prototype.toDateString()</li>
+</ul>
+<p>toDateString方法返回日期字符串。</p>
+<pre><code>var d = new Date(2013, 0, 1);
+d.toDateString() // &quot;Tue Jan 01 2013&quot;</code></pre><ul>
+<li>Date.prototype.toTimeString()</li>
+</ul>
+<p>toTimeString方法返回时间字符串。</p>
+<pre><code class="js">var d = new Date(2013, 0, 1);
+d.toTimeString() // &quot;00:00:00 GMT+0800 (CST)&quot;</code></pre>
+<ul>
+<li>Date.prototype.toLocalDateString()</li>
+</ul>
+<p>toLocalDateString方法返回一个字符串，代表日期的当地写法。</p>
+<pre><code class="javascript">var d = new Date(2013, 0, 1);
+
+d.toLocaleDateString()
+// 中文版浏览器为&quot;2013年1月1日&quot;
+// 英文版浏览器为&quot;1/1/2013&quot;</code></pre>
+<p><strong>get类方法:</strong><br>Date对象提供了一系列get*方法，用来获取实例对象某个方面的值。</p>
+<ul>
+<li>getTime()：返回距离1970年1月1日00:00:00的毫秒数，等同于valueOf方法。</li>
+<li>getDate()：返回实例对象对应每个月的几号（从1开始）。</li>
+<li>getDay()：返回星期几，星期日为0，星期一为1，以此类推。</li>
+<li>getYear()：返回距离1900的年数。</li>
+<li>getFullYear()：返回四位的年份。</li>
+<li>getMonth()：返回月份（0表示1月，11表示12月）。</li>
+<li>getHours()：返回小时（0-23）。</li>
+<li>getMilliseconds()：返回毫秒（0-999）。</li>
+<li>getMinutes()：返回分钟（0-59）。</li>
+<li>getSeconds()：返回秒（0-59）。</li>
+<li>getTimezoneOffset()：返回当前时间与UTC的时区差异，以分钟表示，返回结果考虑到了夏令时因素。</li>
+</ul>
+<p><strong>set类方法：</strong></p>
+<ul>
+<li><p>setDate(date)：设置实例对象对应的每个月的几号（1-31），返回改变后毫秒时间戳。</p>
+</li>
+<li><p>setYear(year): 设置距离1900年的年数。</p>
+</li>
+<li><p>setFullYear(year [, month, date])：设置四位年份。</p>
+</li>
+<li><p>setHours(hour [, min, sec, ms])：设置小时（0-23）。</p>
+</li>
+<li><p>setMilliseconds()：设置毫秒（0-999）。</p>
+</li>
+<li><p>setMinutes(min [, sec, ms])：设置分钟（0-59）。</p>
+</li>
+<li><p>setMonth(month [, date])：设置月份（0-11）。</p>
+</li>
+<li><p>setSeconds(sec [, ms])：设置秒（0-59）。</p>
+</li>
+<li><p>setTime(milliseconds)：设置毫秒时间戳。</p>
+<p>目录 2016年5月7日javascriptMath对象Number对象自定义方法Object对象的方法</p>
+</li>
+</ul>
+<h1 id="2016年5月7日"><a href="#2016年5月7日" class="headerlink" title="2016年5月7日"></a>2016年5月7日</h1><h2 id="javascript-2"><a href="#javascript-2" class="headerlink" title="javascript"></a>javascript</h2><h3 id="Math对象"><a href="#Math对象" class="headerlink" title="Math对象"></a>Math对象</h3><p><strong>属性</strong></p>
+<ul>
+<li>Math.E：常数e。</li>
+<li>Math.LN2：2的自然对数。</li>
+<li>Math.LN10：10的自然对数。</li>
+<li>Math.LOG2E：以2为底的e的对数。</li>
+<li>Math.LOG10E：以10为底的e的对数。</li>
+<li>Math.PI：常数Pi。</li>
+<li>Math.SQRT1_2：0.5的平方根。</li>
+<li>Math.SQRT2：2的平方根。</li>
+</ul>
+<p><strong>方法</strong></p>
+<ul>
+<li>Math.abs()：绝对值</li>
+<li>Math.ceil()：向上取整</li>
+<li>Math.floor()：向下取整</li>
+<li>Math.max()：最大值</li>
+<li>Math.min()：最小值</li>
+<li>Math.pow()：指数运算</li>
+<li>Math.sqrt()：平方根</li>
+<li>Math.log()：自然对数</li>
+<li>Math.exp()：e的指数</li>
+<li>Math.round()：四舍五入</li>
+<li>Math.random()：随机数</li>
+</ul>
+<h3 id="Number对象"><a href="#Number对象" class="headerlink" title="Number对象"></a>Number对象</h3><p><strong>属性</strong></p>
+<ul>
+<li>Number.POSITIVE_INFINITY：正的无限，指向Infinity。</li>
+<li>Number.NEGATIVE_INFINITY：负的无限，指向-Infinity。</li>
+<li>Number.NaN：表示非数值，指向NaN。</li>
+<li>Number.MAX_VALUE：表示最大的正数，相应的，最小的负数为-Number.MAX_VALUE。</li>
+<li>Number.MIN_VALUE：表示最小的正数（即最接近0的正数，在64位浮点数体系中为5e-324） - ，相应的，最接近0的负数为-Number.MIN_VALUE。</li>
+<li>Number.MAX_SAFE_INTEGER：表示能够精确表示的最大整数，即9007199254740991。</li>
+<li>Number.MIN_SAFE_INTEGER：表示能够精确表示的最小整数，即-9007199254740991。</li>
+</ul>
+<p><strong>方法</strong></p>
+<p>1.Number.prototype.toString()</p>
+<p>Number对象部署了单独的toString方法，可以接受一个参数，表示将一个数字转化成某个进制的字符串。</p>
+<pre><code class="js">(10).toString() // &quot;10&quot;
+10[&#39;toString&#39;](2) // &quot;1010&quot;
+(10).toString(2) // &quot;1010&quot;
+(10).toString(8) // &quot;12&quot;
+(10).toString(16) // &quot;a&quot;</code></pre>
+<blockquote>
+<p>将其他进制的数，转回十进制，需要使用parseInt方法。</p>
+</blockquote>
+<p>2.Number.prototype.toFixed()</p>
+<p>toFixed方法用于将一个数转为指定位数的小数，返回这个小数对应的字符串。</p>
+<pre><code class="js">(10).toFixed(2) // &quot;10.00&quot;
+10.005.toFixed(2) // &quot;10.01&quot;</code></pre>
+<p>3.Number.prototype.toExponential()</p>
+<p>toExponential方法用于将一个数转为科学计数法形式。</p>
+<pre><code class="js">(10).toExponential(1)
+// &quot;1.0e+1&quot;
+
+(1234).toExponential(1)
+// &quot;1.2e+3&quot;</code></pre>
+<p>4.Number.prototype.toPrecision()</p>
+<p>toPrecision方法用于将一个数转为指定位数的有效数字。</p>
+<pre><code class="js">(12.34).toPrecision(1) // &quot;1e+1&quot;
+(12.34).toPrecision(2) // &quot;12&quot;
+(12.34).toPrecision(3) // &quot;12.3&quot;
+(12.34).toPrecision(4) // &quot;12.34&quot;
+(12.34).toPrecision(5) // &quot;12.340&quot;</code></pre>
+<h3 id="自定义方法"><a href="#自定义方法" class="headerlink" title="自定义方法"></a>自定义方法</h3><p>与其他对象一样，Number.prototype对象上面可以自定义方法，被Number的实例继承。</p>
+<pre><code class="js">Number.prototype.add = function (x) {
+  return this + x;
+};
+
+8[&#39;add&#39;](2)
+// 10</code></pre>
+<h3 id="Object对象的方法"><a href="#Object对象的方法" class="headerlink" title="Object对象的方法"></a>Object对象的方法</h3><ul>
+<li>Object()</li>
+</ul>
+<p>Object本身当作工具方法使用时，可以将任意值转为对象。   </p>
+<p>其中，原始类型的值转为对应的包装对象</p>
+<pre><code class="js">Object() // 返回一个空对象
+Object(undefined) // 返回一个空对象
+Object(null) // 返回一个空对象
+
+Object(1) // 等同于 new Number(1)
+Object(&#39;foo&#39;) // 等同于 new String(&#39;foo&#39;)
+Object(true) // 等同于 new Boolean(true)
+
+Object([]) // 返回原数组
+Object({}) // 返回原对象
+Object(function(){}) // 返回原函数</code></pre>
+<ul>
+<li>Object.keys()，Object.getOwnPropertyNames()</li>
+</ul>
+<p>Object.keys方法只返回可枚举的属性，Object.getOwnPropertyNames方法还返回不可枚举的属性名。</p>
+<pre><code class="js">var o = {
+    p1: 123,
+    p2: 456
+};
+
+Object.keys(o)
+// [&quot;p1&quot;, &quot;p2&quot;]
+
+Object.getOwnPropertyNames(o)
+// [&quot;p1&quot;, &quot;p2&quot;]
+// 
+var a = [&quot;Hello&quot;, &quot;World&quot;];
+
+Object.keys(a)
+// [&quot;0&quot;, &quot;1&quot;]
+
+Object.getOwnPropertyNames(a)
+// [&quot;0&quot;, &quot;1&quot;, &quot;length&quot;]
+// 
+Object.keys(o).length
+//一般使用这个方法计算属性个数。</code></pre>
+<p>[TOC]</p>
+<h1 id="2016年5月9日"><a href="#2016年5月9日" class="headerlink" title="2016年5月9日"></a>2016年5月9日</h1><h2 id="javascript-3"><a href="#javascript-3" class="headerlink" title="javascript"></a>javascript</h2><h3 id="对象的属性模型"><a href="#对象的属性模型" class="headerlink" title="对象的属性模型"></a>对象的属性模型</h3><ul>
+<li>Object.getOwnPropertyDescriptor()</li>
+</ul>
+<p>在JavaScript内部，每个属性都有一个对应的attributes对象，保存该属性的一些元信息。</p>
+<pre><code class="js">var o = { p: &#39;a&#39; };
+
+Object.getOwnPropertyDescriptor(o, &#39;p&#39;)
+// Object { value: &quot;a&quot;,
+//   writable: true,
+//   enumerable: true,
+//   configurable: true
+// }</code></pre>
+<p>上面代码表示，使用Object.getOwnPropertyDescriptor方法，读取o对象的p属性的attributes对象。</p>
+<p>attributes对象包含如下元信息:</p>
+<ul>
+<li><p>value：表示该属性的值，默认为undefined。</p>
+</li>
+<li><p>writable：表示该属性的值（value）是否可以改变，默认为true。</p>
+</li>
+<li><p>enumerable：表示该属性是否可枚举，默认为true。如果设为false，会使得某些操作（比如for… - in循环、Object.keys()）跳过该属性。</p>
+</li>
+<li><p>configurable：表示“可配置性”，默认为true。如果设为false，将阻止某些操作改写该属 - 性，比如，无法删除该属性，也不得改变该属性的attributes对象（value属性除外），也 - 就是说，configurable属性控制了attributes对象的可写性。</p>
+</li>
+<li><p>get：表示该属性的取值函数（getter），默认为undefined。</p>
+</li>
+<li><p>set：表示该属性的存值函数（setter），默认为undefined。</p>
+</li>
+<li><p>Object.defineProperty()，Object.defineProperties()</p>
+</li>
+</ul>
+<p><strong>Object.defineProperty</strong>方法允许通过定义attributes对象，来定义或修改一个属性，然后返回修改后的对象。</p>
+<pre><code>Object.defineProperty(object, propertyName, attributesObject)</code></pre><h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><p><strong>新建</strong></p>
+<pre><code class="js">var regex = /xyz/;
+
+var regex = new RegExp(&#39;xyz&#39;);</code></pre>
+<p>第一种方法在编译时新建正则表达式，第二种方法在运行时新建正则表达式。</p>
+<ul>
+<li>修饰符属性</li>
+<li>ignoreCase：返回一个布尔值，表示是否设置了i修饰符，该属性只读。</li>
+<li>global：返回一个布尔值，表示是否设置了g修饰符，该属性只读。</li>
+<li>multiline：返回一个布尔值，表示是否设置了m修饰符，该属性只读。</li>
+</ul>
+<pre><code class="js">var r = /abc/igm;
+
+r.ignoreCase // true
+r.global // true
+r.multiline // true</code></pre>
+<ul>
+<li><p>与修饰符无关的属性</p>
+</li>
+<li><p>lastIndex：返回下一次开始搜索的位置。该属性可读写，但是只在设置了g修饰符时有意义。</p>
+</li>
+<li><p>source：返回正则表达式的字符串形式（不包括反斜杠），该属性只读。 </p>
+</li>
+</ul>
+<pre><code class="javascript">var r = /abc/igm;
+
+r.lastIndex // 0
+r.source // &quot;abc&quot;</code></pre>
+<ul>
+<li>test()</li>
+</ul>
+<p>正则对象的test方法返回一个布尔值，表示当前模式是否能匹配参数字符串。</p>
+<pre><code>/cat/.test(&#39;cats and dogs&#39;) // true</code></pre><ul>
+<li>exec()</li>
+</ul>
+<p>正则对象的exec方法，可以返回匹配结果。如果发现匹配，就返回一个数组，每个匹配成功的子字符串，就是数组成员，否则返回null。</p>
+<pre><code class="js">var s = &#39;_x_x&#39;;
+var r1 = /x/;
+var r2 = /y/;
+
+r1.exec(s) // [&quot;x&quot;]
+r2.exec(s) // null</code></pre>
+<ul>
+<li>字符串对象的方法</li>
+</ul>
+<ol>
+<li>match()：返回一个数组，成员是所有匹配的子字符串。</li>
+<li>search()：按照给定的正则表达式进行搜索，返回一个整数，表示匹配开始的位置。</li>
+<li>replace()：按照给定的正则表达式进行替换，返回替换后的字符串。</li>
+<li>split()：按照给定规则进行字符串分割，返回一个数组，包含分割后的各个成员。</li>
+</ol>
+<ul>
+<li>字面量字符和元字符</li>
+</ul>
+<p><strong>（1）点字符（.）</strong></p>
+<p>点字符（.）匹配除回车（\r）、换行(\n) 、行分隔符（\u2028）和段分隔符（\u2029）以外的所有字符。</p>
+<pre><code>/c.t/</code></pre><p>上面代码中，c.t匹配c和t之间包含任意一个字符的情况，只要这三个字符在同一行，比如cat、c2t、c-t等等，但是不匹配coot。</p>
+<p><strong>（2）位置字符</strong></p>
+<ul>
+<li>^ 表示字符串的开始位置</li>
+<li>$ 表示字符串的结束位置</li>
+</ul>
+<pre><code class="js">// test必须出现在开始位置
+/^test/.test(&#39;test123&#39;) // true
+
+// test必须出现在结束位置
+/test$/.test(&#39;new test&#39;) // true
+
+// 从开始位置到结束位置只有test
+/^test$/.test(&#39;test&#39;) // true
+/^test$/.test(&#39;test test&#39;) // false</code></pre>
+<p><strong>（3）选择符（/）</strong></p>
+<ul>
+<li>重复类</li>
+</ul>
+<p>使用大括号（{}）表示。{n}表示恰好重复n次，{n,}表示至少重复n次，{n,m}表示重复不少于n次，不多于m次。</p>
+<pre><code>/lo{2}k/.test(&#39;look&#39;) // true
+/lo{2, 5}k/.test(&#39;looook&#39;) // true</code></pre><ul>
+<li>量词符<ul>
+<li>? 问号表示某个模式出现0次或1次，等同于{0, 1}。</li>
+<li><ul>
+<li>星号表示某个模式出现0次或多次，等同于{0,}。</li>
+</ul>
+</li>
+<li><ul>
+<li>加号表示某个模式出现1次或多次，等同于{1,}。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">// t出现0次或1次
+/t?est/.test(&#39;test&#39;) // true
+/t?est/.test(&#39;est&#39;) // true
+
+// t出现1次或多次
+/t+est/.test(&#39;test&#39;) // true
+/t+est/.test(&#39;ttest&#39;) // true
+/t+est/.test(&#39;est&#39;) // false
+
+// t出现0次或多次
+/t*est/.test(&#39;test&#39;) // true
+/t*est/.test(&#39;ttest&#39;) // true
+/t*est/.test(&#39;tttest&#39;) // true
+/t*est/.test(&#39;est&#39;) // true</code></pre>
+<ul>
+<li>贪婪模式</li>
+</ul>
+<p>上一小节的三个量词符，默认情况下都是最大可能匹配，即匹配直到下一个字符不满足匹配规则为止。</p>
+<pre><code>var s = &#39;aaa&#39;;
+s.match(/a+/) // [&quot;aaa&quot;] </code></pre><ul>
+<li>字符类</li>
+</ul>
+<p>字符类（class）表示有一系列字符可供选择，只要匹配其中一个就可以了。</p>
+<pre><code class="js">    /[abc]/.test(&#39;hello world&#39;) // false
+    /[abc]/.test(&#39;apple&#39;) // true</code></pre>
+<p><strong>（1）脱字符（^）</strong></p>
+<p>如果方括号内的第一个字符是[ ^ ]，则表示除了字符类之中的字符。</p>
+<pre><code>/[^abc]/.test(&#39;hello world&#39;) // true</code></pre><p><strong>（2）连字符（-）</strong></p>
+<p>[abc]可以写成[a-c]，[0123456789]可以写成[0-9]，同理[A-Z]表示26个大写字母。</p>
+<pre><code>/a-z/.test(&#39;b&#39;) // false</code></pre><p>连字符还可以用来指定Unicode字符的范围。</p>
+<pre><code class="js">var str = &quot;\u0130\u0131\u0132&quot;;
+/[\u0128-\uFFFF]/.test(str)
+// true</code></pre>
+<ul>
+<li>转义符</li>
+</ul>
+<p>^、.、[、$、(、)、|、*、+、?、{和\。 </p>
+<ul>
+<li>预定义模式<ul>
+<li>\d 匹配0-9之间的任一数字，相当于[0-9]。</li>
+<li>\D 匹配所有0-9以外的字符，相当于[^0-9]。</li>
+<li>\w 匹配任意的字母、数字和下划线，相当于[A-Za-z0-9_]。</li>
+<li>\W 除所有字母、数字和下划线以外的字符，相当于[^A-Za-z0-9_]。</li>
+<li>\s 匹配空格（包括制表符、空格符、断行符等），相等于[\t\r\n\v\f]。</li>
+<li>\S 匹配非空格的字符，相当于[^\t\r\n\v\f ]。</li>
+<li>\b 匹配词的边界。</li>
+<li>\B 匹配非词边界，即在词的内部。</li>
+</ul>
+</li>
+<li>特殊字符<ul>
+<li>\cX 表示Ctrl-[X]，其中的X是A-Z之中任一个英文字母，用来匹配控制字符。</li>
+<li>[\b] 匹配退格键(U+0008)，不要与\b混淆。</li>
+<li>\n 匹配换行键。</li>
+<li>\r 匹配回车键。</li>
+<li>\t 匹配制表符tab（U+0009）。</li>
+<li>\v 匹配垂直制表符（U+000B）。</li>
+<li>\f 匹配换页符（U+000C）。</li>
+<li>\0 匹配null字符（U+0000）。</li>
+<li>\xhh 匹配一个以两位十六进制数表示的字符。</li>
+<li>\uhhhh 匹配一个以四位十六进制数表示的unicode字符。</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<p>[TOC]</p>
+<h1 id="2016年5月23日"><a href="#2016年5月23日" class="headerlink" title="2016年5月23日"></a>2016年5月23日</h1><h2 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h2><pre><code>document.body.scrollTop:获取页面滚动的高度。
+someElement.scrollTop：元素滚动条内的顶部隐藏部分的高度。
+
+document.body.offsetHeight:网页可见区域高
+document.body.offsetWidth :网页可见区域宽
+
+screen.availWidth - 可用的屏幕宽度
+screen.availHeight - 可用的屏幕高度</code></pre><pre><code>obj.offsetLeft //元素相对于父元素的left
+obj.offsetTop //元素相对于父元素的top
+obj.offsetWidth //元素的宽度
+obj.offsetHeight //元素的高度</code></pre><p>补充：</p>
+<pre><code>obj.clientWidth //获取元素的宽度
+obj.clientHeight //元素的高度
+
+clientWidth = width + padding
+clientHeight = height + padding
+offsetWidth = width + padding + border
+offsetHeight = width + padding + border</code></pre><p>[TOC]</p>
+<h1 id="2016年5月26日"><a href="#2016年5月26日" class="headerlink" title="2016年5月26日"></a>2016年5月26日</h1><h2 id="jQuery-1"><a href="#jQuery-1" class="headerlink" title="jQuery"></a>jQuery</h2><p><strong>滚动监听</strong></p>
+<pre><code class="js"> $(window).scroll(function () {
+            var $currentWindow = $(window); 
+
+
+            //当前窗口的高度  
+            var windowHeight = $currentWindow.height();  
+            console.log(&quot;current widow height is &quot; + windowHeight);  
+
+
+            //当前滚动条从上往下滚动的距离  
+            var scrollTop = $currentWindow.scrollTop();  
+            console.log(&quot;current scrollOffset is &quot; + scrollTop);  
+
+
+            //当前文档的高度  
+            var docHeight = $(document).height();  
+            console.log(&quot;current docHeight is &quot; + docHeight);  
+
+            //当 滚动条距底部的距离 + 滚动条滚动的距离 &gt;= 文档的高度 - 窗口的高度  
+            //换句话说：（滚动条滚动的距离 + 窗口的高度 = 文档的高度）  这个是基本的公式  
+            if ((BOTTOM_OFFSET + scrollTop) &gt;= docHeight - windowHeight) {  
+                createListItems();  
+            }  
+        });  </code></pre>
+<p>window.innerHeight – 浏览器窗口的内部高度,包括滚动条<br>window.innerWidth – 浏览器窗口的内部宽度，包括滚动条</p>
+<p>document.documentElement.clientHeight，根元素html的高度。<br>document.documentElement.clientWidth，根元素html的宽度。</p>
+<blockquote>
+<p>documentElement 是整个节点树的根节点root，即<html> 标签；</html></p>
+</blockquote>
+<p>document.body.clientHeight，body元素的高度，可有元素撑起，或者自定义。<br>document.body.clientWidth，body元素的宽度，可有元素撑起，或者自定义。</p>
+<blockquote>
+<p>clientTop实际上就是border的高度；</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-红黑树介绍/" rel="next" title="红黑树介绍">
+                <i class="fa fa-chevron-left"></i> 红黑树介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-移动端事件/" rel="prev" title="移动端事件">
+                移动端事件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年5月4日"><span class="nav-number">1.</span> <span class="nav-text">2016年5月4日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#移动端开发"><span class="nav-number">1.1.</span> <span class="nav-text">移动端开发</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年5月5日"><span class="nav-number">2.</span> <span class="nav-text">2016年5月5日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript"><span class="nav-number">2.1.</span> <span class="nav-text">javascript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数组操作"><span class="nav-number">2.1.1.</span> <span class="nav-text">数组操作</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年5月6日"><span class="nav-number">3.</span> <span class="nav-text">2016年5月6日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript-1"><span class="nav-number">3.1.</span> <span class="nav-text">javascript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Date对象"><span class="nav-number">3.1.1.</span> <span class="nav-text">Date对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年5月7日"><span class="nav-number">4.</span> <span class="nav-text">2016年5月7日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript-2"><span class="nav-number">4.1.</span> <span class="nav-text">javascript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Math对象"><span class="nav-number">4.1.1.</span> <span class="nav-text">Math对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Number对象"><span class="nav-number">4.1.2.</span> <span class="nav-text">Number对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义方法"><span class="nav-number">4.1.3.</span> <span class="nav-text">自定义方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object对象的方法"><span class="nav-number">4.1.4.</span> <span class="nav-text">Object对象的方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年5月9日"><span class="nav-number">5.</span> <span class="nav-text">2016年5月9日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript-3"><span class="nav-number">5.1.</span> <span class="nav-text">javascript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的属性模型"><span class="nav-number">5.1.1.</span> <span class="nav-text">对象的属性模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则表达式"><span class="nav-number">5.1.2.</span> <span class="nav-text">正则表达式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年5月23日"><span class="nav-number">6.</span> <span class="nav-text">2016年5月23日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery"><span class="nav-number">6.1.</span> <span class="nav-text">jQuery</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年5月26日"><span class="nav-number">7.</span> <span class="nav-text">2016年5月26日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery-1"><span class="nav-number">7.1.</span> <span class="nav-text">jQuery</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

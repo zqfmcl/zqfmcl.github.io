@@ -1,0 +1,3111 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Javascript,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="2016年3月2日javascript数据结构 数据：是指所有能输入计算机并能被计算机系统和程序识别、存储、加工和处理的符号的总称。 数据元素：数据的基本单位，在计算机程序中通常把数据元素作为一个整体来存储和处理。有时一个数据元素可由若干个数据项组成。 数据项：是数据不可分割的，具有独立含义的最小数据单位。  算法： 即对数据施加的操作。数据的运算定义在数据的逻辑结构上，每种逻辑结构都有一个运算的">
+<meta name="keywords" content="Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-JS/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="2016年3月2日javascript数据结构 数据：是指所有能输入计算机并能被计算机系统和程序识别、存储、加工和处理的符号的总称。 数据元素：数据的基本单位，在计算机程序中通常把数据元素作为一个整体来存储和处理。有时一个数据元素可由若干个数据项组成。 数据项：是数据不可分割的，具有独立含义的最小数据单位。  算法： 即对数据施加的操作。数据的运算定义在数据的逻辑结构上，每种逻辑结构都有一个运算的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/pic1.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/flex1.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/flex-direction.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/flex-wrap.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/justify-content.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/align-items.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/align-content.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/order.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/flex-grow.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/flex-shrink.jpg">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/align-self.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/ct_css_margin_collapsing_example_1.gif">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/ct_css_margin_collapsing_example_2.gif">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/ct_css_margin_collapsing_example_3.gif">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/ct_css_margin_collapsing_example_4.gif">
+<meta property="og:updated_time" content="2019-10-23T07:21:32.226Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS">
+<meta name="twitter:description" content="2016年3月2日javascript数据结构 数据：是指所有能输入计算机并能被计算机系统和程序识别、存储、加工和处理的符号的总称。 数据元素：数据的基本单位，在计算机程序中通常把数据元素作为一个整体来存储和处理。有时一个数据元素可由若干个数据项组成。 数据项：是数据不可分割的，具有独立含义的最小数据单位。  算法： 即对数据施加的操作。数据的运算定义在数据的逻辑结构上，每种逻辑结构都有一个运算的">
+<meta name="twitter:image" content="c:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/pic1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-JS/">
+
+
+
+
+
+  <title>JS | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-JS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JS</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T10:00:00+08:00">
+                2019-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="2016年3月2日"><a href="#2016年3月2日" class="headerlink" title="2016年3月2日"></a>2016年3月2日</h1><h2 id="javascript"><a href="#javascript" class="headerlink" title="javascript"></a>javascript</h2><h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><ul>
+<li>数据：是指所有能输入计算机并能被计算机系统和程序识别、存储、加工和处理的符号的总称。</li>
+<li>数据元素：数据的基本单位，在计算机程序中通常把数据元素作为一个整体来存储和处理。有时一个数据元素可由若干个数据项组成。</li>
+<li>数据项：是数据不可分割的，具有独立含义的最小数据单位。</li>
+</ul>
+<p><strong>算法</strong>：</p>
+<p>即对数据施加的操作。数据的运算定义在数据的逻辑结构上，每种逻辑结构都有一个运算的集合。最常用的检索、插入、删除、更新、排序等运算实际上只是在抽象的数据上所施加的一系列抽象的操作。</p>
+<h1 id="2016年3月3日"><a href="#2016年3月3日" class="headerlink" title="2016年3月3日"></a>2016年3月3日</h1><h2 id="javascript-1"><a href="#javascript-1" class="headerlink" title="javascript"></a>javascript</h2><h3 id="算法与数据结构"><a href="#算法与数据结构" class="headerlink" title="算法与数据结构"></a>算法与数据结构</h3><p><strong>JavaScript Array 对象</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>concat()</td>
+<td>连接两个或更多的数组，并返回结果。</td>
+</tr>
+<tr>
+<td>join()</td>
+<td>把数组的所有元素放入一个字符串。元素通过指定的分隔符进行分隔。</td>
+</tr>
+<tr>
+<td>pop()</td>
+<td>删除并返回数组的最后一个元素</td>
+</tr>
+<tr>
+<td>push()</td>
+<td>向数组的末尾添加一个或更多元素，并返回新的长度。</td>
+</tr>
+<tr>
+<td>reverse()</td>
+<td>颠倒数组中元素的顺序。</td>
+</tr>
+<tr>
+<td>shift()</td>
+<td>删除并返回数组的第一个元素</td>
+</tr>
+<tr>
+<td>slice()</td>
+<td>从某个已有的数组返回选定的元素</td>
+</tr>
+<tr>
+<td>sort()</td>
+<td>对数组的元素进行排序</td>
+</tr>
+<tr>
+<td>splice()</td>
+<td>删除元素，并向数组添加新元素。</td>
+</tr>
+<tr>
+<td>toSource()</td>
+<td>返回该对象的源代码。</td>
+</tr>
+<tr>
+<td>toString()</td>
+<td>把数组转换为字符串，并返回结果。</td>
+</tr>
+<tr>
+<td>toLocaleString()</td>
+<td>把数组转换为本地数组，并返回结果。</td>
+</tr>
+<tr>
+<td>unshift()</td>
+<td>向数组的开头添加一个或更多元素，并返回新的长度。</td>
+</tr>
+<tr>
+<td>valueOf()</td>
+<td>返回数组对象的原始值</td>
+</tr>
+</tbody></table>
+<p><strong>push()</strong> 遇到数组参数时，把整个数组参数作为一个元素；而 <strong>concat()</strong> 则是拆开数组参数，一个元素一个元素地加进去。 <strong>push()</strong> 直接改变当前数组；<strong>concat()</strong> 不改变当前数组。</p>
+<pre><code class="js">var arr = new Array(3)
+arr[0] = &quot;George&quot;
+arr[1] = &quot;John&quot;
+arr[2] = &quot;Thomas&quot;
+
+
+//push()
+document.write(arr + &quot;&lt;br /&gt;&quot;)
+document.write(arr.push([12,324,345]) + &quot;&lt;br /&gt;&quot;)
+document.write(arr[3])
+//George,John,Thomas
+//4
+//1,2,3,4
+
+//concat()
+
+brr=arr.concat([1,2,3]);
+document.write(brr[3])
+//1</code></pre>
+<pre><code class="js">var d; // 声明变量。 
+d = new Date(); // 创建 Date 对象。 
+document.write(d.toLocaleString()+&quot;&lt;br/&gt;&quot;); // 转换为当前区域,返回转换的日期。
+
+document.write(d.toString()); // 返回转换的日期。
+
+结果：
+2016/3/4 上午10:28:51
+
+Fri Mar 04 2016 10:28:51 GMT+0800 (中国标准时间)</code></pre>
+<p><strong>toLocaleString()</strong>方法返回一个 String 对象 ,这个对象中包含了用当前区域设置的默认格式表示的日期。 </p>
+<p><strong>toString()</strong>返回值与没有参数的 join() 方法返回的字符串相同。</p>
+<h1 id="2016年3月5日"><a href="#2016年3月5日" class="headerlink" title="2016年3月5日"></a>2016年3月5日</h1><h2 id="javascript-2"><a href="#javascript-2" class="headerlink" title="javascript"></a>javascript</h2><ul>
+<li>parseInt(string, radix) 函数</li>
+</ul>
+<p><strong>radix</strong>： 可选。表示要解析的数字的基数。该值介于 2 ~ 36 之间。</p>
+<p>函数可解析一个字符串，并返回一个十进制整数。</p>
+<ul>
+<li>进制转换</li>
+</ul>
+<pre><code class="javascript">//十进制转其他  
+var x=110;  
+alert(x);  
+alert(x.toString(8));  
+alert(x.toString(32));  
+alert(x.toString(16));  
+//其他转十进制  
+var x=&#39;110&#39;;  
+alert(parseInt(x,2));  
+alert(parseInt(x,8));  
+alert(parseInt(x,16));  
+//其他转其他  
+//先用parseInt转成十进制再用toString转到目标进制  
+alert(String.fromCharCode(parseInt(141,8)))//&quot;a&quot;
+alert(parseInt(&#39;ff&#39;,16).toString(2));//&quot;11111111&quot;</code></pre>
+<h2 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs"></a>nodejs</h2><p>在ecmascript部分node和js其实是一样的，比如数据类型的定义，语法结构，内置对象</p>
+<p>在js中的顶层对象:  window</p>
+<p>在node中的顶层对象:  global</p>
+<blockquote>
+<p>注意：在node中也没有什么window</p>
+</blockquote>
+<p>一个文件就是一个模块</p>
+<p>每个模块都有自己的作用域</p>
+<p>我们使用var来申明的一个变量，他并不是全局的，而是属于当前模块下</p>
+<p><strong>__filename</strong>:当前文件被解析过后的绝对路径;</p>
+<p><strong>require(‘模块’)</strong>:模块加载;</p>
+<p>模块加载机制：</p>
+<ul>
+<li>路径<ul>
+<li>绝对路径</li>
+<li>相对路径</li>
+</ul>
+</li>
+<li>查找方式<ol>
+<li>首先按照加载的模块的文件名称进行查找</li>
+<li>如果没有找到，则会在模块文件名称后加上.js的后缀，进行查找</li>
+<li>如果还没有找到，则会在文件名称后加上.json的后缀，进行查找</li>
+<li>如果还没有，则会在文件名称后加上.node的后缀，进行查找</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>文件名称 -&gt; .js -&gt; .json -&gt; .node</p>
+</blockquote>
+<h1 id="2016年3月6日"><a href="#2016年3月6日" class="headerlink" title="2016年3月6日"></a>2016年3月6日</h1><h2 id="nodejs-1"><a href="#nodejs-1" class="headerlink" title="nodejs"></a>nodejs</h2><p>在一个模块中通过var定义的变量，其作用域范围是当前模块，外部不能够直接的访问<br>如果我们想一个模块能够访问另外一个模块中定义的变量，可以：</p>
+<ol>
+<li>把变量作为global对象的一个属性，但是这样的做法是推荐</li>
+<li>使用模块对象 module</li>
+</ol>
+<p><strong>module</strong> : 保存提供和当前模块有关的一些信息;<br>在这个<strong>module</strong>对象，有一个子对象：<strong>exports</strong> 对象<br>我们可以通过这个对象把一个模块中的局部变量对象进行提供访问</p>
+<pre><code class="js">&lt;!-- 1.js --&gt;
+module.exports.a = a;
+
+
+&lt;!-- 2.js --&gt;
+var m5 = require(&#39;./5&#39;); //这个方法的返回值，其实就被加载模块中的module.exports
+
+console.log(module);
+
+//{ a: 100 }
+//
+//module.exports = [1,2,3];   //exports 和 module.exports 的指向关系已经断开了,module.exports 给改写了，不是在这个对象上添加属性那样了
+//。</code></pre>
+<p><strong><strong>filename *<em>: 返回当前模块文件解析后的绝对路径，该属性其实并非全局的，而是模块作用域下的<br>*</em></strong>dirname</strong> : 返回当前模块文件所在目录解析后的绝对路径，该属性也不是全局的，而是模块作用域下的。</p>
+<h1 id="2016年3月7日"><a href="#2016年3月7日" class="headerlink" title="2016年3月7日"></a>2016年3月7日</h1><h2 id="nodejs-2"><a href="#nodejs-2" class="headerlink" title="nodejs"></a>nodejs</h2><h3 id="process对象"><a href="#process对象" class="headerlink" title="process对象"></a>process对象</h3><ul>
+<li>global<ul>
+<li>process对象<ul>
+<li>process对象是一个全局对象，可以在任何地方都能访问到他，通过这个对象提供的属性和方法，使我们可以对当前运行的程序的进程进行访问与控制。</li>
+<li>argv<ul>
+<li>Array，一组包含命令行参数的数组</li>
+</ul>
+</li>
+<li>execPath<ul>
+<li>开启当前进程的绝对路径</li>
+</ul>
+</li>
+<li>env<ul>
+<li>返回用户环境信息。</li>
+</ul>
+</li>
+<li>version<ul>
+<li>返回node版本信息</li>
+</ul>
+</li>
+<li>versions<ul>
+<li>返回node以及node依赖包版本信息</li>
+</ul>
+</li>
+<li>pid<ul>
+<li>当前进程的pid</li>
+</ul>
+</li>
+<li>title<ul>
+<li>当前进程的显示名称（Getter、Setter）</li>
+</ul>
+</li>
+<li>arch<ul>
+<li>返回当前CPU处理器架构 arm、ia32、x64</li>
+</ul>
+</li>
+<li>platform<ul>
+<li>返回当前操作系统平台</li>
+</ul>
+</li>
+<li>cwd()<ul>
+<li>返回当前进程的工作目录</li>
+</ul>
+</li>
+<li>chdir(directory)<ul>
+<li>改变当前进程的工作目录</li>
+</ul>
+</li>
+<li>memoryUsage()<ul>
+<li>返回node进程的内存使用情况，单位是byte</li>
+</ul>
+</li>
+<li>exit(code)<ul>
+<li>退出</li>
+</ul>
+</li>
+<li>kill(pid)<ul>
+<li>想进程发送信息</li>
+</ul>
+</li>
+<li>stdin<ul>
+<li>标准输入流</li>
+</ul>
+</li>
+<li>stdout<ul>
+<li>标准输出流</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">//默认情况下，输入流是关闭的，要监听处理输入流数据，首先要开启输入流
+process.stdin.resume();
+
+//用于监听用户的输入数据
+
+process.stdin.on(&#39;data&#39;, function(chunk) {
+    console.log(&#39;用户输入了：&#39; + chunk);
+});</code></pre>
+<h3 id="Buffer类"><a href="#Buffer类" class="headerlink" title="Buffer类"></a>Buffer类</h3><p><strong>new Buffer(size); size [Number]</strong> 创建一个Buffer对象，并为这个对象分配一个大小<br>当我们为一个Buffer对象分配空间大小以后，其长度是固定，不能更改。</p>
+<blockquote>
+<p>内容会随机填充。</p>
+</blockquote>
+<p><strong>new Buffer(str, [encoding])</strong>:将字符串转化成指定二进制数字。</p>
+<ul>
+<li>str String类型 - 需要存入buffer的string字符串.</li>
+<li>encoding String类型 - 使用什么编码方式，参数可选.</li>
+</ul>
+<p><strong>buf.length</strong></p>
+<pre><code class="js">var str2 = &#39;妙味&#39;;
+var bf2 = new Buffer(str2);
+console.log(str2.length);//字符串长度
+console.log(bf2.length);//字节长度</code></pre>
+<h3 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h3><p><strong>TCP/IP协议</strong></p>
+<p><strong>HTTP</strong>(Hyper Text Transfer Protocol，超文本传输协议)是一种通信协议 ，它允许将超文本标记语言(HTML)文档从Web服务器传送到客户端的浏览器。</p>
+<ul>
+<li>它是一个应用层协议，承载于TCP之上</li>
+<li>由请求和响应构成，是一个标准的客户端服务器模型</li>
+</ul>
+<p>TCP/IP协议族最重要的一点就是分层。按层次分别分为以下4层：</p>
+<ul>
+<li>应用层</li>
+</ul>
+<p>负责处理特定的应用程序，TCP/IP协议族内预存了各类通用的应用服务。<br>比如FTP、DNS等等，HTTP也在该层。</p>
+<ul>
+<li>传输层</li>
+</ul>
+<p>对上层应用层提供处于网络连接中两台计算机之间的数据传输。<br>该层有两个不同的协议：TCP和UDP。</p>
+<ul>
+<li>网络层</li>
+</ul>
+<p>处理网络上流动的数据包。<br>该层有协议有：IP、ICMP、IGMP。</p>
+<ul>
+<li>数据链路层</li>
+</ul>
+<p>处理连接网络的硬件部分。<br>包括操作系统、硬件设备驱动、网卡、光纤等。</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/pic1.png" alt></p>
+<p><strong>IP的作用：</strong></p>
+<p>把各种数据包传送给对方。如果要保证确定传送到对方那里，则需要满足各类条件，其中最重要的两个条件是IP地址和MAC地址。</p>
+<p>(1)IP地址：指明了节点被分配到的地址<br>(2)MAC地址：是指网卡所属的固定地址<br>(3)区别：IP地址可变换，但MAC地址基本上不会更改。</p>
+<p><strong>URI与URL</strong></p>
+<pre><code class="js">格式：
+http://user:pass@www.example.com:80/home/index.html?age=11#mask
+http：协议方案名
+user:pass：登录信息（认证）
+www.example.com：服务器地址
+80：端口号
+/hone/index.html：文件路径
+age=11：查询字符串
+mask：片段标识符 </code></pre>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><pre><code class="js">// 函数声明
+function foo() {}
+
+// 函数表达式
+(function bar() {})
+
+// 函数表达式
+x = function hello() {}
+
+if (x) {
+   // 函数表达式
+   function world() {}
+}
+
+// 函数声明
+function a() {
+   // 函数声明
+   function b() {}
+   if (0) {
+      //函数表达式
+      function c() {}
+   }
+}
+
+//匿名函数
+function () {}; </code></pre>
+<blockquote>
+<p>参考：<a href="http://my.oschina.net/u/2331760/blog/468672?fromerr=uCBMydOv" target="_blank" rel="noopener">http://my.oschina.net/u/2331760/blog/468672?fromerr=uCBMydOv</a></p>
+</blockquote>
+<p><strong>arguments.callee</strong></p>
+<p>*<em>arguments.callee *</em>在哪一个函数中运行，它就代表哪个函数。 一般用在匿名函数中。<br>在匿名函数中有时会需要自己调用自己，但是由于是匿名函数，没有名子，无名可调。<br>这时就可以用arguments.callee来代替匿名的函数。</p>
+<pre><code class="js">(function(n){
+
+    if(n &gt; 1)    return n* arguments.calle(n-1);
+
+    return n;
+
+})(10);
+//计算10的阶乘
+//
+function calleeDemo() {    
+  alert(arguments.callee);
+  return 10*10;
+}
+
+//function calleeDemo() {    
+//alert(arguments.callee);
+//return 10*10;
+//}</code></pre>
+<h1 id="2016年3月8日"><a href="#2016年3月8日" class="headerlink" title="2016年3月8日"></a>2016年3月8日</h1><h2 id="javascript-3"><a href="#javascript-3" class="headerlink" title="javascript"></a>javascript</h2><h3 id="函数-1"><a href="#函数-1" class="headerlink" title="函数"></a>函数</h3><p><strong>函数自执行</strong></p>
+<p><strong>( function(){…} )()</strong> 、 <strong>( function (){…} () )</strong>这两种立即执行函数的写法。</p>
+<p>要在函数体后面加括号就能立即调用，则这个函数必须是<strong>函数表达式</strong>，不能是<strong>函数声明</strong>。</p>
+<h2 id="nodejs-3"><a href="#nodejs-3" class="headerlink" title="nodejs"></a>nodejs</h2><h3 id="Buffer"><a href="#Buffer" class="headerlink" title="Buffer"></a>Buffer</h3><p><strong>Buffer类方法</strong></p>
+<ul>
+<li>一个用户更好的操作二进制数据的类<ul>
+<li>我们在操作文件或者网络数据的时候，其实操作的就是二进制数据流，Node为 我们提供了一个更加方便的去操作这个数据流的类Buffer，他是一个全局的类。</li>
+</ul>
+</li>
+<li><strong>new Buffer(size)</strong><ul>
+<li>分配一个新的 size 大小单位为8位字节的 buffer。</li>
+</ul>
+</li>
+<li><strong>new Buffer(array)</strong><ul>
+<li>分配一个新的 buffer 使用一个8位字节 array 数组.</li>
+</ul>
+</li>
+<li><strong>new Buffer(string,[encoding])</strong><ul>
+<li>str String类型 - 需要存入buffer的string字符串.</li>
+<li>encoding String类型 - 使用什么编码方式，参数可选.</li>
+</ul>
+</li>
+<li><strong>buf.length</strong>:buffer的bytes大小</li>
+<li><strong>buf[index]</strong>:获取或者设置在指定index索引位置的8位字节内容。</li>
+<li><strong>buf.write(string,[offset],[length],[encoding])</strong>:根据参数offset偏移量和指定的encoding编码方式，将参数string数据写入buffer。<ul>
+<li><strong>buf.write</strong>(要写入的字符串, 从Buffer对象中的几位开始写入, 写入的字符串的长度, 写入的字符串的编码)</li>
+</ul>
+</li>
+<li><strong>buf.toString([encoding],[start],[end])</strong>:根据encoding参数（默认是”utf-8”)返回一个解码的string类型；</li>
+<li><strong>buf.toJSON()</strong>:返回一个JSON表示的Buffer实例。JSON.stringify将会默认调用字符串序列化这个Buffer实例。</li>
+<li><strong>buf.slice([start],[end])</strong>:返回一个新的buffer，这个buffer将会和老的buffer引用相同的内存地址，注意：修改这个新的buffer实例slice切片，将会改变原来的buffer。</li>
+<li><strong>buffer.copy(targetBuffer,[targetStart],[sourceStart],[sourceEnd])</strong>：进行buffer的拷贝。</li>
+</ul>
+<pre><code class="js">var bf=new Buffer(&quot;1234567&quot;);
+var bf2=new Buffer(10);
+
+console.log(bf);
+console.log(bf2);
+
+bf.copy(bf2,2,1,3);
+console.log(bf);
+console.log(bf2);
+
+//结果：
+//
+&lt;Buffer 31 32 33 34 35 36 37&gt;
+&lt;Buffer 78 2f e5 4b b0 01 00 00 01 00&gt;
+&lt;Buffer 31 32 33 34 35 36 37&gt;
+&lt;Buffer 78 2f 32 33 b0 01 00 00 01 00&gt;</code></pre>
+<p><strong>静态方法</strong></p>
+<ul>
+<li><strong>Buffer.isEncoding(encoding)</strong>:如果给定的编码encoding是有效的，返回true，否则返回false。</li>
+<li><strong>Buffer.isBuffer(obj)</strong>:测试这个obj是否一个Buffer。</li>
+<li><strong>Buffer.byteLength(string,[encoding])</strong>:将会返回这个字符串真实byte长度。encoding编码默认是：”utf8”。</li>
+<li><strong>Buffer.concat(list,[totalLength])</strong>:返回一个保存着将传入buffer数组中所有buffer对象拼接在一起的buffer对象。</li>
+</ul>
+<h1 id="2016年3月9日"><a href="#2016年3月9日" class="headerlink" title="2016年3月9日"></a>2016年3月9日</h1><h2 id="nodejs-4"><a href="#nodejs-4" class="headerlink" title="nodejs"></a>nodejs</h2><h3 id="fs模块"><a href="#fs模块" class="headerlink" title="fs模块"></a>fs模块</h3><p><strong>fs.open(path, flags, [mode], callback)</strong></p>
+<blockquote>
+<p>异步打开一个文件</p>
+</blockquote>
+<ul>
+<li>path : 要打开的文件的路径</li>
+<li>flags : 打开文件的方式 读/写</li>
+<li>mode : 设置文件的模式 读/写/执行  4/2/1(可以不填，意义不大）)</li>
+<li>callback : 回调<ul>
+<li>err : 文件打开失败的错误保存在err里面，如果成功err为null</li>
+<li>fd : 被打开文件的标识，和定时器</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">fs.open(&#39;1.txt&#39;, &#39;r&#39;, function(err, fd) {
+
+    //console.log(err);
+    //console.log(fd);
+
+    if (err) {
+        console.log( &#39;文件打开失败&#39; );
+    } else {
+        console.log( &#39;文件打开成功&#39; );
+        console.log( fd );
+    }
+
+});
+
+//结果：
+
+null
+3
+文件打开成功
+3
+
+
+
+fs.open(&#39;1.txt&#39;, &#39;r&#39;, function(err, fd) {
+    console.log(fd);
+});
+
+console.log(&quot;hello&quot;);
+
+//结果
+hello
+3
+//两个操作独自运行，打开文件需要一定时间，所以先输出&quot;hello&quot;。</code></pre>
+<p><strong>fs.openSync(path, flags, [mode])</strong></p>
+<blockquote>
+<p>fs.open() 的同步版.</p>
+</blockquote>
+<p><strong>fs.read(fd, buffer, offset, length, position, callback)</strong></p>
+<blockquote>
+<p>从指定的文档标识符fd读取文件数据。</p>
+</blockquote>
+<ul>
+<li>fd : 通过open方法成功打开一个文件返回的编号</li>
+<li>buffer : buffer对象</li>
+<li>offset : 新的内容添加到buffer中的起始位置</li>
+<li>length ： 添加到buffer中内容的长度</li>
+<li>position ：读取的文件中的起始位置</li>
+<li>callback : 回调<ul>
+<li>err</li>
+<li>buffer的长度</li>
+<li>buffer对象</li>
+</ul>
+</li>
+</ul>
+<h1 id="2016年3月10日"><a href="#2016年3月10日" class="headerlink" title="2016年3月10日"></a>2016年3月10日</h1><h2 id="javascript-4"><a href="#javascript-4" class="headerlink" title="javascript"></a>javascript</h2><h3 id="json"><a href="#json" class="headerlink" title="json"></a>json</h3><pre><code class="js">//JSON.parse 将 JSON 字符串转换成对象。
+var jsontext = &#39;{&quot;firstname&quot;:&quot;Jesper&quot;,&quot;surname&quot;:&quot;Aaberg&quot;,&quot;phone&quot;:[&quot;555-0100&quot;,&quot;555-0120&quot;]}&#39;; 
+var contact = JSON.parse(jsontext); 
+document.write(contact.surname + &quot;, &quot; + contact.firstname); 
+
+// Output: Aaberg, Jesper
+// 
+
+
+//JSON.stringify() 方法可以将任意的 JavaScript 值序列化成 JSON 字符串
+//JSON.parse() 方法可以将一个 JSON 字符串解析成为一个 JavaScript 值。在解析过程中，还可以选择性的篡改某些属性的原始解析值。
+//
+
+var arr = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]; 
+var str = JSON.stringify(arr); 
+document.write(str); 
+document.write (&quot;&lt;br/&gt;&quot;); 
+
+var newArr = JSON.parse(str); 
+
+while (newArr.length &gt; 0) { 
+    document.write(newArr.pop() + &quot;&lt;br/&gt;&quot;); 
+} 
+
+
+// Output: 
+// [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;] 
+// c 
+// b 
+// a</code></pre>
+<h2 id="Nodejs"><a href="#Nodejs" class="headerlink" title="Nodejs"></a>Nodejs</h2><ul>
+<li>File System - 文件系统模块 -require(“fs”)<ul>
+<li>该模块是核心模块，需要使用require导入后使用</li>
+<li>该模块提供了操作的一些API</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>fs.readFile(filename, [options], callback)<ul>
+<li>fs.read()函数的同步版本。返回bytesRead的个数。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>fs.write(fd, buffer, offset, length[, position], callback)<ul>
+<li>fd : 打开的文件</li>
+<li>buffer : 要写入的数据</li>
+<li>offset : buffer对象中要写入的数据的起始位置</li>
+<li>length : 要写入的buffer数据的长度</li>
+<li>position : fd中的起始位置</li>
+<li>callback : 回调</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">fs.open(&#39;1.txt&#39;,&#39;r+&#39;,function(err,fd){
+    console.log(err);
+    console.log(fd);
+    if (err) {
+        console.log(&quot;打开文件失败。&quot;);
+    }else{
+        var bf=new Buffer(&quot;acdb&quot;);
+        console.log(bf);
+        fs.write(fd,bf,0,3,10,function(){
+            console.log(arguments);//{ &#39;0&#39;: null(错误信息), &#39;1&#39;: 5(数据长度), &#39;2&#39;: &lt;Buffer 31 32 33 34 33 35 34 35&gt;(buffer内容) }
+            console.log(&quot;Bf更新后内容：&quot;+bf);
+
+        });
+    }
+
+})</code></pre>
+<ul>
+<li>fs.write(fd, data[, position[, encoding]],callback)<ul>
+<li>把data写入到文档中，通过指定的fd。如果data不是buffer对象的实例则会把值强制转化成一个字符串。</li>
+</ul>
+</li>
+<li>fs.writeSync(fd, buffer, offset, length[, position])<ul>
+<li>fs.write()同步版本</li>
+</ul>
+</li>
+<li>fs.writeSync(fd, data[, position[, encoding]])<ul>
+<li>fs.write()同步版本</li>
+</ul>
+</li>
+<li>fs.close(fd,callback)<ul>
+<li>关闭一个打开的文件</li>
+</ul>
+</li>
+<li>fs.closeSync(fd)<ul>
+<li>fs.close()的同步版本。</li>
+</ul>
+</li>
+<li>fs.writeFile(filename, data, [options], callback)<ul>
+<li>异步的将数据写入一个文件，如果文件不存在则新建，如果文件原先存在，会被替换。data可以是一个string，也可以是一个原生buffer。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">var fs=require(&quot;fs&quot;);
+var rq=new Date();
+
+var time=rq.getFullYear()+&quot;年&quot;+(rq.getMonth()+1)+&quot;月&quot;+rq.getDate()+&quot;日&quot;;
+var fileName=time+&quot;.markdown&quot;;
+console.log(fileName);
+fs.writeFile(&quot;1/&quot;+fileName,&quot;#&quot;+time,function(){
+    console.log(arguments);
+});</code></pre>
+<ul>
+<li>fs.writeFileSync(filename, data, [options])<ul>
+<li>fs.writeFile的同步版本。注意：没有callback，也不需要。</li>
+</ul>
+</li>
+<li>fs.appendFile(filename, data, [options], callback)<ul>
+<li>异步的将数据添加到一个文件的尾部，如果文件不存在，会创建一个新 文件。data可以是一个string，也可以是一个原生buffer。</li>
+</ul>
+</li>
+<li>fs.appendFileSync(filename, data, [options])<ul>
+<li>fs.appendFile的同步版本 </li>
+</ul>
+</li>
+<li>fs.readFile(filename, [options], callback)<ul>
+<li>异步读取一个文件的全部内容</li>
+</ul>
+</li>
+<li>fs.readSync(fd, buffer, offset, length, position)<ul>
+<li>fs.readFile同步版本 </li>
+</ul>
+</li>
+<li>fs.exists(path, callback)<ul>
+<li>检查指定路径的文件或者目录是否存在</li>
+</ul>
+</li>
+<li>fs.existsSync(path)<ul>
+<li>fs.exists 函数的同步版。</li>
+</ul>
+</li>
+<li>fs.unlink(path, callback)<ul>
+<li>删除一个文件</li>
+</ul>
+</li>
+<li>fs.unlinkSync(path)<ul>
+<li>fs.unlink()同步版本。</li>
+</ul>
+</li>
+</ul>
+<h1 id="2016年3月11日"><a href="#2016年3月11日" class="headerlink" title="2016年3月11日"></a>2016年3月11日</h1><h2 id="Nodejs-1"><a href="#Nodejs-1" class="headerlink" title="Nodejs"></a>Nodejs</h2><h3 id="File-System-文件系统模块"><a href="#File-System-文件系统模块" class="headerlink" title="File System 文件系统模块"></a>File System 文件系统模块</h3><ul>
+<li>fs.readFile(filename, [options], callback)<ul>
+<li>异步读取一个文件的全部内容</li>
+</ul>
+</li>
+<li>fs.readSync(fd, buffer, offset, length, position)<ul>
+<li>fs.readFile同步版本 </li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">fs.readFile(&quot;text.txt&quot;,function(err,data){
+    if (err) {
+        console.log(&quot;error&quot;);
+    }else{
+        console.log(data.toString());
+    }
+})
+// Output: 
+// hello</code></pre>
+<ul>
+<li>fs.unlink(path, callback)<ul>
+<li>删除一个文件</li>
+</ul>
+</li>
+<li>fs.unlinkSync(path)<ul>
+<li>fs.unlink()同步版本。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">fs.unlink(&quot;2.txt&quot;,function(err){
+    if (err) {
+        console.log(&quot;error&quot;);
+    }else{
+        console.log(&quot;OK!&quot;);
+    }
+});
+// Output: 
+// OK!</code></pre>
+<ul>
+<li><p>fs.rename(oldPath, newPath, callback)</p>
+<ul>
+<li>重命名</li>
+</ul>
+</li>
+<li><p>fs.renameSync(oldPath, newPath)</p>
+<ul>
+<li>同步版本的rename()</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">fs.rename(&quot;2.txt&quot;,&quot;2.new.txt&quot;,function(err){
+    if (err) {
+        console.log(&quot;error&quot;);
+    }else{
+        console.log(&quot;OK!&quot;);
+    }
+});
+</code></pre>
+<ul>
+<li>fs.stat(path, callback)<ul>
+<li>读取文件信息</li>
+</ul>
+</li>
+<li>fs.statSync(path)<ul>
+<li>fs.stat()同步版本。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">fs.stat(&#39;2.txt&#39;,function(){
+    console.log(arguments);
+})
+
+//Output:
+/*{ &#39;0&#39;: null,
+  &#39;1&#39;: 
+   { dev: -1302886562,
+     mode: 33206,
+     nlink: 1,
+     uid: 0,
+     gid: 0,
+     rdev: 0,
+     blksize: undefined,
+     ino: 22799473113575696,
+     size: 15,
+     blocks: undefined,
+     atime: Fri Mar 11 2016 16:13:39 GMT+0800 (中国标准时间),
+     mtime: Fri Mar 11 2016 16:13:39 GMT+0800 (中国标准时间),
+     ctime: Fri Mar 11 2016 16:13:39 GMT+0800 (中国标准时间),
+     birthtime: Fri Mar 11 2016 16:13:39 GMT+0800 (中国标准时间) } }
+*/</code></pre>
+<ul>
+<li>fs.watch(filename,[options],[listener])<ul>
+<li>观察指定路径的改变，filename路径可以是文件或者目录。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">var fs = require(&#39;fs&#39;);
+
+var filename = &#39;2.new.txt&#39;;
+
+fs.watch(filename, function(ev, fn) {
+    console.log(ev);
+    if (fn) {
+        console.log(fn + &#39; 发生了改变&#39;);
+    } else {
+        console.log(&#39;...hah.&#39;);
+    }
+
+});</code></pre>
+<blockquote>
+<p>如果系统底层函数出于某些原因不可用，那么 fs.watch 也就无法工作。例如，监视网络文件系统(如 NFS, SMB 等)的文件或者目录，就时常不能稳定的工作，有时甚至完全不起作用。</p>
+</blockquote>
+<ul>
+<li><p>fs.mkdir(path, [mode], callback)</p>
+<ul>
+<li>创建文件夹</li>
+<li>[mode]<ul>
+<li>33206:文件</li>
+<li>16822文件夹</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>fs.mkdirSync(path, [mode])</p>
+<ul>
+<li>同步版的 mkdir()</li>
+</ul>
+</li>
+<li><p>fs.rmdir(path, callback)</p>
+<ul>
+<li>删除文件夹</li>
+</ul>
+</li>
+<li><p>fs.rmdirSync(path)</p>
+<ul>
+<li>fs.redir()的同步版</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">fs.mkdir(&quot;./12&quot;,33206,function(){
+    console.log(arguments);
+});
+/*fs.rmdir(&quot;./12&quot;,function(){
+    console.log(arguments);
+})*/</code></pre>
+<ul>
+<li>fs.readdirSync(path)<ul>
+<li>异步版的 readdir()。 读取 path 路径所在目录的内容。 回调函数 (callback) 接受两个参数 (err, files) 其中 files是一个存储目录中所包含的文件名称的数组，数组中不包括 ‘.’ 和 ‘..’。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">var fs = require(&#39;fs&#39;);
+
+fs.readdir(&#39;../FileSystem&#39;, function(err, fileList) {
+
+    //console.log(fileList);
+
+    fileList.forEach(function(f) {
+
+        fs.stat(f, function(err, info) {
+            //console.log(info);
+
+           switch (info.mode) {
+                case 16822:
+                    console.log( &#39;[文件夹] &#39; + f );
+                    break;
+
+                case 33206:
+                    console.log( &#39;[文件] &#39; + f );
+                    break;
+
+                default :
+                    console.log( &#39;[其他类型] &#39; + f );
+                    break;
+            }
+
+        });
+
+    });
+
+})
+</code></pre>
+<h2 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h2><ul>
+<li><p>Unicode:(统一码)是国际组织制定的可以容纳世界上所有文字和符号的字符编码方案。</p>
+</li>
+<li><p>UTF-8:针对Unicode的可变长度字符编码，又称万国码。</p>
+<ul>
+<li>对于单字节的符号，字节的第一位设为0，后面7位为这个符号的unicode码。因此对于英语字母，UTF-8编码和ASCII码是相同的。 </li>
+<li>对于n字节的符号（n&gt;1），第一个字节的前n位都设为1，第n+1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的unicode码。</li>
+</ul>
+</li>
+<li><p>ASCII（American Standard Code for Information Interchange，美国标准信息交换代码）是基于拉丁字母的一套电脑编码系统，</p>
+</li>
+</ul>
+<h1 id="2016年3月12日"><a href="#2016年3月12日" class="headerlink" title="2016年3月12日"></a>2016年3月12日</h1><h2 id="CSS3"><a href="#CSS3" class="headerlink" title="CSS3"></a>CSS3</h2><h3 id="flexbox"><a href="#flexbox" class="headerlink" title="flexbox"></a>flexbox</h3><h4 id="Flex容器属性（flex-container）"><a href="#Flex容器属性（flex-container）" class="headerlink" title="Flex容器属性（flex container）"></a>Flex容器属性（flex container）</h4><p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/flex1.png" alt> </p>
+<p>容器默认存在两根轴：水平的主轴<strong>（main axis）</strong>和垂直的交叉轴<strong>（cross axis）</strong>。主轴的开始位置（与边框的交叉点）叫做<strong>main start</strong>，结束位置叫做<strong>main end</strong>；交叉轴的开始位置叫做<strong>cross start</strong>，结束位置叫做<strong>cross end</strong>。<br>项目默认沿主轴排列。单个项目占据的主轴空间叫做<strong>main size</strong>，占据的交叉轴空间叫做<strong>cross size</strong>。</p>
+<p><strong>flex容器属性</strong></p>
+<ul>
+<li><strong>flex-direction</strong></li>
+</ul>
+<p><strong>flex-direction</strong>属性决定主轴的方向（即项目的排列方向）。</p>
+<pre><code class="css">.box {
+    flex-direction: row | row-reverse | column | column-reverse;
+}</code></pre>
+<ol>
+<li>row（默认值）：主轴为水平方向，起点在左端。</li>
+<li>row-reverse：主轴为水平方向，起点在右端。</li>
+<li>column：主轴为垂直方向，起点在上沿。</li>
+<li>column-reverse：主轴为垂直方向，起点在下沿。</li>
+</ol>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/flex-direction.png" alt></p>
+<ul>
+<li><strong>flex-wrap</strong>属性</li>
+</ul>
+<pre><code class="css"> .box{
+  flex-wrap: nowrap | wrap | wrap-reverse;
+}</code></pre>
+<ol>
+<li>nowrap（默认）：不换行。</li>
+<li>wrap：换行，第一行在上方。</li>
+<li>wrap-reverse：换行，第一行在下方。</li>
+</ol>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/flex-wrap.jpg" alt> </p>
+<ul>
+<li><strong>flex-flow</strong></li>
+</ul>
+<pre><code class="js">.box {
+  flex-flow: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;
+}</code></pre>
+<p>flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。</p>
+<ul>
+<li><strong>justify-content</strong></li>
+</ul>
+<p><strong>justify-content</strong>属性定义了项目在主轴上的对齐方式。</p>
+<pre><code class="js">.box {
+  justify-content: flex-start | flex-end | center | space-between | space-around;
+}</code></pre>
+<ol>
+<li>flex-start（默认值）：左对齐</li>
+<li>flex-end：右对齐</li>
+<li>center： 居中</li>
+<li>space-between：两端对齐，项目之间的间隔都相等。</li>
+<li>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。</li>
+</ol>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/justify-content.png" alt></p>
+<ul>
+<li><strong>align-items</strong></li>
+</ul>
+<p><strong>align-items</strong>属性定义项目在交叉轴上如何对齐。</p>
+<pre><code class="js">.box {
+  align-items: flex-start | flex-end | center | baseline | stretch;
+}</code></pre>
+<ol>
+<li>flex-start：交叉轴的起点对齐。</li>
+<li>flex-end：交叉轴的终点对齐。</li>
+<li>center：交叉轴的中点对齐。</li>
+<li>baseline: 项目的第一行文字的基线对齐。</li>
+<li>stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。</li>
+</ol>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/align-items.png" alt></p>
+<ul>
+<li><strong>align-content</strong></li>
+</ul>
+<p><strong>align-content</strong>属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</p>
+<pre><code class="js">.box {
+  align-content: flex-start | flex-end | center | space-between | space-around | stretch;
+}</code></pre>
+<ol>
+<li>flex-start：与交叉轴的起点对齐。</li>
+<li>flex-end：与交叉轴的终点对齐。</li>
+<li>center：与交叉轴的中点对齐。</li>
+<li>space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。</li>
+<li>space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</li>
+<li>stretch（默认值）：轴线占满整个交叉轴。</li>
+</ol>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/align-content.png" alt></p>
+<h4 id="项目属性"><a href="#项目属性" class="headerlink" title="项目属性"></a>项目属性</h4><ul>
+<li>order</li>
+</ul>
+<pre><code class="js">.item {
+  order: &lt;integer&gt;;
+}</code></pre>
+<p><strong>order</strong>属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/order.png" alt></p>
+<ul>
+<li><strong>flex-grow</strong></li>
+</ul>
+<p><strong>flex-grow</strong>属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</p>
+<pre><code class="js">.item {
+  flex-grow: &lt;number&gt;; /* default 0 */
+}</code></pre>
+<p>如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/flex-grow.png" alt></p>
+<ul>
+<li><strong>flex-shrink</strong></li>
+</ul>
+<p><strong>flex-shrink</strong>属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。 </p>
+<pre><code class="js">.item {
+  flex-shrink: &lt;number&gt;; /* default 1 */
+}</code></pre>
+<p>如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。<br>负值对该属性无效。</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/flex-shrink.jpg" alt></p>
+<ul>
+<li><strong>flex-basis</strong></li>
+</ul>
+<p><strong>flex-basis</strong>属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。 </p>
+<pre><code class="js">.item {
+  flex-basis: &lt;length&gt; | auto; /* default auto */
+}</code></pre>
+<p>它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间。</p>
+<ul>
+<li><strong>flex</strong></li>
+</ul>
+<p><strong>flex</strong>属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。</p>
+<pre><code class="js">.item {
+  flex: none | [ &lt;&#39;flex-grow&#39;&gt; &lt;&#39;flex-shrink&#39;&gt;? || &lt;&#39;flex-basis&#39;&gt; ]
+}</code></pre>
+<ul>
+<li><strong>align-self</strong></li>
+</ul>
+<pre><code class="js">.item {
+  align-self: auto | flex-start | flex-end | center | baseline | stretch;
+}</code></pre>
+<p><strong>align-self</strong>属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。</p>
+<pre><code class="js">.item {
+  align-self: auto | flex-start | flex-end | center | baseline | stretch;
+}</code></pre>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/align-self.png" alt></p>
+<h1 id="2016年3月13日"><a href="#2016年3月13日" class="headerlink" title="2016年3月13日"></a>2016年3月13日</h1><h2 id="javascript-5"><a href="#javascript-5" class="headerlink" title="javascript"></a>javascript</h2><h3 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h3><table>
+<thead>
+<tr>
+<th align="center">转义字符</th>
+<th>意义</th>
+<th>ASCII码值（十进制）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">\a</td>
+<td>响铃(BEL)</td>
+<td>007</td>
+</tr>
+<tr>
+<td align="center">\b</td>
+<td>退格(BS) ，将当前位置移到前一列</td>
+<td>008</td>
+</tr>
+<tr>
+<td align="center">\f</td>
+<td>换页(FF)，将当前位置移到下页开头</td>
+<td>012</td>
+</tr>
+<tr>
+<td align="center">\n</td>
+<td>换行(LF) ，将当前位置移到下一行开头</td>
+<td>010</td>
+</tr>
+<tr>
+<td align="center">\r</td>
+<td>回车(CR) ，将当前位置移到本行开头</td>
+<td>013</td>
+</tr>
+<tr>
+<td align="center">\t</td>
+<td>水平制表(HT) （跳到下一个TAB位置）</td>
+<td>009</td>
+</tr>
+<tr>
+<td align="center">\v</td>
+<td>垂直制表(VT)</td>
+<td>011</td>
+</tr>
+<tr>
+<td align="center">\</td>
+<td>代表一个反斜线字符’’&#39;</td>
+<td>092</td>
+</tr>
+<tr>
+<td align="center">&#39;</td>
+<td>代表一个单引号（撇号）字符</td>
+<td>039</td>
+</tr>
+<tr>
+<td align="center">&quot;</td>
+<td>代表一个双引号字符</td>
+<td>034</td>
+</tr>
+<tr>
+<td align="center">?</td>
+<td>代表一个问号</td>
+<td>063</td>
+</tr>
+<tr>
+<td align="center">\0</td>
+<td>空字符(NULL)</td>
+<td>000</td>
+</tr>
+<tr>
+<td align="center">\ddd</td>
+<td>1到3位八进制数所代表的任意字符</td>
+<td>三位八进制</td>
+</tr>
+<tr>
+<td align="center">\xhh</td>
+<td>1到2位十六进制所代表的任意字符</td>
+<td>二位十六进制</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>常用转义字符：<a href="http://tool.oschina.net/commons?type=2" target="_blank" rel="noopener">http://tool.oschina.net/commons?type=2</a></p>
+</blockquote>
+<blockquote>
+<p>HTML、CSS特殊字符表： <a href="http://www.w3cplus.com/resources/HTML-special-character-sheets.html" target="_blank" rel="noopener">http://www.w3cplus.com/resources/HTML-special-character-sheets.html</a><br>HTML 特殊符号编码对照表: <a href="http://tool.chinaz.com/Tools/HtmlChar.aspx" target="_blank" rel="noopener">http://tool.chinaz.com/Tools/HtmlChar.aspx</a></p>
+</blockquote>
+<h1 id="2016年3月14日"><a href="#2016年3月14日" class="headerlink" title="2016年3月14日"></a>2016年3月14日</h1><h2 id="nodejs-5"><a href="#nodejs-5" class="headerlink" title="nodejs"></a>nodejs</h2><h3 id="File-System"><a href="#File-System" class="headerlink" title="File System"></a>File System</h3><p>文件系统模块中的异步方法需要一个完成时的<strong>回调函数</strong>作为最后一个传入形参。<br>回调函数的构成由您调用的异步方法所决定，通常情况下回调函数的第一个形参为返回的错误信息(<strong>err</strong>)。 如果异步操作执行正确并返回，该错误形参则为<strong>null</strong>或者<strong>undefined</strong>。</p>
+<h3 id="http"><a href="#http" class="headerlink" title="http"></a>http</h3><ol>
+<li>用户通过浏览器发送一个http的请求到指定的主机</li>
+<li>服务器接收到该请求，对该请求进行分析和处理</li>
+<li>服务器处理完成以后，返回对应的数据到用户机器</li>
+<li>浏览器接收服务器返回的数据，并根据接收到的进行分析和处理</li>
+</ol>
+<p>客户端    服务端</p>
+<p>由客户端发送一个http请求到指定的服务端 -&gt; 服务端接收并处理请求 -&gt; 返回数据到客户端</p>
+<pre><code class="js">var http=require(&#39;http&#39;);
+var server=http.createServer();
+
+server.listen(8080);
+
+console.log(server.address());
+
+//Output
+//{ address: &#39;::&#39;, family: &#39;IPv6&#39;, port: 8080 }</code></pre>
+<pre><code class="js">//加载一个http模块
+var http = require(&#39;http&#39;);
+//通过http模块下的createServer创建并返回一个web服务器对象
+var server = http.createServer();
+
+server.on(&#39;error&#39;, function(err){
+    console.log(err);
+});
+
+server.on(&#39;listening&#39;, function() {
+    console.log(&#39;listening...&#39;);
+})
+
+server.on(&#39;request&#39;, function(req, res) {
+    console.log(&#39;有客户端请求了&#39;);
+
+    //console.log(req);
+
+    //res.write(&#39;hello&#39;);
+
+    res.setHeader(&#39;miaov&#39;, &#39;leo&#39;);
+
+    res.writeHead(200, &#39;miaov&#39;, {
+        //&#39;content-type&#39; : &#39;text/plain&#39;
+
+        &#39;content-type&#39; : &#39;text/html;charset=utf-8&#39;
+    });
+
+    res.write(&#39;&lt;h1&gt;hello&lt;/h1&gt;&#39;);
+
+    res.end();
+
+})
+
+server.listen(8080, &#39;localhost&#39;);
+
+//console.log(server.address());
+
+</code></pre>
+<ul>
+<li><p>var http=require(‘http’);</p>
+</li>
+<li><p>var server=http.createServer([requestListener])</p>
+<ul>
+<li>创建并返回一个HTTP服务器对象</li>
+<li>requestListener：监听到客户端连接的回调函数</li>
+</ul>
+</li>
+<li><p>server.listen([port,[hostname],[backlog],[callback]])</p>
+<ul>
+<li>监听客户端连接请求，只有当调用listen方法以后，服务器才开始工作</li>
+<li>port：监听的端口</li>
+<li>hostname：主机名（IP/域名）</li>
+<li>backlog：连接等待队列的最大长度</li>
+<li>callback：调用listen方法并成功开启监听以后，会触发一个listen事件，callback将作为该事件的执行函数。</li>
+</ul>
+</li>
+<li><p>listening事件：当server调用listen方法并成功开始监听以后触发的事件。</p>
+</li>
+<li><p>error事件：当有客户端发送请求道该主机和端口的请求的时候触发</p>
+<ul>
+<li>参数request：http.IncomingMessage的一个实例，通过他我们可以获取到这次请求的一些信息，比如信息，数据等。</li>
+<li>参数response：http:http.ServerResponse的一个实例，通过他我们可以向该请求的客户端输出返回的响应。</li>
+</ul>
+</li>
+</ul>
+<h1 id="2016年3月15日"><a href="#2016年3月15日" class="headerlink" title="2016年3月15日"></a>2016年3月15日</h1><h2 id="nodejs-6"><a href="#nodejs-6" class="headerlink" title="nodejs"></a>nodejs</h2><h3 id="http模块"><a href="#http模块" class="headerlink" title="http模块"></a>http模块</h3><pre><code class="js">//加载一个http模块
+var http = require(&#39;http&#39;);
+//通过http模块下的createServer创建并返回一个web服务器对象
+var server = http.createServer();
+
+server.on(&#39;error&#39;, function(err){
+    console.log(err);
+});
+
+server.on(&#39;listening&#39;, function() {
+    console.log(&#39;listening...&#39;);
+})
+
+server.on(&#39;request&#39;, function(req, res) {
+
+    console.log(&#39;有客户端请求了&#39;);
+
+    //console.log(req);
+
+    //res.write(&#39;hello&#39;);
+
+    res.setHeader(&#39;miaov&#39;, &#39;leo&#39;);
+
+    res.writeHead(200, &#39;miaov&#39;, {
+        //&#39;content-type&#39; : &#39;text/plain&#39;
+
+        &#39;content-type&#39; : &#39;text/html;charset=utf-8&#39;
+    });
+
+    res.write(&#39;&lt;h1&gt;hello&lt;/h1&gt;&#39;);
+
+    res.end();
+
+})
+
+server.listen(8080, &#39;localhost&#39;);
+
+//console.log(server.address());
+
+</code></pre>
+<ul>
+<li>参数request对象 -http.IncomingMessage <ul>
+<li>httpVersion:使用的http协议的版本</li>
+<li>headers：请求头信息中的数据</li>
+<li>url：请求的地址</li>
+<li>method：请求方式</li>
+</ul>
+</li>
+<li>参数response对象 - http.ServerResponse <ul>
+<li>write(chunk,[encoding]):发送一个数据块到响应正文中</li>
+<li>end([chunk],[encoding]):当所有的正文和头信息发送完成以后调用该方法告诉服务器数据已经全部发送完成了，这个方法在每次完成信息发送以后必须调用，并且是最后调用。</li>
+<li>statusCode:该属性用来设置返回的状态码</li>
+<li>setHeader(name,value):设置返回头信息</li>
+<li>writeHeader(statusCode,[reasonPhrase],[headers])<ul>
+<li>这个方法只能在当前请求中使用一次，并且必须在response.end()之前调用</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="同步、异步、阻塞、非阻塞"><a href="#同步、异步、阻塞、非阻塞" class="headerlink" title="同步、异步、阻塞、非阻塞"></a>同步、异步、阻塞、非阻塞</h3><p><strong>同步通信</strong>是指：发送方和接收方通过一定机制，实现收发步调协调。如：发送方发出数据后，等接收方发回响应以后才发下一个数据包的通讯方式</p>
+<p><strong>异步通信</strong>是指：发送方的发送不管接收方的接收状态，如：发送方发出数据后，不等接收方发回响应，接着发送下个数据包的通讯方式。</p>
+<p><strong>阻塞</strong>和<strong>非阻塞</strong>就比较容易理解了，没有上面那么多场景，<strong>阻塞</strong>就是这个事情阻到这儿了，不能继续往下干事了，<strong>非阻塞</strong>就是这个事情不会阻碍你继续干后面的事情。</p>
+<p><strong>阻塞</strong>可以是实现同步的一种手段！例如两个东西需要同步，一旦出现不同步情况，我就阻塞快的一方，使双方达到同步。</p>
+<p><strong>同步</strong>是两个对象之间的关系，而<strong>阻塞</strong>是一个对象的状态。</p>
+<h1 id="2016年3月16日"><a href="#2016年3月16日" class="headerlink" title="2016年3月16日"></a>2016年3月16日</h1><h2 id="javascript-6"><a href="#javascript-6" class="headerlink" title="javascript"></a>javascript</h2><h3 id="实参与形参"><a href="#实参与形参" class="headerlink" title="实参与形参"></a>实参与形参</h3><pre><code class="js">function addNum(var para1,var para2){
+var sum = para1+para2;
+return sum;
+}</code></pre>
+<p>形参指函数定义时候的参数，在这里就是para1和para2。实参是实际传送给函数的参数，在这里就是20和30。</p>
+<h3 id="angularjs"><a href="#angularjs" class="headerlink" title="angularjs"></a>angularjs</h3><ul>
+<li><p>MVC</p>
+<ul>
+<li>model</li>
+<li>view </li>
+<li>controller<ul>
+<li>MV的桥梁</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>service服务</p>
+<ul>
+<li>$内部</li>
+<li>$scope</li>
+<li>$apply</li>
+<li>$watch</li>
+<li>$rootScope</li>
+<li>$http</li>
+<li>$timeout</li>
+<li>$filter</li>
+</ul>
+</li>
+<li><p>directive指令</p>
+<ul>
+<li>ng内部</li>
+<li>ng-app</li>
+<li>ng-controller</li>
+<li>ng-repeat</li>
+<li>ng-click</li>
+</ul>
+</li>
+</ul>
+<p>​    </p>
+<h1 id="2016年3月17日"><a href="#2016年3月17日" class="headerlink" title="2016年3月17日"></a>2016年3月17日</h1><h2 id="javascript-7"><a href="#javascript-7" class="headerlink" title="javascript"></a>javascript</h2><h3 id="angularjs-1"><a href="#angularjs-1" class="headerlink" title="angularjs"></a>angularjs</h3><ul>
+<li>angularJs特性？<ul>
+<li>MVC模式</li>
+<li>模块系统</li>
+<li>指令系统</li>
+<li>依赖注入</li>
+<li>双向数据绑定</li>
+</ul>
+</li>
+<li>angularJs的作用域<ul>
+<li>$scope</li>
+<li>$rootScope</li>
+<li>依赖注入</li>
+<li>服务</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">
+function Aaa($scope ,$rootScope){//依赖注入，形参不能改
+    $scope.name=&#39;hello world!!&#39;;
+    $rootScope.txt=&quot;nihao&quot;;//全局变量，
+}
+function Bbb($scope){
+    $scope.name=&#39;Bbb hello world!!&#39;;
+}</code></pre>
+<pre><code class="html">&lt;div ng-controller=&#39;Aaa&#39;&gt;
+    &lt;p&gt;{{name}}&lt;/p&gt;
+&lt;/div&gt;
+&lt;div  ng-controller=&quot;Bbb&quot;&gt;
+    &lt;span&gt;{{txt}}&lt;/span&gt;//会先在局部查找，然后在全局查找。
+&lt;/div&gt;</code></pre>
+<ul>
+<li>angularJs的指令系统<ul>
+<li>ng-app<ul>
+<li>初始化一个angularjs应用程序</li>
+</ul>
+</li>
+<li>ng-controller<ul>
+<li>定义控制器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>angularJs的双向数据绑定<ul>
+<li>MVVM</li>
+<li>$timeout<ul>
+<li>有刷新功能</li>
+</ul>
+</li>
+<li>ng-click<ul>
+<li>click事件</li>
+</ul>
+</li>
+<li>ng-model<ul>
+<li>绑定数据</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">    function Aaa($scope,$timeout){
+    $scope.name = &#39;hello&#39;;
+    /*setTimeout(function(){
+        $scope.name = &#39;hi&#39;;
+    },2000);*/
+    /*$timeout(function(){
+        $scope.name = &#39;hi&#39;;
+    },2000);*/
+
+    $scope.show = function(){
+        $scope.name = &#39;hi&#39;;
+    };
+
+}</code></pre>
+<pre><code class="html">&lt;div ng-controller=&quot;Aaa&quot; ng-click=&quot;show()&quot;&gt;
+    &lt;p&gt;{{name}}&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+<ul>
+<li>过滤器<ul>
+<li>currency</li>
+</ul>
+</li>
+</ul>
+<pre><code class="html">&lt;span&gt;{{all.money*all.num|currency:'@'}}&lt;/span&gt;</code></pre>
+<ul>
+<li>$watch<ul>
+<li>监听数据变化</li>
+<li>三个参数<ul>
+<li>第三个为<strong>true</strong>时可以监听一个整体，否则是单个。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">$scope.$watch($scope.sum,function(newVal,oldVal){
+        //console.log(newVal);
+        //console.log(oldVal);
+
+$scope.iphone.fre = newVal &gt;= 100 ? 0 : 10;
+
+});</code></pre>
+<h1 id="2016年3月18日"><a href="#2016年3月18日" class="headerlink" title="2016年3月18日"></a>2016年3月18日</h1><h2 id="angularjs-2"><a href="#angularjs-2" class="headerlink" title="angularjs"></a>angularjs</h2><p>模块写法：</p>
+<pre><code class="js">var m1 = angular.module(&#39;myApp&#39;,[]);
+m1.controller(&#39;Aaa&#39;,[&#39;$scope&#39;,function($scope){
+    $scope.name = &#39;hello&#39;;
+}]);
+m1.controller(&#39;Bbb&#39;,[&#39;$scope&#39;,function($scope){
+    $scope.name = &#39;hi&#39;;
+}]);</code></pre>
+<ul>
+<li>angular.bind()</li>
+</ul>
+<pre><code class="js">function show(n1,n2){
+    alert(n1);
+    alert(n2);
+    alert(this);
+}
+
+angular.bind(document,show,3)(4);//改this指向</code></pre>
+<ul>
+<li>angular.copy()</li>
+</ul>
+<pre><code class="js">var a = {
+    name : &#39;hello&#39;
+};
+var b = {
+    age : &#39;20&#39;
+};
+
+var c = angular.copy(a,b);   //a把所有值覆盖给了b,也拷贝了给C对象</code></pre>
+<ul>
+<li>angular.extend();  </li>
+</ul>
+<pre><code class="js">
+var a = {
+    name : &#39;hello&#39;
+};
+var b = {
+    age : &#39;20&#39;
+};
+
+var c = angular.extend(b,a); //对象继承
+
+console.log(b);
+//{age: &quot;20&quot;, name: &quot;hello&quot;}//继承了a的属性方法。
+
+console.log(c);
+//{age: &quot;20&quot;, name: &quot;hello&quot;}
+//
+console.log(a);
+//{name: &quot;hello&quot;}</code></pre>
+<ul>
+<li>angularJs的工具方法<ul>
+<li>angular.isArray<ul>
+<li>判断是否数组</li>
+</ul>
+</li>
+<li>angular.isDate<ul>
+<li>如果引用的是日期返回 true</li>
+</ul>
+</li>
+<li>angular.isDefined<ul>
+<li>如果引用的已定义返回 true</li>
+</ul>
+</li>
+<li>angular.isUndefined<ul>
+<li>如果引用的未定义返回 true</li>
+</ul>
+</li>
+<li>angular.isFunction<ul>
+<li>如果引用的是函数返回 true</li>
+</ul>
+</li>
+<li>angular.isNumber<ul>
+<li>如果引用的是数字返回 true</li>
+</ul>
+</li>
+<li>angular.isObject<ul>
+<li>如果引用的是对象返回 true</li>
+</ul>
+</li>
+<li>angular.isString<ul>
+<li>如果引用的是字符串返回 true</li>
+</ul>
+</li>
+<li>angular.isElement<ul>
+<li>判断是否元素</li>
+</ul>
+</li>
+<li>angular.version<ul>
+<li>返回版本信息</li>
+</ul>
+</li>
+<li>angular.equals<ul>
+<li>判断是否相等。</li>
+</ul>
+</li>
+<li>angular.forEach<ul>
+<li>循环，接受三个参数。</li>
+</ul>
+</li>
+<li>angular.fromJson/toJson<ul>
+<li>json与字符串的转换。</li>
+</ul>
+</li>
+<li>angular.identity/noop<ul>
+<li>空函数，或者返回指定内容。防止程序出问题。</li>
+</ul>
+</li>
+<li>angular.lowercase/uppercase<ul>
+<li>字符串全部大写或者小写。</li>
+</ul>
+</li>
+<li>angular.element<ul>
+<li>选择元素，类似jQuery的选择器<code>angular.element === $</code>。</li>
+</ul>
+</li>
+<li>angular.bootstrap<ul>
+<li>在javascript里动态初始化</li>
+</ul>
+</li>
+<li>angular.injector</li>
+</ul>
+</li>
+</ul>
+<h1 id="2016年3月19日"><a href="#2016年3月19日" class="headerlink" title="2016年3月19日"></a>2016年3月19日</h1><h2 id="angularjs-3"><a href="#angularjs-3" class="headerlink" title="angularjs"></a>angularjs</h2><ul>
+<li>$scope<ul>
+<li>$scope.$watch<ul>
+<li>监听程序变化</li>
+</ul>
+</li>
+<li>$scope.$apply<ul>
+<li>监听数据变化，数据变化，会影响视图。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>angular.module<ul>
+<li>controller</li>
+<li>run</li>
+</ul>
+</li>
+<li>angularJs的过滤器<ul>
+<li>currency</li>
+<li>number</li>
+<li>lowercase/uppercase</li>
+<li>json</li>
+<li>limitTo</li>
+<li>date</li>
+<li>orderBy</li>
+<li>filter</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">//过滤器组合使用
+m1.controller(&#39;Aaa&#39;,[&#39;$scope&#39;,&#39;$filter&#39;,function($scope,$filter){
+
+    //$scope.name = &#39;723894734.7489545&#39;;
+    //$scope.name = &#39;hello&#39;;
+    //$scope.name = {&quot;name&quot;:&quot;hello&quot;,&quot;age&quot;:&quot;20&quot;};
+    //$scope.name = [&#39;a&#39;,&#39;b&#39;,&#39;c&#39;];
+    $scope.name = &#39;3748935795&#39;;
+
+    /*$scope.name = [
+        {color:&quot;red&quot;,age:&quot;20&quot;},
+        {color:&quot;yellow&quot;,age:&quot;30&quot;},
+        {color:&quot;blue&quot;,age:&quot;40&quot;},
+        {color:&quot;green&quot;,age:&quot;10&quot;}
+    ];*/
+
+    //$scope.name = $filter(&#39;uppercase&#39;)(&#39;hello&#39;);
+    //$scope.name = $filter(&#39;number&#39;)(&#39;236478234.3647348&#39;,1);
+    //$scope.name = $filter(&#39;date&#39;)(&#39;236478234&#39;,&#39;hh&#39;);
+
+    //$scope.name = &#39;hello&#39;;
+
+    $scope.name = $filter(&#39;firstUpper&#39;)(&#39;hello&#39;);
+
+
+}]);
+
+
+//自定义过滤器
+//
+
+m1.filter(&#39;firstUpper&#39;,function(){
+    return function(str,num){
+        //console.log(num);
+        return str.charAt(0).toUpperCase() + str.substring(1);
+    }
+});</code></pre>
+<ul>
+<li>ng-repeat</li>
+<li>ng-app<ul>
+<li>初始化angularjs这个库的指令</li>
+</ul>
+</li>
+<li>ng-controller<ul>
+<li>调用控制器，把数据与视图连接在一起</li>
+</ul>
+</li>
+<li><h2 id="ng-model"><a href="#ng-model" class="headerlink" title="ng-model"></a>ng-model</h2></li>
+<li>ng-click<ul>
+<li>点击事件</li>
+</ul>
+</li>
+</ul>
+<h1 id="2016年3月20日"><a href="#2016年3月20日" class="headerlink" title="2016年3月20日"></a>2016年3月20日</h1><h2 id="angularjs-4"><a href="#angularjs-4" class="headerlink" title="angularjs"></a>angularjs</h2><p><strong>ng-repeat 指令</strong></p>
+<ul>
+<li>扩展部分<ul>
+<li>$index<ul>
+<li>索引号</li>
+</ul>
+</li>
+<li>$first<ul>
+<li>第一项返回true，其他都是false</li>
+</ul>
+</li>
+<li>$middle<ul>
+<li>除了头尾，都返回true。</li>
+</ul>
+</li>
+<li>$last<ul>
+<li>最后一项返回true。</li>
+</ul>
+</li>
+<li>$even<ul>
+<li>奇数行返回true</li>
+</ul>
+</li>
+<li>$odd<ul>
+<li>偶数行返回true</li>
+</ul>
+</li>
+<li>ng-repeat-start</li>
+<li>ng-repeat-end</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">var m1 = angular.module(&#39;myApp&#39;,[]);
+m1.controller(&#39;Aaa&#39;,[&#39;$scope&#39;,function($scope){
+
+    $scope.dataList = [
+        &#39;aaaaa&#39; , &#39;bbbbb&#39; , &#39;cccccc&#39; , &#39;dddddd&#39; , &#39;eeeeee&#39;
+    ];
+
+}]);
+</code></pre>
+<pre><code class="html">&lt;div ng-repeat-start=&quot;data in dataList&quot;&gt;{{data}}&lt;/div&gt;
+&lt;p&gt;{{data}}&lt;/p&gt;
+&lt;div ng-repeat-end&gt;{{data}}&lt;/div&gt;</code></pre>
+<p><strong>事件指令</strong></p>
+<ul>
+<li>ng-click/dblclick</li>
+<li>ng-mousedown/up</li>
+<li>ng-mouseenter/leave</li>
+<li>ng-mousemove/over/out</li>
+<li>ng-keydown/up/press</li>
+<li>ng-focus/blur</li>
+<li>ng-submit</li>
+<li>ng-selected</li>
+</ul>
+<pre><code class="js">&lt;input type=&quot;checkbox&quot; ng-model=&quot;aaa&quot;&gt;
+&lt;select&gt;
+    &lt;option&gt;11111&lt;/option&gt;
+    &lt;option ng-selected=&quot;aaa&quot;&gt;22222&lt;/option&gt;
+    &lt;option&gt;33333&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+<ul>
+<li>ng-change</li>
+<li>ng-copy<ul>
+<li>进行复制操作会触发这个事件 </li>
+</ul>
+</li>
+<li>ng-cut<ul>
+<li>进行剪切操作会触发这个事件 </li>
+</ul>
+</li>
+<li>ng-paste<ul>
+<li>进行粘贴操作会触发这个事件 </li>
+</ul>
+</li>
+</ul>
+<p><strong>angularJs的指令</strong></p>
+<ul>
+<li>ng-disabled<ul>
+<li>服务 $interval，动态修改按钮的状态。</li>
+</ul>
+</li>
+<li>ng-readonly<ul>
+<li>针对文本可读状态， 对按钮没效果。</li>
+</ul>
+</li>
+<li>ng-checked</li>
+<li>ng-value</li>
+<li>ng-bind<ul>
+<li>只能嵌套一个</li>
+</ul>
+</li>
+<li>ng-cloak<ul>
+<li>控制display ，没解释完是none，解释完才显示 出来。</li>
+</ul>
+</li>
+<li>ng-bind-template<ul>
+<li>可以嵌套多个</li>
+</ul>
+</li>
+<li>ng-bind-html<ul>
+<li>不能解释标签，必须要添加插件</li>
+<li><a href="http://www.bootcdn.cn/angular.js/" target="_blank" rel="noopener">http://www.bootcdn.cn/angular.js/</a></li>
+</ul>
+</li>
+<li>ng-non-bindable<ul>
+<li>不让表达式去解释</li>
+</ul>
+</li>
+</ul>
+<p><strong>angularJs的样式指令</strong></p>
+<ul>
+<li>ng-class</li>
+<li>ng-style</li>
+<li>ng-href</li>
+<li>ng-src</li>
+<li>ng-attr-(suffix)<ul>
+<li>一般的标签属性设置</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">var m1 = angular.module(&#39;myApp&#39;,[]);
+m1.controller(&#39;Aaa&#39;,[&#39;$scope&#39;,function($scope){
+    $scope.text = &#39;hello&#39;;
+    $scope.style = &quot;{color:&#39;red&#39;,background:&#39;yellow&#39;}&quot;;
+    $scope.sClass = &quot;{red:true,yellow:true}&quot;;
+    $scope.url = &quot;http://www.baidu.com&quot;;
+}]);
+</code></pre>
+<pre><code class="html">&lt;div ng-controller=&quot;Aaa&quot;&gt;
+    &lt;div ng-class=&quot;{{sClass}}&quot;&gt;{{text}}&lt;/div&gt;
+    &lt;div ng-style=&quot;{{style}}&quot;&gt;{{text}}&lt;/div&gt;
+    &lt;a ng-href=&quot;{{url}}&quot;&gt;aaaaaaa&lt;/a&gt;
+    &lt;a ng-attr-href=&quot;{{url}}&quot; ng-attr-title=&quot;{{text}}&quot; ng-attr-class=&quot;&quot; ng-attr-style=&quot;&quot;&gt;aaaaaaa&lt;/a&gt;
+&lt;/div&gt; </code></pre>
+<ul>
+<li>ng-init</li>
+<li>ng-include<ul>
+<li>引入其他文件模板</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">&lt;div ng-controller=&quot;Aaa&quot; ng-include=&quot;&#39;temp.html&#39;&quot;&gt;</code></pre>
+<ul>
+<li>ng-model<ul>
+<li>双向数据绑定</li>
+<li>ng-model-options</li>
+<li>updateOn<ul>
+<li>双向数据绑定延迟触发</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ng-controller<ul>
+<li>as<ul>
+<li>构造函数的属性</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>angularjs标签指令</strong></p>
+<ul>
+<li>&lt; a &gt;</li>
+<li>&lt; select &gt;<ul>
+<li>ng-options</li>
+<li>for   in</li>
+</ul>
+</li>
+<li>&lt; textarea &gt;</li>
+<li>&lt; input &gt;</li>
+<li>&lt; form &gt;<ul>
+<li>novalidate<ul>
+<li>防止表单默认行为</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>ngularJs的表单验证</strong></p>
+<ul>
+<li>$valid<ul>
+<li>是否有效，有效返回true。可用于Email输入。</li>
+</ul>
+</li>
+<li>$invalid</li>
+<li>$pristine<ul>
+<li>是否修改过，是就返回true。</li>
+</ul>
+</li>
+<li>$dirty<ul>
+<li>初始值返回false</li>
+</ul>
+</li>
+<li>$error<ul>
+<li>打印认证信息</li>
+</ul>
+</li>
+<li>注意点<ul>
+<li>name的方式进行查找</li>
+<li>要写ng-model</li>
+</ul>
+</li>
+</ul>
+<h1 id="2016年3月21日"><a href="#2016年3月21日" class="headerlink" title="2016年3月21日"></a>2016年3月21日</h1><h2 id="angularjs-5"><a href="#angularjs-5" class="headerlink" title="angularjs"></a>angularjs</h2><p><strong>npm操作使用教程</strong></p>
+<pre><code>cd xxx  //访问某个文件夹
+
+npm install angular//安装angularjs文件包
+
+npm uninstall angular //删除angularjs文件包
+
+使用npm help &lt;command&gt;可查看某条命令的详细帮助，例如npm help install。
+
+输入 &quot;npm -v&quot; 来测试是否成功安装
+
+npm install &lt;Module Name&gt;//使用 npm 命令安装模块
+
+npm install express          # 本地安装
+npm install express -g   # 全局安装
+
+npm ls -g//使用以下命令来查看所有全局安装的模块
+</code></pre><ul>
+<li><p><strong>本地安装</strong></p>
+<ol>
+<li>将安装包放在 ./node_modules 下（运行 npm 命令时所在的目录），如果没有 node_modules 目录，会在当前执行 npm 命令的目录下生成 node_modules 目录。</li>
+<li>可以通过 require() 来引入本地安装的包。</li>
+</ol>
+</li>
+<li><p><strong>全局安装</strong></p>
+<ol>
+<li><p>将安装包放在 /usr/local 下。</p>
+</li>
+<li><p>可以直接在命令行里使用。</p>
+</li>
+<li><p>不能通过 require() 来引入本地安装的包。<br>接下来我们使用全局方式安装 express</p>
+</li>
+</ol>
+</li>
+</ul>
+<h1 id="2016年3月22日"><a href="#2016年3月22日" class="headerlink" title="2016年3月22日"></a>2016年3月22日</h1><h2 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h2><p><strong>反向代理</strong></p>
+<p>我们有时候，用自己的计算机A想访问国外的某个网站B，但是访问不了，此时，有一台中间服务器C可以访问国外的网站B，那么，我们可以用自己的电脑访问服务器C，通过C来访问B这个网站。那么这个时候，服务器C称为代理服务器，这种访问方式叫做正向代理。正向代理有一个特点，就是我们明确知道要访问哪个网站。再如，当我们有一个服务器集中，并且服务器集群中的每台服务器的内容一样的时候，同样我们要直接从个人电脑访问到服务器集中的服务器的时候无法访问，且此时第三方服务器能访问集群，这个时候，我们通过第三方服务器访问服务器集群的内容，但是此时我们并不知道是哪一台服务器提供的内容，此时的代理方式称为反向代理。</p>
+<p><strong>负载均衡</strong></p>
+<p>当一台服务器的单位时间内的访问量越大的时候，服务器的压力会越大。当一台服务器压力大得超过自身的承受能力的时候，服务器会崩溃。为了避免服务器崩溃，让用户有更好地体验，我们通常通过负载均衡的方式来分担服务器的压力。那么什么是负载均衡呢？是这样，我们可以建立很多很多个服务器，这些服务器组成一个服务器集群，然后，当用户访问我们网站的时候，先访问一个中间服务器，再让这个中间服务器在服务器集群中选择一个压力较小的服务器，然后将该访问请求引入该选择的服务器。这样，用户的每次访问，都会保证服务器集群中的每个服务器的压力趋于平衡，分担了服务器压力，避免了服务器崩溃的情况。</p>
+<h1 id="2016年3月23日"><a href="#2016年3月23日" class="headerlink" title="2016年3月23日"></a>2016年3月23日</h1><h2 id="css"><a href="#css" class="headerlink" title="css"></a>css</h2><h3 id="margin属性"><a href="#margin属性" class="headerlink" title="margin属性"></a>margin属性</h3><ul>
+<li>垂直外边距合并</li>
+</ul>
+<p>简单地说，外边距合并指的是，当两个垂直外边距相遇时，它们将形成一个外边距。合并后的外边距的高度等于两个发生合并的外边距的高度中的较大者。</p>
+<p><strong>请注意</strong>，如果不设置 div 的内上边距(<strong>padding-top</strong>)或上边框(<strong>border-top</strong>)，那么内部 div 的上外边距将与外部 div 的上外边距合并（叠加）。</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/ct_css_margin_collapsing_example_1.gif" alt></p>
+<p>当一个元素包含在另一个元素中时（假设没有内边距或边框把外边距分隔开），它们的上或下外边距也会发生合并。</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/ct_css_margin_collapsing_example_2.gif" alt></p>
+<p>假设有一个空元素，它有外边距，但是没有边框或填充。在这种情况下，上外边距与下外边距就碰到了一起，它们会发生合并：</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/ct_css_margin_collapsing_example_3.gif" alt></p>
+<p>如果这个外边距遇到另一个元素的外边距，它还会发生合并:</p>
+<p><img src="C:/Users/Administrator/Desktop/My-study-records-master/2016/3/img/ct_css_margin_collapsing_example_4.gif" alt></p>
+<blockquote>
+<p>只有普通文档流中块框的垂直外边距才会发生外边距合并。行内框、浮动框或绝对定位之间的外边距不会合并。<br><a href="http://www.w3school.com.cn/css/css_margin_collapsing.asp" target="_blank" rel="noopener">http://www.w3school.com.cn/css/css_margin_collapsing.asp</a></p>
+</blockquote>
+<h3 id="html与body"><a href="#html与body" class="headerlink" title="html与body"></a>html与body</h3><p>宽高的百分比是基于包含它的块级对象的百分比宽高。<br>父元素没高度，子元素100%的父元素高度也是0</p>
+<p>当body里只有一个relative元素的时候，只有同时设置html和body的100%高度才能使这个元素的宽高填充。</p>
+<p>一旦设置了html标签height:100%;则无论哪个浏览器下body都支持height:100%;了，而body内部的容器也可以支持height:100%;了。</p>
+<h3 id="angularjs-6"><a href="#angularjs-6" class="headerlink" title="angularjs"></a>angularjs</h3><ul>
+<li>ng-app 指令初始化一个 AngularJS 应用程序。<ul>
+<li>ng-app 指令告诉 AngularJS，哪个元素是 AngularJS 应用程序 的”所有者”，也是angularjs程序的开始。</li>
+</ul>
+</li>
+<li>ng-model 指令读取元素的值（比如输入域的值），然后绑定到应用程序。<ul>
+<li>ng-model 指令把输入域的值绑定到应用程序变量 name。</li>
+</ul>
+</li>
+<li>ng-bind 指令把应用程序数据绑定到 HTML 视图。<ul>
+<li>ng-bind 指令把应用程序变量 name 绑定到某个段落的 innerHTML。</li>
+</ul>
+</li>
+<li>ng-init 指令初始化 AngularJS 应用程序变量。</li>
+<li>AngularJS 属性以<strong>ng-</strong> 开头，但是您可以使用<strong>data-ng-</strong> 来让网页对 HTML5有效。</li>
+</ul>
+<pre><code class="html">&lt;div ng-app=&quot;&quot;&gt;
+    &lt;!-- ng-model指令读取用户输入信息，然后传递给变量name --&gt;
+    &lt;p&gt;名字 : &lt;input type=&quot;text&quot; ng-model=&quot;name&quot;&gt;&lt;/p&gt;
+    &lt;h1&gt;Hello {{name}}&lt;/h1&gt;
+&lt;/div&gt;
+
+
+&lt;div ng-app=&quot;&quot; ng-init=&quot;firstName=&#39;John&#39;&quot;&gt;
+    &lt;!-- ng-bind指令是控制标签的innerHTMl，内容为参数值。 --&gt;
+    &lt;p&gt;姓名为 &lt;span ng-bind=&quot;firstName&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+    &lt;p&gt;姓名为 &lt;span data-ng-bind=&quot;firstName&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+    &lt;p&gt;姓名为 &lt;span&gt;{{name}}&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+<pre><code class="html">&lt;!-- ng-app定义了一个angularjs应用，在哪个标签插入，应用就在哪开始。 --&gt;
+&lt;!-- ng-controller确定了使用模块下哪个控制器 --&gt;
+&lt;div ng-app=&quot;myApp&quot; ng-controller=&quot;myCtrl&quot;&gt;
+
+
+名: &lt;input type=&quot;text&quot; ng-model=&quot;firstName&quot;&gt;&lt;br&gt;
+姓: &lt;input type=&quot;text&quot; ng-model=&quot;lastName&quot;&gt;&lt;br&gt;
+&lt;br&gt;
+姓名: {{firstName + " " + lastName}}
+
+&lt;/div&gt;
+
+&lt;script&gt;
+var app = angular.module(&#39;myApp&#39;, []);//定义一个模块，
+app.controller(&#39;myCtrl&#39;, function($scope) {//调用模块的方法
+    $scope.firstName= &quot;John&quot;;
+    $scope.lastName= &quot;Doe&quot;;
+});
+&lt;/script&gt;</code></pre>
+<p><strong>自定义的指令</strong></p>
+<p>使用驼峰法来命名一个指令，<strong>runoobDirective</strong> , 但在使用它时需要以 - 分割, <strong>runoob-directive</strong>。</p>
+<p>调用方式：</p>
+<ul>
+<li>元素名</li>
+</ul>
+<pre><code class="html">&lt;div ng-app=&quot;myApp&quot;&gt;
+    元素名：&lt;hi-boy&gt;&lt;/hi-boy&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var app=angular.module(&#39;myApp&#39;,[]);
+        app.directive(&quot;hiBoy&quot;,function(){
+            return {
+                template:&quot;&lt;span&gt;hello boy &lt;/span&gt;&quot;
+            };
+        });
+    &lt;/script&gt;
+&lt;/div&gt;</code></pre>
+<ul>
+<li>属性 </li>
+</ul>
+<pre><code class="html">&lt;div ng-app=&quot;myApp&quot;&gt;
+    属性：&lt;div hi-boy&gt;&lt;/div&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var app=angular.module(&#39;myApp&#39;,[]);
+        app.directive(&quot;hiBoy&quot;,function(){
+            return {
+                replace:true,
+                restrict:&#39;M&#39;,
+                template:&quot;&lt;span&gt;hello boy &lt;/span&gt;&quot;
+            };
+        });
+    &lt;/script&gt;
+&lt;/div&gt;</code></pre>
+<ul>
+<li>类名</li>
+</ul>
+<pre><code class="html">&lt;div ng-app=&quot;myApp&quot;&gt;
+    属性：&lt;div class=&quot;hi-boy&quot;&gt;&lt;/div&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var app=angular.module(&#39;myApp&#39;,[]);
+        app.directive(&quot;hiBoy&quot;,function(){
+            return {
+                // 必须设置 restrict 的值为 &quot;C&quot; 才能通过类名来调用指令。
+                restrict:&#39;C&#39;,
+                template:&quot;&lt;span&gt;hello boy &lt;/span&gt;&quot;
+            };
+        });
+    &lt;/script&gt;
+&lt;/div&gt;</code></pre>
+<ul>
+<li>注释</li>
+</ul>
+<pre><code class="html">&lt;div ng-app=&quot;myApp&quot;&gt;
+    注释：&lt;!-- directive:hi-boy --&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var app=angular.module(&#39;myApp&#39;,[]);
+        app.directive(&quot;hiBoy&quot;,function(){
+            return {
+                replace:true,//需要在该实例添加 replace 属性， 否则评论是不可见的。
+                restrict:&#39;M&#39;,//须设置 restrict 的值为 &quot;M&quot; 才能通过注释来调用指令。
+                template:&quot;&lt;span&gt;hello boy &lt;/span&gt;&quot;
+            };
+        });
+    &lt;/script&gt;
+&lt;/div&gt;</code></pre>
+<p>restrict 值可以是以下几种:</p>
+<ul>
+<li>E 只限元素名使用</li>
+<li>A 只限属性使用</li>
+<li>C 只限类名使用</li>
+<li>M 只限注释使用</li>
+</ul>
+<p>restrict 默认值为 EA, 即可以通过元素名和属性名来调用指令。</p>
+<h1 id="2016年3月24日"><a href="#2016年3月24日" class="headerlink" title="2016年3月24日"></a>2016年3月24日</h1><h2 id="angularjs-7"><a href="#angularjs-7" class="headerlink" title="angularjs"></a>angularjs</h2><ul>
+<li>ng-model 指令</li>
+</ul>
+<p>ng-model 指令可以将输入域的值与 AngularJS 创建的变量绑定。</p>
+<pre><code class="html">&lt;form ng-app=&quot;&quot; name=&quot;myForm&quot;&gt;
+    Email:
+    &lt;input type=&quot;email&quot; name=&quot;myAddress&quot; ng-model=&quot;text&quot;&gt;
+    &lt;span ng-show=&quot;myForm.myAddress.$error.email&quot;&gt;不是一个合法的邮箱地址&lt;/span&gt;
+&lt;/form&gt;</code></pre>
+<blockquote>
+<p>提示信息会在 ng-show 属性返回 true 的情况下显示。</p>
+</blockquote>
+<p><strong>应用状态</strong><br>ng-model 指令可以为应用数据提供状态值(<strong>invalid</strong>, <strong>dirty</strong>, <strong>touched</strong>, <strong>error</strong>):</p>
+<pre><code class="html">&lt;form ng-app=&quot;&quot; name=&quot;myForm&quot; ng-init=&quot;myText = &#39;test@runoob.com&#39;&quot;&gt;
+
+Email:
+&lt;input type=&quot;email&quot; name=&quot;myAddress&quot; ng-model=&quot;myText&quot; required&gt;
+&lt;p&gt;编辑邮箱地址，查看状态的改变。&lt;/p&gt;
+&lt;h1&gt;状态&lt;/h1&gt;
+&lt;p&gt;Valid: {{myForm.myAddress.$valid}} (如果输入的值是合法的则为 true)。&lt;/p&gt;
+&lt;p&gt;Dirty: {{myForm.myAddress.$dirty}} (如果值改变则为 true)。&lt;/p&gt;
+&lt;p&gt;Touched: {{myForm.myAddress.$touched}} (如果通过触屏点击则为 true)。&lt;/p&gt;
+
+&lt;/form&gt;</code></pre>
+<p><strong>CSS 类</strong></p>
+<p>ng-model 指令基于它们的状态为 HTML 元素提供了 CSS 类：</p>
+<pre><code class="html">&lt;style&gt;
+input.ng-invalid {
+    background-color: lightblue;
+}
+&lt;/style&gt;
+&lt;body&gt;
+
+&lt;form ng-app=&quot;&quot; name=&quot;myForm&quot;&gt;
+    输入你的名字:
+    &lt;input name=&quot;myAddress&quot; ng-model=&quot;text&quot; required&gt;
+&lt;/form&gt;</code></pre>
+<p>ng-model 指令根据表单域的状态添加/移除以下类：</p>
+<ul>
+<li>ng-empty<ul>
+<li>值为空</li>
+</ul>
+</li>
+<li>ng-not-empty<ul>
+<li>值不为空</li>
+</ul>
+</li>
+<li>ng-touched<ul>
+<li>控件已失去焦点</li>
+</ul>
+</li>
+<li>ng-untouched<ul>
+<li>控件未失去焦点</li>
+</ul>
+</li>
+<li>ng-valid<ul>
+<li>有效值</li>
+</ul>
+</li>
+<li>ng-invalid<ul>
+<li>无效值</li>
+</ul>
+</li>
+<li>ng-dirty<ul>
+<li>值改变</li>
+</ul>
+</li>
+<li>ng-pending<ul>
+<li>任何为满足$asyncValidators的情况</li>
+</ul>
+</li>
+<li>ng-pristine<ul>
+<li>控件为初始状态</li>
+</ul>
+</li>
+</ul>
+<p><strong>AngularJS 应用组成</strong></p>
+<ul>
+<li>View(视图), 即 HTML。</li>
+<li>Model(模型), 当前视图中可用的数据。</li>
+<li>Controller(控制器), 即 JavaScript 函数，可以添加或修改属性。</li>
+</ul>
+<p><strong>过滤器</strong></p>
+<table>
+<thead>
+<tr>
+<th>过滤器</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>currency</td>
+<td>格式化数字为货币格式。</td>
+</tr>
+<tr>
+<td>filter</td>
+<td>从数组项中选择一个子集。</td>
+</tr>
+<tr>
+<td>lowercase</td>
+<td>格式化字符串为小写。</td>
+</tr>
+<tr>
+<td>orderBy</td>
+<td>根据某个表达式排列数组。</td>
+</tr>
+<tr>
+<td>uppercase</td>
+<td>格式化字符串为大写。</td>
+</tr>
+</tbody></table>
+<p>过滤器可以通过一个管道字符（|）和一个过滤器添加到表达式中。.</p>
+<p><strong>uppercase</strong>过滤器将字符串格式化为大写：</p>
+<pre><code class="html">&lt;div ng-app=&quot;myApp&quot; ng-controller=&quot;personCtrl&quot;&gt;
+
+&lt;p&gt;姓名为 {{ lastName | uppercase }}&lt;/p&gt;
+
+&lt;/div&gt;
+</code></pre>
+<p><strong>过滤输入</strong></p>
+<p>输入过滤器可以通过一个管道字符（|）和一个过滤器添加到指令中，该过滤器后跟一个冒号和一个模型名称。<br><strong>filter</strong> 过滤器从数组中选择一个子集：</p>
+<pre><code class="html5">&lt;div ng-app=&quot;myApp&quot; ng-controller=&quot;namesCtrl&quot;&gt;
+
+&lt;p&gt;&lt;input type=&quot;text&quot; ng-model=&quot;test&quot;&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li ng-repeat=&quot;x in names | filter:test | orderBy:&#39;country&#39;&quot;&gt;
+    {{ (x.name | uppercase) + ', ' + x.country }}
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+</code></pre>
+<h1 id="2016年3月25日"><a href="#2016年3月25日" class="headerlink" title="2016年3月25日"></a>2016年3月25日</h1><h2 id="angularjs-8"><a href="#angularjs-8" class="headerlink" title="angularjs"></a>angularjs</h2><p><strong>AngularJS 服务(Service)</strong></p>
+<p>在 AngularJS 中，服务是一个函数或对象，可在你的 AngularJS 应用中使用。</p>
+<ul>
+<li>$location 服务，它可以返回当前页面的 URL 地址。</li>
+</ul>
+<pre><code class="js">var app = angular.module(&#39;myApp&#39;, []);
+app.controller(&#39;customersCtrl&#39;, function($scope, $location) {
+    $scope.myUrl = $location.absUrl();
+});</code></pre>
+<ul>
+<li>$http 是 AngularJS 应用中最常用的服务。服务向服务器发送请求，应用响应服务器传送过来的数据。</li>
+</ul>
+<pre><code class="js">var app = angular.module(&#39;myApp&#39;, []);
+app.controller(&#39;myCtrl&#39;, function($scope, $http) {
+    $http.get(&quot;welcome.htm&quot;).then(function (response) {
+        $scope.myWelcome = response.data;
+    });
+});</code></pre>
+<h2 id="html"><a href="#html" class="headerlink" title="html"></a>html</h2><p><strong>无内容元素（Void elements）</strong></p>
+<p>无内容元素是一种不能包含任何内容的特殊元素。而其他元素，比如 <div>，则既可以不包含任何内容，又可以包含另一个元素或者文字。</div></p>
+<p>比较常见的无内容元素有：</p>
+<ul>
+<li>&lt; br&gt;</li>
+<li>&lt; hr&gt;</li>
+<li>&lt; img&gt;</li>
+<li>&lt; input&gt;</li>
+<li>&lt; link&gt; </li>
+<li>&lt; meta&gt;</li>
+</ul>
+<p>不太常见的无内容元素有：</p>
+<ul>
+<li>&lt; area&gt;</li>
+<li>&lt; base&gt;</li>
+<li>&lt; col&gt;</li>
+<li>&lt; command&gt;</li>
+<li>&lt; embed&gt;</li>
+<li>&lt; keygen&gt;</li>
+<li>&lt; param&gt;</li>
+<li>&lt; source&gt;</li>
+<li>&lt; track&gt;</li>
+<li>&lt; wbr&gt;</li>
+</ul>
+<p>此类标签应由下列部分组成，顺序须与下表保持一致：</p>
+<ul>
+<li>一个 “&lt;” 字符。</li>
+<li>标签名。</li>
+<li>此项可选，一个或多个属性，每一个属性的前面必须有一个或多个空格。</li>
+<li>此项可选，一个或多个空格。</li>
+<li>此项可选，一个 “/” 字符，此项只能在无内容元素中出现。</li>
+<li>一个 “&gt;” 字符。</li>
+</ul>
+<p>倒数第二部分的 “/” 字符是可选的，而且没有任何实际含义。所以 &lt; br&gt; 和 &lt; br /&gt; 其实没有实质区别。</p>
+<blockquote>
+<p><a href="http://blog.jobbole.com/61514/" target="_blank" rel="noopener">http://blog.jobbole.com/61514/</a></p>
+</blockquote>
+<p><strong>AngularJS Select(选择框)</strong></p>
+<p>使用 ng-option 指令来创建一个下拉列表，列表项通过对象和数组循环输出</p>
+<pre><code class="html">&lt;div ng-app=&quot;myApp&quot; ng-controller=&quot;myCtrl&quot;&gt;
+
+&lt;select ng-model=&quot;selectedName&quot; ng-options=&quot;x for x in names&quot;&gt;
+&lt;/select&gt;
+
+&lt;/div&gt;
+
+&lt;script&gt;
+var app = angular.module(&#39;myApp&#39;, []);
+app.controller(&#39;myCtrl&#39;, function($scope) {
+    $scope.names = [&quot;Google&quot;, &quot;Runoob&quot;, &quot;Taobao&quot;];
+});
+&lt;/script&gt;</code></pre>
+<p>也可以使用ng-repeat 指令：</p>
+<pre><code class="html">&lt;select&gt;
+&lt;option ng-repeat=&quot;x in names&quot; value=&quot;{{x.names}}&quot;&gt;{{x}}&lt;/option&gt;
+&lt;/select&gt; </code></pre>
+<blockquote>
+<p>option标签的value值是发给服务器的值。</p>
+</blockquote>
+<p><strong>ng-repeat</strong>指令是通过数组来循环 HTML 代码来创建下拉列表，但 <strong>ng-options</strong> 指令更适合创建下拉列表，它有以下优势：<br>使用 <strong>ng-options</strong> 的选项的一个对象， <strong>ng-repeat</strong> 是一个字符串。</p>
+<h1 id="2016年3月28日"><a href="#2016年3月28日" class="headerlink" title="2016年3月28日"></a>2016年3月28日</h1><h2 id="angularjs-9"><a href="#angularjs-9" class="headerlink" title="angularjs"></a>angularjs</h2><p>使用 angular 显示表格</p>
+<pre><code class="html">&lt;div ng-app=&quot;myApp&quot; ng-controller=&quot;customersCtrl&quot;&gt; 
+
+&lt;table&gt;
+  &lt;tr ng-repeat=&quot;x in names&quot;&gt;
+    &lt;td&gt;{{ x.Name }}&lt;/td&gt;
+    &lt;td&gt;{{ x.Country }}&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;/div&gt;
+&lt;script&gt;
+var app = angular.module(&#39;myApp&#39;, []);
+app.controller(&#39;customersCtrl&#39;, function($scope, $http) {
+    $http.get(&quot;http://www.runoob.com/try/angularjs/data/Customers_JSON.php&quot;)
+    .success(function (response) {$scope.names = response.records;});
+});
+&lt;/script&gt;</code></pre>
+<p>可以使用 orderBy 过滤器: </p>
+<pre><code class="html">&lt;table&gt;
+  &lt;tr ng-repeat=&quot;x in names | orderBy : &#39;Country&#39;&quot;&gt;
+    &lt;td&gt;{{ x.Name }}&lt;/td&gt;
+    &lt;td&gt;{{ x.Country }}&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+<p>可以在 &lt; td&gt; 中添加 $index: </p>
+<pre><code class="html">&lt;table&gt;
+  &lt;tr ng-repeat=&quot;x in names&quot;&gt;
+    &lt;td&gt;{{ $index + 1 }}&lt;/td&gt;
+    &lt;td&gt;{{ x.Name }}&lt;/td&gt;
+    &lt;td&gt;{{ x.Country }}&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+<p>使用 $even 和 $odd</p>
+<pre><code class="html">&lt;table&gt;
+&lt;tr ng-repeat=&quot;x in names&quot;&gt;
+&lt;td ng-if=&quot;$odd&quot; style=&quot;background-color:#f1f1f1&quot;&gt;{{ x.Name }}&lt;/td&gt;
+&lt;td ng-if=&quot;$even&quot;&gt;{{ x.Name }}&lt;/td&gt;
+&lt;td ng-if=&quot;$odd&quot; style=&quot;background-color:#f1f1f1&quot;&gt;{{ x.Country }}&lt;/td&gt;
+&lt;td ng-if=&quot;$even&quot;&gt;{{ x.Country }}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+<p><strong>跨域 HTTP 请求</strong></p>
+<p>指定某域名<code>（http://client.runoob.com）</code>跨域访问，则只需在<code>http://server.runoob.com/server.php</code>文件头部添加如下代码：</p>
+<pre><code class="php">header(&#39;Access-Control-Allow-Origin:http://client.runoob.com&#39;);</code></pre>
+<blockquote>
+<p>参考：<a href="http://www.runoob.com/w3cnote/php-ajax-cross-border.html" target="_blank" rel="noopener">http://www.runoob.com/w3cnote/php-ajax-cross-border.html</a> 。</p>
+</blockquote>
+<p><strong>ng-disabled</strong> 指令绑定应用程序数据 <strong>mySwitch</strong> 到 HTML 的 disabled 属性。<br><strong>ng-model</strong> 指令绑定 <strong>mySwitch</strong> 到 HTML input checkbox 元素的内容（value）。</p>
+<p><strong>AngularJS 事件</strong></p>
+<ul>
+<li>ng-click 指令定义了 AngularJS 点击事件。</li>
+<li>ng-hide 指令用于设置应用部分是否可见。</li>
+<li>ng-hide=”true” 设置 HTML 元素不可见。</li>
+<li>ng-hide=”false” 设置 HTML 元素可见。</li>
+</ul>
+<pre><code class="html">&lt;div ng-app=&quot;myApp&quot; ng-controller=&quot;personCtrl&quot;&gt;
+
+&lt;button ng-click=&quot;toggle()&quot;&gt;&gt;隐藏/显示&lt;/button&gt;
+
+&lt;p ng-hide=&quot;myVar&quot;&gt;
+名: &lt;input type=&quot;text&quot; ng-model=&quot;firstName&quot;&gt;&lt;br&gt;
+姓名: &lt;input type=&quot;text&quot; ng-model=&quot;lastName&quot;&gt;&lt;br&gt;
+&lt;br&gt;
+Full Name: {{firstName + " " + lastName}}
+&lt;/p&gt;
+
+&lt;/div&gt;
+
+&lt;script&gt;
+var app = angular.module(&#39;myApp&#39;, []);
+app.controller(&#39;personCtrl&#39;, function($scope) {
+    $scope.firstName = &quot;John&quot;,
+    $scope.lastName = &quot;Doe&quot;
+    $scope.myVar = false;
+    $scope.toggle = function() {
+        $scope.myVar = !$scope.myVar;
+    };
+});
+&lt;/script&gt;</code></pre>
+<p><strong>类似</strong></p>
+<ul>
+<li>ng-show 指令可用于设置应用中的一部分是否可见 。</li>
+<li>ng-show=”false” 可以设置 HTML 元素 不可见。</li>
+<li>ng-show=”true” 可以以设置 HTML 元素可见。</li>
+</ul>
+<p>[TOC]</p>
+<h1 id="2016年3月29日"><a href="#2016年3月29日" class="headerlink" title="2016年3月29日"></a>2016年3月29日</h1><h2 id="angularjs-10"><a href="#angularjs-10" class="headerlink" title="angularjs"></a>angularjs</h2><p><strong>AngularJS 模块</strong></p>
+<ul>
+<li>创建模块</li>
+</ul>
+<p>你可以通过 AngularJS 的 angular.module 函数来创建模块： </p>
+<pre><code class="html">&lt;div ng-app=&quot;myApp&quot;&gt;...&lt;/div&gt;
+
+&lt;script&gt;
+
+var app = angular.module(&quot;myApp&quot;, []); 
+
+&lt;/script&gt;</code></pre>
+<p><strong>myApp</strong>参数对应执行应用的 HTML 元素。<br>现在你可以在 AngularJS 应用中添加控制器、指令、过滤器等。</p>
+<ul>
+<li>添加控制器</li>
+</ul>
+<p>你可以使用 ng-controller 指令来添加<strong>应用</strong>的控制器: </p>
+<pre><code class="html">&lt;div ng-app=&quot;myApp&quot; ng-controller=&quot;myCtrl&quot;&gt;
+{{ firstName + " " + lastName }}
+&lt;/div&gt;
+
+&lt;script&gt;
+
+var app = angular.module(&quot;myApp&quot;, []);//应用模块的定义程序
+
+app.controller(&quot;myCtrl&quot;, function($scope) {//控制器
+    $scope.firstName = &quot;John&quot;;
+    $scope.lastName = &quot;Doe&quot;;
+});
+
+&lt;/script&gt;</code></pre>
+<p><strong>AngularJS 表单</strong></p>
+<pre><code class="html">&lt;div ng-app=&quot;myApp&quot; ng-controller=&quot;formCtrl&quot;&gt;
+  &lt;form novalidate&gt;
+    First Name:&lt;br&gt;
+    &lt;input type=&quot;text&quot; ng-model=&quot;user.firstName&quot;&gt;&lt;br&gt;
+    Last Name:&lt;br&gt;
+    &lt;input type=&quot;text&quot; ng-model=&quot;user.lastName&quot;&gt;
+    &lt;br&gt;&lt;br&gt;
+    &lt;button ng-click=&quot;reset()&quot;&gt;RESET&lt;/button&gt;
+  &lt;/form&gt;
+  &lt;p&gt;form = {{user}}&lt;/p&gt;
+  &lt;p&gt;master = {{master}}&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+var app = angular.module(&#39;myApp&#39;, []);
+app.controller(&#39;formCtrl&#39;, function($scope) {
+    $scope.master = {firstName: &quot;John&quot;, lastName: &quot;Doe&quot;};
+    $scope.reset = function() {
+        $scope.user = angular.copy($scope.master);
+    };
+    $scope.reset();
+});
+&lt;/script&gt;
+</code></pre>
+<blockquote>
+<p><strong>novalidate</strong> 属性是在 HTML5 中新增的。禁用了使用浏览器的默认验证。</p>
+</blockquote>
+<ul>
+<li>ng-app 指令定义了 AngularJS 应用。</li>
+<li>ng-controller 指令定义了应用控制器。</li>
+<li>ng-model 指令绑定了两个 input 元素到模型的 user 对象。</li>
+<li>formCtrl 函数设置了 master 对象的初始值，并定义了 reset() 方法。</li>
+<li>reset() 方法设置了 user 对象等于 master 对象。</li>
+<li>ng-click 指令调用了 reset() 方法，且在点击按钮时调用。</li>
+<li>novalidate 属性在应用中不是必须的，但是你需要在 AngularJS表单中使用，用于重写标准的 HTML5 验证</li>
+</ul>
+<p><strong>AngularJS API</strong></p>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>angular.lowercase()</td>
+<td>转换字符串为小写</td>
+</tr>
+<tr>
+<td>angular.uppercase()</td>
+<td>转换字符串为大写</td>
+</tr>
+<tr>
+<td>angular.isString()</td>
+<td>判断给定的对象是否为字符串，如果是返回 true。</td>
+</tr>
+<tr>
+<td>angular.isNumber()</td>
+<td>判断给定的对象是否为数字，如果是返回 true。</td>
+</tr>
+</tbody></table>
+<pre><code class="html">&lt;div ng-app=&quot;myApp&quot; ng-controller=&quot;myCtrl&quot;&gt;
+&lt;p&gt;{{ x1 }}&lt;/p&gt;
+&lt;p&gt;{{ x2 }}&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+var app = angular.module(&#39;myApp&#39;, []);
+app.controller(&#39;myCtrl&#39;, function($scope) {
+$scope.x1 = &quot;JOHN&quot;;
+$scope.x2 = angular.lowercase($scope.x1);
+});
+&lt;/script&gt;</code></pre>
+<p><strong>AngularJS Bootstrap</strong></p>
+<table>
+<thead>
+<tr>
+<th>AngularJS 指令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt; html ng-app</td>
+<td>为 &lt; html&gt; 元素定义一个应用(未命名)</td>
+</tr>
+<tr>
+<td>&lt; body ng-controller</td>
+<td>为 &lt; body&gt; 元素定义一个控制器</td>
+</tr>
+<tr>
+<td>&lt; tr ng-repeat</td>
+<td>循环 users 对象数组，每个 user 对象放在 &lt; tr&gt; 元素中。</td>
+</tr>
+<tr>
+<td>&lt; button ng-click</td>
+<td>当点击 &lt; button&gt; 元素时调用函数 editUser()</td>
+</tr>
+<tr>
+<td>&lt; h3 ng-show</td>
+<td>如果 edit = true 显示 &lt; h3&gt; 元素</td>
+</tr>
+<tr>
+<td>&lt; h3 ng-hide</td>
+<td>如果 edit = true 隐藏 &lt; h3&gt; 元素</td>
+</tr>
+<tr>
+<td>&lt; input ng-model</td>
+<td>为应用程序绑定 &lt; input&gt; 元素</td>
+</tr>
+<tr>
+<td>&lt; button ng-disabled</td>
+<td>如果发生错误或者 ncomplete = true 禁用 &lt; button&gt; 元素</td>
+</tr>
+</tbody></table>
+<p><strong>AngularJS 包含</strong></p>
+<p>在 AngularJS 中，你可以在 HTML 中包含 HTML 文件。</p>
+<p>使用 AngularJS, 你可以使用 ng-include 指令来包含 HTML 内容:</p>
+<pre><code class="html">&lt;body&gt;
+
+&lt;div class=&quot;container&quot;&gt;
+  &lt;div ng-include=&quot;&#39;myUsers_List.htm&#39;&quot;&gt;&lt;/div&gt;
+  &lt;div ng-include=&quot;&#39;myUsers_Form.htm&#39;&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/body&gt;</code></pre>
+<p><strong>AngularJS 动画</strong></p>
+<p>AngularJS 提供了动画效果，可以配合 CSS 使用。<br>AngularJS 使用动画需要引入 angular-animate.min.js 库。</p>
+<pre><code class="html">&lt;body ng-app=&quot;myApp&quot;&gt;
+
+&lt;h1&gt;隐藏 DIV: &lt;input type=&quot;checkbox&quot; ng-model=&quot;myCheck&quot;&gt;&lt;/h1&gt;
+
+&lt;div ng-hide=&quot;myCheck&quot;&gt;&lt;/div&gt;
+
+&lt;script&gt;
+var app = angular.module(&#39;myApp&#39;, [&#39;ngAnimate&#39;]);
+&lt;/script&gt;</code></pre>
+<p>ngAnimate 模型可以添加或移除 class 。<br>ngAnimate 模型并不能使 HTML 元素产生动画，但是 ngAnimate 会监测事件，类似隐藏显示 HTML 元素 ，如果事件发生 ngAnimate 就会使用预定义的 class 来设置 HTML 元素的动画。</p>
+<p>AngularJS 添加/移除 class 的指令:</p>
+<ul>
+<li>ng-show</li>
+<li>ng-hide</li>
+<li>ng-class</li>
+<li>ng-view</li>
+<li>ng-include</li>
+<li>ng-repeat</li>
+<li>ng-if</li>
+<li>ng-switch</li>
+</ul>
+<p>此外，在动画完成后，HTML 元素的类集合将被移除。例如： ng-hide 指令会添加一下类：</p>
+<ul>
+<li>ng-animate</li>
+<li>ng-hide-animate</li>
+<li>ng-hide-add (如果元素将被隐藏)</li>
+<li>ng-hide-remove (如果元素将显示)</li>
+<li>ng-hide-add-active (如果元素将隐藏)</li>
+<li>ng-hide-remove-active (如果元素将显示)</li>
+</ul>
+<p>[TOC]</p>
+<h1 id="2016年3月30日"><a href="#2016年3月30日" class="headerlink" title="2016年3月30日"></a>2016年3月30日</h1><h2 id="转义字符-1"><a href="#转义字符-1" class="headerlink" title="转义字符"></a>转义字符</h2><p>字符型常量所表示的值是字符型变量所能包含的值。<br>我们可以用<strong>ASCII表达式</strong>来表示一个字符型常量，或者用<strong>单引号</strong>内加<strong>反斜杠</strong>表示转义字符。</p>
+<blockquote>
+<p>其中：\x表示后面的字符是十六进制数，\表示后面的字符是八进制数。</p>
+</blockquote>
+<p><code>&amp;#x50;</code>(&#x50;):用十六进制的方式表示编码为<strong>50</strong>的字符。<br><code>&amp;#50;</code>(&#50;):用十进制的方式表示编码为<strong>50</strong>的字符。<br><code>\045</code>:在javascript中可解释成八进制的ASCII 码&quot;<strong>%</strong>&quot;。<br><code>\x24</code>:在javascript中可以解释成十六进制的ASCII码&quot;<strong>$</strong>&quot;</p>
+<p>在CSS中表示ASCII码：</p>
+<pre><code class="css">#t1:after{
+        content: &quot;\45\0a\55\045&quot;
+    }</code></pre>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-Search-in-Rotated-Sorted-Array[H]/" rel="next" title="Search in Rotated Sorted Array[H]">
+                <i class="fa fa-chevron-left"></i> Search in Rotated Sorted Array[H]
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/04/2019-10-04-JS4/" rel="prev" title="JS4">
+                JS4 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年3月2日"><span class="nav-number">1.</span> <span class="nav-text">2016年3月2日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript"><span class="nav-number">1.1.</span> <span class="nav-text">javascript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据结构"><span class="nav-number">1.1.1.</span> <span class="nav-text">数据结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年3月3日"><span class="nav-number">2.</span> <span class="nav-text">2016年3月3日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript-1"><span class="nav-number">2.1.</span> <span class="nav-text">javascript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法与数据结构"><span class="nav-number">2.1.1.</span> <span class="nav-text">算法与数据结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年3月5日"><span class="nav-number">3.</span> <span class="nav-text">2016年3月5日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript-2"><span class="nav-number">3.1.</span> <span class="nav-text">javascript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nodejs"><span class="nav-number">3.2.</span> <span class="nav-text">nodejs</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年3月6日"><span class="nav-number">4.</span> <span class="nav-text">2016年3月6日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nodejs-1"><span class="nav-number">4.1.</span> <span class="nav-text">nodejs</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年3月7日"><span class="nav-number">5.</span> <span class="nav-text">2016年3月7日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nodejs-2"><span class="nav-number">5.1.</span> <span class="nav-text">nodejs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#process对象"><span class="nav-number">5.1.1.</span> <span class="nav-text">process对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Buffer类"><span class="nav-number">5.1.2.</span> <span class="nav-text">Buffer类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机网络"><span class="nav-number">5.1.3.</span> <span class="nav-text">计算机网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数"><span class="nav-number">5.1.4.</span> <span class="nav-text">函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年3月8日"><span class="nav-number">6.</span> <span class="nav-text">2016年3月8日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript-3"><span class="nav-number">6.1.</span> <span class="nav-text">javascript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数-1"><span class="nav-number">6.1.1.</span> <span class="nav-text">函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nodejs-3"><span class="nav-number">6.2.</span> <span class="nav-text">nodejs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Buffer"><span class="nav-number">6.2.1.</span> <span class="nav-text">Buffer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年3月9日"><span class="nav-number">7.</span> <span class="nav-text">2016年3月9日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nodejs-4"><span class="nav-number">7.1.</span> <span class="nav-text">nodejs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fs模块"><span class="nav-number">7.1.1.</span> <span class="nav-text">fs模块</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年3月10日"><span class="nav-number">8.</span> <span class="nav-text">2016年3月10日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript-4"><span class="nav-number">8.1.</span> <span class="nav-text">javascript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#json"><span class="nav-number">8.1.1.</span> <span class="nav-text">json</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nodejs"><span class="nav-number">8.2.</span> <span class="nav-text">Nodejs</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年3月11日"><span class="nav-number">9.</span> <span class="nav-text">2016年3月11日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Nodejs-1"><span class="nav-number">9.1.</span> <span class="nav-text">Nodejs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#File-System-文件系统模块"><span class="nav-number">9.1.1.</span> <span class="nav-text">File System 文件系统模块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符编码"><span class="nav-number">9.2.</span> <span class="nav-text">字符编码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年3月12日"><span class="nav-number">10.</span> <span class="nav-text">2016年3月12日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS3"><span class="nav-number">10.1.</span> <span class="nav-text">CSS3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#flexbox"><span class="nav-number">10.1.1.</span> <span class="nav-text">flexbox</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Flex容器属性（flex-container）"><span class="nav-number">10.1.1.1.</span> <span class="nav-text">Flex容器属性（flex container）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#项目属性"><span class="nav-number">10.1.1.2.</span> <span class="nav-text">项目属性</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年3月13日"><span class="nav-number">11.</span> <span class="nav-text">2016年3月13日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript-5"><span class="nav-number">11.1.</span> <span class="nav-text">javascript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#转义字符"><span class="nav-number">11.1.1.</span> <span class="nav-text">转义字符</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年3月14日"><span class="nav-number">12.</span> <span class="nav-text">2016年3月14日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nodejs-5"><span class="nav-number">12.1.</span> <span class="nav-text">nodejs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#File-System"><span class="nav-number">12.1.1.</span> <span class="nav-text">File System</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http"><span class="nav-number">12.1.2.</span> <span class="nav-text">http</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年3月15日"><span class="nav-number">13.</span> <span class="nav-text">2016年3月15日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nodejs-6"><span class="nav-number">13.1.</span> <span class="nav-text">nodejs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#http模块"><span class="nav-number">13.1.1.</span> <span class="nav-text">http模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步、异步、阻塞、非阻塞"><span class="nav-number">13.1.2.</span> <span class="nav-text">同步、异步、阻塞、非阻塞</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年3月16日"><span class="nav-number">14.</span> <span class="nav-text">2016年3月16日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript-6"><span class="nav-number">14.1.</span> <span class="nav-text">javascript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实参与形参"><span class="nav-number">14.1.1.</span> <span class="nav-text">实参与形参</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#angularjs"><span class="nav-number">14.1.2.</span> <span class="nav-text">angularjs</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年3月17日"><span class="nav-number">15.</span> <span class="nav-text">2016年3月17日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript-7"><span class="nav-number">15.1.</span> <span class="nav-text">javascript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#angularjs-1"><span class="nav-number">15.1.1.</span> <span class="nav-text">angularjs</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年3月18日"><span class="nav-number">16.</span> <span class="nav-text">2016年3月18日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#angularjs-2"><span class="nav-number">16.1.</span> <span class="nav-text">angularjs</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年3月19日"><span class="nav-number">17.</span> <span class="nav-text">2016年3月19日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#angularjs-3"><span class="nav-number">17.1.</span> <span class="nav-text">angularjs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-model"><span class="nav-number">17.2.</span> <span class="nav-text">ng-model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年3月20日"><span class="nav-number">18.</span> <span class="nav-text">2016年3月20日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#angularjs-4"><span class="nav-number">18.1.</span> <span class="nav-text">angularjs</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年3月21日"><span class="nav-number">19.</span> <span class="nav-text">2016年3月21日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#angularjs-5"><span class="nav-number">19.1.</span> <span class="nav-text">angularjs</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年3月22日"><span class="nav-number">20.</span> <span class="nav-text">2016年3月22日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx"><span class="nav-number">20.1.</span> <span class="nav-text">nginx</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年3月23日"><span class="nav-number">21.</span> <span class="nav-text">2016年3月23日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#css"><span class="nav-number">21.1.</span> <span class="nav-text">css</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#margin属性"><span class="nav-number">21.1.1.</span> <span class="nav-text">margin属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#html与body"><span class="nav-number">21.1.2.</span> <span class="nav-text">html与body</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#angularjs-6"><span class="nav-number">21.1.3.</span> <span class="nav-text">angularjs</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年3月24日"><span class="nav-number">22.</span> <span class="nav-text">2016年3月24日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#angularjs-7"><span class="nav-number">22.1.</span> <span class="nav-text">angularjs</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年3月25日"><span class="nav-number">23.</span> <span class="nav-text">2016年3月25日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#angularjs-8"><span class="nav-number">23.1.</span> <span class="nav-text">angularjs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#html"><span class="nav-number">23.2.</span> <span class="nav-text">html</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年3月28日"><span class="nav-number">24.</span> <span class="nav-text">2016年3月28日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#angularjs-9"><span class="nav-number">24.1.</span> <span class="nav-text">angularjs</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年3月29日"><span class="nav-number">25.</span> <span class="nav-text">2016年3月29日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#angularjs-10"><span class="nav-number">25.1.</span> <span class="nav-text">angularjs</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2016年3月30日"><span class="nav-number">26.</span> <span class="nav-text">2016年3月30日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#转义字符-1"><span class="nav-number">26.1.</span> <span class="nav-text">转义字符</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
