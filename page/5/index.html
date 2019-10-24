@@ -231,7 +231,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-Css-Reset/">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Java题解接口/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zqfmcl">
@@ -250,7 +250,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/04/2019-10-04-Css-Reset/" itemprop="url">Css Reset</a></h1>
+                <a class="post-title-link" href="/2019/10/06/2019-10-06-Java题解接口/" itemprop="url">Java题解接口</a></h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T10:00:00+08:00">
-                2019-10-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-06T10:00:00+08:00">
+                2019-10-06
               </time>
             
 
@@ -302,44 +302,588 @@
       
         
           
-            <h1 id="CSS-Reset样式"><a href="#CSS-Reset样式" class="headerlink" title="CSS Reset样式"></a>CSS Reset样式</h1><pre><code class="css">/*清楚浮动*/
-.w{
-    width: 990px;
-    margin: 0 auto;
-}
-li{
-    list-style: none;
-}
-body{
-    margin: 0;
-    padding: 0;
-}
-.fr{
-    float: right;
-}
-.fl{
-    float: left;
-}
-.fr:after{
-    display: block;
-    visibility: hidden;
-    clear: both;
-    height: 0;
-    overflow: hidden;
-    content: &#39;.&#39;;
-}
-.fl:after{
-    display: block;
-    visibility: hidden;
-    clear: both;
-    height: 0;
-    overflow: hidden;
-    content: &#39;.&#39;;
-}
-.PosR{
-    position: relative;
-}
-</code></pre>
+            <h2 id="第九章-接口"><a href="#第九章-接口" class="headerlink" title="第九章 接口"></a>第九章 接口</h2><p>abstract class Rodent {</p>
+<p>​       private String name = “Rodent”;</p>
+<p>​       abstract protected void eat(); </p>
+<p>​       abstract protected void run(); </p>
+<p>​       abstract protected void sleep();</p>
+<p>​       abstract public String toString(); </p>
+<p>}</p>
+<p>class Mouse extends Rodent {</p>
+<p>​       private String name = “Mouse”;</p>
+<p>​       protected void eat() { println(“Mouse.eat()”); }</p>
+<p>​       protected void run() { println(“Mouse.run()”); }</p>
+<p>​       protected void sleep() { println(“Mouse.sleep()”); }</p>
+<p>​       public String toString() { return name; }</p>
+<p>}</p>
+<p>class Rat extends Rodent {</p>
+<p>​       private String name = “Rat”;</p>
+<p>​       protected void eat() { println(“Rat.eat()”); }</p>
+<p>​       protected void run() { println(“Rat.run()”); }</p>
+<p>​       protected void sleep() { println(“Rat.sleep()”); }</p>
+<p>​       public String toString() { return name; }</p>
+<p>}</p>
+<p>class Squirrel extends Rodent {</p>
+<p>​       private String name = “Squirrel”;</p>
+<p>​       protected void eat() { println(“Squirrel.eat()”); }</p>
+<p>​       protected void run() { println(“Squirrel.run()”); }</p>
+<p>​       protected void sleep() { println(“Squirrel.sleep()”); }</p>
+<p>​       public String toString() { return name; }</p>
+<p>}</p>
+<p>public class Rodent1 {</p>
+<p>​       private static RandomRodentGenerator1 gen = new RandomRodentGenerator1();</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                                                     Rodent[] rodents = new Rodent[10];</p>
+<p>​              for(Rodent r : rodents) {</p>
+<p>​                     r = gen.next();</p>
+<p>​                     println(r + “: “);</p>
+<p>​                     r.eat();</p>
+<p>​                     r.run();</p>
+<p>​                     r.sleep();                </p>
+<p>​              }             </p>
+<p>​       }</p>
+<p>}</p>
+<p>  abstract class Nogo1 {</p>
+<p>​       Nogo1() { System.out.println(“Nogo1()”); }</p>
+<p>}</p>
+<p>abstract class Nogo2 {}</p>
+<p>class Go1 extends Nogo1 {</p>
+<p>​       Go1() { System.out.println(“Go1()”); }</p>
+<p>}</p>
+<p>public class Ex2 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                                                                  Go1 g1 = new Go1();</p>
+<p>​       }</p>
+<p>}</p>
+<p>abstract class Dad {</p>
+<p>​       protected abstract void print();</p>
+<p>​       Dad() { print(); }</p>
+<p>}</p>
+<p>class Son extends Dad {</p>
+<p>​       private int i = 1;</p>
+<p>​       @Override protected void print() { println(“Son.i = “ + i); }</p>
+<p>}</p>
+<p>public class Ex3 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                           * 1. Storage for Son s allocated and initialized to binary zero</p>
+<p>​              * 2. Dad() called</p>
+<p>​              * 3. Son.print() called in Dad() (s.i = 0)</p>
+<p>​              * 4. Member initializers called in order (s.i = 1)</p>
+<p>​              * 5. Body of Son() called</p>
+<p>​              *            Son s = new Son();</p>
+<p>​              s.print();</p>
+<p>​       }</p>
+<p>}</p>
+<p>abstract class Dad {</p>
+<p>}</p>
+<p>class Son extends Dad {</p>
+<p>​       protected void print() { println(“Son”); }</p>
+<p>}</p>
+<p>abstract class SecondDad {</p>
+<p>​       abstract protected void print();</p>
+<p>}</p>
+<p>class SecondSon extends SecondDad {</p>
+<p>​       protected void print() { println(“SecondSon”); }</p>
+<p>}</p>
+<p>public class Ex4 {</p>
+<p>​       public static void testPrint(Dad d) {</p>
+<p>​              ((Son)d).print();</p>
+<p>​       }</p>
+<p>​       public static void secondTestPrint(SecondDad sd) {</p>
+<p>​              sd.print();</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Son s = new Son();</p>
+<p>​              Ex4.testPrint(s);</p>
+<p>​              SecondSon ss = new SecondSon();</p>
+<p>​              Ex4.secondTestPrint(ss);                     </p>
+<p>​       }</p>
+<p>}</p>
+<p>public class TestEx5 implements Ex5 {</p>
+<p>​       public void sayOne() { System.out.println(“one”); }</p>
+<p>​       public void sayTwo() { System.out.println(“two”); }</p>
+<p>​       public void sayThree() { System.out.println(“three”); }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              TestEx5 x = new TestEx5();</p>
+<p>​              x.sayOne();</p>
+<p>​              x.sayTwo();</p>
+<p>​              x.sayThree();</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class TestEx6 {    </p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Ex6b x = new Ex6b();</p>
+<p>​              x.sayOne();</p>
+<p>​              x.sayTwo();</p>
+<p>​              x.sayThree();</p>
+<p>​       }</p>
+<p>}</p>
+<p>interface Rodent {</p>
+<p>​       String name = “Rodent”;</p>
+<p>​       void eat(); </p>
+<p>​       void run(); </p>
+<p>​       void sleep();</p>
+<p>​       String toString(); </p>
+<p>}</p>
+<p>class Mouse implements Rodent {</p>
+<p>​       private String name = “Mouse”;</p>
+<p>​       public void eat() { println(“Mouse.eat()”); }</p>
+<p>​       public void run() { println(“Mouse.run()”); }</p>
+<p>​       public void sleep() { println(“Mouse.sleep()”); }</p>
+<p>​       public String toString() { return name; }</p>
+<p>}</p>
+<p>class Rat implements Rodent {</p>
+<p>​       private String name = “Rat”;</p>
+<p>​       public void eat() { println(“Rat.eat()”); }</p>
+<p>​       public void run() { println(“Rat.run()”); }</p>
+<p>​       public void sleep() { println(“Rat.sleep()”); }</p>
+<p>​       public String toString() { return name; }</p>
+<p>}</p>
+<p>class Squirrel implements Rodent {</p>
+<p>​       private String name = “Squirrel”;</p>
+<p>​       public void eat() { println(“Squirrel.eat()”); }</p>
+<p>​       public void run() { println(“Squirrel.run()”); }</p>
+<p>​       public void sleep() { println(“Squirrel.sleep()”); }</p>
+<p>​       public String toString() { return name; }</p>
+<p>}</p>
+<p>public class Rodent7 {</p>
+<p>​       private static RandomRodentGenerator1 gen = new RandomRodentGenerator1();</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                                                     Rodent[] rodents = new Rodent[10];</p>
+<p>​              for(Rodent r : rodents) {</p>
+<p>​                     r = gen.next();</p>
+<p>​                     println(r + “: “);</p>
+<p>​                     r.eat();</p>
+<p>​                     r.run();</p>
+<p>​                     r.sleep();                </p>
+<p>​              }             </p>
+<p>​       }</p>
+<p>}</p>
+<p>interface FastFood {</p>
+<p>​       void cheeseburger();</p>
+<p>​       void fries();</p>
+<p>​       void softDrink();</p>
+<p>}</p>
+<p>class Meal {</p>
+<p>​       Meal() { print(“Meal()”); } </p>
+<p>}</p>
+<p>class Bread {</p>
+<p>​       Bread() { print(“Bread()”); } </p>
+<p>}</p>
+<p>class Cheese {</p>
+<p>​       Cheese() { print(“Cheese()”); } </p>
+<p>}</p>
+<p>class Lettuce {</p>
+<p>​       Lettuce() { print(“Lettuce()”); } </p>
+<p>}</p>
+<p>class Lunch extends Meal {</p>
+<p>​       Lunch() { print(“Lunch()”); } </p>
+<p>}</p>
+<p>class PortableLunch extends Lunch {</p>
+<p>​       PortableLunch() { print(“PortableLunch()”); } </p>
+<p>}      </p>
+<p>public class Sandwich8 extends PortableLunch implements FastFood {</p>
+<p>​       private Bread b = new Bread();</p>
+<p>​       private Cheese c = new Cheese();</p>
+<p>​       private Lunch l = new Lunch();</p>
+<p>​       public Sandwich8() { print(“Sandwich8()”); }</p>
+<p>​       public void cheeseburger() {</p>
+<p>​              print(“Cheeseburger”);</p>
+<p>​       }</p>
+<p>​       public void fries() {</p>
+<p>​              print(“Fries”);</p>
+<p>​       }</p>
+<p>​       public void softDrink(){</p>
+<p>​              print(“Soft Drink”);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Sandwich8 s = new Sandwich8();</p>
+<p>​              s.cheeseburger();</p>
+<p>​              s.fries();</p>
+<p>​              s.softDrink();</p>
+<p>​              </p>
+<p>​       } </p>
+<p>}</p>
+<p>abstract class Instrument {</p>
+<p>​       private int i; </p>
+<p>​       public abstract void play(Note n);</p>
+<p>​       public String toString() { return “Instrument”; } </p>
+<p>​       public abstract void adjust(); </p>
+<p>}</p>
+<p>class Wind extends Instrument {</p>
+<p>​       public void play(Note n) {</p>
+<p>​              print(this + “.play() “ + n);</p>
+<p>​       }</p>
+<p>​       public String toString() { return “Wind”; }</p>
+<p>​       public void adjust() { print(this + “.adjust()”); }</p>
+<p>}</p>
+<p>class Percussion extends Instrument {</p>
+<p>​       public void play(Note n) {</p>
+<p>​              print(this + “.play() “ + n);</p>
+<p>​       }</p>
+<p>​       public String toString() { return “Percussion”; }</p>
+<p>​       public void adjust() { print(this + “.adjust()”); }</p>
+<p>}</p>
+<p>class Stringed extends Instrument {</p>
+<p>​       public void play(Note n) {</p>
+<p>​              print(this + “.play() “ + n);</p>
+<p>​       }</p>
+<p>​       public String toString() { return “Stringed”; }</p>
+<p>​       public void adjust() { print(this + “.adjust()”); }</p>
+<p>}</p>
+<p>class Brass extends Wind {</p>
+<p>​       public String toString() { return “Brass”; }</p>
+<p>}</p>
+<p>class Woodwind extends Wind {</p>
+<p>​       public String toString() { return “Woodwing”; }</p>
+<p>}</p>
+<p>public class Music9 {</p>
+<p>​                   static void tune(Instrument i) {</p>
+<p>​                           i.play(Note.MIDDLE_C);</p>
+<p>​       }</p>
+<p>​       static void tuneAll(Instrument[] e) {</p>
+<p>​              for(Instrument i : e)</p>
+<p>​                     tune(i);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                           Instrument[] orchestra = {</p>
+<p>​                     new Wind(),</p>
+<p>​                     new Percussion(),</p>
+<p>​                     new Stringed(),</p>
+<p>​                     new Brass(),</p>
+<p>​                     new Woodwind()</p>
+<p>​              };</p>
+<p>​              tuneAll(orchestra);</p>
+<p>​       }</p>
+<p>}</p>
+<p>interface Instrument {</p>
+<p>​             int VALUE = 5;           void adjust(); </p>
+<p>}</p>
+<p>interface Playable {</p>
+<p>​       void play(Note n);  }</p>
+<p>class Wind implements Instrument, Playable {</p>
+<p>​       public void play(Note n) {</p>
+<p>​              print(this + “.play() “ + n);</p>
+<p>​       }</p>
+<p>​       public String toString() { return “Wind”; }</p>
+<p>​       public void adjust() { print(this + “.adjust()”); }</p>
+<p>}</p>
+<p>class Percussion implements Instrument, Playable {</p>
+<p>​       public void play(Note n) {</p>
+<p>​              print(this + “.play() “ + n);</p>
+<p>​       }</p>
+<p>​       public String toString() { return “Percussion”; }</p>
+<p>​       public void adjust() { print(this + “.adjust()”); }</p>
+<p>}</p>
+<p>class Stringed implements Instrument, Playable {</p>
+<p>​       public void play(Note n) {</p>
+<p>​              print(this + “.play() “ + n);</p>
+<p>​       }</p>
+<p>​       public String toString() { return “Stringed”; }</p>
+<p>​       public void adjust() { print(this + “.adjust()”); }</p>
+<p>}</p>
+<p>class Brass extends Wind {</p>
+<p>​       public String toString() { return “Brass”; }</p>
+<p>}</p>
+<p>class Woodwind extends Wind {</p>
+<p>​       public String toString() { return “Woodwing”; }</p>
+<p>}</p>
+<p>public class Music10 {</p>
+<p>​                   static void tune(Playable p) {</p>
+<p>​                           p.play(Note.MIDDLE_C);</p>
+<p>​       }</p>
+<p>​       static void tuneAll(Playable[] e) {</p>
+<p>​              for(Playable p : e)</p>
+<p>​                     tune(p);</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                           Playable[] orchestra = {</p>
+<p>​                     new Wind(),</p>
+<p>​                     new Percussion(),</p>
+<p>​                     new Stringed(),</p>
+<p>​                     new Brass(),</p>
+<p>​                     new Woodwind()</p>
+<p>​              };</p>
+<p>​              tuneAll(orchestra);</p>
+<p>​       }</p>
+<p>}</p>
+<p>class StringMixerAdapter implements Processor {</p>
+<p>​       public String name() { return “StringMixerAdapter”; }</p>
+<p>​       StringMixer stringMixer;</p>
+<p>​       public StringMixerAdapter(StringMixer stringMixer) {</p>
+<p>​              this.stringMixer = stringMixer;</p>
+<p>​       }</p>
+<p>​       public String process(Object input) {</p>
+<p>​              return stringMixer.process((String)input);</p>
+<p>​       }      </p>
+<p>}</p>
+<p>public class StringMixerProcessor {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              String s = new String(args[0]);</p>
+<p>​              Apply.process(new StringMixerAdapter(new StringMixer()), s);</p>
+<p>​       }</p>
+<p>}</p>
+<p>interface CanFight {</p>
+<p>​       void fight();</p>
+<p>}</p>
+<p>interface CanSwim {</p>
+<p>​       void swim();</p>
+<p>}</p>
+<p>interface CanFly {</p>
+<p>​       void fly();</p>
+<p>}</p>
+<p>interface CanClimb {</p>
+<p>​       void climb();</p>
+<p>}</p>
+<p>class ActionCharacter {</p>
+<p>​       public void fight() {}</p>
+<p>}</p>
+<p>class Hero extends ActionCharacter </p>
+<p>​              implements CanFight, CanSwim, CanFly {</p>
+<p>​       public void swim() {}</p>
+<p>​       public void fly() {}  </p>
+<p>}</p>
+<p>public class Adventure12 {</p>
+<p>​       public static void t(CanFight x) { x.fight(); }</p>
+<p>​       public static void u(CanSwim x) { x.swim(); }</p>
+<p>​       public static void v(CanFly x) { x.fly(); }</p>
+<p>​       public static void c(CanClimb x) { x.climb(); }     </p>
+<p>​       public static void w(ActionCharacter x) { x.fight(); }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Hero h = new Hero();</p>
+<p>​              t(h);              u(h);             v(h);             c(h);             w(h);     }</p>
+<p>}</p>
+<p>interface CanDo {</p>
+<p>​       void doIt();</p>
+<p>}</p>
+<p>interface CanDoMore extends CanDo {</p>
+<p>​       void doMore();</p>
+<p>}</p>
+<p>interface CanDoFaster extends CanDo {</p>
+<p>​       void doFaster();</p>
+<p>}</p>
+<p>interface CanDoMost extends CanDoMore, CanDoFaster {</p>
+<p>​       void doMost();</p>
+<p>}</p>
+<p>class Doer implements CanDoMost {</p>
+<p>​       public void doIt() {}</p>
+<p>​       public void doMore() {}</p>
+<p>​       public void doFaster() {}</p>
+<p>​       public void doMost() {}</p>
+<p>}</p>
+<p>public class DiamondInheritance13 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Doer d = new Doer();</p>
+<p>​              ((CanDoMore)d).doMore();</p>
+<p>​              ((CanDoFaster)d).doFaster();</p>
+<p>​              ((CanDo)d).doIt();  </p>
+<p>​       }</p>
+<p>}</p>
+<p>interface History {</p>
+<p>​       void u();</p>
+<p>​       void v();</p>
+<p>}</p>
+<p>interface Exam {</p>
+<p>​       void w();</p>
+<p>​       void x();</p>
+<p>}</p>
+<p>interface Labs {</p>
+<p>​       void y();</p>
+<p>​       void z();</p>
+<p>}</p>
+<p>interface Workup extends History, Exam, Labs {</p>
+<p>​       void zz();</p>
+<p>}</p>
+<p>class Doctor {</p>
+<p>​       private int i = 0;</p>
+<p>​       public void doc() {}</p>
+<p>}</p>
+<p>class Anesthesiologist extends Doctor implements Workup {</p>
+<p>​       private int j = 0;</p>
+<p>​       public void u() {}</p>
+<p>​       public void v() {}</p>
+<p>​       public void w() {}</p>
+<p>​       public void x() {}</p>
+<p>​       public void y() {}</p>
+<p>​       public void z() {}</p>
+<p>​       public void zz() {}</p>
+<p>}</p>
+<p>public class Ex14 {</p>
+<p>​       public static void m1(History history) { history.v(); }</p>
+<p>​       public static void m2(Exam exam) { exam.w(); }</p>
+<p>​       public static void m3(Labs labs) { labs.y(); } </p>
+<p>​       public static void m4(Workup workup) { workup.zz(); }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Anesthesiologist anes = new Anesthesiologist();</p>
+<p>​              m1(anes);</p>
+<p>​              m2(anes);</p>
+<p>​              m3(anes);</p>
+<p>​              m4(anes);</p>
+<p>​       }</p>
+<p>}</p>
+<p>interface History {</p>
+<p>​       void u();</p>
+<p>​       void v();</p>
+<p>}</p>
+<p>interface Exam {</p>
+<p>​       void w();</p>
+<p>​       void x();</p>
+<p>}</p>
+<p>interface Labs {</p>
+<p>​       void y();</p>
+<p>​       void z();</p>
+<p>}</p>
+<p>interface Workup extends History, Exam, Labs {</p>
+<p>​       void zz();</p>
+<p>}</p>
+<p>abstract class Doctor {</p>
+<p>​       private int i = 0;</p>
+<p>​       abstract void doc();</p>
+<p>}</p>
+<p>class Anesthesiologist extends Doctor implements Workup {</p>
+<p>​       private int j = 0;</p>
+<p>​       public void u() {}</p>
+<p>​       public void v() {}</p>
+<p>​       public void w() {}</p>
+<p>​       public void x() {}</p>
+<p>​       public void y() {}</p>
+<p>​       public void z() {}</p>
+<p>​       public void zz() {}</p>
+<p>​       public void doc() {}  }</p>
+<p>public class Ex15 {</p>
+<p>​       public static void m1(History history) { history.v(); }</p>
+<p>​       public static void m2(Exam exam) { exam.w(); }</p>
+<p>​       public static void m3(Labs labs) { labs.y(); } </p>
+<p>​       public static void m4(Workup workup) { workup.zz(); }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Anesthesiologist anes = new Anesthesiologist();</p>
+<p>​              m1(anes);</p>
+<p>​              m2(anes);</p>
+<p>​              m3(anes);</p>
+<p>​              m4(anes);</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class AdaptedRandomChars16 </p>
+<p>​              extends RandomChars </p>
+<p>​              implements Readable {</p>
+<p>​       private int count;</p>
+<p>​       public AdaptedRandomChars16(int count) {</p>
+<p>​              this.count = count;</p>
+<p>​       }                    </p>
+<p>​       public int read(CharBuffer cb) {</p>
+<p>​              if(count– == 0) return -1;</p>
+<p>​              String result = Character.toString(next()) + “ “;</p>
+<p>​              cb.append(result);</p>
+<p>​              return result.length();</p>
+<p>​       }</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​              Scanner s = new Scanner(new AdaptedRandomChars16(10));</p>
+<p>​              while(s.hasNext())</p>
+<p>​                     System.out.println(s.next() + “ “);</p>
+<p>​       }</p>
+<p>}</p>
+<p> interface Days {</p>
+<p>​       int SUNDAY = 1, MONDAY = 2, TUESDAY = 3, WEDNESDAY = 4, </p>
+<p>​              THURSDAY = 5, FRIDAY = 6, SATURDAY = 7; </p>
+<p>}</p>
+<p>class Week implements Days {</p>
+<p>​       private static int count = 0;</p>
+<p>​       private int id = count++;</p>
+<p>​       public Week() { System.out.println(“Week() “ + id); }</p>
+<p>}</p>
+<p>public class Ex17 {</p>
+<p>​       public static void main(String[] args) {</p>
+<p>​                           System.out.println(“SUNDAY = “ + Days.SUNDAY);</p>
+<p>​              System.out.println(“MONDAY = “ + Days.MONDAY);</p>
+<p>​              Week w0 = new Week();</p>
+<p>​              Week w1 = new Week();</p>
+<p>​                                                           }</p>
+<p>}</p>
+<p>interface Cycle {</p>
+<p>​       void ride();</p>
+<p>}</p>
+<p>interface CycleFactory {</p>
+<p>​       Cycle getCycle();</p>
+<p>}</p>
+<p>class Unicycle implements Cycle {</p>
+<p>​       public void ride() { println(“Ride Unicycle”); }</p>
+<p>}</p>
+<p>class UnicycleFactory implements CycleFactory {</p>
+<p>​       public Cycle getCycle() {</p>
+<p>​              return new Unicycle();</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Bicycle implements Cycle {</p>
+<p>​       public void ride() { println(“Ride Bicycle”); }</p>
+<p>}</p>
+<p>class BicycleFactory implements CycleFactory {</p>
+<p>​       public Cycle getCycle() {</p>
+<p>​              return new Bicycle();</p>
+<p>​       }</p>
+<p>}</p>
+<p>class Tricycle implements Cycle {</p>
+<p>​       Tricycle() { println(“Tricycle()”); }</p>
+<p>​       public void ride() { println(“Ride Tricycle”); }</p>
+<p>}</p>
+<p>class TricycleFactory implements CycleFactory {</p>
+<p>​       public Cycle getCycle() {</p>
+<p>​              return new Tricycle();</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Cycles {</p>
+<p>​       public static void rideCycle(CycleFactory factory) {</p>
+<p>​              Cycle c = factory.getCycle();</p>
+<p>​              c.ride();</p>
+<p>​       }</p>
+<p>​       public static void main(String [] args) {</p>
+<p>​              rideCycle(new UnicycleFactory());</p>
+<p>​              rideCycle(new BicycleFactory());</p>
+<p>​              rideCycle(new TricycleFactory()); </p>
+<p>​       }</p>
+<p>}</p>
+<p>interface Games {</p>
+<p>​       void play();</p>
+<p>}</p>
+<p>interface GamesFactory {</p>
+<p>​       Games getGames();</p>
+<p>}</p>
+<p>class CoinToss implements Games {</p>
+<p>​       Random rand = new Random();</p>
+<p>​       public void play() { </p>
+<p>​              print(“Toss Coin: “);</p>
+<p>​              switch(rand.nextInt(2)) {</p>
+<p>​                     case 0 : println(“Heads”); return;</p>
+<p>​                     case 1 : println(“Tails”); return;</p>
+<p>​                     default: println(“OnEdge”); return;</p>
+<p>​              } </p>
+<p>​       }</p>
+<p>}</p>
+<p>class CoinTossFactory implements GamesFactory {</p>
+<p>​       public Games getGames() {</p>
+<p>​              return new CoinToss();</p>
+<p>​       }</p>
+<p>}</p>
+<p>class DiceThrow implements Games {</p>
+<p>​       Random rand = new Random();</p>
+<p>​       public void play() { </p>
+<p>​              print(“Throw Dice: “ + (rand.nextInt(6) + 1));            </p>
+<p>​       }</p>
+<p>}</p>
+<p>class DiceThrowFactory implements GamesFactory {</p>
+<p>​       public Games getGames() {</p>
+<p>​              return new DiceThrow();</p>
+<p>​       }</p>
+<p>}</p>
+<p>public class Games19 {</p>
+<p>​       public static void playGame(GamesFactory factory) {</p>
+<p>​              Games g = factory.getGames();</p>
+<p>​              g.play();</p>
+<p>​       }</p>
+<p>​       public static void main(String [] args) {</p>
+<p>​              playGame(new CoinTossFactory());</p>
+<p>​              playGame(new DiceThrowFactory());                </p>
+<p>​       }</p>
+<p>}</p>
 
           
         
@@ -1157,7 +1701,7 @@ d &lt;&lt; 2 就相当与d*4</code></pre><p>我们再用一个i来就记数 i = 
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/32/">32</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/">33</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1203,7 +1747,7 @@ d &lt;&lt; 2 就相当与d*4</code></pre><p>我们再用一个i来就记数 i = 
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-count">193</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

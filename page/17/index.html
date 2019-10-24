@@ -231,7 +231,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-Module/">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/04/2019-10-04-2-3树介绍/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zqfmcl">
@@ -250,7 +250,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/04/2019-10-04-Module/" itemprop="url">Module</a></h1>
+                <a class="post-title-link" href="/2019/10/04/2019-10-04-2-3树介绍/" itemprop="url">2-3树介绍</a></h1>
         
 
         <div class="post-meta">
@@ -302,143 +302,55 @@
       
         
           
-            <h1 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h1><p>ES6 模块的设计思想，是尽量的静态化，使得编译时就能确定模块的依赖关系，以及输入和输出的变量。<br>ES6 模块不是对象，而是通过<code>export</code>命令显式指定输出的代码，再通过<code>import</code>命令输入。</p>
-<h2 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h2><p>ES6模块默认使用严格模式，不管是否有<code>use strict</code>。</p>
-<p>严格模式特点：</p>
-<ul>
-<li>变量必须声明后再使用</li>
-<li>函数的参数不能有同名属性，否则报错</li>
-<li>不能使用<code>with</code>语句</li>
-<li>不能对只读属性赋值，否则报错</li>
-<li>不能使用前缀0表示八进制数，否则报错</li>
-<li>不能删除不可删除的属性，否则报错</li>
-<li>不能删除变量<code>delete prop</code>，会报错，只能删除属性<code>delete global[prop]</code></li>
-<li><code>eval</code>不会在它的外层作用域引入变量</li>
-<li><code>eval</code>和<code>arguments</code>不能被重新赋值</li>
-<li>arguments不会自动反映函数参数的变化</li>
-<li>不能使用<code>arguments.callee</code></li>
-<li>不能使用<code>arguments.caller</code></li>
-<li>禁止this指向全局对象，实际会指向<code>undefined</code></li>
-<li>不能使用<code>fn.caller</code>和<code>fn.arguments</code>获取函数调用的堆栈</li>
-<li>增加了保留字（比如<code>protected</code>、<code>static</code>和<code>interface</code>）</li>
-</ul>
-<h2 id="export-命令"><a href="#export-命令" class="headerlink" title="export 命令"></a>export 命令</h2><pre><code class="js">export var firstName = &#39;Michael&#39;;
-
-var year = 1958;
-export {year};</code></pre>
-<p><code>export</code>命令不可以在块级作用域内使用。</p>
-<p><code>export</code>命令规定的是对外的接口，必须与模块内部的变量建立一一对应关系。<br>不可以直接输出值。</p>
-<pre><code class="js">// 报错
-export 1;
-
-// 报错
-var m = 1;
-export m;</code></pre>
-<p><code>export</code>的接口与对应的值是动态绑定的，取到的是模块内部实时的值。</p>
-<pre><code class="js">export var foo = &#39;bar&#39;;
-setTimeout(() =&gt; foo = &#39;baz&#39;, 500);</code></pre>
-<h2 id="import-命令"><a href="#import-命令" class="headerlink" title="import 命令"></a>import 命令</h2><p>使用<code>import</code>模块加载<code>export</code>定义的对外接口。</p>
-<p><code>import</code>导入模块与<code>export</code>对外接口的名称必须相同。</p>
-<pre><code class="js">// main.js
-import {firstName, lastName, year} from &#39;./profile&#39;;
-
-function setName(element) {
-  element.textContent = firstName + &#39; &#39; + lastName;
-}</code></pre>
-<p><code>import</code>的特点：</p>
-<ol>
-<li><code>import</code>命令有提升效果，提升到头部首先执行。</li>
-<li><code>import</code>是静态执行，不能使用表达式或者变量。</li>
-<li><code>import</code>同一个模块加载多次，也只会执行一次。</li>
-</ol>
-<p>整体加载：</p>
-<pre><code class="js">import * as circle from &#39;./circle&#39;;
-
-console.log(&#39;圆面积：&#39; + circle.area(4));
-console.log(&#39;圆周长：&#39; + circle.circumference(14));</code></pre>
-<p>会一起加载模块当中的两个方法。</p>
-<h2 id="默认模块加载"><a href="#默认模块加载" class="headerlink" title="默认模块加载"></a>默认模块加载</h2><pre><code class="js">// 第一组
-export default function crc32() { // 输出
-  // ...
-}
-
-import crc32 from &#39;crc32&#39;; // 输入
-
-// 第二组
-export function crc32() { // 输出
-  // ...
-};
-
-import {crc32} from &#39;crc32&#39;; // 输入</code></pre>
-<p>一个模块只能有一个默认输出,<code>export default</code>命令只能使用一次。<br><code>export default</code>本质是将该命令后面的值，赋给<code>default</code>变量。</p>
-<blockquote>
-<p>参考：<br> <a href="http://es6.ruanyifeng.com/#docs/module" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/module</a></p>
+            <blockquote>
+<p>本系列文章主要介绍常用的算法和数据结构的知识，记录的是《Algorithms I/II》课程的内容，采用的是“算法（第4版）”这本红宝书作为学习教材的，语言是java。这本书的名气我不用多说吧？豆瓣评分9.4，我自己也认为是极好的学习算法的书籍。 通过这系列文章，可以加深对数据结构和基本算法的理解（个人认为比学校讲的清晰多了），并加深对java的理解。</p>
 </blockquote>
-<h2 id="使用备注"><a href="#使用备注" class="headerlink" title="使用备注"></a>使用备注</h2><p><code>import</code>与<code>export</code>命令在Nodejs环境中不支持，建议使用<code>traceur</code>运行ES6代码文件。</p>
-<p>安装：</p>
-<pre><code class="bash">#本地安装，
-npm install traceur -D
-#然后调用二进制文件
-node_modules/.bin/traceur a.js
-
-
-# 也可以全局安装
-npm install traceur -g
-# 调用命令
-
-traceur a.js</code></pre>
-<h2 id="脚本异步加载"><a href="#脚本异步加载" class="headerlink" title="脚本异步加载"></a>脚本异步加载</h2><p><code>script</code>标签如果有<code>defer</code>或<code>async</code>属性，脚本就会异步加载。</p>
-<p>区别：</p>
+<hr>
+<h1 id="2-3树介绍"><a href="#2-3树介绍" class="headerlink" title="2-3树介绍"></a>2-3树介绍</h1><blockquote>
+<p>我们上回说到二叉查找树已经很接近我们的目标了，在很多情况下性能都很不错，但是唯独在删除上不行，一旦删除操作做多了就会失去平衡，那么，这回，我们来说说如何做一个平衡查找树，首先介绍一下2-3查找树</p>
+</blockquote>
+<p>2-3树是一种特殊的二叉树，它允许一个节点中出现2个key。</p>
 <ul>
-<li>defer：整个页面正常渲染结束，才会执行</li>
-<li>async：一旦下载完，渲染引擎就会中断渲染，执行这个脚本以后，再继续渲染。</li>
+<li>2节点：1个key，2个孩子</li>
+<li>3节点，2个key，3个孩子</li>
 </ul>
-<p>多个<code>defer</code>脚本会按顺序加载，<code>async</code>不能包证按顺序加载。</p>
-<h2 id="ES6-模块与-CommonJS-模块的差异"><a href="#ES6-模块与-CommonJS-模块的差异" class="headerlink" title="ES6 模块与 CommonJS 模块的差异"></a>ES6 模块与 CommonJS 模块的差异</h2><p>区别：</p>
+<p><img src="http://img.hksite.cn/1464060026525" alt></p>
+<p>它有几个特性：</p>
+<ol>
+<li>符合中序遍历的顺序：左孩小于最左key，中间孩子在左右key之间，右孩子大于最右key</li>
+<li>绝对平衡：从根节点到所有null节点的路径一样长（我们后面会讲如何维护）</li>
+</ol>
+<h1 id="2-3树查找"><a href="#2-3树查找" class="headerlink" title="2-3树查找"></a>2-3树查找</h1><p>根据它的特性，我们可以很容易知道如何查找，和二叉树的查找差不多，只是多了一个节点。</p>
 <ul>
-<li>CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用。</li>
-<li>CommonJS 模块是运行时加载，ES6 模块是编译时输出接口。</li>
+<li>如果小于左孩子：go left</li>
+<li>如果小于右孩子：go mid</li>
+<li>如果大于右孩子：go right</li>
+<li>如果等于key，返回value</li>
+<li>如果为null，返回null</li>
 </ul>
-<p>ES6<code>import</code>的模块原始值变了，import加载的值也会跟着变。</p>
-<pre><code class="js">// lib.js
-export let counter = 3;
-export function incCounter() {
-  counter++;
-}
-
-// main.js
-import { counter, incCounter } from &#39;./lib&#39;;
-console.log(counter); // 3
-incCounter();
-console.log(counter); // 4</code></pre>
-<p>模块变量是一个“符号链接”，只读，赋值会报错。</p>
-<pre><code class="js">// lib.js
-export let obj = {};
-
-// main.js
-import { obj } from &#39;./lib&#39;;
-
-obj.prop = 123; // OK
-obj = {}; // TypeError</code></pre>
-<p>CommonJS模块如果是原始类型的值，不会影响输出值，但可以写成函数，会等到变动后的结果。</p>
-<pre><code class="js">// lib.js
-var counter = 3;
-function incCounter() {
-  counter++;
-}
-module.exports = {
-  get counter() {
-    return counter
-  },
-  incCounter: incCounter,
-};
-
-// main.js
-var mod = require(&#39;./lib&#39;);
-
-console.log(mod.counter);  // 3
-mod.incCounter();
-console.log(mod.counter); // 4</code></pre>
+<p>看动画：</p>
+<p><img src="http://img.hksite.cn/1464061120949" alt></p>
+<h1 id="2-3树的插入"><a href="#2-3树的插入" class="headerlink" title="2-3树的插入"></a>2-3树的插入</h1><p>插入分几种情况：</p>
+<ul>
+<li>如果插入的节点是一个2-节点：直接把2节点变成3节点</li>
+</ul>
+<p><img src="http://img.hksite.cn/1464061523618" alt></p>
+<ul>
+<li>如果插入的是一个3-节点：<ul>
+<li>把key加入3-节点变成一个临时4-节点</li>
+<li>把4节点的中间key上移到父亲节点</li>
+<li>重复操作。</li>
+<li>如果到达了root，形成了一个临时4节点，则root节点分裂成3个节点，树高增加1层</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://img.hksite.cn/1464061806411" alt></p>
+<p><img src="http://img.hksite.cn/1464083473454" alt></p>
+<p>看动画：</p>
+<p><img src="http://img.hksite.cn/1464061420156" alt></p>
+<h1 id="构造动画"><a href="#构造动画" class="headerlink" title="构造动画"></a>构造动画</h1><p>讲了这么多，我们就来看看如何构造一棵2-3树吧。</p>
+<p><img src="http://img.hksite.cn/1464083893653" alt></p>
+<h1 id="实现方案"><a href="#实现方案" class="headerlink" title="实现方案"></a>实现方案</h1><p>这里就先卖个关子，这里不写代码实现，大家先了解下，后面会用红黑树的方案实现2-3树</p>
 
           
         
@@ -1572,7 +1484,7 @@ Symbol.keyFor(s1) // &quot;foo&quot;
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/16/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/32/">32</a><a class="extend next" rel="next" href="/page/18/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/16/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/">33</a><a class="extend next" rel="next" href="/page/18/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1618,7 +1530,7 @@ Symbol.keyFor(s1) // &quot;foo&quot;
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-count">193</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Leetcode,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fey's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="Problems   ID Problem Article Animation    001 两数之和 每天一算：Two Sum    019 删除链表的倒数第N个节点 每天一算：Remove Nth Node From End of List    020 有效的括号 每天一算：Valid Parentheses    024 两两交换链表中的节点 每天一算：Swap Nodes in Pair">
+<meta name="keywords" content="Leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode图解">
+<meta property="og:url" content="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Leetcode图解/index.html">
+<meta property="og:site_name" content="Fey&#39;s blog">
+<meta property="og:description" content="Problems   ID Problem Article Animation    001 两数之和 每天一算：Two Sum    019 删除链表的倒数第N个节点 每天一算：Remove Nth Node From End of List    020 有效的括号 每天一算：Valid Parentheses    024 两两交换链表中的节点 每天一算：Swap Nodes in Pair">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161033.gif">
+<meta property="og:image" content="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161058.gif">
+<meta property="og:image" content="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161106.gif">
+<meta property="og:image" content="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161115.gif">
+<meta property="og:image" content="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161124.gif">
+<meta property="og:image" content="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161136.gif">
+<meta property="og:image" content="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161147.gif">
+<meta property="og:image" content="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161156.gif">
+<meta property="og:image" content="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161208.gif">
+<meta property="og:image" content="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161232.gif">
+<meta property="og:image" content="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161242.gif">
+<meta property="og:image" content="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161255.gif">
+<meta property="og:image" content="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161304.gif">
+<meta property="og:image" content="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161314.gif">
+<meta property="og:image" content="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161328.gif">
+<meta property="og:image" content="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161338.gif">
+<meta property="og:image" content="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161352.gif">
+<meta property="og:image" content="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161400.gif">
+<meta property="og:image" content="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161421.gif">
+<meta property="og:image" content="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161431.gif">
+<meta property="og:image" content="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161441.gif">
+<meta property="og:image" content="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161729.gif">
+<meta property="og:image" content="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161738.gif">
+<meta property="og:image" content="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161751.gif">
+<meta property="og:updated_time" content="2019-10-24T07:04:03.204Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Leetcode图解">
+<meta name="twitter:description" content="Problems   ID Problem Article Animation    001 两数之和 每天一算：Two Sum    019 删除链表的倒数第N个节点 每天一算：Remove Nth Node From End of List    020 有效的括号 每天一算：Valid Parentheses    024 两两交换链表中的节点 每天一算：Swap Nodes in Pair">
+<meta name="twitter:image" content="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161033.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Leetcode图解/">
+
+
+
+
+
+  <title>Leetcode图解 | Fey's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Fey's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zqfmcl.github.io/dialy/2019/10/06/2019-10-06-Leetcode图解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zqfmcl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fey's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Leetcode图解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-06T10:00:00+08:00">
+                2019-10-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Problems"><a href="#Problems" class="headerlink" title="Problems"></a>Problems</h2><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Problem</th>
+<th>Article</th>
+<th>Animation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>001</td>
+<td>两数之和</td>
+<td><a href="https://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247483740&idx=1&sn=1950545589ea9b86ee65fbb6be1f4290&chksm=fa0e6eddcd79e7cb542b7d4dc1304eead516994315fa4f52b575230f0f022c9e0a88ede3714e&scene=21#wechat_redirect" target="_blank" rel="noopener">每天一算：Two Sum</a></td>
+<td><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161033.gif" alt="img"></td>
+</tr>
+<tr>
+<td>019</td>
+<td>删除链表的倒数第N个节点</td>
+<td><a href="http://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247483821&idx=1&sn=11ecccab76cd53163e9dedb75effeb93&chksm=fa0e6e2ccd79e73ae9137c0d91b3533df4ea4ead4ad081834b8d91ff364c0d55c350ddcfa6c4&scene=21#wechat_redirect" target="_blank" rel="noopener">每天一算：Remove Nth Node From End of List</a></td>
+<td><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161058.gif" alt="img"></td>
+</tr>
+<tr>
+<td>020</td>
+<td>有效的括号</td>
+<td><a href="http://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247483824&idx=1&sn=ab9362e125dc5e2b3ef1611cad9448c2&chksm=fa0e6e31cd79e727c6e1e0e3c467e193edb6ae841a41e5dc8eef39d0bf3141cc53f63b019cba&scene=21#wechat_redirect" target="_blank" rel="noopener">每天一算：Valid Parentheses</a></td>
+<td><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161106.gif" alt="img"></td>
+</tr>
+<tr>
+<td>024</td>
+<td>两两交换链表中的节点</td>
+<td><a href="http://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247483773&idx=1&sn=db6cf272df968cd6571eb0bb50ecc721&chksm=fa0e6efccd79e7ea26810d335e6ece9ac23b8e3ac31be00dbd534018737ccb3ef9a00f22aff3&scene=21#wechat_redirect" target="_blank" rel="noopener">每天一算：Swap Nodes in Pairs</a></td>
+<td><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161115.gif" alt="img"></td>
+</tr>
+<tr>
+<td>026</td>
+<td>删除排序数组中的重复项</td>
+<td>每天一算：Remove Duplicates from Sorted Array</td>
+<td><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161124.gif" alt="img"></td>
+</tr>
+<tr>
+<td>075</td>
+<td>颜色分类</td>
+<td><a href="http://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247483706&idx=1&sn=905f43c882a91b55fd169d812620f277&chksm=fa0e6ebbcd79e7ad8857b0dad9ad14dbaf17fe557ef56ba600cec26b2bb668df2e171431d74c&scene=21#wechat_redirect" target="_blank" rel="noopener">每天一算：Sort Colors</a></td>
+<td><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161136.gif" alt="img"></td>
+</tr>
+<tr>
+<td>086</td>
+<td>分隔链表</td>
+<td><a href="http://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247483781&idx=1&sn=f31548ebbb2cf9ba56d979d3e51ddde2&chksm=fa0e6e04cd79e712d6cc7ff8e8b7631b7300ac0fa1a3e4c4e3b836de7a01fb5d0d6428a18bc4&scene=21#wechat_redirect" target="_blank" rel="noopener">每天一算：Partition List</a></td>
+<td><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161147.gif" alt="img"></td>
+</tr>
+<tr>
+<td>092</td>
+<td>反转链表 II</td>
+<td><a href="http://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247483820&idx=1&sn=113e87b55c8ac8e22e9db00673798118&chksm=fa0e6e2dcd79e73b5835a262599b935783de3317a453bc0ed8df9fa5d1532785a085ea663e59&scene=21#wechat_redirect" target="_blank" rel="noopener">每天一算：Reverse Linked List II</a></td>
+<td><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161156.gif" alt="img"></td>
+</tr>
+<tr>
+<td>094</td>
+<td>二叉树的中序遍历</td>
+<td><a href="http://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247483853&idx=1&sn=94cd4b4ee8dc2268290a72334c6af57b&chksm=fa0e6e4ccd79e75a41a6b78397b80cdfccda332823874475b516f997f89e786488599fc5cc1e&scene=21#wechat_redirect" target="_blank" rel="noopener">每天一算：Binary Tree Inorder Traversal</a></td>
+<td><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161208.gif" alt="img"></td>
+</tr>
+<tr>
+<td>102</td>
+<td>二叉树的层序遍历</td>
+<td><a href="http://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247483868&idx=1&sn=d50041789fcd13a75a2296f620b69d71&chksm=fa0e6e5dcd79e74b0030ac5129f10ec4ba87c98da63c5904affe9f06e06ecf28695c410d3ec7&scene=21#wechat_redirect" target="_blank" rel="noopener">每天一算：Binary Tree Level Order Traveral</a></td>
+<td><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161232.gif" alt="img"></td>
+</tr>
+<tr>
+<td>144</td>
+<td>二叉树的前序遍历</td>
+<td><a href="http://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247483843&idx=1&sn=994bf0d42dd9941a879a3a3ed500a4d6&chksm=fa0e6e42cd79e75472404eb5da7ee98f20d303efe230eb4f41efec57164630f555e7111e62ff&scene=21#wechat_redirect" target="_blank" rel="noopener">每天一算：Binary Tree Preorder Traversal</a></td>
+<td><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161242.gif" alt="img"></td>
+</tr>
+<tr>
+<td>145</td>
+<td>二叉树的后序遍历</td>
+<td><a href="http://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247483853&idx=1&sn=94cd4b4ee8dc2268290a72334c6af57b&chksm=fa0e6e4ccd79e75a41a6b78397b80cdfccda332823874475b516f997f89e786488599fc5cc1e&scene=21#wechat_redirect" target="_blank" rel="noopener">每天一算：Binary Tree Postorder Traversal</a></td>
+<td><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161255.gif" alt="img"></td>
+</tr>
+<tr>
+<td>150</td>
+<td>逆波兰表达式求值</td>
+<td><a href="http://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247483834&idx=1&sn=27cbff99f10dfcdb56cb37c237d7f2bb&chksm=fa0e6e3bcd79e72dc430bf81aed9dde9bd01634239dcf7820d6befa881efd323d9d58d76d90d&scene=21#wechat_redirect" target="_blank" rel="noopener">每天一算：Evaluate Reverse Polish Notation</a></td>
+<td><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161304.gif" alt="img"></td>
+</tr>
+<tr>
+<td>167</td>
+<td>两数之和 II - 输入有序数组</td>
+<td><a href="http://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247483711&idx=1&sn=3afec74e9e9effa71dc0b22659e14b44&chksm=fa0e6ebecd79e7a84db7861c9b5dbccdc98aa9d9a6994dda49a37edeb729e8242ea6af8f20ad&scene=21#wechat_redirect" target="_blank" rel="noopener">每天一算：Two Sum II</a></td>
+<td><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161314.gif" alt="img"></td>
+</tr>
+<tr>
+<td>199</td>
+<td>二叉树的右视图</td>
+<td>每天一算：Binary Tree Right Side View</td>
+<td><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161328.gif" alt="img"></td>
+</tr>
+<tr>
+<td>203</td>
+<td>移除链表元素</td>
+<td><a href="http://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247483766&idx=1&sn=6721376a65680bf7cf9064cf7b1ae4ae&chksm=fa0e6ef7cd79e7e1665e60fe6ea3f2087bca518c1573bc4c4b9425573f98401bafc59542dca0&scene=21#wechat_redirect" target="_blank" rel="noopener">每天一算：Remove Linked List Elements</a></td>
+<td><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161338.gif" alt="img"></td>
+</tr>
+<tr>
+<td>219</td>
+<td>存在重复元素 II</td>
+<td><a href="http://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247483755&idx=1&sn=2501b6ca09c43eaa9fba71a9bd1f5253&chksm=fa0e6eeacd79e7fc192c0a23cf90d98fe6f2c35f9e4f2d0f937ccba45a58cf23a0a9c49d35d5&scene=21#wechat_redirect" target="_blank" rel="noopener">每天一算：Contains Duplicate II</a></td>
+<td><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161352.gif" alt="img"></td>
+</tr>
+<tr>
+<td>237</td>
+<td>删除链表中的节点</td>
+<td>每天一算：Delete Node in a Linked List</td>
+<td><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161400.gif" alt="img"></td>
+</tr>
+<tr>
+<td>283</td>
+<td>移动零</td>
+<td><a href="http://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247483700&idx=1&sn=465f778d60e8560742feab5844d7cac5&chksm=fa0e6eb5cd79e7a357899d378edb532b498cd63e3ce9113f8ac74d397ce4b214ca5aa8198b7d&scene=21#wechat_redirect" target="_blank" rel="noopener">每天一算：Move Zeros</a></td>
+<td><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161421.gif" alt="img"></td>
+</tr>
+<tr>
+<td>328</td>
+<td>奇偶链表</td>
+<td><a href="http://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247483786&idx=1&sn=f7810950b34675e1c4420361faf5e361&chksm=fa0e6e0bcd79e71d2c6fc6a4a68b6ef7a17abc3dc9897548f8e44b51e9494f52c4cebbc4176e&scene=21#wechat_redirect" target="_blank" rel="noopener">每天一算：Odd Even Linked List</a></td>
+<td></td>
+</tr>
+<tr>
+<td>344</td>
+<td>反转字符串</td>
+<td><a href="http://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247483799&idx=1&sn=c2212c8963809e8d3392abeeb851dbfc&chksm=fa0e6e16cd79e7003c2d30b1a2bb4f23dc56df38e3efedd0ab2cfae291609280a832eabe67de&scene=21#wechat_redirect" target="_blank" rel="noopener">每天一算：Reverse String</a></td>
+<td><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161431.gif" alt="img"></td>
+</tr>
+<tr>
+<td>349</td>
+<td>两个数组的交集</td>
+<td><a href="http://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247483726&idx=1&sn=a887f6b983058d97c183dd300832ecbb&chksm=fa0e6ecfcd79e7d985587b543622c85aadc83a4d7a074135e1356fb4a0ebfd07e7af13467906&scene=21#wechat_redirect" target="_blank" rel="noopener">每天一算：Intersection of Two Arrays</a></td>
+<td><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161441.gif" alt="img"></td>
+</tr>
+<tr>
+<td>350</td>
+<td>两个数组的交集 II</td>
+<td><a href="http://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247483733&idx=1&sn=946bd6de3251437dd77b43ecab056c82&chksm=fa0e6ed4cd79e7c2a439b5f1853bf5154a3438ed282c7ba5e94948780c426a1f1492c0b201c4&scene=21#wechat_redirect" target="_blank" rel="noopener">每天一算：Intersection of Two Arrays II</a></td>
+<td><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161729.gif" alt="img"></td>
+</tr>
+<tr>
+<td>447</td>
+<td>回旋镖的数量</td>
+<td><a href="http://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247483747&idx=1&sn=7774eee0b252b311257134f6a52c4e2d&chksm=fa0e6ee2cd79e7f44858c46c3d04859ced9073dbb9de95ce7ee0bcc131e613862ddfd9a6f158&scene=21#wechat_redirect" target="_blank" rel="noopener">每日一算：Number of Boomerangs</a></td>
+<td><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161738.gif" alt="img"></td>
+</tr>
+<tr>
+<td>454</td>
+<td>四数相加 II</td>
+<td>每日一算：4Sum II</td>
+<td><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181206161751.gif" alt="img"></td>
+</tr>
+</tbody></table>
+<p>蓝色链接可直接进入原文阅读，黑色文章标题表明还未发布！</p>
+<p>解释：</p>
+<p>比如这题：有效的括号动画分析<br>这道题让我们验证输入的字符串是否为括号字符串，包括大括号，中括号和小括号。</p>
+<p>这里我们使用栈。</p>
+<p>遍历输入字符串<br>如果当前字符为左半边括号时，则将其压入栈中<br>如果遇到右半边括号时，分类讨论：<br>1）如栈不为空且为对应的左半边括号，则取出栈顶元素，继续循环<br>2）若此时栈为空，则直接返回false<br>3）若不为对应的左半边括号，反之返回false</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/06/2019-10-06-Java题解内部类/" rel="next" title="Java题解内部类">
+                <i class="fa fa-chevron-left"></i> Java题解内部类
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/06/2019-10-06-Java题解控制/" rel="prev" title="Java题解控制">
+                Java题解控制 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zqfmcl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">193</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problems"><span class="nav-number">1.</span> <span class="nav-text">Problems</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zqfmcl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
